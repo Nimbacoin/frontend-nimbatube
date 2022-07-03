@@ -1,12 +1,18 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import useTranslation from 'next-translate/useTranslation';
+
 
 const Home: NextPage = () => {
+  const { t } = useTranslation();
+  console.log(t("common:txt_loading1"))
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
-        <title>Create Next App</title>
+          <title>{t('common:txt_loading1')} {t('common:add_job_history_employment_type')} </title>
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -17,6 +23,10 @@ const Home: NextPage = () => {
             Next.js!
           </a>
         </h1>
+        <h1 className="text-6xl font-bold text-blue-600">
+          {t('common:txt_loading1')} {t('profile:add_job_history_employment_type')} 
+        </h1>
+
 
         <p className="mt-3 text-2xl">
           Get started by editing{' '}

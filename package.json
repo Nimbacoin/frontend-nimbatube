@@ -7,8 +7,11 @@
   },
   "dependencies": {
     "next": "latest",
+    "next-auth": "^4.8.0",
+    "next-translate": "^1.4.0",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@types/node": "17.0.35",
