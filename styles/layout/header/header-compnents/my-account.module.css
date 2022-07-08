@@ -1,0 +1,25 @@
+.container> svg{
+    color: #071C55;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+.container , .container_my_account {
+    padding:  5px 20px;
+    border-radius: 20px;
+}
+.container_my_account >  svg{
+    color: #071C55;
+    font-size: 25px;
+    cursor: pointer;
+
+}
+
+
+
+
+.container:hover , .container_my_account:hover {
+    background: #E8EAED;
+    cursor: pointer;
+
+}  

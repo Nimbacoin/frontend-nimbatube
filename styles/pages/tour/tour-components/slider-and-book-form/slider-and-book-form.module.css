@@ -1,0 +1,40 @@
+.container {
+  width: 85%;
+  margin: 0 auto;
+  min-height: 600px;
+}
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #071c55;
+}
+
+.container_slider_and_form {
+  margin-top: 10px;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.rating_date {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.reveiws {
+  width: 60%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.stars {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
