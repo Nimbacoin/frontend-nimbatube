@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-
 import Style from "../../../styles/layout/footer/footer-components/copy-right.module.css";
 import LangAndCurrency from "../../header/header-components/LangAndCurrency";
 import Flag from "react-world-flags";
