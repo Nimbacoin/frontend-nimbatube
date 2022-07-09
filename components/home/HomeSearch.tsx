@@ -16,6 +16,7 @@ const HomeSearch = () => {
     setStartDate(date);
   };
 
+  //fgfg
   return (
     <div className={Style.container}>
       <form className={Style.form}>
