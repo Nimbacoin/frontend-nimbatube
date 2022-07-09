@@ -23,6 +23,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin: 10px 0;
 }
 .reveiws {
   width: 60%;
@@ -31,10 +32,54 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  font-size: 13px;
+  font-weight: 400;
+  color: #2c4777;
+  cursor: pointer;
+  column-gap: 10px;
+}
+.location,
+.badge {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 10px;
+}
+.badge > svg {
+  color: #edab56;
 }
 .stars {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  color: #d98a28;
+}
+.add_to_wish_list {
+  width: 30%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  column-gap: 20px;
+  color: #071c55;
+}
+.add_to_wish_list > span {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 5px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.add_to_wish_list > span > svg {
+  font-size: 20px;
+}
+.add_to_wish_list > span:hover {
+  text-decoration: underline #071c55;
 }

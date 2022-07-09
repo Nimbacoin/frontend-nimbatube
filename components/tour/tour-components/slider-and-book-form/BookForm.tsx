@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { IoCalendarOutline } from "@react-icons/all-files/io5/IoCalendarOutline";
 import { IoPersonOutline } from "@react-icons/all-files/io5/IoPersonOutline";
+import { SP } from "next/dist/shared/lib/utils";
 
 const HomeSearch = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -51,12 +52,9 @@ const HomeSearch = () => {
         <div className={Style.payment_container}>
           <p className={Style.reserve_now}>
             <b> Reserve Now & Pay Later</b>
-            <br />
-            Secure your spot while staying flexible
-            <br />
+            <span> Secure your spot while staying flexible</span>
             <b>Free cancellation</b>
-            <br />
-            Up to 24 hours in advance.Learn more
+            <span>Up to 24 hours in advance.Learn more</span>
           </p>
         </div>
       </form>
