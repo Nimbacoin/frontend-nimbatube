@@ -31,7 +31,6 @@ const HomeSearch = () => {
             </p>
             <label className={Style.label_date} htmlFor="datepicker">
               <DatePicker
-                value={startDate}
                 selected={startDate}
                 onChange={(date: Date) => {
                   HandelChange(date);
