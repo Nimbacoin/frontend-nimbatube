@@ -16,13 +16,13 @@ const HomeSearch = () => {
     setStartDate(date);
   };
 
-  //fgfg
+  //fg
   return (
     <div className={Style.container}>
       <form className={Style.form}>
         <div className={Style.wrapper_location}>
           <IoSearchSharp />
-            <input placeholder="Search for your Destination" />
+          <input placeholder="Search for your Destination" />
         </div>
         <div className={Style.wrapper_date}>
           <p className={Style.date_icon}>
@@ -30,7 +30,6 @@ const HomeSearch = () => {
           </p>
           <label className={Style.label_date} htmlFor="datepicker">
             <DatePicker
-              value={startDate}
               selected={startDate}
               onChange={(date: Date) => {
                 HandelChange(date);
