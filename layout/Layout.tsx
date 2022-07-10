@@ -12,6 +12,10 @@ const Layout = ({ children }: any) => {
   return (
     <>
       <Head>
+        <meta
+          name="google-site-verification"
+          content="eK_yN2eql5QORNEY1Yxu9sze98et_wKh_j4Awl-lDlo"
+        />
         <link rel="icon" href="/favicon.jpg" />
         <script
           type="application/ld+json"
