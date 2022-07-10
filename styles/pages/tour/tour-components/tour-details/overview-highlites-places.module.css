@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -9,39 +9,13 @@
 }
 .places {
   width: 100%;
-  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
-.container_place {
-  width: 22%;
-  height: 80px;
-  background-color: #fff;
-  border-radius: 50px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
-.container_img {
-  height: 80px;
-  width: 100%;
-  border-radius: 50px 0px 0 50px;
-  background-size: cover;
-  background-position: center;
-}
-.container_desc {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 0 10px 0px 5px;
-}
+
 .title {
   display: flex;
   flex-direction: row;
@@ -54,7 +28,7 @@
 
 .detail_title {
   color: #071c55;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 .desc {
