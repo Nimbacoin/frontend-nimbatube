@@ -1,14 +1,20 @@
 import Head from "next/head";
 import React from "react";
-import Footer from "./footer/Footer";
 import Header from "./header/Header";
 import { NextSeo } from "next-seo";
 import Style from "../styles/layout/layout.module.css";
+import SideHeader from "./header/SideHeader";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 interface main {
   children: any;
 }
 const Layout = ({ children }: any) => {
+  const { asPath } = useRouter();
+
+  const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
+
   return (
     <>
       <Head>
@@ -83,11 +89,10 @@ const Layout = ({ children }: any) => {
           cardType: "summary_large_image",
         }}
       />
-      <div className="w-full flex min-h-screen flex-col items-center justify-center bg-white ">
+      <div className={Style.container}>
         <Header />
-
-        <div className={Style.children}> {children}</div>
-        <Footer />
+        <SideHeader />
+        <div className={Style.children}>{children}</div>
       </div>
     </>
   );

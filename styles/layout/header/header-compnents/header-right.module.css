@@ -1,7 +1,36 @@
-.container{
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: center;
-width : 30%;
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  column-gap: 20px;
+  width: 30%;
+}
+
+.button_log_in {
+  background-color: #fff;
+  width: 100px;
+  height: 40px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #030303;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid#DBDBDB;
+}
+.button_singup {
+  background-color: #f9f9f9;
+  width: 100px;
+  height: 40px;
+  font-weight: 600;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #030303;
+  font-size: 15px;
 }

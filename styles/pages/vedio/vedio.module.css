@@ -1,0 +1,103 @@
+.container {
+  height: auto;
+  width: 25%;
+  padding: 0.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.vedio_container {
+  height: 190px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  position: relative;
+}
+.time {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 15px;
+  cursor: pointer;
+  padding: 5px;
+  margin: 0;
+  border-radius: 2px;
+  background-color: #030303de;
+}
+.desc_container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  cursor: pointer;
+  row-gap: 10px;
+}
+.title_data {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.title {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #030303;
+  cursor: pointer;
+}
+
+.chanel_data {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 10px;
+}
+.chanel_img {
+  height: 30px;
+  width: 30px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.chanel_name {
+  color: #727272;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 15px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+.date {
+  color: #727272;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+.chanel_details {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.desc_container:hover {
+}

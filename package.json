@@ -11,6 +11,7 @@
     "install": "^0.13.0",
     "next": "latest",
     "next-auth": "^4.8.0",
+    "next-redux-wrapper": "^7.0.5",
     "next-seo": "^5.4.0",
     "next-translate": "^1.4.0",
     "npm": "^8.13.2",

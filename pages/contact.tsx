@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const contact = () => {
-  return (
-    <div style={{height : "1000px"}}>contact</div>
-  )
-}
+  return <div style={{ height: "1000px" }}>contact</div>;
+};
 
-export default contact
+export default contact;

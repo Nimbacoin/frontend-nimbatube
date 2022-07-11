@@ -1,16 +1,7 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import { NextSeo } from 'next-seo';
-import Home from '../components/home/Home';
-
-
-
+import type { NextPage } from "next";
+import Home from "../components/home/Home";
 const HomePage: NextPage = () => {
+  return <Home />;
+};
 
-  return (
-    <Home />
-  )
-}
-
-export default HomePage
+export default HomePage;
