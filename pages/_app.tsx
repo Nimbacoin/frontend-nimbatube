@@ -5,6 +5,7 @@ import { store, wrapper } from "../redux/store";
 import { Provider } from "react-redux";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  //
   return (
     <Provider store={store}>
       <Layout>
