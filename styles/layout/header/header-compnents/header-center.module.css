@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: space-between;
   height: auto;
+  position: relative;
 }
 .container_search {
   display: flex;

@@ -34,7 +34,6 @@ const HeaderCenter = () => {
   return (
     <div className={Style.container}>
       {ShowDiv && <SearchDropDown />}
-
       <div className={Style.container_search}>
         <input
           ref={InputSearch}

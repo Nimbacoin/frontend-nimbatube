@@ -16,7 +16,7 @@ const Vedio = () => {
   const Title =
     "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
   return (
-    <Link href={"/"}>
+    <Link href="/watch/ids">
       <div
         onMouseOver={HandelOver}
         onMouseLeave={HandelLeave}
