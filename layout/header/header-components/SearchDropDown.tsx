@@ -13,28 +13,10 @@ import { useRouter } from "next/router";
 import { link } from "fs";
 const Bg =
   "https://scontent.fvit1-1.fna.fbcdn.net/v/t39.30808-6/288368479_5078956948868473_6446883941384535955_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=843cd7&_nc_ohc=QVdNmwF0fz0AX9TaBdI&_nc_ht=scontent.fvit1-1.fna&oh=00_AT8WMfSBJToD6yYf9L12f5oau_uE1Cjj6R15cLiUa_GukQ&oe=62D3771B";
-const HeaderDropDown = () => {
+const SearchDropDown = () => {
   const [ShowDiv, setShowDiv] = useState(false);
   const Router = useRouter();
-  const Ref = React.useRef<HTMLDivElement>(null);
-  const InputSearch = React.useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const HandelClick = (e: any) => {
-      if (InputSearch && InputSearch.current) {
-        const refany = InputSearch.current;
-        if (refany.contains(e.target)) {
-          setShowDiv(!ShowDiv);
-        } else if (Ref && Ref.current) {
-          const refany = Ref.current;
-          if (!refany.contains(e.target)) {
-            setShowDiv(false);
-          }
-        }
-      }
-    };
-    window.addEventListener("click", HandelClick);
-  }, [ShowDiv]);
   const AllLink = [
     {
       name: "Your Chanel",
@@ -96,40 +78,9 @@ const HeaderDropDown = () => {
       {(() => {
         return (
           <div className={Style.container}>
-            <div className={Style.drop_down_option} ref={InputSearch}>
-              <IoPersonOutline />
+            <div className={Style.drop_down_container}>
+              
             </div>
-            {ShowDiv && (
-              <div className={Style.drop_down_container} ref={Ref}>
-                {AllLink.map(
-                  ({ link, img, name, chanelname, icon, classname }) => (
-                    <div
-                      key={name}
-                      onClick={(e) => HandelClick(e, link)}
-                      className={classname}
-                      id={link}
-                    >
-                      {icon && <span className={Style.icon}> {icon}</span>}
-                      {img && (
-                        <div
-                          style={{ backgroundImage: `url(${img})` }}
-                          className={Style.img}
-                        ></div>
-                      )}
-                      <div className={Style.link_data}>
-                        {name && <span className={Style.name}> {name}</span>}
-                        {chanelname && (
-                          <span className={Style.chanelname}>
-                            {" "}
-                            {chanelname}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  )
-                )}
-              </div>
-            )}
           </div>
         );
       })()}
@@ -137,4 +88,4 @@ const HeaderDropDown = () => {
   );
 };
 
-export default HeaderDropDown;
+export default SearchDropDown;

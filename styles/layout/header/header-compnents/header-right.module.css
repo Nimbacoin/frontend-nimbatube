@@ -22,7 +22,7 @@
   border: 1px solid#DBDBDB;
 }
 .button_singup {
-  background-color: #f9f9f9;
+  background-color: #673de6;
   width: 100px;
   height: 40px;
   font-weight: 600;
@@ -31,6 +31,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  color: #030303;
+  color: #fff;
   font-size: 15px;
 }

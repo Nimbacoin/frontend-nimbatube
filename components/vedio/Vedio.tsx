@@ -12,7 +12,7 @@ const Vedio = () => {
     setOverElement(false);
   };
   const Bg =
-    "https://i.ytimg.com/vi/jkngyZjRETs/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCq5lWXE4aLsOyXxZrIHGddeICzIw";
+    "https://scontent.fvit1-1.fna.fbcdn.net/v/t39.30808-6/288368479_5078956948868473_6446883941384535955_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=843cd7&_nc_ohc=QVdNmwF0fz0AX9TaBdI&_nc_ht=scontent.fvit1-1.fna&oh=00_AT8WMfSBJToD6yYf9L12f5oau_uE1Cjj6R15cLiUa_GukQ&oe=62D3771B";
   const Title =
     "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
   return (
