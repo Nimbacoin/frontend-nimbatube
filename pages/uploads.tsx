@@ -1,7 +1,7 @@
 import React from "react";
 
-const uploads = () => {
-  return <div style={{ height: "1000px" }}>uploads</div>;
+const Uploads = () => {
+  return <div style={{ height: "1000px" }}>Uploads</div>;
 };
 
-export default uploads;
+export default Uploads;

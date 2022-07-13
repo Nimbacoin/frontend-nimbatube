@@ -67,84 +67,100 @@ const SideHeader = () => {
   const HandelToggleMenu = () => {
     dispatch(ToggleMenu());
   };
+  const FollowString: string = "/following";
   return (
     <>
-      {MenuBoolean && asPath !== "/" && (
-        <div className={Style.container}>
-          <div className={Style.container_fixed}>
-            <div className={Style.all_links_container}>
-              <div className={Style.top_container}>
-                <span onClick={HandelToggleMenu}>
-                  {" "}
-                  <FiMenu />
-                </span>
-                <Link href="/">
-                  <p className={Style.logo}>NimbaTube</p>
-                </Link>
-              </div>
-              <div className={Style.all_links}>
-                {NavLinks.map(({ name, link, icon }) => (
-                  <div
-                    key={link}
-                    className={
-                      asPath === link
-                        ? Style.link_container_active
-                        : Style.link_container
-                    }
-                  >
-                    <Link href={link}>
-                      <div className={Style.link}>
-                        <span className={Style.icon}>{icon}</span>
-                        <span className={Style.text}>{name}</span>
+      {(() => {
+        if (asPath !== FollowString && asPath !== "/") {
+          return (
+            <>
+              {MenuBoolean && (
+                <div className={Style.container}>
+                  <div className={Style.container_fixed}>
+                    <div className={Style.all_links_container}>
+                      <div className={Style.top_container}>
+                        <span onClick={HandelToggleMenu}>
+                          {" "}
+                          <FiMenu />
+                        </span>
+                        <Link href="/">
+                          <p className={Style.logo}>NimbaTube</p>
+                        </Link>
                       </div>
-                    </Link>
+                      <div className={Style.all_links}>
+                        {NavLinks.map(({ name, link, icon }) => (
+                          <div
+                            key={link}
+                            className={
+                              asPath === link
+                                ? Style.link_container_active
+                                : Style.link_container
+                            }
+                          >
+                            <Link href={link}>
+                              <div className={Style.link}>
+                                <span className={Style.icon}>{icon}</span>
+                                <span className={Style.text}>{name}</span>
+                              </div>
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div
+                      className={Style.hover}
+                      onClick={HandelToggleMenu}
+                    ></div>
                   </div>
-                ))}
-              </div>
-            </div>
-            <div className={Style.hover} onClick={HandelToggleMenu}></div>
-          </div>
-        </div>
-      )}
-      {asPath === "/" && (
-        <div
-          className={
-            MenuBoolean ? Style.container_home : Style.container_home_avtive
-          }
-        >
-          <div className={Style.container_fixed_home}>
+                </div>
+              )}
+            </>
+          );
+        }
+      })()}
+      {(() => {
+        if (asPath === "/" || asPath === "/following") {
+          return (
             <div
               className={
-                MenuBoolean
-                  ? Style.all_links_container
-                  : Style.all_links_container_home
+                MenuBoolean ? Style.container_home : Style.container_home_avtive
               }
             >
-              <div className={Style.all_links}>
-                {NavLinks.map(({ name, link, icon }) => (
-                  <div
-                    key={link}
-                    className={
-                      asPath === link
-                        ? Style.link_container_active
-                        : Style.link_container
-                    }
-                  >
-                    <Link href={link}>
-                      <div className={Style.link}>
-                        <span className={Style.icon}>{icon}</span>
-                        {MenuBoolean && (
-                          <span className={Style.text}>{name}</span>
-                        )}
+              <div className={Style.container_fixed_home}>
+                <div
+                  className={
+                    MenuBoolean
+                      ? Style.all_links_container
+                      : Style.all_links_container_home
+                  }
+                >
+                  <div className={Style.all_links}>
+                    {NavLinks.map(({ name, link, icon }) => (
+                      <div
+                        key={link}
+                        className={
+                          asPath === link
+                            ? Style.link_container_active
+                            : Style.link_container
+                        }
+                      >
+                        <Link href={link}>
+                          <div className={Style.link}>
+                            <span className={Style.icon}>{icon}</span>
+                            {MenuBoolean && (
+                              <span className={Style.text}>{name}</span>
+                            )}
+                          </div>
+                        </Link>
                       </div>
-                    </Link>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          );
+        }
+      })()}
     </>
   );
 };

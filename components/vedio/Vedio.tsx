@@ -31,11 +31,12 @@ const Vedio = () => {
         <div className={Style.desc_container}>
           <div className={Style.title_data}>
             <p className={Style.title}>{Title}</p>
-            {OverElement && (
-              <i className={Style.menu}>
-                <IoEllipsisVertical />
-              </i>
-            )}
+            <i
+              style={{ color: `${OverElement ? "#030303" : "#F9F9F9"}` }}
+              className={Style.menu}
+            >
+              <IoEllipsisVertical />
+            </i>
           </div>
           <div className={Style.chanel_data}>
             <div
