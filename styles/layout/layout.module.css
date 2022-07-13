@@ -6,6 +6,8 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+  column-gap: 10px;
+  background-color: #f9f9f9;
 }
 .children {
   position: relative;

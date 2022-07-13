@@ -94,6 +94,16 @@
   overflow-y: scroll;
   padding-bottom: 100px;
 }
+.all_links_overflow_hidden {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #fff;
+  overflow-y: hidden;
+  padding-bottom: 100px;
+}
 .link_container {
   padding: 10px 0;
   width: 100%;

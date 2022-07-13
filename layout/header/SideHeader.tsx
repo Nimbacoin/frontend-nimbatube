@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Style from "../../styles/layout/header/header-compnents/side-header.module.css";
 import { IoHomeOutline } from "@react-icons/all-files/io5/IoHomeOutline";
 import { IoHeartOutline } from "@react-icons/all-files/io5/IoHeartOutline";
@@ -66,12 +66,20 @@ const SideHeader = () => {
   const HandelToggleMenu = () => {
     dispatch(ToggleMenu());
   };
+  const [IsOverfollow, setIsOverfollow] = useState(false);
   const FollowString: string = "/following";
-
+  const HandelOver = () => {
+    setIsOverfollow(true);
+  };
+  const HandelLeave = () => {
+    setIsOverfollow(false);
+  };
   const HeaderCaseI = () => {
     if (asPath === "/" || asPath === "/following") {
       return (
         <div
+          onMouseEnter={HandelOver}
+          onMouseLeave={HandelLeave}
           className={
             MenuBoolean ? Style.container_home : Style.container_home_avtive
           }
@@ -84,7 +92,13 @@ const SideHeader = () => {
                   : Style.all_links_container_home
               }
             >
-              <div className={Style.all_links}>
+              <div
+                className={
+                  !IsOverfollow
+                    ? Style.all_links_overflow_hidden
+                    : Style.all_links
+                }
+              >
                 {NavLinks.map(({ name, link, icon }) => (
                   <div
                     key={link}
@@ -116,7 +130,11 @@ const SideHeader = () => {
       return (
         <>
           {MenuBoolean && (
-            <div className={Style.container}>
+            <div
+              onMouseEnter={HandelOver}
+              onMouseLeave={HandelLeave}
+              className={Style.container}
+            >
               <div className={Style.container_fixed}>
                 <div className={Style.all_links_container}>
                   <div className={Style.top_container}>
@@ -128,7 +146,13 @@ const SideHeader = () => {
                       <p className={Style.logo}>NimbaTube</p>
                     </Link>
                   </div>
-                  <div className={Style.all_links}>
+                  <div
+                    className={
+                      !IsOverfollow
+                        ? Style.all_links_overflow_hidden
+                        : Style.all_links
+                    }
+                  >
                     {NavLinks.map(({ name, link, icon }) => (
                       <div
                         key={link}
