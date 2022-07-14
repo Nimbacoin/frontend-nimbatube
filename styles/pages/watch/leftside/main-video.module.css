@@ -1,0 +1,97 @@
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  row-gap: 20px;
+}
+.video_container {
+  width: 100%;
+  height: 450px;
+}
+.chanel {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 0;
+  column-gap: 10px;
+  border-radius: 2px;
+  position: relative;
+  border-top: 1px solid #dbdbdb;
+}
+.img {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.chanel_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 0;
+}
+.chanel_name {
+  color: #030303;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 15px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+.chanel_followers {
+  color: #727272;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+.username {
+  color: #727272;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+.follow_button {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #030303;
+  cursor: pointer;
+  color: #fff;
+  min-width: 100px;
+  border-radius: 2px;
+  padding: 8px 5px;
+  background-color: #673de6;
+  margin-top: 10px;
+}
+
+.right_container:last-of-type {
+  margin-left: auto;
+}
+.right_container {
+  color: #030303;
+  height: 100%;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

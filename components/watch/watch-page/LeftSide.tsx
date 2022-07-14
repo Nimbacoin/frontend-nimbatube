@@ -5,7 +5,7 @@ import MainVideo from "./left-side/MainVideo";
 
 const LeftSide = () => {
   return (
-    <div>
+    <div className={Style.container}>
       <MainVideo />
     </div>
   );
