@@ -5,6 +5,8 @@ import { IoSearchOutline } from "@react-icons/all-files/io5/IoSearchOutline";
 import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOutline";
 import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
+import { IoSettingsOutline } from "@react-icons/all-files/io5/IoSettingsOutline";
+
 import { useRouter } from "next/router";
 import SearchDropDown from "./header-components/SearchDropDown";
 
@@ -33,7 +35,6 @@ const HeaderCenter = () => {
 
   return (
     <div className={Style.container}>
-      {ShowDiv && <SearchDropDown />}
       <div className={Style.container_search}>
         <input
           ref={InputSearch}
@@ -43,6 +44,7 @@ const HeaderCenter = () => {
         <button className={Style.search_button}>
           <IoSearchOutline />
         </button>
+        {ShowDiv && <SearchDropDown />}
       </div>
       <div className={Style.buttons_container}>
         <button className={Style.rest_of_button}>
@@ -53,6 +55,9 @@ const HeaderCenter = () => {
         </button>
         <button className={Style.rest_of_button}>
           <IoVideocamOutline />
+        </button>
+        <button className={Style.rest_of_button}>
+          <IoSettingsOutline />
         </button>
       </div>
     </div>

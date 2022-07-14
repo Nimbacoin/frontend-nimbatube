@@ -1,13 +1,9 @@
-.container {
-  position: relative;
-}
-
 .drop_down_container {
   position: absolute;
-  top: 20px;
+  top: 40px;
   left: 0px;
   min-height: 300px;
-  width: 425px;
+  width: 100%;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: #00000017 0px 3px 12px;

@@ -6,11 +6,7 @@ const SearchDropDown = () => {
   return (
     <>
       {(() => {
-        return (
-          <div className={Style.container}>
-            <div className={Style.drop_down_container}></div>
-          </div>
-        );
+        return <div className={Style.drop_down_container}></div>;
       })()}
     </>
   );
