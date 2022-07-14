@@ -6,7 +6,7 @@ import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
 import { IoArrowRedoOutline } from "@react-icons/all-files/io5/IoArrowRedoOutline";
 import { RiPlayListAddFill } from "@react-icons/all-files/ri/RiPlayListAddFill";
 
-const MainVideo = () => {
+const VideoOption = () => {
   const Title =
     "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
   // const videoRef = useRef<HTMLVideoElement>(null);
@@ -23,7 +23,8 @@ const MainVideo = () => {
           title="Kendall-Jackson's Mendocino County Vineyards"
           width="100%"
           height="100%"
-          src="https://www.youtube.com/embed/yI12AC94ado?autoplay=1&amp;mute=0&amp;controls=1&amp;origin=http%3A%2F%2Flocalhost%3A3000&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=3"
+          mute={true}
+          src="https://www.youtube.com/embed/yI12AC94ado?autoplay=1&amp;controls=1&amp;origin=http%3A%2F%2Flocalhost%3A3000&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=3"
           id="widget4"
         ></iframe>
       </div>
@@ -73,4 +74,4 @@ const MainVideo = () => {
   );
 };
 
-export default MainVideo;
+export default VideoOption;
