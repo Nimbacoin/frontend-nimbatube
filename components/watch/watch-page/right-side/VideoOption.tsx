@@ -1,10 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import Style from "../../../../styles/pages/watch/leftside/main-video.module.css";
-import { IoEllipsisHorizontalSharp } from "@react-icons/all-files/io5/IoEllipsisHorizontalSharp";
-import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
-import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
-import { IoArrowRedoOutline } from "@react-icons/all-files/io5/IoArrowRedoOutline";
-import { RiPlayListAddFill } from "@react-icons/all-files/ri/RiPlayListAddFill";
+import Style from "../../../../styles/pages/watch/rightside/video-option.module.css";
+import { IoEllipsisVerticalSharp } from "@react-icons/all-files/io5/IoEllipsisVerticalSharp";
 
 const VideoOption = () => {
   const Title =
@@ -16,60 +12,21 @@ const VideoOption = () => {
   return (
     <div className={Style.container}>
       <div className={Style.video_container}>
-        <iframe
-          frameBorder="0"
-          allowFullScreen={true}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          title="Kendall-Jackson's Mendocino County Vineyards"
-          width="100%"
-          height="100%"
-          mute={true}
-          src="https://www.youtube.com/embed/yI12AC94ado?autoplay=1&amp;controls=1&amp;origin=http%3A%2F%2Flocalhost%3A3000&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=3"
-          id="widget4"
-        ></iframe>
+        <video width="100%" height="30px" autoPlay muted loop>
+          <source
+            src="https://www.w3schools.com/html/movie.mp4"
+            type="video/mp4"
+          />
+        </video>
       </div>
-      <div className={Style.video_data}>
-        <p className={Style.title}>{Title}</p>
-        <div className={Style.data_container}>
-          <span className={Style.followers}>983,238 views - 19 Apr 2016</span>
-          <div className={Style.icons_container}>
-            <span className={Style.icon}>
-              <AiOutlineLike />
-              Like
-            </span>
-            <span className={Style.icon}>
-              <AiOutlineDislike />
-              Dislike
-            </span>
-            <span className={Style.icon}>
-              <IoArrowRedoOutline />
-              Share
-            </span>
-            <span className={Style.icon}>
-              <RiPlayListAddFill />
-              Save
-            </span>
-            <span className={Style.icon}>
-              <IoEllipsisHorizontalSharp />
-            </span>
-          </div>
-        </div>
+      <div className={Style.chanel_container}>
+        <p className={Style.title}>{Title.slice(0, 65)}</p>
+        <span className={Style.chanel_name}>MrBeast</span>
+        <span className={Style.date}>983,238 views - 19 Apr 2016</span>
       </div>
-      <div className={Style.chanel}>
-        <div
-          style={{ backgroundImage: `url(${Bg})` }}
-          className={Style.img}
-        ></div>
-        <div className={Style.chanel_container}>
-          <span className={Style.chanel_name}>MrBeast</span>
-          <p className={Style.chanel_followers}>
-            <span className={Style.Followers}>100 Followers</span>
-          </p>
-        </div>
-        <div className={Style.right_container}>
-          <button className={Style.follow_button}>Follow</button>
-        </div>
-      </div>
+      <span className={Style.icon}>
+        <IoEllipsisVerticalSharp />
+      </span>
     </div>
   );
 };

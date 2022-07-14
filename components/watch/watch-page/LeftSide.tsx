@@ -7,6 +7,7 @@ const LeftSide = () => {
   return (
     <div className={Style.container}>
       <MainVideo />
+      
     </div>
   );
 };

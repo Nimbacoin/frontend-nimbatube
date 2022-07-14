@@ -6,6 +6,21 @@ const RightSide = () => {
   return (
     <div className={Style.container}>
       <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
     </div>
   );
 };
