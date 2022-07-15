@@ -7,10 +7,19 @@
   text-align: start;
   border-bottom: 1px solid #dbdbdb;
   padding: 5px 100px 20px 63px;
-  color: #030303;
   font-size: 14px;
   line-height: 20px;
   cursor: pointer;
   margin: 0;
   white-space: pre-wrap;
+}
+.desc_button {
+  color: #606060;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+  margin: 10px 0 0 0;
 }

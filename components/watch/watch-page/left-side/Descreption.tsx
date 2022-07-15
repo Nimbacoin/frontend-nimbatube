@@ -25,7 +25,7 @@ const Descreption = () => {
         http://www.facebook.com/enriqueiglesias Twitter:
         http://www.twitter.com/enriqueiglesias Snapchat: Enrique
       </div>
-      <button className={Style.video_data}>Show More</button>
+      <button className={Style.desc_button}>Show More</button>
     </div>
   );
 };

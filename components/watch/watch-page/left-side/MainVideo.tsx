@@ -6,6 +6,7 @@ import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
 import { IoArrowRedoOutline } from "@react-icons/all-files/io5/IoArrowRedoOutline";
 import { RiPlayListAddFill } from "@react-icons/all-files/ri/RiPlayListAddFill";
 import Descreption from "./Descreption";
+import Comments from "./Comments";
 
 const MainVideo = () => {
   const Title =
@@ -71,6 +72,7 @@ const MainVideo = () => {
         </div>
       </div>
       <Descreption />
+      <Comments />
     </div>
   );
 };
