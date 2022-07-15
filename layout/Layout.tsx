@@ -18,6 +18,13 @@ const Layout = ({ children }: any) => {
   return (
     <>
       <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet"
+        />
+
         <meta
           name="google-site-verification"
           content="eK_yN2eql5QORNEY1Yxu9sze98et_wKh_j4Awl-lDlo"

@@ -5,6 +5,7 @@ import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
 import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
 import { IoArrowRedoOutline } from "@react-icons/all-files/io5/IoArrowRedoOutline";
 import { RiPlayListAddFill } from "@react-icons/all-files/ri/RiPlayListAddFill";
+import Descreption from "./Descreption";
 
 const MainVideo = () => {
   const Title =
@@ -30,7 +31,7 @@ const MainVideo = () => {
       <div className={Style.video_data}>
         <p className={Style.title}>{Title}</p>
         <div className={Style.data_container}>
-          <span className={Style.followers}>983,238 views - 19 Apr 2016</span>
+          <span className={Style.date}>983,238 views - 19 Apr 2016</span>
           <div className={Style.icons_container}>
             <span className={Style.icon}>
               <AiOutlineLike />
@@ -69,6 +70,7 @@ const MainVideo = () => {
           <button className={Style.follow_button}>Follow</button>
         </div>
       </div>
+      <Descreption />
     </div>
   );
 };
