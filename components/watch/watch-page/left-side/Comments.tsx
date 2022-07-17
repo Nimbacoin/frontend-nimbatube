@@ -1,8 +1,40 @@
 import React from "react";
 import Style from "../../../../styles/pages/watch/leftside/comments.module.css";
+import { MdSort } from "@react-icons/all-files/md/MdSort";
 
 const Comments = () => {
-  return <div className={Style.container}></div>;
+  const Bg =
+    "https://scontent.fvit1-1.fna.fbcdn.net/v/t39.30808-6/288368479_5078956948868473_6446883941384535955_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=843cd7&_nc_ohc=QVdNmwF0fz0AX9TaBdI&_nc_ht=scontent.fvit1-1.fna&oh=00_AT8WMfSBJToD6yYf9L12f5oau_uE1Cjj6R15cLiUa_GukQ&oe=62D3771B";
+  const Comment =
+    "Watch Enrique’s new music video ME PASE: https://www.youtube.com/watch?v=JE9ur... On Tour with Ricky Martin and Sebastian Yatra Fall 2021 Tickets are on sale NOW! Details at: https://w";
+  return (
+    <div className={Style.container}>
+      <div className={Style.comments_setting}>
+        <p className={Style.comments_number}>1000 Comments</p>
+        <p className={Style.icon}>
+          <MdSort />
+          <span className={Style.container}>SORT BY </span>
+        </p>
+      </div>
+      <div className={Style.all_comments_container}>
+        <div className={Style.chanel}>
+          <div
+            style={{ backgroundImage: `url(${Bg})` }}
+            className={Style.img}
+          ></div>
+          <div className={Style.chanel_container}>
+            <div className={Style.comment_info}>
+              <span className={Style.chanel_name}>MrBeast</span>{" "}
+              <span className={Style.date}>10 Years Ago</span>
+            </div>
+            <div className={Style.all_comments}>
+              <span className={Style.comment}>{Comment}</span>{" "}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Comments;
