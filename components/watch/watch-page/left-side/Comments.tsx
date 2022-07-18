@@ -24,13 +24,13 @@ const EachComment = () => {
           <span className={Style.comment}>{Comment}</span>{" "}
         </div>
         <div className={Style.comment_actions}>
-          <span className={Style.comment}>
+          <span className={Style.comment_icon}>
             <AiOutlineLike /> 12
           </span>
-          <span className={Style.comment}>
+          <span className={Style.comment_icon}>
             <AiOutlineDislike />
           </span>
-          REPLY
+          <span className={Style.comment_icon}>REPLY</span>
         </div>{" "}
       </div>
     </div>
