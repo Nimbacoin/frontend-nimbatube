@@ -1,7 +1,8 @@
 import React from "react";
+import WatchLater from "../components/watch-later/WatchLater";
 
 const watchlater = () => {
-  return <div>watchlater</div>;
+  return <WatchLater />;
 };
 
 export default watchlater;

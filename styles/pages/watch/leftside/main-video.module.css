@@ -8,8 +8,9 @@
   row-gap: 0px;
 }
 .video_container {
-  width: 100%;
+  width: auto;
   height: 500px;
+  overflow: hidden;
 }
 .video_data {
   width: 100%;
@@ -153,4 +154,7 @@
   position: absolute;
   top: 0;
   right: 0;
+}
+.video {
+  background-color: red;
 }

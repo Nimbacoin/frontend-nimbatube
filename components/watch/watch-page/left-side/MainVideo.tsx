@@ -9,6 +9,17 @@ import Descreption from "./Descreption";
 import Comments from "./Comments";
 
 const MainVideo = () => {
+  const vid = React.useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    if (vid.current !== null) {
+      const Height = vid.current.videoHeight;
+      const Width = vid.current.videoWidth;
+      // alert(Height);
+      // alert(Width);
+      vid.current.style.minHeight = "500px";
+    }
+  }, [vid]);
   const Title =
     "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
   // const videoRef = useRef<HTMLVideoElement>(null);
@@ -18,7 +29,7 @@ const MainVideo = () => {
   return (
     <div className={Style.container}>
       <div className={Style.video_container}>
-        <iframe
+        {/* <iframe
           frameBorder="0"
           allowFullScreen={true}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -27,7 +38,15 @@ const MainVideo = () => {
           height="100%"
           src="https://www.youtube.com/embed/yI12AC94ado?autoplay=1&amp;mute=0&amp;controls=1&amp;origin=http%3A%2F%2Flocalhost%3A3000&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=3"
           id="widget4"
-        ></iframe>
+        ></iframe> */}
+        <video ref={vid} autoPlay muted loop controls>
+          <source
+            className={Style.video}
+            src="https://www.w3schools.com/html/movie.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <button>Addd</button>
       </div>
       <div className={Style.video_data}>
         <p className={Style.title}>{Title}</p>
