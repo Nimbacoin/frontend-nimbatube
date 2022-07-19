@@ -36,6 +36,28 @@ const EachComment = () => {
     </div>
   );
 };
+const ReplyInput = () => {
+  return (
+    <div className={Style.reply_input_container}>
+      <div
+        style={{ backgroundImage: `url(${Bg})` }}
+        className={Style.img}
+      ></div>
+      <div className={Style.input_container}>
+        <input
+          type="text"
+          className={Style.reply_input}
+          placeholder={"mrbeast write your comment here"}
+        />
+        <div className={Style.input_reply_continer}>
+          <button className={Style.cancel_btn}>Cancel</button>
+          <button className={Style.comment_btn}>Comment</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Comments = () => {
   return (
     <div className={Style.container}>
@@ -46,6 +68,7 @@ const Comments = () => {
           <span className={Style.container}>SORT BY </span>
         </p>
       </div>
+      <ReplyInput />
       <div className={Style.all_comments_container}>
         <EachComment />
         <EachComment />
