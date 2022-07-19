@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  min-height: 150px;
+  height: 160px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -12,16 +12,33 @@
   padding: 20px;
   position: relative;
   margin: 0px auto;
+  cursor: pointer;
 }
+
 .video_container {
-  width: 18%;
-  max-height: 150px;
+  width: 17%;
+  height: 120px;
   overflow: hidden;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
   cursor: pointer;
+  position: relative;
+}
+.time {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 15px;
+  cursor: pointer;
+  padding: 5px;
+  margin: 0;
+  border-radius: 2px;
+  background-color: #030303de;
 }
 .video_date_containe {
   width: 70%;
@@ -29,7 +46,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  column-gap: 20px;
+  row-gap: 10px;
 }
 .img {
   width: 45px;
@@ -44,7 +61,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  column-gap: 5px;
+  column-gap: 10px;
 }
 .chanel_name {
   color: #030303;
@@ -61,7 +78,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  column-gap: 20px;
+  row-gap: 5px;
   color: #727272;
   font-size: 13px;
   font-weight: 400;

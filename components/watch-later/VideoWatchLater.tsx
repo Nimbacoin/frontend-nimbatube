@@ -14,6 +14,7 @@ const VideoWatchLater = () => {
             type="video/mp4"
           />
         </video>
+        <span className={Style.time}> 5:50</span>
       </div>
       <div className={Style.video_date_containe}>
         <span className={Style.chanel_name}>MrBeast</span>
