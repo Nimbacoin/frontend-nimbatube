@@ -1,7 +1,8 @@
 import React from "react";
+import PopCulturePage from "../components/pop-culture/PopCulturePage";
 
 const PopCulture = () => {
-  return <div>PopCulture</div>;
+  return <PopCulturePage />;
 };
 
 export default PopCulture;
