@@ -56,9 +56,9 @@ const HeaderCenter = () => {
         <button className={Style.rest_of_button}>
           <IoVideocamOutline />
         </button>
-        <button className={Style.rest_of_button}>
+        {/* <button className={Style.rest_of_button}>
           <IoSettingsOutline />
-        </button>
+        </button> */}
       </div>
     </div>
   );

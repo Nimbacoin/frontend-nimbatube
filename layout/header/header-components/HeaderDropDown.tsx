@@ -7,7 +7,7 @@ import { IoRibbonOutline } from "@react-icons/all-files/io5/IoRibbonOutline";
 import { IoSettingsOutline } from "@react-icons/all-files/io5/IoSettingsOutline";
 import { IoMdHelpCircleOutline } from "@react-icons/all-files/io/IoMdHelpCircleOutline";
 import { IoLogOutOutline } from "@react-icons/all-files/io5/IoLogOutOutline";
-
+import { FcCircuit } from "@react-icons/all-files/fc/FcCircuit";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { link } from "fs";
@@ -96,6 +96,10 @@ const HeaderDropDown = () => {
       {(() => {
         return (
           <div className={Style.container}>
+            <div className={Style.drop_down_option_sold}>
+              <FcCircuit />
+              <span className={Style.sold}>0.25</span>
+            </div>
             <div className={Style.drop_down_option} ref={InputSearch}>
               <IoPersonOutline />
             </div>
