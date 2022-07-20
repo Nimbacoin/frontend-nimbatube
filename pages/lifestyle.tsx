@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import LifestylePage from "../components/lifestyle/LifestylePage";
 
 const Lifestyle = () => {
-  return (
-    <div>Lifestyle</div>
-  )
-}
+  return <LifestylePage />;
+};
 
-export default Lifestyle
+export default Lifestyle;

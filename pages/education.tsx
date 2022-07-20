@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import EducationPage from "../components/education/EducationPage";
 
-const education = () => {
-  return (
-    <div>education</div>
-  )
-}
+const Education = () => {
+  return <EducationPage />;
+};
 
-export default education
+export default Education;

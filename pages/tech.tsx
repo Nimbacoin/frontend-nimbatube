@@ -1,7 +1,8 @@
 import React from "react";
+import TechPage from "../components/tech/TechPage";
 
 const Tech = () => {
-  return <div>Tech</div>;
+  return <TechPage />;
 };
 
 export default Tech;

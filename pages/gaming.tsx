@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import GamingPage from "../components/gaming/GamingPage";
 
 const Gaming = () => {
-  return (
-    <div>Gaming</div>
-  )
-}
+  return <GamingPage />;
+};
 
-export default Gaming
+export default Gaming;
