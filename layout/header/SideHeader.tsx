@@ -75,7 +75,7 @@ const SideHeader = () => {
     setIsOverfollow(false);
   };
   const HeaderCaseI = () => {
-    if (asPath === "/" || asPath === "/following") {
+    if (!asPath.includes("/watch/")) {
       return (
         <div
           onMouseEnter={HandelOver}
@@ -126,7 +126,7 @@ const SideHeader = () => {
     }
   };
   const HeaderCaseII = () => {
-    if (asPath !== FollowString && asPath !== "/") {
+    if (asPath.includes("/watch/")) {
       return (
         <>
           {MenuBoolean && (
