@@ -49,8 +49,8 @@
   row-gap: 10px;
 }
 .img {
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   background-size: cover;
   background-position: center;
   cursor: pointer;

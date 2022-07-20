@@ -17,7 +17,9 @@ const VideoWatchLater = () => {
         <span className={Style.time}> 5:50</span>
       </div>
       <div className={Style.video_date_containe}>
-        <span className={Style.chanel_name}>MrBeast</span>
+        <span className={Style.chanel_name}>
+          If any producer or label has an issue with any of the uploads
+        </span>
         <div className={Style.chanel_container}>
           <div
             style={{ backgroundImage: `url(${Bg})` }}
