@@ -5,11 +5,12 @@ const LogIn = () => {
   return (
     <div className={Style.container}>
       <form className={Style.container_form}>
+        <div className={Style.title}>
+          <span className={Style.title}>Join</span>
+        </div>
+
         <div className={Style.container_inputs}>
-          <input
-            className={Style.input}
-            placeholder="Enter your Email, Username"
-          />
+          <input className={Style.input} placeholder="Enter your Email" />
           <input className={Style.input} placeholder="Enter your Username" />
           <input
             className={Style.input}

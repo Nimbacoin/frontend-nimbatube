@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Style from "../../styles/layout/header/header-compnents/side-header.module.css";
 import { IoHomeOutline } from "@react-icons/all-files/io5/IoHomeOutline";
 import { IoHeartOutline } from "@react-icons/all-files/io5/IoHeartOutline";
@@ -63,9 +63,20 @@ const SideHeader = () => {
   const { asPath } = useRouter();
   const dispatch = useDispatch();
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
+  const [UseMenu, setUseMenu] = useState(false);
+
   const HandelToggleMenu = () => {
     dispatch(ToggleMenu());
   };
+  useEffect(() => {
+    if (
+      asPath.includes("/log-in") ||
+      asPath.includes("/sing-up") ||
+      asPath.includes("/watch/")
+    ) {
+      setUseMenu(true);
+    }
+  }, [asPath]);
   const [IsOverfollow, setIsOverfollow] = useState(false);
   const FollowString: string = "/following";
   const HandelOver = () => {
@@ -74,8 +85,9 @@ const SideHeader = () => {
   const HandelLeave = () => {
     setIsOverfollow(false);
   };
+
   const HeaderCaseI = () => {
-    if (!asPath.includes("/watch/")) {
+    if (!UseMenu) {
       return (
         <div
           onMouseEnter={HandelOver}
@@ -126,11 +138,7 @@ const SideHeader = () => {
     }
   };
   const HeaderCaseII = () => {
-    if (
-      asPath.includes("/watch/") ||
-      asPath.includes("log-in") ||
-      asPath.includes("sing-up")
-    ) {
+    if (UseMenu) {
       return (
         <>
           {MenuBoolean && (
