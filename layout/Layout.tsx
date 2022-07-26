@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./header/Header";
 import { NextSeo } from "next-seo";
 import Style from "../styles/layout/layout.module.css";
@@ -12,9 +12,12 @@ interface main {
 }
 const Layout = ({ children }: any) => {
   const { asPath } = useRouter();
-
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
-//
+
+  const [Height, setHeight] = useState(800);
+  useEffect(() => {
+    setHeight(window.innerHeight);
+  }, []);
   return (
     <>
       <Head>
@@ -96,7 +99,7 @@ const Layout = ({ children }: any) => {
           cardType: "summary_large_image",
         }}
       />
-      <div className={Style.container}>
+      <div style={{ minHeight: `${Height}px` }} className={Style.container}>
         <Header />
         <SideHeader />
         <div className={Style.children}>{children}</div>
