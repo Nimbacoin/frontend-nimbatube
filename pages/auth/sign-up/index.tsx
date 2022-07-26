@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Style from "../../../styles/pages/auth/log-in.module.css";
-const LogIn = () => {
+const SignUp = () => {
   return (
     <div className={Style.container}>
       <form className={Style.container_form}>
@@ -19,7 +19,7 @@ const LogIn = () => {
         </div>
         <div className={Style.container_actions}>
           <div className={Style.div_button_action}>
-            <button className={Style.button_action}>Sing up </button>
+            <button className={Style.button_action}>Sign up </button>
             <Link href={"/auth/log-in"}>
               <button className={Style.button_action_add}>Log in </button>
             </Link>
@@ -36,4 +36,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default SignUp;

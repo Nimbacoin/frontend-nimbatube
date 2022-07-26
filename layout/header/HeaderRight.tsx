@@ -12,13 +12,13 @@ const HeaderRight = () => {
         onClick={() => HandelPush("/auth/log-in")}
         className={Style.button_log_in}
       >
-        log in
+        Log in
       </button>
       <button
-        onClick={() => HandelPush("/auth/sing-up")}
+        onClick={() => HandelPush("/auth/sign-up")}
         className={Style.button_singup}
       >
-        Sing up
+        Sign up
       </button>
     </div>
   );

@@ -16,7 +16,7 @@ const LogIn = () => {
           <div className={Style.div_button_action}>
             <button className={Style.button_action}>Log in </button>
             <Link href={"/auth/sing-up"}>
-              <button className={Style.button_action_add}>Sing up </button>
+              <button className={Style.button_action_add}>Sign up </button>
             </Link>
           </div>
           <div className={Style.opption_container}>
