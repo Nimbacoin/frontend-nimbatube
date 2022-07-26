@@ -63,22 +63,27 @@ const SideHeader = () => {
   const { asPath } = useRouter();
   const dispatch = useDispatch();
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
-  const [UseMenu, setUseMenu] = useState(false);
+  const [UseMenu, setUseMenu] = useState(true);
 
   const HandelToggleMenu = () => {
     dispatch(ToggleMenu());
   };
   useEffect(() => {
+    HandelMenu();
+  });
+  const HandelMenu = () => {
     if (
       asPath.includes("/log-in") ||
       asPath.includes("/sing-up") ||
       asPath.includes("/watch/")
     ) {
       setUseMenu(true);
+    } else {
+      setUseMenu(false);
     }
-  }, [asPath]);
+  };
+
   const [IsOverfollow, setIsOverfollow] = useState(false);
-  const FollowString: string = "/following";
   const HandelOver = () => {
     setIsOverfollow(true);
   };
@@ -87,7 +92,7 @@ const SideHeader = () => {
   };
 
   const HeaderCaseI = () => {
-    if (!UseMenu) {
+    if (UseMenu === false) {
       return (
         <div
           onMouseEnter={HandelOver}
@@ -138,7 +143,7 @@ const SideHeader = () => {
     }
   };
   const HeaderCaseII = () => {
-    if (UseMenu) {
+    if (UseMenu === true) {
       return (
         <>
           {MenuBoolean && (
