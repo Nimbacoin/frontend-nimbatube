@@ -9,7 +9,7 @@ const LogIn = () => {
           <input
             className={Style.input}
             placeholder="Enter your Email, Username"
-          />{" "}
+          />
           <input className={Style.input} placeholder="Enter your password" />{" "}
         </div>
         <div className={Style.container_actions}>
@@ -21,7 +21,7 @@ const LogIn = () => {
           </div>
           <div className={Style.opption_container}>
             <span className={Style.reset_password}>
-              You forget your password,{" "}
+              You forget your password,
               <Link href={"/auth/log-in"}>
                 <span className={Style.reset_password_link}>
                   click here to rest your password.
