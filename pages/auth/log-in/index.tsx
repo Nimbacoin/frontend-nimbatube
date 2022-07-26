@@ -19,18 +19,20 @@ const LogIn = () => {
               <button className={Style.button_action_add}>Sing up </button>
             </Link>
           </div>
-          <span className={Style.reset_password}>
-            You forget your password,{" "}
-            <Link href={"/auth/log-in"}>
-              <span className={Style.reset_password_link}>
-                click here to rest your password.
-              </span>
-            </Link>
-          </span>
-          <span className={Style.accept_terms}>
-            By continuing, you agree to NimbaTube's Terms of Use and Privacy
-            Policy.
-          </span>
+          <div className={Style.opption_container}>
+            <span className={Style.reset_password}>
+              You forget your password,{" "}
+              <Link href={"/auth/log-in"}>
+                <span className={Style.reset_password_link}>
+                  click here to rest your password.
+                </span>
+              </Link>
+            </span>
+            <span className={Style.accept_terms}>
+              By continuing, you agree to NimbaTube's Terms of Use and Privacy
+              Policy.
+            </span>
+          </div>
         </div>
       </form>
     </div>

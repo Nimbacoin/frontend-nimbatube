@@ -126,7 +126,11 @@ const SideHeader = () => {
     }
   };
   const HeaderCaseII = () => {
-    if (asPath.includes("/watch/")) {
+    if (
+      asPath.includes("/watch/") ||
+      asPath.includes("log-in") ||
+      asPath.includes("sing-up")
+    ) {
       return (
         <>
           {MenuBoolean && (

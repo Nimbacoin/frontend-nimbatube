@@ -9,8 +9,12 @@ const LogIn = () => {
           <input
             className={Style.input}
             placeholder="Enter your Email, Username"
+          />
+          <input className={Style.input} placeholder="Enter your Username" />
+          <input
+            className={Style.input}
+            placeholder="Enter your password"
           />{" "}
-          <input className={Style.input} placeholder="Enter your password" />{" "}
         </div>
         <div className={Style.container_actions}>
           <div className={Style.div_button_action}>
@@ -19,10 +23,12 @@ const LogIn = () => {
               <button className={Style.button_action_add}>Log in </button>
             </Link>
           </div>
-          <span className={Style.accept_terms}>
-            By continuing, you agree to NimbaTube's Terms of Use and Privacy
-            Policy.
-          </span>
+          <div className={Style.opption_container}>
+            <span className={Style.accept_terms}>
+              By continuing, you agree to NimbaTube's Terms of Use and Privacy
+              Policy.
+            </span>
+          </div>
         </div>
       </form>
     </div>
