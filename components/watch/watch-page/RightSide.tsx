@@ -1,5 +1,6 @@
 import React from "react";
 import Style from "../../../styles/pages/watch/rightside/rightside.module.css";
+import Vedio from "../../vedio/Vedio";
 import VideoOption from "./right-side/VideoOption";
 
 const RightSide = () => {
@@ -21,6 +22,7 @@ const RightSide = () => {
       <VideoOption />
       <VideoOption />
       <VideoOption />
+      <Vedio />
     </div>
   );
 };
