@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "../../styles/pages/vedio/vedio.module.css";
 import { IoEllipsisVertical } from "@react-icons/all-files/io5/IoEllipsisVertical";
 import Link from "next/link";
@@ -10,6 +10,25 @@ const Vedio = () => {
   const HandelLeave = () => {
     setOverElement(false);
   };
+  const [ScreenWithByHalf, setScreenWithByHalf] = useState(500);
+  const [IsPhone, setIsPhone] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth <= 900) {
+      setIsPhone(true);
+      setScreenWithByHalf(window.innerWidth / 2);
+    } else if (window.innerWidth > 900) {
+      setIsPhone(false);
+    }
+    window.onresize = () => {
+      if (window.innerWidth <= 900) {
+        setIsPhone(true);
+        setScreenWithByHalf(window.innerWidth / 2);
+      } else if (window.innerWidth > 900) {
+        setIsPhone(false);
+      }
+    };
+  });
   const Bg =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
   const Title =
@@ -22,7 +41,10 @@ const Vedio = () => {
         className={Style.container}
       >
         <div
-          style={{ backgroundImage: `url(${Bg})` }}
+          style={{
+            backgroundImage: `url(${Bg})`,
+            minHeight: `${IsPhone && ScreenWithByHalf}px`,
+          }}
           className={Style.vedio_container}
         >
           <span className={Style.time}> 5:50</span>

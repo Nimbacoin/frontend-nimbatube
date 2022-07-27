@@ -6,13 +6,17 @@ import VideoOption from "./right-side/VideoOption";
 
 const RightSide = () => {
   const [IsPhone, setIsPhone] = useState(false);
+  const Reszing = () => {
+    if (window.innerWidth <= 1149) {
+      setIsPhone(true);
+    } else if (window.innerWidth > 1149) {
+      setIsPhone(false);
+    }
+  };
   useEffect(() => {
+    Reszing();
     window.onresize = () => {
-      if (window.innerWidth <= 1149) {
-        setIsPhone(true);
-      } else if (window.innerWidth >= 1149) {
-        setIsPhone(false);
-      }
+      Reszing();
     };
   });
   return (
