@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: flex-start;
   row-gap: 0px;
+  overflow: hidden;
 }
 .video_container {
   display: flex;
@@ -195,7 +196,25 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    column-gap: 5px;
+    cursor: pointer;
+    color: #030303;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
   }
 }
