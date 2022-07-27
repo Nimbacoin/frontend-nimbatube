@@ -41,25 +41,25 @@ const MainVideo = () => {
         <div className={Style.data_container}>
           <span className={Style.date}>983,238 views - 19 Apr 2016</span>
           <div className={Style.icons_container}>
-            <span className={Style.icon}>
+            <p className={Style.icon}>
               <AiOutlineLike />
-              Like
-            </span>
-            <span className={Style.icon}>
+              <span className={Style.nubmer_of_likes}>12.5</span>
+            </p>
+            <p className={Style.icon}>
               <AiOutlineDislike />
               Dislike
-            </span>
-            <span className={Style.icon}>
+            </p>
+            <p className={Style.icon}>
               <IoArrowRedoOutline />
               Share
-            </span>
-            <span className={Style.icon}>
+            </p>
+            <p className={Style.icon}>
               <RiPlayListAddFill />
               Save
-            </span>
-            <span className={Style.icon}>
+            </p>
+            <p className={Style.icon}>
               <IoEllipsisHorizontalSharp />
-            </span>
+            </p>
           </div>
         </div>
       </div>
