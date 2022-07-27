@@ -36,8 +36,17 @@
   justify-content: space-between;
 }
 .title {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  column-gap: 10px;
+}
+.title > svg {
+  display: none;
+}
+.title_text {
   font-size: 18px;
-  line-height: 28px;
   color: #030303;
 }
 .icons_container {
@@ -225,6 +234,14 @@
   }
   .img {
     margin-left: 10px;
+  }
+  .title > svg {
+    display: block;
+    font-size: 26px;
+    color: #030303;
+  }
+  .title_text {
+    font-size: 16px;
   }
 }
 

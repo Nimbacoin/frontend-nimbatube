@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Style from "../../styles/pages/vedio/vedio.module.css";
 import { IoEllipsisVertical } from "@react-icons/all-files/io5/IoEllipsisVertical";
+import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
+
 import Link from "next/link";
 const Vedio = () => {
   const [OverElement, setOverElement] = useState(false);
@@ -47,7 +49,9 @@ const Vedio = () => {
           }}
           className={Style.vedio_container}
         >
-          <span className={Style.time}> 5:50</span>
+          <p className={Style.time}>
+            5:50 <IoVideocamOutline />{" "}
+          </p>
         </div>
         <div className={Style.desc_container}>
           <div className={Style.title_data}>

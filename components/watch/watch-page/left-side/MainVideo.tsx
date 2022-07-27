@@ -5,6 +5,8 @@ import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
 import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
 import { IoArrowRedoOutline } from "@react-icons/all-files/io5/IoArrowRedoOutline";
 import { RiPlayListAddFill } from "@react-icons/all-files/ri/RiPlayListAddFill";
+import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
+
 import Descreption from "./Descreption";
 import Comments from "./Comments";
 
@@ -37,7 +39,10 @@ const MainVideo = () => {
         </video>
       </div>
       <div className={Style.video_data}>
-        <p className={Style.title}>{Title}</p>
+        <div className={Style.title}>
+          <p className={Style.title_text}>{Title}</p>
+          <IoIosArrowDown />
+        </div>
         <div className={Style.data_container}>
           <span className={Style.date}>983,238 views - 19 Apr 2016</span>
           <div className={Style.icons_container}>

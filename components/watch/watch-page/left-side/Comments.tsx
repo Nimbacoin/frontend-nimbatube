@@ -71,15 +71,7 @@ const Comments = () => {
       <ReplyInput />
       <div className={Style.all_comments_container}>
         <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
+        
       </div>
     </div>
   );
