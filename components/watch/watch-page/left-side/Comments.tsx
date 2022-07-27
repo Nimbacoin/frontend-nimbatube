@@ -4,7 +4,7 @@ import { MdSort } from "@react-icons/all-files/md/MdSort";
 import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
 import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
 const Bg =
-  "https://scontent.fvit1-1.fna.fbcdn.net/v/t39.30808-6/288368479_5078956948868473_6446883941384535955_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=843cd7&_nc_ohc=QVdNmwF0fz0AX9TaBdI&_nc_ht=scontent.fvit1-1.fna&oh=00_AT8WMfSBJToD6yYf9L12f5oau_uE1Cjj6R15cLiUa_GukQ&oe=62D3771B";
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
 const Comment =
   "Watch Enrique’s new music video ME PASE: https://www.youtube.com/watch?v=JE9ur... On Tour with Ricky Martin and Sebastian Yatra Fall 2021 Tickets are on sale NOW! Details at: https://w";
 

@@ -70,8 +70,15 @@
   font-size: 20px;
 }
 @media screen and (max-width: 900px) {
+  .container {
+    display: none;
+  }
+  .container_show {
+    width: 100%;
+    position: absolute;
+    background-color: red;
+  }
   .rest_of_button {
-    
     display: none;
   }
 }
