@@ -10,5 +10,6 @@
 @media screen and (max-width: 1150px) {
   .container {
     width: 100%;
+    padding: 0 10px;
   }
 }
