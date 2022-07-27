@@ -6,3 +6,9 @@
   justify-content: flex-start;
   row-gap: 10px;
 }
+
+@media screen and (max-width: 1150px) {
+  .container {
+    width: 100%;
+  }
+}
