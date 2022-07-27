@@ -150,4 +150,7 @@
   .container_home_avtive {
     display: none;
   }
+  .all_links_container {
+    width: 300px;
+  }
 }

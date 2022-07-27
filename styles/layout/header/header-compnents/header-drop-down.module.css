@@ -130,3 +130,8 @@
   padding: 10px 0;
   border-radius: 2px;
 }
+@media screen and (max-width: 900px) {
+  .drop_down_option_sold {
+    display: none;
+  }
+}

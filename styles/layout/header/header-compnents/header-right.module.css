@@ -34,3 +34,14 @@
   font-size: 15px;
   font-weight: 500;
 }
+
+@media screen and (max-width: 900px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 20px;
+    width: 40px;
+  }
+}

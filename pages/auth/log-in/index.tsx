@@ -15,7 +15,7 @@ const LogIn = () => {
         <div className={Style.container_actions}>
           <div className={Style.div_button_action}>
             <button className={Style.button_action}>Log in </button>
-            <Link href={"/auth/sing-up"}>
+            <Link href={"/auth/sign-up"}>
               <button className={Style.button_action_add}>Sign up </button>
             </Link>
           </div>
