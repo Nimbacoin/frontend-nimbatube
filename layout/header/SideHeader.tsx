@@ -74,7 +74,7 @@ const SideHeader = () => {
   const HandelMenu = () => {
     if (
       asPath.includes("/log-in") ||
-      asPath.includes("/sing-up") ||
+      asPath.includes("/sign-up") ||
       asPath.includes("/watch/")
     ) {
       setUseMenu(true);
