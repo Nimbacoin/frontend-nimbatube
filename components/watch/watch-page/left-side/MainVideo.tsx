@@ -29,16 +29,6 @@ const MainVideo = () => {
   return (
     <div className={Style.container}>
       <div className={Style.video_container}>
-        {/* <iframe
-          frameBorder="0"
-          allowFullScreen={true}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          title={Title}
-          width="100%"
-          height="100%"
-          src="https://www.youtube.com/embed/yI12AC94ado?autoplay=1&amp;mute=0&amp;controls=1&amp;origin=http%3A%2F%2Flocalhost%3A3000&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=3"
-          id="widget4"
-        ></iframe> */}
         <video ref={vid} autoPlay muted loop controls>
           <source
             className={Style.video}
@@ -46,7 +36,6 @@ const MainVideo = () => {
             type="video/mp4"
           />
         </video>
-        <button>Addd</button>
       </div>
       <div className={Style.video_data}>
         <p className={Style.title}>{Title}</p>

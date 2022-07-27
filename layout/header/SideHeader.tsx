@@ -79,10 +79,22 @@ const SideHeader = () => {
     ) {
       setUseMenu(true);
     } else {
-      setUseMenu(false);
+      if (window.innerWidth <= 900) {
+        setUseMenu(true);
+      } else {
+        setUseMenu(false);
+      }
     }
   };
-
+  useEffect(() => {
+    window.onresize = () => {
+      if (window.innerWidth <= 900) {
+        setUseMenu(true);
+      } else {
+        setUseMenu(false);
+      }
+    };
+  });
   const [IsOverfollow, setIsOverfollow] = useState(false);
   const HandelOver = () => {
     setIsOverfollow(true);
