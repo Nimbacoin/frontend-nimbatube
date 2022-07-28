@@ -2,13 +2,17 @@ import React, { useEffect, useRef } from "react";
 import Style from "../../../../styles/pages/watch/leftside/descreption.module.css";
 import { IoEllipsisHorizontalSharp } from "@react-icons/all-files/io5/IoEllipsisHorizontalSharp";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
-
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
 
 const Descreption = () => {
   const DescreptionBoolean = useSelector(
     (state: any) => state.MainVideo.DescreptionBoolean
   );
+  const dispatch = useDispatch();
+  const HandelDescreptionToggle = () => {
+    dispatch(ToggleDescreption());
+  };
   const Title =
     "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
   // const videoRef = useRef<HTMLVideoElement>(null);
@@ -21,14 +25,17 @@ const Descreption = () => {
     >
       <div className={Style.container_descreption_phone}>
         <div className={Style.close_rect}></div>
-        <div className={Style.close_rect}>
+        <div className={Style.phone_desc_container}>
           <span className={Style.descreption}>Descreption</span>
-          <button className={Style.close_button}>
+          <button
+            onClick={HandelDescreptionToggle}
+            className={Style.close_button}
+          >
             <IoCloseOutline />
           </button>
         </div>
       </div>
-      <div className={Style.descreption}>
+      <div className={Style.descreption_text}>
         Watch Enrique’s new music video ME PASE:
         https://www.youtube.com/watch?v=JE9ur... On Tour with Ricky Martin and
         Sebastian Yatra Fall 2021 Tickets are on sale NOW! Details at:
