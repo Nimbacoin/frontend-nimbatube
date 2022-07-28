@@ -42,7 +42,7 @@
   justify-content: space-between;
   column-gap: 10px;
 }
-.title > svg {
+.title > button {
   display: none;
 }
 .title_text {
@@ -235,7 +235,7 @@
   .img {
     margin-left: 10px;
   }
-  .title > svg {
+  .title > button {
     display: block;
     font-size: 26px;
     color: #030303;

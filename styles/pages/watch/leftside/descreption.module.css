@@ -1,4 +1,5 @@
-.container {
+.container,
+.container_phone {
   height: auto;
   display: flex;
   flex-direction: column;
@@ -22,4 +23,58 @@
   cursor: pointer;
   padding: 0;
   margin: 10px 0 0 0;
+}
+.container_descreption_phone {
+  display: none;
+}
+@media screen and (max-width: 1150px) {
+  .container {
+    height: auto;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: start;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 5px 100px 20px 63px;
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+    margin: 0;
+    white-space: pre-wrap;
+  }
+  .container_phone {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: start;
+    border-radius: 20px 20px 0 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+    margin: 0;
+    white-space: pre-wrap;
+    position: absolute;
+    top: 20%;
+    z-index: 2;
+  }
+  .container_descreption_phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #dbdbdb;
+  }
+  .close_rect {
+    width: 50px;
+    height: 2px;
+    border-radius: 20px;
+    background-color: #dbdbdb;
+  }
 }

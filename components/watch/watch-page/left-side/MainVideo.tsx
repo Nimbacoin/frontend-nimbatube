@@ -6,19 +6,24 @@ import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
 import { IoArrowRedoOutline } from "@react-icons/all-files/io5/IoArrowRedoOutline";
 import { RiPlayListAddFill } from "@react-icons/all-files/ri/RiPlayListAddFill";
 import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
-
+import { useDispatch, useSelector } from "react-redux";
+import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
 import Descreption from "./Descreption";
 import Comments from "./Comments";
 
 const MainVideo = () => {
   const vid = React.useRef<HTMLVideoElement | null>(null);
-
+  const DescreptionBoolean = useSelector(
+    (state: any) => state.MainVideo.Descreption
+  );
+  const dispatch = useDispatch();
+  const HandelDescreptionToggle = () => {
+    dispatch(ToggleDescreption());
+  };
   useEffect(() => {
     if (vid.current !== null) {
       const Height = vid.current.videoHeight;
       const Width = vid.current.videoWidth;
-      // alert(Height);
-      // alert(Width);
       vid.current.style.minHeight = "500px";
     }
   }, [vid]);
@@ -41,7 +46,9 @@ const MainVideo = () => {
       <div className={Style.video_data}>
         <div className={Style.title}>
           <p className={Style.title_text}>{Title}</p>
-          <IoIosArrowDown />
+          <button onClick={HandelDescreptionToggle}>
+            <IoIosArrowDown />
+          </button>
         </div>
         <div className={Style.data_container}>
           <span className={Style.date}>983,238 views - 19 Apr 2016</span>
