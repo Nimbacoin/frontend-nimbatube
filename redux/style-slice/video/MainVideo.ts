@@ -17,7 +17,6 @@ export const MainVideo = createSlice({
     },
     ToggleCommentsClose: (state: any) => {
       state.CommentsBoolean = false;
-      alert(22)
     },
   },
 });
