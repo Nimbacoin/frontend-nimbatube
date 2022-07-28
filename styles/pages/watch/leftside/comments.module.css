@@ -200,10 +200,55 @@
   .container {
     width: 100%;
     height: auto;
+    border-bottom: 1px solid #dbdbdb;
+    font-size: 14px;
+    color: #606060;
+  }
+  .container_phone {
+    width: 100%;
     display: flex;
+    background-color: black;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 0 10px;
+    text-align: start;
+    border-radius: 20px 20px 0 0;
+    padding: 0;
+    margin: 0;
+    white-space: pre-wrap;
+    position: fixed;
+    top: 50%;
+    height: 50%;
+    z-index: 2;
+  }
+  .container_descreption_phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50px;
+    border-bottom: 1px solid #dbdbdb;
+  }
+  .close_rect {
+    width: 50px;
+    height: 5px;
+    background-color: #dbdbdb;
+    border-radius: 10px;
+  }
+  .phone_desc_container {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .descreption {
+    font-weight: 600;
+    font-size: 18px;
+    color: #030303;
+  }
+  .comments_setting {
+    display: none;
   }
 }

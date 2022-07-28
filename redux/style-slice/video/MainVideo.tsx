@@ -12,12 +12,17 @@ export const MainVideo = createSlice({
     ToggleDescreption: (state: any) => {
       state.DescreptionBoolean = !state.DescreptionBoolean;
     },
-    ToggleComments: (state: any) => {
-      state.CommentsBoolean = !state.CommentsBoolean;
+    ToggleCommentsOpen: (state: any) => {
+      state.CommentsBoolean = true;
+    },
+    ToggleCommentsClose: (state: any) => {
+      state.CommentsBoolean = false;
+      alert(22)
     },
   },
 });
 
-export const { ToggleComments, ToggleDescreption } = MainVideo.actions;
+export const { ToggleCommentsOpen, ToggleCommentsClose, ToggleDescreption } =
+  MainVideo.actions;
 const AllReducers = MainVideo.reducer;
 export default AllReducers;

@@ -3,7 +3,12 @@ import Style from "../../../../styles/pages/watch/leftside/comments.module.css";
 import { MdSort } from "@react-icons/all-files/md/MdSort";
 import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
 import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  ToggleCommentsOpen,
+  ToggleCommentsClose,
+} from "../../../../redux/style-slice/video/MainVideo";
+import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 
 const Bg =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
@@ -64,21 +69,47 @@ const Comments = () => {
   const CommentsBoolean = useSelector(
     (state: any) => state.MainVideo.CommentsBoolean
   );
+  const dispatch = useDispatch();
+  const HandelCommentToggleOpen = () => {
+    dispatch(ToggleCommentsOpen());
+  };
+  const HandelCommentToggleClose = () => {
+    dispatch(ToggleCommentsClose());
+  };
   return (
     <div
-      className={CommentsBoolean ? Style.container : Style.container_for_phone}
+      onClick={HandelCommentToggleOpen}
+      className={CommentsBoolean ? Style.container_for_phone : Style.container}
     >
-      <div className={Style.comments_setting}>
-        <p className={Style.comments_number}>1000 Comments</p>
-        <p className={Style.icon}>
-          <MdSort />
-          <span className={Style.container}>SORT BY </span>
-        </p>
-      </div>
-      <ReplyInput />
-      <div className={Style.all_comments_container}>
-        <EachComment />
-      </div>
+      {CommentsBoolean ? (
+        <>
+          <div className={Style.container_descreption_phone}>
+            <div className={Style.close_rect}></div>
+            <div className={Style.phone_desc_container}>
+              <span className={Style.descreption}>Descreption</span>
+              <button
+                onClick={HandelCommentToggleClose}
+                className={Style.close_button}
+              >
+                <IoCloseOutline />
+              </button>
+            </div>
+          </div>
+          <div className={Style.comments_setting}>
+            <p className={Style.comments_number}>1000 Comments</p>
+            <p className={Style.icon}>
+              <MdSort />
+              <span className={Style.container}>SORT BY </span>
+            </p>
+          </div>
+          <ReplyInput />
+          <div className={Style.all_comments_container}>
+            <EachComment />
+          </div>
+        </>
+      ) : (
+        "Comments · 400"
+      )}
     </div>
   );
 };
