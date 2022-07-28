@@ -44,8 +44,17 @@ const EachComment = () => {
   );
 };
 const ReplyInput = () => {
+  const CommentsBoolean = useSelector(
+    (state: any) => state.MainVideo.CommentsBoolean
+  );
   return (
-    <div className={Style.reply_input_container}>
+    <div
+      className={
+        CommentsBoolean
+          ? Style.reply_input_container_phone
+          : Style.reply_input_container
+      }
+    >
       <div
         style={{ backgroundImage: `url(${Bg})` }}
         className={Style.img}
@@ -73,7 +82,10 @@ const Comments = () => {
   return (
     <div className={CommentsBoolean ? Style.container_phone : Style.container}>
       {!CommentsBoolean && (
-        <label htmlFor="input_open_all_comments">
+        <label
+          className={Style.lable_open_all_comments}
+          htmlFor="input_open_all_comments"
+        >
           Comments · 455
           <input
             onClick={() => dispatch(ToggleCommentsOpen())}
@@ -83,18 +95,20 @@ const Comments = () => {
           />{" "}
         </label>
       )}
-      <div className={Style.container_descreption_phone}>
-        <div className={Style.close_rect}></div>
-        <div className={Style.phone_desc_container}>
-          <span className={Style.descreption}>Comments</span>
-          <button
-            onClick={() => dispatch(ToggleCommentsClose())}
-            className={Style.close_button}
-          >
-            <IoCloseOutline />
-          </button>
+      {CommentsBoolean && (
+        <div className={Style.container_descreption_phone}>
+          <div className={Style.close_rect}></div>
+          <div className={Style.phone_desc_container}>
+            <span className={Style.descreption}>Comments</span>
+            <button
+              onClick={() => dispatch(ToggleCommentsClose())}
+              className={Style.close_button}
+            >
+              <IoCloseOutline />
+            </button>
+          </div>
         </div>
-      </div>
+      )}
       <div className={Style.comments_setting}>
         <p className={Style.comments_number}>1000 Comments</p>
         <p className={Style.icon}>
@@ -103,7 +117,13 @@ const Comments = () => {
         </p>
       </div>
       <ReplyInput />
-      <div className={Style.all_comments_container}>
+      <div
+        className={
+          CommentsBoolean
+            ? Style.all_comments_container_phone
+            : Style.all_comments_container
+        }
+      >
         <EachComment />
       </div>
     </div>

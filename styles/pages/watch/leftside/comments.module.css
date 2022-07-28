@@ -10,6 +10,9 @@
 .container_descreption_phone {
   display: none;
 }
+.lable_open_all_comments {
+  display: none;
+}
 .comments_setting {
   width: 100%;
   height: auto;
@@ -26,7 +29,8 @@
   padding: 0;
   margin: 0 0 0 0;
 }
-.all_comments_container {
+.all_comments_container,
+.all_comments_container_phone {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -139,7 +143,8 @@
 }
 /* ------------------------------input container ---------------------------------*/
 
-.reply_input_container {
+.reply_input_container,
+.reply_input_container_phone {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -223,6 +228,12 @@
     top: 50%;
     height: 50%;
     z-index: 3;
+  }
+  .lable_open_all_comments {
+    display: flex;
+  }
+  .comments_setting {
+    display: none;
   }
   .container_descreption_phone {
     display: flex;
@@ -325,5 +336,26 @@
   }
   .img {
     margin-left: 10px;
+  }
+  .all_comments_container {
+    display: none;
+  }
+  .all_comments_container_phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  /* ---------------------------------------------------- */
+  .reply_input_container {
+    display: none;
+  }
+  .reply_input_container_phone {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 20px;
   }
 }
