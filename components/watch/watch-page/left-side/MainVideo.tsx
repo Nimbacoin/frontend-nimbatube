@@ -1,7 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Style from "../../../../styles/pages/watch/leftside/main-video.module.css";
 import { IoEllipsisHorizontalSharp } from "@react-icons/all-files/io5/IoEllipsisHorizontalSharp";
 import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
+import { AiFillLike } from "@react-icons/all-files/ai/AiFillLike";
+
+import { AiFillDislike } from "@react-icons/all-files/ai/AiFillDislike";
+
 import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
 import { IoArrowRedoOutline } from "@react-icons/all-files/io5/IoArrowRedoOutline";
 import { RiPlayListAddFill } from "@react-icons/all-files/ri/RiPlayListAddFill";
@@ -32,6 +36,17 @@ const MainVideo = () => {
   // const videoRef = useRef<HTMLVideoElement>(null);
   const Bg =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
+  const [IsLiked, setIsLiked] = useState(false);
+  const [IsDisLiked, setIsDisLiked] = useState(false);
+
+  const HandelLike = () => {
+    setIsLiked(!IsLiked);
+    setIsDisLiked(false);
+  };
+  const HandelDisLike = () => {
+    setIsLiked(false);
+    setIsDisLiked(!IsDisLiked);
+  };
   return (
     <div className={Style.container}>
       <div className={Style.video_container}>
@@ -55,12 +70,13 @@ const MainVideo = () => {
         <div className={Style.data_container}>
           <span className={Style.date}>983,238 views - 19 Apr 2016</span>
           <div className={Style.icons_container}>
-            <p className={Style.icon}>
-              <AiOutlineLike />
+            <p className={Style.icon} onClick={HandelLike}>
+              {IsLiked ? <AiFillLike /> : <AiOutlineLike />}
+
               <span className={Style.nubmer_of_likes}>12.5</span>
             </p>
-            <p className={Style.icon}>
-              <AiOutlineDislike />
+            <p className={Style.icon} onClick={HandelDisLike}>
+              {IsDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}
               Dislike
             </p>
             <p className={Style.icon}>
