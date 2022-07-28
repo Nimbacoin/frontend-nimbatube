@@ -35,13 +35,15 @@ const MainVideo = () => {
   return (
     <div className={Style.container}>
       <div className={Style.video_container}>
-        <video ref={vid} autoPlay muted loop controls>
-          <source
-            className={Style.video}
-            src="https://www.w3schools.com/html/movie.mp4"
-            type="video/mp4"
-          />
-        </video>
+        <div className={Style.video_container_2}>
+          <video ref={vid} autoPlay muted loop controls>
+            <source
+              className={Style.video}
+              src="https://www.w3schools.com/html/movie.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
       </div>
       <div className={Style.video_data}>
         <div className={Style.title}>

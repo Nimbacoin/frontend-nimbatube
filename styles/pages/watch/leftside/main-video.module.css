@@ -17,6 +17,18 @@
   height: 500px;
   overflow: hidden;
   background-color: #030303;
+  z-index: 2;
+}
+.video_container_2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background-color: #030303;
+  z-index: 2;
 }
 .video_data {
   width: 100%;
@@ -190,7 +202,23 @@
     height: 300px;
     overflow: hidden;
     background-color: #030303;
+    position: relative;
+    top: 0;
   }
+  .video_container_2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background-color: #030303;
+    position: fixed;
+    top: 60px;
+    z-index: 3;
+  }
+
   .data_container {
     width: 100%;
     display: flex;
@@ -199,6 +227,7 @@
     justify-content: flex-start;
     row-gap: 20px;
   }
+
   .video_data {
     width: 100%;
     height: auto;
