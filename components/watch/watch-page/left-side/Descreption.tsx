@@ -35,11 +35,23 @@ const Descreption = () => {
           </button>
         </div>
       </div>
-
       <div className={Style.video_data}>
         <span className={Style.title}>{Title}</span>
+        <div className={Style.video_data_container}>
+          <p className={Style.video_data_items}>
+            <strong className={Style.strong_data}>1000</strong>
+            <small className={Style.small_data}>Likes</small>
+          </p>
+          <p className={Style.video_data_items}>
+            <strong className={Style.strong_data}>1000</strong>
+            <small className={Style.small_data}>Views</small>
+          </p>
+          <p className={Style.video_data_items}>
+            <strong className={Style.strong_data}>1 Oct</strong>
+            <small className={Style.small_data}>2021</small>
+          </p>
+        </div>
       </div>
-
       <div className={Style.descreption_text_container}>
         <p className={Style.descreption_text}>
           Watch Enrique’s new music video ME PASE:
