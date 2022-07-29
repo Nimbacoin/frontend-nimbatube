@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Style from "../../../../styles/pages/watch/rightside/video-option.module.css";
 import { IoEllipsisVerticalSharp } from "@react-icons/all-files/io5/IoEllipsisVerticalSharp";
+import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 
 const VideoOption = () => {
   const [OverElement, setOverElement] = useState(false);
@@ -32,6 +33,7 @@ const VideoOption = () => {
   const Bg =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
   return (
+    
     <div className={Style.container}>
       <div className={Style.video_container}>
         <div
@@ -39,18 +41,18 @@ const VideoOption = () => {
             backgroundImage: `url(${Bg})`,
             minHeight: `${IsPhone && ScreenWithByHalf}px`,
           }}
-          className={Style.vedio_container}
+          className={Style.video_container_img}
         >
           <p className={Style.time}>
             5:50 <IoVideocamOutline />{" "}
           </p>
         </div>
-        <video width="100%" height="30px" autoPlay muted loop>
+        {/* <video width="100%" height="30px" autoPlay muted loop>
           <source
             src="https://www.w3schools.com/html/movie.mp4"
             type="video/mp4"
           />
-        </video>
+        </video> */}
       </div>
       <div className={Style.chanel_data}>
         <h3 className={Style.title}>{Title}</h3>

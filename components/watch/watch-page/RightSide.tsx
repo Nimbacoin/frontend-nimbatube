@@ -32,6 +32,28 @@ const RightSide = () => {
       <VideoOption />
       <VideoOption />
       <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
+      <VideoOption />
     </div>
   );
 };
