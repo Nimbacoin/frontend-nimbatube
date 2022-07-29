@@ -125,6 +125,16 @@ const Comments = () => {
         }
       >
         <EachComment />
+        <EachComment />
+        <EachComment />
+        <EachComment />
+        <EachComment />
+        <EachComment />
+        <EachComment />
+        <EachComment />
+        <EachComment />
+        <EachComment />
+        <EachComment />
       </div>
     </div>
   );

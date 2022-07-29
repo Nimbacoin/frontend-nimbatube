@@ -3,6 +3,29 @@ import Style from "../../../../styles/pages/watch/rightside/video-option.module.
 import { IoEllipsisVerticalSharp } from "@react-icons/all-files/io5/IoEllipsisVerticalSharp";
 
 const VideoOption = () => {
+  const [OverElement, setOverElement] = useState(false);
+  const HandelLeave = () => {
+    setOverElement(false);
+  };
+  const [ScreenWithByHalf, setScreenWithByHalf] = useState(500);
+  const [IsPhone, setIsPhone] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth <= 900) {
+      setIsPhone(true);
+      setScreenWithByHalf(window.innerWidth / 2.5);
+    } else if (window.innerWidth > 900) {
+      setIsPhone(false);
+    }
+    window.onresize = () => {
+      if (window.innerWidth <= 900) {
+        setIsPhone(true);
+        setScreenWithByHalf(window.innerWidth / 2.5);
+      } else if (window.innerWidth > 900) {
+        setIsPhone(false);
+      }
+    };
+  });
   const Title =
     "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
   // const videoRef = useRef<HTMLVideoElement>(null);
@@ -11,6 +34,17 @@ const VideoOption = () => {
   return (
     <div className={Style.container}>
       <div className={Style.video_container}>
+        <div
+          style={{
+            backgroundImage: `url(${Bg})`,
+            minHeight: `${IsPhone && ScreenWithByHalf}px`,
+          }}
+          className={Style.vedio_container}
+        >
+          <p className={Style.time}>
+            5:50 <IoVideocamOutline />{" "}
+          </p>
+        </div>
         <video width="100%" height="30px" autoPlay muted loop>
           <source
             src="https://www.w3schools.com/html/movie.mp4"
