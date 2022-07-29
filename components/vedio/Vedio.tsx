@@ -18,14 +18,14 @@ const Vedio = () => {
   useEffect(() => {
     if (window.innerWidth <= 900) {
       setIsPhone(true);
-      setScreenWithByHalf(window.innerWidth / 2);
+      setScreenWithByHalf(window.innerWidth / 2.5);
     } else if (window.innerWidth > 900) {
       setIsPhone(false);
     }
     window.onresize = () => {
       if (window.innerWidth <= 900) {
         setIsPhone(true);
-        setScreenWithByHalf(window.innerWidth / 2);
+        setScreenWithByHalf(window.innerWidth / 2.5);
       } else if (window.innerWidth > 900) {
         setIsPhone(false);
       }

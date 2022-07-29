@@ -72,7 +72,6 @@ const MainVideo = () => {
           <div className={Style.icons_container}>
             <p className={Style.icon} onClick={HandelLike}>
               {IsLiked ? <AiFillLike /> : <AiOutlineLike />}
-
               <span className={Style.nubmer_of_likes}>12.5</span>
             </p>
             <p className={Style.icon} onClick={HandelDisLike}>

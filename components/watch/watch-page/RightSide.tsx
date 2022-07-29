@@ -21,7 +21,35 @@ const RightSide = () => {
   });
   return (
     <div className={Style.container}>
-      {IsPhone ? <Vedio /> : <VideoOption />}
+      {IsPhone ? (
+        <>
+          <Vedio />
+          <Vedio />
+          <Vedio />
+          <Vedio />
+          <Vedio />
+          <Vedio />
+          <Vedio />
+          <Vedio />
+          <Vedio />
+          <Vedio />
+          <Vedio />
+        </>
+      ) : (
+        <>
+          <VideoOption />
+          <VideoOption />
+          <VideoOption />
+          <VideoOption />
+          <VideoOption />
+          <VideoOption />
+          <VideoOption />
+          <VideoOption />
+          <VideoOption />
+          <VideoOption />
+          <VideoOption />
+        </>
+      )}
     </div>
   );
 };

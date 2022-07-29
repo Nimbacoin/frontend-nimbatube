@@ -24,7 +24,8 @@
   padding: 0;
   margin: 10px 0 0 0;
 }
-.container_descreption_phone {
+.container_descreption_phone,
+.video_data {
   display: none;
 }
 @media screen and (max-width: 1150px) {
@@ -67,7 +68,6 @@
     justify-content: center;
     width: 100%;
     min-height: 50px;
-    border-bottom: 1px solid #dbdbdb;
   }
   .close_rect {
     width: 50px;
