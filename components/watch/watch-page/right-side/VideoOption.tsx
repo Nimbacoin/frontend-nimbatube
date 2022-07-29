@@ -33,7 +33,6 @@ const VideoOption = () => {
   const Bg =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
   return (
-    
     <div className={Style.container}>
       <div className={Style.video_container}>
         <div

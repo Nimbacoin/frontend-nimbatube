@@ -22,6 +22,8 @@
   cursor: pointer;
   height: 100px;
   position: relative;
+  background-size: cover;
+  background-position: center;
 }
 
 .time {
@@ -143,4 +145,16 @@
 }
 .right_container:last-of-type {
   margin-left: auto;
+}
+@media screen and (max-width: 1149px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    column-gap: 5px;
+  }
+  .video_container {
+    width: 100%;
+  }
 }
