@@ -18,10 +18,18 @@ const VideoOption = () => {
           />
         </video>
       </div>
-      <div className={Style.chanel_container}>
-        <p className={Style.title}>{Title.slice(0, 65)}</p>
-        <span className={Style.chanel_name}>MrBeast</span>
-        <span className={Style.date}>983,238 views - 19 Apr 2016</span>
+      <div className={Style.chanel_data}>
+        <h3 className={Style.title}>{Title}</h3>
+        <div className={Style.chanel_data_container}>
+          <div
+            style={{ backgroundImage: `url(${Bg})` }}
+            className={Style.chanel_img}
+          ></div>
+          <p className={Style.chanel_details}>
+            <span className={Style.chanel_name}>MrBeast</span>
+            <span className={Style.date}>3 Days Ago</span>
+          </p>
+        </div>
       </div>
       <span className={Style.icon}>
         <IoEllipsisVerticalSharp />
