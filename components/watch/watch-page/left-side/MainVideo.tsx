@@ -54,7 +54,7 @@ const MainVideo = () => {
           <video ref={vid} autoPlay muted loop controls>
             <source
               className={Style.video}
-              src="https://www.w3schools.com/html/movie.mp4"
+              src="http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4"
               type="video/mp4"
             />
           </video>
