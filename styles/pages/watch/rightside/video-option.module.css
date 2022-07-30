@@ -157,8 +157,22 @@
 .right_container:last-of-type {
   margin-left: auto;
 }
+@media screen and (max-width: 900px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    column-gap: 5px;
+  }
+  .video_container,
+  .video_container_img {
+    height: 300px;
+  }
+}
 @media screen and (max-width: 1149px) {
   .container {
+    flex-basis: 45%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
