@@ -155,6 +155,18 @@ const SideHeader = () => {
     }
   };
   const HeaderCaseII = () => {
+    const Container = React.useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+      MenuBoolean
+        ? (document.body.style.overflowY = "hidden")
+        : (document.body.style.overflowY = "auto");
+
+      if (Container.current) {
+        Container.current.style.minHeight = `${window.outerHeight}px`;
+      }
+    });
+
     if (UseMenu === true) {
       return (
         <>
@@ -163,6 +175,7 @@ const SideHeader = () => {
               onMouseEnter={HandelOver}
               onMouseLeave={HandelLeave}
               className={Style.container}
+              ref={Container}
             >
               <div className={Style.container_fixed}>
                 <div className={Style.all_links_container}>
