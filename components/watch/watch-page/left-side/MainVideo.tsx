@@ -3,6 +3,7 @@ import Style from "../../../../styles/pages/watch/leftside/main-video.module.css
 import { IoEllipsisHorizontalSharp } from "@react-icons/all-files/io5/IoEllipsisHorizontalSharp";
 import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
 import { AiFillLike } from "@react-icons/all-files/ai/AiFillLike";
+
 import { AiFillDislike } from "@react-icons/all-files/ai/AiFillDislike";
 
 import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
@@ -16,12 +17,20 @@ import Comments from "./Comments";
 
 const MainVideo = () => {
   const vid = React.useRef<HTMLVideoElement | null>(null);
-
+  const DescreptionBoolean = useSelector(
+    (state: any) => state.MainVideo.Descreption
+  );
   const dispatch = useDispatch();
   const HandelDescreptionToggle = () => {
     dispatch(ToggleDescreption());
   };
-
+  useEffect(() => {
+    if (vid.current !== null) {
+      const Height = vid.current.videoHeight;
+      const Width = vid.current.videoWidth;
+      vid.current.style.minHeight = "500px";
+    }
+  }, [vid]);
   const Title =
     "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
   // const videoRef = useRef<HTMLVideoElement>(null);
@@ -63,6 +72,7 @@ const MainVideo = () => {
           <div className={Style.icons_container}>
             <p className={Style.icon} onClick={HandelLike}>
               {IsLiked ? <AiFillLike /> : <AiOutlineLike />}
+
               <span className={Style.nubmer_of_likes}>12.5</span>
             </p>
             <p className={Style.icon} onClick={HandelDisLike}>
