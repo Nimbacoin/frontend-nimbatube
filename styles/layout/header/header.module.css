@@ -18,5 +18,6 @@
 @media screen and (max-width: 900px) {
   .container {
     padding: 0 10px;
+    display: flex;
   }
 }

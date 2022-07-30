@@ -92,6 +92,11 @@ const Comments = () => {
     (state: any) => state.MainVideo.CommentsBoolean
   );
   const dispatch = useDispatch();
+  useEffect(() => {
+    CommentsBoolean
+      ? (document.body.style.overflowY = "hidden")
+      : (document.body.style.overflowY = "auto");
+  });
   return (
     <div className={CommentsBoolean ? Style.container_phone : Style.container}>
       {!CommentsBoolean && (

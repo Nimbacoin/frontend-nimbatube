@@ -134,4 +134,7 @@
   .drop_down_option_sold {
     display: none;
   }
+  .container {
+    width: 40px;
+  }
 }

@@ -1,4 +1,5 @@
-.container {
+.container,
+.container_phone {
   width: 50%;
   display: flex;
   flex-direction: row;
@@ -8,7 +9,8 @@
   position: relative;
   column-gap: 20px;
 }
-.container_search {
+.container_search,
+.container_search_phone {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -57,26 +59,70 @@
   color: #030303;
   font-size: 20px;
 }
-.rest_of_button {
-  background-color: #f9f9f9;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  color: #030303;
-  font-size: 20px;
+.rest_of_button_search_phone {
+  display: none;
 }
 @media screen and (max-width: 900px) {
   .container {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: auto;
+    position: relative;
+    column-gap: 20px;
+  }
+  .container_search {
     display: none;
   }
-  .container_show {
-    width: 100%;
+  .container_search_phone {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    height: 38px;
+    border: 1px solid#DBDBDB;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .container_phone {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
     position: absolute;
-    background-color: red;
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    min-height: 300px;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    padding: 10px 0;
+  }
+  .buttons_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 40px;
+    height: auto;
+  }
+  .rest_of_button_search_phone {
+    display: none;
+    background-color: #f9f9f9;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #030303;
+    font-size: 20px;
   }
   .rest_of_button {
     display: none;

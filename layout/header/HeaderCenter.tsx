@@ -6,6 +6,7 @@ import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOu
 import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 import { IoSettingsOutline } from "@react-icons/all-files/io5/IoSettingsOutline";
+import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 
 import { useRouter } from "next/router";
 import SearchDropDown from "./header-components/SearchDropDown";
@@ -13,6 +14,8 @@ import SearchDropDown from "./header-components/SearchDropDown";
 const HeaderCenter = () => {
   const { asPath } = useRouter();
   const [ShowDiv, setShowDiv] = useState(false);
+  const [IsPhone, setIsPhone] = useState(false);
+
   const Ref = React.useRef<HTMLDivElement>(null);
   const InputSearch = React.useRef<HTMLInputElement>(null);
 
@@ -32,10 +35,16 @@ const HeaderCenter = () => {
     };
     window.addEventListener("click", HandelClick);
   }, [ShowDiv]);
-
+  const HandelSearchPhone = () => {
+    setIsPhone(!IsPhone);
+  };
   return (
-    <div className={Style.container}>
-      <div className={Style.container_search}>
+    <div className={IsPhone ? Style.container_phone : Style.container}>
+      <div
+        className={
+          IsPhone ? Style.container_search_phone : Style.container_search
+        }
+      >
         <input
           ref={InputSearch}
           className={Style.search_input}
@@ -59,6 +68,12 @@ const HeaderCenter = () => {
         {/* <button className={Style.rest_of_button}>
           <IoSettingsOutline />
         </button> */}
+        <button
+          onClick={HandelSearchPhone}
+          className={Style.rest_of_button_search_phone}
+        >
+          {IsPhone ? <IoCloseOutline /> : <IoSearchOutline />}
+        </button>
       </div>
     </div>
   );
