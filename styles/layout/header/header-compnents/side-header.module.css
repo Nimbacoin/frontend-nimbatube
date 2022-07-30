@@ -27,7 +27,7 @@
   position: fixed;
   width: 100%;
   top: 0px;
-
+  bottom: -100px;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -141,6 +141,7 @@
   width: 80%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.326);
+  bottom: -100px;
 }
 
 .link_container:hover {
