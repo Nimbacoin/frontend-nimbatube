@@ -16,20 +16,12 @@ import Comments from "./Comments";
 
 const MainVideo = () => {
   const vid = React.useRef<HTMLVideoElement | null>(null);
-  const DescreptionBoolean = useSelector(
-    (state: any) => state.MainVideo.Descreption
-  );
+
   const dispatch = useDispatch();
   const HandelDescreptionToggle = () => {
     dispatch(ToggleDescreption());
   };
-  useEffect(() => {
-    if (vid.current !== null) {
-      const Height = vid.current.videoHeight;
-      const Width = vid.current.videoWidth;
-      vid.current.style.minHeight = "500px";
-    }
-  }, [vid]);
+
   const Title =
     "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
   // const videoRef = useRef<HTMLVideoElement>(null);
