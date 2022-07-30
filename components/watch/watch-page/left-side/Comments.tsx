@@ -11,6 +11,8 @@ import {
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { AiFillLike } from "@react-icons/all-files/ai/AiFillLike";
 import { AiFillDislike } from "@react-icons/all-files/ai/AiFillDislike";
+import { IoChevronDown } from "@react-icons/all-files/io5/IoChevronDown";
+import { IoChevronUp } from "@react-icons/all-files/io5/IoChevronUp";
 
 const Bg =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
@@ -68,17 +70,19 @@ const ReplyInput = () => {
           : Style.reply_input_container
       }
     >
-      <div
-        style={{ backgroundImage: `url(${Bg})` }}
-        className={Style.img}
-      ></div>
+      <div className={Style.img_container}>
+        <div
+          style={{ backgroundImage: `url(${Bg})` }}
+          className={Style.img}
+        ></div>
+      </div>
       <div className={Style.input_container}>
         <input
           type="text"
           className={Style.reply_input}
           placeholder={"mrbeast write your comment here"}
         />
-        <div className={Style.input_reply_continer}>
+        <div className={Style.input_reply_buttons_continer}>
           <button className={Style.cancel_btn}>Cancel</button>
           <button className={Style.comment_btn}>Comment</button>
         </div>
@@ -110,7 +114,11 @@ const Comments = () => {
             className={Style.input_open_all_comments}
             id="input_open_all_comments"
             type="text"
-          />{" "}
+          />
+          <span className={Style.arrows}>
+            <IoChevronUp />
+            <IoChevronDown />
+          </span>
         </label>
       )}
       {CommentsBoolean && (
