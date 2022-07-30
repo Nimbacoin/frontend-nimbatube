@@ -9,8 +9,10 @@
 }
 .video_container {
   width: 43%;
-  min-height: 100px;
+  height: 100px;
+  background-color: #030303;
   overflow: hidden;
+  cursor: pointer;
 }
 .video_container_img {
   width: 100%;

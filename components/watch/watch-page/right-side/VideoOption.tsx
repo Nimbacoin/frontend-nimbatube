@@ -10,6 +10,13 @@ const VideoOption = () => {
   };
   const [ScreenWithByHalf, setScreenWithByHalf] = useState(500);
   const [IsPhone, setIsPhone] = useState(false);
+  const HandelIsOverVideoLeave = () => {
+    setIsOverVideo(false);
+  };
+  const HandelIsOverVideoOver = () => {
+    setIsOverVideo(true);
+  };
+  const [IsOverVideo, setIsOverVideo] = useState(false);
 
   useEffect(() => {
     if (window.innerWidth <= 900) {
@@ -34,23 +41,30 @@ const VideoOption = () => {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
   return (
     <div className={Style.container}>
-      <div className={Style.video_container}>
-        <div
-          style={{
-            backgroundImage: `url(${Bg})`,
-          }}
-          className={Style.video_container_img}
-        >
-          <p className={Style.time}>
-            5:50 <IoVideocamOutline />{" "}
-          </p>
-        </div>
-        {/* <video width="100%" height="30px" autoPlay muted loop>
-          <source
-            src="https://www.w3schools.com/html/movie.mp4"
-            type="video/mp4"
-          />
-        </video> */}
+      <div
+        className={Style.video_container}
+        onMouseOver={HandelIsOverVideoOver}
+        onMouseLeave={HandelIsOverVideoLeave}
+      >
+        {!IsOverVideo ? (
+          <div
+            style={{
+              backgroundImage: `url(${Bg})`,
+            }}
+            className={Style.video_container_img}
+          >
+            <p className={Style.time}>
+              5:50 <IoVideocamOutline />{" "}
+            </p>
+          </div>
+        ) : (
+          <video width="100%" height="30px" autoPlay muted loop>
+            <source
+              src="https://www.w3schools.com/html/movie.mp4"
+              type="video/mp4"
+            />
+          </video>
+        )}
       </div>
       <div className={Style.chanel_data}>
         <h3 className={Style.title}>
