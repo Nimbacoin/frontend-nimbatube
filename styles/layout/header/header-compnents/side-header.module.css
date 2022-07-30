@@ -158,3 +158,16 @@
     width: 300px;
   }
 }
+@media screen and (max-width: 500px) {
+  .container_home,
+  .container_home_avtive {
+    display: none;
+  }
+  .hover {
+    width: 20%;
+    height: 100%;
+  }
+  .all_links_container {
+    width: 80%;
+  }
+}

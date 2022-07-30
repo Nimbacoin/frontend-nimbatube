@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Style from "../../../../styles/pages/watch/leftside/comments.module.css";
 import { MdSort } from "@react-icons/all-files/md/MdSort";
 import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
@@ -9,12 +9,23 @@ import {
   ToggleCommentsClose,
 } from "../../../../redux/style-slice/video/MainVideo";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
+import { AiFillLike } from "@react-icons/all-files/ai/AiFillLike";
+import { AiFillDislike } from "@react-icons/all-files/ai/AiFillDislike";
 
 const Bg =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
 const Comment =
   "Watch Enrique’s new music video ME PASE: https://www.youtube.com/watch?v=JE9ur... On Tour with Ricky Martin and Sebastian Yatra Fall 2021 Tickets are on sale NOW! Details at: https://w";
-
+const [IsLiked, setIsLiked] = useState(false);
+const [IsDisLiked, setIsDisLiked] = useState(false);
+const HandelLike = () => {
+  setIsLiked(!IsLiked);
+  setIsDisLiked(false);
+};
+const HandelDisLike = () => {
+  setIsLiked(false);
+  setIsDisLiked(!IsDisLiked);
+};
 const EachComment = () => {
   return (
     <div className={Style.chanel}>
@@ -32,10 +43,11 @@ const EachComment = () => {
         </div>
         <div className={Style.comment_actions}>
           <span className={Style.comment_icon}>
-            <AiOutlineLike /> 12
+            {IsLiked ? <AiFillLike /> : <AiOutlineLike />}
+            12
           </span>
           <span className={Style.comment_icon}>
-            <AiOutlineDislike />
+            {IsDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}
           </span>
           <span className={Style.comment_icon}>REPLY</span>
         </div>{" "}
