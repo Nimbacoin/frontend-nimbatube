@@ -38,7 +38,6 @@ const VideoOption = () => {
         <div
           style={{
             backgroundImage: `url(${Bg})`,
-            minHeight: `${IsPhone && ScreenWithByHalf}px`,
           }}
           className={Style.video_container_img}
         >
@@ -54,7 +53,12 @@ const VideoOption = () => {
         </video> */}
       </div>
       <div className={Style.chanel_data}>
-        <h3 className={Style.title}>{Title}</h3>
+        <h3 className={Style.title}>
+          {Title}
+          <span className={Style.icon_phone}>
+            <IoEllipsisVerticalSharp />
+          </span>
+        </h3>
         <div className={Style.chanel_data_container}>
           <div
             style={{ backgroundImage: `url(${Bg})` }}

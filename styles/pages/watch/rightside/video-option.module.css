@@ -65,6 +65,11 @@
   line-height: 15px;
   color: #030303;
   cursor: pointer;
+  text-align: start;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .date,
@@ -126,13 +131,16 @@
   align-items: flex-start;
   justify-content: flex-start;
 }
+.icon_phone {
+  display: none;
+}
 
 .icon {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: flex-end;
-  text-align: center;
+  text-align: end;
   cursor: pointer;
   color: #030303;
   cursor: pointer;
@@ -140,7 +148,8 @@
   margin: 0;
 }
 
-.icon > svg {
+.icon > svg,
+.icon_phone > svg {
   font-size: 15px;
 }
 .right_container:last-of-type {
@@ -156,5 +165,36 @@
   }
   .video_container {
     width: 100%;
+  }
+  .title {
+    width: 100%;
+  }
+  .icon {
+    display: none;
+  }
+
+  .icon_phone {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: end;
+    cursor: pointer;
+    color: #030303;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+  }
+  .chanel_data {
+    width: 100%;
+  }
+  .chanel_img {
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    border-radius: 50%;
+    display: block;
   }
 }
