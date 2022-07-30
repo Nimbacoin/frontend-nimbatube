@@ -148,6 +148,11 @@
   background-color: #f9f9f9;
 }
 @media screen and (max-width: 1000px) {
+  .all_links,
+  .all_links_overflow_hidden {
+    overflow-y: scroll;
+  }
+
   .hover {
     width: 80%;
     height: 100%;
