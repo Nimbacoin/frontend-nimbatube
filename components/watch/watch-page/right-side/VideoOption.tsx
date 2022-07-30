@@ -1,15 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import Style from "../../../../styles/pages/watch/rightside/video-option.module.css";
 import { IoEllipsisVerticalSharp } from "@react-icons/all-files/io5/IoEllipsisVerticalSharp";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 
 const VideoOption = () => {
-  const [OverElement, setOverElement] = useState(false);
-  const HandelLeave = () => {
-    setOverElement(false);
-  };
-  const [ScreenWithByHalf, setScreenWithByHalf] = useState(500);
-  const [IsPhone, setIsPhone] = useState(false);
   const HandelIsOverVideoLeave = () => {
     setIsOverVideo(false);
   };
@@ -18,22 +12,6 @@ const VideoOption = () => {
   };
   const [IsOverVideo, setIsOverVideo] = useState(false);
 
-  useEffect(() => {
-    if (window.innerWidth <= 900) {
-      setIsPhone(true);
-      setScreenWithByHalf(window.innerWidth / 2.5);
-    } else if (window.innerWidth > 900) {
-      setIsPhone(false);
-    }
-    window.onresize = () => {
-      if (window.innerWidth <= 900) {
-        setIsPhone(true);
-        setScreenWithByHalf(window.innerWidth / 2.5);
-      } else if (window.innerWidth > 900) {
-        setIsPhone(false);
-      }
-    };
-  });
   const Title =
     "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
   // const videoRef = useRef<HTMLVideoElement>(null);
