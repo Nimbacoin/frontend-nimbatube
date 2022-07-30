@@ -165,6 +165,39 @@
   background-color: #673de6;
   margin-top: 0px;
 }
+.followed_button_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  column-gap: 5px;
+}
+.followed_button {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #030303;
+  cursor: pointer;
+  color: #fff;
+  min-width: 100px;
+  border-radius: 2px 0 0 2px;
+  padding: 8px 5px;
+  background-color: #673de6;
+  margin-top: 0px;
+}
+.notf_button {
+  font-size: 30;
+  font-weight: 500;
+  line-height: 20px;
+  color: #030303;
+  cursor: pointer;
+  color: #fff;
+  min-width: 100px;
+  border-radius: 0px 2px 2px 0px;
+  padding: 8px 5px;
+  background-color: #673de6;
+  margin-top: 0px;
+}
 
 .right_container:last-of-type {
   margin-left: auto;

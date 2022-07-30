@@ -3,6 +3,7 @@ import Style from "../../../../styles/pages/watch/leftside/main-video.module.css
 import { IoEllipsisHorizontalSharp } from "@react-icons/all-files/io5/IoEllipsisHorizontalSharp";
 import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
 import { AiFillLike } from "@react-icons/all-files/ai/AiFillLike";
+import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
 
 import { AiFillDislike } from "@react-icons/all-files/ai/AiFillDislike";
 
@@ -46,6 +47,11 @@ const MainVideo = () => {
   const HandelDisLike = () => {
     setIsLiked(false);
     setIsDisLiked(!IsDisLiked);
+  };
+
+  const [IsFollowed, setIsFollowed] = useState(false);
+  const HandelFollow = () => {
+    setIsFollowed(!IsFollowed);
   };
   return (
     <div className={Style.container}>
@@ -105,7 +111,20 @@ const MainVideo = () => {
           </p>
         </div>
         <div className={Style.right_container}>
-          <button className={Style.follow_button}>Follow</button>
+          {!IsFollowed ? (
+            <button onClick={HandelFollow} className={Style.follow_button}>
+              Follow
+            </button>
+          ) : (
+            <div className={Style.followed_button_container}>
+              <button onClick={HandelFollow} className={Style.followed_button}>
+                Followed
+              </button>
+              {/* <button onClick={HandelFollow} className={Style.notf_button}>
+                <IoNotificationsOutline />
+              </button> */}
+            </div>
+          )}
         </div>
       </div>
       <Descreption />
