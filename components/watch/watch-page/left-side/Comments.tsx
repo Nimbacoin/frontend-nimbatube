@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Style from "../../../../styles/pages/watch/leftside/comments.module.css";
 import { MdSort } from "@react-icons/all-files/md/MdSort";
 import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
