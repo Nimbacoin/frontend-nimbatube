@@ -19,7 +19,7 @@ const NameVideoUrl = () => {
               type="file"
               className={Style.input_upload}
             />
-            <button className={Style.upload_file_button}>Uplaod</button>
+            <span className={Style.upload_file_button}>Browse</span>
           </label>
 
           <p className={Style.text}>
@@ -32,6 +32,12 @@ const NameVideoUrl = () => {
           <p className={Style.upload_file}>Tilte</p>
           <label htmlFor="input_title" className={Style.input_label}>
             <input id="input_title" type="text" className={Style.input_title} />
+          </label>
+        </div>
+        <div className={Style.upload_input}>
+          <p className={Style.upload_file}>Description</p>
+          <label htmlFor="text_desc" className={Style.label_description}>
+            <textarea id="text_desc" className={Style.text_desc} />
           </label>
         </div>
       </div>
