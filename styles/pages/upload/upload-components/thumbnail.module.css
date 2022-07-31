@@ -82,3 +82,14 @@
 .upload_file {
   width: 100%;
 }
+
+@media screen and (max-width: 900px) {
+  .container {
+  }
+  .upload_img_icon {
+    display: none;
+  }
+  .upload_input {
+    width: 100%;
+  }
+}
