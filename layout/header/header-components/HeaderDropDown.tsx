@@ -38,7 +38,7 @@ const HeaderDropDown = () => {
   const AllLink = [
     {
       name: "Your Chanel",
-      link: "/chanel",
+      link: "/chanel/@mrbeast",
       classname: Style.chanel_container,
       img: Bg,
       chanelname: "MrBeasr",
@@ -49,7 +49,12 @@ const HeaderDropDown = () => {
       icon: <IoCloudUploadOutline />,
       classname: Style.link_container,
     },
-
+    {
+      name: "Chanels",
+      link: "/chanels",
+      icon: "@",
+      classname: Style.link_container,
+    },
     {
       name: "invite",
       link: "/invite",

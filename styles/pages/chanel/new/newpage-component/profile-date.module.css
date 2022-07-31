@@ -1,0 +1,71 @@
+.container {
+  width: 100%;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: #00000017 0px 3px 12px;
+}
+.upload_inputs_container {
+  height: 250px;
+  width: 100%;
+  background: linear-gradient(110deg, #dbdbdbdb 60%, #f0f0f0 60%);
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 20px;
+}
+.camera_of_button {
+  background-color: #f9f9f9;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #030303;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.input_upload {
+  display: none;
+}
+
+.links_container {
+  max-height: 60px;
+  background-color: #fff;
+  border-radius: 0px 0px 5px 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 50px;
+}
+.profile_image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #000;
+  cursor: pointer;
+  position: relative;
+}
+
+.camera_of_button_profile {
+  background-color: #f9f9f9;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #030303;
+  font-size: 20px;
+  cursor: pointer;
+}
