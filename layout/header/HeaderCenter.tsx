@@ -56,9 +56,12 @@ const HeaderCenter = () => {
         {ShowDiv && <SearchDropDown />}
       </div>
       <div className={Style.buttons_container}>
-        <button className={Style.rest_of_button}>
-          <IoCloudUploadOutline />
-        </button>
+        <Link href="/upload">
+          <button className={Style.rest_of_button}>
+            <IoCloudUploadOutline />
+          </button>
+        </Link>
+
         <button className={Style.rest_of_button}>
           <IoNotificationsOutline />
         </button>

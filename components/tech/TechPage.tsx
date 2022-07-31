@@ -1,18 +1,28 @@
 import React from "react";
-import Style from "../../styles/pages/favorites/favorites.module.css";
+import Style from "../../styles/pages/featured/featured.module.css";
+import Vedio from "../vedio/Vedio";
 import VideoWatchLater from "../watch-later/VideoWatchLater";
 
-const TechPage = () => {
+const FeaturedPage = () => {
   return (
     <div className={Style.container}>
-      <VideoWatchLater />
-      <VideoWatchLater />
-      <VideoWatchLater />
-      <VideoWatchLater />
-      <VideoWatchLater />
-      <VideoWatchLater />
+      <div className={Style.vedio_container}>
+        <Vedio />
+        <Vedio />
+        <Vedio />
+        <Vedio />
+        <Vedio />
+        <Vedio />
+        <Vedio />
+        <Vedio />
+        <Vedio />
+        <Vedio />
+        <Vedio />
+        <Vedio />
+        <Vedio />
+      </div>
     </div>
   );
 };
 
-export default TechPage;
+export default FeaturedPage;

@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: inherit;
+  row-gap: 20px;
+}
+.upload_container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 20px;
+  border-bottom: 5px solid #fff;
+}
+.upload_container > svg {
+  background-color: #f9f9f9;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #030303;
+  padding: 2px;
+}
+
+.upload_inputs_container {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  justify-content: flex-start;
+  border: 1px solid#DBDBDB;
+  padding: 20px;
+}
+.upload_input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  row-gap: 10px;
+}
+.text {
+  font-size: 14px;
+  color: #030303;
+}
+.input_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 38px;
+  border: 1px solid#DBDBDB;
+  border-radius: 2px;
+  position: relative;
+  font-size: 14px;
+  color: #030303;
+  outline: none;
+  padding: 0 0px 0 20px;
+}
+
+.input_upload {
+  display: none;
+}
+.upload_file_button {
+  background-color: #673de6;
+  height: 100%;
+  padding: 0 20px;
+  border-radius: 0 2px 2px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.input_title {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+}
