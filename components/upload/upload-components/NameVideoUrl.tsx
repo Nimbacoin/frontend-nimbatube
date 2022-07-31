@@ -6,14 +6,16 @@ const NameVideoUrl = () => {
     <div className={Style.container}>
       <div className={Style.upload_container}>
         <IoCloudUploadOutline />
-        <p className={Style.upload_file}>Upload a file</p>
+        <p className={Style.upload_file_text}>Upload a file</p>
       </div>
       <div className={Style.upload_inputs_container}>
         <div className={Style.upload_input}>
           <label htmlFor="input_upload" className={Style.input_label}>
-            <span className={Style.upload_file}>
+            <span className={Style.upload_file_text}>
               Select video, audio or image file to upload
             </span>
+            <span className={Style.upload_file_text_dots}>...</span>
+
             <input
               id="input_upload"
               type="file"

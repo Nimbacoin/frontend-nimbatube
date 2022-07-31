@@ -115,3 +115,27 @@
   resize: none;
   overflow-y: auto;
 }
+
+
+@media screen and (max-width: 900px) {
+  .upload_img_icon {
+    display: none;
+  }
+  .upload_input {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .input_label {
+    overflow: hidden;
+  }
+  .upload_file_text {
+    text-align: start;
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .upload_file_text_dots {
+    display: block;
+  }
+}

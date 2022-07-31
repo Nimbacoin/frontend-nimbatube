@@ -66,6 +66,9 @@
 .input_upload {
   display: none;
 }
+.upload_file_button:last-of-type {
+  margin-left: auto;
+}
 .upload_file_button {
   background-color: #673de6;
   height: 100%;
@@ -82,14 +85,29 @@
 .upload_file {
   width: 100%;
 }
+.upload_file_text_dots {
+  display: none;
+}
 
 @media screen and (max-width: 900px) {
-  .container {
-  }
   .upload_img_icon {
     display: none;
   }
   .upload_input {
     width: 100%;
+    justify-content: flex-start;
+  }
+  .input_label {
+    overflow: hidden;
+  }
+  .upload_file_text {
+    text-align: start;
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .upload_file_text_dots {
+    display: block;
   }
 }
