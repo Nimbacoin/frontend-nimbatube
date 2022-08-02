@@ -43,23 +43,28 @@ const ProfileDate = () => {
               <IoCameraOutline />
             </span>
           </label>
+          <div className={Style.image_name_conainer}>
+            <div className={Style.profile_image_container}>
+              <div
+                className={Style.profile_image}
+                style={{ backgroundImage: `url(${Bg})` }}
+              >
+                <label htmlFor="input_upload" className={Style.input_label}>
+                  <input
+                    id="input_upload"
+                    type="file"
+                    className={Style.input_upload}
+                  />
+                  <span className={Style.camera_of_button_profile}>
+                    <IoCameraOutline />
+                  </span>
+                </label>
+              </div>
+            </div>
+            <span className={Style.name}>Mrbeast </span>
+          </div>
         </div>
         <div className={Style.links_container}>
-          <div
-            className={Style.profile_image}
-            style={{ backgroundImage: `url(${Bg})` }}
-          >
-            <label htmlFor="input_upload" className={Style.input_label}>
-              <input
-                id="input_upload"
-                type="file"
-                className={Style.input_upload}
-              />
-              <span className={Style.camera_of_button_profile}>
-                <IoCameraOutline />
-              </span>
-            </label>
-          </div>
           <ul className={Style.chanel_links}>
             {UlLinks.map(({ name, key }) => (
               <li
