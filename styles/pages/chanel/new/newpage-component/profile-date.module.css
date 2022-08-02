@@ -148,6 +148,9 @@
     width: 100%;
   }
 
+  .profile_image_container {
+    margin-left: 20px;
+  }
   .profile_image {
     width: 80px;
     height: 80px;
@@ -158,13 +161,24 @@
     background-position: center;
     background-size: cover;
   }
+  .links_container {
+    min-height: 60px;
+    background-color: #fff;
+    border-radius: 0px 0px 5px 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 20px;
+  }
   .chanel_links {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    column-gap: 0;
+    column-gap: 10px;
     row-gap: 0;
     margin: 0;
     padding: 0;
