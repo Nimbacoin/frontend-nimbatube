@@ -4,6 +4,7 @@ import { IoCameraOutline } from "@react-icons/all-files/io5/IoCameraOutline";
 import NewGeneral from "./NewGeneral";
 import CreditDetails from "./CreditDetails";
 import Tags from "./Tags";
+import Other from "./Other";
 const ProfileDate = () => {
   const UlLinks = [
     { name: "General", key: "general" },
@@ -24,6 +25,8 @@ const ProfileDate = () => {
       return <CreditDetails />;
     } else if (LinkKey === "tags") {
       return <Tags />;
+    } else if (LinkKey === "other") {
+      return <Other />;
     }
   };
   return (
