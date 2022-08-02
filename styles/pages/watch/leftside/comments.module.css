@@ -236,8 +236,9 @@
     margin: 0;
     white-space: pre-wrap;
     position: fixed;
-    top: 50%;
-    height: 50%;
+    top: 30%;
+    bottom: 0;
+    height: 70%;
     z-index: 3;
   }
   .lable_open_all_comments {
