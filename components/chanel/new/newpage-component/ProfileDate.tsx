@@ -3,11 +3,12 @@ import Style from "../../../../styles/pages/chanel/new/newpage-component/profile
 import { IoCameraOutline } from "@react-icons/all-files/io5/IoCameraOutline";
 import NewGeneral from "./NewGeneral";
 import CreditDetails from "./CreditDetails";
+import Tags from "./Tags";
 const ProfileDate = () => {
   const UlLinks = [
     { name: "General", key: "general" },
     { name: "Credit Details", key: "credit-details" },
-    { name: "Tags", key: "Tags" },
+    { name: "Tags", key: "tags" },
     { name: "Other", key: "other" },
   ];
   const Bg =
@@ -15,6 +16,15 @@ const ProfileDate = () => {
   const [LinkKey, setLinkKey] = useState("general");
   const HandelClick = (key: string) => {
     setLinkKey(key);
+  };
+  const HandelLinkContent = () => {
+    if (LinkKey === "general") {
+      return <NewGeneral />;
+    } else if (LinkKey === "credit-details") {
+      return <CreditDetails />;
+    } else if (LinkKey === "tags") {
+      return <Tags />;
+    }
   };
   return (
     <div className={Style.container}>
@@ -62,9 +72,7 @@ const ProfileDate = () => {
           </ul>
         </div>
       </div>
-
-      <NewGeneral />
-      <CreditDetails />
+      {HandelLinkContent()}
     </div>
   );
 };

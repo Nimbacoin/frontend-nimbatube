@@ -1,28 +1,33 @@
 import React from "react";
+import { FcCircuit } from "@react-icons/all-files/fc/FcCircuit";
 import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOutline";
-import Style from "../../../../styles/pages/chanel/new/newpage-component/new-general.module.css";
+
+import Style from "../../../../styles/pages/chanel/new/newpage-component/credit-details.module.css";
+import Link from "next/link";
 const CreditDetails = () => {
   return (
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
         <div className={Style.upload_input}>
-          <p className={Style.upload_file}>Name</p>
+          <p className={Style.upload_file}>
+            <FcCircuit /> Deposit
+          </p>
           <label htmlFor="input_title" className={Style.input_label}>
-            <input id="input_title" type="text" className={Style.input_title} />
+            <input
+              id="input_title"
+              type="number"
+              className={Style.input_title}
+            />
           </label>
-          <p className={Style.text}>This field cannot be changed.</p>
+          <p className={Style.text}>
+            Increasing your deposit can help your channel be discovered more
+            easily. <FcCircuit />
+            0.2581 available. .
+          </p>
         </div>
-        <div className={Style.upload_input}>
-          <p className={Style.upload_file}>Tilte</p>
-          <label htmlFor="input_title" className={Style.input_label}>
-            <input id="input_title" type="text" className={Style.input_title} />
-          </label>
-        </div>
-        <div className={Style.upload_input}>
-          <p className={Style.upload_file}>Description</p>
-          <label htmlFor="text_desc" className={Style.label_description}>
-            <textarea id="text_desc" className={Style.text_desc} />
-          </label>
+        <div className={Style.div_button_action}>
+          <button className={Style.button_action}>Submit</button>
+          <button className={Style.button_action_add}>Cancel </button>
         </div>
       </div>
     </div>

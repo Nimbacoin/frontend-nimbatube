@@ -157,6 +157,36 @@
   border: 1px solid#DBDBDB;
 }
 
+.tags_container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 10px;
+  row-gap: 10px;
+  flex-wrap: wrap;
+}
+.tag {
+  background-color: #fff;
+  padding: 0 20px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 5px;
+  color: #030303;
+  font-size: 13px;
+  font-weight: 400;
+  border: 1px solid#DBDBDB;
+  cursor: pointer;
+}
+.tag > svg {
+  font-size: 16px;
+}
+
 @media screen and (max-width: 900px) {
   .upload_img_icon {
     display: none;

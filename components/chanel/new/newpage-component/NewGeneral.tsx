@@ -24,6 +24,10 @@ const NewGeneral = () => {
             <textarea id="text_desc" className={Style.text_desc} />
           </label>
         </div>
+        <div className={Style.div_button_action}>
+          <button className={Style.button_action}>Submit</button>
+          <button className={Style.button_action_add}>Cancel </button>
+        </div>
       </div>
     </div>
   );
