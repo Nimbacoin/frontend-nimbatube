@@ -131,6 +131,10 @@
     min-height: 250px;
     padding: 0px;
   }
+  .upload_inputs_container {
+    padding: 20px 20px 0 0;
+    position: relative;
+  }
   .name {
     background-color: #fff;
     width: 100%;
