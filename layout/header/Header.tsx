@@ -10,7 +10,7 @@ const Header = () => {
     <div className={Style.container}>
       <HeaderLeft />
       <HeaderCenter />
-      {/* <HeaderRight /> */}
+      <HeaderRight />
       <HeaderDropDown />
     </div>
   );

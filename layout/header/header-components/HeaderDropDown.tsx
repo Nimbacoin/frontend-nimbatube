@@ -8,9 +8,9 @@ import { IoSettingsOutline } from "@react-icons/all-files/io5/IoSettingsOutline"
 import { IoMdHelpCircleOutline } from "@react-icons/all-files/io/IoMdHelpCircleOutline";
 import { IoLogOutOutline } from "@react-icons/all-files/io5/IoLogOutOutline";
 import { FcCircuit } from "@react-icons/all-files/fc/FcCircuit";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { link } from "fs";
+import { signOut } from "next-auth/react";
+
 const Bg =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
 const HeaderDropDown = () => {
@@ -81,17 +81,19 @@ const HeaderDropDown = () => {
       classname: Style.link_container,
     },
     {
-      name: "Sing Out",
-      link: "sing-out",
+      name: "Sign Out",
+      link: "/",
+      id: "sign-out",
       icon: <IoLogOutOutline />,
       chanelname: "mrbeasr-chancel@minbatube.com",
-
       classname: Style.sing_out_container,
     },
   ];
-  const HandelClick = (e: any, link: string) => {
-    if (e.target.id === "sing-out") {
-      alert(e);
+  const HandelClick = (e: any, link: string, id: string) => {
+    if (id === "sign-out") {
+      e.preventDefault();
+      sessionStorage.removeItem("user");
+      Router.push("/");
     } else {
       Router.push(link);
     }
@@ -111,12 +113,12 @@ const HeaderDropDown = () => {
             {ShowDiv && (
               <div className={Style.drop_down_container} ref={Ref}>
                 {AllLink.map(
-                  ({ link, img, name, chanelname, icon, classname }) => (
+                  ({ link, id, img, name, chanelname, icon, classname }) => (
                     <div
                       key={name}
-                      onClick={(e) => HandelClick(e, link)}
+                      onClick={(e) => HandelClick(e, link, id)}
                       className={classname}
-                      id={link}
+                      id={link === "/" ? id : link}
                     >
                       {icon && <span className={Style.icon}> {icon}</span>}
                       {img && (
