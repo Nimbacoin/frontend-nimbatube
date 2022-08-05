@@ -154,3 +154,12 @@
   font-weight: 500;
   border: 1px solid#DBDBDB;
 }
+@media screen and (max-width: 900px) {
+  .container_form {
+    width: 100%;
+    padding: 0 20px;
+  }
+  .form {
+    width: 100%;
+  }
+}
