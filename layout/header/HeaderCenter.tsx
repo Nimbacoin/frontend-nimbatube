@@ -11,7 +11,7 @@ import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useRouter } from "next/router";
 import SearchDropDown from "./header-components/SearchDropDown";
 
-const HeaderCenter = ({ UserIsSignedIn }) => {
+const HeaderCenter = ({ UserIsSignedIn }: any) => {
   const { asPath } = useRouter();
   const [ShowDiv, setShowDiv] = useState(false);
   const [IsPhone, setIsPhone] = useState(false);
