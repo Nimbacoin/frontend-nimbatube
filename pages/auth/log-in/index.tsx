@@ -11,15 +11,21 @@ import {
   getCsrfToken,
 } from "next-auth/react";
 
-const errors = {
-  WrongPassWord: "Wrong PassWord",
-  default: "Unable to sign in.",
-};
-const LogIn = ({ providers, csrfToken }: any) => {
+const errors = [
+  {
+    name: "WrongPassWord",
+    value: "Wrong PassWord",
+  },
+  {
+    name: "EamilNotFinded",
+    value: "Eamil Not Finded",
+  },
+];
+const LogIn = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [ResMessage, setResMessage] = useState<string>("");
-
+  var data: any = "default";
   // const ResMessage = ResMessage && (errors[ResMessage] ?? errors.default);
   const HandelLogIn = async (e: any) => {
     e.preventDefault();
@@ -30,7 +36,11 @@ const LogIn = ({ providers, csrfToken }: any) => {
           sessionStorage.setItem("user", JSON.stringify(res.user));
           setResMessage(res.message);
         } else if (!res.user && res.message) {
-          setResMessage(errors[ResMessage]);
+          errors.map(({ name, value }) => {
+            if (name === res.message) {
+              setResMessage(value);
+            }
+          });
         }
       }
     });
@@ -39,7 +49,6 @@ const LogIn = ({ providers, csrfToken }: any) => {
     <div className={Style.container}>
       {ResMessage}
       <form className={Style.container_form} onSubmit={HandelLogIn}>
-        <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
         <label className={Style.container_inputs}>
           <input
             onChange={(e) => {
@@ -92,21 +101,3 @@ const LogIn = ({ providers, csrfToken }: any) => {
 };
 
 export default LogIn;
-
-export async function getServerSideProps(context: any) {
-  const { req } = context;
-  const session = await getSession({ req });
-
-  if (session) {
-    return {
-      redirect: { destination: "/" },
-    };
-  }
-
-  return {
-    props: {
-      providers: await getProviders(context),
-      csrfToken: await getCsrfToken(context),
-    },
-  };
-}
