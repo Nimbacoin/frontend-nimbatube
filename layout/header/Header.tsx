@@ -4,14 +4,18 @@ import HeaderLeft from "./HeaderLeft";
 import HeaderRight from "./HeaderRight";
 import Style from "../../styles/layout/header/header.module.css";
 import HeaderDropDown from "./header-components/HeaderDropDown";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const UserIsSignedIn = useSelector(
+    (state: any) => state.UserSignIn.UserIsSignedIn
+  );
+
   return (
     <div className={Style.container}>
       <HeaderLeft />
       <HeaderCenter />
-      <HeaderRight />
-      <HeaderDropDown />
+      {UserIsSignedIn ? <HeaderDropDown /> : <HeaderRight />}
     </div>
   );
 };

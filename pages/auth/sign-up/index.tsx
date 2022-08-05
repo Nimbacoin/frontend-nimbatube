@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import basedPostUrlRequest from "../../../utils/basedPostUrlRequest";
 import { useDispatch, useSelector } from "react-redux";
 import { IoWarningOutline } from "@react-icons/all-files/io5/IoWarningOutline";
+import { UserSignedIn } from "../../../redux/user-slice/UserSignIn";
+import Cookies from "js-cookie";
 
 const errors = [
   {
@@ -33,14 +35,20 @@ const errors = [
   },
 ];
 const SignUp = () => {
+  const dispatch = useDispatch();
   const [email, setemail] = useState("");
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
   const [conifirmpassword, setconifirmpassword] = useState("");
   const [ResMessage, setResMessage] = useState<string>("");
   const [Error, setError] = useState<string>("");
+  const Router = useRouter();
+
   const WindowHeight = useSelector(
     (state: any) => state.GenrealStyle.WindowHeight
+  );
+  const UserIsSignedIn = useSelector(
+    (state: any) => state.UserSignIn.UserIsSignedIn
   );
 
   const HandelSignUp = async (e: any) => {
@@ -51,8 +59,11 @@ const SignUp = () => {
     basedPostUrlRequest("/api/auth/sign-up", Body).then((res) => {
       if (res) {
         if (res.user) {
-          sessionStorage.setItem("user", JSON.stringify(res.user));
+          Cookies.set("user", JSON.stringify(res.user));
+          // sessionStorage.setItem("user", JSON.stringify(res.user));
+          dispatch(UserSignedIn());
           setResMessage(res.message);
+          Router.push("/");
         } else if (!res.user && res.message) {
           setError(res.message);
           errors.map(({ name, value }) => {
@@ -66,112 +77,114 @@ const SignUp = () => {
   };
   return (
     <div style={{ minHeight: `${WindowHeight}px` }} className={Style.container}>
-      <div className={Style.container_form}>
-        <form className={Style.form} onSubmit={HandelSignUp}>
-          <label className={Style.container_inputs}>
-            <span className={Style.span}>Email </span>
-            <input
-              required
-              onChange={(e) => {
-                setemail(e.target.value);
-              }}
-              className={Style.input}
-              placeholder="Enter your Email"
-              name="username"
-              type="text"
-            />
-          </label>
-          <div className={Style.error_container}>
-            {}
-            {Error === "RandomTextNotEmailAdress" ||
-              (Error === "AvalibleEmail" && (
+      {!UserIsSignedIn && (
+        <div className={Style.container_form}>
+          <form className={Style.form} onSubmit={HandelSignUp}>
+            <label className={Style.container_inputs}>
+              <span className={Style.span}>Email </span>
+              <input
+                required
+                onChange={(e) => {
+                  setemail(e.target.value);
+                }}
+                className={Style.input}
+                placeholder="Enter your Email"
+                name="username"
+                type="text"
+              />
+            </label>
+            <div className={Style.error_container}>
+              {}
+              {Error === "RandomTextNotEmailAdress" ||
+                (Error === "AvalibleEmail" && (
+                  <span className={Style.error_message}>
+                    <IoWarningOutline /> {ResMessage}
+                  </span>
+                ))}
+            </div>
+            <label className={Style.container_inputs}>
+              <span className={Style.span}>Username </span>
+              <input
+                required
+                onChange={(e) => {
+                  setusername(e.target.value);
+                }}
+                className={Style.input}
+                placeholder="Enter your Username"
+                name="username"
+                type="text"
+              />
+            </label>
+            <div className={Style.error_container}>
+              {Error === "EamilNotFinded" && (
                 <span className={Style.error_message}>
+                  {" "}
                   <IoWarningOutline /> {ResMessage}
                 </span>
-              ))}
-          </div>
-          <label className={Style.container_inputs}>
-            <span className={Style.span}>Username </span>
-            <input
-              required
-              onChange={(e) => {
-                setusername(e.target.value);
-              }}
-              className={Style.input}
-              placeholder="Enter your Username"
-              name="username"
-              type="text"
-            />
-          </label>
-          <div className={Style.error_container}>
-            {Error === "EamilNotFinded" && (
-              <span className={Style.error_message}>
-                {" "}
-                <IoWarningOutline /> {ResMessage}
-              </span>
-            )}
-          </div>
-          <label className={Style.container_inputs}>
-            <span className={Style.span}>Password </span>
-            <input
-              required
-              onChange={(e) => {
-                setpassword(e.target.value);
-              }}
-              className={Style.input}
-              name="password"
-              type="password"
-              placeholder="Enter your password"
-            />{" "}
-          </label>
-          <div className={Style.error_container}>
-            {Error === "ShortPassWord" && (
-              <p className={Style.error_message}>
-                <IoWarningOutline />
-                {ResMessage}
-              </p>
-            )}
-          </div>
+              )}
+            </div>
+            <label className={Style.container_inputs}>
+              <span className={Style.span}>Password </span>
+              <input
+                required
+                onChange={(e) => {
+                  setpassword(e.target.value);
+                }}
+                className={Style.input}
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+              />{" "}
+            </label>
+            <div className={Style.error_container}>
+              {Error === "ShortPassWord" && (
+                <p className={Style.error_message}>
+                  <IoWarningOutline />
+                  {ResMessage}
+                </p>
+              )}
+            </div>
 
-          <label className={Style.container_inputs}>
-            <span className={Style.span}>Conifirm Password </span>
-            <input
-              required
-              onChange={(e) => {
-                setconifirmpassword(e.target.value);
-              }}
-              className={Style.input}
-              name="password"
-              type="password"
-              placeholder="Enter your password"
-            />{" "}
-          </label>
-          <div className={Style.error_container}>
-            {Error === "PasswordNotMatch" && (
-              <p className={Style.error_message}>
-                <IoWarningOutline />
-                {ResMessage}
-              </p>
-            )}
-          </div>
-          <div className={Style.container_actions}>
-            <div className={Style.div_button_action}>
-              <button type="submit" className={Style.button_action}>
-                Sign up{" "}
-              </button>
-              <Link href={"/auth/sign-in"}>
-                <button className={Style.button_action_add}>Sign In </button>
-              </Link>
+            <label className={Style.container_inputs}>
+              <span className={Style.span}>Conifirm Password </span>
+              <input
+                required
+                onChange={(e) => {
+                  setconifirmpassword(e.target.value);
+                }}
+                className={Style.input}
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+              />{" "}
+            </label>
+            <div className={Style.error_container}>
+              {Error === "PasswordNotMatch" && (
+                <p className={Style.error_message}>
+                  <IoWarningOutline />
+                  {ResMessage}
+                </p>
+              )}
             </div>
-            <div className={Style.opption_container}>
-              <span className={Style.accept_terms}>
-                By continuing, you agree to NimbaTube's Terms of Use and Privacy
-                Policy.
-              </span>
+            <div className={Style.container_actions}>
+              <div className={Style.div_button_action}>
+                <button type="submit" className={Style.button_action}>
+                  Sign up{" "}
+                </button>
+                <Link href={"/auth/sign-in"}>
+                  <button className={Style.button_action_add}>Sign In </button>
+                </Link>
+              </div>
+              <div className={Style.opption_container}>
+                <span className={Style.accept_terms}>
+                  By continuing, you agree to NimbaTube's Terms of Use and
+                  Privacy Policy.
+                </span>
+              </div>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 };

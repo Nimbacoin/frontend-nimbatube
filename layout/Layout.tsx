@@ -7,18 +7,45 @@ import SideHeader from "./header/SideHeader";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { WindowHeightRedcuer } from "../redux/style-slice/general-style/GenrealStyle";
+import { useSession } from "next-auth/react";
+import { UserSignedIn } from "../redux/user-slice/UserSignIn";
+import Cookies from "js-cookie";
+
 interface main {
   children: any;
 }
 const Layout = ({ children }: any) => {
   const { asPath } = useRouter();
+  const Router = useRouter();
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
+  const UserIsSignedIn = useSelector(
+    (state: any) => state.UserSignIn.UserIsSignedIn
+  );
   const dispatch = useDispatch();
   const [Height, setHeight] = useState(800);
   useEffect(() => {
     setHeight(window.innerHeight);
     dispatch(WindowHeightRedcuer(window.innerHeight - 60));
   }, []);
+  useEffect(() => {
+    //   = sessionStorage.getItem("user");
+    let UserData = Cookies.get("user");
+
+    if (UserData) {
+      var obj = JSON.parse(UserData);
+      if (obj.email) {
+        dispatch(UserSignedIn());
+        console.log(obj);
+        if (
+          (UserIsSignedIn && asPath === "/auth/sign-up") ||
+          asPath === "/auth/sign-in"
+        ) {
+          Router.push("/");
+        }
+      }
+    }
+  });
+
   return (
     <>
       <Head>

@@ -8,8 +8,7 @@ const basedPostUrlRequest = async (
   url: string,
   dataBody: EnumServiceGetOrderBy
 ) => {
-  console.log(dataBody);
-  const response = await fetch("http://localhost:5000" + url, {
+  const response = await fetch(process.env.NEXT_PUBLIC_BACK_END_URL + url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

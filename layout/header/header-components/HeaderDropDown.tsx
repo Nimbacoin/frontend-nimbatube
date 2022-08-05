@@ -9,11 +9,14 @@ import { IoMdHelpCircleOutline } from "@react-icons/all-files/io/IoMdHelpCircleO
 import { IoLogOutOutline } from "@react-icons/all-files/io5/IoLogOutOutline";
 import { FcCircuit } from "@react-icons/all-files/fc/FcCircuit";
 import { useRouter } from "next/router";
-import { signOut } from "next-auth/react";
+import { useDispatch } from "react-redux";
+import { UserSignOut } from "../../../redux/user-slice/UserSignIn";
+import Cookies from "js-cookie";
 
 const Bg =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
 const HeaderDropDown = () => {
+  const dispatch = useDispatch();
   const [ShowDiv, setShowDiv] = useState(false);
   const Router = useRouter();
   const Ref = React.useRef<HTMLDivElement>(null);
@@ -92,7 +95,9 @@ const HeaderDropDown = () => {
   const HandelClick = (e: any, link: string, id: any) => {
     if (id === "sign-out") {
       e.preventDefault();
-      sessionStorage.removeItem("user");
+      // sessionStorage.removeItem("user");
+      Cookies.remove("user");
+      dispatch(UserSignOut());
       Router.push("/");
     } else {
       Router.push(link);
