@@ -9,10 +9,10 @@ const HeaderRight = () => {
   return (
     <div className={Style.container}>
       <button
-        onClick={() => HandelPush("/auth/log-in")}
+        onClick={() => HandelPush("/auth/sign-in")}
         className={Style.button_log_in}
       >
-        Log in
+        Sigin in
       </button>
       <button
         onClick={() => HandelPush("/auth/sign-up")}

@@ -6,17 +6,18 @@ import Style from "../styles/layout/layout.module.css";
 import SideHeader from "./header/SideHeader";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-
+import { WindowHeightRedcuer } from "../redux/style-slice/general-style/GenrealStyle";
 interface main {
   children: any;
 }
 const Layout = ({ children }: any) => {
   const { asPath } = useRouter();
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
-
+  const dispatch = useDispatch();
   const [Height, setHeight] = useState(800);
   useEffect(() => {
     setHeight(window.innerHeight);
+    dispatch(WindowHeightRedcuer(window.innerHeight - 60));
   }, []);
   return (
     <>
@@ -102,7 +103,9 @@ const Layout = ({ children }: any) => {
       <div style={{ minHeight: `${Height}px` }} className={Style.container}>
         <Header />
         <SideHeader />
-        <div className={Style.children}>{children}</div>
+        <div style={{ minHeight: Height - 60 }} className={Style.children}>
+          {children}
+        </div>
       </div>
     </>
   );

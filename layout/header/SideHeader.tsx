@@ -73,7 +73,7 @@ const SideHeader = () => {
   });
   const HandelMenu = () => {
     if (
-      asPath.includes("/log-in") ||
+      asPath.includes("/sign-in") ||
       asPath.includes("/chanel/new") ||
       asPath.includes("/sign-up") ||
       asPath.includes("/watch/")

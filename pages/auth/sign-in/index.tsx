@@ -15,40 +15,19 @@ const errors = [
     name: "EamilNotFinded",
     value: "Email was not finnded please try again or sign-up instead.",
   },
-  {
-    name: "RandomTextNotEmailAdress",
-    value: "this text does not seems to be a email address please",
-  },
-  {
-    name: "PasswordNotMatch",
-    value: "Password not matched",
-  },
-  {
-    name: "ShortPassWord",
-    value: "password is too short, password should cotain at less 8 characters",
-  },
-  {
-    name: "AvalibleEmail",
-    value: " Sorry this email is arlady avalible",
-  },
 ];
-const SignUp = () => {
+const LogIn = () => {
   const [email, setemail] = useState("");
-  const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
-  const [conifirmpassword, setconifirmpassword] = useState("");
   const [ResMessage, setResMessage] = useState<string>("");
   const [Error, setError] = useState<string>("");
   const WindowHeight = useSelector(
     (state: any) => state.GenrealStyle.WindowHeight
   );
-
-  const HandelSignUp = async (e: any) => {
+  const HandelLogIn = async (e: any) => {
     e.preventDefault();
-    const Body = { email, password, conifirmpassword, username };
-    setError("");
-    setResMessage("");
-    basedPostUrlRequest("/api/auth/sign-up", Body).then((res) => {
+    const Body = { email, password };
+    basedPostUrlRequest("/api/auth/sign-in", Body).then((res) => {
       if (res) {
         if (res.user) {
           sessionStorage.setItem("user", JSON.stringify(res.user));
@@ -66,8 +45,8 @@ const SignUp = () => {
   };
   return (
     <div style={{ minHeight: `${WindowHeight}px` }} className={Style.container}>
-      <div className={Style.container_form}>
-        <form className={Style.form} onSubmit={HandelSignUp}>
+      <div className={Style.container_form} onSubmit={HandelLogIn}>
+        <form className={Style.form} onSubmit={HandelLogIn}>
           <label className={Style.container_inputs}>
             <span className={Style.span}>Email </span>
             <input
@@ -76,29 +55,7 @@ const SignUp = () => {
                 setemail(e.target.value);
               }}
               className={Style.input}
-              placeholder="Enter your Email"
-              name="username"
-              type="text"
-            />
-          </label>
-          <div className={Style.error_container}>
-            {}
-            {Error === "RandomTextNotEmailAdress" ||
-              (Error === "AvalibleEmail" && (
-                <span className={Style.error_message}>
-                  <IoWarningOutline /> {ResMessage}
-                </span>
-              ))}
-          </div>
-          <label className={Style.container_inputs}>
-            <span className={Style.span}>Username </span>
-            <input
-              required
-              onChange={(e) => {
-                setusername(e.target.value);
-              }}
-              className={Style.input}
-              placeholder="Enter your Username"
+              placeholder="Enter your Email, Username"
               name="username"
               type="text"
             />
@@ -111,6 +68,7 @@ const SignUp = () => {
               </span>
             )}
           </div>
+
           <label className={Style.container_inputs}>
             <span className={Style.span}>Password </span>
             <input
@@ -125,29 +83,7 @@ const SignUp = () => {
             />{" "}
           </label>
           <div className={Style.error_container}>
-            {Error === "ShortPassWord" && (
-              <p className={Style.error_message}>
-                <IoWarningOutline />
-                {ResMessage}
-              </p>
-            )}
-          </div>
-
-          <label className={Style.container_inputs}>
-            <span className={Style.span}>Conifirm Password </span>
-            <input
-              required
-              onChange={(e) => {
-                setconifirmpassword(e.target.value);
-              }}
-              className={Style.input}
-              name="password"
-              type="password"
-              placeholder="Enter your password"
-            />{" "}
-          </label>
-          <div className={Style.error_container}>
-            {Error === "PasswordNotMatch" && (
+            {Error === "WrongPassWord" && (
               <p className={Style.error_message}>
                 <IoWarningOutline />
                 {ResMessage}
@@ -157,13 +93,21 @@ const SignUp = () => {
           <div className={Style.container_actions}>
             <div className={Style.div_button_action}>
               <button type="submit" className={Style.button_action}>
-                Sign up{" "}
+                Log in{" "}
               </button>
-              <Link href={"/auth/sign-in"}>
-                <button className={Style.button_action_add}>Sign In </button>
+              <Link href={"/auth/sign-up"}>
+                <button className={Style.button_action_add}>Sign up </button>
               </Link>
             </div>
             <div className={Style.opption_container}>
+              <span className={Style.reset_password}>
+                You forget your password,
+                <Link href={"/auth/log-in"}>
+                  <span className={Style.reset_password_link}>
+                    click here to rest your password.
+                  </span>
+                </Link>
+              </span>
               <span className={Style.accept_terms}>
                 By continuing, you agree to NimbaTube's Terms of Use and Privacy
                 Policy.
@@ -176,4 +120,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default LogIn;

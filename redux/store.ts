@@ -3,11 +3,12 @@ import thunk from "redux-thunk";
 import { createWrapper } from "next-redux-wrapper";
 import SideMenu from "./style-slice/menu/SideMenu";
 import MainVideo from "./style-slice/video/MainVideo";
-
+import GenrealStyle from "./style-slice/general-style/GenrealStyle";
 export const store = configureStore({
   reducer: {
     SideMenu,
     MainVideo,
+    GenrealStyle,
   },
   middleware: [thunk],
 });
