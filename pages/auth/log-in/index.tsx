@@ -12,24 +12,13 @@ import {
 } from "next-auth/react";
 
 const errors = {
-  Signin: "Try signing with a different account.",
-  OAuthSignin: "Try signing with a different account.",
-  OAuthCallback: "Try signing with a different account.",
-  OAuthCreateAccount: "Try signing with a different account.",
-  EmailCreateAccount: "Try signing with a different account.",
-  Callback: "Try signing with a different account.",
-  OAuthAccountNotLinked:
-    "To confirm your identity, sign in with the same account you used originally.",
-  EmailSignin: "Check your email address.",
-  CouldNotFindEmail:
-    "Sign in failed. Check the details you provided are correct.",
   WrongPassWord: "Wrong PassWord",
   default: "Unable to sign in.",
 };
 const LogIn = ({ providers, csrfToken }: any) => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  const [ResMessage, setResMessage] = useState("");
+  const [ResMessage, setResMessage] = useState<string>("");
 
   // const ResMessage = ResMessage && (errors[ResMessage] ?? errors.default);
   const HandelLogIn = async (e: any) => {
@@ -41,7 +30,7 @@ const LogIn = ({ providers, csrfToken }: any) => {
           sessionStorage.setItem("user", JSON.stringify(res.user));
           setResMessage(res.message);
         } else if (!res.user && res.message) {
-          setResMessage(errors[ResMessage] ?? errors.default);
+          setResMessage(errors[ResMessage]);
         }
       }
     });
