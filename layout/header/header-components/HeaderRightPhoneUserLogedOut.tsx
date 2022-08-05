@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import Style from "../../../styles/layout/header/header-compnents/header-right-phone-user-loged-out.module.css";
-import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOutline";
+import { IoLogInOutline } from "@react-icons/all-files/io5/IoLogInOutline";
 import { IoPersonOutline } from "@react-icons/all-files/io5/IoPersonOutline";
-import { IoPeopleOutline } from "@react-icons/all-files/io5/IoPeopleOutline";
+import { IoPersonAddOutline } from "@react-icons/all-files/io5/IoPersonAddOutline";
 import { IoSettingsOutline } from "@react-icons/all-files/io5/IoSettingsOutline";
 import { IoMdHelpCircleOutline } from "@react-icons/all-files/io/IoMdHelpCircleOutline";
 import { useRouter } from "next/router";
-
 
 const HeaderRightPhoneUserLogedOut = () => {
   const [ShowDiv, setShowDiv] = useState(false);
@@ -34,12 +33,12 @@ const HeaderRightPhoneUserLogedOut = () => {
     {
       name: "Sign in",
       link: "/auth/sign-in",
-      icon: <IoCloudUploadOutline />,
+      icon: <IoLogInOutline />,
     },
     {
       name: "Sign up",
       link: "/auth/sign-up",
-      icon: <IoPeopleOutline />,
+      icon: <IoPersonAddOutline />,
     },
     {
       name: "Settings",

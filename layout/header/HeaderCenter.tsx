@@ -11,7 +11,7 @@ import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useRouter } from "next/router";
 import SearchDropDown from "./header-components/SearchDropDown";
 
-const HeaderCenter = () => {
+const HeaderCenter = ({ UserIsSignedIn }) => {
   const { asPath } = useRouter();
   const [ShowDiv, setShowDiv] = useState(false);
   const [IsPhone, setIsPhone] = useState(false);
@@ -56,21 +56,26 @@ const HeaderCenter = () => {
         {ShowDiv && <SearchDropDown />}
       </div>
       <div className={Style.buttons_container}>
-        <Link href="/upload">
-          <button className={Style.rest_of_button}>
-            <IoCloudUploadOutline />
-          </button>
-        </Link>
+        {UserIsSignedIn ? (
+          <>
+            <Link href="/upload">
+              <button className={Style.rest_of_button}>
+                <IoCloudUploadOutline />
+              </button>
+            </Link>
 
-        <button className={Style.rest_of_button}>
-          <IoNotificationsOutline />
-        </button>
-        <button className={Style.rest_of_button}>
-          <IoVideocamOutline />
-        </button>
-        {/* <button className={Style.rest_of_button}>
-          <IoSettingsOutline />
-        </button> */}
+            <button className={Style.rest_of_button}>
+              <IoNotificationsOutline />
+            </button>
+            <button className={Style.rest_of_button}>
+              <IoVideocamOutline />
+            </button>
+          </>
+        ) : (
+          <button className={Style.rest_of_button}>
+            <IoSettingsOutline />
+          </button>
+        )}
         <button
           onClick={HandelSearchPhone}
           className={Style.rest_of_button_search_phone}

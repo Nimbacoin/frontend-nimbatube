@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className={Style.container}>
       <HeaderLeft />
-      <HeaderCenter />
+      <HeaderCenter UserIsSignedIn={UserIsSignedIn} />
       {UserIsSignedIn ? <HeaderDropDown /> : <HeaderRight />}
     </div>
   );
