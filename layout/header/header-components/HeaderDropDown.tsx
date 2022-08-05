@@ -89,7 +89,7 @@ const HeaderDropDown = () => {
       classname: Style.sing_out_container,
     },
   ];
-  const HandelClick = (e: any, link: string, id: string) => {
+  const HandelClick = (e: any, link: string, id: any) => {
     if (id === "sign-out") {
       e.preventDefault();
       sessionStorage.removeItem("user");
