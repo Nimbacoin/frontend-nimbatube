@@ -21,7 +21,7 @@ const ProfileDate = () => {
   const IconsChanel = [
     { name: "Content", icon: <IoShareSocialOutline /> },
     { name: "Support", icon: <RiMoneyDollarCircleLine /> },
-    { name: "Follow", icon: <IoShareSocialOutline /> },
+    { name: "Follow", icon: "" },
     { name: "", icon: <IoEllipsisVertical /> },
   ];
   const Bg =
