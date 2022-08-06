@@ -1,6 +1,6 @@
 import React from "react";
 import Style from "../../styles/pages/featured/featured.module.css";
-import Vedio from "../vedio/Vedio";
+import Vedio from "../video/Video";
 import VideoWatchLater from "../watch-later/VideoWatchLater";
 
 const FeaturedPage = () => {

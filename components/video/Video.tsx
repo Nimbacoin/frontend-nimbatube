@@ -4,7 +4,7 @@ import { IoEllipsisVertical } from "@react-icons/all-files/io5/IoEllipsisVertica
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 
 import Link from "next/link";
-const Vedio = () => {
+const Video = () => {
   const [OverElement, setOverElement] = useState(false);
   const HandelOver = () => {
     setOverElement(true);
@@ -79,4 +79,4 @@ const Vedio = () => {
   );
 };
 
-export default Vedio;
+export default Video;

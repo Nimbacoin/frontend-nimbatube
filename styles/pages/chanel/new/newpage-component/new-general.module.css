@@ -40,6 +40,7 @@
   justify-content: flex-start;
   border: 1px solid#DBDBDB;
   padding: 20px;
+  padding-right: 10%;
 }
 .upload_input {
   width: 100%;
@@ -177,5 +178,8 @@
   }
   .upload_file_text_dots {
     display: block;
+  }
+  .upload_inputs_container {
+    padding-right: 20px;
   }
 }

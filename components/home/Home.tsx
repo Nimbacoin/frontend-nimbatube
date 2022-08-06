@@ -1,6 +1,6 @@
 import React from "react";
 import Style from "../../styles/pages/home/home.module.css";
-import Vedio from "../vedio/Vedio";
+import Vedio from "../video/Video";
 
 const Home = () => {
   return (

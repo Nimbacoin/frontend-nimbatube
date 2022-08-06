@@ -25,7 +25,6 @@
   justify-content: flex-start;
   padding: 20px;
   position: relative;
-  padding-: 10%;
 }
 .image_name_conainer {
   position: absolute;
@@ -37,17 +36,25 @@
   justify-content: flex-end;
   column-gap: 20px;
 }
+.icons_container_right {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  justify-content: flex-end;
+  column-gap: 20px;
+}
 .camera_of_button {
   background-color: #f9f9f9;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  padding: 10px;
+  border-radius: 2px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  column-gap: 5px;
   color: #030303;
-  font-size: 20px;
+  font-size: 14px;
   cursor: pointer;
 }
 .name {

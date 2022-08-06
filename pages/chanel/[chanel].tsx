@@ -1,10 +1,8 @@
 import React from "react";
-import WatchPage from "../../components/watch/WatchPage";
-
-//Fgfg
+import MychanelPage from "../../components/chanel/my-chanel/MyChanelPage";
 
 const VidioId = () => {
-  return <WatchPage />;
+  return <MychanelPage />;
 };
 
 export default VidioId;
