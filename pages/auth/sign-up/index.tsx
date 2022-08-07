@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IoWarningOutline } from "@react-icons/all-files/io5/IoWarningOutline";
 import { UserSignedIn } from "../../../redux/user-slice/UserSignIn";
 import Cookies from "js-cookie";
+import basedGetUrlRequest from "../../../utils/basedGetUrlRequest";
 
 const errors = [
   {
@@ -43,7 +44,6 @@ const SignUp = () => {
   const [ResMessage, setResMessage] = useState<string>("");
   const [Error, setError] = useState<string>("");
   const Router = useRouter();
-
   const WindowHeight = useSelector(
     (state: any) => state.GenrealStyle.WindowHeight
   );
