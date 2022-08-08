@@ -53,7 +53,7 @@ const SignUp = () => {
 
   const HandelSignUp = async (e: any) => {
     e.preventDefault();
-    const Body = { email, password, conifirmpassword, username };
+    const Body: any = { email, password, conifirmpassword, username };
     setError("");
     setResMessage("");
     basedPostUrlRequest("/api/auth/sign-up", Body).then((res) => {
