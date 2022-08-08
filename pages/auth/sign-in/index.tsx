@@ -35,7 +35,7 @@ const LogIn = () => {
   );
   const HandelLogIn = async (e: any) => {
     e.preventDefault();
-    const Body = { email, password };
+    const Body: any = { email, password };
     basedPostUrlRequest("/api/auth/sign-in", Body).then((res) => {
       if (res) {
         if (res.user) {
