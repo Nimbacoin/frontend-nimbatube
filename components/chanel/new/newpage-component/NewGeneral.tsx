@@ -27,7 +27,7 @@ const NewGeneral = () => {
     if (e.target.id === "input_title") {
       settitle(e.target.value);
     } else if (e.target.id === "input_name") {
-      dispatch(ActionGenaralChanging(e.target.value)); 
+      dispatch(ActionGenaralChanging(e.target.value));
       setname(e.target.value);
     } else if (e.target.id === "text_desc") {
       setdescription(e.target.value);
@@ -96,7 +96,7 @@ const NewGeneral = () => {
         </div>
         <div className={Style.div_button_action}>
           <button
-            style={{ backgroundColor: !ChanelCreated && "#cccccc" }}
+            style={{ backgroundColor: ChanelCreated ? "" : "#cccccc" }}
             onClick={HandelSubmiteNewGeneral}
             className={Style.button_action}
           >
