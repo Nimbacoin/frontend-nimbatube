@@ -20,17 +20,20 @@ const NewGeneral = () => {
   const NewChanelData = useSelector(
     (state: any) => state.ChanelSlice.NewChanelData
   );
+  const ChanelCreated = useSelector(
+    (state: any) => state.ChanelSlice.ChanelCreated
+  );
   const HandelChange = (e: any) => {
     if (e.target.id === "input_title") {
       settitle(e.target.value);
     } else if (e.target.id === "input_name") {
-      dispatch(ActionGenaralChanging(e.target.value));
+      dispatch(ActionGenaralChanging(e.target.value)); 
       setname(e.target.value);
     } else if (e.target.id === "text_desc") {
       setdescription(e.target.value);
     }
   };
-  const HandelCancel = (e: any) => {
+  const HandelCancel = () => {
     settitle("");
     setname("");
     setdescription("");
@@ -41,14 +44,14 @@ const NewGeneral = () => {
     dispatch(ActionGeneral(Body));
     const ReqData = NewChanelData[0];
     basedPostUrlRequestLogedIn(
-      "/api/post/chanel/create-new-chanel/general",
+      "/api/post/chanel/create-new-chanel",
       ReqData
     ).then((res) => {
       if (res) {
         dispatch(ActionGenaralChanging(""));
         dispatch(ResetNewChanel());
+        HandelCancel();
         Router.push("/chanels");
-        console.log(res);
       }
     });
   };
@@ -93,6 +96,7 @@ const NewGeneral = () => {
         </div>
         <div className={Style.div_button_action}>
           <button
+            style={{ backgroundColor: !ChanelCreated && "#cccccc" }}
             onClick={HandelSubmiteNewGeneral}
             className={Style.button_action}
           >

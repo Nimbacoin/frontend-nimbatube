@@ -24,7 +24,11 @@ export const ChanelSlice = createSlice({
       } else {
         state.NewChanelData[0].general["name"] = action.payload;
       }
-      state.ChanelCreated = true;
+      if (action.payload.length <= 0) {
+        state.ChanelCreated = false;
+      } else {
+        state.ChanelCreated = true;
+      }
     },
     ActionGeneral: (state: any, action: any) => {
       if (!state.NewChanelData.length) {
@@ -64,6 +68,9 @@ export const ChanelSlice = createSlice({
       state.NewChanelData = [];
       state.ChanelCreated = false;
     },
+    ResetChanelName: (state: any) => {
+      state.ChanelCreated = false;
+    },
   },
 });
 
@@ -75,6 +82,7 @@ export const {
   ActionOther,
   CreditDetails,
   ResetNewChanel,
+  ResetChanelName,
 } = ChanelSlice.actions;
 const AllReducers = ChanelSlice.reducer;
 export default AllReducers;
