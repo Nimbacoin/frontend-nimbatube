@@ -21,8 +21,8 @@ const ProfileDate = () => {
     { name: "Follow", icon: "" },
     { name: "", icon: <IoEllipsisVertical /> },
   ];
-  const Bg =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
+  const Bg = "/images/default-profile.png";
+
   const [LinkKey, setLinkKey] = useState("content");
   const HandelClick = (key: string) => {
     setLinkKey(key);

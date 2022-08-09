@@ -33,6 +33,8 @@ const Video = () => {
   });
   const Bg =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
+  const BgP = "/images/default-profile.png";
+
   const Title =
     "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
   return (
@@ -65,7 +67,7 @@ const Video = () => {
           </div>
           <div className={Style.chanel_data}>
             <div
-              style={{ backgroundImage: `url(${Bg})` }}
+              style={{ backgroundImage: `url(${BgP})` }}
               className={Style.chanel_img}
             ></div>
             <p className={Style.chanel_details}>

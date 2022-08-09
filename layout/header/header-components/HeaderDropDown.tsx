@@ -13,8 +13,8 @@ import { useDispatch } from "react-redux";
 import { UserSignOut } from "../../../redux/user-slice/UserSignIn";
 import Cookies from "js-cookie";
 
-const Bg =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
+const Bg = "/images/default-profile.png";
+
 const HeaderDropDown = () => {
   const dispatch = useDispatch();
   const [ShowDiv, setShowDiv] = useState(false);

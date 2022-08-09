@@ -2,14 +2,18 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Style from "../../styles/pages/chanels/chanels.module.css";
 import basedGetUrlRequestLogedIn from "../../utils/basedGetUrlRequestLogedIn";
+import { useDispatch, useSelector } from "react-redux";
 import Chanel from "../following/components/ChanelCard";
+import { AllChanelsRedcuer } from "../../redux/chanel-slice/ChanelSlice";
+
 const ChanelsPages = () => {
-  const [Chanels, setChanels] = useState([]);
+  const dispatch = useDispatch();
+  const Chanels = useSelector((state: any) => state.ChanelSlice.allChanels);
   useEffect(() => {
     basedGetUrlRequestLogedIn("/api/get/chanel/all-chanels").then(
       (res: any) => {
         if (res.responsData) {
-          setChanels(res.responsData);
+          dispatch(AllChanelsRedcuer(res.responsData));
         }
         console.log(res);
       }
@@ -24,15 +28,20 @@ const ChanelsPages = () => {
           <button className={Style.button}> New Chanel </button>
         </Link>
       </div>
-      {Chanels.map(({ chanelData, followers, uploads }: any) => (
-        <Chanel
-          IsChanelPage={false}
-          Title={chanelData.title}
-          Username={chanelData.name}
-          Uploads={uploads.length}
-          Followers={followers.length}
-        />
-      ))}
+
+      {Chanels &&
+        Chanels.map(({ _id, chanelData, followers, uploads }: any) => (
+          <Chanel
+            key={_id}
+            Id={_id}
+            LinkChanel={"/chanel/" + _id}
+            IsChanelPage={false}
+            Title={chanelData.title}
+            Username={chanelData.name}
+            Uploads={uploads.length}
+            Followers={followers.length}
+          />
+        ))}
     </div>
   );
 };

@@ -3,8 +3,8 @@ import Style from "../../styles/pages/watch-later/video-watch-later.module.css";
 import { IoEllipsisVertical } from "@react-icons/all-files/io5/IoEllipsisVertical";
 
 const VideoWatchLater = () => {
-  const Bg =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
+  const Bg = "/images/default-profile.png";
+
   return (
     <div className={Style.container}>
       <div className={Style.video_container}>
