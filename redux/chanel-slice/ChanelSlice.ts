@@ -24,8 +24,7 @@ export const ChanelSlice = createSlice({
       } else {
         state.NewChanelData[0].general["name"] = action.payload;
       }
-      // console.log(current(state.NewChanelData));
-      console.log(state.NewChanelData);
+      state.ChanelCreated = true;
     },
     ActionGeneral: (state: any, action: any) => {
       if (!state.NewChanelData.length) {
@@ -34,15 +33,48 @@ export const ChanelSlice = createSlice({
       } else {
         state.NewChanelData[0].general = action.payload;
       }
+      state.ChanelCreated = true;
     },
 
-    ActionTags: (state: any, action: any) => {},
-    ActionOther: (state: any, action: any) => {},
-    CreditDetails: (state: any, action: any) => {},
+    ActionTags: (state: any, action: any) => {
+      if (!state.NewChanelData.length) {
+        state.NewChanelData = [{ tags: {} }];
+        state.NewChanelData[0].tags = action.payload;
+      } else {
+        state.NewChanelData[0].tags = action.payload;
+      }
+    },
+    ActionOther: (state: any, action: any) => {
+      if (!state.NewChanelData.length) {
+        state.NewChanelData = [{ other: {} }];
+        state.NewChanelData[0].other = action.payload;
+      } else {
+        state.NewChanelData[0].other = action.payload;
+      }
+    },
+    CreditDetails: (state: any, action: any) => {
+      if (!state.NewChanelData.length) {
+        state.NewChanelData = [{ creditDetails: {} }];
+        state.NewChanelData[0].creditDetails = action.payload;
+      } else {
+        state.NewChanelData[0].creditDetails = action.payload;
+      }
+    },
+    ResetNewChanel: (state: any) => {
+      state.NewChanelData = [];
+      state.ChanelCreated = false;
+    },
   },
 });
 
-export const { AllChanelsRedcuer, ActionGenaralChanging, ActionGeneral } =
-  ChanelSlice.actions;
+export const {
+  AllChanelsRedcuer,
+  ActionGenaralChanging,
+  ActionGeneral,
+  ActionTags,
+  ActionOther,
+  CreditDetails,
+  ResetNewChanel,
+} = ChanelSlice.actions;
 const AllReducers = ChanelSlice.reducer;
 export default AllReducers;

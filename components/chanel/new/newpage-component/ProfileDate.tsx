@@ -67,7 +67,7 @@ const ProfileDate = () => {
               </div>
             </div>
             <span className={Style.name}>
-              {NewChanelData.length && NewChanelData[0]?.general?.name}{" "}
+              {NewChanelData.length > 0 && NewChanelData[0]?.general?.name}{" "}
             </span>
           </div>
         </div>

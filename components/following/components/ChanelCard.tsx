@@ -57,7 +57,7 @@ const Chanel = ({
     );
   };
   function copyToClipboard(value: any) {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(window.location.hostname + "/chanel/" + Id);
   }
   const HandelFunc = () => {};
   const AllLink = [

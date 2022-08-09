@@ -6,8 +6,9 @@ import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLog
 import {
   ActionGeneral,
   ActionGenaralChanging,
+  ResetNewChanel,
 } from "../../../../redux/chanel-slice/ChanelSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
 const NewGeneral = () => {
@@ -16,7 +17,9 @@ const NewGeneral = () => {
   const [name, setname] = useState("");
   const Router = useRouter();
   const [description, setdescription] = useState("");
-
+  const NewChanelData = useSelector(
+    (state: any) => state.ChanelSlice.NewChanelData
+  );
   const HandelChange = (e: any) => {
     if (e.target.id === "input_title") {
       settitle(e.target.value);
@@ -36,14 +39,15 @@ const NewGeneral = () => {
     e.preventDefault();
     const Body: any = { title, name, description };
     dispatch(ActionGeneral(Body));
+    const ReqData = NewChanelData[0];
     basedPostUrlRequestLogedIn(
       "/api/post/chanel/create-new-chanel/general",
-      Body
+      ReqData
     ).then((res) => {
       if (res) {
         dispatch(ActionGenaralChanging(""));
+        dispatch(ResetNewChanel());
         Router.push("/chanels");
-        Router;
         console.log(res);
       }
     });
