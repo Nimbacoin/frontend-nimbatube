@@ -5,7 +5,12 @@ import NewGeneral from "./NewGeneral";
 import CreditDetails from "./CreditDetails";
 import Tags from "./Tags";
 import Other from "./Other";
+import { useSelector } from "react-redux";
 const ProfileDate = () => {
+  const NewChanelData = useSelector(
+    (state: any) => state.ChanelSlice.NewChanelData
+  );
+
   const UlLinks = [
     { name: "General", key: "general" },
     { name: "Credit Details", key: "credit-details" },
@@ -61,7 +66,9 @@ const ProfileDate = () => {
                 </label>
               </div>
             </div>
-            <span className={Style.name}>Mrbeast </span>
+            <span className={Style.name}>
+              {NewChanelData.length && NewChanelData[0]?.general?.name}{" "}
+            </span>
           </div>
         </div>
         <div className={Style.links_container}>

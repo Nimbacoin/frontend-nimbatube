@@ -3,16 +3,25 @@ import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOu
 import Style from "../../../../styles/pages/chanel/new/newpage-component/new-general.module.css";
 import basedPostUrlRequest from "../../../../utils/basedPostUrlRequest";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
+import {
+  ActionGeneral,
+  ActionGenaralChanging,
+} from "../../../../redux/chanel-slice/ChanelSlice";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+
 const NewGeneral = () => {
+  const dispatch = useDispatch();
   const [title, settitle] = useState("");
   const [name, setname] = useState("");
-
+  const Router = useRouter();
   const [description, setdescription] = useState("");
 
   const HandelChange = (e: any) => {
     if (e.target.id === "input_title") {
       settitle(e.target.value);
     } else if (e.target.id === "input_name") {
+      dispatch(ActionGenaralChanging(e.target.value));
       setname(e.target.value);
     } else if (e.target.id === "text_desc") {
       setdescription(e.target.value);
@@ -26,11 +35,15 @@ const NewGeneral = () => {
   const HandelSubmiteNewGeneral = async (e: any) => {
     e.preventDefault();
     const Body: any = { title, name, description };
+    dispatch(ActionGeneral(Body));
     basedPostUrlRequestLogedIn(
       "/api/post/chanel/create-new-chanel/general",
       Body
     ).then((res) => {
       if (res) {
+        dispatch(ActionGenaralChanging(""));
+        Router.push("/chanels");
+        Router;
         console.log(res);
       }
     });
