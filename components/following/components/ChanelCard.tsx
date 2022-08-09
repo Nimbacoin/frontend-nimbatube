@@ -56,6 +56,9 @@ const Chanel = ({
       }
     );
   };
+  function copyToClipboard(value: any) {
+    navigator.clipboard.writeText(window.location.href);
+  }
   const HandelFunc = () => {};
   const AllLink = [
     {
@@ -75,7 +78,7 @@ const Chanel = ({
     },
     {
       name: "Copy Link",
-      func: HandelFunc,
+      func: copyToClipboard,
       icon: <IoIosLink />,
     },
   ];
