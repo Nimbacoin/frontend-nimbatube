@@ -38,6 +38,7 @@ const ChanelsPages = () => {
             IsChanelPage={false}
             Title={chanelData.title}
             Username={chanelData.name}
+            ProfileImg={chanelData.profileImg}
             Uploads={uploads.length}
             Followers={followers.length}
           />

@@ -19,6 +19,7 @@ const Chanel = ({
   Followers,
   LinkChanel,
   Id,
+  ProfileImg,
 }: any) => {
   const [ShowDiv, setShowDiv] = useState(false);
   const Ref = React.useRef<HTMLDivElement>(null);
@@ -89,7 +90,7 @@ const Chanel = ({
     <div key={Id} ref={Container} className={Style.container}>
       <div
         onClick={HandelClickUrl}
-        style={{ backgroundImage: `url(${Bg})` }}
+        style={{ backgroundImage: `url(${ProfileImg ? ProfileImg.url : Bg})` }}
         className={Style.img}
       ></div>
       <div onClick={HandelClickUrl} className={Style.chanel_container}>

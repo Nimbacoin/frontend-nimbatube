@@ -4,7 +4,8 @@ import { current } from "@reduxjs/toolkit";
 const initialState = {
   allChanels: [],
   NewChanel: [],
-  NewChanelData: [],
+  general: {},
+  images: {},
   ChanelCreated: false,
 };
 
@@ -15,14 +16,15 @@ export const ChanelSlice = createSlice({
     AllChanelsRedcuer: (state: any, action: any) => {
       state.allChanels = action.payload;
     },
-    CreateNewChanelsRedcuer: (state: any, action: any) => {},
 
     ActionGenaralChanging: (state: any, action: any) => {
-      if (!state.NewChanelData.length) {
-        state.NewChanelData = [{ general: {} }];
-        state.NewChanelData[0].general["name"] = action.payload;
-      } else {
-        state.NewChanelData[0].general["name"] = action.payload;
+      const Action = action.payload;
+      if (Action.id === "input_title") {
+        state.general["title"] = Action.input_title;
+      } else if (Action.id === "input_name") {
+        state.general["name"] = Action.input_name;
+      } else if (Action.id === "text_desc") {
+        state.general["description"] = Action.text_desc;
       }
       if (action.payload.length <= 0) {
         state.ChanelCreated = false;
@@ -30,14 +32,17 @@ export const ChanelSlice = createSlice({
         state.ChanelCreated = true;
       }
     },
-    ActionGeneral: (state: any, action: any) => {
+    Actiongeneral: (state: any, action: any) => {
       if (!state.NewChanelData.length) {
         state.NewChanelData = [{ general: {} }];
         state.NewChanelData[0].general = action.payload;
+        console.log(state.NewChanelData[0]);
       } else {
         state.NewChanelData[0].general = action.payload;
+        console.log(state.NewChanelData[0]);
       }
       state.ChanelCreated = true;
+      console.log(current(state.NewChanelData));
     },
 
     ActionTags: (state: any, action: any) => {
@@ -64,8 +69,14 @@ export const ChanelSlice = createSlice({
         state.NewChanelData[0].creditDetails = action.payload;
       }
     },
+    ImagesReducer: (state: any, action: any) => {
+      const Action = action.payload;
+      if (Action.id === "profileImage") {
+        state.images["profileImage"] = action.payload.profileImage;
+      }
+    },
     ResetNewChanel: (state: any) => {
-      state.NewChanelData = [];
+      state.general = {};
       state.ChanelCreated = false;
     },
   },
@@ -74,12 +85,12 @@ export const ChanelSlice = createSlice({
 export const {
   AllChanelsRedcuer,
   ActionGenaralChanging,
-  ActionGeneral,
+  Actiongeneral,
   ActionTags,
   ActionOther,
   CreditDetails,
   ResetNewChanel,
-  
+  ImagesReducer,
 } = ChanelSlice.actions;
 const AllReducers = ChanelSlice.reducer;
 export default AllReducers;

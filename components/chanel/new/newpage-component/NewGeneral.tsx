@@ -3,7 +3,6 @@ import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOu
 import Style from "../../../../styles/pages/chanel/new/newpage-component/new-general.module.css";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 import {
-  ActionGeneral,
   ActionGenaralChanging,
   ResetNewChanel,
 } from "../../../../redux/chanel-slice/ChanelSlice";
@@ -16,19 +15,30 @@ const NewGeneral = () => {
   const [name, setname] = useState("");
   const Router = useRouter();
   const [description, setdescription] = useState("");
-  const NewChanelData = useSelector(
-    (state: any) => state.ChanelSlice.NewChanelData
-  );
+  const general = useSelector((state: any) => state.ChanelSlice.general);
+  const images = useSelector((state: any) => state.ChanelSlice.images);
+
   const ChanelCreated = useSelector(
     (state: any) => state.ChanelSlice.ChanelCreated
   );
   const HandelChange = (e: any) => {
     if (e.target.id === "input_title") {
       settitle(e.target.value);
+      dispatch(
+        ActionGenaralChanging({
+          id: "input_title",
+          input_title: e.target.value,
+        })
+      );
     } else if (e.target.id === "input_name") {
-      dispatch(ActionGenaralChanging(e.target.value));
+      dispatch(
+        ActionGenaralChanging({ id: "input_name", input_name: e.target.value })
+      );
       setname(e.target.value);
     } else if (e.target.id === "text_desc") {
+      dispatch(
+        ActionGenaralChanging({ id: "text_desc", text_desc: e.target.value })
+      );
       setdescription(e.target.value);
     }
   };
@@ -40,9 +50,8 @@ const NewGeneral = () => {
   };
   const HandelSubmiteNewGeneral = async (e: any) => {
     e.preventDefault();
-    const Body: any = { title, name, description };
-    dispatch(ActionGeneral(Body));
-    const ReqData = NewChanelData[0];
+    const ReqData: any = { general, images };
+    console.log(ReqData);
     basedPostUrlRequestLogedIn(
       "/api/post/chanel/create-new-chanel",
       ReqData
@@ -60,13 +69,13 @@ const NewGeneral = () => {
       <div className={Style.upload_inputs_container}>
         <div className={Style.upload_input}>
           <p className={Style.upload_file}>Name</p>
-          <label htmlFor="input_title" className={Style.input_label}>
+          <label htmlFor="input_name" className={Style.input_label}>
             <input
               onChange={HandelChange}
               id="input_name"
               type="text"
               value={name}
-              className={Style.input_title}
+              className={Style.input_name}
             />
           </label>
           <p className={Style.text}>This field cannot be changed.</p>

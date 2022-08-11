@@ -5,9 +5,11 @@ import NewGeneral from "./NewGeneral";
 import CreditDetails from "./CreditDetails";
 import Tags from "./Tags";
 import Other from "./Other";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
+import { ImagesReducer } from "../../../../redux/chanel-slice/ChanelSlice";
 const ProfileDate = () => {
+  const dispatch = useDispatch();
   const [previewSourceProfile, setPreviewSourceProfile] = useState("");
   const [selectedFileProfile, setSelectedFileProfile] = useState();
 
@@ -21,6 +23,12 @@ const ProfileDate = () => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
+      dispatch(
+        ImagesReducer({
+          id: "profileImage",
+          profileImage: reader.result,
+        })
+      );
       console.log(reader.result);
       if (typeof reader !== "undefined" && reader.result !== "undefined") {
         setPreviewSourceProfile(`${reader?.result}`);
@@ -52,9 +60,7 @@ const ProfileDate = () => {
     );
   };
 
-  const NewChanelData = useSelector(
-    (state: any) => state.ChanelSlice.NewChanelData
-  );
+  const general = useSelector((state: any) => state.ChanelSlice.general);
 
   const UlLinks = [
     { name: "General", key: "general" },
@@ -120,9 +126,7 @@ const ProfileDate = () => {
                 </label>
               </div>
             </div>
-            <span className={Style.name}>
-              {NewChanelData.length > 0 && NewChanelData[0]?.general?.name}{" "}
-            </span>
+            <span className={Style.name}>{general.name && general.name} </span>
           </div>
         </div>
         <div className={Style.links_container}>
