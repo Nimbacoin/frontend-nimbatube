@@ -88,11 +88,15 @@ const Chanel = ({
 
   return (
     <div key={Id} ref={Container} className={Style.container}>
-      <div
-        onClick={HandelClickUrl}
-        style={{ backgroundImage: `url(${ProfileImg ? ProfileImg.url : Bg})` }}
-        className={Style.img}
-      ></div>
+      <div onClick={HandelClickUrl} className={Style.img_container}>
+        <div
+          onClick={HandelClickUrl}
+          style={{
+            backgroundImage: `url(${ProfileImg ? ProfileImg.url : Bg})`,
+          }}
+          className={Style.img}
+        ></div>
+      </div>
       <div onClick={HandelClickUrl} className={Style.chanel_container}>
         <span className={Style.chanel_name}>{Title}</span>
         <span className={Style.username}>@{Username}</span>

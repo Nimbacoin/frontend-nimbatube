@@ -10,13 +10,18 @@ import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLog
 import { ImagesReducer } from "../../../../redux/chanel-slice/ChanelSlice";
 const ProfileDate = () => {
   const dispatch = useDispatch();
+  const general = useSelector((state: any) => state.ChanelSlice.general);
   const [previewSourceProfile, setPreviewSourceProfile] = useState("");
-  const [selectedFileProfile, setSelectedFileProfile] = useState();
+  const [previewSourceCover, setPreviewSourceCover] = useState("");
 
   const handleFileInputChange = (e: any) => {
     const file = e.target.files[0];
     previewFile(file);
-    setSelectedFileProfile(file);
+  };
+  const handleFileInputChangeCover = (e: any) => {
+    const file = e.target.files[0];
+
+    previewFileCover(file);
   };
 
   const previewFile = (file: any) => {
@@ -35,32 +40,22 @@ const ProfileDate = () => {
       }
     };
   };
-
-  const handleSubmitFile = (e: any) => {
-    e.preventDefault();
-    if (!selectedFileProfile) return;
+  const previewFileCover = (file: any) => {
     const reader = new FileReader();
-    reader.readAsDataURL(selectedFileProfile);
+    reader.readAsDataURL(file);
     reader.onloadend = () => {
-      uploadImage(reader.result);
-    };
-    reader.onerror = () => {
-      console.error("AHHHHHHHH!!");
-    };
-  };
-
-  const uploadImage = async (file: any) => {
-    const Body: any = { data: file };
-    basedPostUrlRequestLogedIn("/api/post/chanel/upload-profile", Body).then(
-      (res) => {
-        if (res) {
-          console.log(res);
-        }
+      dispatch(
+        ImagesReducer({
+          id: "coverImage",
+          coverImage: reader.result,
+        })
+      );
+      console.log(reader.result);
+      if (typeof reader !== "undefined" && reader.result !== "undefined") {
+        setPreviewSourceCover(`${reader?.result}`);
       }
-    );
+    };
   };
-
-  const general = useSelector((state: any) => state.ChanelSlice.general);
 
   const UlLinks = [
     { name: "General", key: "general" },
@@ -89,11 +84,20 @@ const ProfileDate = () => {
   return (
     <div className={Style.container}>
       <div className={Style.container_main}>
-        <div className={Style.upload_inputs_container}>
-          <label htmlFor="input_upload11111" className={Style.input_label}>
+        <div
+          style={{
+            backgroundImage: previewSourceCover && `url(${previewSourceCover})`,
+          }}
+          className={Style.upload_inputs_container}
+        >
+          {previewSourceCover !== "" && (
+            <div className={Style.hover_container}></div>
+          )}
+
+          <label htmlFor="cover" className={Style.input_label}>
             <input
-              onChange={handleFileInputChange}
-              id="input_upload11111"
+              onChange={handleFileInputChangeCover}
+              id="cover"
               type="file"
               accept="image/x-png,image/gif,image/jpeg"
               className={Style.input_upload}
@@ -112,10 +116,10 @@ const ProfileDate = () => {
                     : `url(${Bg})`,
                 }}
               >
-                <label htmlFor="input_upload" className={Style.input_label}>
+                <label htmlFor="profile" className={Style.input_label}>
                   <input
                     onChange={handleFileInputChange}
-                    id="input_upload"
+                    id="profile"
                     type="file"
                     accept="image/x-png,image/gif,image/jpeg"
                     className={Style.input_upload}
@@ -145,7 +149,6 @@ const ProfileDate = () => {
           </ul>
         </div>
       </div>
-      <button onClick={handleSubmitFile}> Add Image </button>
       {HandelLinkContent()}
     </div>
   );
