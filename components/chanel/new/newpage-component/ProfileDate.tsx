@@ -42,7 +42,7 @@ const ProfileDate = () => {
   };
 
   const uploadImage = async (file: any) => {
-    const Body = { data: file };
+    const Body: any = { data: file };
     basedPostUrlRequestLogedIn("/api/post/chanel/upload-profile", Body).then(
       (res) => {
         if (res) {
