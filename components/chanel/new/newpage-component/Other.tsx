@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOutline";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 import {
-  ActionGeneral,
   ActionGenaralChanging,
   ResetNewChanel,
 } from "../../../../redux/chanel-slice/ChanelSlice";
