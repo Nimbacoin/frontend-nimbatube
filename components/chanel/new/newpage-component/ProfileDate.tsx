@@ -6,7 +6,52 @@ import CreditDetails from "./CreditDetails";
 import Tags from "./Tags";
 import Other from "./Other";
 import { useSelector } from "react-redux";
+import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 const ProfileDate = () => {
+  const [previewSourceProfile, setPreviewSourceProfile] = useState("");
+  const [selectedFileProfile, setSelectedFileProfile] = useState();
+
+  const handleFileInputChange = (e: any) => {
+    const file = e.target.files[0];
+    previewFile(file);
+    setSelectedFileProfile(file);
+  };
+
+  const previewFile = (file: any) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      console.log(reader.result);
+      if (typeof reader !== "undefined" && reader.result !== "undefined") {
+        setPreviewSourceProfile(`${reader?.result}`);
+      }
+    };
+  };
+
+  const handleSubmitFile = (e: any) => {
+    e.preventDefault();
+    if (!selectedFileProfile) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFileProfile);
+    reader.onloadend = () => {
+      uploadImage(reader.result);
+    };
+    reader.onerror = () => {
+      console.error("AHHHHHHHH!!");
+    };
+  };
+
+  const uploadImage = async (file: any) => {
+    const Body = { data: file };
+    basedPostUrlRequestLogedIn("/api/post/chanel/upload-profile", Body).then(
+      (res) => {
+        if (res) {
+          console.log(res);
+        }
+      }
+    );
+  };
+
   const NewChanelData = useSelector(
     (state: any) => state.ChanelSlice.NewChanelData
   );
@@ -34,14 +79,17 @@ const ProfileDate = () => {
       return <Other />;
     }
   };
+
   return (
     <div className={Style.container}>
       <div className={Style.container_main}>
         <div className={Style.upload_inputs_container}>
-          <label htmlFor="input_upload" className={Style.input_label}>
+          <label htmlFor="input_upload11111" className={Style.input_label}>
             <input
-              id="input_upload"
+              onChange={handleFileInputChange}
+              id="input_upload11111"
               type="file"
+              accept="image/x-png,image/gif,image/jpeg"
               className={Style.input_upload}
             />
             <span className={Style.camera_of_button}>
@@ -52,12 +100,18 @@ const ProfileDate = () => {
             <div className={Style.profile_image_container}>
               <div
                 className={Style.profile_image}
-                style={{ backgroundImage: `url(${Bg})` }}
+                style={{
+                  backgroundImage: previewSourceProfile
+                    ? `url(${previewSourceProfile})`
+                    : `url(${Bg})`,
+                }}
               >
                 <label htmlFor="input_upload" className={Style.input_label}>
                   <input
+                    onChange={handleFileInputChange}
                     id="input_upload"
                     type="file"
+                    accept="image/x-png,image/gif,image/jpeg"
                     className={Style.input_upload}
                   />
                   <span className={Style.camera_of_button_profile}>
@@ -87,6 +141,7 @@ const ProfileDate = () => {
           </ul>
         </div>
       </div>
+      <button onClick={handleSubmitFile}> Add Image </button>
       {HandelLinkContent()}
     </div>
   );

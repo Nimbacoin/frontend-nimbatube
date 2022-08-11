@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOutline";
 import Style from "../../../../styles/pages/chanel/new/newpage-component/new-general.module.css";
-import basedPostUrlRequest from "../../../../utils/basedPostUrlRequest";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 import {
   ActionGeneral,
@@ -37,6 +36,7 @@ const NewGeneral = () => {
     settitle("");
     setname("");
     setdescription("");
+    dispatch(ResetNewChanel());
   };
   const HandelSubmiteNewGeneral = async (e: any) => {
     e.preventDefault();

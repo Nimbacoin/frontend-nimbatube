@@ -1,8 +1,14 @@
-import React, { useState } from "react";
-
 import Style from "../../../../styles/pages/chanel/new/newpage-component/other.module.css";
+import React, { useState } from "react";
+import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOutline";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
-
+import {
+  ActionGeneral,
+  ActionGenaralChanging,
+  ResetNewChanel,
+} from "../../../../redux/chanel-slice/ChanelSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 const Other = () => {
   const [website, setwebsite] = useState("");
   const [email, setemail] = useState("");

@@ -68,9 +68,6 @@ export const ChanelSlice = createSlice({
       state.NewChanelData = [];
       state.ChanelCreated = false;
     },
-    ResetChanelName: (state: any) => {
-      state.ChanelCreated = false;
-    },
   },
 });
 
@@ -82,7 +79,7 @@ export const {
   ActionOther,
   CreditDetails,
   ResetNewChanel,
-  ResetChanelName,
+  
 } = ChanelSlice.actions;
 const AllReducers = ChanelSlice.reducer;
 export default AllReducers;
