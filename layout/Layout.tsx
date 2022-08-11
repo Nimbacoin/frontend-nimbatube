@@ -130,7 +130,7 @@ const Layout = ({ children }: any) => {
       <div style={{ minHeight: `${Height}px` }} className={Style.container}>
         <Header />
         <SideHeader />
-        <div style={{ minHeight: Height - 60 }} className={Style.children}>
+        <div style={{ minHeight: `${Height}px` }} className={Style.children}>
           {children}
         </div>
       </div>
