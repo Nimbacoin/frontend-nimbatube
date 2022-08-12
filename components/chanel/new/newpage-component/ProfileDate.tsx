@@ -130,10 +130,10 @@ const ProfileDate = () => {
                 </label>
               </div>
             </div>
-            <span className={Style.name}>{general.name && general.name} </span>
           </div>
         </div>
         <div className={Style.links_container}>
+          <span className={Style.name}>{general.name && general.name} </span>
           <ul className={Style.chanel_links}>
             {UlLinks.map(({ name, key }) => (
               <li

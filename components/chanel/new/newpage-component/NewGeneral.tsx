@@ -75,7 +75,7 @@ const NewGeneral = () => {
               id="input_name"
               type="text"
               value={name}
-              className={Style.input_name}
+              className={Style.input_title}
             />
           </label>
           <p className={Style.text}>This field cannot be changed.</p>

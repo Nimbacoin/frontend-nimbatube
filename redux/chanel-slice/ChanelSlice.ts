@@ -26,23 +26,11 @@ export const ChanelSlice = createSlice({
       } else if (Action.id === "text_desc") {
         state.general["description"] = Action.text_desc;
       }
-      if (action.payload.length <= 0) {
+      if (!state.general["name"]?.length) {
         state.ChanelCreated = false;
       } else {
         state.ChanelCreated = true;
       }
-    },
-    Actiongeneral: (state: any, action: any) => {
-      if (!state.NewChanelData.length) {
-        state.NewChanelData = [{ general: {} }];
-        state.NewChanelData[0].general = action.payload;
-        console.log(state.NewChanelData[0]);
-      } else {
-        state.NewChanelData[0].general = action.payload;
-        console.log(state.NewChanelData[0]);
-      }
-      state.ChanelCreated = true;
-      console.log(current(state.NewChanelData));
     },
 
     ActionTags: (state: any, action: any) => {
@@ -53,26 +41,14 @@ export const ChanelSlice = createSlice({
         state.NewChanelData[0].tags = action.payload;
       }
     },
-    ActionOther: (state: any, action: any) => {
-      if (!state.NewChanelData.length) {
-        state.NewChanelData = [{ other: {} }];
-        state.NewChanelData[0].other = action.payload;
-      } else {
-        state.NewChanelData[0].other = action.payload;
-      }
-    },
-    CreditDetails: (state: any, action: any) => {
-      if (!state.NewChanelData.length) {
-        state.NewChanelData = [{ creditDetails: {} }];
-        state.NewChanelData[0].creditDetails = action.payload;
-      } else {
-        state.NewChanelData[0].creditDetails = action.payload;
-      }
-    },
+    ActionOther: (state: any, action: any) => {},
+    CreditDetails: (state: any, action: any) => {},
     ImagesReducer: (state: any, action: any) => {
       const Action = action.payload;
       if (Action.id === "profileImage") {
         state.images["profileImage"] = action.payload.profileImage;
+      } else if (Action.id === "coverImage") {
+        state.images["coverImage"] = action.payload.coverImage;
       }
     },
     ResetNewChanel: (state: any) => {
@@ -85,7 +61,6 @@ export const ChanelSlice = createSlice({
 export const {
   AllChanelsRedcuer,
   ActionGenaralChanging,
-  Actiongeneral,
   ActionTags,
   ActionOther,
   CreditDetails,
