@@ -1,7 +1,8 @@
 import React from "react";
 import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOutline";
 import Style from "../../../../styles/pages/chanel/new/newpage-component/new-general.module.css";
-const Community = ({ Name, Id }) => {
+const Community = ({ Name, Id }: any) => {
+  console.log(Name, Id);
   return (
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
