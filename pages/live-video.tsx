@@ -54,12 +54,12 @@ const MessageSocket = () => {
           videos.play();
           setInterval(function () {
             loadVideo(videos);
-          }, 500);
+          }, 10);
         }
       });
   };
   useEffect(() => {
-    // handelLoadVideo();
+    handelLoadVideo();
   }, [Canvas, Context]);
   return (
     <div>
