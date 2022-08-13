@@ -53,6 +53,7 @@ export const ChanelSlice = createSlice({
     },
     ResetNewChanel: (state: any) => {
       state.general = {};
+      state.images = {};
       state.ChanelCreated = false;
     },
   },

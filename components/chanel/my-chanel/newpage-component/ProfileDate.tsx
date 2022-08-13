@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "../../../../styles/pages/chanel/my-chanel/my-chanel-component/profile-date.module.css";
 import { BsPencilSquare } from "@react-icons/all-files/bs/BsPencilSquare";
 import { RiMoneyDollarCircleLine } from "@react-icons/all-files/ri/RiMoneyDollarCircleLine";
 import { IoShareSocialOutline } from "@react-icons/all-files/io5/IoShareSocialOutline";
+import { IoCameraOutline } from "@react-icons/all-files/io5/IoCameraOutline";
 import { IoEllipsisVertical } from "@react-icons/all-files/io5/IoEllipsisVertical";
 import Content from "./Content";
 import Community from "./Community";
 import About from "./About";
 
-const ProfileDate = () => {
+const ProfileDate = ({ ChanelData }: any) => {
   const UlLinks = [
     { name: "Content", key: "content" },
     { name: "Playlists", key: "playlists" },
@@ -33,40 +34,63 @@ const ProfileDate = () => {
     } else if (LinkKey === "playlists") {
       return <Content />;
     } else if (LinkKey === "about") {
-      return <About />;
+      return <About ChanelData={ChanelData.chanelData} />;
     } else if (LinkKey === "community") {
-      return <Community />;
+      return <Community Name={Name} Id={ChanelData._id} />;
     }
   };
+  const [BgUrl, setBgUrl] = useState(Bg);
+  const [BgUrlCover, setBgUrlCover] = useState("");
+  const [Name, setName] = useState("");
+  const [Title, setTitle] = useState("");
+
+  useEffect(() => {
+    if (ChanelData && ChanelData.chanelData?.profileImg) {
+      setBgUrl(ChanelData.chanelData.profileImg.url);
+    }
+    if (ChanelData && ChanelData.chanelData?.coverImg) {
+      setBgUrlCover(ChanelData.chanelData.coverImg.url);
+    }
+    if (ChanelData && ChanelData.chanelData) {
+      setName(ChanelData.chanelData.name);
+      setTitle(ChanelData.chanelData?.title);
+    }
+  }, [ChanelData]);
+
   return (
     <div className={Style.container}>
       <div className={Style.container_main}>
-        <div className={Style.upload_inputs_container}>
-          <div className={Style.icons_container_right}>
-            {IconsChanel.map(({ name, icon }) => (
-              <button key={name} className={Style.camera_of_button}>
-                {icon}
-                {name}
-              </button>
-            ))}
-            <span className={Style.edit__button_profile_1}>
-              <BsPencilSquare />
-            </span>
-          </div>
+        <div
+          style={{
+            backgroundImage: BgUrlCover.length
+              ? `url(${BgUrlCover})`
+              : `url(${undefined})`,
+          }}
+          className={Style.upload_inputs_container}
+        >
+          {BgUrlCover.length ? (
+            <div className={Style.hover_container}></div>
+          ) : (
+            ""
+          )}
+
           <div className={Style.image_name_conainer}>
             <div className={Style.profile_image_container}>
               <div
                 className={Style.profile_image}
-                style={{ backgroundImage: `url(${Bg})` }}
+                style={{
+                  backgroundImage: `url(${BgUrl})`,
+                }}
               ></div>
             </div>
-            <span className={Style.name}>Mrbeast </span>
           </div>
-          <span className={Style.edit__button_profile_2}>
-            <BsPencilSquare />
-          </span>
         </div>
         <div className={Style.links_container}>
+          <span className={Style.name_contanier}>
+            <span className={Style.name}> {Name} </span>
+            <span className={Style.title}> {Title} </span>
+          </span>
+
           <ul className={Style.chanel_links}>
             {UlLinks.map(({ name, key }) => (
               <li

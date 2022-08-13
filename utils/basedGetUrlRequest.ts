@@ -6,7 +6,6 @@ const basedGetUrlRequest = async (url: string) => {
     try {
       const response = await fetch(process.env.NEXT_PUBLIC_BACK_END_URL + url, {
         method: "GET",
-        credentials: "include",
       });
       const data = await response.json();
       return data;

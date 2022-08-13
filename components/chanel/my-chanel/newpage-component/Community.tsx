@@ -1,12 +1,12 @@
 import React from "react";
 import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOutline";
 import Style from "../../../../styles/pages/chanel/new/newpage-component/new-general.module.css";
-const Community = () => {
+const Community = ({ Name, Id }) => {
   return (
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
         <div className={Style.upload_input}>
-          <p className={Style.upload_file}>Comment as Mrbeast</p>
+          <p className={Style.upload_file}>Comment as {Name}</p>
           <label htmlFor="text_desc" className={Style.label_description}>
             <textarea id="text_desc" className={Style.text_desc} />
           </label>

@@ -20,7 +20,6 @@ const ProfileDate = () => {
   };
   const handleFileInputChangeCover = (e: any) => {
     const file = e.target.files[0];
-
     previewFileCover(file);
   };
 
@@ -50,7 +49,6 @@ const ProfileDate = () => {
           coverImage: reader.result,
         })
       );
-      console.log(reader.result);
       if (typeof reader !== "undefined" && reader.result !== "undefined") {
         setPreviewSourceCover(`${reader?.result}`);
       }
@@ -133,7 +131,17 @@ const ProfileDate = () => {
           </div>
         </div>
         <div className={Style.links_container}>
-          <span className={Style.name}>{general.name && general.name} </span>
+          <span className={Style.name_contanier}>
+            <span className={Style.name}>
+              {general.name && general.name.slice(0, 40)}
+              {general.name && general.name.length > 40 && "..."}
+            </span>
+            <span className={Style.title}>
+              {general.title && general.title.slice(0, 40)}
+              {general.title && general.title.length > 40 && "..."}
+            </span>
+          </span>
+
           <ul className={Style.chanel_links}>
             {UlLinks.map(({ name, key }) => (
               <li
