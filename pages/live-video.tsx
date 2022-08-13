@@ -11,10 +11,7 @@ interface SocketObj {
 const MessageSocket = () => {
   const Video = React.useRef<HTMLVideoElement | null>(null);
   const Canvas = React.useRef<HTMLCanvasElement | null>(null);
-  const userVideo = React.useRef<HTMLCanvasElement | null>(null);
   const Context = Canvas?.current?.getContext("2d");
-  const Canvas2 = React.useRef<HTMLCanvasElement | null>(null);
-  const Context2 = Canvas2?.current?.getContext("2d");
   const [Bg, setBg] = useState("");
   const socket = io(process.env.NEXT_PUBLIC_BACK_END_URL!, {
     transports: ["websocket", "polling"],
@@ -28,8 +25,7 @@ const MessageSocket = () => {
       socket.on("streaming", (data) => {
         setBg(data);
         // Context2.putImageData(data, 0, 0);
-
-        //  console.log("data", data);
+        console.log("data", data);
       });
     };
     locaFetch();
@@ -38,12 +34,11 @@ const MessageSocket = () => {
   const errorLoadCam = (stram: any) => {
     console.log("camera failed");
   };
-  let A = 1;
+
   const loadVideo = (video: any) => {
-    if (Canvas.current) {
-      Context?.drawImage(video, 0, 0, 300, 100);
+    if (Canvas.current && Context) {
+      Context.drawImage(video, 0, 0, 300, 100);
       socket.emit("stream", Canvas.current.toDataURL("image/webp"));
-      console.log(A++);
     }
   };
 
@@ -57,10 +52,10 @@ const MessageSocket = () => {
         if (videos) {
           videos.srcObject = stream;
           videos.play();
+          setInterval(function () {
+            loadVideo(videos);
+          }, 500);
         }
-        setInterval(function () {
-          loadVideo(videos);
-        }, 300);
       });
   };
   useEffect(() => {
