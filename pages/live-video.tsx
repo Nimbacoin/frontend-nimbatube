@@ -54,7 +54,7 @@ const MessageSocket = () => {
           videos.play();
           setInterval(function () {
             loadVideo(videos);
-          }, 10);
+          }, 500);
         }
       });
   };
