@@ -57,6 +57,10 @@ const MessageSocket = () => {
           videos.srcObject = stream;
           videos.play();
           setIsStriming(true);
+          setInterval(function () {
+            const videos = Video.current;
+            videos && loadVideo(videos);
+          }, 0.1);
         }
       });
   };
@@ -68,10 +72,6 @@ const MessageSocket = () => {
   }, []);
 
   useEffect(() => {
-    setInterval(function () {
-      const videos = Video.current;
-      videos && loadVideo(videos);
-    }, 0.1);
     setIsStriming(true);
   }, [IsStriming]);
 
