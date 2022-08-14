@@ -13,6 +13,7 @@ const MessageSocket = () => {
   const Canvas = React.useRef<HTMLCanvasElement | null>(null);
   const Context = Canvas?.current?.getContext("2d");
   const [laod, setlaod] = useState(false);
+  const [IsStriming, setIsStriming] = useState(false);
 
   const [Bg, setBg] = useState("");
   const socket = io(process.env.NEXT_PUBLIC_BACK_END_URL!, {
@@ -55,9 +56,7 @@ const MessageSocket = () => {
         if (videos) {
           videos.srcObject = stream;
           videos.play();
-          setInterval(function () {
-            loadVideo(videos);
-          }, 0.1);
+          setIsStriming(true);
         }
       });
   };
@@ -69,7 +68,11 @@ const MessageSocket = () => {
   }, []);
 
   useEffect(() => {
-    handelLoadVideo();
+    setInterval(function () {
+      const videos = Video.current;
+      videos && loadVideo(videos);
+    }, 0.1);
+    setIsStriming(true);
   }, [laod]);
 
   return (
