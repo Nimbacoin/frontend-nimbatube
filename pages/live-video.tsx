@@ -12,6 +12,8 @@ const MessageSocket = () => {
   const Video = React.useRef<HTMLVideoElement | null>(null);
   const Canvas = React.useRef<HTMLCanvasElement | null>(null);
   const Context = Canvas?.current?.getContext("2d");
+  const [laod, setlaod] = useState(false);
+
   const [Bg, setBg] = useState("");
   const socket = io(process.env.NEXT_PUBLIC_BACK_END_URL!, {
     transports: ["websocket", "polling"],
@@ -24,7 +26,6 @@ const MessageSocket = () => {
       socket.on("connect", () => {});
       socket.on("streaming", (data) => {
         setBg(data);
-        // Context2.putImageData(data, 0, 0);
         console.log("data", data);
       });
     };
@@ -37,7 +38,9 @@ const MessageSocket = () => {
 
   const loadVideo = (video: any) => {
     if (Canvas.current && Context) {
-      Context.drawImage(video, 0, 0, 300, 100);
+      const Height = Canvas.current?.height;
+      const Width = Canvas.current?.width;
+      Context.drawImage(video, 0, 0, Height, Width);
       socket.emit("stream", Canvas.current.toDataURL("image/webp"));
     }
   };
@@ -54,13 +57,21 @@ const MessageSocket = () => {
           videos.play();
           setInterval(function () {
             loadVideo(videos);
-          }, 500);
+          }, 600);
         }
       });
   };
+
+  useEffect(() => {
+    setInterval(() => {
+      setlaod(!laod);
+    }, 1000);
+  }, []);
+
   useEffect(() => {
     handelLoadVideo();
-  }, [Canvas, Context]);
+  }, [laod]);
+
   return (
     <div>
       <button onClick={handelLoadVideo}>Start video</button>
@@ -81,6 +92,8 @@ const MessageSocket = () => {
       ></div>
       <canvas
         ref={Canvas}
+        height="700"
+        width="700"
         style={{ height: "700px", width: "700px", display: "none" }}
       ></canvas>
     </div>
