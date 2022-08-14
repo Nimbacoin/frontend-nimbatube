@@ -62,9 +62,9 @@ const MessageSocket = () => {
   };
 
   useEffect(() => {
-    setInterval(() => {
-      setlaod(!laod);
-    }, 1000);
+    // setInterval(() => {
+    //   setlaod(!laod);
+    // }, 1000);
   }, []);
 
   useEffect(() => {
@@ -73,14 +73,14 @@ const MessageSocket = () => {
       videos && loadVideo(videos);
     }, 0.1);
     setIsStriming(true);
-  }, [laod]);
+  }, [IsStriming]);
 
   return (
     <div>
       <button onClick={handelLoadVideo}>Start video</button>
       <video
         ref={Video}
-        style={{ height: "700px", width: "700px" }}
+        style={{ height: "500px", width: "1000px" }}
         autoPlay={true}
       ></video>
 
@@ -93,6 +93,12 @@ const MessageSocket = () => {
           backgroundRepeat: "no-repeat",
         }}
       ></div>
+      <canvas
+        src={Bg}
+        height="700"
+        width="700"
+        style={{ height: "700px", width: "700px", display: "none" }}
+      ></canvas>
       <canvas
         ref={Canvas}
         height="700"
