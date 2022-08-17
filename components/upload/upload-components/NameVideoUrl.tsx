@@ -35,6 +35,7 @@ const NameVideoUrl = () => {
     }
   };
   const HandelSubmiteNewGeneral = async () => {
+    alert("yes");
     let formData = new FormData();
     if (Path.current) {
       formData.append("channelId", Channels[0]._id);
