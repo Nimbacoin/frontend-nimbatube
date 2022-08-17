@@ -7,13 +7,16 @@
 }
 .upload_img_icon {
   width: 25%;
-  min-height: 100px;
+  min-height: 130px;
   background-color: #121212;
   border-radius: 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .upload_img_icon > svg {
   color: #fff;
@@ -68,6 +71,42 @@
 }
 .upload_file_button:last-of-type {
   margin-left: auto;
+}
+
+.div_button_action {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 20px;
+}
+.button_action {
+  background-color: #673de6;
+  padding: 0 20px;
+  height: 40px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+}
+.button_action_add {
+  background-color: #fff;
+  padding: 0 20px;
+  height: 40px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #030303;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid#DBDBDB;
 }
 .upload_file_button {
   background-color: #673de6;

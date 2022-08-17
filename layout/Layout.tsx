@@ -10,6 +10,8 @@ import { WindowHeightRedcuer } from "../redux/style-slice/general-style/GenrealS
 import { useSession } from "next-auth/react";
 import { UserSignedIn } from "../redux/user-slice/UserSignIn";
 import Cookies from "js-cookie";
+import basedGetUrlRequestLogedIn from "../utils/basedGetUrlRequestLogedIn";
+import { AllChannelsRedcuer } from "../redux/channel-slice/ChannelSlice";
 
 interface main {
   children: any;
@@ -28,14 +30,11 @@ const Layout = ({ children }: any) => {
     dispatch(WindowHeightRedcuer(window.innerHeight - 60));
   }, []);
   useEffect(() => {
-    //   = sessionStorage.getItem("user");
     let UserData = Cookies.get("user");
-
     if (UserData) {
       var obj = JSON.parse(UserData);
       if (obj.email) {
-        dispatch(UserSignedIn());
-        console.log(obj);
+        dispatch(UserSignedIn(obj));
         if (
           (UserIsSignedIn && asPath === "/auth/sign-up") ||
           asPath === "/auth/sign-in"
@@ -45,6 +44,19 @@ const Layout = ({ children }: any) => {
       }
     }
   });
+  useEffect(() => {
+    basedGetUrlRequestLogedIn("/api/get/channel/all-channels").then(
+      (res: any) => {
+        try {
+          if (res.responsData) {
+            dispatch(AllChannelsRedcuer(res.responsData));
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    );
+  }, [asPath]);
 
   return (
     <>

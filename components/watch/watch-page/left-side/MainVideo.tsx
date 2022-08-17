@@ -15,9 +15,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
 import Descreption from "./Descreption";
 import Comments from "./Comments";
+import { useRouter } from "next/router";
 
 const MainVideo = () => {
-  const vid = React.useRef<HTMLVideoElement | null>(null);
+  const { asPath, pathname } = useRouter();
+  const [ActiveVideo, setActiveVideo] = useState("");
+  const videoSrc = React.useRef<HTMLSourceElement | null>(null);
+  const videoTag = React.useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    let Params = new URL(window.location.href).searchParams;
+    const video: string | null = Params.get("video");
+    const watching: string | null = Params.get("watching");
+    console.log(watching);
+    setActiveVideo(
+      "62fd362da36a8541546e3db002c114cf3ccb2ff3e1d4359471ed2560.mp4"
+    );
+    if (videoTag.current) {
+      videoTag.current.src =
+        process.env.NEXT_PUBLIC_BACK_END_URL + "/read/" + video;
+      videoTag.current.play();
+    }
+  }, [asPath]);
   const DescreptionBoolean = useSelector(
     (state: any) => state.MainVideo.Descreption
   );
@@ -26,12 +45,12 @@ const MainVideo = () => {
     dispatch(ToggleDescreption());
   };
   useEffect(() => {
-    if (vid.current !== null) {
-      const Height = vid.current.videoHeight;
-      const Width = vid.current.videoWidth;
-      vid.current.style.minHeight = "500px";
+    if (videoTag.current !== null) {
+      const Height = videoTag.current.videoHeight;
+      const Width = videoTag.current.videoWidth;
+      videoTag.current.style.minHeight = "500px";
     }
-  }, [vid]);
+  }, [videoTag]);
   const Title =
     "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
   // const videoRef = useRef<HTMLVideoElement>(null);
@@ -57,10 +76,11 @@ const MainVideo = () => {
     <div className={Style.container}>
       <div className={Style.video_container}>
         <div className={Style.video_container_2}>
-          <video ref={vid} autoPlay muted loop controls>
+          <video ref={videoTag} autoPlay muted loop controls>
             <source
+              ref={videoSrc}
+              // src={"http://localhost:5000" + "/read/" + ActiveVideo}
               className={Style.video}
-              src="http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4"
               type="video/mp4"
             />
           </video>

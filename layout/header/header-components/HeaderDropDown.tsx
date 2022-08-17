@@ -9,21 +9,24 @@ import { IoMdHelpCircleOutline } from "@react-icons/all-files/io/IoMdHelpCircleO
 import { IoLogOutOutline } from "@react-icons/all-files/io5/IoLogOutOutline";
 import { FcCircuit } from "@react-icons/all-files/fc/FcCircuit";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { UserSignOut } from "../../../redux/user-slice/UserSignIn";
 import Cookies from "js-cookie";
 
-const Bg = "/images/default-profile.png";
-
 const HeaderDropDown = () => {
+  const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
+  const UserData = useSelector((state: any) => state.UserSignIn.userdata);
   const dispatch = useDispatch();
   const [ShowDiv, setShowDiv] = useState(false);
   const Router = useRouter();
   const Ref = React.useRef<HTMLDivElement>(null);
   const InputSearch = React.useRef<HTMLDivElement>(null);
-
+  const [Bg, setBg] = useState("/images/default-profile.png");
+  const [Name, setName] = useState("");
+  const [channel, setChannel] = useState<{ [key: string]: any }>({});
+  const length = Object.keys(channel).length;
   useEffect(() => {
-    const HandelClick = (e: any) => {
+    const handelClick = (e: any) => {
       if (InputSearch && InputSearch.current) {
         const refany = InputSearch.current;
         if (refany.contains(e.target)) {
@@ -36,15 +39,28 @@ const HeaderDropDown = () => {
         }
       }
     };
-    window.addEventListener("click", HandelClick);
+    window.addEventListener("click", handelClick);
   }, [ShowDiv]);
-  const AllLink = [
+  useEffect(() => {
+    if (Channels && Channels?.length) {
+      setChannel(Channels[0]);
+    }
+    if (
+      channel?.channelData?.profileImg &&
+      typeof channel?.channelData?.profileImg !== "undefined"
+    ) {
+      setName(channel.channelData.name);
+      setBg(channel.channelData.profileImg.url);
+    }
+  });
+  const allLinks = [
     {
-      name: "Your Chanel",
-      link: "/chanel/@mrbeast",
-      classname: Style.chanel_container,
+      name: "Your Channel",
+      link: channel && "/channel/" + channel?._id,
+      classname: Style.channel_container,
       img: Bg,
-      chanelname: "MrBeasr",
+      imgChannel: true,
+      channelname: channel && Name,
     },
     {
       name: "Uploads",
@@ -53,8 +69,8 @@ const HeaderDropDown = () => {
       classname: Style.link_container,
     },
     {
-      name: "Chanels",
-      link: "/chanels",
+      name: "Channels",
+      link: "/channels",
       icon: "@",
       classname: Style.link_container,
     },
@@ -88,11 +104,11 @@ const HeaderDropDown = () => {
       link: "/",
       id: "sign-out",
       icon: <IoLogOutOutline />,
-      chanelname: "mrbeasr-chancel@minbatube.com",
+      channelname: UserData && UserData.email,
       classname: Style.sing_out_container,
     },
   ];
-  const HandelClick = (e: any, link: string, id: any) => {
+  const handelClick = (e: any, link: string, id: any) => {
     if (id === "sign-out") {
       e.preventDefault();
       // sessionStorage.removeItem("user");
@@ -113,31 +129,47 @@ const HeaderDropDown = () => {
               <span className={Style.sold}>0.25</span>
             </div>
             <div className={Style.drop_down_option} ref={InputSearch}>
-              <IoPersonOutline />
+              {Bg !== "/images/default-profile.png" ? (
+                <div
+                  style={{ backgroundImage: `url(${Bg})` }}
+                  className={Style.img}
+                ></div>
+              ) : (
+                <IoPersonOutline />
+              )}
             </div>
             {ShowDiv && (
               <div className={Style.drop_down_container} ref={Ref}>
-                {AllLink.map(
-                  ({ link, id, img, name, chanelname, icon, classname }) => (
+                {allLinks.map(
+                  ({
+                    link,
+                    id,
+                    img,
+                    name,
+                    channelname,
+                    icon,
+                    classname,
+                    imgChannel,
+                  }) => (
                     <div
                       key={name}
-                      onClick={(e) => HandelClick(e, link, id)}
+                      onClick={(e) => handelClick(e, link, id)}
                       className={classname}
                       id={link === "/" ? id : link}
                     >
                       {icon && <span className={Style.icon}> {icon}</span>}
-                      {img && (
+                      {imgChannel && (
                         <div
-                          style={{ backgroundImage: `url(${img})` }}
+                          style={{ backgroundImage: `url(${Bg})` }}
                           className={Style.img}
                         ></div>
                       )}
                       <div className={Style.link_data}>
                         {name && <span className={Style.name}> {name}</span>}
-                        {chanelname && (
-                          <span className={Style.chanelname}>
+                        {channelname && (
+                          <span className={Style.channelname}>
                             {" "}
-                            {chanelname}
+                            {channelname}
                           </span>
                         )}
                       </div>
