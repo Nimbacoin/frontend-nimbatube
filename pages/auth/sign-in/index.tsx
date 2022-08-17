@@ -42,7 +42,7 @@ const LogIn = () => {
           Cookies.set("user", JSON.stringify(res.user));
 
           // sessionStorage.setItem("user", JSON.stringify(res.user));
-          dispatch(UserSignedIn());
+          dispatch(UserSignedIn(res.user));
           Router.push("/");
           setResMessage(res.message);
         } else if (!res.user && res.message) {

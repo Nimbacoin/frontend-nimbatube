@@ -61,7 +61,7 @@ const SignUp = () => {
         if (res.user) {
           Cookies.set("user", JSON.stringify(res.user));
           // sessionStorage.setItem("user", JSON.stringify(res.user));
-          dispatch(UserSignedIn());
+          dispatch(UserSignedIn(res.user));
           setResMessage(res.message);
           Router.push("/");
         } else if (!res.user && res.message) {

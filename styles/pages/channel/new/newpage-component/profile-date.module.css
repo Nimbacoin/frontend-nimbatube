@@ -39,8 +39,8 @@
   box-shadow: inset 3px -100px 86px -61px rgba(0, 0, 0, 0.812);
   z-index: 0;
 }
-.image_name_conainer {
-}
+/* .image_name_conainer {
+} */
 .input_label {
   z-index: 10;
 }
