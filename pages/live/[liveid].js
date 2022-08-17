@@ -62,6 +62,8 @@ function App() {
       <h1>Current user id is {peerId}</h1>
       <input
         type="text"
+        style={{ border: "1px solid #000" }}
+        placeholder="enter your code here"
         value={remotePeerIdValue}
         onChange={(e) => setRemotePeerIdValue(e.target.value)}
       />
