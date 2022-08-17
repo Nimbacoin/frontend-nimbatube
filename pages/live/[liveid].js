@@ -12,6 +12,7 @@ function App() {
       navigator.mediaDevices
         .getUserMedia({
           video: true,
+          audio: true,
         })
         .then((stream) => {
           currentUsereVideoStrem(stream);
@@ -23,7 +24,7 @@ function App() {
 
       peer.on("call", (call) => {
         var getUserMedia = navigator.getUserMedia;
-        getUserMedia({ video: true }, (mediaStream) => {
+        getUserMedia({ video: true, audio: true }, (mediaStream) => {
           currentUserVideoRef.current.srcObject = mediaStream;
           currentUserVideoRef.current.play();
           call.answer(mediaStream);
@@ -39,7 +40,7 @@ function App() {
 
   const call = (remotePeerId) => {
     var getUserMedia = navigator.getUserMedia;
-    getUserMedia({ video: true, audio: false }, (mediaStream) => {
+    getUserMedia({ video: true, audio: true }, (mediaStream) => {
       currentUsereVideoStrem(mediaStream);
       sendCallToUser(remotePeerId, mediaStream);
     });
