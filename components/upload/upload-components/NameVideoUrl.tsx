@@ -16,6 +16,8 @@ const NameVideoUrl = () => {
   const [FileName, setFileName] = useState("");
   const [VideoLink, setVideoLink] = useState("");
   const [Uploaded, setUploaded] = useState(false);
+  const [videoPath, setVideoPath] = useState("");
+
   const dispatch = useDispatch();
   const Router = useRouter();
   const readVideo = async (event: any) => {
@@ -25,17 +27,23 @@ const NameVideoUrl = () => {
       reader.readAsDataURL(event.target.files[0]);
       HandelSubmiteNewGeneral();
       reader.onload = function (e: any) {
-        if (videoSrc.current) {
-          videoSrc.current.src = e.target.result;
-          if (videoTag.current) {
-            videoTag.current.load();
-          }
+        if (videoTag.current) {
+          videoTag.current.src = e.target.result;
+          videoTag.current.play();
         }
       };
     }
   };
+  useEffect(() => {
+    if (videoTag.current) {
+      videoTag.current.src =
+        process.env.NEXT_PUBLIC_BACK_END_URL +
+        "/api/get/read/video/" +
+        videoPath;
+      videoTag.current.play();
+    }
+  }, [Uploaded, videoPath]);
   const HandelSubmiteNewGeneral = async () => {
-    alert("yes");
     let formData = new FormData();
     if (Path.current) {
       formData.append("channelId", Channels[0]._id);
@@ -45,22 +53,22 @@ const NameVideoUrl = () => {
       "/api/post/video/create-new-video/",
       formData
     ).then(({ data }) => {
-      console.log(data);
       const { file }: any = data;
       if (file.id) {
         dispatch(
           ActionVideoDataChanging({
             id: "video_id",
-            video_id: file.id,
+            video_id: file._id,
           })
         );
       }
 
-      setFileName(file.id);
+      setFileName(file.filename);
+      setVideoPath(file._id);
       setVideoLink(
         process.env.NEXT_PUBLIC_ClIENT_URL +
           "/watch/watch?watching=true&video=" +
-          file.filename
+          file._id
       );
       setUploaded(true);
     });
@@ -104,12 +112,11 @@ const NameVideoUrl = () => {
                 autoPlay
                 muted
                 loop
-                controls
               >
+                your broswer does not Support videos
                 <source
                   ref={videoSrc}
                   className={Style.video}
-                  src="http://localhost:5000/image/aac46b06e3ba088399c675229171d1b0.mp4"
                   type="video/mp4"
                 />
               </video>

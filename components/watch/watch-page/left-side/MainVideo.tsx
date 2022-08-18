@@ -33,7 +33,7 @@ const MainVideo = () => {
     );
     if (videoTag.current) {
       videoTag.current.src =
-        process.env.NEXT_PUBLIC_BACK_END_URL + "/read/" + video;
+        process.env.NEXT_PUBLIC_BACK_END_URL + "/api/get/read/video/" + video;
       videoTag.current.play();
     }
   }, [asPath]);
@@ -79,7 +79,6 @@ const MainVideo = () => {
           <video ref={videoTag} autoPlay muted loop controls>
             <source
               ref={videoSrc}
-              // src={"http://localhost:5000" + "/read/" + ActiveVideo}
               className={Style.video}
               type="video/mp4"
             />

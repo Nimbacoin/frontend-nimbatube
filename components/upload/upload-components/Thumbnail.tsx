@@ -5,6 +5,7 @@ import FormData from "form-data";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionVideoDataChanging } from "../../../redux/video-slice/VideoSlice";
 import AxiosPostLogedInFormData from "../../../utils/AxiosPostLogedInFormData";
+import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
 
 const Thumbnail = () => {
   const Path = useRef(null);
@@ -12,24 +13,15 @@ const Thumbnail = () => {
   const Thumbnail = React.useRef<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
+  const videoData = useSelector((state: any) => state.VideoSlice.videoData);
 
   const readImageThumbnail = async (event: any) => {
     if (event.target.files && event.target.files[0]) {
       Path.current = event.target.files[0];
-      var reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      setUploaded(true);
-
-      HandelSubmiteThumbnail();
-      reader.onload = function (e: any) {
-        if (Thumbnail.current) {
-          console.log(e.target.result);
-          Thumbnail.current.style.backgroundImage = `url(${e.target.result})`;
-        }
-      };
+      handelSubmiteThumbnail();
     }
   };
-  const HandelSubmiteThumbnail = async () => {
+  const handelSubmiteThumbnail = async () => {
     let formData = new FormData();
     if (Path.current) {
       formData.append("channelId", Channels[0]._id);
@@ -41,6 +33,14 @@ const Thumbnail = () => {
     ).then(({ data }) => {
       console.log(data);
       const { file }: any = data;
+      if (Thumbnail.current) {
+        Thumbnail.current.style.backgroundImage = `url(${
+          process.env.NEXT_PUBLIC_BACK_END_URL +
+          "/api/get/read/images/" +
+          file.filename
+        })`;
+      }
+      setUploaded(true);
       dispatch(
         ActionVideoDataChanging({
           id: "video_id",
@@ -48,6 +48,12 @@ const Thumbnail = () => {
         })
       );
     });
+  };
+  const handelSubmiteVideos = async () => {
+    await basedPostUrlRequestLogedIn(
+      "/api/post/video/submite-video/",
+      videoData
+    ).then(() => {});
   };
 
   return (
@@ -79,7 +85,9 @@ const Thumbnail = () => {
         </div>
       </div>
       <div className={Style.div_button_action}>
-        <button className={Style.button_action}>Submit</button>
+        <button className={Style.button_action} onClick={handelSubmiteVideos}>
+          Submit
+        </button>
         <button className={Style.button_action_add}>Cancel </button>
       </div>
     </div>
