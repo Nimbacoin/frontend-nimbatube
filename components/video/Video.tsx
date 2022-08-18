@@ -42,7 +42,7 @@ const Video = ({ VideoData }: any) => {
     "/api/get/read/images/" +
     VideoData?.thumbnail;
   return (
-    <Link href={"/watch/watch?watching=true&video=" + VideoData._id}>
+    <Link href={"/watch/watch?watching=true&video=" + VideoData?._id}>
       <div
         onMouseOver={HandelOver}
         onMouseLeave={HandelLeave}
