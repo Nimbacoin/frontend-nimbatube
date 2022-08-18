@@ -40,7 +40,7 @@ const Video = ({ VideoData }: any) => {
   const thumbnail =
     process.env.NEXT_PUBLIC_BACK_END_URL +
     "/api/get/read/images/" +
-    VideoData.thumbnail;
+    VideoData?.thumbnail;
   return (
     <Link href={"/watch/watch?watching=true&video=" + VideoData._id}>
       <div
