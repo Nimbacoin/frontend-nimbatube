@@ -6,6 +6,7 @@ const Home = () => {
   return (
     <div className={Style.container}>
       <div className={Style.vedio_container}>
+        {/* <Video />
         <Video />
         <Video />
         <Video />
@@ -17,8 +18,7 @@ const Home = () => {
         <Video />
         <Video />
         <Video />
-        <Video />
-        <Video />
+        <Video /> */}
       </div>
     </div>
   );

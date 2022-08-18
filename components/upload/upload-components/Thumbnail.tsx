@@ -24,7 +24,12 @@ const Thumbnail = () => {
   const handelSubmiteThumbnail = async () => {
     let formData = new FormData();
     if (Path.current) {
-      formData.append("channelId", Channels[0]._id);
+      if (Channels[0]._id) {
+        formData.append("channelId", Channels[0]._id);
+      }
+      if (videoData.video_id) {
+        formData.append("videoId", videoData.video_id);
+      }
       formData.append("thumbnail", Path.current);
     }
     await AxiosPostLogedInFormData(
@@ -41,19 +46,16 @@ const Thumbnail = () => {
         })`;
       }
       setUploaded(true);
-      dispatch(
-        ActionVideoDataChanging({
-          id: "video_id",
-          video_id: file.id,
-        })
-      );
     });
   };
   const handelSubmiteVideos = async () => {
+    console.log(videoData);
     await basedPostUrlRequestLogedIn(
       "/api/post/video/submite-video/",
       videoData
-    ).then(() => {});
+    ).then(({ file }) => {
+      console.log(file);
+    });
   };
 
   return (
@@ -72,7 +74,7 @@ const Thumbnail = () => {
             <input
               id="input_upload_thumbnail"
               type="file"
-              accept="image/png, image/gif, image/jpeg image/jfif image/svg"
+              accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
               onChange={readImageThumbnail}
               className={Style.input_upload}
             />

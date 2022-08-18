@@ -4,7 +4,7 @@ import { IoEllipsisVertical } from "@react-icons/all-files/io5/IoEllipsisVertica
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 
 import Link from "next/link";
-const Video = () => {
+const Video = ({ VideoData }: any) => {
   const [OverElement, setOverElement] = useState(false);
   const HandelOver = () => {
     setOverElement(true);
@@ -35,10 +35,14 @@ const Video = () => {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
   const BgP = "/images/default-profile.png";
 
-  const Title =
-    "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
+  const Title = VideoData.title;
+  ("ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)");
+  const thumbnail =
+    process.env.NEXT_PUBLIC_BACK_END_URL +
+    "/api/get/read/images/" +
+    VideoData.thumbnail;
   return (
-    <Link href="/watch/ids">
+    <Link href={"/watch/watch?watching=true&video=" + VideoData._id}>
       <div
         onMouseOver={HandelOver}
         onMouseLeave={HandelLeave}
@@ -46,7 +50,7 @@ const Video = () => {
       >
         <div
           style={{
-            backgroundImage: `url(${Bg})`,
+            backgroundImage: `url(${thumbnail})`,
             minHeight: `${IsPhone && ScreenWithByHalf}px`,
           }}
           className={Style.vedio_container}

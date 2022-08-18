@@ -10,8 +10,9 @@ export const VideoSlice = createSlice({
   reducers: {
     ActionVideoDataChanging: (state: any, action: any) => {
       const Action = action.payload;
-      if (Action.id === "input_title") {
-        state.videoData["title"] = Action.input_title;
+      if (Action.id === "title") {
+        console.log(Action.title);
+        state.videoData["title"] = Action.title;
       } else if (Action.id === "text_desc") {
         state.videoData["descreption"] = Action.text_desc;
       } else if (Action.id === "video_id") {

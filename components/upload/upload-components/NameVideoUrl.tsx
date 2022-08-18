@@ -54,7 +54,7 @@ const NameVideoUrl = () => {
       formData
     ).then(({ data }) => {
       const { file }: any = data;
-      if (file.id) {
+      if (file._id) {
         dispatch(
           ActionVideoDataChanging({
             id: "video_id",
@@ -77,22 +77,23 @@ const NameVideoUrl = () => {
   const handelCopy = () => {
     navigator.clipboard.writeText(VideoLink);
   };
-  const handelChange = (e: any) => {
-    if (e.target.id === " input_title") {
-      dispatch(
-        ActionVideoDataChanging({
-          id: "input_title",
-          input_title: e.target.value,
-        })
-      );
-    } else {
-      dispatch(
-        ActionVideoDataChanging({
-          id: "text_desc",
-          text_desc: e.target.value,
-        })
-      );
-    }
+  const handelChangeDesc = (e: any) => {
+    dispatch(
+      ActionVideoDataChanging({
+        id: "text_desc",
+        text_desc: e.target.value,
+      })
+    );
+  };
+
+  const handelChangeTitle = (e: any) => {
+    console.log(e.target.id);
+    dispatch(
+      ActionVideoDataChanging({
+        id: "title",
+        title: e.target.value,
+      })
+    );
   };
   return (
     <div className={Style.container}>
@@ -171,10 +172,10 @@ const NameVideoUrl = () => {
         )}
         <div className={Style.upload_input}>
           <p className={Style.upload_file}>Tilte</p>
-          <label htmlFor="input_title" className={Style.input_label}>
+          <label htmlFor="title" className={Style.input_label}>
             <input
-              id="input_title"
-              onChange={handelChange}
+              id="title"
+              onChange={handelChangeTitle}
               type="text"
               className={Style.input_title}
             />
@@ -185,7 +186,7 @@ const NameVideoUrl = () => {
           <label htmlFor="text_desc" className={Style.label_description}>
             <textarea
               id="text_desc"
-              onChange={handelChange}
+              onChange={handelChangeDesc}
               className={Style.text_desc}
             />
           </label>

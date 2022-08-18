@@ -25,8 +25,8 @@ function App() {
       peer.on("call", (call) => {
         var getUserMedia = navigator.getUserMedia;
         getUserMedia({ video: true, audio: true }, (mediaStream) => {
-          currentUserVideoRef.current.srcObject = mediaStream;
-          currentUserVideoRef.current.play();
+          // currentUserVideoRef.current.srcObject = mediaStream;
+          // currentUserVideoRef.current.play();
           call.answer(mediaStream);
           call.on("stream", function (remoteStream) {
             remoteVideoRef.current.srcObject = remoteStream;
@@ -54,8 +54,8 @@ function App() {
     });
   };
   const currentUsereVideoStrem = (mediaStream) => {
-    currentUserVideoRef.current.srcObject = mediaStream;
-    currentUserVideoRef.current.play();
+    // currentUserVideoRef.current.srcObject = mediaStream;
+    // currentUserVideoRef.current.play();
   };
 
   return (
@@ -69,9 +69,7 @@ function App() {
         onChange={(e) => setRemotePeerIdValue(e.target.value)}
       />
       <button onClick={() => call(remotePeerIdValue)}>Call</button>
-      <div>
-        <video ref={currentUserVideoRef} />
-      </div>
+      <div>{/* <video ref={currentUserVideoRef} muted /> */}</div>
       <div>
         b
         <video ref={remoteVideoRef} />b
