@@ -16,6 +16,7 @@ import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo
 import Descreption from "./Descreption";
 import Comments from "./Comments";
 import { useRouter } from "next/router";
+import LiveVideo from "../live/LiveVideo";
 
 const MainVideo = () => {
   const { asPath, pathname } = useRouter();
@@ -74,15 +75,12 @@ const MainVideo = () => {
   };
   return (
     <div className={Style.container}>
+      <LiveVideo />
       <div className={Style.video_container}>
         <div className={Style.video_container_2}>
-          <video ref={videoTag} autoPlay muted loop controls>
-            <source
-              ref={videoSrc}
-              className={Style.video}
-              type="video/mp4"
-            />
-          </video>
+          {/* <video ref={videoTag} autoPlay muted loop controls>
+            <source ref={videoSrc} className={Style.video} type="video/mp4" />
+          </video> */}
         </div>
       </div>
       <div className={Style.video_data}>

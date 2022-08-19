@@ -4,6 +4,7 @@ import ProfileDate from "./newpage-component/ProfileDate";
 import Style from "../../../styles/pages/channel/my-channel/my-channel.module.css";
 import { useRouter } from "next/router";
 import basedGetUrlRequest from "../../../utils/basedGetUrlRequest";
+import Streaming from "./streaming/Streaming";
 const MychannelPage = () => {
   const Router = useRouter();
   const { asPath } = useRouter();
@@ -26,6 +27,7 @@ const MychannelPage = () => {
   return (
     <div className={Style.container}>
       <ProfileDate ChannelData={ChannelData} />
+      <Streaming />
     </div>
   );
 };
