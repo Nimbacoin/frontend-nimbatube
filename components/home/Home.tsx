@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <div className={Style.container}>
       <div className={Style.vedio_container}>
-        {videos.length && videos.map((vid) => <Vedio VideoData={vid} />)}
+        {videos.length ? videos.map((vid) => <Vedio VideoData={vid} />) : null}
       </div>
     </div>
   );
