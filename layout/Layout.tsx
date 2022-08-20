@@ -58,6 +58,8 @@ const Layout = ({ children }: any) => {
     );
   }, [asPath]);
 
+  
+
   return (
     <>
       <Head>

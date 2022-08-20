@@ -1,3 +1,4 @@
+import socketSlice from "./socket-slice/socketSlice";
 import VideoSlice from "./video-slice/VideoSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
@@ -16,6 +17,7 @@ export const store = configureStore({
     UserSignIn,
     ChannelSlice,
     VideoSlice,
+    socketSlice,
   },
   middleware: [thunk],
 });
