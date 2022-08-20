@@ -34,7 +34,7 @@ const LiveVideo = () => {
     return peer;
   }
 
-  async function handleNegotiationNeededEvent(peer:any) {
+  async function handleNegotiationNeededEvent(peer: any) {
     const offer = await peer.createOffer();
     await peer.setLocalDescription(offer);
     const payload = {
@@ -46,11 +46,13 @@ const LiveVideo = () => {
       payload
     );
     const desc = new RTCSessionDescription(data.sdp);
-    peer.setRemoteDescription(desc).catch((e:any) => console.log(e));
+    peer.setRemoteDescription(desc).catch((e: any) => console.log(e));
   }
 
-  function handleTrackEvent(e:any) {
+  function handleTrackEvent(e: any) {
     if (remoteVideoRef.current) {
+      alert("yes here");
+      console.log(e.streams[0]);
       remoteVideoRef.current.srcObject = e.streams[0];
     }
   }
