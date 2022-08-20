@@ -39,11 +39,12 @@ const LiveVideo = () => {
     const payload = {
       sdp: peer.localDescription,
     };
-    alert(ActiveVideoLive);
+
     const { data } = await axios.post(
       process.env.NEXT_PUBLIC_BACK_END_URL + "/api/post/stream/join-stream",
       { sdp: payload, roomId: ActiveVideoLive }
     );
+    console.log(ActiveVideoLive, data);
 
     const desc = new RTCSessionDescription(data.sdp);
     peer.setRemoteDescription(desc).catch((e: any) => console.log(e));
