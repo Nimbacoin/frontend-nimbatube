@@ -17,23 +17,24 @@ const LiveVideo = () => {
 
   async function init() {
     const peer = createPeer();
-    if (peer) {
-      peer.addTransceiver("video", { direction: "recvonly" });
-      peer.addTransceiver("audio", { direction: "recvonly" });
-    }
+    peer.addTransceiver("video", { direction: "recvonly" });
   }
 
   function createPeer() {
-    const peer = peerRef.current;
-    if (peer) {
-      peer.ontrack = handleTrackEvent;
-      peer.onnegotiationneeded = () => handleNegotiationNeededEvent(peer);
-    }
+    const peer = new RTCPeerConnection({
+      iceServers: [
+        {
+          urls: "stun:stun.stunprotocol.org",
+        },
+      ],
+    });
+    peer.ontrack = handleTrackEvent;
+    peer.onnegotiationneeded = () => handleNegotiationNeededEvent(peer);
 
     return peer;
   }
 
-  async function handleNegotiationNeededEvent(peer: any) {
+  async function handleNegotiationNeededEvent(peer:any) {
     const offer = await peer.createOffer();
     await peer.setLocalDescription(offer);
     const payload = {
@@ -41,29 +42,19 @@ const LiveVideo = () => {
     };
 
     const { data } = await axios.post(
-      process.env.NEXT_PUBLIC_BACK_END_URL + "/api/post/stream/join-stream",
-      { sdp: payload, roomId: ActiveVideoLive }
+      process.env.NEXT_PUBLIC_BACK_END_URL + "/consumer",
+      payload
     );
-    // const { data } = await axios.post(
-    //   process.env.NEXT_PUBLIC_BACK_END_URL + "/consumer",
-    //   { sdp: payload, roomId: ActiveVideoLive }
-    // );
-    console.log(ActiveVideoLive, data);
-
     const desc = new RTCSessionDescription(data.sdp);
-    peer.setRemoteDescription(desc).catch((e: any) => console.log(e));
-
-    // socketRedux.emit("join-watch-stream", {
-    //   body: payload,
-    //   roomId: "123456787654323456",
-    // });
+    peer.setRemoteDescription(desc).catch((e:any) => console.log(e));
   }
 
-  function handleTrackEvent(e: any) {
+  function handleTrackEvent(e:any) {
     if (remoteVideoRef.current) {
       remoteVideoRef.current.srcObject = e.streams[0];
     }
   }
+
   useEffect(() => {
     peerRef.current = new RTCPeerConnection({
       iceServers: [

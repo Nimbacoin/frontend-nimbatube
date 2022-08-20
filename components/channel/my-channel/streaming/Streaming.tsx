@@ -13,55 +13,42 @@ const Streaming = () => {
   const channels = useSelector((state: any) => state.ChannelSlice.allChannels);
   const channelId = channels[0]?._id;
   const isSocket = useSelector((state: any) => state.socketSlice.isSocket);
+
   async function init() {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: true,
-      audio: true,
-    });
-    if (localVideoRef.current) {
-      localVideoRef.current.srcObject = stream;
-      const peer = createPeer();
-      if (peer) {
-        stream.getTracks().forEach((track) => peer.addTrack(track, stream));
-      }
-    }
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    if (localVideoRef.current) localVideoRef.current.srcObject = stream;
+    const peer = createPeer();
+    stream.getTracks().forEach((track) => peer.addTrack(track, stream));
   }
 
   function createPeer() {
-    const peer = peerRef.current;
-    if (peer) {
-      peer.onnegotiationneeded = () => handleNegotiationNeededEvent(peer);
-    }
+    const peer = new RTCPeerConnection({
+      iceServers: [
+        {
+          urls: "stun:stun.stunprotocol.org",
+        },
+      ],
+    });
+    peer.onnegotiationneeded = () => handleNegotiationNeededEvent(peer);
 
     return peer;
   }
 
-  async function handleNegotiationNeededEvent(peer: any) {
+  async function handleNegotiationNeededEvent(peer:any) {
     const offer = await peer.createOffer();
     await peer.setLocalDescription(offer);
     const payload = {
       sdp: peer.localDescription,
     };
 
-    // const { data } = await axios.post(
-    //   process.env.NEXT_PUBLIC_BACK_END_URL + "/broadcast",
-    //   { sdp: payload, roomId: "123456787654323456" }
-    // );
-
-    const body: any = { sdp: payload, roomId: channelId };
-    const data = await basedPostUrlRequestLogedIn(
-      "/api/post/stream/create-live-stream/",
-      body
+    const { data } = await axios.post(
+      process.env.NEXT_PUBLIC_BACK_END_URL + "/broadcast",
+      payload
     );
-    console.log(data);
     const desc = new RTCSessionDescription(data.sdp);
-    peer.setRemoteDescription(desc).catch((e: any) => console.log(e));
-    socketRedux.emit("start-broadcasting-stream", {
-      body: payload,
-      roomId: "123456787654323456",
-    });
-    peerRef.current = peer;
+    peer.setRemoteDescription(desc).catch((e:any) => console.log(e));
   }
+
   useEffect(() => {
     peerRef.current = new RTCPeerConnection({
       iceServers: [
