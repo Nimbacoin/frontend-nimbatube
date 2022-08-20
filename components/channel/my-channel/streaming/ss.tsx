@@ -1,32 +1,37 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import io from "socket.io-client";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/router";
-const LiveVideo = () => {
-  const socketRef = useRef(io);
-  const pcRef = useRef<RTCPeerConnection>();
-  const remoteVideoRef = useRef<HTMLVideoElement>(null);
+import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
+const Streaming = () => {
+  const localVideoRef = useRef<HTMLVideoElement>(null);
   const peerRef = useRef<RTCPeerConnection>();
-  const [ActiveVideoLive, setActiveVideoLive] = useState("");
+
   const socketRedux = useSelector(
     (state: any) => state.socketSlice.socketRedux
   );
-  const { asPath } = useRouter();
+  const channels = useSelector((state: any) => state.ChannelSlice.allChannels);
+  const channelId = channels[0]?._id;
   const isSocket = useSelector((state: any) => state.socketSlice.isSocket);
-
   async function init() {
-    const peer = createPeer();
-    if (peer) {
-      peer.addTransceiver("video", { direction: "recvonly" });
-      peer.addTransceiver("audio", { direction: "recvonly" });
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: true,
+    });
+    if (localVideoRef.current) {
+      localVideoRef.current.srcObject = stream;
+      const peer = createPeer();
+      if (peer) {
+        alert("console.log");
+        stream.getTracks().forEach((track) => peer.addTrack(track, stream));
+      }
     }
   }
 
   function createPeer() {
     const peer = peerRef.current;
     if (peer) {
-      peer.ontrack = handleTrackEvent;
+      alert("console.log");
       peer.onnegotiationneeded = () => handleNegotiationNeededEvent(peer);
     }
 
@@ -34,35 +39,32 @@ const LiveVideo = () => {
   }
 
   async function handleNegotiationNeededEvent(peer: any) {
+    alert("console.log");
     const offer = await peer.createOffer();
     await peer.setLocalDescription(offer);
     const payload = {
       sdp: peer.localDescription,
     };
 
-    const { data } = await axios.post(
-      process.env.NEXT_PUBLIC_BACK_END_URL + "/api/post/stream/join-stream",
-      { sdp: payload, roomId: ActiveVideoLive }
-    );
     // const { data } = await axios.post(
-    //   process.env.NEXT_PUBLIC_BACK_END_URL + "/consumer",
-    //   { sdp: payload, roomId: ActiveVideoLive }
+    //   process.env.NEXT_PUBLIC_BACK_END_URL + "//post/stream/join-stream",
+    //   { sdp: payload, roomId: "123456787654323456" }
     // );
-    console.log(ActiveVideoLive, data);
-
+    if (channelId) {
+    }
+    const body: any = { sdp: payload, roomId: channelId };
+    const data = await basedPostUrlRequestLogedIn(
+      "/api/post/stream/create-live-stream/",
+      body
+    );
+    console.log(data);
     const desc = new RTCSessionDescription(data.sdp);
     peer.setRemoteDescription(desc).catch((e: any) => console.log(e));
-
-    // socketRedux.emit("join-watch-stream", {
-    //   body: payload,
-    //   roomId: "123456787654323456",
-    // });
-  }
-
-  function handleTrackEvent(e: any) {
-    if (remoteVideoRef.current) {
-      remoteVideoRef.current.srcObject = e.streams[0];
-    }
+    socketRedux.emit("start-broadcasting-stream", {
+      body: payload,
+      roomId: "123456787654323456",
+    });
+    peerRef.current = peer;
   }
   useEffect(() => {
     peerRef.current = new RTCPeerConnection({
@@ -72,9 +74,9 @@ const LiveVideo = () => {
         },
       ],
     });
+
     // if (isSocket) {
-    //   socketRedux.on("start-watching-stream", async (data: any) => {
-    //     console.log("here", data);
+    //   socketRedux.on("broadcasting-stream", async (data: any) => {
     //     const desc = new RTCSessionDescription(data.sdp);
     //     if (peerRef.current) {
     //       peerRef.current
@@ -83,15 +85,7 @@ const LiveVideo = () => {
     //     }
     //   });
     // }
-  }, [socketRedux, isSocket]);
-  useEffect(() => {
-    let Params = new URL(window.location.href).searchParams;
-    const video: string | null = Params.get("video");
-    const liveStreaming: string | null = Params.get("live-streaming");
-    if (video) {
-      setActiveVideoLive(video);
-    }
-  }, [asPath]);
+  }, [socketRedux]);
 
   return (
     <div>
@@ -102,8 +96,8 @@ const LiveVideo = () => {
           margin: 5,
           backgroundColor: "black",
         }}
-        ref={remoteVideoRef}
         muted
+        ref={localVideoRef}
         autoPlay
       />
       <button onClick={init}>go Live </button>
@@ -111,4 +105,4 @@ const LiveVideo = () => {
   );
 };
 
-export default LiveVideo;
+export default Streaming;

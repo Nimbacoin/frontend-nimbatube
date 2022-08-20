@@ -43,21 +43,24 @@ const Streaming = () => {
       sdp: peer.localDescription,
     };
 
-    if (channelId) {
-      alert("sd");
-      const body: any = { sdp: payload, roomId: channelId };
-      const data = await basedPostUrlRequestLogedIn(
-        "/api/post/stream/create-live-stream/",
-        body
-      );
-      const desc = new RTCSessionDescription(data.sdp);
-      peer.setRemoteDescription(desc).catch((e: any) => console.log(e));
-      // socketRedux.emit("start-broadcasting-stream", {
-      //   body: payload,
-      //   roomId: "123456787654323456",
-      // });
-      peerRef.current = peer;
-    }
+    // const { data } = await axios.post(
+    //   process.env.NEXT_PUBLIC_BACK_END_URL + "/broadcast",
+    //   { sdp: payload, roomId: "123456787654323456" }
+    // );
+
+    const body: any = { sdp: payload, roomId: channelId };
+    const data = await basedPostUrlRequestLogedIn(
+      "/api/post/stream/create-live-stream/",
+      body
+    );
+    console.log(data);
+    const desc = new RTCSessionDescription(data.sdp);
+    peer.setRemoteDescription(desc).catch((e: any) => console.log(e));
+    socketRedux.emit("start-broadcasting-stream", {
+      body: payload,
+      roomId: "123456787654323456",
+    });
+    peerRef.current = peer;
   }
   useEffect(() => {
     peerRef.current = new RTCPeerConnection({
