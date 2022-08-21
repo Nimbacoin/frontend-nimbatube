@@ -48,7 +48,7 @@ const Layout = ({ children }: any) => {
     basedGetUrlRequestLogedIn("/api/get/channel/all-channels").then(
       (res: any) => {
         try {
-          if (res.responsData) {
+          if (res && res.responsData) {
             dispatch(AllChannelsRedcuer(res.responsData));
           }
         } catch (error) {
@@ -57,8 +57,6 @@ const Layout = ({ children }: any) => {
       }
     );
   }, [asPath]);
-
-  
 
   return (
     <>

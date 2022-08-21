@@ -24,7 +24,7 @@ const LiveVideo = () => {
     const peer = new RTCPeerConnection({
       iceServers: [
         {
-          urls: "stun:stun.l.google.com:19302",
+          urls: "stun:stun.stunprotocol.org",
         },
       ],
     });
@@ -45,44 +45,14 @@ const LiveVideo = () => {
       process.env.NEXT_PUBLIC_BACK_END_URL + "/consumer",
       payload
     );
+    console.log(data);
     const desc = new RTCSessionDescription(data.sdp);
     peer.setRemoteDescription(desc).catch((e: any) => console.log(e));
   }
 
   function handleTrackEvent(e: any) {
-    if (remoteVideoRef.current !== null) {
-      remoteVideoRef.current.srcObject = e.streams[0];
-    }
+    if (remoteVideoRef.current) remoteVideoRef.current.srcObject = e.streams[0];
   }
-
-  // useEffect(() => {
-  //   peerRef.current = new RTCPeerConnection({
-  //     iceServers: [
-  //       {
-  //         urls: "stun:stun.stunprotocol.org",
-  //       },
-  //     ],
-  //   });
-  //   // if (isSocket) {
-  //   //   socketRedux.on("start-watching-stream", async (data: any) => {
-  //   //     console.log("here", data);
-  //   //     const desc = new RTCSessionDescription(data.sdp);
-  //   //     if (peerRef.current) {
-  //   //       peerRef.current
-  //   //         .setRemoteDescription(desc)
-  //   //         .catch((e: any) => console.log(e));
-  //   //     }
-  //   //   });
-  //   // }
-  // }, [socketRedux, isSocket]);
-  // useEffect(() => {
-  //   let Params = new URL(window.location.href).searchParams;
-  //   const video: string | null = Params.get("video");
-  //   const liveStreaming: string | null = Params.get("live-streaming");
-  //   if (video) {
-  //     setActiveVideoLive(video);
-  //   }
-  // }, [asPath]);
 
   return (
     <div>

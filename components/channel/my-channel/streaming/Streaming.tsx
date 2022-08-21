@@ -17,6 +17,7 @@ const Streaming = () => {
   async function init() {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     if (localVideoRef.current) localVideoRef.current.srcObject = stream;
+
     const peer = createPeer();
     stream.getTracks().forEach((track) => peer.addTrack(track, stream));
   }
@@ -25,7 +26,7 @@ const Streaming = () => {
     const peer = new RTCPeerConnection({
       iceServers: [
         {
-          urls: "stun:stun.l.google.com:19302",
+          urls: "stun:stun.stunprotocol.org",
         },
       ],
     });
@@ -48,27 +49,6 @@ const Streaming = () => {
     const desc = new RTCSessionDescription(data.sdp);
     peer.setRemoteDescription(desc).catch((e: any) => console.log(e));
   }
-
-  // useEffect(() => {
-  //   peerRef.current = new RTCPeerConnection({
-  //     iceServers: [
-  //       {
-  //         urls: "stun:stun.stunprotocol.org",
-  //       },
-  //     ],
-  //   });
-
-  //   // if (isSocket) {
-  //   //   socketRedux.on("broadcasting-stream", async (data: any) => {
-  //   //     const desc = new RTCSessionDescription(data.sdp);
-  //   //     if (peerRef.current) {
-  //   //       peerRef.current
-  //   //         .setRemoteDescription(desc)
-  //   //         .catch((e: any) => console.log(e));
-  //   //     }
-  //   //   });
-  //   // }
-  // }, [socketRedux]);
 
   return (
     <div>
