@@ -50,10 +50,10 @@ const LiveVideo = () => {
   }
 
   function handleTrackEvent(e: any) {
-    alert("yes here");
-    if (remoteVideoRef.current) {
-      console.log(e.streams[0]);
+    if (remoteVideoRef.current !== null) {
       remoteVideoRef.current.srcObject = e.streams[0];
+      alert("yes here");
+      console.log(e.streams[0]);
     }
   }
 
