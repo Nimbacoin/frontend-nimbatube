@@ -34,7 +34,7 @@ const Streaming = () => {
     return peer;
   }
 
-  async function handleNegotiationNeededEvent(peer:any) {
+  async function handleNegotiationNeededEvent(peer: any) {
     const offer = await peer.createOffer();
     await peer.setLocalDescription(offer);
     const payload = {
@@ -46,29 +46,32 @@ const Streaming = () => {
       payload
     );
     const desc = new RTCSessionDescription(data.sdp);
-    peer.setRemoteDescription(desc).catch((e:any) => console.log(e));
+    peer.setRemoteDescription(desc).catch((e: any) => console.log(e));
   }
 
-  useEffect(() => {
-    peerRef.current = new RTCPeerConnection({
-      iceServers: [
-        {
-          urls: "stun:stun.stunprotocol.org",
-        },
-      ],
-    });
 
-    // if (isSocket) {
-    //   socketRedux.on("broadcasting-stream", async (data: any) => {
-    //     const desc = new RTCSessionDescription(data.sdp);
-    //     if (peerRef.current) {
-    //       peerRef.current
-    //         .setRemoteDescription(desc)
-    //         .catch((e: any) => console.log(e));
-    //     }
-    //   });
-    // }
-  }, [socketRedux]);
+
+  
+  // useEffect(() => {
+  //   peerRef.current = new RTCPeerConnection({
+  //     iceServers: [
+  //       {
+  //         urls: "stun:stun.stunprotocol.org",
+  //       },
+  //     ],
+  //   });
+
+  //   // if (isSocket) {
+  //   //   socketRedux.on("broadcasting-stream", async (data: any) => {
+  //   //     const desc = new RTCSessionDescription(data.sdp);
+  //   //     if (peerRef.current) {
+  //   //       peerRef.current
+  //   //         .setRemoteDescription(desc)
+  //   //         .catch((e: any) => console.log(e));
+  //   //     }
+  //   //   });
+  //   // }
+  // }, [socketRedux]);
 
   return (
     <div>
