@@ -25,7 +25,7 @@ const Streaming = () => {
     const peer = new RTCPeerConnection({
       iceServers: [
         {
-          urls: "stun:stun.stunprotocol.org",
+          urls: "stun:stun.l.google.com:19302",
         },
       ],
     });
@@ -49,9 +49,6 @@ const Streaming = () => {
     peer.setRemoteDescription(desc).catch((e: any) => console.log(e));
   }
 
-
-
-  
   // useEffect(() => {
   //   peerRef.current = new RTCPeerConnection({
   //     iceServers: [
