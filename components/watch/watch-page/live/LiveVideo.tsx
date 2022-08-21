@@ -52,39 +52,37 @@ const LiveVideo = () => {
   function handleTrackEvent(e: any) {
     if (remoteVideoRef.current !== null) {
       remoteVideoRef.current.srcObject = e.streams[0];
-      alert("yes here");
-      console.log(e.streams[0]);
     }
   }
 
-  useEffect(() => {
-    peerRef.current = new RTCPeerConnection({
-      iceServers: [
-        {
-          urls: "stun:stun.stunprotocol.org",
-        },
-      ],
-    });
-    // if (isSocket) {
-    //   socketRedux.on("start-watching-stream", async (data: any) => {
-    //     console.log("here", data);
-    //     const desc = new RTCSessionDescription(data.sdp);
-    //     if (peerRef.current) {
-    //       peerRef.current
-    //         .setRemoteDescription(desc)
-    //         .catch((e: any) => console.log(e));
-    //     }
-    //   });
-    // }
-  }, [socketRedux, isSocket]);
-  useEffect(() => {
-    let Params = new URL(window.location.href).searchParams;
-    const video: string | null = Params.get("video");
-    const liveStreaming: string | null = Params.get("live-streaming");
-    if (video) {
-      setActiveVideoLive(video);
-    }
-  }, [asPath]);
+  // useEffect(() => {
+  //   peerRef.current = new RTCPeerConnection({
+  //     iceServers: [
+  //       {
+  //         urls: "stun:stun.stunprotocol.org",
+  //       },
+  //     ],
+  //   });
+  //   // if (isSocket) {
+  //   //   socketRedux.on("start-watching-stream", async (data: any) => {
+  //   //     console.log("here", data);
+  //   //     const desc = new RTCSessionDescription(data.sdp);
+  //   //     if (peerRef.current) {
+  //   //       peerRef.current
+  //   //         .setRemoteDescription(desc)
+  //   //         .catch((e: any) => console.log(e));
+  //   //     }
+  //   //   });
+  //   // }
+  // }, [socketRedux, isSocket]);
+  // useEffect(() => {
+  //   let Params = new URL(window.location.href).searchParams;
+  //   const video: string | null = Params.get("video");
+  //   const liveStreaming: string | null = Params.get("live-streaming");
+  //   if (video) {
+  //     setActiveVideoLive(video);
+  //   }
+  // }, [asPath]);
 
   return (
     <div>
