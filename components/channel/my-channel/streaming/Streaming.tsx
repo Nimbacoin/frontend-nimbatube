@@ -26,7 +26,7 @@ const Streaming = () => {
     const peer = new RTCPeerConnection({
       iceServers: [
         {
-          urls: "stun:stun.stunprotocol.org",
+          urls: "stun:global.stun.twilio.com:3478?transport=udp",
         },
       ],
     });
