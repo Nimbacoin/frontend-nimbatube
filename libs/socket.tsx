@@ -23,7 +23,7 @@ const SocketHandler = () => {
       if (!isSocket) {
         dispatch(socketReduxRecuder(socket));
       }
-      socket.on("connect_error", (err) => {
+      socket.on("connect_error", (err: any) => {
         console.log(`connect_error due to the ${err.message}`);
       });
       socket.on("connect", () => {
