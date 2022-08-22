@@ -111,8 +111,7 @@ const Broadcast = () => {
   };
 
   const launchBroadcast = async () => {
-      socket.emit("new-broadcaster", broadcaster);
-    
+    socket.emit("new-broadcaster", broadcaster);
   };
 
   return (
@@ -126,7 +125,6 @@ const Broadcast = () => {
           ref={videoRef}
           onCanPlay={handleCanPlay}
           playsInline
-          muted
         />
         <div className="name-input">
           <input

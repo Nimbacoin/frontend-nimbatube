@@ -16,7 +16,7 @@ const pc_config = {
 const SOCKET_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL;
 
 const App = () => {
-  const socketRef = useRef(null);
+  const socketRef = useRef<SocketIOClient.Socket>();
   const pcRef = useRef<RTCPeerConnection>();
   const localVideoRef = useRef<HTMLVideoElement>(null);
   const remoteVideoRef = useRef<HTMLVideoElement>(null);
