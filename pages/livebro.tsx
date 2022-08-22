@@ -59,21 +59,6 @@ const App = () => {
     }
   };
 
-  const createOffer = async () => {
-    console.log("create offer");
-    if (!(pcRef.current && socketRef)) return;
-    try {
-      const sdp = await pcRef.current.createOffer({
-        offerToReceiveAudio: true,
-        offerToReceiveVideo: true,
-      });
-      await pcRef.current.setLocalDescription(new RTCSessionDescription(sdp));
-      socketRef.emit("offer", sdp);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   const createAnswer = async (sdp: RTCSessionDescription) => {
     if (!(pcRef.current && socketRef)) return;
     try {
@@ -99,12 +84,6 @@ const App = () => {
       console.log("you connnected 2");
     });
     pcRef.current = new RTCPeerConnection(pc_config);
-
-    socketRef.on("all_users", (allUsers: Array<{ id: string }>) => {
-      if (allUsers.length > 0) {
-        createOffer();
-      }
-    });
 
     socketRef.on("getOffer", (sdp: RTCSessionDescription) => {
       console.log("get offer");

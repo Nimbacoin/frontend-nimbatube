@@ -13,10 +13,10 @@ const pc_config = {
     },
   ],
 };
-const SOCKET_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL;
+const SOCKET_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL!;
 
 const App = () => {
-  const socketRef = io(process.env.NEXT_PUBLIC_BACK_END_URL!, {
+  const socket = io(SOCKET_SERVER_URL, {
     transports: ["websocket", "polling"],
   });
   const pcRef = useRef<RTCPeerConnection>();
@@ -25,22 +25,19 @@ const App = () => {
 
   const setVideoTracks = async () => {
     try {
-      if (pcRef.current && socketRef) {
+      if (pcRef.current && socket) {
         pcRef.current.onicecandidate = (e) => {
           if (e.candidate) {
-            if (!socketRef) return;
-            console.log("onicecandidate");
-            socketRef.emit("candidate", e.candidate);
+            if (!socket) return;
+            socket.emit("candidate", e.candidate);
           }
         };
-
         pcRef.current.ontrack = (ev) => {
-          console.log("add remotetrack success");
           if (remoteVideoRef.current) {
             remoteVideoRef.current.srcObject = ev.streams[0];
           }
         };
-        socketRef.emit("join_room", {
+        socket.emit("join_room", {
           room: "1234",
         });
       }
@@ -51,63 +48,41 @@ const App = () => {
 
   const createOffer = async () => {
     console.log("create offer");
-    if (!(pcRef.current && socketRef)) return;
+    if (!(pcRef.current && socket)) return;
     try {
       const sdp = await pcRef.current.createOffer({
         offerToReceiveAudio: true,
         offerToReceiveVideo: true,
       });
       await pcRef.current.setLocalDescription(new RTCSessionDescription(sdp));
-      socketRef.emit("offer", sdp);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const createAnswer = async (sdp: RTCSessionDescription) => {
-    if (!(pcRef.current && socketRef)) return;
-    try {
-      await pcRef.current.setRemoteDescription(new RTCSessionDescription(sdp));
-      console.log("answer set remote description success");
-      const mySdp = await pcRef.current.createAnswer({
-        offerToReceiveVideo: true,
-        offerToReceiveAudio: true,
-      });
-      console.log("create answer");
-      await pcRef.current.setLocalDescription(new RTCSessionDescription(mySdp));
-      socketRef.emit("answer", mySdp);
+      socket.emit("offer", sdp);
     } catch (e) {
       console.error(e);
     }
   };
 
   useEffect(() => {
-    socketRef.on("connect_error", (err: any) => {
+    socket.on("connect_error", (err: any) => {
       console.log(`connect_error due to the ${err.message}`);
     });
-    socketRef.on("connect", () => {
+    socket.on("connect", () => {
       console.log("you connnected 2");
     });
     pcRef.current = new RTCPeerConnection(pc_config);
 
-    socketRef.on("all_users", (allUsers: Array<{ id: string }>) => {
+    socket.on("all_users", (allUsers: Array<{ id: string }>) => {
       if (allUsers.length > 0) {
         createOffer();
       }
     });
 
-    socketRef.on("getOffer", (sdp: RTCSessionDescription) => {
-      console.log("get offer");
-      createAnswer(sdp);
-    });
-
-    socketRef.on("getAnswer", (sdp: RTCSessionDescription) => {
+    socket.on("getAnswer", (sdp: RTCSessionDescription) => {
       console.log("get answer");
       if (!pcRef.current) return;
       pcRef.current.setRemoteDescription(new RTCSessionDescription(sdp));
     });
 
-    socketRef.on("getCandidate", async (candidate: RTCIceCandidateInit) => {
+    socket.on("getCandidate", async (candidate: RTCIceCandidateInit) => {
       if (!pcRef.current) return;
       await pcRef.current.addIceCandidate(new RTCIceCandidate(candidate));
     });
