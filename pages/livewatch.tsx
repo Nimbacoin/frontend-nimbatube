@@ -20,40 +20,30 @@ const App = () => {
     transports: ["websocket", "polling"],
   });
   const pcRef = useRef<RTCPeerConnection>();
-  const localVideoRef = useRef<HTMLVideoElement>(null);
+
   const remoteVideoRef = useRef<HTMLVideoElement>(null);
 
   const setVideoTracks = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-        audio: true,
-      });
-      if (localVideoRef.current) localVideoRef.current.srcObject = stream;
-      if (!(pcRef.current && socketRef)) return;
-      stream.getTracks().forEach((track) => {
-        if (!pcRef.current) return;
-        pcRef.current.addTrack(track, stream);
-      });
-      pcRef.current.onicecandidate = (e) => {
-        if (e.candidate) {
-          if (!socketRef) return;
-          console.log("onicecandidate");
-          socketRef.emit("candidate", e.candidate);
-        }
-      };
-      pcRef.current.oniceconnectionstatechange = (e) => {
-        console.log(e);
-      };
-      pcRef.current.ontrack = (ev) => {
-        console.log("add remotetrack success");
-        if (remoteVideoRef.current) {
-          remoteVideoRef.current.srcObject = ev.streams[0];
-        }
-      };
-      socketRef.emit("join_room", {
-        room: "1234",
-      });
+      if (pcRef.current && socketRef) {
+        pcRef.current.onicecandidate = (e) => {
+          if (e.candidate) {
+            if (!socketRef) return;
+            console.log("onicecandidate");
+            socketRef.emit("candidate", e.candidate);
+          }
+        };
+
+        pcRef.current.ontrack = (ev) => {
+          console.log("add remotetrack success");
+          if (remoteVideoRef.current) {
+            remoteVideoRef.current.srcObject = ev.streams[0];
+          }
+        };
+        socketRef.emit("join_room", {
+          room: "1234",
+        });
+      }
     } catch (e) {
       console.error(e);
     }
@@ -127,19 +117,7 @@ const App = () => {
 
   return (
     <div>
-      local
-      <video
-        style={{
-          width: 240,
-          height: 240,
-          margin: 5,
-          backgroundColor: "black",
-        }}
-        muted
-        ref={localVideoRef}
-        autoPlay
-      />
-      remote
+      local remote
       <video
         id="remotevideo"
         style={{
