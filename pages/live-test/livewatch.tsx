@@ -14,7 +14,7 @@ const pc_config = {
     },
   ],
 };
-const SOCKEtT_SERVER_URL = "http://localhost:5000";
+const SOCKEtT_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL!
 
 const App = () => {
   const [room, setRoom] = useState("123");
