@@ -16,7 +16,9 @@ const pc_config = {
 const SOCKET_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL;
 
 const App = () => {
-  const socketRef = io(SOCKET_SERVER_URL!);
+  const socketRef = io(process.env.NEXT_PUBLIC_BACK_END_URL!, {
+    transports: ["websocket", "polling"],
+  });
   const pcRef = useRef<RTCPeerConnection>();
   const localVideoRef = useRef<HTMLVideoElement>(null);
   const remoteVideoRef = useRef<HTMLVideoElement>(null);
@@ -90,6 +92,12 @@ const App = () => {
   };
 
   useEffect(() => {
+    socketRef.on("connect_error", (err: any) => {
+      console.log(`connect_error due to the ${err.message}`);
+    });
+    socketRef.on("connect", () => {
+      console.log("you connnected 2");
+    });
     pcRef.current = new RTCPeerConnection(pc_config);
 
     socketRef.on("all_users", (allUsers: Array<{ id: string }>) => {
