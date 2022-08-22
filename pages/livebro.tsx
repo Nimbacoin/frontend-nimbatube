@@ -21,7 +21,6 @@ const App = () => {
   });
   const pcRef = useRef<RTCPeerConnection>();
   const localVideoRef = useRef<HTMLVideoElement>(null);
-  const remoteVideoRef = useRef<HTMLVideoElement>(null);
 
   const setVideoTracks = async () => {
     try {
@@ -45,12 +44,6 @@ const App = () => {
       pcRef.current.oniceconnectionstatechange = (e) => {
         console.log(e);
       };
-      // pcRef.current.ontrack = (ev) => {
-      //   console.log("add remotetrack success");
-      //   if (remoteVideoRef.current) {
-      //     remoteVideoRef.current.srcObject = ev.streams[0];
-      //   }
-      // };
       socketRef.emit("join_room", {
         room: "1234",
       });
@@ -101,7 +94,7 @@ const App = () => {
       await pcRef.current.addIceCandidate(new RTCIceCandidate(candidate));
     });
 
-    setVideoTracks();
+   
   }, []);
 
   return (
@@ -117,18 +110,8 @@ const App = () => {
         ref={localVideoRef}
         autoPlay
       />
-      {/* <video
-        id="remotevideo"
-        style={{
-          width: 240,
-          height: 240,
-          margin: 5,
-          backgroundColor: "black",
-        }}
-        ref={remoteVideoRef}
-        muted
-        autoPlay
-      /> */}
+      <button onClick={setVideoTracks}>Go Live</button>
+      
     </div>
   );
 };

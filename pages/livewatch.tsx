@@ -87,12 +87,12 @@ const App = () => {
       await pcRef.current.addIceCandidate(new RTCIceCandidate(candidate));
     });
 
-    setVideoTracks();
+    
   }, []);
 
   return (
     <div>
-      local remote
+      remote video
       <video
         id="remotevideo"
         style={{
@@ -105,6 +105,7 @@ const App = () => {
         muted
         autoPlay
       />
+      <button onClick={setVideoTracks}>Start Watching</button>
     </div>
   );
 };
