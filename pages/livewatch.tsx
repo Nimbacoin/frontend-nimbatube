@@ -107,7 +107,6 @@ const App = () => {
     });
 
     socketRef.on("getOffer", (sdp: RTCSessionDescription) => {
-      //console.log(sdp);
       console.log("get offer");
       createAnswer(sdp);
     });
@@ -116,13 +115,11 @@ const App = () => {
       console.log("get answer");
       if (!pcRef.current) return;
       pcRef.current.setRemoteDescription(new RTCSessionDescription(sdp));
-      //console.log(sdp);
     });
 
     socketRef.on("getCandidate", async (candidate: RTCIceCandidateInit) => {
       if (!pcRef.current) return;
       await pcRef.current.addIceCandidate(new RTCIceCandidate(candidate));
-      console.log("candidate add success");
     });
 
     setVideoTracks();
@@ -130,6 +127,7 @@ const App = () => {
 
   return (
     <div>
+      local
       <video
         style={{
           width: 240,
@@ -141,6 +139,7 @@ const App = () => {
         ref={localVideoRef}
         autoPlay
       />
+      remote
       <video
         id="remotevideo"
         style={{
@@ -150,6 +149,7 @@ const App = () => {
           backgroundColor: "black",
         }}
         ref={remoteVideoRef}
+        muted
         autoPlay
       />
     </div>
