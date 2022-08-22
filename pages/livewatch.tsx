@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 
 const pc_config = {
@@ -16,6 +16,8 @@ const pc_config = {
 const SOCKET_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL!;
 
 const App = () => {
+  const [chanelName, setChanelName] = useState("");
+
   const socket = io(SOCKET_SERVER_URL, {
     transports: ["websocket", "polling"],
   });
@@ -38,7 +40,7 @@ const App = () => {
           }
         };
         socket.emit("join_room", {
-          room: "1234",
+          roomId: chanelName,
         });
       }
     } catch (e) {
@@ -72,6 +74,7 @@ const App = () => {
 
     socket.on("all_users", (allUsers: Array<{ id: string }>) => {
       if (allUsers.length > 0) {
+        setStreams(allUsers);
         createOffer();
       }
     });
@@ -86,10 +89,18 @@ const App = () => {
       if (!pcRef.current) return;
       await pcRef.current.addIceCandidate(new RTCIceCandidate(candidate));
     });
-
-    
   }, []);
-
+  // useEffect(() => {
+  //   socket.on("users", (allUsers: Array<{ id: string }>) => {
+  //     if (allUsers.length > 0) {
+  //       setStreams(allUsers);
+  //     }
+  //   });
+  // });
+  const [streams, setStreams] = useState([]);
+  const hanelChange = (e: any) => {
+    setChanelName(e.target.value);
+  };
   return (
     <div>
       remote video
@@ -105,6 +116,10 @@ const App = () => {
         muted
         autoPlay
       />
+      {streams.map(({ id }) => (
+        <div>{id}</div>
+      ))}
+      <input onChange={hanelChange} />
       <button onClick={setVideoTracks}>Start Watching</button>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 
 const pc_config = {
@@ -29,24 +29,25 @@ const App = () => {
         audio: true,
       });
       if (localVideoRef.current) localVideoRef.current.srcObject = stream;
-      if (!(pcRef.current && socketRef)) return;
-      stream.getTracks().forEach((track) => {
-        if (!pcRef.current) return;
-        pcRef.current.addTrack(track, stream);
-      });
-      pcRef.current.onicecandidate = (e) => {
-        if (e.candidate) {
-          if (!socketRef) return;
-          console.log("onicecandidate");
-          socketRef.emit("candidate", e.candidate);
-        }
-      };
-      pcRef.current.oniceconnectionstatechange = (e) => {
-        console.log(e);
-      };
-      socketRef.emit("join_room", {
-        room: "1234",
-      });
+      if (pcRef.current && socketRef) {
+        stream.getTracks().forEach((track) => {
+          if (pcRef.current) {
+            pcRef.current.addTrack(track, stream);
+          }
+        });
+        pcRef.current.onicecandidate = (e) => {
+          if (e.candidate) {
+            if (!socketRef) return;
+            socketRef.emit("candidate", e.candidate);
+          }
+        };
+        pcRef.current.oniceconnectionstatechange = (e) => {
+          console.log(e);
+        };
+        socketRef.emit("create_room", {
+          roomId: chanelName,
+        });
+      }
     } catch (e) {
       console.error(e);
     }
@@ -93,10 +94,11 @@ const App = () => {
       if (!pcRef.current) return;
       await pcRef.current.addIceCandidate(new RTCIceCandidate(candidate));
     });
-
-   
   }, []);
-
+  const [chanelName, setChanelName] = useState("");
+  const hanelChange = (e: any) => {
+    setChanelName(e.target.value);
+  };
   return (
     <div>
       <video
@@ -110,8 +112,8 @@ const App = () => {
         ref={localVideoRef}
         autoPlay
       />
+      <input onChange={hanelChange} />
       <button onClick={setVideoTracks}>Go Live</button>
-      
     </div>
   );
 };
