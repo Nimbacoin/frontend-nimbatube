@@ -16,8 +16,6 @@ const pc_config = {
 const SOCKET_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL!;
 
 const App = () => {
-  const [chanelName, setChanelName] = useState("");
-
   const socket = io(SOCKET_SERVER_URL, {
     transports: ["websocket", "polling"],
   });
@@ -40,7 +38,7 @@ const App = () => {
           }
         };
         socket.emit("join_room", {
-          roomId: chanelName,
+          room: chanelName,
         });
       }
     } catch (e) {
@@ -90,14 +88,17 @@ const App = () => {
       await pcRef.current.addIceCandidate(new RTCIceCandidate(candidate));
     });
   }, []);
-  // useEffect(() => {
-  //   socket.on("users", (allUsers: Array<{ id: string }>) => {
-  //     if (allUsers.length > 0) {
-  //       setStreams(allUsers);
-  //     }
-  //   });
-  // });
+  useEffect(() => {
+    socket.on("all_users", (allUsers: Array<{ id: string }>) => {
+      if (allUsers.length > 0) {
+        alert("1");
+        setStreams(allUsers);
+        createOffer();
+      }
+    });
+  }, [socket]);
   const [streams, setStreams] = useState([]);
+  const [chanelName, setChanelName] = useState("");
   const hanelChange = (e: any) => {
     setChanelName(e.target.value);
   };
@@ -116,9 +117,6 @@ const App = () => {
         muted
         autoPlay
       />
-      {streams.map(({ id }) => (
-        <div>{id}</div>
-      ))}
       <input onChange={hanelChange} />
       <button onClick={setVideoTracks}>Start Watching</button>
     </div>

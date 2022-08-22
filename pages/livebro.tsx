@@ -45,7 +45,7 @@ const App = () => {
           console.log(e);
         };
         socketRef.emit("create_room", {
-          roomId: chanelName,
+          room: chanelName,
         });
       }
     } catch (e) {
