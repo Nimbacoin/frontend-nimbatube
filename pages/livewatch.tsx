@@ -14,7 +14,7 @@ const pc_config = {
   ],
 };
 const SOCKET_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL!;
-
+let cccc = "df";
 const App = () => {
   const socket = io(SOCKET_SERVER_URL, {
     transports: ["websocket", "polling"],
@@ -38,7 +38,7 @@ const App = () => {
           }
         };
         socket.emit("join_room", {
-          room: chanelName,
+          room: cccc,
         });
       }
     } catch (e) {
@@ -72,7 +72,7 @@ const App = () => {
 
     socket.on("all_users", (allUsers: Array<{ id: string }>) => {
       if (allUsers.length > 0) {
-        setStreams(allUsers);
+       
         createOffer();
       }
     });
@@ -88,19 +88,20 @@ const App = () => {
       await pcRef.current.addIceCandidate(new RTCIceCandidate(candidate));
     });
   }, []);
-  useEffect(() => {
-    socket.on("all_users", (allUsers: Array<{ id: string }>) => {
-      if (allUsers.length > 0) {
-        alert("1");
-        setStreams(allUsers);
-        createOffer();
-      }
-    });
-  }, [socket]);
+  // useEffect(() => {
+  //   socket.on("all_users", (allUsers: Array<{ id: string }>) => {
+  //     if (allUsers.length > 0) {
+  //       alert("1");
+  //       setStreams(allUsers);
+  //       createOffer();
+  //     }
+  //   });
+  // }, [socket]);
   const [streams, setStreams] = useState([]);
   const [chanelName, setChanelName] = useState("");
   const hanelChange = (e: any) => {
     setChanelName(e.target.value);
+    cccc = e.target.value;
   };
   return (
     <div>
