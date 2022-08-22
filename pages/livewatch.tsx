@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 
@@ -13,34 +14,47 @@ const pc_config = {
     },
   ],
 };
-const SOCKET_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL!;
-let cccc = "df";
-const App = () => {
-  const socket = io(SOCKET_SERVER_URL, {
-    transports: ["websocket", "polling"],
-  });
-  const pcRef = useRef<RTCPeerConnection>();
+const SOCKEtT_SERVER_URL = "http://localhost:5000";
 
+const App = () => {
+  const [room, setRoom] = useState("123");
+  const { asPath } = useRouter();
+  const socket = io(SOCKEtT_SERVER_URL);
+  const pcRef = useRef<RTCPeerConnection>();
+  const localVideoRef = useRef<HTMLVideoElement>(null);
   const remoteVideoRef = useRef<HTMLVideoElement>(null);
 
   const setVideoTracks = async () => {
     try {
-      if (pcRef.current && socket) {
-        pcRef.current.onicecandidate = (e) => {
-          if (e.candidate) {
-            if (!socket) return;
-            socket.emit("candidate", e.candidate);
-          }
-        };
-        pcRef.current.ontrack = (ev) => {
-          if (remoteVideoRef.current) {
-            remoteVideoRef.current.srcObject = ev.streams[0];
-          }
-        };
-        socket.emit("join_room", {
-          room: cccc,
-        });
-      }
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true,
+      });
+      if (localVideoRef.current) localVideoRef.current.srcObject = stream;
+      if (!(pcRef.current && socket)) return;
+      stream.getTracks().forEach((track) => {
+        if (!pcRef.current) return;
+        pcRef.current.addTrack(track, stream);
+      });
+      pcRef.current.onicecandidate = (e) => {
+        if (e.candidate) {
+          if (!socket) return;
+          console.log("onicecandidate");
+          socket.emit("candidate", e.candidate);
+        }
+      };
+      pcRef.current.oniceconnectionstatechange = (e) => {
+        console.log(e);
+      };
+      pcRef.current.ontrack = (ev) => {
+        console.log("add remotetrack success");
+        if (remoteVideoRef.current) {
+          remoteVideoRef.current.srcObject = ev.streams[0];
+        }
+      };
+      socket.emit("join_room", {
+        room: asPath,
+      });
     } catch (e) {
       console.error(e);
     }
@@ -61,51 +75,71 @@ const App = () => {
     }
   };
 
+  const createAnswer = async (sdp: RTCSessionDescription) => {
+    if (!(pcRef.current && socket)) return;
+    try {
+      await pcRef.current.setRemoteDescription(new RTCSessionDescription(sdp));
+      console.log("answer set remote description success");
+      const mySdp = await pcRef.current.createAnswer({
+        offerToReceiveVideo: true,
+        offerToReceiveAudio: true,
+      });
+      console.log("create answer");
+      await pcRef.current.setLocalDescription(new RTCSessionDescription(mySdp));
+      socket.emit("answer", mySdp);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
-    socket.on("connect_error", (err: any) => {
-      console.log(`connect_error due to the ${err.message}`);
-    });
-    socket.on("connect", () => {
-      console.log("you connnected 2");
-    });
     pcRef.current = new RTCPeerConnection(pc_config);
 
     socket.on("all_users", (allUsers: Array<{ id: string }>) => {
       if (allUsers.length > 0) {
-       
         createOffer();
       }
+    });
+
+    socket.on("getOffer", (sdp: RTCSessionDescription) => {
+      //console.log(sdp);
+      console.log("get offer");
+      createAnswer(sdp);
     });
 
     socket.on("getAnswer", (sdp: RTCSessionDescription) => {
       console.log("get answer");
       if (!pcRef.current) return;
       pcRef.current.setRemoteDescription(new RTCSessionDescription(sdp));
+      //console.log(sdp);
     });
 
     socket.on("getCandidate", async (candidate: RTCIceCandidateInit) => {
       if (!pcRef.current) return;
       await pcRef.current.addIceCandidate(new RTCIceCandidate(candidate));
+      console.log("candidate add success");
     });
   }, []);
-  // useEffect(() => {
-  //   socket.on("all_users", (allUsers: Array<{ id: string }>) => {
-  //     if (allUsers.length > 0) {
-  //       alert("1");
-  //       setStreams(allUsers);
-  //       createOffer();
-  //     }
-  //   });
-  // }, [socket]);
-  const [streams, setStreams] = useState([]);
-  const [chanelName, setChanelName] = useState("");
-  const hanelChange = (e: any) => {
-    setChanelName(e.target.value);
-    cccc = e.target.value;
+
+  const handelChange = (e: any) => {
+    setRoom(e.target.value);
+  };
+  const handelRooms = () => {
+    setVideoTracks();
   };
   return (
     <div>
-      remote video
+      <video
+        style={{
+          width: 240,
+          height: 240,
+          margin: 5,
+          backgroundColor: "black",
+        }}
+        muted
+        ref={localVideoRef}
+        autoPlay
+      />
       <video
         id="remotevideo"
         style={{
@@ -118,8 +152,8 @@ const App = () => {
         muted
         autoPlay
       />
-      <input onChange={hanelChange} />
-      <button onClick={setVideoTracks}>Start Watching</button>
+      <input placeholder="enter room name" onChange={handelChange} />
+      <button onClick={handelRooms}>Start</button>
     </div>
   );
 };
