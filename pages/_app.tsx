@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <SessionProvider session={pageProps.session}>
-        {/* <SocketHandler /> */}
+        <SocketHandler />
         <Layout>
           <Component {...pageProps} />
         </Layout>
