@@ -16,7 +16,7 @@ const pc_config = {
 const SOCKET_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL;
 
 const App = () => {
-  const socketRef = useRef<SocketIOClient.Socket>();
+  const socketRef = io(SOCKET_SERVER_URL!);
   const pcRef = useRef<RTCPeerConnection>();
   const localVideoRef = useRef<HTMLVideoElement>(null);
   const remoteVideoRef = useRef<HTMLVideoElement>(null);
@@ -28,16 +28,16 @@ const App = () => {
         audio: true,
       });
       if (localVideoRef.current) localVideoRef.current.srcObject = stream;
-      if (!(pcRef.current && socketRef.current)) return;
+      if (!(pcRef.current && socketRef)) return;
       stream.getTracks().forEach((track) => {
         if (!pcRef.current) return;
         pcRef.current.addTrack(track, stream);
       });
       pcRef.current.onicecandidate = (e) => {
         if (e.candidate) {
-          if (!socketRef.current) return;
+          if (!socketRef) return;
           console.log("onicecandidate");
-          socketRef.current.emit("candidate", e.candidate);
+          socketRef.emit("candidate", e.candidate);
         }
       };
       pcRef.current.oniceconnectionstatechange = (e) => {
@@ -49,7 +49,7 @@ const App = () => {
           remoteVideoRef.current.srcObject = ev.streams[0];
         }
       };
-      socketRef.current.emit("join_room", {
+      socketRef.emit("join_room", {
         room: "1234",
       });
     } catch (e) {
@@ -59,21 +59,21 @@ const App = () => {
 
   const createOffer = async () => {
     console.log("create offer");
-    if (!(pcRef.current && socketRef.current)) return;
+    if (!(pcRef.current && socketRef)) return;
     try {
       const sdp = await pcRef.current.createOffer({
         offerToReceiveAudio: true,
         offerToReceiveVideo: true,
       });
       await pcRef.current.setLocalDescription(new RTCSessionDescription(sdp));
-      socketRef.current.emit("offer", sdp);
+      socketRef.emit("offer", sdp);
     } catch (e) {
       console.error(e);
     }
   };
 
   const createAnswer = async (sdp: RTCSessionDescription) => {
-    if (!(pcRef.current && socketRef.current)) return;
+    if (!(pcRef.current && socketRef)) return;
     try {
       await pcRef.current.setRemoteDescription(new RTCSessionDescription(sdp));
       console.log("answer set remote description success");
@@ -83,43 +83,39 @@ const App = () => {
       });
       console.log("create answer");
       await pcRef.current.setLocalDescription(new RTCSessionDescription(mySdp));
-      socketRef.current.emit("answer", mySdp);
+      socketRef.emit("answer", mySdp);
     } catch (e) {
       console.error(e);
     }
   };
 
   useEffect(() => {
-    socketRef.current = io.connect(SOCKET_SERVER_URL);
     pcRef.current = new RTCPeerConnection(pc_config);
 
-    socketRef.current.on("all_users", (allUsers: Array<{ id: string }>) => {
+    socketRef.on("all_users", (allUsers: Array<{ id: string }>) => {
       if (allUsers.length > 0) {
         createOffer();
       }
     });
 
-    socketRef.current.on("getOffer", (sdp: RTCSessionDescription) => {
+    socketRef.on("getOffer", (sdp: RTCSessionDescription) => {
       //console.log(sdp);
       console.log("get offer");
       createAnswer(sdp);
     });
 
-    socketRef.current.on("getAnswer", (sdp: RTCSessionDescription) => {
+    socketRef.on("getAnswer", (sdp: RTCSessionDescription) => {
       console.log("get answer");
       if (!pcRef.current) return;
       pcRef.current.setRemoteDescription(new RTCSessionDescription(sdp));
       //console.log(sdp);
     });
 
-    socketRef.current.on(
-      "getCandidate",
-      async (candidate: RTCIceCandidateInit) => {
-        if (!pcRef.current) return;
-        await pcRef.current.addIceCandidate(new RTCIceCandidate(candidate));
-        console.log("candidate add success");
-      }
-    );
+    socketRef.on("getCandidate", async (candidate: RTCIceCandidateInit) => {
+      if (!pcRef.current) return;
+      await pcRef.current.addIceCandidate(new RTCIceCandidate(candidate));
+      console.log("candidate add success");
+    });
 
     setVideoTracks();
   }, []);
