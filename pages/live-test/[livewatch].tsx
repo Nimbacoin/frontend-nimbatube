@@ -14,15 +14,24 @@ const pc_config = {
     },
   ],
 };
-const SOCKEtT_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL!
+const SOCKEtT_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL!;
 
 const App = () => {
-  const [room, setRoom] = useState("123");
   const { asPath } = useRouter();
   const socket = io(SOCKEtT_SERVER_URL);
   const pcRef = useRef<RTCPeerConnection>();
   const localVideoRef = useRef<HTMLVideoElement>(null);
   const remoteVideoRef = useRef<HTMLVideoElement>(null);
+  const [roomId, setRooomId] = useState("");
+  useEffect(() => {
+    let Params = new URL(window.location.href).searchParams;
+    const video: string | null = Params.get("video");
+    const watching: string | null = Params.get("streaming");
+    if (video?.length) {
+      setRooomId(video);
+      setVideoTracks();
+    }
+  }, [asPath]);
 
   const setVideoTracks = async () => {
     try {
@@ -53,7 +62,7 @@ const App = () => {
         }
       };
       socket.emit("join_room", {
-        room: asPath,
+        room: roomId,
       });
     } catch (e) {
       console.error(e);
@@ -121,15 +130,10 @@ const App = () => {
     });
   }, []);
 
-  const handelChange = (e: any) => {
-    setRoom(e.target.value);
-  };
-  const handelRooms = () => {
-    setVideoTracks();
-  };
+  const handelRooms = () => {};
   return (
     <div>
-      <video
+      {/* <video
         style={{
           width: 240,
           height: 240,
@@ -139,7 +143,8 @@ const App = () => {
         muted
         ref={localVideoRef}
         autoPlay
-      />
+      /> */}
+      remote video
       <video
         id="remotevideo"
         style={{
@@ -152,7 +157,6 @@ const App = () => {
         muted
         autoPlay
       />
-      <input placeholder="enter room name" onChange={handelChange} />
       <button onClick={handelRooms}>Start</button>
     </div>
   );
