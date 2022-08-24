@@ -20,7 +20,7 @@ import LiveVideo from "../live/LiveVideo";
 
 const MainVideo = () => {
   const { asPath, pathname } = useRouter();
-  const [ActiveVideo, setActiveVideo] = useState("");
+  const [ActiveVideo, setActiveVideo] = useState(true);
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
 
@@ -28,10 +28,15 @@ const MainVideo = () => {
     let Params = new URL(window.location.href).searchParams;
     const video: string | null = Params.get("video");
     const watching: string | null = Params.get("watching");
+    const streaming: string | null = Params.get("streaming");
+
     console.log(watching);
-    setActiveVideo(
-      "62fd362da36a8541546e3db002c114cf3ccb2ff3e1d4359471ed2560.mp4"
-    );
+    if (watching === "true") {
+      setActiveVideo(true);
+    } else if (streaming === "true") {
+      setActiveVideo(false);
+      alert(streaming);
+    }
     if (videoTag.current) {
       videoTag.current.src =
         process.env.NEXT_PUBLIC_BACK_END_URL + "/api/get/read/video/" + video;
@@ -75,13 +80,15 @@ const MainVideo = () => {
   };
   return (
     <div className={Style.container}>
-      <LiveVideo />
+      {!ActiveVideo && <LiveVideo />}
       <div className={Style.video_container}>
-        <div className={Style.video_container_2}>
-          {/* <video ref={videoTag} autoPlay muted loop controls>
-            <source ref={videoSrc} className={Style.video} type="video/mp4" />
-          </video> */}
-        </div>
+        {ActiveVideo && (
+          <div className={Style.video_container_2}>
+            <video ref={videoTag} autoPlay muted loop controls>
+              <source ref={videoSrc} className={Style.video} type="video/mp4" />
+            </video>
+          </div>
+        )}
       </div>
       <div className={Style.video_data}>
         <div className={Style.title}>

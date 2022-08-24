@@ -1,54 +1,103 @@
-import React, { useEffect, useRef } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
-import axios from "axios";
-import { useSelector } from "react-redux";
-import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
-const Streaming = () => {
-  const localVideoRef = useRef<HTMLVideoElement>(null);
-  const peerRef = useRef<RTCPeerConnection>();
 
-  const socketRedux = useSelector(
-    (state: any) => state.socketSlice.socketRedux
-  );
-  const channels = useSelector((state: any) => state.ChannelSlice.allChannels);
-  const channelId = channels[0]?._id;
-  const isSocket = useSelector((state: any) => state.socketSlice.isSocket);
+const pc_config = {
+  iceServers: [
+    // {
+    //   urls: 'stun:[STUN_IP]:[PORT]',
+    //   'credentials': '[YOR CREDENTIALS]',
+    //   'username': '[USERNAME]'
+    // },
+    {
+      urls: "stun:stun.l.google.com:19302",
+    },
+  ],
+};
+const SOCKEtT_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL!;
 
-  async function init() {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-    if (localVideoRef.current) localVideoRef.current.srcObject = stream;
+const App = () => {
+  const { asPath } = useRouter();
+  const socket = io(SOCKEtT_SERVER_URL);
+  const pcRef = useRef(null);
+  const [peerConnections, setPeerConnections] = useState({});
+  const VideoRef = useRef(null);
+  const [roomId, setRooomId] = useState("");
+  const [broadcaster, setBroadcaster] = useState("");
 
-    const peer = createPeer();
-    stream.getTracks().forEach((track) => peer.addTrack(track, stream));
-  }
-
-  function createPeer() {
-    const peer = new RTCPeerConnection({
-      iceServers: [
-        {
-          urls: "stun:global.stun.twilio.com:3478?transport=udp",
-        },
-      ],
-    });
-    peer.onnegotiationneeded = () => handleNegotiationNeededEvent(peer);
-
-    return peer;
-  }
-
-  async function handleNegotiationNeededEvent(peer: any) {
-    const offer = await peer.createOffer();
-    await peer.setLocalDescription(offer);
-    const payload = {
-      sdp: peer.localDescription,
+  useEffect(() => {
+    let Params = new URL(window.location.href).searchParams;
+    const video = Params.get("video");
+    const watching = Params.get("streaming");
+    if (video?.length && video?.length > 10) {
+      setRooomId(video);
+      // setVideoTracks();
+    }
+  }, [asPath]);
+  useEffect(() => {
+    const localFetch = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: true,
+        });
+        if (VideoRef.current) {
+          VideoRef.current.srcObject = stream;
+        }
+      } catch (err) {
+        console.log(err);
+      }
     };
+    localFetch();
+  }, []);
 
-    const { data } = await axios.post(
-      process.env.NEXT_PUBLIC_BACK_END_URL + "/broadcast",
-      payload
-    );
-    const desc = new RTCSessionDescription(data.sdp);
-    peer.setRemoteDescription(desc).catch((e: any) => console.log(e));
-  }
+  useEffect(() => {
+    socket.on("broadcaster", (id) => {
+      setBroadcaster(id);
+    });
+  }, [socket]);
+
+  useEffect(() => {
+    socket.on("watcher", (id) => {
+      const peerConnection = new RTCPeerConnection(pc_config);
+      peerConnections[id] = peerConnection;
+      console.log("new watcher");
+      setPeerConnections((peerConnections[id] = peerConnection));
+      let stream = VideoRef.current.srcObject;
+      stream
+        .getTracks()
+        .forEach((track: any) => peerConnection.addTrack(track, stream));
+
+      peerConnection.onicecandidate = (event) => {
+        if (event.candidate) {
+          socket.emit("candidate", id, event.candidate);
+        }
+      };
+
+      peerConnection
+        .createOffer()
+        .then((sdp) => peerConnection.setLocalDescription(sdp))
+        .then(() => {
+          socket.emit("offer", id, peerConnection.localDescription);
+        });
+    });
+  }, [socket]);
+
+  useEffect(() => {
+    socket.on("answer", (id, description) => {
+      peerConnections[id].setRemoteDescription(description);
+    });
+  }, [socket]);
+
+  useEffect(() => {
+    socket.on("candidate", (id, candidate) => {
+      peerConnections[id].addIceCandidate(new RTCIceCandidate(candidate));
+    });
+  }, [socket]);
+
+  const handleNewBroadcaster = () => {
+    socket.emit("broadcaster", socket.id);
+  };
 
   return (
     <div>
@@ -60,12 +109,12 @@ const Streaming = () => {
           backgroundColor: "black",
         }}
         muted
-        ref={localVideoRef}
+        ref={VideoRef}
         autoPlay
       />
-      <button onClick={init}>go Live </button>
+      <button onClick={handleNewBroadcaster}>Start</button>
     </div>
   );
 };
 
-export default Streaming;
+export default App;
