@@ -14,7 +14,7 @@ const pc_config = {
     },
   ],
 };
-const SOCKEtT_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL!;
+const SOCKEtT_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL;
 
 const App = () => {
   const { asPath } = useRouter();
@@ -66,7 +66,7 @@ const App = () => {
       let stream = VideoRef.current.srcObject;
       stream
         .getTracks()
-        .forEach((track: any) => peerConnection.addTrack(track, stream));
+        .forEach((track) => peerConnection.addTrack(track, stream));
 
       peerConnection.onicecandidate = (event) => {
         if (event.candidate) {
@@ -101,6 +101,7 @@ const App = () => {
 
   return (
     <div>
+      local video
       <video
         style={{
           width: 240,

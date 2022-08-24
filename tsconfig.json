@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/tour/tour-components/slider-and-book-form/TourDatatsx", "pages/api/auth/[...nextauth].ts", "pages/live.jsx", "pages/live2.js", "pages/live-test2/[livebro].js", "pages/live-test/[livewatch].js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/tour/tour-components/slider-and-book-form/TourDatatsx", "pages/api/auth/[...nextauth].ts", "pages/live.jsx", "pages/live2.js", "pages/live-test2/[livebro].js", "pages/live-test/[livewatch].js", "components/channel/my-channel/streaming/Streaming.js", "components/watch/watch-page/live/LiveVideo.js"],
   "exclude": ["node_modules"]
 }
