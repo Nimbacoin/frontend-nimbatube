@@ -68,7 +68,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
               <IoNotificationsOutline />
             </button>
 
-            <Link href="/go-live">
+            <Link href="/go-live/go-live">
               <button className={Style.rest_of_button}>
                 <IoVideocamOutline />
               </button>

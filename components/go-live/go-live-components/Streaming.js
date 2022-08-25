@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import io from "socket.io-client";
-
+import Style from "../../../styles/pages/go-live/go-live-components/stream.module.css";
+import { IoEyeOutline } from "@react-icons/all-files/io5/IoEyeOutline";
 const pc_config = {
   iceServers: [
     // {
@@ -16,22 +18,22 @@ const pc_config = {
 };
 const SOCKEtT_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL;
 
-const App = () => {
+const Streaming = () => {
   const { asPath } = useRouter();
   const socket = io(SOCKEtT_SERVER_URL);
   const pcRef = useRef(null);
   const [peerConnections, setPeerConnections] = useState({});
   const VideoRef = useRef(null);
-  const [roomId, setRooomId] = useState("");
+  const [videoId, setVideoId] = useState("");
   const [broadcaster, setBroadcaster] = useState("");
+  const [viewers, setViewers] = useState([]);
+  const WindowHeight = useSelector((state) => state.GenrealStyle.WindowHeight);
 
   useEffect(() => {
     let Params = new URL(window.location.href).searchParams;
     const video = Params.get("video");
-    const watching = Params.get("streaming");
     if (video?.length && video?.length > 10) {
-      setRooomId(video);
-      // setVideoTracks();
+      setVideoId(video);
     }
   }, [asPath]);
   useEffect(() => {
@@ -57,11 +59,18 @@ const App = () => {
     });
   }, [socket]);
 
+  // useEffect(() => {
+  //   window.document.body.style.overflow = "none";
+  //   window.document.body.style.overflow = "hidden";
+  //   window.document.body.style.overflowY = "none";
+  //   window.document.body.style.overflowY = "hidden";
+  // });
+
   useEffect(() => {
-    socket.on("watcher", (id) => {
+    socket.on("watcher", ({ id, viewers }) => {
+      setViewers(viewers);
       const peerConnection = new RTCPeerConnection(pc_config);
       peerConnections[id] = peerConnection;
-      console.log("new watcher");
       setPeerConnections((peerConnections[id] = peerConnection));
       let stream = VideoRef.current.srcObject;
       stream
@@ -96,25 +105,28 @@ const App = () => {
   }, [socket]);
 
   const handleNewBroadcaster = () => {
-    socket.emit("broadcaster", socket.id);
+    socket.emit("broadcaster", { socketId: socket.id, videoId });
   };
 
   return (
-    <div>
-      <video
-        style={{
-          width: 240,
-          height: 240,
-          margin: 5,
-          backgroundColor: "black",
-        }}
-        muted
-        ref={VideoRef}
-        autoPlay
-      />
-      <button onClick={handleNewBroadcaster}>Start</button>
+    <div className={Style.container}>
+      <div className={Style.video_container}>
+        <video className={Style.video} muted ref={VideoRef} autoPlay />
+        <p className={Style.viewers}>
+          <IoEyeOutline />
+          <span className={Style.file_text_title_bold_viewers}>
+            {" "}
+            {viewers.length} viewers
+          </span>
+        </p>
+      </div>
+      <div className={Style.video_container_comments}>
+        <span className={Style.file_text_title_bold}>Comments : 0 </span>
+        <div className={Style.comments_container}></div>
+        <button onClick={handleNewBroadcaster}>Start</button>
+      </div>
     </div>
   );
 };
 
-export default App;
+export default Streaming;

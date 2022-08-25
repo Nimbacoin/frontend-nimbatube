@@ -35,7 +35,6 @@ const MainVideo = () => {
       setActiveVideo(true);
     } else if (streaming === "true") {
       setActiveVideo(false);
-      alert(streaming);
     }
     if (videoTag.current) {
       videoTag.current.src =

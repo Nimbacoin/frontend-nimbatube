@@ -6,6 +6,9 @@ import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline"
 import Link from "next/link";
 const Video = ({ VideoData }: any) => {
   const [OverElement, setOverElement] = useState(false);
+  const streaming = VideoData.streaming;
+  const [videoLink, setVideoLink] = useState("");
+
   const HandelOver = () => {
     setOverElement(true);
   };
@@ -15,6 +18,23 @@ const Video = ({ VideoData }: any) => {
   const [ScreenWithByHalf, setScreenWithByHalf] = useState(500);
   const [IsPhone, setIsPhone] = useState(false);
 
+  useEffect(() => {
+    const isLive = streaming.isLive;
+    const created = streaming.created;
+    const socketId = streaming.socketId;
+    console.log(isLive, created);
+    if (isLive && created) {
+      console.log("yes");
+      setVideoLink(
+        "/watch/watch?streaming=true&video=" +
+          VideoData?._id +
+          "&socketId=" +
+          socketId
+      );
+    } else {
+      setVideoLink("/watch/watch?watching=true&video=" + VideoData?._id);
+    }
+  }, [streaming]);
   useEffect(() => {
     if (window.innerWidth <= 900) {
       setIsPhone(true);
@@ -42,7 +62,7 @@ const Video = ({ VideoData }: any) => {
     "/api/get/read/images/" +
     VideoData?.thumbnail;
   return (
-    <Link href={"/watch/watch?watching=true&video=" + VideoData?._id}>
+    <Link href={videoLink}>
       <div
         onMouseOver={HandelOver}
         onMouseLeave={HandelLeave}

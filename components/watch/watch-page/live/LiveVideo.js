@@ -19,16 +19,17 @@ const SOCKEtT_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL;
 const App = () => {
   const { asPath } = useRouter();
   const socket = io(SOCKEtT_SERVER_URL);
-  //const pcRef = useRef<RTCPeerConnection>();
   const videoRef = useRef(null);
-  //con; //st remoteVideoRef = useRef<HTMLVideoElement>(null);
+
   const [broadcasterId, setBroadcasterId] = useState("");
+  const [videoId, setVideoId] = useState("");
+
   useEffect(() => {
     let Params = new URL(window.location.href).searchParams;
     const video = Params.get("video");
     const watching = Params.get("streaming");
     if (video?.length && video?.length > 10) {
-      // setBroadcasterId(video);
+      setVideoId(video);
     }
   }, [asPath]);
 
@@ -69,7 +70,7 @@ const App = () => {
   });
 
   const handleWatcher = () => {
-    socket.emit("watcher", broadcasterId);
+    socket.emit("watcher", { broadcasterId, videoId });
   };
 
   return (
