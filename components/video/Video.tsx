@@ -6,7 +6,7 @@ import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline"
 import Link from "next/link";
 const Video = ({ VideoData }: any) => {
   const [OverElement, setOverElement] = useState(false);
-  const streaming = VideoData.streaming;
+  const streaming = VideoData?.streaming;
   const [videoLink, setVideoLink] = useState("");
 
   const HandelOver = () => {
@@ -19,10 +19,10 @@ const Video = ({ VideoData }: any) => {
   const [IsPhone, setIsPhone] = useState(false);
 
   useEffect(() => {
-    const isLive = streaming.isLive;
-    const created = streaming.created;
-    const socketId = streaming.socketId;
-    console.log(isLive, created);
+    const isLive = streaming?.isLive;
+    const created = streaming?.created;
+    const socketId = streaming?.socketId;
+
     if (isLive && created) {
       console.log("yes");
       setVideoLink(

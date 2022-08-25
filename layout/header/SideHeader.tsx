@@ -35,7 +35,6 @@ const SideHeader = () => {
     { name: "Lists", link: "/lists", icon: <IoLayersOutline /> },
     { name: "Watch History", link: "/watch-history", icon: <RiHistoryLine /> },
     { name: "Featured", link: "/featured", icon: <GiPartyHat /> },
-    { name: "Pop Culture", link: "/pop-culture", icon: <IoWaterOutline /> },
 
     { name: "Artists", link: "/artists", icon: <IoBrushOutline /> },
     { name: "Education", link: "/education", icon: <IoBookOutline /> },
@@ -139,11 +138,12 @@ const SideHeader = () => {
                     }
                   >
                     <Link href={link}>
-                      <div className={Style.link}>
+                      <div
+                        className={MenuBoolean ? Style.link : Style.link_flex}
+                      >
                         <span className={Style.icon}>{icon}</span>
-                        {MenuBoolean && (
-                          <span className={Style.text}>{name}</span>
-                        )}
+
+                        <span className={Style.text}>{name}</span>
                       </div>
                     </Link>
                   </div>
