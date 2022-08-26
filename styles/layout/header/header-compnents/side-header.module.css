@@ -98,6 +98,20 @@
   overflow-y: scroll;
   padding-bottom: 100px;
 }
+
+.all_links::-webkit-scrollbar {
+  border-radius: 10px;
+  background-color: #fff;
+  width: 5px;
+}
+
+.all_links::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #909090;
+}
+.all_links::-webkit-scrollbar-button {
+  height: 1px;
+}
 .all_links_overflow_hidden {
   width: 100%;
   display: flex;
