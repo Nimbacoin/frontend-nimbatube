@@ -9,7 +9,7 @@
 
 .button_log_in {
   background-color: #fff;
-  width: 100px;
+  width: auto;
   height: 40px;
   border-radius: 2px;
   display: flex;
@@ -20,10 +20,11 @@
   font-size: 15px;
   font-weight: 500;
   border: 1px solid#DBDBDB;
+  padding: 0 10px;
 }
 .button_singup {
   background-color: #673de6;
-  width: 100px;
+  width: auto;
   height: 40px;
   border-radius: 2px;
   display: flex;
@@ -33,6 +34,7 @@
   color: #fff;
   font-size: 15px;
   font-weight: 500;
+  padding: 0 10px;
 }
 
 @media screen and (max-width: 900px) {
