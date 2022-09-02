@@ -67,6 +67,9 @@ const Streaming = () => {
   // });
 
   useEffect(() => {
+    socket.on("watcher-leave", ({ viewers }) => {
+      setViewers(viewers);
+    });
     socket.on("watcher", ({ id, viewers }) => {
       setViewers(viewers);
       const peerConnection = new RTCPeerConnection(pc_config);

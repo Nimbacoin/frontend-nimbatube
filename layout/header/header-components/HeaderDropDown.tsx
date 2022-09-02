@@ -63,8 +63,8 @@ const HeaderDropDown = () => {
       channelname: channel && Name,
     },
     {
-      name: "Uploads",
-      link: "/uploads",
+      name: "Upload",
+      link: "/upload",
       icon: <IoCloudUploadOutline />,
       classname: Style.link_container,
     },
