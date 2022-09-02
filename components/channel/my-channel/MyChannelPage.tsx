@@ -27,7 +27,6 @@ const MychannelPage = () => {
   return (
     <div className={Style.container}>
       <ProfileDate ChannelData={ChannelData} />
-      <Streaming />
     </div>
   );
 };

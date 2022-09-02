@@ -1,7 +1,6 @@
 import React from "react";
 
 const basedGetUrlRequest = async (url: string) => {
-  console.log(document.cookie);
   if (url !== "") {
     try {
       const response = await fetch(process.env.NEXT_PUBLIC_BACK_END_URL + url, {
