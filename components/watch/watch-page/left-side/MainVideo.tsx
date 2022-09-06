@@ -80,15 +80,15 @@ const MainVideo = () => {
   return (
     <div className={Style.container}>
       {!ActiveVideo && <LiveVideo />}
-      <div className={Style.video_container}>
-        {ActiveVideo && (
+      {ActiveVideo && (
+        <div className={Style.video_container}>
           <div className={Style.video_container_2}>
             <video ref={videoTag} autoPlay muted loop controls>
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
           </div>
-        )}
-      </div>
+        </div>
+      )}
       <div className={Style.video_data}>
         <div className={Style.title}>
           <p className={Style.title_text}>{Title}</p>

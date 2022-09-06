@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
+import Style from "../../../../styles/pages/watch/leftside/main-video.module.css";
 
 const pc_config = {
   iceServers: [
@@ -69,26 +70,17 @@ const App = () => {
     });
   });
 
-  const handleWatcher = () => {
-    socket.emit("watcher", { broadcasterId, videoId });
-  };
+  useEffect(() => {
+    if (videoId.length > 10) {
+      socket.emit("watcher", { broadcasterId, videoId });
+    }
+  }, [videoId]);
 
   return (
-    <div>
-      remote video
-      <video
-        id="remotevideo"
-        style={{
-          width: 240,
-          height: 240,
-          margin: 5,
-          backgroundColor: "black",
-        }}
-        ref={videoRef}
-        muted
-        autoPlay
-      />
-      <button onClick={handleWatcher}>Start {broadcasterId}</button>
+    <div className={Style.video_container}>
+      <div className={Style.video_container_2}>
+        <video id="remotevideo" ref={videoRef} muted autoPlay></video>
+      </div>
     </div>
   );
 };
