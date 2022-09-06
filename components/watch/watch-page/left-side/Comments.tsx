@@ -91,7 +91,7 @@ const ReplyInput = () => {
   );
 };
 
-const Comments = () => {
+const Comments = ({ VideoData }: any) => {
   const CommentsBoolean = useSelector(
     (state: any) => state.MainVideo.CommentsBoolean
   );
@@ -108,7 +108,7 @@ const Comments = () => {
           className={Style.lable_open_all_comments}
           htmlFor="input_open_all_comments"
         >
-          Comments · 455
+          Comments · {VideoData?.comments?.length}
           <input
             onClick={() => dispatch(ToggleCommentsOpen())}
             className={Style.input_open_all_comments}
@@ -136,7 +136,9 @@ const Comments = () => {
         </div>
       )}
       <div className={Style.comments_setting}>
-        <p className={Style.comments_number}>1000 Comments</p>
+        <p className={Style.comments_number}>
+          {VideoData?.comments?.length} Comments
+        </p>
         <p className={Style.icon}>
           <MdSort />
           <span className={Style.container}>SORT BY </span>

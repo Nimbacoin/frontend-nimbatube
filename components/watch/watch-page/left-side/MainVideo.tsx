@@ -4,6 +4,7 @@ import { IoEllipsisHorizontalSharp } from "@react-icons/all-files/io5/IoEllipsis
 import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
 import { AiFillLike } from "@react-icons/all-files/ai/AiFillLike";
 import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
+import { v4 as uuid } from "uuid";
 
 import { AiFillDislike } from "@react-icons/all-files/ai/AiFillDislike";
 
@@ -17,10 +18,14 @@ import Descreption from "./Descreption";
 import Comments from "./Comments";
 import { useRouter } from "next/router";
 import LiveVideo from "../live/LiveVideo";
+import basedGetUrlRequest from "../../../../utils/basedGetUrlRequest";
 
 const MainVideo = () => {
   const { asPath, pathname } = useRouter();
   const [ActiveVideo, setActiveVideo] = useState(true);
+  const [videoData, setVideoData] = useState<{ [key: string]: any }>({});
+  const unique_id = uuid();
+
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
 
@@ -29,8 +34,6 @@ const MainVideo = () => {
     const video: string | null = Params.get("video");
     const watching: string | null = Params.get("watching");
     const streaming: string | null = Params.get("streaming");
-
-    console.log(watching);
     if (watching === "true") {
       setActiveVideo(true);
     } else if (streaming === "true") {
@@ -42,6 +45,26 @@ const MainVideo = () => {
       videoTag.current.play();
     }
   }, [asPath]);
+  useEffect(() => {
+    let Params = new URL(window.location.href).searchParams;
+    const video: string | null = Params.get("video");
+
+    let fetched = false;
+    const localFetch = async () => {
+      let getting = unique_id;
+      if (video && video.length > 10 && !fetched) {
+        const thisVideoData = await basedGetUrlRequest(
+          "/api/get/video/" + video + "/" + getting
+        );
+        if (thisVideoData && thisVideoData?.responseData) {
+          setVideoData(thisVideoData?.responseData);
+          getting = thisVideoData?.getting;
+          fetched = true;
+        }
+      }
+    };
+    localFetch();
+  }, []);
   const DescreptionBoolean = useSelector(
     (state: any) => state.MainVideo.Descreption
   );
@@ -56,6 +79,7 @@ const MainVideo = () => {
       videoTag.current.style.minHeight = "500px";
     }
   }, [videoTag]);
+
   const Title =
     "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
   // const videoRef = useRef<HTMLVideoElement>(null);
@@ -77,6 +101,7 @@ const MainVideo = () => {
   const HandelFollow = () => {
     setIsFollowed(!IsFollowed);
   };
+
   return (
     <div className={Style.container}>
       {!ActiveVideo && <LiveVideo />}
@@ -91,18 +116,22 @@ const MainVideo = () => {
       )}
       <div className={Style.video_data}>
         <div className={Style.title}>
-          <p className={Style.title_text}>{Title}</p>
+          <p className={Style.title_text}>{videoData?.title}</p>
           <button onClick={HandelDescreptionToggle}>
             <IoIosArrowDown />
           </button>
         </div>
         <div className={Style.data_container}>
-          <span className={Style.date}>983,238 views - 19 Apr 2016</span>
+          <span className={Style.date}>
+            {videoData?.views?.length} views - {videoData?.createdAt}
+          </span>
           <div className={Style.icons_container}>
             <p className={Style.icon} onClick={HandelLike}>
               {IsLiked ? <AiFillLike /> : <AiOutlineLike />}
 
-              <span className={Style.nubmer_of_likes}>12.5</span>
+              <span className={Style.nubmer_of_likes}>
+                {videoData?.likes?.length}
+              </span>
             </p>
             <p className={Style.icon} onClick={HandelDisLike}>
               {IsDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}
@@ -150,8 +179,8 @@ const MainVideo = () => {
           )}
         </div>
       </div>
-      <Descreption />
-      <Comments />
+      <Descreption VideoData={videoData} />
+      <Comments VideoData={videoData} />
     </div>
   );
 };

@@ -13,6 +13,7 @@
   cursor: pointer;
   margin: 0;
   white-space: pre-wrap;
+  width: 100%;
 }
 .desc_button {
   color: #606060;
@@ -27,6 +28,12 @@
 .container_descreption_phone,
 .video_data {
   display: none;
+}
+.descreption_text_container {
+  height: 70%;
+  width: 100%;
+  padding: 20px 10px;
+  overflow-y: auto;
 }
 @media screen and (max-width: 1150px) {
   .container {
