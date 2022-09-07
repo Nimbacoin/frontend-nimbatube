@@ -3,7 +3,7 @@ import Style from "../../../../styles/pages/watch/rightside/video-option.module.
 import { IoEllipsisVerticalSharp } from "@react-icons/all-files/io5/IoEllipsisVerticalSharp";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 
-const VideoOption = () => {
+const VideoOption = ({ VideoData }: any) => {
   const HandelIsOverVideoLeave = () => {
     setIsOverVideo(false);
   };
@@ -12,11 +12,13 @@ const VideoOption = () => {
   };
   const [IsOverVideo, setIsOverVideo] = useState(false);
 
-  const Title =
-    "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
+  const Title = VideoData?.title;
   // const videoRef = useRef<HTMLVideoElement>(null);
   const Bg =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
+    process.env.NEXT_PUBLIC_BACK_END_URL +
+    "/api/get/read/images/" +
+    VideoData?.thumbnail;
+
   return (
     <div className={Style.container}>
       <div
@@ -32,13 +34,17 @@ const VideoOption = () => {
             className={Style.video_container_img}
           >
             <p className={Style.time}>
-              5:50 <IoVideocamOutline />{" "}
+              {VideoData?.duration} <IoVideocamOutline />{" "}
             </p>
           </div>
         ) : (
           <video width="100%" height="30px" autoPlay muted loop>
             <source
-              src="https://www.w3schools.com/html/movie.mp4"
+              src={
+                process.env.NEXT_PUBLIC_BACK_END_URL +
+                "/api/get/read/video/" +
+                VideoData?._id
+              }
               type="video/mp4"
             />
           </video>
@@ -58,7 +64,7 @@ const VideoOption = () => {
           ></div>
           <p className={Style.chanel_details}>
             <span className={Style.chanel_name}>MrBeast</span>
-            <span className={Style.date}>3 Days Ago</span>
+            <span className={Style.date}>{VideoData?.createdAt}</span>
           </p>
         </div>
       </div>

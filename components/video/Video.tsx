@@ -76,7 +76,7 @@ const Video = ({ VideoData }: any) => {
           className={Style.vedio_container}
         >
           <p className={Style.time}>
-            5:50 <IoVideocamOutline />{" "}
+            {VideoData?.duration} <IoVideocamOutline />{" "}
           </p>
         </div>
         <div className={Style.desc_container}>
