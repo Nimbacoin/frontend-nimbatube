@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Style from "../../styles/pages/vedio/vedio.module.css";
 import { IoEllipsisVertical } from "@react-icons/all-files/io5/IoEllipsisVertical";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
+import moment from "moment";
 
 import Link from "next/link";
 const Video = ({ VideoData }: any) => {

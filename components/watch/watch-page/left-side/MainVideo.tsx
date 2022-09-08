@@ -5,7 +5,7 @@ import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
 import { AiFillLike } from "@react-icons/all-files/ai/AiFillLike";
 import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
 import { v4 as uuid } from "uuid";
-
+import moment from "moment";
 import { AiFillDislike } from "@react-icons/all-files/ai/AiFillDislike";
 
 import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
@@ -123,7 +123,8 @@ const MainVideo = () => {
         </div>
         <div className={Style.data_container}>
           <span className={Style.date}>
-            {videoData?.views?.length} views - {videoData?.createdAt}
+            {videoData?.views?.length} views -
+            {moment(videoData?.createdAt).startOf("hour").fromNow()}
           </span>
           <div className={Style.icons_container}>
             <p className={Style.icon} onClick={HandelLike}>
