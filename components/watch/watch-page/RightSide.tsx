@@ -18,8 +18,6 @@ const RightSide = () => {
       {videos.length
         ? videos.map((vid) => <VideoOption VideoData={vid} />)
         : null}
-
-      <VideoOption />
     </div>
   );
 };
