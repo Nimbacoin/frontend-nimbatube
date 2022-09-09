@@ -9,7 +9,7 @@ const Video = ({ VideoData }: any) => {
   const [OverElement, setOverElement] = useState(false);
   const streaming = VideoData?.streaming;
   const [videoLink, setVideoLink] = useState("");
-
+  console.log(VideoData);
   const HandelOver = () => {
     setOverElement(true);
   };
@@ -33,7 +33,9 @@ const Video = ({ VideoData }: any) => {
           socketId
       );
     } else {
-      setVideoLink("/watch/watch?watching=true&video=" + VideoData?._id);
+      setVideoLink(
+        "/watch/watch?watching=true&video=" + VideoData?.videoData?._id
+      );
     }
   }, [streaming]);
   useEffect(() => {
@@ -54,14 +56,16 @@ const Video = ({ VideoData }: any) => {
   });
   const Bg =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
-  const BgP = "/images/default-profile.png";
+  const BgP = VideoData?.channelData?.channelData?.profileImg?.url
+    ? VideoData?.channelData?.channelData?.profileImg?.url
+    : "/images/default-profile.png";
 
-  const Title = VideoData?.title;
+  const Title = VideoData?.videoData?.title;
   ("ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)");
   const thumbnail =
     process.env.NEXT_PUBLIC_BACK_END_URL +
     "/api/get/read/images/" +
-    VideoData?.thumbnail;
+    VideoData?.videoData?.thumbnail;
   return (
     <Link href={videoLink}>
       <div
@@ -77,7 +81,7 @@ const Video = ({ VideoData }: any) => {
           className={Style.vedio_container}
         >
           <p className={Style.time}>
-            {VideoData?.duration} <IoVideocamOutline />{" "}
+            {VideoData?.videoData?.duration} <IoVideocamOutline />{" "}
           </p>
         </div>
         <div className={Style.desc_container}>
@@ -96,8 +100,14 @@ const Video = ({ VideoData }: any) => {
               className={Style.chanel_img}
             ></div>
             <p className={Style.chanel_details}>
-              <span className={Style.chanel_name}>MrBeast</span>
-              <span className={Style.date}>3 Days Ago</span>
+              <span className={Style.chanel_name}>
+                {VideoData?.channelData?.channelData?.name}
+              </span>
+              <span className={Style.date}>
+                {moment(VideoData?.videoData?.createdAt)
+                  .startOf("hour")
+                  .fromNow()}
+              </span>
             </p>
           </div>
         </div>
