@@ -76,6 +76,7 @@ const MainVideo = () => {
           setChannelData(thisVideoData?.channelData);
           getting = thisVideoData?.getting;
           fetched = true;
+          console.log(thisVideoData?.responseData, thisVideoData?.channelData);
         }
       }
     };
