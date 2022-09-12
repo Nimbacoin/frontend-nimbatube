@@ -11,7 +11,8 @@ const Home = () => {
     const locaFetch = async () => {
       if (dataUrl !== "[channel]") {
         const dataRes: any = await basedGetUrlRequest(
-          "/api/get/channel/all-vidoes/" + dataUrl
+          "/api/get/channel/all-vidoes/" + dataUrl,
+          false
         );
         console.log(dataRes);
         setVideos(dataRes.responseData);
