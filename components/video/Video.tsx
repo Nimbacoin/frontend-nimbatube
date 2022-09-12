@@ -61,7 +61,7 @@ const Video = ({ VideoData }: any) => {
     : "/images/default-profile.png";
 
   const Title = VideoData?.videoData?.title;
-  ("ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)");
+
   const thumbnail =
     process.env.NEXT_PUBLIC_BACK_END_URL +
     "/api/get/read/images/" +

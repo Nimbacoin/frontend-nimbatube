@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import Style from "../../../../styles/pages/watch/rightside/video-option.module.css";
 import { IoEllipsisVerticalSharp } from "@react-icons/all-files/io5/IoEllipsisVerticalSharp";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
+import moment from "moment";
+import { useRouter } from "next/router";
 
 const VideoOption = ({ VideoData }: any) => {
+  const Router = useRouter();
   const HandelIsOverVideoLeave = () => {
     setIsOverVideo(false);
   };
@@ -11,16 +14,26 @@ const VideoOption = ({ VideoData }: any) => {
     setIsOverVideo(true);
   };
   const [IsOverVideo, setIsOverVideo] = useState(false);
+  const InputSearch = React.useRef<HTMLSpanElement>(null);
 
-  const Title = VideoData?.title;
+  const Title = VideoData?.videoData?.title;
   // const videoRef = useRef<HTMLVideoElement>(null);
   const Bg =
     process.env.NEXT_PUBLIC_BACK_END_URL +
     "/api/get/read/images/" +
-    VideoData?.thumbnail;
+    VideoData?.videoData?.thumbnail;
 
+  const handelClickhh = (e: any) => {
+    const refany = InputSearch.current;
+    if (InputSearch && InputSearch.current && refany?.contains(e.target)) {
+    } else {
+      Router.push(
+        "/watch/watch?watching=true&video=" + VideoData?.videoData?._id
+      );
+    }
+  };
   return (
-    <div className={Style.container}>
+    <div onClick={handelClickhh} className={Style.container}>
       <div
         className={Style.video_container}
         onMouseOver={HandelIsOverVideoOver}
@@ -34,7 +47,7 @@ const VideoOption = ({ VideoData }: any) => {
             className={Style.video_container_img}
           >
             <p className={Style.time}>
-              {VideoData?.duration} <IoVideocamOutline />{" "}
+              {VideoData?.videoData?.duration} <IoVideocamOutline />{" "}
             </p>
           </div>
         ) : (
@@ -43,7 +56,7 @@ const VideoOption = ({ VideoData }: any) => {
               src={
                 process.env.NEXT_PUBLIC_BACK_END_URL +
                 "/api/get/read/video/" +
-                VideoData?._id
+                VideoData?.videoData?._id
               }
               type="video/mp4"
             />
@@ -63,12 +76,18 @@ const VideoOption = ({ VideoData }: any) => {
             className={Style.chanel_img}
           ></div>
           <p className={Style.chanel_details}>
-            <span className={Style.chanel_name}>MrBeast</span>
-            <span className={Style.date}>{VideoData?.createdAt}</span>
+            <span className={Style.chanel_name}>
+              {VideoData?.channelData?.channelData?.name}
+            </span>
+            <span className={Style.date}>
+              {moment(VideoData?.videoData?.createdAt)
+                .startOf("hour")
+                .fromNow()}
+            </span>
           </p>
         </div>
       </div>
-      <span className={Style.icon}>
+      <span ref={InputSearch} className={Style.icon}>
         <IoEllipsisVerticalSharp />
       </span>
     </div>

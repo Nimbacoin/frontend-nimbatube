@@ -152,17 +152,9 @@ const Comments = ({ VideoData }: any) => {
             : Style.all_comments_container
         }
       >
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
-        <EachComment />
+        {VideoData?.comments?.length
+          ? VideoData?.comments.map(() => <EachComment />)
+          : null}
       </div>
     </div>
   );

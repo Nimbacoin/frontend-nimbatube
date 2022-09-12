@@ -24,6 +24,7 @@ const MainVideo = () => {
   const { asPath, pathname } = useRouter();
   const [ActiveVideo, setActiveVideo] = useState(true);
   const [videoData, setVideoData] = useState<{ [key: string]: any }>({});
+  const [channelData, setChannelData] = useState<{ [key: string]: any }>({});
   const unique_id = uuid();
 
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
@@ -56,8 +57,13 @@ const MainVideo = () => {
         const thisVideoData = await basedGetUrlRequest(
           "/api/get/video/" + video + "/" + getting
         );
-        if (thisVideoData && thisVideoData?.responseData) {
+        if (
+          thisVideoData &&
+          thisVideoData?.responseData &&
+          thisVideoData?.channelData
+        ) {
           setVideoData(thisVideoData?.responseData);
+          setChannelData(thisVideoData?.channelData);
           getting = thisVideoData?.getting;
           fetched = true;
         }
@@ -80,11 +86,10 @@ const MainVideo = () => {
     }
   }, [videoTag]);
 
-  const Title =
-    "ily (i love you baby) - Surf Mesa ft. Emilee - acoustic / vocal (cover)";
-  // const videoRef = useRef<HTMLVideoElement>(null);
-  const Bg =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
+  const Bg = channelData?.channelData?.profileImg?.url
+    ? channelData?.channelData?.profileImg?.url
+    : "/images/default-profile.png";
+
   const [IsLiked, setIsLiked] = useState(false);
   const [IsDisLiked, setIsDisLiked] = useState(false);
 
@@ -123,7 +128,7 @@ const MainVideo = () => {
         </div>
         <div className={Style.data_container}>
           <span className={Style.date}>
-            {videoData?.views?.length} views -
+            {videoData?.views?.length} views -{" "}
             {moment(videoData?.createdAt).startOf("hour").fromNow()}
           </span>
           <div className={Style.icons_container}>
@@ -158,9 +163,13 @@ const MainVideo = () => {
           className={Style.img}
         ></div>
         <div className={Style.chanel_container}>
-          <span className={Style.chanel_name}>MrBeast</span>
+          <span className={Style.chanel_name}>
+            {channelData?.channelData?.name}
+          </span>
           <p className={Style.chanel_followers}>
-            <span className={Style.Followers}>100 Followers</span>
+            <span className={Style.Followers}>
+              {channelData?.followers?.length} Followers
+            </span>
           </p>
         </div>
         <div className={Style.right_container}>
