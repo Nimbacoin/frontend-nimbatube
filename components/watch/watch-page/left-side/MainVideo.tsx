@@ -29,7 +29,7 @@ const MainVideo = () => {
   const [videoData, setVideoData] = useState<{ [key: string]: any }>({});
   const [channelData, setChannelData] = useState<{ [key: string]: any }>({});
   const userSignIn = useSelector((state: any) => state.UserSignIn.userdata);
-  const [videoId, setVideoId] = useState("");
+  const [videoId, setVideoId] = useState<string>("");
 
   const unique_id = uuid();
 
@@ -47,7 +47,10 @@ const MainVideo = () => {
       setActiveVideo(false);
     }
     if (videoTag.current) {
-      setVideoId(video);
+      if (video) {
+        setVideoId(video);
+      }
+
       videoTag.current.src =
         process.env.NEXT_PUBLIC_BACK_END_URL + "/api/get/read/video/" + video;
       videoTag.current.play();
