@@ -13,15 +13,17 @@ const MychannelPage = () => {
     if (typeof window !== "undefined" && !asPath.includes("[")) {
       const ChannelId: string = asPath.replace("/channel/", "");
       const EditedId: string = ChannelId.toString();
-      basedGetUrlRequest("/api/get/channel" + EditedId).then((res: any) => {
-        try {
-          if (res.responsData) {
-            setChannelData(res.responsData);
+      basedGetUrlRequest("/api/get/channel" + EditedId, null).then(
+        (res: any) => {
+          try {
+            if (res.responsData) {
+              setChannelData(res.responsData);
+            }
+          } catch (error) {
+            console.log(error);
           }
-        } catch (error) {
-          console.log(error);
         }
-      });
+      );
     }
   }, [asPath]);
   return (
