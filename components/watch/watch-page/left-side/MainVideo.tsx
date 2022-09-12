@@ -103,9 +103,10 @@ const MainVideo = () => {
   const [IsDisLiked, setIsDisLiked] = useState(false);
 
   const HandelLike = async () => {
+    setIsLiked(!IsLiked);
+    setIsDisLiked(false);
     const userId = userSignIn.email;
-    alert(userId);
-    const body: any = { userId: userId, IsLiked, IsDisLiked, videoId };
+    const body: any = { IsLiked, IsDisLiked, videoId };
     if (userId) {
       await basedPostUrlRequestLogedIn(
         "/api/post/video/like-video/",
@@ -113,8 +114,6 @@ const MainVideo = () => {
       ).then((responseData) => {
         if (responseData) {
           console.log(responseData);
-          setIsLiked(!IsLiked);
-          setIsDisLiked(false);
         }
       });
     } else {

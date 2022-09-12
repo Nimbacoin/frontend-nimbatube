@@ -79,7 +79,7 @@ const App = () => {
   return (
     <div className={Style.video_container}>
       <div className={Style.video_container_2}>
-        <video id="remotevideo" ref={videoRef} muted autoPlay></video>
+        <video id="remotevideo" ref={videoRef} autoPlay></video>
       </div>
     </div>
   );
