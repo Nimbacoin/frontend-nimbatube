@@ -19,12 +19,18 @@ import Comments from "./Comments";
 import { useRouter } from "next/router";
 import LiveVideo from "../live/LiveVideo";
 import basedGetUrlRequest from "../../../../utils/basedGetUrlRequest";
+import basedGetUrlRequestLogedIn from "../../../../utils/basedGetUrlRequestLogedIn";
+import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 
 const MainVideo = () => {
   const { asPath, pathname } = useRouter();
+  const Router = useRouter();
   const [ActiveVideo, setActiveVideo] = useState(true);
   const [videoData, setVideoData] = useState<{ [key: string]: any }>({});
   const [channelData, setChannelData] = useState<{ [key: string]: any }>({});
+  const userSignIn = useSelector((state: any) => state.UserSignIn.userdata);
+  const [videoId, setVideoId] = useState("");
+
   const unique_id = uuid();
 
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
@@ -41,6 +47,7 @@ const MainVideo = () => {
       setActiveVideo(false);
     }
     if (videoTag.current) {
+      setVideoId(video);
       videoTag.current.src =
         process.env.NEXT_PUBLIC_BACK_END_URL + "/api/get/read/video/" + video;
       videoTag.current.play();
@@ -49,13 +56,13 @@ const MainVideo = () => {
   useEffect(() => {
     let Params = new URL(window.location.href).searchParams;
     const video: string | null = Params.get("video");
-
     let fetched = false;
     const localFetch = async () => {
       let getting = unique_id;
       if (video && video.length > 10 && !fetched) {
         const thisVideoData = await basedGetUrlRequest(
-          "/api/get/video/" + video + "/" + getting
+          "/api/get/video/" + video + "/" + getting,
+          true
         );
         if (
           thisVideoData &&
@@ -71,9 +78,7 @@ const MainVideo = () => {
     };
     localFetch();
   }, []);
-  const DescreptionBoolean = useSelector(
-    (state: any) => state.MainVideo.Descreption
-  );
+
   const dispatch = useDispatch();
   const HandelDescreptionToggle = () => {
     dispatch(ToggleDescreption());
@@ -93,9 +98,24 @@ const MainVideo = () => {
   const [IsLiked, setIsLiked] = useState(false);
   const [IsDisLiked, setIsDisLiked] = useState(false);
 
-  const HandelLike = () => {
-    setIsLiked(!IsLiked);
-    setIsDisLiked(false);
+  const HandelLike = async () => {
+    const userId = userSignIn.email;
+    alert(userId);
+    const body: any = { userId: userId, IsLiked, IsDisLiked, videoId };
+    if (userId) {
+      await basedPostUrlRequestLogedIn(
+        "/api/post/video/like-video/",
+        body
+      ).then((responseData) => {
+        if (responseData) {
+          console.log(responseData);
+          setIsLiked(!IsLiked);
+          setIsDisLiked(false);
+        }
+      });
+    } else {
+      Router.push("/auth/sign-in");
+    }
   };
   const HandelDisLike = () => {
     setIsLiked(false);
