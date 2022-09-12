@@ -13,7 +13,7 @@ const MychannelPage = () => {
     if (typeof window !== "undefined" && !asPath.includes("[")) {
       const ChannelId: string = asPath.replace("/channel/", "");
       const EditedId: string = ChannelId.toString();
-      basedGetUrlRequest("/api/get/channel" + EditedId, null).then(
+      basedGetUrlRequest("/api/get/channel" + EditedId, false).then(
         (res: any) => {
           try {
             if (res.responsData) {
