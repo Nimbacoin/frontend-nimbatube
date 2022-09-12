@@ -5,9 +5,6 @@ import Home from "../components/home/Home";
 import basedGetUrlRequest from "../utils/basedGetUrlRequest";
 
 const HomePage: NextPage = () => {
-  useEffect(() => {
-    basedGetUrlRequest("/api");
-  });
   return <Home />;
 };
 
