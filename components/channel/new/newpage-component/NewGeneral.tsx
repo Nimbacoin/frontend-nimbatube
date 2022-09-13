@@ -51,7 +51,6 @@ const NewGeneral = () => {
   const HandelSubmiteNewGeneral = async (e: any) => {
     e.preventDefault();
     const ReqData: any = { general, images };
-    console.log(ReqData);
     basedPostUrlRequestLogedIn(
       "/api/post/channel/create-new-channel",
       ReqData
