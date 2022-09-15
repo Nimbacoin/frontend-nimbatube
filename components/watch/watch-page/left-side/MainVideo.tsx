@@ -30,6 +30,7 @@ const MainVideo = () => {
   const [channelData, setChannelData] = useState<{ [key: string]: any }>({});
   const userSignIn = useSelector((state: any) => state.UserSignIn.userdata);
   const [videoId, setVideoId] = useState<string>("");
+  const [videoLikes, setVideoLikes] = useState<number>(0);
 
   const unique_id = uuid();
 
@@ -53,7 +54,9 @@ const MainVideo = () => {
 
       videoTag.current.src =
         process.env.NEXT_PUBLIC_BACK_END_URL + "/api/get/read/video/" + video;
-      videoTag.current.play();
+      if (videoTag.current.src) {
+        videoTag.current.play();
+      }
     }
   }, [asPath]);
   useEffect(() => {
@@ -72,16 +75,21 @@ const MainVideo = () => {
           thisVideoData?.responseData &&
           thisVideoData?.channelData
         ) {
+          const resData = thisVideoData?.responseData;
           setVideoData(thisVideoData?.responseData);
           setChannelData(thisVideoData?.channelData);
           getting = thisVideoData?.getting;
           fetched = true;
+          // alert(videoData?.likes?.like);
+          console.log(videoData);
+          setVideoLikes(resData?.likes?.likes);
+          setIsLiked(resData?.likes?.liked);
           console.log(thisVideoData?.responseData, thisVideoData?.channelData);
         }
       }
     };
     localFetch();
-  }, []);
+  }, [asPath]);
 
   const dispatch = useDispatch();
   const HandelDescreptionToggle = () => {
@@ -101,18 +109,20 @@ const MainVideo = () => {
 
   const [IsLiked, setIsLiked] = useState(false);
   const [IsDisLiked, setIsDisLiked] = useState(false);
-
-  const HandelLike = async () => {
-    setIsLiked(!IsLiked);
-    setIsDisLiked(false);
+  let like = IsLiked;
+  let disLike = IsDisLiked;
+  const likesHandeler = async (body: any) => {
     const userId = userSignIn.email;
-    const body: any = { IsLiked, IsDisLiked, videoId };
+
     if (userId) {
       await basedPostUrlRequestLogedIn(
         "/api/post/video/like-video/",
         body
       ).then((responseData) => {
         if (responseData) {
+          if (responseData?.likes) {
+            setVideoLikes(responseData?.likesNumber);
+          }
           console.log(responseData);
         }
       });
@@ -120,9 +130,22 @@ const MainVideo = () => {
       Router.push("/auth/sign-in");
     }
   };
+  const HandelLike = async () => {
+    setIsLiked(!IsLiked);
+    setIsDisLiked(false);
+    like = !like;
+    disLike = false;
+    const body: any = { IsLiked: like, IsDisLiked: disLike, videoId };
+    likesHandeler(body);
+  };
   const HandelDisLike = () => {
     setIsLiked(false);
     setIsDisLiked(!IsDisLiked);
+    like = false;
+    disLike = !disLike;
+    const body: any = { IsLiked: like, IsDisLiked: disLike, videoId };
+
+    likesHandeler(body);
   };
 
   const [IsFollowed, setIsFollowed] = useState(false);
@@ -158,9 +181,7 @@ const MainVideo = () => {
             <p className={Style.icon} onClick={HandelLike}>
               {IsLiked ? <AiFillLike /> : <AiOutlineLike />}
 
-              <span className={Style.nubmer_of_likes}>
-                {videoData?.likes?.length}
-              </span>
+              <span className={Style.nubmer_of_likes}>{videoLikes}</span>
             </p>
             <p className={Style.icon} onClick={HandelDisLike}>
               {IsDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}
