@@ -31,6 +31,7 @@ const MainVideo = () => {
   const userSignIn = useSelector((state: any) => state.UserSignIn.userdata);
   const [videoId, setVideoId] = useState<string>("");
   const [videoLikes, setVideoLikes] = useState<number>(0);
+  const [videoDisLikes, setVideoDisLikes] = useState<number>(0);
 
   const unique_id = uuid();
 
@@ -55,7 +56,7 @@ const MainVideo = () => {
       videoTag.current.src =
         process.env.NEXT_PUBLIC_BACK_END_URL + "/api/get/read/video/" + video;
       if (videoTag.current.src) {
-        videoTag.current.play();
+        //videoTag.current.play();
       }
     }
   }, [asPath]);
@@ -84,6 +85,8 @@ const MainVideo = () => {
           console.log(videoData);
           setVideoLikes(resData?.likes?.likes);
           setIsLiked(resData?.likes?.liked);
+          setVideoDisLikes(resData?.disLikes?.disLikes);
+          setIsDisLiked(resData?.disLikes?.isDisLiked);
           console.log(thisVideoData?.responseData, thisVideoData?.channelData);
         }
       }
@@ -118,12 +121,14 @@ const MainVideo = () => {
       await basedPostUrlRequestLogedIn(
         "/api/post/video/like-video/",
         body
-      ).then((responseData) => {
+      ).then(({ responseData }) => {
         if (responseData) {
-          if (responseData?.likes) {
-            setVideoLikes(responseData?.likesNumber);
+          if (responseData) {
+            setVideoLikes(responseData?.likes?.likes);
+            setIsLiked(responseData?.likes?.liked);
+            setVideoDisLikes(responseData?.disLikes?.disLikes);
+            setIsDisLiked(responseData?.disLikes?.isDisLiked);
           }
-          console.log(responseData);
         }
       });
     } else {
@@ -131,16 +136,16 @@ const MainVideo = () => {
     }
   };
   const HandelLike = async () => {
-    setIsLiked(!IsLiked);
-    setIsDisLiked(false);
+    // setIsLiked(!IsLiked);
+    // setIsDisLiked(false);
     like = !like;
     disLike = false;
     const body: any = { IsLiked: like, IsDisLiked: disLike, videoId };
     likesHandeler(body);
   };
   const HandelDisLike = () => {
-    setIsLiked(false);
-    setIsDisLiked(!IsDisLiked);
+    // setIsLiked(false);
+    // setIsDisLiked(!IsDisLiked);
     like = false;
     disLike = !disLike;
     const body: any = { IsLiked: like, IsDisLiked: disLike, videoId };
@@ -185,7 +190,7 @@ const MainVideo = () => {
             </p>
             <p className={Style.icon} onClick={HandelDisLike}>
               {IsDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}
-              Dislike
+              Dislike {videoDisLikes}
             </p>
             <p className={Style.icon}>
               <IoArrowRedoOutline />
