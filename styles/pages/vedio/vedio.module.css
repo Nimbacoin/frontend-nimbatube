@@ -17,6 +17,7 @@
   background-position: center;
   cursor: pointer;
   position: relative;
+  background-color: #e3e3e3;
 }
 .time {
   position: absolute;
