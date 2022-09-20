@@ -23,6 +23,10 @@ import EachComment from "./EachComment";
 
 //--------------------------------------comments----------------------------------------------//
 const Comments = ({ VideoData }: any) => {
+  const videoData = useSelector(
+    (state: any) => state.VideoSlice.mainVideoDataWatch?.responseData
+  );
+  console.log(videoData);
   const CommentsBoolean = useSelector(
     (state: any) => state.MainVideo.CommentsBoolean
   );
@@ -32,7 +36,7 @@ const Comments = ({ VideoData }: any) => {
       ? (document.body.style.overflowY = "hidden")
       : (document.body.style.overflowY = "auto");
   });
-  console.log(VideoData?.comments);
+  // console.log(videoData?.comments);
   return (
     <div className={CommentsBoolean ? Style.container_phone : Style.container}>
       {!CommentsBoolean && (
@@ -40,7 +44,7 @@ const Comments = ({ VideoData }: any) => {
           className={Style.lable_open_all_comments}
           htmlFor="input_open_all_comments"
         >
-          Comments · {VideoData?.comments?.length}
+          Comments · {videoData?.comments?.length}
           <input
             onClick={() => dispatch(ToggleCommentsOpen())}
             className={Style.input_open_all_comments}
@@ -69,14 +73,14 @@ const Comments = ({ VideoData }: any) => {
       )}
       <div className={Style.comments_setting}>
         <p className={Style.comments_number}>
-          {VideoData?.comments?.length} Comments
+          {videoData?.comments?.length} Comments
         </p>
         {/* <p className={Style.icon}>
           <MdSort />
           <span className={Style.container}>SORT BY </span>
         </p> */}
       </div>
-      <ReplyInput VideoData={VideoData} />
+      <ReplyInput VideoData={videoData} />
       <div
         className={
           CommentsBoolean
@@ -84,8 +88,8 @@ const Comments = ({ VideoData }: any) => {
             : Style.all_comments_container
         }
       >
-        {VideoData?.comments?.length
-          ? VideoData?.comments.map((comment: any) => (
+        {videoData?.comments?.length
+          ? videoData?.comments.map((comment: any) => (
               <EachComment CommentData={comment} />
             ))
           : null}

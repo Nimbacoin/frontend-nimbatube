@@ -5,8 +5,7 @@ import basedGetUrlRequest from "../../utils/basedGetUrlRequest";
 
 const VidioId = ({ data }: any) => {
   //MainVideoDataReducer
-  //VideoData={data}
-  return <WatchPage />;
+  return <WatchPage VideoData={data} />;
 };
 
 export default VidioId;

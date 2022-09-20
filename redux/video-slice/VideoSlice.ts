@@ -21,7 +21,15 @@ export const VideoSlice = createSlice({
       }
     },
     MainVideoDataReducer: (state: any, action: any) => {
-      state.mainVideoDataWarch = action.payload;
+      const message = action.payload.message;
+      console.log("data", action.payload);
+      if (message === "data") {
+        state.mainVideoDataWatch = action.payload.data;
+      } else if (message === "comments") {
+        state.mainVideoDataWatch.responseData.comments =
+          action.payload.comments;
+        console.log(state.mainVideoDataWatch.responseData.comments);
+      }
     },
   },
 });
