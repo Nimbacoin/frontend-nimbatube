@@ -1,10 +1,27 @@
+import { GetServerSideProps } from "next";
 import React from "react";
 import WatchPage from "../../components/watch/WatchPage";
+import basedGetUrlRequest from "../../utils/basedGetUrlRequest";
 
-//Fgfg
-
-const VidioId = () => {
+const VidioId = ({ data }: any) => {
+  //MainVideoDataReducer
+  //VideoData={data}
   return <WatchPage />;
 };
 
 export default VidioId;
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  let data = {};
+  console.log(query);
+  await basedGetUrlRequest(
+    "/api/get/video/" + query.video + "/" + "1232223923020290230923",
+    true
+  ).then((res) => {
+    data = res;
+  });
+
+  return {
+    props: { data },
+  };
+};

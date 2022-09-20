@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   videoData: {},
+  mainVideoDataWatch: {},
 };
 
 export const VideoSlice = createSlice({
@@ -19,9 +20,13 @@ export const VideoSlice = createSlice({
         state.videoData["video_id"] = Action.video_id;
       }
     },
+    MainVideoDataReducer: (state: any, action: any) => {
+      state.mainVideoDataWarch = action.payload;
+    },
   },
 });
 
-export const { ActionVideoDataChanging } = VideoSlice.actions;
+export const { ActionVideoDataChanging, MainVideoDataReducer } =
+  VideoSlice.actions;
 const AllReducers = VideoSlice.reducer;
 export default AllReducers;

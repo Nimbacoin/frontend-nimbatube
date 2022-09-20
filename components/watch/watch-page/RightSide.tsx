@@ -16,7 +16,9 @@ const RightSide = () => {
   return (
     <div className={Style.container}>
       {videos.length
-        ? videos.map((vid) => <VideoOption VideoData={vid} />)
+        ? videos.map((vid, index) => (
+            <VideoOption key={index} Key={index} VideoData={vid} />
+          ))
         : null}
     </div>
   );

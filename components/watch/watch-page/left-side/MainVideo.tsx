@@ -52,12 +52,14 @@ const MainVideo = () => {
       if (video) {
         setVideoId(video);
       }
-
-      videoTag.current.src =
-        process.env.NEXT_PUBLIC_BACK_END_URL + "/api/get/read/video/" + video;
-      if (videoTag.current.src) {
-        //videoTag.current.play();
+      if (typeof window !== "undefined") {
+        videoTag.current.src =
+          process.env.NEXT_PUBLIC_BACK_END_URL + "/api/get/read/video/" + video;
       }
+
+      // if (videoTag.current.src) {
+      //   //videoTag.current.play();
+      // }
     }
   }, [asPath]);
   useEffect(() => {
@@ -82,12 +84,11 @@ const MainVideo = () => {
           getting = thisVideoData?.getting;
           fetched = true;
           // alert(videoData?.likes?.like);
-          console.log(videoData);
+
           setVideoLikes(resData?.likes?.likes);
           setIsLiked(resData?.likes?.liked);
           setVideoDisLikes(resData?.disLikes?.disLikes);
           setIsDisLiked(resData?.disLikes?.isDisLiked);
-          console.log(thisVideoData?.responseData, thisVideoData?.channelData);
         }
       }
     };

@@ -9,7 +9,7 @@ const Video = ({ VideoData }: any) => {
   const [OverElement, setOverElement] = useState(false);
   const streaming = VideoData?.streaming;
   const [videoLink, setVideoLink] = useState("");
-  console.log(VideoData);
+  //console.log(VideoData);
   const HandelOver = () => {
     setOverElement(true);
   };

@@ -60,7 +60,7 @@ const Layout = ({ children }: any) => {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
@@ -138,7 +138,7 @@ const Layout = ({ children }: any) => {
           site: "@site",
           cardType: "summary_large_image",
         }}
-      />
+      /> */}
       <div style={{ minHeight: `${Height}px` }} className={Style.container}>
         <Header />
         <SideHeader />

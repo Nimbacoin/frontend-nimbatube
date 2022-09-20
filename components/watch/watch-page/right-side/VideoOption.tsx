@@ -5,7 +5,7 @@ import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline"
 import moment from "moment";
 import { useRouter } from "next/router";
 
-const VideoOption = ({ VideoData }: any) => {
+const VideoOption = ({ VideoData, Key }: any) => {
   const Router = useRouter();
   const HandelIsOverVideoLeave = () => {
     setIsOverVideo(false);
@@ -33,7 +33,7 @@ const VideoOption = ({ VideoData }: any) => {
     }
   };
   return (
-    <div onClick={handelClickhh} className={Style.container}>
+    <div key={Key} onClick={handelClickhh} className={Style.container}>
       <div
         className={Style.video_container}
         onMouseOver={HandelIsOverVideoOver}
