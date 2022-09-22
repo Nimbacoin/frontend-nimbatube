@@ -28,8 +28,9 @@ const VideoInfo = () => {
     videoData?.disLikes?.disLikes
   );
 
-  const [IsLiked, setIsLiked] = useState(false);
-  const [IsDisLiked, setIsDisLiked] = useState(false);
+  const [IsLiked, setIsLiked] = useState(videoData?.likes?.liked);
+  console.log(videoData?.likes?.liked);
+  const [IsDisLiked, setIsDisLiked] = useState(videoData?.disLikes?.isDisLiked);
   let like = IsLiked;
   let disLike = IsDisLiked;
 
@@ -58,16 +59,17 @@ const VideoInfo = () => {
     }
   };
   const HandelLike = async () => {
-    // setIsLiked(!IsLiked);
-    // setIsDisLiked(false);
+    setIsLiked(!IsLiked);
+    setIsDisLiked(false);
     like = !like;
     disLike = false;
     const body: any = { IsLiked: like, IsDisLiked: disLike, videoId };
     likesHandeler(body);
   };
+
   const HandelDisLike = () => {
-    // setIsLiked(false);
-    // setIsDisLiked(!IsDisLiked);
+    setIsLiked(false);
+    setIsDisLiked(!IsDisLiked);
     like = false;
     disLike = !disLike;
     const body: any = { IsLiked: like, IsDisLiked: disLike, videoId };

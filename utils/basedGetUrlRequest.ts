@@ -8,7 +8,7 @@ const basedGetUrlRequest = async (url: string, credentials: boolean) => {
     if (credentials) {
       try {
         const response = await fetch(
-          process.env.NEXT_PUBLIC_BACK_END_URL + url + "/" + UserCookie,
+          process.env.NEXT_PUBLIC_BACK_END_URL + url,
           {
             method: "GET",
           }

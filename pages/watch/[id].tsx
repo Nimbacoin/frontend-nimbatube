@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import React from "react";
 import WatchPage from "../../components/watch/WatchPage";
 import basedGetUrlRequest from "../../utils/basedGetUrlRequest";
+import basedGetUrlRequestLogedIn from "../../utils/basedGetUrlRequestLogedIn";
 
 const VidioId = ({ data }: any) => {
   //MainVideoDataReducer
@@ -10,11 +11,23 @@ const VidioId = ({ data }: any) => {
 
 export default VidioId;
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   let data = {};
+  await basedGetUrlRequestLogedIn("/api/get/channel/following-channels/").then(
+    (re) => {
+      console.log(re);
+    }
+  );
+  const query = context.query;
+  const cookies = context.req.headers.cookie;
   console.log(query);
   await basedGetUrlRequest(
-    "/api/get/video/" + query.video + "/" + "1232223923020290230923",
+    "/api/get/video/" +
+      query.video +
+      "/" +
+      "1232223923020290230923" +
+      "/" +
+      cookies,
     true
   ).then((res) => {
     data = res;

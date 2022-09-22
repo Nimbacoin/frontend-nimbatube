@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { MainVideoDataReducer } from "../../redux/video-slice/VideoSlice";
 const WatchPage = ({ VideoData }: any) => {
   //VideoData
-  console.log("watch page", VideoData);
+  // console.log("watch page", VideoData);
   const dispatch = useDispatch();
   dispatch(MainVideoDataReducer({ message: "data", data: VideoData }));
   return (
