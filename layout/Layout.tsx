@@ -45,6 +45,11 @@ const Layout = ({ children }: any) => {
     }
   });
   useEffect(() => {
+    // basedGetUrlRequestLogedIn("/api/get/channel/following-channels/").then(
+    //   () => {
+    //     alert("As");
+    //   }
+    // );
     basedGetUrlRequestLogedIn("/api/get/channel/all-channels").then(
       (res: any) => {
         try {
