@@ -1,6 +1,6 @@
 import React from "react";
 
-const BarLoad = ({width}) => {
+const BarLoad = ({ width }: any) => {
   return <div></div>;
 };
 
