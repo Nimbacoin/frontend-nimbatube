@@ -1,42 +1,46 @@
 import React, { useEffect, useRef, useState } from "react";
 import Style from "../../../../styles/pages/watch/leftside/main-video.module.css";
-import { IoEllipsisHorizontalSharp } from "@react-icons/all-files/io5/IoEllipsisHorizontalSharp";
-import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
-import { AiFillLike } from "@react-icons/all-files/ai/AiFillLike";
-import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
 import { v4 as uuid } from "uuid";
-import moment from "moment";
-import { AiFillDislike } from "@react-icons/all-files/ai/AiFillDislike";
 
-import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
-import { IoArrowRedoOutline } from "@react-icons/all-files/io5/IoArrowRedoOutline";
-import { RiPlayListAddFill } from "@react-icons/all-files/ri/RiPlayListAddFill";
-import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
 import { useDispatch, useSelector } from "react-redux";
-import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
 import Descreption from "./Descreption";
 import Comments from "./Comments";
 import { useRouter } from "next/router";
 import LiveVideo from "../live/LiveVideo";
-import basedGetUrlRequest from "../../../../utils/basedGetUrlRequest";
 import basedGetUrlRequestLogedIn from "../../../../utils/basedGetUrlRequestLogedIn";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
+import VideoInfo from "./VideoInfo";
 
 const MainVideo = () => {
+  const ResDD = useSelector(
+    (state: any) => state.VideoSlice.mainVideoDataWatch
+  );
   const { asPath, pathname } = useRouter();
   const Router = useRouter();
   const [ActiveVideo, setActiveVideo] = useState(true);
-  const [videoData, setVideoData] = useState<{ [key: string]: any }>({});
-  const [channelData, setChannelData] = useState<{ [key: string]: any }>({});
+  const [videoData, setVideoData] = useState<{ [key: string]: any }>(
+    ResDD?.responseData
+  );
+  const [channelData, setChannelData] = useState<{ [key: string]: any }>(
+    ResDD?.channelData
+  );
   const userSignIn = useSelector((state: any) => state.UserSignIn.userdata);
   const [videoId, setVideoId] = useState<string>("");
-  const [videoLikes, setVideoLikes] = useState<number>(0);
-  const [videoDisLikes, setVideoDisLikes] = useState<number>(0);
+  const [videoLikes, setVideoLikes] = useState<number>(videoData?.likes?.likes);
+  const [videoDisLikes, setVideoDisLikes] = useState<number>(
+    videoData?.disLikes?.disLikes
+  );
+  const Bg = channelData?.channelData?.profileImg?.url
+    ? channelData?.channelData?.profileImg?.url
+    : "/images/default-profile.png";
 
   const unique_id = uuid();
-
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
+  const dispatch = useDispatch();
+  const [IsFollowed, setIsFollowed] = useState(
+    channelData?.followers?.followed
+  );
 
   useEffect(() => {
     let Params = new URL(window.location.href).searchParams;
@@ -62,101 +66,28 @@ const MainVideo = () => {
       // }
     }
   }, [asPath]);
-  useEffect(() => {
-    let Params = new URL(window.location.href).searchParams;
-    const video: string | null = Params.get("video");
-    let fetched = false;
-    const localFetch = async () => {
-      let getting = unique_id;
-      if (video && video.length > 10 && !fetched) {
-        const thisVideoData = await basedGetUrlRequest(
-          "/api/get/video/" + video + "/" + getting,
-          true
-        );
-        if (
-          thisVideoData &&
-          thisVideoData?.responseData &&
-          thisVideoData?.channelData
-        ) {
-          const resData = thisVideoData?.responseData;
-          setVideoData(thisVideoData?.responseData);
-          setChannelData(thisVideoData?.channelData);
-          getting = thisVideoData?.getting;
-          fetched = true;
-          // alert(videoData?.likes?.like);
 
-          setVideoLikes(resData?.likes?.likes);
-          setIsLiked(resData?.likes?.liked);
-          setVideoDisLikes(resData?.disLikes?.disLikes);
-          setIsDisLiked(resData?.disLikes?.isDisLiked);
-        }
-      }
-    };
-    localFetch();
-  }, [asPath]);
-
-  const dispatch = useDispatch();
-  const HandelDescreptionToggle = () => {
-    dispatch(ToggleDescreption());
-  };
-  useEffect(() => {
-    if (videoTag.current !== null) {
-      const Height = videoTag.current.videoHeight;
-      const Width = videoTag.current.videoWidth;
-      videoTag.current.style.minHeight = "500px";
-    }
-  }, [videoTag]);
-
-  const Bg = channelData?.channelData?.profileImg?.url
-    ? channelData?.channelData?.profileImg?.url
-    : "/images/default-profile.png";
-
-  const [IsLiked, setIsLiked] = useState(false);
-  const [IsDisLiked, setIsDisLiked] = useState(false);
-  let like = IsLiked;
-  let disLike = IsDisLiked;
-  const likesHandeler = async (body: any) => {
+  const HandelFollow = async () => {
     const userId = userSignIn.email;
-
+    setIsFollowed(!IsFollowed);
     if (userId) {
+      const body: any = {
+        channelId: channelData._id,
+        isFollowing: !IsFollowed,
+      };
       await basedPostUrlRequestLogedIn(
-        "/api/post/video/like-video/",
+        "/api/post/channel/follow-channel",
         body
       ).then(({ responseData }) => {
         if (responseData) {
           if (responseData) {
-            setVideoLikes(responseData?.likes?.likes);
-            setIsLiked(responseData?.likes?.liked);
-            setVideoDisLikes(responseData?.disLikes?.disLikes);
-            setIsDisLiked(responseData?.disLikes?.isDisLiked);
+            alert("swed");
           }
         }
       });
     } else {
       Router.push("/auth/sign-in");
     }
-  };
-  const HandelLike = async () => {
-    // setIsLiked(!IsLiked);
-    // setIsDisLiked(false);
-    like = !like;
-    disLike = false;
-    const body: any = { IsLiked: like, IsDisLiked: disLike, videoId };
-    likesHandeler(body);
-  };
-  const HandelDisLike = () => {
-    // setIsLiked(false);
-    // setIsDisLiked(!IsDisLiked);
-    like = false;
-    disLike = !disLike;
-    const body: any = { IsLiked: like, IsDisLiked: disLike, videoId };
-
-    likesHandeler(body);
-  };
-
-  const [IsFollowed, setIsFollowed] = useState(false);
-  const HandelFollow = () => {
-    setIsFollowed(!IsFollowed);
   };
 
   return (
@@ -171,42 +102,8 @@ const MainVideo = () => {
           </div>
         </div>
       )}
-      <div className={Style.video_data}>
-        <div className={Style.title}>
-          <p className={Style.title_text}>{videoData?.title}</p>
-          <button onClick={HandelDescreptionToggle}>
-            <IoIosArrowDown />
-          </button>
-        </div>
-        <div className={Style.data_container}>
-          <span className={Style.date}>
-            {videoData?.views?.length} views -{" "}
-            {moment(videoData?.createdAt).startOf("hour").fromNow()}
-          </span>
-          <div className={Style.icons_container}>
-            <p className={Style.icon} onClick={HandelLike}>
-              {IsLiked ? <AiFillLike /> : <AiOutlineLike />}
-
-              <span className={Style.nubmer_of_likes}>{videoLikes}</span>
-            </p>
-            <p className={Style.icon} onClick={HandelDisLike}>
-              {IsDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}
-              Dislike {videoDisLikes}
-            </p>
-            <p className={Style.icon}>
-              <IoArrowRedoOutline />
-              Share
-            </p>
-            <p className={Style.icon}>
-              <RiPlayListAddFill />
-              Save
-            </p>
-            <p className={Style.icon}>
-              <IoEllipsisHorizontalSharp />
-            </p>
-          </div>
-        </div>
-      </div>
+      {/* videoData */}
+      <VideoInfo />
       <div className={Style.chanel}>
         <div
           style={{ backgroundImage: `url(${Bg})` }}
@@ -218,7 +115,8 @@ const MainVideo = () => {
           </span>
           <p className={Style.chanel_followers}>
             <span className={Style.Followers}>
-              {channelData?.followers?.length} Followers
+              {channelData?.followers?.followers + " "}
+              Followers
             </span>
           </p>
         </div>
@@ -230,7 +128,7 @@ const MainVideo = () => {
           ) : (
             <div className={Style.followed_button_container}>
               <button onClick={HandelFollow} className={Style.followed_button}>
-                Followed
+                Following
               </button>
               {/* <button onClick={HandelFollow} className={Style.notf_button}>
                 <IoNotificationsOutline />
