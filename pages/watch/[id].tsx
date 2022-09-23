@@ -13,11 +13,7 @@ export default VidioId;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   let data = {};
-  await basedGetUrlRequestLogedIn("/api/get/channel/following-channels/").then(
-    (re) => {
-      console.log(re);
-    }
-  );
+
   const query = context.query;
   const cookies = context.req.headers.cookie;
   console.log(query);

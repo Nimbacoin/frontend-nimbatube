@@ -104,7 +104,8 @@ const Channel = ({
         <p className={Style.channel_followers}>
           <span className={Style.Followers}>
             {" "}
-            {Followers} Followers - {Uploads} Uploads
+            {Followers} {Followers && " Followers"} {Uploads ? Uploads : null}
+            {Uploads ? " - Uploads" : null}
           </span>
         </p>
         {IsChannelPage && (

@@ -1,15 +1,16 @@
 import React from "react";
 import VideoWatchLater from "../watch-later/VideoWatchLater";
 import Style from "../../styles/pages/favorites/favorites.module.css";
+import { useRouter } from "next/router";
 
-const WatchHistoryPage = () => {
+const WatchHistoryPage = ({ VideosData }: any) => {
+  console.log("VideosData", VideosData);
+  
   return (
     <div className={Style.container}>
-      <VideoWatchLater />
-      <VideoWatchLater />
-      <VideoWatchLater />
-      <VideoWatchLater />
-      <VideoWatchLater />
+      {VideosData.length
+        ? VideosData.map((item: any) => <VideoWatchLater VideoData={item} />)
+        : null}
       <VideoWatchLater />
     </div>
   );
