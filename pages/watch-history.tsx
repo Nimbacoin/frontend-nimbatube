@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     "/api/get/video/history-video/" + userRer.user,
     false
   ).then(async (res) => {
-    if (res.responseData) {
+    if (res?.responseData) {
       data = res.responseData;
     }
   });
