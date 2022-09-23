@@ -22,13 +22,19 @@ export const VideoSlice = createSlice({
     },
     MainVideoDataReducer: (state: any, action: any) => {
       const message = action.payload.message;
-      console.log("data", action.payload);
+
       if (message === "data") {
         state.mainVideoDataWatch = action.payload.data;
       } else if (message === "comments") {
         state.mainVideoDataWatch.responseData.comments =
           action.payload.comments;
-        console.log(state.mainVideoDataWatch.responseData.comments);
+      } else if (message === "follwers") {
+        console.log(
+          "sdsdsdssdsd",
+          state.mainVideoDataWatch.channelData.follwers
+        );
+        console.log("sdsdsdssdsd", action.payload.follwers);
+        state.mainVideoDataWatch.channelData.follwers = action.payload.follwers;
       }
     },
   },

@@ -26,7 +26,7 @@ const Comments = ({ VideoData }: any) => {
   const videoData = useSelector(
     (state: any) => state.VideoSlice.mainVideoDataWatch?.responseData
   );
-  console.log(videoData);
+
   const CommentsBoolean = useSelector(
     (state: any) => state.MainVideo.CommentsBoolean
   );

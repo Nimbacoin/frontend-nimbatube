@@ -10,6 +10,7 @@ import LiveVideo from "../live/LiveVideo";
 import basedGetUrlRequestLogedIn from "../../../../utils/basedGetUrlRequestLogedIn";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 import VideoInfo from "./VideoInfo";
+import { MainVideoDataReducer } from "../../../../redux/video-slice/VideoSlice";
 
 const MainVideo = () => {
   const ResDD = useSelector(
@@ -81,7 +82,13 @@ const MainVideo = () => {
       ).then(({ responseData }) => {
         if (responseData) {
           if (responseData) {
-            alert("swed");
+            dispatch(
+              MainVideoDataReducer({
+                message: "follwers",
+                follwers: responseData,
+              })
+            );
+            // alert("swed");
           }
         }
       });

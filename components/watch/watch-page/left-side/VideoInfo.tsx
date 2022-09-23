@@ -29,7 +29,7 @@ const VideoInfo = () => {
   );
 
   const [IsLiked, setIsLiked] = useState(videoData?.likes?.liked);
-  console.log(videoData?.likes?.liked);
+  
   const [IsDisLiked, setIsDisLiked] = useState(videoData?.disLikes?.isDisLiked);
   let like = IsLiked;
   let disLike = IsDisLiked;
