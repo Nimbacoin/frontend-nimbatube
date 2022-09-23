@@ -1,0 +1,43 @@
+import React from "react";
+import { useDispatch } from "react-redux";
+import {
+  leaveTextReducer,
+  overTextReducer,
+} from "../../redux/style-slice/general-style/GenrealStyle";
+import Style from "../../styles/pages/modals/icon-header.module.css";
+import { useRouter } from "next/router";
+
+const IconHeader = ({ TextValue, Icon, Url }: any) => {
+  const Router = useRouter();
+  const dispatch = useDispatch();
+  const buttonRef = React.useRef<HTMLButtonElement | null>(null);
+  const handelOver = () => {
+    if (buttonRef.current) {
+      const data = buttonRef.current.getBoundingClientRect();
+      console.log(data.height);
+      const top = data.top + data.height;
+      const left = data.left;
+
+      dispatch(overTextReducer({ top: top, left: left }));
+    }
+  };
+  const handelLeave = () => {
+    //dispatch(leaveTextReducer());
+  };
+  const handelClick = () => {
+    Url && Router.push(Url);
+  };
+  return (
+    <button
+      onClick={handelClick}
+      onMouseOut={handelLeave}
+      onMouseOver={handelOver}
+      ref={buttonRef}
+      className={Style.container}
+    >
+      {Icon}
+    </button>
+  );
+};
+
+export default IconHeader;

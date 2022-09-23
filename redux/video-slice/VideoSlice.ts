@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
   videoData: {},
@@ -28,13 +28,15 @@ export const VideoSlice = createSlice({
       } else if (message === "comments") {
         state.mainVideoDataWatch.responseData.comments =
           action.payload.comments;
-      } else if (message === "follwers") {
+      } else if (message === "followers") {
         console.log(
-          "sdsdsdssdsd",
-          state.mainVideoDataWatch.channelData.follwers
+          "followers 1",
+          current(state.mainVideoDataWatch.channelData.followers)
         );
-        console.log("sdsdsdssdsd", action.payload.follwers);
-        state.mainVideoDataWatch.channelData.follwers = action.payload.follwers;
+        console.log("payload", action.payload.followers);
+        state.mainVideoDataWatch.channelData.followers =
+          action.payload.followers;
+        // console.log("followers 1", current(state.mainVideoDataWatch));
       }
     },
   },

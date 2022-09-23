@@ -12,6 +12,7 @@ import { UserSignedIn } from "../redux/user-slice/UserSignIn";
 import Cookies from "js-cookie";
 import basedGetUrlRequestLogedIn from "../utils/basedGetUrlRequestLogedIn";
 import { AllChannelsRedcuer } from "../redux/channel-slice/ChannelSlice";
+import HoverText from "../components/modals/HoverText";
 
 interface main {
   children: any;
@@ -20,6 +21,8 @@ const Layout = ({ children }: any) => {
   const { asPath } = useRouter();
   const Router = useRouter();
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
+  const isOver = useSelector((state: any) => state.GenrealStyle.isOver);
+
   const UserIsSignedIn = useSelector(
     (state: any) => state.UserSignIn.UserIsSignedIn
   );
@@ -146,10 +149,13 @@ const Layout = ({ children }: any) => {
       />
       <div style={{ minHeight: `${Height}px` }} className={Style.container}>
         <Header />
+
         <SideHeader />
+
         <div style={{ minHeight: `${Height}px` }} className={Style.children}>
           {children}
         </div>
+        {isOver && <HoverText />}
       </div>
     </>
   );

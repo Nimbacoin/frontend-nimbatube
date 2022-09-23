@@ -42,7 +42,7 @@ const MainVideo = () => {
   const [IsFollowed, setIsFollowed] = useState(
     channelData?.followers?.followed
   );
-
+  const [followers, setFollowers] = useState(channelData?.followers?.followers);
   useEffect(() => {
     let Params = new URL(window.location.href).searchParams;
     const video: string | null = Params.get("video");
@@ -79,17 +79,17 @@ const MainVideo = () => {
       await basedPostUrlRequestLogedIn(
         "/api/post/channel/follow-channel",
         body
-      ).then(({ responseData }) => {
+      ).then((responseData) => {
         if (responseData) {
-          if (responseData) {
-            dispatch(
-              MainVideoDataReducer({
-                message: "follwers",
-                follwers: responseData,
-              })
-            );
-            // alert("swed");
-          }
+          console.log(responseData);
+          setFollowers(responseData?.responseData?.followers);
+          dispatch(
+            MainVideoDataReducer({
+              message: "followers",
+              followers: responseData?.responseData,
+            })
+          );
+          // alert("swed");
         }
       });
     } else {
@@ -121,10 +121,7 @@ const MainVideo = () => {
             {channelData?.channelData?.name}
           </span>
           <p className={Style.chanel_followers}>
-            <span className={Style.Followers}>
-              {channelData?.followers?.followers + " "}
-              Followers
-            </span>
+            <span className={Style.Followers}>{followers} - Followers</span>
           </p>
         </div>
         <div className={Style.right_container}>

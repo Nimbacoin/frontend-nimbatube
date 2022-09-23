@@ -10,6 +10,7 @@ import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 
 import { useRouter } from "next/router";
 import SearchDropDown from "./header-components/SearchDropDown";
+import IconHeader from "../../components/modals/IconHeader";
 
 const HeaderCenter = ({ UserIsSignedIn }: any) => {
   const { asPath } = useRouter();
@@ -58,21 +59,22 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
       <div className={Style.buttons_container}>
         {UserIsSignedIn ? (
           <>
-            <Link href="/upload">
-              <button className={Style.rest_of_button}>
-                <IoCloudUploadOutline />
-              </button>
-            </Link>
+            <IconHeader
+              Url={"/upload"}
+              Icon={<IoCloudUploadOutline />}
+              TextValue={"Go lIVE"}
+            />
 
-            <button className={Style.rest_of_button}>
-              <IoNotificationsOutline />
-            </button>
+            <IconHeader
+              Icon={<IoNotificationsOutline />}
+              TextValue={"Go lIVE"}
+            />
 
-            <Link href="/go-live/go-live">
-              <button className={Style.rest_of_button}>
-                <IoVideocamOutline />
-              </button>
-            </Link>
+            <IconHeader
+              Url={"/go-live/go-live"}
+              Icon={<IoVideocamOutline />}
+              TextValue={"Go lIVE"}
+            />
           </>
         ) : (
           <>
