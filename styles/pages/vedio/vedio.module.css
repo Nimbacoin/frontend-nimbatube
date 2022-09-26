@@ -18,6 +18,7 @@
   cursor: pointer;
   position: relative;
   background-color: #e3e3e3;
+  margin: 0 auto;
 }
 .time {
   position: absolute;
@@ -51,6 +52,7 @@
   justify-content: space-between;
   cursor: pointer;
   row-gap: 5px;
+  margin: 0 auto;
 }
 .title_data {
   width: 100%;
