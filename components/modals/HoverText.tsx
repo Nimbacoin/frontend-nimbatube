@@ -20,7 +20,9 @@ const HoverText = () => {
 
   return (
     <div ref={containerRef} style={style} className={Style.container}>
-      HoverText
+      <div className={Style.second_container}>
+        <div className={Style.fliped}></div>
+      </div>
     </div>
   );
 };

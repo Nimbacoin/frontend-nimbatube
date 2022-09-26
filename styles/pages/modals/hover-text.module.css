@@ -1,7 +1,9 @@
 .container {
   position: absolute;
   width: auto;
-  background-color: #fff;
+  /* background-color: #fff; */
   border-radius: 2px;
   z-index: 10;
+}
+.second_container {
 }
