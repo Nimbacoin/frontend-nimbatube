@@ -78,28 +78,32 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
           </>
         ) : (
           <>
-            <button className={Style.rest_of_button}>
-              <IoSettingsOutline />
-            </button>
-            <Link href="/auth/sign-in">
-              <button className={Style.rest_of_button}>
-                <IoCloudUploadOutline />
-              </button>
-            </Link>
-            <Link href="/auth/sign-in">
-              <button className={Style.rest_of_button}>
-                <IoVideocamOutline />
-              </button>
-            </Link>
+            <IconHeader
+              Url={"/auth/sign-in"}
+              Icon={<IoCloudUploadOutline />}
+              TextValue={"upload"}
+            />
+
+            <IconHeader
+              Url={"/auth/sign-in"}
+              Icon={<IoNotificationsOutline />}
+              TextValue={"Notification"}
+            />
+
+            <IconHeader
+              Url={"/auth/sign-in"}
+              Icon={<IoVideocamOutline />}
+              TextValue={"Go lIVE"}
+            />
           </>
         )}
-        <button
-          onClick={HandelSearchPhone}
-          className={Style.rest_of_button_search_phone}
-        >
-          {IsPhone ? <IoCloseOutline /> : <IoSearchOutline />}
-        </button>
       </div>
+      <button
+        onClick={HandelSearchPhone}
+        className={Style.rest_of_button_search_phone}
+      >
+        {IsPhone ? <IoCloseOutline /> : <IoSearchOutline />}
+      </button>
     </div>
   );
 };

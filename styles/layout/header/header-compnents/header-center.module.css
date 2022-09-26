@@ -103,13 +103,7 @@
     padding: 10px 0;
   }
   .buttons_container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 40px;
-    height: auto;
-    margin-right: 10px;
+    display: none;
   }
   .rest_of_button_search_phone {
     display: none;
