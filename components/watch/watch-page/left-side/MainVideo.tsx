@@ -51,8 +51,8 @@ const MainVideo = () => {
     if (watching === "true") {
       setActiveVideo(true);
     } else if (streaming === "true") {
+      //alert("sdddsd");
       setActiveVideo(false);
-      alert("sd");
     }
     if (videoTag.current) {
       if (video) {
@@ -100,6 +100,7 @@ const MainVideo = () => {
 
   return (
     <div className={Style.container}>
+      <LiveVideo />
       {!ActiveVideo && <LiveVideo />}
       {ActiveVideo && (
         <div className={Style.video_container}>
