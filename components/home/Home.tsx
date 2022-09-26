@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Style from "../../styles/pages/home/home.module.css";
 import allVideosFetch from "../../utils/allVideosFetch";
+import AllVideosBeforLoad from "../modals/pages-boforload/AllVideosBeforLoad";
 import Vedio from "../video/Video";
 
 const Home = () => {
@@ -15,7 +16,11 @@ const Home = () => {
   return (
     <div className={Style.container}>
       <div className={Style.vedio_container}>
-        {videos.length ? videos.map((vid) => <Vedio VideoData={vid} />) : null}
+        {videos.length ? (
+          videos.map((vid) => <Vedio VideoData={vid} />)
+        ) : (
+          <AllVideosBeforLoad />
+        )}
       </div>
     </div>
   );

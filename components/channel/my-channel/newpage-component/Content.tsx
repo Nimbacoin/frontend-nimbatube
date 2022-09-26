@@ -3,6 +3,7 @@ import Vedio from "../../../video/Video";
 import Style from "../../../../styles/pages/channel/my-channel/my-channel-component/content.module.css";
 import basedGetUrlRequest from "../../../../utils/basedGetUrlRequest";
 import { useRouter } from "next/router";
+import AllVideosBeforLoad from "../../../modals/pages-boforload/AllVideosBeforLoad";
 const Home = () => {
   const { asPath } = useRouter();
   const [videos, setVideos] = useState([]);
@@ -23,7 +24,11 @@ const Home = () => {
   return (
     <div className={Style.container}>
       <div className={Style.vedio_container}>
-        {videos?.length ? videos.map((vid) => <Vedio VideoData={vid} />) : null}
+        {videos?.length ? (
+          videos.map((vid) => <Vedio VideoData={vid} />)
+        ) : (
+          <AllVideosBeforLoad />
+        )}
       </div>
     </div>
   );

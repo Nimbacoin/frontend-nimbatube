@@ -11,7 +11,7 @@
 }
 
 .vedio_container {
-  height: 190px;
+  height: 170px;
   width: 95%;
   background-size: cover;
   background-position: center;
@@ -43,7 +43,7 @@
   font-size: 18px;
 }
 .desc_container {
-  width: 100%;
+  width: 95%;
   height: auto;
   display: flex;
   flex-direction: column;
