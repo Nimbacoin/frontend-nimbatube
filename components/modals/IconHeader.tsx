@@ -18,13 +18,14 @@ const IconHeader = ({ TextValue, Icon, Url }: any) => {
       const top = data.top + data.height;
       const left = data.left;
 
-      dispatch(overTextReducer({ top: top, left: left }));
+      dispatch(overTextReducer({ top: top, left: left, text: TextValue }));
     }
   };
   const handelLeave = () => {
-    //dispatch(leaveTextReducer());
+    dispatch(leaveTextReducer());
   };
   const handelClick = () => {
+    dispatch(leaveTextReducer());
     Url && Router.push(Url);
   };
   return (

@@ -62,12 +62,12 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
             <IconHeader
               Url={"/upload"}
               Icon={<IoCloudUploadOutline />}
-              TextValue={"Go lIVE"}
+              TextValue={"upload"}
             />
 
             <IconHeader
               Icon={<IoNotificationsOutline />}
-              TextValue={"Go lIVE"}
+              TextValue={"Notification"}
             />
 
             <IconHeader

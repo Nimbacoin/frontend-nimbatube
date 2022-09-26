@@ -2,9 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   WindowHeight: 800,
-  elementTop: "0",
-  elemntLeft: "0",
+  elementTop: 0,
+  elemntLeft: 0,
   isOver: false,
+  textValue: "",
 };
 
 export const GeneralStyle = createSlice({
@@ -17,12 +18,16 @@ export const GeneralStyle = createSlice({
     overTextReducer: (state: any, action: any) => {
       state.elementTop = action.payload.top;
       state.elemntLeft = action.payload.left;
-      state.isOver = true;
+      state.textValue = action.payload.text;
+      if (state.textValue.length) {
+        state.isOver = true;
+      }
     },
     leaveTextReducer: (state: any) => {
       state.isOver = false;
-      state.elementTop = 0;
-      state.elemntLeft = 0;
+      // state.elementTop = 0;
+      // state.elemntLeft = 0;
+      state.textValue = "";
     },
   },
 });

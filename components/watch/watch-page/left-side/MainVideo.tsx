@@ -52,6 +52,7 @@ const MainVideo = () => {
       setActiveVideo(true);
     } else if (streaming === "true") {
       setActiveVideo(false);
+      alert("sd");
     }
     if (videoTag.current) {
       if (video) {
