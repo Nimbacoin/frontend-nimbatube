@@ -4,6 +4,7 @@ import { IoEllipsisHorizontalSharp } from "@react-icons/all-files/io5/IoEllipsis
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
+import moment from "moment";
 
 const Descreption = ({ VideoData }: any) => {
   const DescreptionBoolean = useSelector(
@@ -51,7 +52,7 @@ const Descreption = ({ VideoData }: any) => {
           </p>
           <p className={Style.video_data_items}>
             <strong className={Style.strong_data}>
-              {VideoData?.createdAt}
+              {moment(VideoData?.createdAt).startOf("hour").fromNow()}
             </strong>
             <small className={Style.small_data}>2021</small>
           </p>
