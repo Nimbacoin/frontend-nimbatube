@@ -76,7 +76,7 @@ const Video = ({ VideoData }: any) => {
         <div
           style={{
             backgroundImage: `url(${thumbnail})`,
-            minHeight: `${IsPhone && ScreenWithByHalf}px`,
+            // minHeight: `${IsPhone && ScreenWithByHalf}px`,
           }}
           className={Style.vedio_container}
         >

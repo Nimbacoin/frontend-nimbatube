@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Style from "../../styles/pages/watch-later/video-watch-later.module.css";
 import { IoEllipsisVertical } from "@react-icons/all-files/io5/IoEllipsisVertical";
 import moment from "moment";
@@ -6,12 +6,24 @@ import { useRouter } from "next/router";
 
 const VideoWatchLater = ({ VideoData }: any) => {
   const Router = useRouter();
+  const thumbnail =
+    process.env.NEXT_PUBLIC_BACK_END_URL +
+    "/api/get/read/images/" +
+    VideoData?.videoData?.thumbnail;
+
+  const [videoStyle, setVideoStyle] = useState({ zIndex: "10" });
+  const [thumbnailStyle, setThumbnailStyle] = useState({
+    zIndex: "11",
+    backgroundImage: `url(${thumbnail})`,
+  });
 
   const Bg = VideoData?.channelData?.channelData?.profileImg?.url
     ? VideoData?.channelData?.channelData?.profileImg?.url
     : "/images/default-profile.png";
 
   const verLi = React.useRef<HTMLButtonElement>(null);
+  const mediaContainer = React.useRef<HTMLDivElement>(null);
+  const videoTag = React.useRef<HTMLVideoElement | null>(null);
 
   const handelClick = (e: any) => {
     const refany = verLi.current;
@@ -22,14 +34,49 @@ const VideoWatchLater = ({ VideoData }: any) => {
       );
     }
   };
+  useEffect(() => {
+    const handelClick = (e: any) => {
+      if (mediaContainer && mediaContainer.current) {
+        const refany = mediaContainer.current;
+        if (refany.contains(e.target)) {
+          setVideoStyle({ zIndex: "12" });
+          setThumbnailStyle({
+            zIndex: "10",
+            backgroundImage: `url(${thumbnail})`,
+          });
+        } else {
+          setVideoStyle({ zIndex: "10" });
+          setThumbnailStyle({
+            zIndex: "11",
+            backgroundImage: `url(${thumbnail})`,
+          });
+        }
+      }
+    };
+    window.addEventListener("mouseover", handelClick);
+  });
+  useEffect(() => {
+    if (videoTag.current) {
+      videoTag.current.src =
+        process.env.NEXT_PUBLIC_BACK_END_URL +
+        "/api/get/read/video/" +
+        VideoData?.videoData?._id;
+    }
+  }, []);
+
   return (
     <div onClick={handelClick} className={Style.container}>
-      <div className={Style.video_container}>
-        <video width="100%" height="30px" autoPlay muted loop>
-          <source
-            src="https://www.w3schools.com/html/movie.mp4"
-            type="video/mp4"
-          />
+      <div ref={mediaContainer} className={Style.video_container}>
+        <div style={thumbnailStyle} className={Style.thumbnail_container}></div>
+        <video
+          ref={videoTag}
+          style={videoStyle}
+          className={Style.video}
+          autoPlay
+          muted
+          loop
+        >
+          <source type="video/mp4" />
         </video>
         <span className={Style.time}> 5:50</span>
       </div>
@@ -45,6 +92,10 @@ const VideoWatchLater = ({ VideoData }: any) => {
               {VideoData?.channelData?.channelData?.name}
             </span>
             <span className={Style.Followers}>
+              {moment(VideoData?.videoData?.createdAt)
+                .startOf("hour")
+                .fromNow()}{" "}
+              -{" "}
               {moment(VideoData?.videoData?.createdAt)
                 .startOf("hour")
                 .fromNow()}

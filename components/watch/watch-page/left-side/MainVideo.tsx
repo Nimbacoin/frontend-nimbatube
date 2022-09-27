@@ -100,7 +100,6 @@ const MainVideo = () => {
 
   return (
     <div className={Style.container}>
-      <LiveVideo />
       {!ActiveVideo && <LiveVideo />}
       {ActiveVideo && (
         <div className={Style.video_container}>
