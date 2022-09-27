@@ -42,7 +42,7 @@ const VideoWatchLater = ({ VideoData }: any) => {
           setVideoStyle({ zIndex: "12" });
           setThumbnailStyle({
             zIndex: "10",
-            backgroundImage: `url(${thumbnail})`,
+            backgroundImage: `url(${""})`,
           });
         } else {
           setVideoStyle({ zIndex: "10" });
