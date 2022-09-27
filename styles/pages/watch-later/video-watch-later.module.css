@@ -153,6 +153,7 @@
     flex-direction: column;
     padding: 0;
     margin: auto;
+    width: 100%;
   }
   .video_container {
     width: 100%;
