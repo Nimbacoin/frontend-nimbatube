@@ -8,12 +8,15 @@ import Other from "./Other";
 import { useSelector, useDispatch } from "react-redux";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 import { ImagesReducer } from "../../../../redux/channel-slice/ChannelSlice";
+import { useRouter } from "next/router";
+import AxiosPostLogedInFormData from "../../../../utils/AxiosPostLogedInFormData";
 const ProfileDate = () => {
+  const coverRef = React.useRef<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
   const general = useSelector((state: any) => state.ChannelSlice.general);
   const [previewSourceProfile, setPreviewSourceProfile] = useState("");
   const [previewSourceCover, setPreviewSourceCover] = useState("");
-
+  const asPath = useRouter();
   const handleFileInputChange = (e: any) => {
     const file = e.target.files[0];
     previewFile(file);
@@ -79,13 +82,48 @@ const ProfileDate = () => {
     }
   };
 
+  const Path = React.useRef(null);
+
+  const readImageCover = async (event: any) => {
+    if (event.target.files && event.target.files[0]) {
+      Path.current = event.target.files[0];
+      handelSubmitecoverRef();
+    }
+  };
+  const handelSubmitecoverRef = async () => {
+    const channelId = asPath.replace("/channel/new/", "");
+    console.log(channelId);
+    let formData = new FormData();
+    if (Path.current) {
+      if (channelId) {
+        formData.append("channelId", channelId);
+      }
+      formData.append("thumbnail", Path.current);
+    }
+    await AxiosPostLogedInFormData(
+      "/api/post/channel/channel-cover-image/",
+      formData
+    ).then(({ data }) => {
+      console.log(data);
+      const { file }: any = data;
+      if (coverRef.current) {
+        coverRef.current.style.backgroundImage = `url(${
+          process.env.NEXT_PUBLIC_BACK_END_URL +
+          "/api/get/read/images/" +
+          file.filename
+        })`;
+      }
+    });
+  };
+
   return (
     <div className={Style.container}>
       <div className={Style.container_main}>
         <div
-          style={{
-            backgroundImage: previewSourceCover && `url(${previewSourceCover})`,
-          }}
+          ref={coverRef}
+          // style={{
+          //   backgroundImage: previewSourceCover && `url(${previewSourceCover})`,
+          // }}
           className={Style.upload_inputs_container}
         >
           {previewSourceCover !== "" && (
@@ -94,7 +132,8 @@ const ProfileDate = () => {
 
           <label htmlFor="cover" className={Style.input_label}>
             <input
-              onChange={handleFileInputChangeCover}
+              // onChange={handleFileInputChangeCover}
+              onChange={readImageCover}
               id="cover"
               type="file"
               accept="image/x-png,image/gif,image/jpeg"

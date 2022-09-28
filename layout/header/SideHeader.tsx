@@ -143,7 +143,9 @@ const SideHeader = () => {
                       >
                         <span className={Style.icon}>{icon}</span>
 
-                        <span className={Style.text}>{name}</span>
+                        <span className={MenuBoolean ? Style.text : Style.text_all}>
+                          {name}
+                        </span>
                       </div>
                     </Link>
                   </div>

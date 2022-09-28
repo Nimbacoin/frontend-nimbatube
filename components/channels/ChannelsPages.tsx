@@ -5,18 +5,34 @@ import basedGetUrlRequestLogedIn from "../../utils/basedGetUrlRequestLogedIn";
 import { useDispatch, useSelector } from "react-redux";
 import Channel from "../following/components/ChannelCard";
 import { AllChannelsRedcuer } from "../../redux/channel-slice/ChannelSlice";
+import basedPostUrlRequestLogedIn from "../../utils/basedPostUrlRequestLogedIn";
+import { useRouter } from "next/router";
 
 const ChannelsPages = () => {
+  const Router = useRouter();
   const dispatch = useDispatch();
   const channels = useSelector((state: any) => state.ChannelSlice.allChannels);
-  console.log(channels);
+  const HandelSubmiteInitChannel = async (e: any) => {
+    const ReqData: any = { general: "", images: "" };
+    await basedPostUrlRequestLogedIn(
+      "/api/post/channel/init-channel/",
+      ReqData
+    ).then((res) => {
+      if (res?.responsData) {
+        Router.push("/channel/create-new-channel/" + res?.responsData?._id);
+      }
+    });
+  };
   return (
     <div className={Style.container}>
       <div className={Style.head_container}>
         <div className={Style.title}>Your Active channels </div>
-        <Link href="/channel/new">
-          <button className={Style.button}> New Chanel </button>
-        </Link>
+        {/* <Link href="/channel/new"> */}
+        <button onClick={HandelSubmiteInitChannel} className={Style.button}>
+          {" "}
+          New Chanel{" "}
+        </button>
+        {/* </Link> */}
       </div>
 
       {channels &&

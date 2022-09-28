@@ -8,8 +8,10 @@ import {
 } from "../../../../redux/channel-slice/ChannelSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import AxiosPostLogedInFormData from "../../../../utils/AxiosPostLogedInFormData";
 
 const NewGeneral = () => {
+  const { asPath } = useRouter();
   const dispatch = useDispatch();
   const [title, settitle] = useState("");
   const [name, setname] = useState("");
@@ -49,9 +51,9 @@ const NewGeneral = () => {
     dispatch(ResetNewChannel());
   };
   const HandelSubmiteNewGeneral = async (e: any) => {
-    e.preventDefault();
-    const ReqData: any = { general, images };
-    basedPostUrlRequestLogedIn(
+    const channelId = asPath.replace("/channel/new/", "");
+    const ReqData: any = { general, images, channelId };
+    await basedPostUrlRequestLogedIn(
       "/api/post/channel/create-new-channel",
       ReqData
     ).then((res) => {
@@ -63,6 +65,7 @@ const NewGeneral = () => {
       }
     });
   };
+  
   return (
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
