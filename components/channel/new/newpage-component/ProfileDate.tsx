@@ -92,11 +92,12 @@ const ProfileDate = () => {
   };
   const handelSubmitecoverRef = async () => {
     const channelId = asPath.replace("/channel/new/", "");
+    const isValid = channelId.toString();
     console.log(channelId);
     let formData = new FormData();
     if (Path.current) {
-      if (channelId) {
-        formData.append("channelId", channelId);
+      if (isValid) {
+        formData.append("channelId", isValid);
       }
       formData.append("thumbnail", Path.current);
     }
