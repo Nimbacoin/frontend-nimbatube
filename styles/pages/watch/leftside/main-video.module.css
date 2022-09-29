@@ -48,7 +48,17 @@
   justify-content: space-between;
   overflow: auto;
 }
+.data_container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge add Firefox */
+.data_container {
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* Firefox */
+}
 .title {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
