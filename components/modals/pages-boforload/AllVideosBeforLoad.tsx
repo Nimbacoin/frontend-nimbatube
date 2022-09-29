@@ -1,5 +1,5 @@
 import React from "react";
-import Style from "../../../styles/pages/modals/pages-boforload/all-videos-befor-load.module.css";
+import Style from "../../../styles/modals/pages-boforload/all-videos-befor-load.module.css";
 const AllVideosBeforLoad = () => {
   const repeat = Array(16)
     .fill(0)

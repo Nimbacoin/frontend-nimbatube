@@ -13,6 +13,7 @@ import Cookies from "js-cookie";
 import basedGetUrlRequestLogedIn from "../utils/basedGetUrlRequestLogedIn";
 import { AllChannelsRedcuer } from "../redux/channel-slice/ChannelSlice";
 import HoverText from "../components/modals/HoverText";
+import { PopUpp } from "../components/modals/PopUpp";
 
 interface main {
   children: any;
@@ -22,6 +23,7 @@ const Layout = ({ children }: any) => {
   const Router = useRouter();
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
   const isOver = useSelector((state: any) => state.GenrealStyle.isOver);
+  const PopUppBoolean = useSelector((state: any) => state.GenrealStyle.popUpp);
 
   const UserIsSignedIn = useSelector(
     (state: any) => state.UserSignIn.UserIsSignedIn
@@ -149,7 +151,7 @@ const Layout = ({ children }: any) => {
       />
       <div style={{ minHeight: `${Height}px` }} className={Style.container}>
         <Header />
-
+        {PopUppBoolean && <PopUpp />}
         <SideHeader />
 
         <div style={{ minHeight: `${Height}px` }} className={Style.children}>

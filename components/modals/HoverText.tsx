@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Style from "../../styles/pages/modals/hover-text.module.css";
+import Style from "../../styles/modals/hover-text.module.css";
 
 const HoverText = ({ Text }: any) => {
   const elementTop = useSelector((state: any) => state.GenrealStyle.elementTop);

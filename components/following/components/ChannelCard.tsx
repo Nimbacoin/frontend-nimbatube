@@ -11,6 +11,7 @@ import basedDeleteUrlRequestLogedIn from "../../../utils/basedDeleteUrlRequestLo
 import { AllChannelsRedcuer } from "../../../redux/channel-slice/ChannelSlice";
 import { useDispatch } from "react-redux";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
+import { poPUppRedcuer } from "../../../redux/style-slice/general-style/GenrealStyle";
 
 const Channel = ({
   IsChannelPage,
@@ -58,6 +59,11 @@ const Channel = ({
       Body
     ).then((res: any) => {
       console.log("channel removed");
+      dispatch(poPUppRedcuer({ data: "channel removed" }));
+      setTimeout(() => {
+        dispatch(poPUppRedcuer({ data: "" }));
+      }, 5000);
+      setShowDiv(false);
       dispatch(AllChannelsRedcuer(res.responsData));
       console.log(res);
     });
@@ -66,6 +72,12 @@ const Channel = ({
     navigator.clipboard.writeText(
       window.location.hostname + "/channel/@/" + Id
     );
+
+    dispatch(poPUppRedcuer({ data: "channle link is copied" }));
+    setTimeout(() => {
+      dispatch(poPUppRedcuer({ data: "" }));
+    }, 5000);
+    setShowDiv(false);
   }
   const HandelFunc = () => {};
   const AllLink = [

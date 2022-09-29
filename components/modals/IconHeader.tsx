@@ -4,7 +4,7 @@ import {
   leaveTextReducer,
   overTextReducer,
 } from "../../redux/style-slice/general-style/GenrealStyle";
-import Style from "../../styles/pages/modals/icon-header.module.css";
+import Style from "../../styles/modals/icon-header.module.css";
 import { useRouter } from "next/router";
 
 const IconHeader = ({ TextValue, Icon, Url }: any) => {
