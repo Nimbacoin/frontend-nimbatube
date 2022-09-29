@@ -8,6 +8,7 @@ interface EnumServiceGetOrderBy {
 
 const AxiosPostLogedInFormData = async (url: string, dataBody: any) => {
   const UserCookie = Cookies.get("user");
+  console.log("UserCookie", UserCookie);
   const response = axios.post(
     process.env.NEXT_PUBLIC_BACK_END_URL + url + UserCookie,
     dataBody,
@@ -19,6 +20,7 @@ const AxiosPostLogedInFormData = async (url: string, dataBody: any) => {
   );
 
   const data = await response;
+  console.log("data", data);
   return data;
 };
 

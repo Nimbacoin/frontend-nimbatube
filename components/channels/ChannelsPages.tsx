@@ -42,7 +42,7 @@ const ChannelsPages = () => {
           <Channel
             key={_id}
             Id={_id}
-            LinkChannel={"/channel/" + _id}
+            LinkChannel={"/channel/@/" + _id}
             IsChanelPage={false}
             Title={channelData?.title}
             Username={channelData && channelData.name}

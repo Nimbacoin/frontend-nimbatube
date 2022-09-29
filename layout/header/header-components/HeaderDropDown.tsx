@@ -60,7 +60,7 @@ const HeaderDropDown = () => {
       classname: Style.channel_container,
       img: Bg,
       imgChannel: true,
-      channelname: Channels.length >= 1 && Channels[0]?.channelData.name,
+      channelname: Channels?.length >= 1 && Channels[0]?.channelData?.name,
       //  channel && Name,
     },
     {
