@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Style from "../../../../styles/pages/watch/leftside/main-video.module.css";
+import Style from "../../../../styles/pages/watch/leftside/video-info.module.css";
 import { IoEllipsisHorizontalSharp } from "@react-icons/all-files/io5/IoEllipsisHorizontalSharp";
 import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
 import { AiFillLike } from "@react-icons/all-files/ai/AiFillLike";
