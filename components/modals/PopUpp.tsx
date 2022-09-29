@@ -1,7 +1,6 @@
 import React from "react";
 import Style from "../../styles/modals/pop-upp.module.css";
 import { IoMailOpenOutline } from "@react-icons/all-files/io5/IoMailOpenOutline";
-import { ParagraphsP } from "./NormalText";
 import { IoCloseCircleOutline } from "@react-icons/all-files/io5/IoCloseCircleOutline";
 import { useSelector, useDispatch } from "react-redux";
 import { poPUppRedcuer } from "../../redux/style-slice/general-style/GenrealStyle";
