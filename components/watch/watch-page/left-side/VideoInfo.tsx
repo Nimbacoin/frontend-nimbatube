@@ -99,7 +99,7 @@ const VideoInfo = () => {
           </p>
           <p className={Style.icon} onClick={HandelDisLike}>
             {IsDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}
-            Dislike {videoDisLikes}
+            <span className={Style.disLike}>Dislike</span> {videoDisLikes}
           </p>
           <p className={Style.icon}>
             <FcCircuit />

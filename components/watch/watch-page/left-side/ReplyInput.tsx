@@ -18,8 +18,6 @@ import { IoChevronUp } from "@react-icons/all-files/io5/IoChevronUp";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 import { MainVideoDataReducer } from "../../../../redux/video-slice/VideoSlice";
 
-const Bg =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
 const ReplyInput = ({ VideoData }: any) => {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const dispatch = useDispatch();
@@ -27,6 +25,15 @@ const ReplyInput = ({ VideoData }: any) => {
   const CommentsBoolean = useSelector(
     (state: any) => state.MainVideo.CommentsBoolean
   );
+  const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
+  const channelsData = Channels?.length ? Channels[0] : {};
+
+  const Bg = channelsData?.channelData?.profileImg?.url
+    ? process.env.NEXT_PUBLIC_BACK_END_URL +
+      "/api/get/read/images/" +
+      channelsData?.channelData?.profileImg?.url
+    : "/images/default-profile.png";
+
   const handelChangeComment = (e: any) => {
     setComment(e.target.value);
   };
