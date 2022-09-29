@@ -81,8 +81,8 @@ const Thumbnail = () => {
             <span className={Style.upload_file_button}>Browse</span>
           </label>
           <p className={Style.text}>
-            Upload your thumbnail to odysee.com. Recommended ratio is 16:9, 5MB
-            max.
+            Upload your thumbnail to nimbatube.com Recommended ratio is 16:9,
+            5MB max.
           </p>
         </div>
       </div>

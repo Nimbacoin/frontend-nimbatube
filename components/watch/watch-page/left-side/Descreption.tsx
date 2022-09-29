@@ -61,7 +61,9 @@ const Descreption = ({ VideoData }: any) => {
       <div className={Style.descreption_text_container}>
         <p className={Style.descreption_text}>{VideoData?.descreption}</p>
       </div>
-      <button className={Style.desc_button}>Show More</button>
+      {VideoData?.descreption?.length >= 100 && (
+        <button className={Style.desc_button}>Show More</button>
+      )}
     </div>
   );
 };

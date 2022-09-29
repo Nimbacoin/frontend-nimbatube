@@ -9,6 +9,8 @@ import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
 import { IoArrowRedoOutline } from "@react-icons/all-files/io5/IoArrowRedoOutline";
 import { RiPlayListAddFill } from "@react-icons/all-files/ri/RiPlayListAddFill";
 import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
+import { FcCircuit } from "@react-icons/all-files/fc/FcCircuit";
+
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
 import { useRouter } from "next/router";
@@ -29,7 +31,7 @@ const VideoInfo = () => {
   );
 
   const [IsLiked, setIsLiked] = useState(videoData?.likes?.liked);
-  
+
   const [IsDisLiked, setIsDisLiked] = useState(videoData?.disLikes?.isDisLiked);
   let like = IsLiked;
   let disLike = IsDisLiked;
@@ -98,6 +100,10 @@ const VideoInfo = () => {
           <p className={Style.icon} onClick={HandelDisLike}>
             {IsDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}
             Dislike {videoDisLikes}
+          </p>
+          <p className={Style.icon}>
+            <FcCircuit />
+            Support
           </p>
           <p className={Style.icon}>
             <IoArrowRedoOutline />
