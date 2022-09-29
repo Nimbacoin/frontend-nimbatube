@@ -91,7 +91,7 @@ const ProfileDate = () => {
     }
   };
   const handelSubmitecoverRef = async () => {
-    const channelId = asPath.replace("/channel/new/", "");
+    const channelId = asPath.replace("/channel/create-new-channel/", "");
     const isValid = channelId.toString();
     console.log(channelId);
     let formData = new FormData();

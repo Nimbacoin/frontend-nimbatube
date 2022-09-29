@@ -18,11 +18,13 @@ const ChannelsPages = () => {
       "/api/post/channel/init-channel/",
       ReqData
     ).then((res) => {
+      alert("SD");
       if (res?.responsData) {
         Router.push("/channel/create-new-channel/" + res?.responsData?._id);
       }
     });
   };
+
   return (
     <div className={Style.container}>
       <div className={Style.head_container}>

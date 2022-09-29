@@ -49,10 +49,12 @@ const NameVideoUrl = () => {
       formData.append("channelId", Channels[0]._id);
       formData.append("video", Path.current);
     }
+    console.log(Channels[0]._id);
     await AxiosPostLogedInFormData(
       "/api/post/video/create-new-video/",
       formData
     ).then(({ data }) => {
+      console.log(data);
       const { file }: any = data;
       if (file._id) {
         dispatch(

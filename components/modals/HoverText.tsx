@@ -11,16 +11,7 @@ const HoverText = ({ Text }: any) => {
   useEffect(() => {
     if (containerRef.current) {
       const data = containerRef.current.getBoundingClientRect();
-      console.log(data);
       const left = data.left;
-      console.log(
-        "left",
-        left,
-        "elemntLeft",
-        elemntLeft,
-        `"dad`,
-        elemntLeft + left
-      );
       setVideoLikes({
         left: elemntLeft - 20 + "px",
         top: elementTop + "px",

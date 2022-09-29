@@ -56,11 +56,12 @@ const HeaderDropDown = () => {
   const allLinks = [
     {
       name: "Your Channel",
-      link: channel && "/channel/" + channel?._id,
+      link: channel && "/channel/@/" + channel?._id,
       classname: Style.channel_container,
       img: Bg,
       imgChannel: true,
-      channelname: channel && Name,
+      channelname: Channels.length >= 1 && Channels[0]?.channelData.name,
+      //  channel && Name,
     },
     {
       name: "Upload",

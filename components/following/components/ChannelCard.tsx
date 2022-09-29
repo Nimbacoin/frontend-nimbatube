@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import basedDeleteUrlRequestLogedIn from "../../../utils/basedDeleteUrlRequestLogedIn";
 import { AllChannelsRedcuer } from "../../../redux/channel-slice/ChannelSlice";
 import { useDispatch } from "react-redux";
+import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
 
 const Channel = ({
   IsChannelPage,
@@ -49,17 +50,22 @@ const Channel = ({
     Router.push(LinkChannel);
   };
   let Body: any = { channelId: Id };
-  const handelDeleteChannel = () => {
-    basedDeleteUrlRequestLogedIn(
-      "/api/delete/channel/delete-channel",
+
+  const handelDeleteChannel = async () => {
+    console.log("Id", Id);
+    await basedPostUrlRequestLogedIn(
+      "/api/post/channel/delete-channel/",
       Body
     ).then((res: any) => {
+      console.log("channel removed");
       dispatch(AllChannelsRedcuer(res.responsData));
       console.log(res);
     });
   };
   function copyToClipboard(value: any) {
-    navigator.clipboard.writeText(window.location.hostname + "/channel/" + Id);
+    navigator.clipboard.writeText(
+      window.location.hostname + "/channel/@/" + Id
+    );
   }
   const HandelFunc = () => {};
   const AllLink = [
