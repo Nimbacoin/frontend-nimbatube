@@ -26,6 +26,7 @@ const MychannelPage = () => {
       );
     }
   }, [asPath]);
+  //
   return (
     <div className={Style.container}>
       <ProfileDate ChannelData={ChannelData} />
