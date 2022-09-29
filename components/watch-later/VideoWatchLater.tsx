@@ -18,7 +18,9 @@ const VideoWatchLater = ({ VideoData }: any) => {
   });
 
   const Bg = VideoData?.channelData?.channelData?.profileImg?.url
-    ? VideoData?.channelData?.channelData?.profileImg?.url
+    ? process.env.NEXT_PUBLIC_BACK_END_URL +
+      "/api/get/read/images/" +
+      VideoData?.channelData?.channelData?.profileImg?.url
     : "/images/default-profile.png";
 
   const verLi = React.useRef<HTMLButtonElement>(null);

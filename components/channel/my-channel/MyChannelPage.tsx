@@ -11,7 +11,7 @@ const MychannelPage = () => {
   const [ChannelData, setChannelData] = useState({});
   useEffect(() => {
     if (typeof window !== "undefined" && !asPath.includes("[")) {
-      const ChannelId: string = asPath.replace("/channel/", "");
+      const ChannelId: string = asPath.replace("/channel/@/", "");
       const EditedId: string = ChannelId.toString();
       basedGetUrlRequest("/api/get/channel" + EditedId, false).then(
         (res: any) => {

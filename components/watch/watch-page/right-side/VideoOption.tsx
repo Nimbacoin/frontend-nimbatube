@@ -23,6 +23,12 @@ const VideoOption = ({ VideoData, Key }: any) => {
     "/api/get/read/images/" +
     VideoData?.videoData?.thumbnail;
 
+  const BgP = VideoData?.channelData?.channelData?.profileImg?.url
+    ? process.env.NEXT_PUBLIC_BACK_END_URL +
+      "/api/get/read/images/" +
+      VideoData?.channelData?.channelData?.profileImg?.url
+    : "/images/default-profile.png";
+
   const handelClickhh = (e: any) => {
     const refany = InputSearch.current;
     if (InputSearch && InputSearch.current && refany?.contains(e.target)) {
@@ -72,7 +78,7 @@ const VideoOption = ({ VideoData, Key }: any) => {
         </h3>
         <div className={Style.chanel_data_container}>
           <div
-            style={{ backgroundImage: `url(${Bg})` }}
+            style={{ backgroundImage: `url(${BgP})` }}
             className={Style.chanel_img}
           ></div>
           <p className={Style.chanel_details}>

@@ -14,49 +14,10 @@ const ProfileDate = () => {
   const coverRef = React.useRef<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
   const general = useSelector((state: any) => state.ChannelSlice.general);
-  const [previewSourceProfile, setPreviewSourceProfile] = useState("");
+  const previewSourceProfile = React.useRef<HTMLDivElement | null>(null);
   const [previewSourceCover, setPreviewSourceCover] = useState("");
-  const asPath = useRouter();
-  const handleFileInputChange = (e: any) => {
-    const file = e.target.files[0];
-    previewFile(file);
-  };
-  const handleFileInputChangeCover = (e: any) => {
-    const file = e.target.files[0];
-    previewFileCover(file);
-  };
-
-  const previewFile = (file: any) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      dispatch(
-        ImagesReducer({
-          id: "profileImage",
-          profileImage: reader.result,
-        })
-      );
-      console.log(reader.result);
-      if (typeof reader !== "undefined" && reader.result !== "undefined") {
-        setPreviewSourceProfile(`${reader?.result}`);
-      }
-    };
-  };
-  const previewFileCover = (file: any) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      dispatch(
-        ImagesReducer({
-          id: "coverImage",
-          coverImage: reader.result,
-        })
-      );
-      if (typeof reader !== "undefined" && reader.result !== "undefined") {
-        setPreviewSourceCover(`${reader?.result}`);
-      }
-    };
-  };
+  const { asPath } = useRouter();
+  
 
   const UlLinks = [
     { name: "General", key: "general" },
@@ -117,6 +78,40 @@ const ProfileDate = () => {
     });
   };
 
+  //------------------------------------
+  const readImageProfile = async (event: any) => {
+    if (event.target.files && event.target.files[0]) {
+      Path.current = event.target.files[0];
+      handelSubmiteProfileRef();
+    }
+  };
+  const handelSubmiteProfileRef = async () => {
+    const channelId = asPath.replace("/channel/create-new-channel/", "");
+    const isValid = channelId.toString();
+    console.log(channelId);
+    let formData = new FormData();
+    if (Path.current) {
+      if (isValid) {
+        formData.append("channelId", isValid);
+      }
+      formData.append("thumbnail", Path.current);
+    }
+    await AxiosPostLogedInFormData(
+      "/api/post/channel/channel-profile-image/",
+      formData
+    ).then(({ data }) => {
+      console.log(data);
+      const { file }: any = data;
+      if (previewSourceProfile.current) {
+        previewSourceProfile.current.style.backgroundImage = `url(${
+          process.env.NEXT_PUBLIC_BACK_END_URL +
+          "/api/get/read/images/" +
+          file.filename
+        })`;
+      }
+    });
+  };
+
   return (
     <div className={Style.container}>
       <div className={Style.container_main}>
@@ -146,17 +141,10 @@ const ProfileDate = () => {
           </label>
           <div className={Style.image_name_conainer}>
             <div className={Style.profile_image_container}>
-              <div
-                className={Style.profile_image}
-                style={{
-                  backgroundImage: previewSourceProfile
-                    ? `url(${previewSourceProfile})`
-                    : `url(${Bg})`,
-                }}
-              >
+              <div className={Style.profile_image} ref={previewSourceProfile}>
                 <label htmlFor="profile" className={Style.input_label}>
                   <input
-                    onChange={handleFileInputChange}
+                    onChange={readImageProfile}
                     id="profile"
                     type="file"
                     accept="image/x-png,image/gif,image/jpeg"

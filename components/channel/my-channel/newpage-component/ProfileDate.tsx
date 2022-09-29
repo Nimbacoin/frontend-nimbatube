@@ -46,10 +46,19 @@ const ProfileDate = ({ ChannelData }: any) => {
 
   useEffect(() => {
     if (ChannelData && ChannelData.channelData?.profileImg) {
-      setBgUrl(ChannelData.channelData.profileImg.url);
+      console.log(ChannelData.channelData?.profileImg);
+      setBgUrl(
+        process.env.NEXT_PUBLIC_BACK_END_URL +
+          "/api/get/read/images/" +
+          ChannelData.channelData.profileImg.url
+      );
     }
     if (ChannelData && ChannelData.channelData?.coverImg) {
-      setBgUrlCover(ChannelData.channelData.coverImg.url);
+      setBgUrlCover(
+        process.env.NEXT_PUBLIC_BACK_END_URL +
+          "/api/get/read/images/" +
+          ChannelData.channelData.coverImg.url
+      );
     }
     if (ChannelData && ChannelData.channelData) {
       setName(ChannelData.channelData.name);

@@ -8,7 +8,7 @@ const Home = () => {
   const { asPath } = useRouter();
   const [videos, setVideos] = useState([]);
   useEffect(() => {
-    const dataUrl = asPath.replace("/channel/", "");
+    const dataUrl = asPath.replace("/channel/@/", "");
     const locaFetch = async () => {
       if (dataUrl !== "[channel]") {
         const dataRes: any = await basedGetUrlRequest(

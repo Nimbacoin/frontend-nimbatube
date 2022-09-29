@@ -99,7 +99,13 @@ const Channel = ({
         <div
           onClick={handelClickUrl}
           style={{
-            backgroundImage: `url(${ProfileImg?.url ? ProfileImg.url : Bg})`,
+            backgroundImage: `url(${
+              ProfileImg?.url
+                ? process.env.NEXT_PUBLIC_BACK_END_URL +
+                  "/api/get/read/images/" +
+                  ProfileImg.url
+                : Bg
+            })`,
           }}
           className={Style.img}
         ></div>
