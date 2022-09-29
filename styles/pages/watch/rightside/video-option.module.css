@@ -158,58 +158,6 @@
 .right_container:last-of-type {
   margin-left: auto;
 }
-@media screen and (max-width: 900px) {
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    column-gap: 5px;
-  }
-  .video_container,
-  .video_container_img {
-    height: 200px;
-  }
-}
-@media screen and (max-width: 400px) {
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    column-gap: 5px;
-  }
-  .video_container,
-  .video_container_img {
-    height: 100px;
-  }
-}
-@media screen and (max-width: 500px) {
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    column-gap: 5px;
-  }
-  .video_container,
-  .video_container_img {
-    height: 150px;
-  }
-}
-@media screen and (max-width: 900px) {
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    column-gap: 5px;
-  }
-  .video_container,
-  .video_container_img {
-    height: 200px;
-  }
-}
 @media screen and (max-width: 1149px) {
   .container {
     flex-basis: 49.5%;
@@ -252,5 +200,46 @@
     cursor: pointer;
     border-radius: 50%;
     display: block;
+  }
+}
+@media screen and (max-width: 900px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    column-gap: 5px;
+  }
+  .video_container,
+  .video_container_img {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    column-gap: 5px;
+  }
+  .video_container,
+  .video_container_img {
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    column-gap: 5px;
+  }
+  .video_container,
+  .video_container_img {
+    height: 150px;
   }
 }
