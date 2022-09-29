@@ -32,7 +32,9 @@ const MainVideo = () => {
     videoData?.disLikes?.disLikes
   );
   const Bg = channelData?.channelData?.profileImg?.url
-    ? channelData?.channelData?.profileImg?.url
+    ? process.env.NEXT_PUBLIC_BACK_END_URL +
+      "/api/get/read/images/" +
+      channelData?.channelData?.profileImg?.url
     : "/images/default-profile.png";
 
   const unique_id = uuid();
