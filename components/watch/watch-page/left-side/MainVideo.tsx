@@ -132,10 +132,7 @@ const MainVideo = () => {
             </button>
           ) : (
             <div className={Style.followed_button_container}>
-              <button
-                onClick={HandelFollow}
-                className={Style.follow_button_black}
-              >
+              <button onClick={HandelFollow} className={Style.follow_button}>
                 Following
               </button>
               <button onClick={HandelFollow} className={Style.notf_button}>

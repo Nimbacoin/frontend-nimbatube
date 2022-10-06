@@ -100,11 +100,10 @@
   line-height: 20px;
   color: #030303;
   cursor: pointer;
-  color: #fff;
   min-width: 100px;
   border-radius: 20px;
   padding: 8px 5px;
-  background-color: #f9f9f9;
+  background-color: #e7e7e7;
   margin-top: 0px;
 }
 .follow_button_black {
@@ -132,10 +131,8 @@
   font-size: 20px;
   color: #030303;
   cursor: pointer;
-  color: #fff;
   padding: 8px;
   border-radius: 50%;
-  background-color: #000;
   margin-top: 0px;
 }
 

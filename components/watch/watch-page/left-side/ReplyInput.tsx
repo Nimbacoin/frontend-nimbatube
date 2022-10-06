@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import Style from "../../../../styles/pages/watch/leftside/comments.module.css";
+import Style from "../../../../styles/pages/watch/leftside/input_reply.module.css";
 import { MdSort } from "@react-icons/all-files/md/MdSort";
 import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
 import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
