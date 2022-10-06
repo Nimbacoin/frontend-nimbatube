@@ -11,6 +11,9 @@ import { FcCircuit } from "@react-icons/all-files/fc/FcCircuit";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { UserSignOut } from "../../../redux/user-slice/UserSignIn";
+import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
+import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
+
 import Cookies from "js-cookie";
 
 const HeaderDropDown = () => {
@@ -79,6 +82,19 @@ const HeaderDropDown = () => {
       icon: "@",
       classname: Style.link_container,
     },
+    {
+      name: "Go live",
+      link: "/go-live/go-live",
+      icon: <IoVideocamOutline />,
+      classname: Style.link_container,
+    },
+    {
+      name: "Notification",
+      link: "/channels",
+      icon: <IoNotificationsOutline />,
+      classname: Style.link_container,
+    },
+
     {
       name: "invite",
       link: "/invite",

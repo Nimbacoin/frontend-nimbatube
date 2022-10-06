@@ -11,6 +11,7 @@ import basedGetUrlRequestLogedIn from "../../../../utils/basedGetUrlRequestLoged
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 import VideoInfo from "./VideoInfo";
 import { MainVideoDataReducer } from "../../../../redux/video-slice/VideoSlice";
+import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
 
 const MainVideo = () => {
   const ResDD = useSelector(
@@ -64,10 +65,6 @@ const MainVideo = () => {
         videoTag.current.src =
           process.env.NEXT_PUBLIC_BACK_END_URL + "/api/get/read/video/" + video;
       }
-
-      // if (videoTag.current.src) {
-      //   //videoTag.current.play();
-      // }
     }
   }, [asPath]);
 
@@ -92,7 +89,6 @@ const MainVideo = () => {
               followers: responseData?.responseData,
             })
           );
-          // alert("swed");
         }
       });
     } else {
@@ -112,7 +108,6 @@ const MainVideo = () => {
           </div>
         </div>
       )}
-      {/* videoData */}
       <VideoInfo />
       <div className={Style.chanel}>
         <div
@@ -129,17 +124,23 @@ const MainVideo = () => {
         </div>
         <div className={Style.right_container}>
           {!IsFollowed ? (
-            <button onClick={HandelFollow} className={Style.follow_button}>
+            <button
+              onClick={HandelFollow}
+              className={Style.follow_button_black}
+            >
               Follow
             </button>
           ) : (
             <div className={Style.followed_button_container}>
-              <button onClick={HandelFollow} className={Style.followed_button}>
+              <button
+                onClick={HandelFollow}
+                className={Style.follow_button_black}
+              >
                 Following
               </button>
-              {/* <button onClick={HandelFollow} className={Style.notf_button}>
+              <button onClick={HandelFollow} className={Style.notf_button}>
                 <IoNotificationsOutline />
-              </button> */}
+              </button>
             </div>
           )}
         </div>

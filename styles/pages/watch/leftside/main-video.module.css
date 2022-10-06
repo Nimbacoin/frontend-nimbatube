@@ -41,9 +41,6 @@
   margin: 10px 0px;
 }
 
-
-
-
 .chanel {
   width: 100%;
   display: flex;
@@ -105,9 +102,22 @@
   cursor: pointer;
   color: #fff;
   min-width: 100px;
-  border-radius: 2px;
+  border-radius: 20px;
   padding: 8px 5px;
-  background-color: #673de6;
+  background-color: #f9f9f9;
+  margin-top: 0px;
+}
+.follow_button_black {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #030303;
+  cursor: pointer;
+  color: #fff;
+  min-width: 100px;
+  border-radius: 20px;
+  padding: 8px 5px;
+  background-color: #000;
   margin-top: 0px;
 }
 .followed_button_container {
@@ -117,30 +127,15 @@
   justify-content: space-around;
   column-gap: 5px;
 }
-.followed_button {
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 20px;
-  color: #030303;
-  cursor: pointer;
-  color: #fff;
-  min-width: 100px;
-  border-radius: 2px 0 0 2px;
-  padding: 8px 5px;
-  background-color: #673de6;
-  margin-top: 0px;
-}
+
 .notf_button {
-  font-size: 30;
-  font-weight: 500;
-  line-height: 20px;
+  font-size: 20px;
   color: #030303;
   cursor: pointer;
   color: #fff;
-  min-width: 100px;
-  border-radius: 0px 2px 2px 0px;
-  padding: 8px 5px;
-  background-color: #673de6;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: #000;
   margin-top: 0px;
 }
 
@@ -216,8 +211,6 @@
     row-gap: 0px;
     padding: 0px 10px;
   }
-  
-
 
   .chanel {
     border-bottom: 1px solid #dbdbdb;
@@ -226,7 +219,4 @@
   .img {
     margin-right: 10px;
   }
-  
-  
 }
-

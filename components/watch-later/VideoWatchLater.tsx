@@ -104,6 +104,9 @@ const VideoWatchLater = ({ VideoData }: any) => {
             </span>
           </p>
         </div>
+        <p className={Style.chanel_followers}>
+          {VideoData?.videoData?.descreption}
+        </p>
       </div>
       <div className={Style.right_container}>
         <button ref={verLi} className={Style.IoEllipsisVertical}>
