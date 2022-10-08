@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Style from "../../../../styles/pages/watch/leftside/main-video.module.css";
 import { v4 as uuid } from "uuid";
+import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
 
 import { useDispatch, useSelector } from "react-redux";
 import Descreption from "./Descreption";
@@ -102,9 +103,19 @@ const MainVideo = () => {
       {ActiveVideo && (
         <div className={Style.video_container}>
           <div className={Style.video_container_2}>
-            <video ref={videoTag} autoPlay muted loop controls>
+            <video className={Style.d} ref={videoTag} autoPlay muted loop>
+              {/* controls */}
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
+            <div className={Style.controls_container}>
+              <div className={Style.bar_container}>
+                <div className={Style.bar_red}></div>
+              </div>
+              <div className={Style.controlrs}>
+                {" "}
+                <AiOutlineLike />
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -128,12 +139,12 @@ const MainVideo = () => {
               onClick={HandelFollow}
               className={Style.follow_button_black}
             >
-              Follow
+              Subscribe
             </button>
           ) : (
             <div className={Style.followed_button_container}>
               <button onClick={HandelFollow} className={Style.follow_button}>
-                Following
+              Subscribed
               </button>
               <button onClick={HandelFollow} className={Style.notf_button}>
                 <IoNotificationsOutline />

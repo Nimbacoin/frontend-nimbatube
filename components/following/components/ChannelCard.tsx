@@ -22,14 +22,46 @@ const Channel = ({
   LinkChannel,
   Id,
   ProfileImg,
+  channelData,
 }: any) => {
   console.log(Title);
+  const [IsFollowed, setIsFollowed] = useState(
+    channelData?.followers?.followed
+  );
   const [ShowDiv, setShowDiv] = useState(false);
   const Ref = React.useRef<HTMLDivElement>(null);
   const Container = React.useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
   const inputSearch = React.useRef<HTMLButtonElement>(null);
   const Router = useRouter();
+
+  const HandelFollow = async () => {
+    const userId = userSignIn.email;
+    setIsFollowed(!IsFollowed);
+    if (userId) {
+      const body: any = {
+        channelId: channelData._id,
+        isFollowing: !IsFollowed,
+      };
+      await basedPostUrlRequestLogedIn(
+        "/api/post/channel/follow-channel",
+        body
+      ).then((responseData) => {
+        if (responseData) {
+          console.log(responseData);
+          setFollowers(responseData?.responseData?.followers);
+          dispatch(
+            MainVideoDataReducer({
+              message: "followers",
+              followers: responseData?.responseData,
+            })
+          );
+        }
+      });
+    } else {
+      Router.push("/auth/sign-in");
+    }
+  };
   useEffect(() => {
     const handelClick = (e: any) => {
       if (inputSearch && inputSearch.current) {
@@ -132,9 +164,24 @@ const Channel = ({
             {Uploads ? " - Uploads" : null}
           </span>
         </p>
-        {IsChannelPage && (
-          <button className={Style.follow_button}>Follow</button>
-        )}
+        {IsChannelPage &&
+          (!IsFollowed ? (
+            <button
+              onClick={HandelFollow}
+              className={Style.follow_button_black}
+            >
+              Subscribe
+            </button>
+          ) : (
+            <div className={Style.followed_button_container}>
+              <button onClick={HandelFollow} className={Style.follow_button}>
+                Subscribed
+              </button>
+              <button onClick={HandelFollow} className={Style.notf_button}>
+                <IoNotificationsOutline />
+              </button>
+            </div>
+          ))}
       </div>
       <div className={Style.right_container}>
         <button ref={inputSearch} className={Style.IoEllipsisVertical}>

@@ -1,0 +1,22 @@
+.container {
+  width: 99%;
+  margin: 0 auto;
+  max-height: 100px;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  margin: 10px 0;
+  padding: 10px 0;
+  column-gap: 10px;
+  border-bottom: 1px solid #dbdbdb;
+}
+.tag {
+  font-size: 14px;
+  border: 1px solid #dbdbdb;
+  color: #030303;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 8px 20px;
+  background-color: #f9f9f9;
+  margin-top: 0px;
+}

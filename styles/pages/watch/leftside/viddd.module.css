@@ -20,7 +20,6 @@
   z-index: 2;
 }
 .video_container_2 {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,35 +121,12 @@
   margin-top: 0px;
 }
 .notf_button {
-  font-size: 20px;
-  color: #030303;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-}
-.controls_container {
-  margin: 0 auto;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  /* background-color: #fff; */
-  padding: 20px;
-  row-gap: 20px;
-}
-.bar_red {
-  width: 50%;
-  height: 3px;
-  background-color: red;
-}
-.bar_container {
-  width: 100%;
-  height: 3px;
-  background-color: #dbdbdbaf;
-}
+    font-size: 20px;
+    color: #030303;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    
 @media screen and (max-width: 1000px) {
   .container {
     width: 100%;

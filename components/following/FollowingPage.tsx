@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Chanel from "./components/ChannelCard";
 import Style from "../../styles/pages/following/following.module.css";
 import basedGetUrlRequestLogedIn from "../../utils/basedGetUrlRequestLogedIn";
-const FollowingPage = ({  }: any) => {
+const FollowingPage = ({}: any) => {
   const [ChannelsData, setChannelsData] = useState([]);
   useEffect(() => {
     const locaFetch = async () => {
@@ -22,14 +22,15 @@ const FollowingPage = ({  }: any) => {
       {ChannelsData.length
         ? ChannelsData.map(({ _id, channelData }: any) => (
             <Chanel
+              channelData={channelData}
+              IsChannelPage={true}
               Id={_id}
-              LinkChannel={"/channel/" + _id}
-              IsChanelPage={false}
+              LinkChannel={"/channel/@/" + _id}
               Title={channelData?.title}
               Username={channelData?.name}
               ProfileImg={channelData?.profileImg}
               // Uploads={uploads.length}
-              // Followers={followers.length}
+              Followers={channelData?.followers?.length}
             />
           ))
         : null}

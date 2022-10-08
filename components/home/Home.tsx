@@ -3,6 +3,7 @@ import Style from "../../styles/pages/home/home.module.css";
 import allVideosFetch from "../../utils/allVideosFetch";
 import AllVideosBeforLoad from "../modals/pages-boforload/AllVideosBeforLoad";
 import Vedio from "../video/Video";
+import HomeTags from "./HomeTags";
 
 const Home = () => {
   const [videos, setVideos] = useState([]);
@@ -15,6 +16,7 @@ const Home = () => {
   }, []);
   return (
     <div className={Style.container}>
+      <HomeTags />
       <div className={Style.vedio_container}>
         {videos.length ? (
           videos.map((vid) => <Vedio VideoData={vid} />)
