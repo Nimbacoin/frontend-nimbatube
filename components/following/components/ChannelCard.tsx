@@ -9,9 +9,10 @@ import { IoTrashSharp } from "@react-icons/all-files/io5/IoTrashSharp";
 import { useRouter } from "next/router";
 import basedDeleteUrlRequestLogedIn from "../../../utils/basedDeleteUrlRequestLogedIn";
 import { AllChannelsRedcuer } from "../../../redux/channel-slice/ChannelSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
 import { poPUppRedcuer } from "../../../redux/style-slice/general-style/GenrealStyle";
+import { MainVideoDataReducer } from "../../../redux/video-slice/VideoSlice";
 
 const Channel = ({
   IsChannelPage,
@@ -36,6 +37,8 @@ const Channel = ({
   const Router = useRouter();
 
   const HandelFollow = async () => {
+    const userSignIn = useSelector((state: any) => state.UserSignIn.userdata);
+
     const userId = userSignIn.email;
     setIsFollowed(!IsFollowed);
     if (userId) {

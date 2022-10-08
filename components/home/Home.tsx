@@ -14,12 +14,21 @@ const Home = () => {
     };
     locaFetch();
   }, []);
+
+  const firstVideos = videos.slice(0, 3);
   return (
     <div className={Style.container}>
       <HomeTags />
       <div className={Style.vedio_container}>
         {videos.length ? (
-          videos.map((vid) => <Vedio VideoData={vid} />)
+          firstVideos.map((vid) => <Vedio VideoData={vid} />)
+        ) : (
+          <AllVideosBeforLoad />
+        )}
+      </div>
+      <div className={Style.vedio_container}>
+        {videos.length ? (
+          videos.slice(3, videos.length).map((vid) => <Vedio VideoData={vid} />)
         ) : (
           <AllVideosBeforLoad />
         )}

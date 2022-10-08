@@ -106,6 +106,8 @@ const Video = ({ VideoData }: any) => {
                 {VideoData?.channelData?.channelData?.name}
               </span>
               <span className={Style.date}>
+                {VideoData?.videoData?.views?.length}{" "}
+                {VideoData?.videoData?.views?.length && " views - "}
                 {moment(VideoData?.videoData?.createdAt)
                   .startOf("hour")
                   .fromNow()}

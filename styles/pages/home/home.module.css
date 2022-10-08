@@ -9,7 +9,7 @@
   padding: 0;
 }
 .vedio_container {
-  padding: 15px 0;
+  padding: 20px 20px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -33,5 +33,6 @@
 @media screen and (max-width: 500px) {
   .vedio_container {
     width: 100%;
+    padding: 20px 0px;
   }
 }
