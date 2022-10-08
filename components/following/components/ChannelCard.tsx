@@ -38,6 +38,9 @@ const Channel = ({
 
   const HandelFollow = async () => {
     const userSignIn = useSelector((state: any) => state.UserSignIn.userdata);
+    const [followers, setFollowers] = useState(
+      channelData?.followers?.followers
+    );
 
     const userId = userSignIn.email;
     setIsFollowed(!IsFollowed);
