@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
 import { poPUppRedcuer } from "../../../redux/style-slice/general-style/GenrealStyle";
 import { MainVideoDataReducer } from "../../../redux/video-slice/VideoSlice";
-
+import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
 const Channel = ({
   IsChannelPage,
   Title,
