@@ -7,9 +7,16 @@ const HomeTags = () => {
     { name: "All" },
     { name: "Live" },
     { name: "Trsvel " },
+    { name: "Crypto" },
+    { name: "Bitcoin" },
+    { name: "Blockchain" },
     { name: "Music" },
     { name: "Ecommrce" },
-    { name: "Free Cources" },
+    { name: "covid-19" },
+    { name: "USA" },
+
+    { name: "Javascript" },
+
     { name: "Travel" },
   ];
   // useEffect(() => {
