@@ -27,7 +27,6 @@ const Home = () => {
         )}
       </div>
       <div className={Style.vedio_container}>
-        <AllVideosBeforLoad />
         {videos.length ? (
           videos.slice(3, videos.length).map((vid) => <Vedio VideoData={vid} />)
         ) : (
