@@ -23,9 +23,7 @@ const HomeTags = () => {
   return (
     <div className={Style.container}>
       {Tags.map(({ name }) => (
-        <div className={Style.tag}>
-          <span>{name}</span>
-        </div>
+        <span className={Style.span}>{name}</span>
       ))}
     </div>
   );
