@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Style from "../../styles/pages/vedio/vedio.module.css";
 import { IoEllipsisVertical } from "@react-icons/all-files/io5/IoEllipsisVertical";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 import moment from "moment";
 
 import Link from "next/link";
+import Image from "next/image";
 const Video = ({ VideoData }: any) => {
   const [OverElement, setOverElement] = useState(false);
+  const [isLaoded, setIsLaoded] = useState(false);
+
   const streaming = VideoData?.streaming;
   const [videoLink, setVideoLink] = useState("");
   //console.log(VideoData);
@@ -16,6 +19,7 @@ const Video = ({ VideoData }: any) => {
   const HandelLeave = () => {
     setOverElement(false);
   };
+  const ThumbnailImg = React.useRef<HTMLDivElement | null>(null);
   const [ScreenWithByHalf, setScreenWithByHalf] = useState(500);
   const [IsPhone, setIsPhone] = useState(false);
 
@@ -68,6 +72,27 @@ const Video = ({ VideoData }: any) => {
     process.env.NEXT_PUBLIC_BACK_END_URL +
     "/api/get/read/images/" +
     VideoData?.videoData?.thumbnail;
+  const handelImagLaod = () => {
+    alert("Sd");
+  };
+  useEffect(() => {
+    const thumImg = VideoData?.videoData?.thumbnail;
+    // if (thumImg) {
+    //   setIsLaoded(true);
+    // }
+    function load(src: string) {
+      const image = document.createElement("img");
+      image.addEventListener("load", () => {
+        if (thumImg) {
+          setIsLaoded(true);
+        }
+      });
+      image.addEventListener("error", () => {});
+      image.src = src;
+    }
+    load(thumbnail);
+  });
+
   return (
     <Link href={videoLink}>
       <div
@@ -76,12 +101,27 @@ const Video = ({ VideoData }: any) => {
         className={Style.container}
       >
         <div
+          onLoad={handelImagLaod}
+          ref={ThumbnailImg}
           style={{
             backgroundImage: `url(${thumbnail})`,
             // minHeight: `${IsPhone && ScreenWithByHalf}px`,
           }}
           className={Style.vedio_container}
         >
+          {!isLaoded && (
+            <div className={Style.lds_roller}>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          )}
+
           <p className={Style.time}>
             {VideoData?.videoData?.duration} <IoVideocamOutline />{" "}
           </p>
