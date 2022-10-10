@@ -29,7 +29,7 @@
   font-size: 20px;
   min-width: 80px;
   height: 40px;
-  border-radius: 2px;
+  border-radius: 20px;
   color: #030303;
   font-size: 15px;
   font-weight: 500;
@@ -43,7 +43,7 @@
   min-height: 300px;
   width: 298px;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 5px;
   box-shadow: #00000017 0px 3px 12px;
   display: flex;
   flex-direction: column;
