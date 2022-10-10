@@ -12,7 +12,7 @@
   background-color: #673de6;
   height: 100%;
   padding: 0 20px;
-  border-radius: 0 2px 2px 0;
+  border-radius: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
