@@ -3,9 +3,10 @@
   top: 40px;
   left: 0px;
   min-height: 300px;
+  min-width: 300px;
   width: 100%;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 0 0px 10px 10px;
   box-shadow: #00000017 0px 3px 12px;
   display: flex;
   flex-direction: column;

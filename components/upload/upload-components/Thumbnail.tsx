@@ -14,7 +14,9 @@ const Thumbnail = () => {
   const dispatch = useDispatch();
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
   const videoData = useSelector((state: any) => state.VideoSlice.videoData);
-
+  const socketRedux = useSelector(
+    (state: any) => state.socketSlice.socketRedux
+  );
   const readImageThumbnail = async (event: any) => {
     if (event.target.files && event.target.files[0]) {
       Path.current = event.target.files[0];
@@ -54,6 +56,10 @@ const Thumbnail = () => {
       "/api/post/video/submite-video/",
       videoData
     ).then(({ file }) => {
+      socketRedux.emit("notification", {
+        videoId: videoData?.video_id,
+        channelId: Channels[0]?._id,
+      });
       console.log(file);
     });
   };

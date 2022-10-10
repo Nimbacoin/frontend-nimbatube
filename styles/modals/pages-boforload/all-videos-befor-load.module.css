@@ -28,7 +28,7 @@
   background-position: center;
   cursor: pointer;
   position: relative;
-  background-color: #cccccc;
+  background-color: #e3e3e3;
   margin: 0 auto;
 }
 
@@ -40,7 +40,7 @@
   align-items: flex-start;
   justify-content: space-between;
   cursor: pointer;
-  column-gap: 20px;
+  column-gap: 0px;
   margin: 0 auto;
 }
 
@@ -50,7 +50,6 @@
   align-items: center;
   justify-content: flex-start;
   column-gap: 10px;
-
   width: 20%;
 }
 .chanel_img {
@@ -71,14 +70,16 @@
   row-gap: 10px;
 }
 .small_bar {
-  width: 90%;
+  width: 80%;
   height: 15px;
   background-color: #e3e3e3;
+  border-radius: 20px;
 }
 .big_bar {
   background-color: #e3e3e3;
-  width: 100%;
+  width: 90%;
   height: 20px;
+  border-radius: 20px;
 }
 @media screen and (max-width: 900px) {
   .container {

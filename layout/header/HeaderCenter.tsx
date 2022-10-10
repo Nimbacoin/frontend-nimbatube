@@ -11,15 +11,39 @@ import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useRouter } from "next/router";
 import SearchDropDown from "./header-components/SearchDropDown";
 import IconHeader from "../../components/modals/IconHeader";
+import NotfyDropDown from "./header-components/NotfyDropDown";
+import { useSelector } from "react-redux";
 
 const HeaderCenter = ({ UserIsSignedIn }: any) => {
   const { asPath } = useRouter();
   const [ShowDiv, setShowDiv] = useState(false);
+  const [showDivNotfy, setShowDivNotfy] = useState(false);
+
   const [IsPhone, setIsPhone] = useState(false);
 
   const Ref = React.useRef<HTMLDivElement>(null);
   const InputSearch = React.useRef<HTMLInputElement>(null);
-
+  const notifyIcon = React.useRef<HTMLDivElement>(null);
+  const notfyDropDown = React.useRef<HTMLDivElement>(null);
+  const handelToggelNotfy = () => {
+    setShowDivNotfy(!showDivNotfy);
+  };
+  useEffect(() => {
+    const HandelClick = (e: any) => {
+      if (notifyIcon && notifyIcon.current) {
+        const refany = notifyIcon.current;
+        if (refany.contains(e.target)) {
+          handelToggelNotfy();
+        } else if (notfyDropDown && notfyDropDown.current) {
+          const refany = notfyDropDown.current;
+          if (!refany.contains(e.target)) {
+            setShowDivNotfy(false);
+          }
+        }
+      }
+    };
+    window.addEventListener("click", HandelClick);
+  }, [showDivNotfy]);
   useEffect(() => {
     const HandelClick = (e: any) => {
       if (InputSearch && InputSearch.current) {
@@ -39,6 +63,10 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
   const HandelSearchPhone = () => {
     setIsPhone(!IsPhone);
   };
+  const notificationNoSeen = useSelector(
+    (state: any) => state.UserSignIn.notificationNoSeen
+  );
+  const numberNotfy = notificationNoSeen.length;
   return (
     <div className={IsPhone ? Style.container_phone : Style.container}>
       <div
@@ -65,10 +93,21 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
               TextValue={"upload"}
             />
 
-            <IconHeader
-              Icon={<IoNotificationsOutline />}
-              TextValue={"Notification"}
-            />
+            <div className={Style.notfy_drop_down} ref={notfyDropDown}>
+              <div
+                // onClick={handelToggelNotfy}
+                ref={notifyIcon}
+                className={Style.icon_con}
+              >
+                <IconHeader
+                  Number={true}
+                  NumberData={numberNotfy}
+                  Icon={<IoNotificationsOutline />}
+                  TextValue={"Notification"}
+                />
+              </div>
+              {showDivNotfy && <NotfyDropDown />}
+            </div>
 
             <IconHeader
               Url={"/go-live/go-live"}
@@ -84,12 +123,13 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
               TextValue={"upload"}
             />
 
-            <IconHeader
-              Url={"/auth/sign-in"}
-              Icon={<IoNotificationsOutline />}
-              TextValue={"Notification"}
-            />
-
+            <div className={Style.notfy_drop_down} ref={NotfyDropDown}>
+              <IconHeader
+                Url={"/auth/sign-in"}
+                Icon={<IoNotificationsOutline />}
+                TextValue={"Notification"}
+              />
+            </div>
             <IconHeader
               Url={"/auth/sign-in"}
               Icon={<IoVideocamOutline />}

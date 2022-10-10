@@ -38,7 +38,7 @@
   justify-content: center;
   color: #030303;
   font-size: 20px;
-  border-radius: 0 20px 20px 0 ;
+  border-radius: 0 20px 20px 0;
 }
 
 .buttons_container {
@@ -63,6 +63,9 @@
 }
 .rest_of_button_search_phone {
   display: none;
+}
+.notfy_drop_down {
+  position: relative;
 }
 @media screen and (max-width: 900px) {
   .container {

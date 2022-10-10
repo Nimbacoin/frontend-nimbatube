@@ -7,10 +7,10 @@ import {
 import Style from "../../styles/modals/icon-header.module.css";
 import { useRouter } from "next/router";
 
-const IconHeader = ({ TextValue, Icon, Url }: any) => {
+const IconHeader = ({ TextValue, Icon, Url, NumberData, Number }: any) => {
   const Router = useRouter();
   const dispatch = useDispatch();
-  const buttonRef = React.useRef<HTMLButtonElement | null>(null);
+  const buttonRef = React.useRef<HTMLDivElement | null>(null);
   const handelOver = () => {
     if (buttonRef.current) {
       const data = buttonRef.current.getBoundingClientRect();
@@ -29,15 +29,17 @@ const IconHeader = ({ TextValue, Icon, Url }: any) => {
     Url && Router.push(Url);
   };
   return (
-    <button
+    <div
       onClick={handelClick}
       onMouseOut={handelLeave}
       onMouseOver={handelOver}
       ref={buttonRef}
       className={Style.container}
     >
+      {Number && <span className={Style.number}>{NumberData}</span>}
+
       {Icon}
-    </button>
+    </div>
   );
 };
 

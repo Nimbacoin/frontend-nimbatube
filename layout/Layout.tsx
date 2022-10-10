@@ -8,7 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { WindowHeightRedcuer } from "../redux/style-slice/general-style/GenrealStyle";
 import { useSession } from "next-auth/react";
-import { UserSignedIn } from "../redux/user-slice/UserSignIn";
+import {
+  notificationReudcer,
+  UserSignedIn,
+} from "../redux/user-slice/UserSignIn";
 import Cookies from "js-cookie";
 import basedGetUrlRequestLogedIn from "../utils/basedGetUrlRequestLogedIn";
 import { AllChannelsRedcuer } from "../redux/channel-slice/ChannelSlice";
@@ -59,7 +62,8 @@ const Layout = ({ children }: any) => {
       (res: any) => {
         try {
           if (res && res.responsData) {
-            dispatch(AllChannelsRedcuer(res.responsData));
+            dispatch(AllChannelsRedcuer(res.responsData.channels));
+            dispatch(notificationReudcer(res.responsData.notification));
           }
         } catch (error) {
           console.log(error);

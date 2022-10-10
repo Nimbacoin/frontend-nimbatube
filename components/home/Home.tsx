@@ -16,6 +16,7 @@ const Home = () => {
   }, []);
 
   const firstVideos = videos.slice(0, 3);
+  const restVideos = videos.slice(3, videos.length);
   return (
     <div className={Style.container}>
       <HomeTags />
@@ -28,7 +29,7 @@ const Home = () => {
       </div>
       <div className={Style.vedio_container}>
         {videos.length ? (
-          videos.slice(3, videos.length).map((vid) => <Vedio VideoData={vid} />)
+          restVideos.map((vid) => <Vedio VideoData={vid} />)
         ) : (
           <AllVideosBeforLoad />
         )}
