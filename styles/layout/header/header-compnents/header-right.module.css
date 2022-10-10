@@ -11,7 +11,7 @@
   background-color: #fff;
   width: auto;
   height: 40px;
-  border-radius: 2px;
+  border-radius: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,13 +20,13 @@
   font-size: 15px;
   font-weight: 500;
   border: 1px solid#DBDBDB;
-  padding: 0 10px;
+  padding: 0 20px;
 }
 .button_singup {
   background-color: #673de6;
   width: auto;
   height: 40px;
-  border-radius: 2px;
+  border-radius: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;

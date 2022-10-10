@@ -7,6 +7,7 @@ import Channel from "../following/components/ChannelCard";
 import { AllChannelsRedcuer } from "../../redux/channel-slice/ChannelSlice";
 import basedPostUrlRequestLogedIn from "../../utils/basedPostUrlRequestLogedIn";
 import { useRouter } from "next/router";
+import ChannelsLaoding from "../modals/pages-boforload/ChannelsLaoding";
 
 const ChannelsPages = () => {
   const Router = useRouter();
@@ -35,21 +36,27 @@ const ChannelsPages = () => {
         </button>
         {/* </Link> */}
       </div>
+      <div className={Style.channels_container}>
+        {channels.length ? (
+          channels.map(({ _id, channelData, followers, uploads }: any) => (
+            <Channel
+              key={_id}
+              Id={_id}
+              LinkChannel={"/channel/@/" + _id}
+              IsChanelPage={false}
+              Title={channelData?.title}
+              Username={channelData && channelData.name}
+              ProfileImg={channelData && channelData.profileImg}
+              Uploads={uploads.length}
+              Followers={followers.length}
+            />
+          ))
+        ) : (
+          <ChannelsLaoding />
+        )}
+      </div>
 
-      {channels &&
-        channels.map(({ _id, channelData, followers, uploads }: any) => (
-          <Channel
-            key={_id}
-            Id={_id}
-            LinkChannel={"/channel/@/" + _id}
-            IsChanelPage={false}
-            Title={channelData?.title}
-            Username={channelData && channelData.name}
-            ProfileImg={channelData && channelData.profileImg}
-            Uploads={uploads.length}
-            Followers={followers.length}
-          />
-        ))}
+      {/* <ChannelsLaoding /> */}
     </div>
   );
 };

@@ -46,7 +46,7 @@
   width: 100%;
   height: 38px;
   border: 1px solid#DBDBDB;
-  border-radius: 2px;
+  border-radius: 20px;
   position: relative;
   font-size: 14px;
   color: #030303;
@@ -131,7 +131,7 @@
   background-color: #673de6;
   width: 100%;
   height: 40px;
-  border-radius: 2px;
+  border-radius: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -144,7 +144,7 @@
   background-color: #fff;
   width: 100%;
   height: 40px;
-  border-radius: 2px;
+  border-radius: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;

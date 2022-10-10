@@ -18,7 +18,7 @@
   width: 80%;
   height: 38px;
   border: 1px solid#DBDBDB;
-  border-radius: 2px;
+  border-radius: 20px;
   position: relative;
 }
 .search_input {
@@ -26,6 +26,7 @@
   padding: 0 15px;
   border: none;
   outline: none;
+  border-radius: 20px;
 }
 .search_button {
   background-color: #f0f0f0;
@@ -37,6 +38,7 @@
   justify-content: center;
   color: #030303;
   font-size: 20px;
+  border-radius: 0 20px 20px 0 ;
 }
 
 .buttons_container {

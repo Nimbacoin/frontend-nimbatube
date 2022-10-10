@@ -8,6 +8,17 @@
   row-gap: 20px;
   margin: 20px auto;
 }
+.channels_container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  row-gap: 20px;
+}
 .button {
   background-color: #673de6;
   height: 100%;
@@ -35,4 +46,5 @@
   color: #030303;
   outline: none;
   padding: 0 0px 0 20px;
+  font-weight: 500;
 }
