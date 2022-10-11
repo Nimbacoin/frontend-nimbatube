@@ -29,7 +29,7 @@ const NotfyDropDown = ({ Notification }: any) => {
               </div>
               <div className={Style.desc_container}>
                 <p className={Style.text}>
-                  {channelData?.channelData?.name + videoData.title}
+                  {channelData?.channelData?.name + videoData?.title}
                 </p>
                 <p className={Style.text_date}>
                   {moment(vid?.from?.createAt).startOf("hour").fromNow()}
