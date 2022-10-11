@@ -3,6 +3,7 @@ import Style from "../../../styles/layout/header/header-compnents/notfy-drop-dow
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import moment from "moment";
 
 const NotfyDropDown = ({ Notification }: any) => {
   const Notify: any = [];
@@ -12,7 +13,7 @@ const NotfyDropDown = ({ Notification }: any) => {
   return (
     <div className={Style.drop_down_container}>
       {notification.length
-        ? notification.map(({ channelData }: any) => (
+        ? notification.map(({ channelData, videoData, vid }: any) => (
             <div className={Style.main_container}>
               <div className={Style.img_container}>
                 <div
@@ -27,10 +28,24 @@ const NotfyDropDown = ({ Notification }: any) => {
                 ></div>
               </div>
               <div className={Style.desc_container}>
-                <p className={Style.text}>{}</p>
+                <p className={Style.text}>
+                  {channelData?.channelData?.name + videoData.title}
+                </p>
+                <p className={Style.text_date}>
+                  {moment(vid?.from?.createAt).startOf("hour").fromNow()}
+                </p>
               </div>
               <div className={Style.video_container}>
-                <div className={Style.video_img}></div>
+                <div
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.NEXT_PUBLIC_BACK_END_URL +
+                      "/api/get/read/images/" +
+                      videoData?.thumbnail
+                    })`,
+                  }}
+                  className={Style.video_img}
+                ></div>
               </div>
             </div>
           ))
