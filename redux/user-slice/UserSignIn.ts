@@ -19,16 +19,12 @@ export const UserSignIn = createSlice({
       state.UserIsSignedIn = false;
     },
     notificationReudcer: (state: any, action: any) => {
-      const paylaod = action.payload;
-      console.log(paylaod);
-      const Notification = state.Notification;
-      if (paylaod.length) {
-        state.Notification = paylaod;
-        const noSeenNotfy = Notification.filter(
-          ({ seen }: any) => seen == false
-        );
-        state.notificationNoSeen = paylaod;
-      }
+      const Payload = action.payload;
+      state.notification = Payload;
+      console.log(Payload);
+      state.notificationNoSeen = Payload.filter(
+        ({ vid }: any) => vid.seen == false
+      );
     },
   },
 });

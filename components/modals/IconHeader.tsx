@@ -36,7 +36,9 @@ const IconHeader = ({ TextValue, Icon, Url, NumberData, Number }: any) => {
       ref={buttonRef}
       className={Style.container}
     >
-      {Number && <span className={Style.number}>{NumberData}</span>}
+      {Number && NumberData >= 1 && (
+        <span className={Style.number}>{NumberData}</span>
+      )}
 
       {Icon}
     </div>

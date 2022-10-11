@@ -66,6 +66,11 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
   const notificationNoSeen = useSelector(
     (state: any) => state.UserSignIn.notificationNoSeen
   );
+  const notification = useSelector(
+    (state: any) => state.UserSignIn.notification
+  );
+  const Notification = notification;
+
   const numberNotfy = notificationNoSeen.length;
   return (
     <div className={IsPhone ? Style.container_phone : Style.container}>
@@ -106,7 +111,9 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
                   TextValue={"Notification"}
                 />
               </div>
-              {showDivNotfy && <NotfyDropDown />}
+              {showDivNotfy && Notification?.length && (
+                <NotfyDropDown Notification={Notification} />
+              )}
             </div>
 
             <IconHeader
@@ -123,7 +130,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
               TextValue={"upload"}
             />
 
-            <div className={Style.notfy_drop_down} ref={NotfyDropDown}>
+            <div className={Style.notfy_drop_down}>
               <IconHeader
                 Url={"/auth/sign-in"}
                 Icon={<IoNotificationsOutline />}

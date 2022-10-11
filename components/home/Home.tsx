@@ -21,14 +21,14 @@ const Home = () => {
     <div className={Style.container}>
       <HomeTags />
       <div className={Style.vedio_container}>
-        {videos.length ? (
+        {firstVideos.length ? (
           firstVideos.map((vid) => <Vedio VideoData={vid} />)
         ) : (
           <AllVideosBeforLoad />
         )}
       </div>
       <div className={Style.vedio_container}>
-        {videos.length ? (
+        {restVideos.length ? (
           restVideos.map((vid) => <Vedio VideoData={vid} />)
         ) : (
           <AllVideosBeforLoad />
