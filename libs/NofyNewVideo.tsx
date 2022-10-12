@@ -3,12 +3,11 @@ import io from "socket.io-client";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { socketReduxRecuder } from "../redux/socket-slice/socketSlice";
-import NofyNewVideo from "./NofyNewVideo";
 
 interface SocketObj {
   conversationId: string;
 }
-const SocketHandler = () => {
+const NofyNewVideo = () => {
   const dispatch = useDispatch();
 
   const socketInstance = useSelector(
@@ -18,26 +17,14 @@ const SocketHandler = () => {
 
   useEffect(() => {
     const localFetch = () => {
-      const socket = io(process.env.NEXT_PUBLIC_BACK_END_URL!, {
-        transports: ["websocket", "polling"],
-      });
-      if (!isSocket) {
-        dispatch(socketReduxRecuder(socket));
+      if (isSocket) {
+        socketInstance.on("nofy-new-video", () => {});
+        alert("new video");
       }
-      socket.on("connect_error", (err: any) => {
-        console.log(`connect_error due to the ${err.message}`);
-      });
-      socket.on("connect", () => {
-        console.log("you connnected");
-      });
     };
     localFetch();
   }, [socketInstance]);
 
-  return (
-    <>
-      <NofyNewVideo />
-    </>
-  );
+  return <></>;
 };
-export default SocketHandler;
+export default NofyNewVideo;
