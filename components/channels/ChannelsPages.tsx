@@ -37,26 +37,23 @@ const ChannelsPages = () => {
         {/* </Link> */}
       </div>
       <div className={Style.channels_container}>
-        {channels.length ? (
-          channels.map(({ _id, channelData, followers, uploads }: any) => (
-            <Channel
-              key={_id}
-              Id={_id}
-              LinkChannel={"/channel/@/" + _id}
-              IsChanelPage={false}
-              Title={channelData?.title}
-              Username={channelData && channelData.name}
-              ProfileImg={channelData && channelData.profileImg}
-              Uploads={uploads.length}
-              Followers={followers.length}
-            />
-          ))
-        ) : (
-          <ChannelsLaoding />
-        )}
+        {channels && channels.length
+          ? channels.map(({ _id, channelData, followers, uploads }: any) => (
+              <Channel
+                key={_id}
+                Id={_id}
+                LinkChannel={"/channel/@/" + _id}
+                IsChanelPage={false}
+                Title={channelData?.title}
+                Username={channelData && channelData.name}
+                ProfileImg={channelData && channelData.profileImg}
+                Uploads={uploads.length}
+                Followers={followers.length}
+              />
+            ))
+          : // <ChannelsLaoding />
+            "dflñdflñdfdñfdñfñdf"}
       </div>
-
-      {/* <ChannelsLaoding /> */}
     </div>
   );
 };
