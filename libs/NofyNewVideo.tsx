@@ -18,8 +18,9 @@ const NofyNewVideo = () => {
   useEffect(() => {
     const localFetch = () => {
       if (isSocket) {
-        socketInstance.on("nofy-new-video", () => {});
-        alert("new video");
+        socketInstance.on("nofy-new-video", () => {
+          // alert("new video");
+        });
       }
     };
     localFetch();
