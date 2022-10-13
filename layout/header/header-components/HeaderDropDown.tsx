@@ -183,8 +183,17 @@ const HeaderDropDown = () => {
                   ></div>
 
                   <div className={Style.link_data}>
-                    <span className={Style.name}> name</span>
-                    <span className={Style.channelname}>coco</span>
+                    {Channels?.length >= 1 ? (
+                      <>
+                        <span className={Style.name}> name</span>
+                        <span className={Style.channelname}>
+                          {Channels?.length >= 1 &&
+                            Channels[0]?.channelData?.name}
+                        </span>
+                      </>
+                    ) : (
+                      <button>create channel</button>
+                    )}
                   </div>
                 </div>
                 {allLinks.map(
