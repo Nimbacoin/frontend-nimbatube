@@ -66,15 +66,6 @@ const HeaderDropDown = () => {
   });
   const allLinks = [
     {
-      name: "Your Channel",
-      link: channel && "/channel/@/" + channel?._id,
-      classname: Style.channel_container,
-      img: Bg,
-      imgChannel: true,
-      channelname: Channels?.length >= 1 && Channels[0]?.channelData?.name,
-      //  channel && Name,
-    },
-    {
       name: "Upload",
       link: "/upload",
       icon: <IoCloudUploadOutline />,
@@ -133,7 +124,7 @@ const HeaderDropDown = () => {
       classname: Style.sing_out_container,
     },
   ];
-  const HandelSubmiteInitChannel = async (e: any) => {
+  const HandelSubmiteInitChannel = async () => {
     const ReqData: any = { general: "", images: "" };
     await basedPostUrlRequestLogedIn(
       "/api/post/channel/init-channel/",
@@ -200,12 +191,11 @@ const HeaderDropDown = () => {
                   ({
                     link,
                     id,
-                    img,
+
                     name,
-                    channelname,
+
                     icon,
                     classname,
-                    imgChannel,
                   }) => (
                     <div
                       key={name}
@@ -214,19 +204,9 @@ const HeaderDropDown = () => {
                       id={link === "/" ? id : link}
                     >
                       {icon && <span className={Style.icon}> {icon}</span>}
-                      {imgChannel && (
-                        <div
-                          style={{ backgroundImage: `url(${Bg})` }}
-                          className={Style.img}
-                        ></div>
-                      )}
+
                       <div className={Style.link_data}>
                         {name && <span className={Style.name}> {name}</span>}
-                        {channelname && (
-                          <span className={Style.channelname}>
-                            {channelname}
-                          </span>
-                        )}
                       </div>
                     </div>
                   )
