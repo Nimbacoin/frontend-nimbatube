@@ -185,7 +185,7 @@ const HeaderDropDown = () => {
                   <div className={Style.link_data}>
                     {Channels?.length >= 1 ? (
                       <>
-                        <span className={Style.name}> name</span>
+                        <span className={Style.name}>Your Channel </span>
                         <span className={Style.channelname}>
                           {Channels?.length >= 1 &&
                             Channels[0]?.channelData?.name}
