@@ -202,7 +202,7 @@ const HeaderDropDown = () => {
                     id,
 
                     name,
-
+                    channelname,
                     icon,
                     classname,
                   }) => (
@@ -216,6 +216,8 @@ const HeaderDropDown = () => {
 
                       <div className={Style.link_data}>
                         {name && <span className={Style.name}> {name}</span>}
+
+                        <span className={Style.channelname}>{channelname}</span>
                       </div>
                     </div>
                   )
