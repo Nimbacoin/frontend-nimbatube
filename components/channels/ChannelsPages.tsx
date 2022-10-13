@@ -13,6 +13,9 @@ const ChannelsPages = () => {
   const Router = useRouter();
   const dispatch = useDispatch();
   const channels = useSelector((state: any) => state.ChannelSlice.allChannels);
+  const allChannelsFetched = useSelector(
+    (state: any) => state.ChannelSlice.allChannelsFetched
+  );
   const HandelSubmiteInitChannel = async (e: any) => {
     const ReqData: any = { general: "", images: "" };
     await basedPostUrlRequestLogedIn(
@@ -51,6 +54,8 @@ const ChannelsPages = () => {
               Followers={followers.length}
             />
           ))
+        ) : allChannelsFetched ? (
+          "you have no channel you"
         ) : (
           <ChannelsLaoding />
         )}

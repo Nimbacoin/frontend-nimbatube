@@ -3,6 +3,7 @@ import { current } from "@reduxjs/toolkit";
 
 const initialState = {
   allChannels: [],
+  allChannelsFetched: false,
   NewChannel: [],
   general: {},
   images: {},
@@ -14,7 +15,14 @@ export const ChannelSlice = createSlice({
   initialState,
   reducers: {
     AllChannelsRedcuer: (state: any, action: any) => {
-      state.allChannels = action.payload;
+      if (action.payload.length >= 1) {
+        state.allChannels = action.payload;
+      }
+      if (action.payload.length >= 0) {
+        state.allChannelsFetched = true;
+      } else {
+        state.allChannelsFetched = true;
+      }
     },
 
     ActionGenaralChanging: (state: any, action: any) => {

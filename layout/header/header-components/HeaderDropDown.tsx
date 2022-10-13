@@ -26,6 +26,9 @@ const HeaderDropDown = () => {
   const InputSearch = React.useRef<HTMLDivElement>(null);
   const [Bg, setBg] = useState("/images/default-profile.png");
   const [Name, setName] = useState("");
+  const allChannelsFetched = useSelector(
+    (state: any) => state.ChannelSlice.allChannelsFetched
+  );
   const [channel, setChannel] = useState<{ [key: string]: any }>({});
   const length = Object.keys(channel).length;
   useEffect(() => {
@@ -161,6 +164,20 @@ const HeaderDropDown = () => {
             </div>
             {ShowDiv && (
               <div className={Style.drop_down_container} ref={Ref}>
+                <div
+                  onClick={(e) => handelClick(e, "channel?._id", "sd")}
+                  className={Style.channel_container}
+                >
+                  <div
+                    style={{ backgroundImage: `url(${Bg})` }}
+                    className={Style.img}
+                  ></div>
+
+                  <div className={Style.link_data}>
+                    <span className={Style.name}> name</span>
+                    <span className={Style.channelname}>coco</span>
+                  </div>
+                </div>
                 {allLinks.map(
                   ({
                     link,
@@ -189,7 +206,6 @@ const HeaderDropDown = () => {
                         {name && <span className={Style.name}> {name}</span>}
                         {channelname && (
                           <span className={Style.channelname}>
-                            {" "}
                             {channelname}
                           </span>
                         )}

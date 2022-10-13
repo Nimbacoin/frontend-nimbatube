@@ -64,6 +64,8 @@ const Layout = ({ children }: any) => {
           if (res && res.responsData) {
             if (res?.responsData?.channels) {
               dispatch(AllChannelsRedcuer(res.responsData.channels));
+            } else {
+              dispatch(AllChannelsRedcuer([]));
             }
             if (res?.responsData?.notification) {
               dispatch(notificationReudcer(res.responsData.notification));
