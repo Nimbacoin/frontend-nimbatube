@@ -15,6 +15,7 @@ import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline"
 import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
 
 import Cookies from "js-cookie";
+import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
 
 const HeaderDropDown = () => {
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
@@ -132,13 +133,30 @@ const HeaderDropDown = () => {
       classname: Style.sing_out_container,
     },
   ];
+  const HandelSubmiteInitChannel = async (e: any) => {
+    const ReqData: any = { general: "", images: "" };
+    await basedPostUrlRequestLogedIn(
+      "/api/post/channel/init-channel/",
+      ReqData
+    ).then((res) => {
+      if (res?.responsData) {
+        Router.push("/channel/create-new-channel/" + res?.responsData?._id);
+      }
+    });
+  };
   const handelClick = (e: any, link: string, id: any) => {
     if (id === "sign-out") {
       e.preventDefault();
-      // sessionStorage.removeItem("user");
+      //.removeItem("user");
       Cookies.remove("user");
       dispatch(UserSignOut());
       Router.push("/");
+    } else if (id === "channel") {
+      if (Channels && Channels?.length) {
+        Router.push("/channel/@/" + channel?._id);
+      } else {
+        HandelSubmiteInitChannel();
+      }
     } else {
       Router.push(link);
     }
@@ -165,7 +183,7 @@ const HeaderDropDown = () => {
             {ShowDiv && (
               <div className={Style.drop_down_container} ref={Ref}>
                 <div
-                  onClick={(e) => handelClick(e, "channel?._id", "sd")}
+                  onClick={(e) => handelClick(e, "channel", "channel")}
                   className={Style.channel_container}
                 >
                   <div

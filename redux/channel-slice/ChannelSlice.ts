@@ -15,10 +15,9 @@ export const ChannelSlice = createSlice({
   initialState,
   reducers: {
     AllChannelsRedcuer: (state: any, action: any) => {
-      if (action.payload.length >= 1) {
-        state.allChannels = action.payload;
-      }
-      if (action.payload.length >= 0) {
+      state.allChannels = action.payload;
+
+      if (action?.payload?.length >= 0) {
         state.allChannelsFetched = true;
       } else {
         state.allChannelsFetched = true;
