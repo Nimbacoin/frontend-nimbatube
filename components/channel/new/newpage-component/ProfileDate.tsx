@@ -17,7 +17,6 @@ const ProfileDate = () => {
   const previewSourceProfile = React.useRef<HTMLDivElement | null>(null);
   const [previewSourceCover, setPreviewSourceCover] = useState("");
   const { asPath } = useRouter();
-  
 
   const UlLinks = [
     { name: "General", key: "general" },

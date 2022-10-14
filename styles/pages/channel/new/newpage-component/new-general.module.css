@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: flex-start;
   column-gap: 20px;
-  border-bottom: 5px solid #fff;
+  border-bottom: 1px solid #fff;
 }
 .upload_container > svg {
   background-color: #f9f9f9;
@@ -32,7 +32,7 @@
   width: 100%;
   height: auto;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;

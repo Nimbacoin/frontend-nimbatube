@@ -32,20 +32,21 @@ const SocketHandler = () => {
       socket.on("connect_error", (err: any) => {
         console.log(`connect_error due to the ${err.message}`);
       });
-      socket.on("connect", () => {
-        socket.on("unicId", (unicId: any) => {
-          const sessionStorageUnicId = sessionStorage.unicId;
-          if (
-            !sessionStorageUnicId &&
-            typeof sessionStorageUnicId === "undefined"
-          ) {
-            sessionStorage.setItem("unicId", unicId);
-          } else {
-            alert(
-              "sessionStorageUnicId " + sessionStorageUnicId + " unicId " + unicId
-            );
-          }
-        });
+      socket.on("connect", () => {});
+      socket.on("unicId", (unicId: any) => {
+        const sessionStorageUnicId = sessionStorage.unicId;
+        if (
+          !sessionStorageUnicId &&
+          typeof sessionStorageUnicId === "undefined"
+        ) {
+          sessionStorage.setItem("unicId", unicId);
+          socket.emit("send-id", unicId);
+        } else {
+          socket.emit("send-id", sessionStorageUnicId);
+          // alert(
+          //   "sessionStorageUnicId " + sessionStorageUnicId + " unicId " + unicId
+          // );
+        }
       });
     };
     localFetch();

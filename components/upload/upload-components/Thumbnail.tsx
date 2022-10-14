@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ActionVideoDataChanging } from "../../../redux/video-slice/VideoSlice";
 import AxiosPostLogedInFormData from "../../../utils/AxiosPostLogedInFormData";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
+import { poPUppRedcuer } from "../../../redux/style-slice/general-style/GenrealStyle";
 
 const Thumbnail = () => {
   const Path = useRef(null);
@@ -56,6 +57,10 @@ const Thumbnail = () => {
       "/api/post/video/submite-video/",
       videoData
     ).then(({ file }) => {
+      dispatch(poPUppRedcuer({ data: "new video uploaded" }));
+      setTimeout(() => {
+        dispatch(poPUppRedcuer({ data: "" }));
+      }, 5000);
       socketRedux.emit("notification", {
         videoId: videoData?.video_id,
         channelId: Channels[0]?._id,

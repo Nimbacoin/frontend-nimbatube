@@ -6,6 +6,7 @@ import moment from "moment";
 
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 const Video = ({ VideoData }: any) => {
   const [OverElement, setOverElement] = useState(false);
   const [isLaoded, setIsLaoded] = useState(false);
@@ -20,6 +21,8 @@ const Video = ({ VideoData }: any) => {
     setOverElement(false);
   };
   const ThumbnailImg = React.useRef<HTMLDivElement | null>(null);
+  const containerRef = React.useRef<HTMLDivElement | null>(null);
+  const channelNameRef = React.useRef<HTMLDivElement | null>(null);
   const [ScreenWithByHalf, setScreenWithByHalf] = useState(500);
   const [IsPhone, setIsPhone] = useState(false);
 
@@ -72,9 +75,7 @@ const Video = ({ VideoData }: any) => {
     process.env.NEXT_PUBLIC_BACK_END_URL +
     "/api/get/read/images/" +
     VideoData?.videoData?.thumbnail;
-  const handelImagLaod = () => {
-    alert("Sd");
-  };
+  const handelImagLaod = () => {};
   useEffect(() => {
     const thumImg = VideoData?.videoData?.thumbnail;
     // if (thumImg) {
@@ -92,71 +93,81 @@ const Video = ({ VideoData }: any) => {
     }
     load(thumbnail);
   });
-
+  const Router = useRouter();
+  const handelClickVideo = (e: any) => {
+    if (channelNameRef && channelNameRef.current) {
+      const channelNameRefCurnt = channelNameRef.current;
+      if (channelNameRefCurnt.contains(e.target)) {
+        Router.push("/channel/@/" + VideoData?.channelData?._id);
+      } else {
+        Router.push(videoLink);
+      }
+    }
+  };
   return (
-    <Link href={videoLink}>
+    <div
+      ref={containerRef}
+      onClick={handelClickVideo}
+      onMouseOver={HandelOver}
+      onMouseLeave={HandelLeave}
+      className={Style.container}
+    >
       <div
-        onMouseOver={HandelOver}
-        onMouseLeave={HandelLeave}
-        className={Style.container}
+        onLoad={handelImagLaod}
+        ref={ThumbnailImg}
+        style={{
+          backgroundImage: `url(${thumbnail})`,
+          // minHeight: `${IsPhone && ScreenWithByHalf}px`,
+        }}
+        className={Style.vedio_container}
       >
-        <div
-          onLoad={handelImagLaod}
-          ref={ThumbnailImg}
-          style={{
-            backgroundImage: `url(${thumbnail})`,
-            // minHeight: `${IsPhone && ScreenWithByHalf}px`,
-          }}
-          className={Style.vedio_container}
-        >
-          {!isLaoded && (
-            <div className={Style.lds_roller}>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          )}
-
-          <p className={Style.time}>
-            {VideoData?.videoData?.duration} <IoVideocamOutline />{" "}
-          </p>
-        </div>
-        <div className={Style.desc_container}>
-          <div className={Style.title_data}>
-            <p className={Style.title}>{Title}</p>
-            <i
-              style={{ color: `${OverElement ? "#030303" : "#F9F9F9"}` }}
-              className={Style.menu}
-            >
-              <IoEllipsisVertical />
-            </i>
+        {!isLaoded && (
+          <div className={Style.lds_roller}>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
-          <div className={Style.chanel_data}>
-            <div
-              style={{ backgroundImage: `url(${BgP})` }}
-              className={Style.chanel_img}
-            ></div>
-            <p className={Style.chanel_details}>
-              <span className={Style.chanel_name}>
-                {VideoData?.channelData?.channelData?.name}
-              </span>
-              <span className={Style.date}>
-                {VideoData?.videoData?.views?.length}{" "}
-                {VideoData?.videoData?.views?.length && " views - "}
-                {moment(VideoData?.videoData?.createdAt)
-                  .startOf("hour")
-                  .fromNow()}
-              </span>
-            </p>
+        )}
+
+        <p className={Style.time}>
+          {VideoData?.videoData?.duration} <IoVideocamOutline />{" "}
+        </p>
+      </div>
+      <div className={Style.desc_container}>
+        <div className={Style.title_data}>
+          <p className={Style.title}>{Title}</p>
+          <i
+            style={{ color: `${OverElement ? "#030303" : "#F9F9F9"}` }}
+            className={Style.menu}
+          >
+            <IoEllipsisVertical />
+          </i>
+        </div>
+        <div className={Style.chanel_data}>
+          <div
+            style={{ backgroundImage: `url(${BgP})` }}
+            className={Style.chanel_img}
+          ></div>
+          <div className={Style.chanel_details}>
+            <div ref={channelNameRef} className={Style.chanel_name}>
+              {VideoData?.channelData?.channelData?.name}
+            </div>
+            <span className={Style.date}>
+              {VideoData?.videoData?.views?.length}{" "}
+              {VideoData?.videoData?.views?.length && " views - "}
+              {moment(VideoData?.videoData?.createdAt)
+                .startOf("hour")
+                .fromNow()}
+            </span>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

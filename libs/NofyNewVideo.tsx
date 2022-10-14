@@ -19,7 +19,7 @@ const NofyNewVideo = () => {
     const localFetch = () => {
       if (isSocket) {
         socketInstance.on("nofy-new-video", () => {
-          // alert("new video");
+          alert("new video");
         });
       }
     };

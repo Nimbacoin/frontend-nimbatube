@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import AxiosPostLogedInFormData from "../../../../utils/AxiosPostLogedInFormData";
+import { poPUppRedcuer } from "../../../../redux/style-slice/general-style/GenrealStyle";
 
 const NewGeneral = () => {
   const { asPath } = useRouter();
@@ -60,6 +61,10 @@ const NewGeneral = () => {
       ReqData
     ).then((res) => {
       if (res) {
+        dispatch(poPUppRedcuer({ data: "new channel created" }));
+        setTimeout(() => {
+          dispatch(poPUppRedcuer({ data: "" }));
+        }, 5000);
         dispatch(ActionGenaralChanging(""));
         dispatch(ResetNewChannel());
         HandelCancel();
