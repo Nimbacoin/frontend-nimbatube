@@ -74,6 +74,7 @@
   background-position: center;
   cursor: pointer;
   border-radius: 50%;
+  background-color: #f9f9f9;
 }
 .chanel_container {
   width: 90%;
@@ -374,6 +375,7 @@
   }
   .img {
     margin-left: 10px;
+    background-color: #f9f9f9;
   }
   .all_comments_container {
     display: none;
@@ -410,6 +412,7 @@
   .img_container > div {
     height: 50px;
     width: 50px;
+    background-color: #f9f9f9;
   }
 
   .input_container {

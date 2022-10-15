@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Style from "../../styles/pages/home/home.module.css";
 import allVideosFetch from "../../utils/allVideosFetch";
+import LoaodingAll from "../modals/LoaodingAll";
 import AllVideosBeforLoad from "../modals/pages-boforload/AllVideosBeforLoad";
 import Vedio from "../video/Video";
 import HomeTags from "./HomeTags";
@@ -34,6 +35,7 @@ const Home = () => {
           <AllVideosBeforLoad />
         )}
       </div>
+      <LoaodingAll />
     </div>
   );
 };

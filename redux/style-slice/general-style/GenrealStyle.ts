@@ -8,6 +8,7 @@ const initialState = {
   textValue: "",
   popUpp: false,
   popUppData: {},
+  copyVideo: false,
 };
 
 export const GeneralStyle = createSlice({
@@ -39,6 +40,16 @@ export const GeneralStyle = createSlice({
         state.popUpp = false;
       }
     },
+    copyLinkRedcuer: (state: any, action: any) => {
+      const payloadValue = action.payload.value;
+      if (payloadValue === "true") {
+        state.copyVideo = true;
+      } else if (payloadValue === "false") {
+        state.copyVideo = false;
+      } else if (payloadValue === "toggle") {
+        state.copyVideo = !state.copyVideo;
+      }
+    },
   },
 });
 
@@ -47,6 +58,7 @@ export const {
   overTextReducer,
   leaveTextReducer,
   poPUppRedcuer,
+  copyLinkRedcuer,
 } = GeneralStyle.actions;
 const AllReducers = GeneralStyle.reducer;
 export default AllReducers;

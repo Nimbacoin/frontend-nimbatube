@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
 import { useRouter } from "next/router";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
+import { copyLinkRedcuer } from "../../../../redux/style-slice/general-style/GenrealStyle";
 
 const VideoInfo = () => {
   const videoData = useSelector(
@@ -78,6 +79,9 @@ const VideoInfo = () => {
     likesHandeler(body);
   };
 
+  const handelShareVideo = () => {
+    dispatch(copyLinkRedcuer({ value: "true" }));
+  };
   return (
     <div className={Style.video_data}>
       <div className={Style.title}>
@@ -105,7 +109,7 @@ const VideoInfo = () => {
             <FcCircuit />
             Support
           </p>
-          <p className={Style.icon}>
+          <p onClick={handelShareVideo} className={Style.icon}>
             <IoArrowRedoOutline />
             Share
           </p>
