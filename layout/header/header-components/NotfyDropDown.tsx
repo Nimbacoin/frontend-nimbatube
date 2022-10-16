@@ -10,11 +10,22 @@ const NotfyDropDown = ({ Notification }: any) => {
   const notification = useSelector(
     (state: any) => state.UserSignIn.notification
   );
+  const Router = useRouter();
+  const [videoLink, setVideoLink] = useState("");
+
+  const hadnelClick = (videoData: any) => {
+    Router.push("/watch/watch?watching=true&video=" + videoData?._id);
+  };
   return (
     <div className={Style.drop_down_container}>
       {notification.length
         ? notification.map(({ channelData, videoData, vid }: any) => (
-            <div className={Style.main_container}>
+            <div
+              onClick={() => {
+                hadnelClick(videoData);
+              }}
+              className={Style.main_container}
+            >
               <div className={Style.img_container}>
                 <div
                   style={{

@@ -84,13 +84,6 @@ const HeaderDropDown = () => {
       classname: Style.link_container,
     },
     {
-      name: "Notification",
-      link: "/channels",
-      icon: <IoNotificationsOutline />,
-      classname: Style.link_container,
-    },
-
-    {
       name: "invite",
       link: "/invite",
       icon: <IoPeopleOutline />,

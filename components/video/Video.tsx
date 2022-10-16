@@ -61,8 +61,7 @@ const Video = ({ VideoData }: any) => {
       }
     };
   });
-  const Bg =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRDiptnG_Y2jFrhLCByHAi4Pnor9jbFo2Ouw&usqp=CAU";
+
   const BgP = VideoData?.channelData?.channelData?.profileImg?.url
     ? process.env.NEXT_PUBLIC_BACK_END_URL +
       "/api/get/read/images/" +
@@ -78,9 +77,7 @@ const Video = ({ VideoData }: any) => {
   const handelImagLaod = () => {};
   useEffect(() => {
     const thumImg = VideoData?.videoData?.thumbnail;
-    // if (thumImg) {
-    //   setIsLaoded(true);
-    // }
+
     function load(src: string) {
       const image = document.createElement("img");
       image.addEventListener("load", () => {

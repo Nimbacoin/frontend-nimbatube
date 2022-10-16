@@ -13,6 +13,7 @@ import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLog
 import VideoInfo from "./VideoInfo";
 import { MainVideoDataReducer } from "../../../../redux/video-slice/VideoSlice";
 import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
+import VideoTag from "./VideoTag";
 
 const MainVideo = () => {
   const ResDD = useSelector(
@@ -100,25 +101,7 @@ const MainVideo = () => {
   return (
     <div className={Style.container}>
       {!ActiveVideo && <LiveVideo />}
-      {ActiveVideo && (
-        <div className={Style.video_container}>
-          <div className={Style.video_container_2}>
-            <video className={Style.d} ref={videoTag} autoPlay muted loop>
-              {/* controls */}
-              <source ref={videoSrc} className={Style.video} type="video/mp4" />
-            </video>
-            <div className={Style.controls_container}>
-              <div className={Style.bar_container}>
-                <div className={Style.bar_red}></div>
-              </div>
-              <div className={Style.controlrs}>
-                {" "}
-                <AiOutlineLike />
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {ActiveVideo && <VideoTag />}
       <VideoInfo />
       <div className={Style.chanel}>
         <div
@@ -144,7 +127,7 @@ const MainVideo = () => {
           ) : (
             <div className={Style.followed_button_container}>
               <button onClick={HandelFollow} className={Style.follow_button}>
-              Subscribed
+                Subscribed
               </button>
               <button onClick={HandelFollow} className={Style.notf_button}>
                 <IoNotificationsOutline />

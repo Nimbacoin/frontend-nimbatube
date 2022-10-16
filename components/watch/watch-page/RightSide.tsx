@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Style from "../../../styles/pages/watch/rightside/rightside.module.css";
 import allVideosFetch from "../../../utils/allVideosFetch";
+import HomeTags from "../../home/HomeTags";
 import LoaodingAll from "../../modals/LoaodingAll";
 import VideosRight from "../../modals/pages-boforload/VideosRight";
 import Vedio from "../../video/Video";
@@ -17,6 +18,7 @@ const RightSide = () => {
   }, []);
   return (
     <div className={Style.container}>
+      {/* <HomeTags /> */}
       {videos.length ? (
         videos.map((vid, index) => (
           <VideoOption key={index} Key={index} VideoData={vid} />
