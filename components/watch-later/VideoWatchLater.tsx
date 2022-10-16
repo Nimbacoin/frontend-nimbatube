@@ -94,10 +94,7 @@ const VideoWatchLater = ({ VideoData }: any) => {
               {VideoData?.channelData?.channelData?.name}
             </span>
             <span className={Style.Followers}>
-              {moment(VideoData?.videoData?.createdAt)
-                .startOf("hour")
-                .fromNow()}{" "}
-              -{" "}
+              {VideoData?.videoData?.views.length + " views"} -{" "}
               {moment(VideoData?.videoData?.createdAt)
                 .startOf("hour")
                 .fromNow()}

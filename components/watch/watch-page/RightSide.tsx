@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Style from "../../../styles/pages/watch/rightside/rightside.module.css";
 import allVideosFetch from "../../../utils/allVideosFetch";
+import LoaodingAll from "../../modals/LoaodingAll";
 import VideosRight from "../../modals/pages-boforload/VideosRight";
 import Vedio from "../../video/Video";
 import VideoOption from "./right-side/VideoOption";
@@ -23,6 +24,7 @@ const RightSide = () => {
       ) : (
         <VideosRight />
       )}
+      <LoaodingAll />
     </div>
   );
 };

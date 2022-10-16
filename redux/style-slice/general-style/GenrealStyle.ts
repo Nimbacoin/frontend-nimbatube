@@ -9,6 +9,7 @@ const initialState = {
   popUpp: false,
   popUppData: {},
   copyVideo: false,
+  playList: false,
 };
 
 export const GeneralStyle = createSlice({
@@ -50,6 +51,16 @@ export const GeneralStyle = createSlice({
         state.copyVideo = !state.copyVideo;
       }
     },
+    playListRedcuer: (state: any, action: any) => {
+      const payloadValue = action.payload.value;
+      if (payloadValue === "true") {
+        state.playList = true;
+      } else if (payloadValue === "false") {
+        state.playList = false;
+      } else if (payloadValue === "toggle") {
+        state.playList = !state.playList;
+      }
+    },
   },
 });
 
@@ -59,6 +70,7 @@ export const {
   leaveTextReducer,
   poPUppRedcuer,
   copyLinkRedcuer,
+  playListRedcuer,
 } = GeneralStyle.actions;
 const AllReducers = GeneralStyle.reducer;
 export default AllReducers;

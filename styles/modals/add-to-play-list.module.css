@@ -1,0 +1,124 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.481);
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+.main_first_container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.main_container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 2000px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.share_container {
+  width: 400px;
+  height: auto;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  row-gap: 10px;
+}
+.text_container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.link_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: auto;
+  position: relative;
+  font-size: 14px;
+  color: #030303;
+  outline: none;
+  padding: 5px;
+}
+.link {
+  width: 90%;
+  font-size: 14px;
+  clear: both;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.dots {
+  width: 10%;
+  font-size: 14px;
+  clear: both;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.main_link_container {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: baseline;
+}
+
+.button_copy {
+  background-color: #673de6;
+  height: 100%;
+  padding: 0 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  min-height: 40px;
+}
+
+.text {
+  font-size: 15px;
+  font-weight: 500;
+}
+.svg {
+  cursor: pointer;
+  border: none;
+
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 700px) {
+  .share_container {
+    width: 90%;
+  }
+}

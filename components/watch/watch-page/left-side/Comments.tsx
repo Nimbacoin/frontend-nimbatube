@@ -18,6 +18,7 @@ import { IoChevronUp } from "@react-icons/all-files/io5/IoChevronUp";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 import ReplyInput from "./ReplyInput";
 import EachComment from "./EachComment";
+import LoaodingAll from "../../../modals/LoaodingAll";
 
 //--------------------------------------ReplyInput----------------------------------------------//
 
@@ -94,6 +95,7 @@ const Comments = ({ VideoData }: any) => {
             ))
           : null}
       </div>
+      <LoaodingAll />
     </div>
   );
 };

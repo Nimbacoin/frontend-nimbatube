@@ -15,7 +15,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
 import { useRouter } from "next/router";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
-import { copyLinkRedcuer } from "../../../../redux/style-slice/general-style/GenrealStyle";
+import {
+  copyLinkRedcuer,
+  playListRedcuer,
+} from "../../../../redux/style-slice/general-style/GenrealStyle";
 
 const VideoInfo = () => {
   const videoData = useSelector(
@@ -82,6 +85,9 @@ const VideoInfo = () => {
   const handelShareVideo = () => {
     dispatch(copyLinkRedcuer({ value: "true" }));
   };
+  const handelPlayList = () => {
+    dispatch(playListRedcuer({ value: "true" }));
+  };
   return (
     <div className={Style.video_data}>
       <div className={Style.title}>
@@ -113,7 +119,7 @@ const VideoInfo = () => {
             <IoArrowRedoOutline />
             Share
           </p>
-          <p className={Style.icon}>
+          <p onClick={handelPlayList} className={Style.icon}>
             <RiPlayListAddFill />
             Save
           </p>

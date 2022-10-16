@@ -44,7 +44,6 @@ const ReplyInput = ({ VideoData }: any) => {
       body
     ).then((res) => {
       if (res) {
-        console.log("comments respionse", res);
         dispatch(
           MainVideoDataReducer({
             message: "comments",

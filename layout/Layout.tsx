@@ -18,6 +18,7 @@ import { AllChannelsRedcuer } from "../redux/channel-slice/ChannelSlice";
 import HoverText from "../components/modals/HoverText";
 import { PopUpp } from "../components/modals/PopUpp";
 import ShareVideo from "../components/modals/ShareVideo";
+import AddToPalayList from "../components/modals/AddToPlayList";
 
 interface main {
   children: any;
@@ -29,6 +30,7 @@ const Layout = ({ children }: any) => {
   const isOver = useSelector((state: any) => state.GenrealStyle.isOver);
   const PopUppBoolean = useSelector((state: any) => state.GenrealStyle.popUpp);
   const copyVideo = useSelector((state: any) => state.GenrealStyle.copyVideo);
+  const playList = useSelector((state: any) => state.GenrealStyle.playList);
   const UserIsSignedIn = useSelector(
     (state: any) => state.UserSignIn.UserIsSignedIn
   );
@@ -163,6 +165,7 @@ const Layout = ({ children }: any) => {
       />
       <div style={{ minHeight: `${Height}px` }} className={Style.container}>
         <Header />
+        {playList && <AddToPalayList />}
         {PopUppBoolean && <PopUpp />}
         {copyVideo && <ShareVideo />}
 
