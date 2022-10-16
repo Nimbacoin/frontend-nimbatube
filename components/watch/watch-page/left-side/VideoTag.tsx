@@ -11,6 +11,9 @@ import { IoPlaySkipForward } from "@react-icons/all-files/io5/IoPlaySkipForward"
 import { IoPauseSharp } from "@react-icons/all-files/io5/IoPauseSharp";
 import { BiFullscreen } from "@react-icons/all-files/bi/BiFullscreen";
 import { IoVolumeMedium } from "@react-icons/all-files/io5/IoVolumeMedium";
+import { IoPlay } from "@react-icons/all-files/io5/IoPlay";
+import LaodingCirculOne from "../../../modals/LaodingCirculOne";
+
 const VideoTag = () => {
   const ResDD = useSelector(
     (state: any) => state.VideoSlice.mainVideoDataWatch
@@ -42,12 +45,27 @@ const VideoTag = () => {
       }
     }
   }, [asPath]);
-
+  const [play, setPlay] = useState(false);
+  const handelPuase = () => {
+    setPlay(true);
+    if (videoTag.current) {
+      videoTag.current.pause();
+    }
+  };
+  const handelPlay = () => {
+    setPlay(false);
+    if (videoTag.current) {
+      videoTag.current.play();
+    }
+  };
   return (
     <>
       {ActiveVideo && (
         <div className={Style.video_container}>
           <div className={Style.video_container_2}>
+            <div className={Style.loading}>
+              <LaodingCirculOne />
+            </div>
             <video
               className={Style.video_tag}
               ref={videoTag}
@@ -66,9 +84,15 @@ const VideoTag = () => {
                   <span className={Style.icon_control}>
                     <IoPlaySkipBack />
                   </span>
-                  <span className={Style.icon_control}>
-                    <IoPauseSharp />
-                  </span>
+                  {play ? (
+                    <span onClick={handelPlay} className={Style.icon_control}>
+                      <IoPlay />
+                    </span>
+                  ) : (
+                    <span onClick={handelPuase} className={Style.icon_control}>
+                      <IoPauseSharp />
+                    </span>
+                  )}
                   <span className={Style.icon_control}>
                     <IoPlaySkipForward />
                   </span>
