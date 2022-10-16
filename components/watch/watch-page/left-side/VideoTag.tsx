@@ -6,8 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import basedGetUrlRequestLogedIn from "../../../../utils/basedGetUrlRequestLogedIn";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
-import { MainVideoDataReducer } from "../../../../redux/video-slice/VideoSlice";
-
+import { IoPlaySkipBack } from "@react-icons/all-files/io5/IoPlaySkipBack";
+import { IoPlaySkipForward } from "@react-icons/all-files/io5/IoPlaySkipForward";
+import { IoPauseSharp } from "@react-icons/all-files/io5/IoPauseSharp";
+import { BiFullscreen } from "@react-icons/all-files/bi/BiFullscreen";
+import { IoVolumeMedium } from "@react-icons/all-files/io5/IoVolumeMedium";
 const VideoTag = () => {
   const ResDD = useSelector(
     (state: any) => state.VideoSlice.mainVideoDataWatch
@@ -45,8 +48,13 @@ const VideoTag = () => {
       {ActiveVideo && (
         <div className={Style.video_container}>
           <div className={Style.video_container_2}>
-            <video className={Style.d} ref={videoTag} autoPlay muted loop>
-              {/* controls */}
+            <video
+              className={Style.video_tag}
+              ref={videoTag}
+              autoPlay
+              muted
+              loop
+            >
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
             <div className={Style.controls_container}>
@@ -54,8 +62,25 @@ const VideoTag = () => {
                 <div className={Style.bar_red}></div>
               </div>
               <div className={Style.controlrs}>
-                {" "}
-                <AiOutlineLike />
+                <div className={Style.play_sound_controls}>
+                  <span className={Style.icon_control}>
+                    <IoPlaySkipBack />
+                  </span>
+                  <span className={Style.icon_control}>
+                    <IoPauseSharp />
+                  </span>
+                  <span className={Style.icon_control}>
+                    <IoPlaySkipForward />
+                  </span>
+                  <span className={Style.icon_control}>
+                    <IoVolumeMedium />
+                  </span>
+                </div>
+                <div className={Style.other_controls}>
+                  <span className={Style.icon_control}>
+                    <BiFullscreen />
+                  </span>
+                </div>
               </div>
             </div>
           </div>
