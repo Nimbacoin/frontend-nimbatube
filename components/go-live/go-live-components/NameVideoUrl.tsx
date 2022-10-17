@@ -58,7 +58,6 @@ const NameVideoUrl = ({ VideoLink }: any) => {
             <div className={Style.video_container_uploaded}>
               <IoVideocamOutline />
             </div>
-
             <p className={Style.upload_file}>
               {title.slice(0, 60)} {title.length >= 60 && "..."}
             </p>
@@ -69,20 +68,20 @@ const NameVideoUrl = ({ VideoLink }: any) => {
               <div className={Style.upload_input}>
                 <p className={Style.upload_file}>Video link</p>
                 <div className={Style.input_label}>
-                  <span className={Style.upload_file_text}>{VideoLink}</span>
-                  <span
+                  {/* <span className={Style.upload_file_text}>{VideoLink}</span> */}
+                  <input className={Style.upload_file_text} value={VideoLink} />
+                  <button
                     className={Style.upload_file_button}
                     onClick={handelCopy}
                   >
                     Copy
-                  </span>
+                  </button>
                 </div>
               </div>
             )}
           </div>
         </div>
 
-        <div className={Style.upload_input}></div>
         <div className={Style.upload_input}>
           <p className={Style.upload_file}>Tilte</p>
           <label htmlFor="title" className={Style.input_label}>
