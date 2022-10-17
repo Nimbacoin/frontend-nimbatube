@@ -229,6 +229,10 @@
 }
 
 @media screen and (max-width: 500px) {
+  .chanel_data {
+    width: 98%;
+    margin: auto;
+  }
   .title {
     margin-top: 10px;
   }
