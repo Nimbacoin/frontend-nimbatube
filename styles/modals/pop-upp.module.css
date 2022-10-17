@@ -10,7 +10,7 @@
 }
 
 .container_second {
-  padding: 0px 0px;
+  padding: 10px;
   border-radius: 50px;
   display: flex;
   flex-direction: row;
@@ -19,7 +19,7 @@
   column-gap: 5px;
   height: 100%;
   min-height: 50px;
-  min-width: 200px;
+  min-width: 300px;
   border: solid 1px #dbdbdb;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;

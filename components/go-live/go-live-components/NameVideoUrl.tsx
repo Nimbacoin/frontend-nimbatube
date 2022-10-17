@@ -7,6 +7,7 @@ import AxiosPostLogedInFormData from "../../../utils/AxiosPostLogedInFormData";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionVideoDataChanging } from "../../../redux/video-slice/VideoSlice";
 import { useRouter } from "next/router";
+import { poPUppRedcuer } from "../../../redux/style-slice/general-style/GenrealStyle";
 const NameVideoUrl = ({ VideoLink }: any) => {
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
 
@@ -21,6 +22,10 @@ const NameVideoUrl = ({ VideoLink }: any) => {
 
   const handelCopy = () => {
     navigator.clipboard.writeText(VideoLink);
+    dispatch(poPUppRedcuer({ data: "video Linke copied" }));
+    setTimeout(() => {
+      dispatch(poPUppRedcuer({ data: "" }));
+    }, 5000);
   };
   const handelChangeDesc = (e: any) => {
     dispatch(

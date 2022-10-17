@@ -19,6 +19,7 @@
   background-color: #fff;
   border-radius: 10px;
   box-shadow: #00000017 0px 3px 12px;
+  padding: 0 10px;
 }
 
 .conainter_live_desc {
@@ -46,10 +47,7 @@
 }
 .file_text_paragef {
   text-align: center;
-  clear: both;
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
+  font-size: 15px;
 }
 .button_action {
   background-color: #673de6;
@@ -84,5 +82,11 @@
     margin: 0px auto;
     row-gap: 60px;
     padding: 20px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .go_live {
+    width: 100%;
+    min-width: auto;
   }
 }
