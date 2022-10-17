@@ -16,7 +16,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
-  margin: 10px 0;
+  margin: 10px auto;
   row-gap: 20px;
 }
 .button {
@@ -47,4 +47,10 @@
   outline: none;
   padding: 0 0px 0 20px;
   font-weight: 500;
+}
+@media screen and (max-width: 1000px) {
+  .channels_container {
+    justify-content: center;
+    align-items: center;
+  }
 }
