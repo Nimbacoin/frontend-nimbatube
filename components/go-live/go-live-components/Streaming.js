@@ -59,13 +59,6 @@ const Streaming = () => {
     });
   }, [socket]);
 
-  // useEffect(() => {
-  //   window.document.body.style.overflow = "none";
-  //   window.document.body.style.overflow = "hidden";
-  //   window.document.body.style.overflowY = "none";
-  //   window.document.body.style.overflowY = "hidden";
-  // });
-
   useEffect(() => {
     socket.on("watcher-leave", ({ viewers }) => {
       setViewers(viewers);
@@ -126,7 +119,9 @@ const Streaming = () => {
       <div className={Style.video_container_comments}>
         <span className={Style.file_text_title_bold}>Comments : 0 </span>
         <div className={Style.comments_container}></div>
-        <button onClick={handleNewBroadcaster}>Start</button>
+        <button className={Style.button} onClick={handleNewBroadcaster}>
+          Start
+        </button>
       </div>
     </div>
   );

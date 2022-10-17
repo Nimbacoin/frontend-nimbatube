@@ -17,8 +17,8 @@ import { useSelector } from "react-redux";
 const HeaderCenter = ({ UserIsSignedIn }: any) => {
   const { asPath } = useRouter();
   const [ShowDiv, setShowDiv] = useState(false);
-  const [showDivNotfy, setShowDivNotfy] = useState(true);
-  const [showDivNotfyPhone, setShowDivNotfyPhone] = useState(true);
+  const [showDivNotfy, setShowDivNotfy] = useState(false);
+  const [showDivNotfyPhone, setShowDivNotfyPhone] = useState(false);
   const [IsPhone, setIsPhone] = useState(false);
 
   const Ref = React.useRef<HTMLDivElement>(null);
@@ -131,9 +131,9 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
                   TextValue={"Notification"}
                 />
               </div>
-              {showDivNotfy && Notification?.length && (
+              {showDivNotfy && Notification?.length ? (
                 <NotfyDropDown Notification={Notification} />
-              )}
+              ) : null}
             </div>
 
             <IconHeader
@@ -185,7 +185,9 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
             TextValue={"Notification"}
           />
         </div>
-        {showDivNotfyPhone ? <NotfyDropDown Notification={Notification} /> : ""}
+        {showDivNotfyPhone ? (
+          <NotfyDropDown Notification={Notification} />
+        ) : null}
       </div>
     </div>
   );
