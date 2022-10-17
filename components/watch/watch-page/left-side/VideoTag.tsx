@@ -32,7 +32,7 @@ const VideoTag = () => {
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const hiddenDiv = React.useRef<HTMLDivElement | null>(null);
-  const redBar = React.useRef<HTMLDivElement | null>(null);
+  const redBar = React.useRef<HTMLInputElement | null>(null);
   const grayBar = React.useRef<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
 
@@ -51,9 +51,64 @@ const VideoTag = () => {
   }, [asPath]);
   const [timeUpdate, setTimeUpdate] = useState(0);
   useEffect(() => {
-    if (videoTag.current) {
+    window.onresize = () => {
+      if (videoTag.current && redBar.current) {
+        videoTag.current.addEventListener("timeupdate", () => {
+          if (videoTag.current && redBar.current) {
+            const num =
+              (videoTag.current.currentTime / videoTag.current.duration) *
+              Number(redBar.current.max);
+            redBar.current.value = num.toString();
+          }
+          if (redBar.current) {
+            redBar.current.addEventListener("change", () => {
+              if (redBar.current && videoTag.current) {
+                videoTag.current.currentTime =
+                  (videoTag.current.duration * Number(redBar.current.value)) /
+                  Number(redBar.current.max);
+              }
+            });
+          }
+        });
+
+        videoTag.current.addEventListener("timeupdate", () => {
+          if (videoTag.current) {
+            var num = Number(videoTag.current.currentTime / 60);
+            var roundedString = num.toFixed(2);
+            var rounded = Number(roundedString);
+            setTimeUpdate(rounded);
+          }
+        });
+        if (grayBar.current) {
+          const theDistance = grayBar.current.getBoundingClientRect();
+          const duration = videoData.duration;
+          const theSpeed = theDistance.width / duration;
+          console.log(theSpeed);
+          const distance = theSpeed * duration;
+          console.log(distance);
+        }
+      }
+    };
+    if (videoTag.current && redBar.current) {
       videoTag.current.addEventListener("timeupdate", () => {
-        // seekbar.value = (video.currentTime / video.duration) * seekbar.max;
+        if (videoTag.current && redBar.current) {
+          const num =
+            (videoTag.current.currentTime / videoTag.current.duration) *
+            Number(redBar.current.max);
+          redBar.current.value = num.toString();
+        }
+        if (redBar.current) {
+          redBar.current.addEventListener("change", () => {
+            if (redBar.current && videoTag.current) {
+              videoTag.current.currentTime =
+                (videoTag.current.duration * Number(redBar.current.value)) /
+                Number(redBar.current.max);
+            }
+          });
+        }
+      });
+
+      videoTag.current.addEventListener("timeupdate", () => {
         if (videoTag.current) {
           var num = Number(videoTag.current.currentTime / 60);
           var roundedString = num.toFixed(2);
@@ -61,6 +116,14 @@ const VideoTag = () => {
           setTimeUpdate(rounded);
         }
       });
+      if (grayBar.current) {
+        const theDistance = grayBar.current.getBoundingClientRect();
+        const duration = videoData.duration;
+        const theSpeed = theDistance.width / duration;
+        console.log(theSpeed);
+        const distance = theSpeed * duration;
+        console.log(distance);
+      }
     }
   }, [videoTag, redBar]);
 
@@ -103,8 +166,14 @@ const VideoTag = () => {
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
             <div className={Style.controls_container}>
-              <div ref={grayBar} className={Style.bar_container}>
-                <div ref={redBar} className={Style.bar_red}></div>
+              <div className={Style.bar_container}>
+                <input
+                  ref={redBar}
+                  className={Style.seekBar}
+                  type="range"
+                  min="0"
+                  max="100"
+                />
               </div>
               <div className={Style.controlrs}>
                 <div className={Style.play_sound_controls}>
