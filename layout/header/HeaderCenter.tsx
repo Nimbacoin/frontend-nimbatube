@@ -24,10 +24,29 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
   const Ref = React.useRef<HTMLDivElement>(null);
   const InputSearch = React.useRef<HTMLInputElement>(null);
   const notifyIcon = React.useRef<HTMLDivElement>(null);
+
   const notfyDropDown = React.useRef<HTMLDivElement>(null);
+  const notfyDropDownPhone = React.useRef<HTMLDivElement>(null);
+  const notifyIconPhone = React.useRef<HTMLDivElement>(null);
   const handelToggelNotfy = () => {
     setShowDivNotfy(!showDivNotfy);
   };
+  useEffect(() => {
+    const HandelClick = (e: any) => {
+      if (notifyIconPhone && notifyIconPhone.current) {
+        const refany = notifyIconPhone.current;
+        if (refany.contains(e.target)) {
+          handelToggelNotfy();
+        } else if (notfyDropDownPhone && notfyDropDownPhone.current) {
+          const refany = notfyDropDownPhone.current;
+          if (!refany.contains(e.target)) {
+            setShowDivNotfy(false);
+          }
+        }
+      }
+    };
+    window.addEventListener("click", HandelClick);
+  }, [showDivNotfy]);
   useEffect(() => {
     const HandelClick = (e: any) => {
       if (notifyIcon && notifyIcon.current) {
@@ -151,10 +170,11 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
       >
         {IsPhone ? <IoCloseOutline /> : <IoSearchOutline />}
       </button>
-      <div className={Style.notfy_drop_down_phone} ref={notfyDropDown}>
+      {/* notfy_drop_down_phone */}
+      <div className={Style.notfy_drop_down_phone} ref={notfyDropDownPhone}>
         <div
           // onClick={handelToggelNotfy}
-          ref={notifyIcon}
+          ref={notifyIconPhone}
           className={Style.icon_con}
         >
           <IconHeader
