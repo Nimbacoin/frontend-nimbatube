@@ -84,7 +84,7 @@ const ReplyInput = ({ VideoData }: any) => {
           onChange={handelChangeComment}
           type="text"
           className={Style.reply_input}
-          placeholder={"mrbeast write your comment here"}
+          placeholder={"write your comment here"}
         />
         <div className={Style.input_reply_buttons_continer}>
           {comment?.length >= 1 && (
