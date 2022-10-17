@@ -101,20 +101,24 @@ const Streaming = () => {
   }, [socket]);
 
   const handleNewBroadcaster = () => {
+    setStarted(false)
     socket.emit("broadcaster", { socketId: socket.id, videoId });
   };
-
+  const [started, setStarted] = useState(true);
   return (
     <div className={Style.container}>
       <div className={Style.video_container}>
-        <div className={Style.startLive}>
-          <div className={Style.div_start_now_container}>
-            are you ready to start live
-            <button className={Style.button} onClick={handleNewBroadcaster}>
-              Start
-            </button>
+        {started && (
+          <div className={Style.startLive}>
+            <div className={Style.div_start_now_container}>
+              are you ready to start live
+              <button className={Style.button} onClick={handleNewBroadcaster}>
+                Start
+              </button>
+            </div>
           </div>
-        </div>
+        )}
+
         <video className={Style.video} muted ref={VideoRef} autoPlay />
         <p className={Style.viewers}>
           <IoEyeOutline />
