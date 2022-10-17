@@ -151,6 +151,23 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
       >
         {IsPhone ? <IoCloseOutline /> : <IoSearchOutline />}
       </button>
+      <div className={Style.notfy_drop_down_phone} ref={notfyDropDown}>
+        <div
+          // onClick={handelToggelNotfy}
+          ref={notifyIcon}
+          className={Style.icon_con}
+        >
+          <IconHeader
+            Number={true}
+            NumberData={numberNotfy}
+            Icon={<IoNotificationsOutline />}
+            TextValue={"Notification"}
+          />
+        </div>
+        {showDivNotfy && Notification?.length && (
+          <NotfyDropDown Notification={Notification} />
+        )}
+      </div>
     </div>
   );
 };

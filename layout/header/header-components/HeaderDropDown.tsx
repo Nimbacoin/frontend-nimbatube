@@ -190,15 +190,7 @@ const HeaderDropDown = () => {
                   </div>
                 </div>
                 {allLinks.map(
-                  ({
-                    link,
-                    id,
-
-                    name,
-                    channelname,
-                    icon,
-                    classname,
-                  }) => (
+                  ({ link, id, name, channelname, icon, classname }) => (
                     <div
                       key={name}
                       onClick={(e) => handelClick(e, link, id)}

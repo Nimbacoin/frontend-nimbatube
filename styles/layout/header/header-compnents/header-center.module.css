@@ -9,6 +9,9 @@
   position: relative;
   column-gap: 20px;
 }
+.notfy_drop_down_phone {
+  display: none;
+}
 .container_search,
 .container_search_phone {
   display: flex;
@@ -81,6 +84,11 @@
   .container_search {
     display: none;
   }
+  .notfy_drop_down_phone {
+    display: block;
+
+    margin-right: 20px;
+  }
   .container_search_phone {
     display: flex;
     flex-direction: row;
@@ -106,6 +114,7 @@
     left: 0;
     z-index: 2;
     padding: 10px 0;
+    column-gap: 0;
   }
   .buttons_container {
     display: none;
@@ -122,7 +131,7 @@
     justify-content: center;
     color: #030303;
     font-size: 20px;
-    margin-right: 10px;
+    margin-right: 0;
   }
   .rest_of_button {
     display: none;
