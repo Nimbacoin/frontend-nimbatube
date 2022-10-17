@@ -17,8 +17,8 @@ import { useSelector } from "react-redux";
 const HeaderCenter = ({ UserIsSignedIn }: any) => {
   const { asPath } = useRouter();
   const [ShowDiv, setShowDiv] = useState(false);
-  const [showDivNotfy, setShowDivNotfy] = useState(false);
-
+  const [showDivNotfy, setShowDivNotfy] = useState(true);
+  const [showDivNotfyPhone, setShowDivNotfyPhone] = useState(true);
   const [IsPhone, setIsPhone] = useState(false);
 
   const Ref = React.useRef<HTMLDivElement>(null);
@@ -36,17 +36,18 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
       if (notifyIconPhone && notifyIconPhone.current) {
         const refany = notifyIconPhone.current;
         if (refany.contains(e.target)) {
-          handelToggelNotfy();
+          setShowDivNotfyPhone(!showDivNotfyPhone);
         } else if (notfyDropDownPhone && notfyDropDownPhone.current) {
           const refany = notfyDropDownPhone.current;
           if (!refany.contains(e.target)) {
-            setShowDivNotfy(false);
+            setShowDivNotfyPhone(false);
           }
         }
       }
     };
     window.addEventListener("click", HandelClick);
-  }, [showDivNotfy]);
+  }, [showDivNotfyPhone]);
+
   useEffect(() => {
     const HandelClick = (e: any) => {
       if (notifyIcon && notifyIcon.current) {
@@ -184,9 +185,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
             TextValue={"Notification"}
           />
         </div>
-        {showDivNotfy && Notification?.length && (
-          <NotfyDropDown Notification={Notification} />
-        )}
+        {showDivNotfyPhone ? <NotfyDropDown Notification={Notification} /> : ""}
       </div>
     </div>
   );
