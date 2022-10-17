@@ -95,7 +95,9 @@ const Comments = ({ VideoData }: any) => {
             ))
           : null}
       </div>
-      <LoaodingAll />
+      <div className={Style.div_laoding_comments}>
+        <LoaodingAll />
+      </div>
     </div>
   );
 };

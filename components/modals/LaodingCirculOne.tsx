@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Style from "../../styles/modals/loaoding-all.module.css";
 
 const LaodingCirculOne = () => {
-  const CircleRef = useRef();
+
   return (
     <div className={Style.main_circl_container}>
       <svg
