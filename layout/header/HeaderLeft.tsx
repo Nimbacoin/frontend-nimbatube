@@ -5,6 +5,7 @@ import Style from "../../styles/layout/header/header-compnents/header-left.modul
 import { FiMenu } from "@react-icons/all-files/fi/FiMenu";
 import { useDispatch } from "react-redux";
 import { ToggleMenu } from "../../redux/style-slice/menu/SideMenu";
+import { FaPlayCircle } from "@react-icons/all-files/fa/FaPlayCircle";
 const HeaderLeft = () => {
   const dispatch = useDispatch();
   const HandelToggleMenu = () => {
@@ -16,7 +17,13 @@ const HeaderLeft = () => {
         <FiMenu />
       </span>
       <Link href="/">
-        <p className={Style.logo}>NimbaTube</p>
+        <p className={Style.logo}>
+          <span className={Style.icon}>
+            {" "}
+            <FaPlayCircle />
+          </span>
+          NimbaTube
+        </p>
       </Link>
     </div>
   );
