@@ -11,6 +11,7 @@ import { IoPlaySkipForward } from "@react-icons/all-files/io5/IoPlaySkipForward"
 import { IoPauseSharp } from "@react-icons/all-files/io5/IoPauseSharp";
 import { BiFullscreen } from "@react-icons/all-files/bi/BiFullscreen";
 import { IoVolumeMedium } from "@react-icons/all-files/io5/IoVolumeMedium";
+import { IoVolumeMute } from "@react-icons/all-files/io5/IoVolumeMute";
 import { IoPlay } from "@react-icons/all-files/io5/IoPlay";
 import LaodingCirculOne from "../../../modals/LaodingCirculOne";
 
@@ -24,9 +25,11 @@ const VideoTag = () => {
   const [videoData, setVideoData] = useState<{ [key: string]: any }>(
     ResDD?.responseData
   );
+  const [loadeded, setLoadeded] = useState(false);
 
   const userSignIn = useSelector((state: any) => state.UserSignIn.userdata);
   const [videoId, setVideoId] = useState<string>("");
+  const duration = videoData?.duration;
 
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
@@ -34,6 +37,7 @@ const VideoTag = () => {
   const hiddenDiv = React.useRef<HTMLDivElement | null>(null);
   const redBar = React.useRef<HTMLInputElement | null>(null);
   const grayBar = React.useRef<HTMLDivElement | null>(null);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -50,46 +54,16 @@ const VideoTag = () => {
     }
   }, [asPath]);
   const [timeUpdate, setTimeUpdate] = useState(0);
+  const [timeValue, setTimeValue] = useState("0");
   useEffect(() => {
-    window.onresize = () => {
-      if (videoTag.current && redBar.current) {
-        videoTag.current.addEventListener("timeupdate", () => {
-          if (videoTag.current && redBar.current) {
-            const num =
-              (videoTag.current.currentTime / videoTag.current.duration) *
-              Number(redBar.current.max);
-            redBar.current.value = num.toString();
-          }
-          if (redBar.current) {
-            redBar.current.addEventListener("change", () => {
-              if (redBar.current && videoTag.current) {
-                videoTag.current.currentTime =
-                  (videoTag.current.duration * Number(redBar.current.value)) /
-                  Number(redBar.current.max);
-              }
-            });
-          }
-        });
-
-        videoTag.current.addEventListener("timeupdate", () => {
-          if (videoTag.current) {
-            var num = Number(videoTag.current.currentTime / 60);
-            var roundedString = num.toFixed(2);
-            var rounded = Number(roundedString);
-            setTimeUpdate(rounded);
-          }
-        });
-        if (grayBar.current) {
-          const theDistance = grayBar.current.getBoundingClientRect();
-          const duration = videoData.duration;
-          const theSpeed = theDistance.width / duration;
-          console.log(theSpeed);
-          const distance = theSpeed * duration;
-          console.log(distance);
+    if (videoTag.current) {
+      videoTag.current.play();
+      videoTag.current.onloadedmetadata = (event) => {
+        if (videoTag.current) {
+          setLoadeded(true);
+          videoTag.current.play();
         }
-      }
-    };
-    if (videoTag.current && redBar.current) {
+      };
       videoTag.current.addEventListener("timeupdate", () => {
         if (videoTag.current && redBar.current) {
           const num =
@@ -116,18 +90,12 @@ const VideoTag = () => {
           setTimeUpdate(rounded);
         }
       });
-      if (grayBar.current) {
-        const theDistance = grayBar.current.getBoundingClientRect();
-        const duration = videoData.duration;
-        const theSpeed = theDistance.width / duration;
-        console.log(theSpeed);
-        const distance = theSpeed * duration;
-        console.log(distance);
-      }
     }
   }, [videoTag, redBar]);
 
   useEffect(() => {
+    if (redBar.current) {
+    }
     window.onresize = () => {
       if (videoTag.current && hiddenDiv.current) {
         const dataDiv = videoTag.current.getBoundingClientRect();
@@ -152,6 +120,13 @@ const VideoTag = () => {
       videoTag.current.play();
     }
   };
+  const [vidMutued, setVidMutued] = useState(false);
+  const handelMuteVid = () => {
+    setVidMutued(!vidMutued);
+    if (videoTag.current) {
+      videoTag.current.muted = !videoTag.current.muted;
+    }
+  };
 
   return (
     <>
@@ -159,21 +134,40 @@ const VideoTag = () => {
       {ActiveVideo && (
         <div ref={containerRef} className={Style.video_container}>
           <div className={Style.video_container_2}>
-            <div className={Style.loading}>
-              <LaodingCirculOne />
-            </div>
-            <video className={Style.video_tag} ref={videoTag} autoPlay loop>
+            {!loadeded && (
+              <div className={Style.loading}>
+                <LaodingCirculOne />
+              </div>
+            )}
+
+            <video
+              className={Style.video_tag}
+              ref={videoTag}
+              muted
+              autoPlay
+              loop
+            >
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
             <div className={Style.controls_container}>
               <div className={Style.bar_container}>
-                <input
-                  ref={redBar}
-                  className={Style.seekBar}
-                  type="range"
-                  min="0"
-                  max="100"
-                />
+                {timeUpdate > 0 ? (
+                  <input
+                    ref={redBar}
+                    className={Style.seekBar}
+                    type="range"
+                    min="0"
+                    max="100"
+                  />
+                ) : (
+                  <input
+                    value="0"
+                    className={Style.seekBar}
+                    type="range"
+                    min="0"
+                    max="100"
+                  />
+                )}
               </div>
               <div className={Style.controlrs}>
                 <div className={Style.play_sound_controls}>
@@ -192,10 +186,19 @@ const VideoTag = () => {
                   <span className={Style.icon_control}>
                     <IoPlaySkipForward />
                   </span>
-                  <span className={Style.icon_control}>
-                    <IoVolumeMedium />
+                  <span onClick={handelMuteVid} className={Style.icon_control}>
+                    {vidMutued ? <IoVolumeMute /> : <IoVolumeMedium />}
                   </span>
-                  {timeUpdate}
+                  <input
+                    // ref={redBar}
+                    className={Style.seekBar_sound}
+                    type="range"
+                    min="0"
+                    max="100"
+                  />
+                  <span className={Style.time}>
+                    {timeUpdate + " / " + duration}
+                  </span>
                 </div>
                 <div className={Style.other_controls}>
                   <span className={Style.icon_control}>

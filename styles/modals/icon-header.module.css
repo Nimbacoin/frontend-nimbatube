@@ -17,13 +17,18 @@
   right: 0;
   top: -5px;
   font-size: 13px;
-  min-width: 20px;
-  min-height: 20px;
+  min-width: 25px;
+  min-height: 10px;
   color: #fff;
-  border-radius: 50%;
+  border-radius: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: #673de6;
+}
+
+.container:hover {
+  box-shadow: #00000017 0px 3px 12px;
+  background-color: #f3eeee;
 }

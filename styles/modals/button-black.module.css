@@ -1,0 +1,13 @@
+.follow_button_black {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #030303;
+  cursor: pointer;
+  color: #fff;
+  min-width: 100px;
+  border-radius: 20px;
+  padding: 8px 5px;
+  background-color: #000;
+  margin-top: 0px;
+}

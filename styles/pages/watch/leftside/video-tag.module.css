@@ -82,7 +82,7 @@
 .bar_container {
   width: 100%;
   height: auto;
-  
+
   cursor: pointer;
 }
 .controlrs {
@@ -156,6 +156,11 @@
   .controls_container {
     padding: 0;
   }
+}
+.time {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 300;
 }
 
 @media screen and (max-width: 900px) {

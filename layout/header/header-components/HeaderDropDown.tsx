@@ -158,7 +158,7 @@ const HeaderDropDown = () => {
               {Bg !== "/images/default-profile.png" ? (
                 <div
                   style={{ backgroundImage: `url(${Bg})` }}
-                  className={Style.img}
+                  className={Style.img_img}
                 ></div>
               ) : (
                 <IoPersonOutline />

@@ -54,7 +54,7 @@
   width: 100%;
   height: auto;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -114,6 +114,7 @@
   height: 100%;
   border: none;
   outline: none;
+  border-radius:20px ;
 }
 .label_description {
   display: flex;

@@ -8,12 +8,14 @@ import { IoEllipsisVertical } from "@react-icons/all-files/io5/IoEllipsisVertica
 import Content from "./Content";
 import Community from "./Community";
 import About from "./About";
+import ButtonBlack from "../../../modals/ButtonBlack";
 
 const ProfileDate = ({ ChannelData }: any) => {
   const UlLinks = [
     { name: "Content", key: "content" },
     { name: "Playlists", key: "playlists" },
     { name: "About", key: "about" },
+    { name: "Support", key: "support" },
     { name: "Community", key: "community" },
   ];
   const IconsChannel = [
@@ -82,37 +84,51 @@ const ProfileDate = ({ ChannelData }: any) => {
           ) : (
             ""
           )}
-
-          <div className={Style.image_name_conainer}>
-            <div className={Style.profile_image_container}>
-              <div
-                className={Style.profile_image}
-                style={{
-                  backgroundImage: `url(${BgUrl})`,
-                }}
-              ></div>
-            </div>
-          </div>
         </div>
         <div className={Style.links_container}>
-          <span className={Style.name_contanier}>
-            <span className={Style.name}> {Name} </span>
-            <span className={Style.title}> {Title} </span>
-          </span>
+          <div className={Style.bottom_second_container}>
+            <div className={Style.name_contanier}>
+              <div className={Style.profile_image_container}>
+                <div
+                  className={Style.profile_image}
+                  style={{
+                    backgroundImage: `url(${BgUrl})`,
+                  }}
+                ></div>
+              </div>
+              <div className={Style.data_channel_container}>
+                <span className={Style.name}> {Name} </span>
+                <span className={Style.title}> {Title} </span>
 
-          <ul className={Style.channel_links}>
-            {UlLinks.map(({ name, key }) => (
-              <li
-                key={key}
-                className={LinkKey === key ? Style.link_active : Style.link}
-                onClick={() => {
-                  HandelClick(key);
-                }}
-              >
-                {name}
-              </li>
-            ))}
-          </ul>
+                <ButtonBlack />
+              </div>
+            </div>
+            <div className={Style.channel_links_container}>
+              <div className={Style.channel_data_followrs}>
+                <div className={Style.container_data_item}>
+                  <span className={Style.title}> 12 </span>
+                  <span className={Style.followers}> Uploads</span>
+                </div>
+                <div className={Style.container_data_item}>
+                  <span className={Style.title}> 200 </span>
+                  <span className={Style.followers}> Followers</span>
+                </div>
+              </div>
+              <div className={Style.channel_links}>
+                {UlLinks.map(({ name, key }) => (
+                  <span
+                    key={key}
+                    className={LinkKey === key ? Style.link_active : Style.link}
+                    onClick={() => {
+                      HandelClick(key);
+                    }}
+                  >
+                    {name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       {HandelLinkContent()}
