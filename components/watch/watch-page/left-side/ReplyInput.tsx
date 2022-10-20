@@ -17,6 +17,7 @@ import { IoChevronDown } from "@react-icons/all-files/io5/IoChevronDown";
 import { IoChevronUp } from "@react-icons/all-files/io5/IoChevronUp";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 import { MainVideoDataReducer } from "../../../../redux/video-slice/VideoSlice";
+import { useRouter } from "next/router";
 
 const ReplyInput = ({ VideoData }: any) => {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -27,7 +28,9 @@ const ReplyInput = ({ VideoData }: any) => {
   );
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
   const channelsData = Channels?.length ? Channels[0] : {};
-
+  const socketRedux = useSelector(
+    (state: any) => state.socketSlice.socketRedux
+  );
   const Bg = channelsData?.channelData?.profileImg?.url
     ? process.env.NEXT_PUBLIC_BACK_END_URL +
       "/api/get/read/images/" +
@@ -50,7 +53,11 @@ const ReplyInput = ({ VideoData }: any) => {
             comments: res.responseData,
           })
         );
-
+        socketRedux.emit("new-comment", {
+          comments: res.responseData,
+          videoId: VideoData._id,
+        });
+        console.log(res);
         setComment("");
         if (inputRef.current) {
           inputRef.current.value = "";
@@ -64,6 +71,17 @@ const ReplyInput = ({ VideoData }: any) => {
       inputRef.current.value = "";
     }
   };
+  const { asPath } = useRouter();
+  const [streamingVid, setStreamingVid] = useState(false);
+  useEffect(() => {
+    let Params = new URL(window.location.href).searchParams;
+    const video: string | null = Params.get("video");
+    const watching: string | null = Params.get("watching");
+    const streaming: string | null = Params.get("streaming");
+    if (streaming === "true") {
+      setStreamingVid(true);
+    }
+  }, [asPath]);
   return (
     <div
       className={

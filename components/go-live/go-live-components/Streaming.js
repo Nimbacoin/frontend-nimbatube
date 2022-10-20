@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import io from "socket.io-client";
 import Style from "../../../styles/pages/go-live/go-live-components/stream.module.css";
 import { IoEyeOutline } from "@react-icons/all-files/io5/IoEyeOutline";
+import basedGetUrlRequest from "../../../utils/basedGetUrlRequest";
+import StreamComment from "./StreamComment";
 const pc_config = {
   iceServers: [
     // {
@@ -101,10 +103,40 @@ const Streaming = () => {
   }, [socket]);
 
   const handleNewBroadcaster = () => {
-    setStarted(false)
+    setStarted(false);
     socket.emit("broadcaster", { socketId: socket.id, videoId });
   };
   const [started, setStarted] = useState(true);
+  const [Comments, setComments] = useState([]);
+  useEffect(() => {
+    let Params = new URL(window.location.href).searchParams;
+    const video = Params.get("video");
+    const localFetch = async () => {
+      await basedGetUrlRequest(
+        "/api/get/video/" + video + "/null" + "/null",
+        true
+      ).then((res) => {
+        if (res.responseData) {
+          const allResComments = res.responseData.comments;
+          console.log(allResComments);
+          setComments(allResComments);
+        }
+      });
+    };
+    localFetch();
+  }, [asPath]);
+  const socketInstance = useSelector((state) => state.socketSlice.socketRedux);
+  const isSocket = useSelector((state) => state.socketSlice.isSocket);
+  const [socketIdd, setSocketIdd] = useState("");
+  useEffect(() => {
+    const localFetch = () => {
+      socket.on("new-comment", (data) => {
+        setComments(data);
+        // alert("yes");
+      });
+    };
+    localFetch();
+  }, [socket]);
   return (
     <div className={Style.container}>
       <div className={Style.video_container}>
@@ -129,8 +161,14 @@ const Streaming = () => {
         </p>
       </div>
       <div className={Style.video_container_comments}>
-        <span className={Style.file_text_title_bold}>Comments : 0 </span>
-        <div className={Style.comments_container}></div>
+        <span className={Style.file_text_title_bold}>
+          Comments : {Comments?.length}
+        </span>
+        <div className={Style.comments_container}>
+          {Comments.map((comment) => (
+            <StreamComment CommentData={comment} />
+          ))}
+        </div>
       </div>
     </div>
   );
