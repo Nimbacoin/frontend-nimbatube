@@ -51,10 +51,28 @@
   color: #fff;
   line-height: 14px;
 }
-.video_container_comments {
+.video_container_comments_ceond {
   background-color: #fff;
   width: 25%;
   padding: 10px;
+  overflow-y: auto;
+  height: 90%;
+}
+.video_container_comments {
+  position: relative;
+  background-color: #fff;
+  width: 25%;
+  padding: 10px;
+  padding-bottom: 60px;
+  overflow-y: auto;
+}
+.comments_main_container {
+  overflow-y: auto;
+}
+.comments_container {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
 }
 .file_text_title_bold {
 }

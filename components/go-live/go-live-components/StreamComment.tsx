@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import Style from "../../../styles/pages/watch/leftside/comments.module.css";
+import Style from "../../../styles/pages/go-live/go-live-components/stream-comment.module.css";
 
 import moment from "moment";
 

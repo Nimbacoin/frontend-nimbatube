@@ -6,6 +6,7 @@ import Style from "../../../styles/pages/go-live/go-live-components/stream.modul
 import { IoEyeOutline } from "@react-icons/all-files/io5/IoEyeOutline";
 import basedGetUrlRequest from "../../../utils/basedGetUrlRequest";
 import StreamComment from "./StreamComment";
+import InputStreamComment from "./InputStreamComment";
 const pc_config = {
   iceServers: [
     // {
@@ -160,15 +161,19 @@ const Streaming = () => {
           </span>
         </p>
       </div>
+
       <div className={Style.video_container_comments}>
         <span className={Style.file_text_title_bold}>
           Comments : {Comments?.length}
         </span>
-        <div className={Style.comments_container}>
-          {Comments.map((comment) => (
-            <StreamComment CommentData={comment} />
-          ))}
+        <div className={Style.comments_main_container}>
+          <div className={Style.comments_container}>
+            {Comments.map((comment) => (
+              <StreamComment CommentData={comment} />
+            ))}
+          </div>
         </div>
+        <InputStreamComment VideoId={videoId} />
       </div>
     </div>
   );
