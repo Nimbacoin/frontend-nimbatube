@@ -11,7 +11,7 @@ import { AiFillDislike } from "@react-icons/all-files/ai/AiFillDislike";
 import { IoChevronDown } from "@react-icons/all-files/io5/IoChevronDown";
 import { IoChevronUp } from "@react-icons/all-files/io5/IoChevronUp";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
-import { MainVideoDataReducer } from "../../../redux/video-slice/VideoSlice";
+import { liveVideoLive, MainVideoDataReducer } from "../../../redux/video-slice/VideoSlice";
 import { useRouter } from "next/router";
 
 const InputStreamComment = ({ VideoData, VideoId }: any) => {
@@ -42,17 +42,21 @@ const InputStreamComment = ({ VideoData, VideoId }: any) => {
       body
     ).then((res) => {
       if (res) {
-        dispatch(
-          MainVideoDataReducer({
-            message: "comments",
+        console.log("responseData" , res.responseData);
+        if (res?.responseData && res?.responseData?.length) {
+          dispatch(
+            liveVideoLive({
+              message: "comments",
+              comments: res.responseData,
+            })
+          );
+          socketRedux.emit("new-comment", {
             comments: res.responseData,
-          })
-        );
-        socketRedux.emit("new-comment", {
-          comments: res.responseData,
-          videoId: VideoId,
-        });
-        console.log(res);
+            videoId: VideoId,
+          });
+        }
+
+       
         setComment("");
         if (inputRef.current) {
           inputRef.current.value = "";

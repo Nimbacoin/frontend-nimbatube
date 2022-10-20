@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import io from "socket.io-client";
 import Style from "../../../styles/pages/go-live/go-live-components/stream.module.css";
 import { IoEyeOutline } from "@react-icons/all-files/io5/IoEyeOutline";
 import basedGetUrlRequest from "../../../utils/basedGetUrlRequest";
 import StreamComment from "./StreamComment";
 import InputStreamComment from "./InputStreamComment";
+import { liveVideoLive } from "../../../redux/video-slice/VideoSlice";
 const pc_config = {
   iceServers: [
     // {
@@ -32,6 +33,9 @@ const Streaming = () => {
   const [viewers, setViewers] = useState([]);
   const WindowHeight = useSelector((state) => state.GenrealStyle.WindowHeight);
 
+  const liveCommentsVideo = useSelector(
+    (state) => state.VideoSlice.liveCommentsVideo
+  );
   useEffect(() => {
     let Params = new URL(window.location.href).searchParams;
     const video = Params.get("video");
@@ -129,10 +133,16 @@ const Streaming = () => {
   const socketInstance = useSelector((state) => state.socketSlice.socketRedux);
   const isSocket = useSelector((state) => state.socketSlice.isSocket);
   const [socketIdd, setSocketIdd] = useState("");
+  const dispatch = useDispatch();
   useEffect(() => {
     const localFetch = () => {
       socket.on("new-comment", (data) => {
         setComments(data);
+        dispatch(
+          liveVideoLive({
+            comments: data,
+          })
+        );
         // alert("yes");
       });
     };
@@ -168,9 +178,10 @@ const Streaming = () => {
         </span>
         <div className={Style.comments_main_container}>
           <div className={Style.comments_container}>
-            {Comments.map((comment) => (
-              <StreamComment CommentData={comment} />
-            ))}
+            {liveCommentsVideo?.length &&
+              liveCommentsVideo.map((comment) => (
+                <StreamComment CommentData={comment} />
+              ))}
           </div>
         </div>
         <InputStreamComment VideoId={videoId} />

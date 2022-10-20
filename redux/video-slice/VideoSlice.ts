@@ -3,6 +3,7 @@ import { createSlice, current } from "@reduxjs/toolkit";
 const initialState = {
   videoData: {},
   mainVideoDataWatch: {},
+  liveCommentsVideo: [],
 };
 
 export const VideoSlice = createSlice({
@@ -39,10 +40,17 @@ export const VideoSlice = createSlice({
         // console.log("followers 1", current(state.mainVideoDataWatch));
       }
     },
+    liveVideoLive: (state: any, action: any) => {
+      const Action = action.payload.comments;
+      if (Action) {
+        console.log(Action.comments);
+        state.liveCommentsVideo = action.payload.comments;
+      }
+    },
   },
 });
 
-export const { ActionVideoDataChanging, MainVideoDataReducer } =
+export const { ActionVideoDataChanging, MainVideoDataReducer, liveVideoLive } =
   VideoSlice.actions;
 const AllReducers = VideoSlice.reducer;
 export default AllReducers;

@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
-import Style from "../../../../styles/pages/watch/leftside/main-video.module.css";
+import { IoEyeOutline } from "@react-icons/all-files/io5/IoEyeOutline";
+import Style from "../../../../styles/pages/watch/leftside/video.module.css";
+import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 
 const pc_config = {
   iceServers: [
@@ -78,8 +80,24 @@ const App = () => {
 
   return (
     <div className={Style.video_container}>
+      <div className={Style.on_live_container}>
+        <div className={Style.viewers_red}>
+          <IoVideocamOutline />
+          <span className={Style.file_text_title_bold_viewers}>· Live</span>
+        </div>
+        <div className={Style.viewers}>
+          <IoEyeOutline />
+          <span className={Style.file_text_title_bold_viewers}>12 viewers</span>
+        </div>
+      </div>
       <div className={Style.video_container_2}>
-        <video id="remotevideo"  ref={videoRef} autoPlay muted></video>
+        <video
+          clasasName={Style.video}
+          id="remotevideo"
+          ref={videoRef}
+          autoPlay
+          muted
+        ></video>
       </div>
     </div>
   );

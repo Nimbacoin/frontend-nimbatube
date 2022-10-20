@@ -6,16 +6,16 @@ const HomeTags = () => {
   const Tags = [
     { name: "All" },
     { name: "Live" },
-    { name: "Trsvel " },
-    { name: "Crypto" },
-    { name: "Bitcoin" },
-    { name: "Blockchain" },
-    { name: "Music" },
-    { name: "Ecommrce" },
-    { name: "covid-19" },
-    { name: "USA" },
+    // { name: "Trsvel " },
+    // { name: "Crypto" },
+    // { name: "Bitcoin" },
+    // { name: "Blockchain" },
+    // { name: "Music" },
+    // { name: "Ecommrce" },
+    // { name: "covid-19" },
+    // { name: "USA" },
 
-    { name: "Javascript" },
+    // { name: "Javascript" },
 
     { name: "Travel" },
   ];
