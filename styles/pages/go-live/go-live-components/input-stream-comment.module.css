@@ -2,18 +2,13 @@
 
 .reply_input_container,
 .reply_input_container_phone {
-  width: 25%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   column-gap: 20px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  z-index: 10;
   min-height: 60px;
-  background-color: rgb(255, 255, 255);
 }
 .reply_input {
   width: 90%;
@@ -84,7 +79,6 @@
     padding: 0;
     margin: 0;
     white-space: pre-wrap;
-    position: fixed;
     top: 30%;
     bottom: 0;
     height: 70%;

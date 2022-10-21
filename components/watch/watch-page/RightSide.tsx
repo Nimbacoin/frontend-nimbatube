@@ -5,6 +5,7 @@ import HomeTags from "../../home/HomeTags";
 import LoaodingAll from "../../modals/LoaodingAll";
 import VideosRight from "../../modals/pages-boforload/VideosRight";
 import Vedio from "../../video/Video";
+import LiveCommentsVideos from "./right-side/LiveCommentsVideos";
 import VideoOption from "./right-side/VideoOption";
 
 const RightSide = () => {
@@ -18,6 +19,7 @@ const RightSide = () => {
   }, []);
   return (
     <div className={Style.container}>
+      <LiveCommentsVideos />
       {/* <HomeTags /> */}
       {videos.length ? (
         videos.map((vid, index) => (

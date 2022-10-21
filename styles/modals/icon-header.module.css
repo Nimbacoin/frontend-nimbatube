@@ -15,10 +15,9 @@
 .number {
   position: absolute;
   right: 0;
-  top: -5px;
-  font-size: 13px;
-  min-width: 25px;
-  min-height: 10px;
+  top: -4px;
+  font-size: 12px;
+  padding : 0px 5px;
   color: #fff;
   border-radius: 100px;
   display: flex;

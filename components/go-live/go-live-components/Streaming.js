@@ -124,6 +124,11 @@ const Streaming = () => {
         if (res.responseData) {
           const allResComments = res.responseData.comments;
           console.log(allResComments);
+          dispatch(
+            liveVideoLive({
+              comments: allResComments,
+            })
+          );
           setComments(allResComments);
         }
       });
@@ -173,18 +178,20 @@ const Streaming = () => {
       </div>
 
       <div className={Style.video_container_comments}>
-        <span className={Style.file_text_title_bold}>
-          Comments : {Comments?.length}
-        </span>
-        <div className={Style.comments_main_container}>
-          <div className={Style.comments_container}>
-            {liveCommentsVideo?.length &&
-              liveCommentsVideo.map((comment) => (
-                <StreamComment CommentData={comment} />
-              ))}
-          </div>
+        <div className={Style.div_cooment_top}>
+          <span className={Style.file_text_title_bold}>
+            Comments : {Comments?.length}
+          </span>
         </div>
-        <InputStreamComment VideoId={videoId} />
+        <div className={Style.comments_main_container}>
+          {liveCommentsVideo?.length &&
+            liveCommentsVideo.map((comment) => (
+              <StreamComment CommentData={comment} />
+            ))}
+        </div>
+        <div className={Style.div_input_container}>
+          <InputStreamComment VideoId={videoId} />
+        </div>
       </div>
     </div>
   );
