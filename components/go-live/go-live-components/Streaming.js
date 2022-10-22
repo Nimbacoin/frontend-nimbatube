@@ -148,11 +148,23 @@ const Streaming = () => {
             comments: data,
           })
         );
-        // alert("yes");
       });
     };
     localFetch();
   }, [socket]);
+  const messagesEndRef = useRef();
+
+  useEffect(() => {
+    const scrollToBottomWithSmoothScroll = () => {
+      if (messagesEndRef.current) {
+        messagesEndRef.current.scrollTo({
+          top: messagesEndRef.current.scrollHeight,
+          behavior: "smooth",
+        });
+      }
+    };
+    scrollToBottomWithSmoothScroll();
+  }, [liveCommentsVideo]);
   return (
     <div className={Style.container}>
       <div className={Style.video_container}>
@@ -180,10 +192,10 @@ const Streaming = () => {
       <div className={Style.video_container_comments}>
         <div className={Style.div_cooment_top}>
           <span className={Style.file_text_title_bold}>
-            Comments : {Comments?.length}
+            Comments : {liveCommentsVideo?.length}
           </span>
         </div>
-        <div className={Style.comments_main_container}>
+        <div ref={messagesEndRef} className={Style.comments_main_container}>
           {liveCommentsVideo?.length &&
             liveCommentsVideo.map((comment) => (
               <StreamComment CommentData={comment} />

@@ -68,17 +68,36 @@ const LiveCommentsVideos = () => {
     };
     localFetch();
   }, [socket]);
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const scrollToBottomWithSmoothScroll = () => {
+      if (messagesEndRef.current) {
+        messagesEndRef.current.scrollTo({
+          top: messagesEndRef.current.scrollHeight,
+          behavior: "smooth",
+        });
+      }
+    };
+    scrollToBottomWithSmoothScroll();
+  }, [liveCommentsVideo]);
   return (
     <div className={Style.container}>
-      <div className={Style.div_comment_top}>comment 0 </div>
-      <div className={Style.comments_container}>
+      <div className={Style.div_cooment_top}>
+        <span className={Style.file_text_title_bold}>
+          Comments : {liveCommentsVideo?.length}
+        </span>
+      </div>
+
+      <div ref={messagesEndRef} className={Style.comments_container}>
         {liveCommentsVideo?.length &&
           liveCommentsVideo.map((comment: any) => (
             <StreamComment CommentData={comment} />
           ))}
       </div>
-      <div className={Style.container_hidden}></div>
-      <InputStreamComment VideoId={videoId} />
+      <div className={Style.container_hidden}>
+        <InputStreamComment VideoId={videoId} />
+      </div>
     </div>
   );
 };

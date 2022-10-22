@@ -42,7 +42,6 @@ const InputStreamComment = ({ VideoData, VideoId }: any) => {
       body
     ).then((res) => {
       if (res) {
-        console.log("responseData" , res.responseData);
         if (res?.responseData && res?.responseData?.length) {
           dispatch(
             liveVideoLive({

@@ -61,19 +61,24 @@
 .video_container_comments {
   position: relative;
   background-color: #fff;
-  width: 25%;
-  padding: 10px;
+  width: 30%;
+  padding: 0;
   overflow-y: auto;
   height: 100%;
 }
 .comments_main_container {
   overflow-y: auto;
   height: 70%;
+  padding: 10px;
 }
 .div_cooment_top {
   height: 10%;
   width: 100%;
   border-bottom: 1px solid #dbdbdb;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 10px;
 }
 .div_input_container {
   height: 20%;

@@ -23,11 +23,19 @@
   padding: 10px;
 }
 .container_hidden {
-  background-color: red;
   height: 15%;
   width: 100%;
 }
 
+.div_cooment_top {
+  height: 10%;
+  width: 100%;
+  border-bottom: 1px solid #dbdbdb;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 10px;
+}
 @media screen and (max-width: 1000px) {
   .video_container_comments {
     position: absolute;

@@ -9,6 +9,9 @@
   justify-content: center;
   column-gap: 20px;
   min-height: 60px;
+  margin: auto 0;
+  border-top: 1px solid #dbdbdb;
+  padding: 0 10px;
 }
 .reply_input {
   width: 90%;
@@ -23,13 +26,13 @@
 .input_container {
   padding-top: 0px;
   width: 100%;
-  height: auto;
+  height: 35px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   row-gap: 20px;
-  border: 2px solid #030303;
+  border: 1px solid #dbdbdb;
   border-radius: 20px;
   margin: 0 auto;
 }
@@ -50,9 +53,9 @@
   color: #030303;
   cursor: pointer;
   color: #fff;
-
   border-radius: 0 20px 20px 0;
-  padding: 3px 4px;
+  padding: 7px 7px;
+  height: 100%;
   background-color: #673de6;
 }
 @media screen and (max-width: 900px) {
