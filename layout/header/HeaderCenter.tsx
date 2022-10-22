@@ -107,6 +107,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
         <button className={Style.search_button}>
           <IoSearchOutline />
         </button>
+        <div className={Style.div_searching}></div>
         {ShowDiv && <SearchDropDown />}
       </div>
       <div className={Style.buttons_container}>
@@ -172,23 +173,25 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
         {IsPhone ? <IoCloseOutline /> : <IoSearchOutline />}
       </button>
       {/* notfy_drop_down_phone */}
-      <div className={Style.notfy_drop_down_phone} ref={notfyDropDownPhone}>
-        <div
-          // onClick={handelToggelNotfy}
-          ref={notifyIconPhone}
-          className={Style.icon_con}
-        >
-          <IconHeader
-            Number={true}
-            NumberData={numberNotfy}
-            Icon={<IoNotificationsOutline />}
-            TextValue={"Notification"}
-          />
+      {!IsPhone && (
+        <div className={Style.notfy_drop_down_phone} ref={notfyDropDownPhone}>
+          <div
+            // onClick={handelToggelNotfy}
+            ref={notifyIconPhone}
+            className={Style.icon_con}
+          >
+            <IconHeader
+              Number={true}
+              NumberData={numberNotfy}
+              Icon={<IoNotificationsOutline />}
+              TextValue={"Notification"}
+            />
+          </div>
+          {showDivNotfyPhone ? (
+            <NotfyDropDown Notification={Notification} />
+          ) : null}
         </div>
-        {showDivNotfyPhone ? (
-          <NotfyDropDown Notification={Notification} />
-        ) : null}
-      </div>
+      )}
     </div>
   );
 };
