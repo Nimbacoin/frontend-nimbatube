@@ -8,16 +8,37 @@ import HomeTags from "./HomeTags";
 
 const Home = () => {
   const [videos, setVideos] = useState([]);
+  const [limit, setLimit] = useState(0);
   useEffect(() => {
     const locaFetch = async () => {
-      const dataRes: any = await allVideosFetch();
+      const dataRes: any = await allVideosFetch(0);
       setVideos(dataRes.responseData);
     };
     locaFetch();
   }, []);
 
   const firstVideos = videos.slice(0, 3);
-  const restVideos = videos.slice(3, videos.length);
+  const [restVideos, setRestVideos] = useState(videos.slice(3, videos.length));
+
+  useEffect(() => {
+    window.onscroll = function (ev) {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 60
+      ) {
+        const locaFetch = async () => {
+          const dataRes: any = await allVideosFetch(7);
+          setRestVideos(restVideos.concat(dataRes.responseData));
+        };
+        locaFetch();
+        console.log("botoom");
+      } else if (document.documentElement.scrollTop < 1000) {
+        console.log("SF");
+      } else if (document.documentElement.scrollTop >= 1000) {
+        console.log("DF");
+      }
+    };
+  }, []);
   return (
     <div className={Style.container}>
       <HomeTags />
