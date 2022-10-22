@@ -3,12 +3,6 @@ import Style from "../../../styles/pages/go-live/go-live-components/stream-comme
 
 import moment from "moment";
 
-import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
-import { AiFillLike } from "@react-icons/all-files/ai/AiFillLike";
-import { AiFillDislike } from "@react-icons/all-files/ai/AiFillDislike";
-import { IoChevronDown } from "@react-icons/all-files/io5/IoChevronDown";
-import { IoChevronUp } from "@react-icons/all-files/io5/IoChevronUp";
-import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 
 const StreamComment = ({ CommentData }: any) => {
   const Bg =
