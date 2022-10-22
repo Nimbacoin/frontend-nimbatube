@@ -10,7 +10,7 @@ const ArtistsPage = () => {
   const [videos, setVideos] = useState([]);
   useEffect(() => {
     const locaFetch = async () => {
-      const dataRes: any = await allVideosFetch();
+      const dataRes: any = await allVideosFetch(0);
       setVideos(dataRes.responseData);
     };
     locaFetch();
