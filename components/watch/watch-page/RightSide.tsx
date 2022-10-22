@@ -7,7 +7,7 @@ import VideosRight from "../../modals/pages-boforload/VideosRight";
 import Vedio from "../../video/Video";
 import LiveCommentsVideos from "./right-side/LiveCommentsVideos";
 import VideoOption from "./right-side/VideoOption";
-
+//g
 const RightSide = () => {
   const [videos, setVideos] = useState([]);
   useEffect(() => {
