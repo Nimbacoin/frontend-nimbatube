@@ -23,6 +23,7 @@
   border: 1px solid#DBDBDB;
   border-radius: 20px;
   position: relative;
+  padding: 0;
 }
 .container_search:hover,
 .container_search_phone:hover {
@@ -46,6 +47,7 @@
   justify-content: center;
   color: #030303;
   font-size: 20px;
+  margin: 0;
   border-radius: 0 20px 20px 0;
 }
 
@@ -79,7 +81,6 @@
 @media screen and (max-width: 900px) {
   .container {
     width: 50%;
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -87,6 +88,14 @@
     height: auto;
     position: relative;
     column-gap: 10px;
+  }
+  .div_searching {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
   }
   .container:last-of-type {
     margin-left: auto;

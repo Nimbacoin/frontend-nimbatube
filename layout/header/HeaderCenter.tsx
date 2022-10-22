@@ -82,6 +82,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
   }, [ShowDiv]);
   const HandelSearchPhone = () => {
     setIsPhone(!IsPhone);
+    setShowDivPhone(!showDivPhone);
   };
   const notificationNoSeen = useSelector(
     (state: any) => state.UserSignIn.notificationNoSeen
@@ -92,6 +93,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
   const Notification = notification;
 
   const numberNotfy = notificationNoSeen.length;
+  const [showDivPhone, setShowDivPhone] = useState(false);
   return (
     <div className={IsPhone ? Style.container_phone : Style.container}>
       <div
@@ -107,9 +109,11 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
         <button className={Style.search_button}>
           <IoSearchOutline />
         </button>
-        <div className={Style.div_searching}></div>
+
         {ShowDiv && <SearchDropDown />}
       </div>
+      {showDivPhone && <div className={Style.div_searching}></div>}
+
       <div className={Style.buttons_container}>
         {UserIsSignedIn ? (
           <>
