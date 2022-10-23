@@ -56,13 +56,10 @@
   cursor: pointer;
   row-gap: 5px;
   margin: 0 auto;
-
-  height: 90px;
   overflow: hidden;
 }
 .title_data {
   overflow: hidden;
-  max-height: 40px;
   width: 100%;
   display: flex;
   flex-direction: row;
