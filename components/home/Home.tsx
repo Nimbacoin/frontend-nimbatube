@@ -13,11 +13,15 @@ const Home = () => {
     const locaFetch = async () => {
       const dataRes: any = await allVideosFetch(0);
       setVideos(dataRes.responseData);
+      setFirstVideos(dataRes.responseData.slice(0, 3));
+      setRestVideos(dataRes.responseData.slice(3, dataRes.responseData.length));
+      setLimit(dataRes?.limit);
+      console.log(dataRes?.limit);
     };
     locaFetch();
   }, []);
 
-  const firstVideos = videos.slice(0, 3);
+  const [firstVideos, setFirstVideos] = useState(videos.slice(0, 3));
   const [restVideos, setRestVideos] = useState(videos.slice(3, videos.length));
 
   useEffect(() => {
@@ -27,8 +31,13 @@ const Home = () => {
         document.body.offsetHeight - 60
       ) {
         const locaFetch = async () => {
-          const dataRes: any = await allVideosFetch(7);
+          console.log(limit);
+          const dataRes: any = await allVideosFetch(limit);
           setRestVideos(restVideos.concat(dataRes.responseData));
+          console.log(dataRes?.limit);
+          setLimit(dataRes?.limit);
+          console.log(dataRes?.limit);
+          console.log(limit);
         };
         locaFetch();
         console.log("botoom");
@@ -38,7 +47,7 @@ const Home = () => {
         console.log("DF");
       }
     };
-  }, []);
+  }, [limit]);
   return (
     <div className={Style.container}>
       <HomeTags />
