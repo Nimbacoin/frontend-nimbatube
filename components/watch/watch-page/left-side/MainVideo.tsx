@@ -56,7 +56,6 @@ const MainVideo = () => {
     if (watching === "true") {
       setActiveVideo(true);
     } else if (streaming === "true") {
-      //alert("sdddsd");
       setActiveVideo(false);
     }
     if (videoTag.current) {
