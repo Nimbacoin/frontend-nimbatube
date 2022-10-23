@@ -22,7 +22,7 @@ const Home = () => {
   }, []);
 
   const [firstVideos, setFirstVideos] = useState(videos.slice(0, 4));
-  const [restVideos, setRestVideos] = useState(videos.slice(4, videos.length));
+  const [restVideos, setRestVideos] = useState<{ [key: string]: any }>([]);
 
   useEffect(() => {
     window.onscroll = function (ev) {
@@ -33,9 +33,9 @@ const Home = () => {
         const locaFetch = async () => {
           console.log(limit);
           const dataRes: any = await allVideosFetch(limit);
-          dataRes?.responseData.map((vidd: any) => {
-            setRestVideos({ ...restVideos, vidd });
-          });
+          // dataRes?.responseData.map((vidd: any) => {
+          //   setRestVideos({ ...restVideos, vidd });
+          // });
           setRestVideos(restVideos.concat(dataRes.responseData));
           console.log(dataRes?.limit);
           setLimit(dataRes?.limit);
@@ -63,7 +63,7 @@ const Home = () => {
       </div>
       <div className={Style.vedio_container}>
         {restVideos.length ? (
-          restVideos.map((vid) => <Vedio VideoData={vid} />)
+          restVideos.map((vid: any) => <Vedio VideoData={vid} />)
         ) : (
           <AllVideosBeforLoad />
         )}
