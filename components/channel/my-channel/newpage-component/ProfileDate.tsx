@@ -45,7 +45,7 @@ const ProfileDate = ({ ChannelData }: any) => {
   const [BgUrlCover, setBgUrlCover] = useState("");
   const [Name, setName] = useState("");
   const [Title, setTitle] = useState("");
-
+  console.log("ChannelData", ChannelData);
   useEffect(() => {
     if (ChannelData && ChannelData.channelData?.profileImg) {
       console.log(ChannelData.channelData?.profileImg);
@@ -105,12 +105,15 @@ const ProfileDate = ({ ChannelData }: any) => {
             </div>
             <div className={Style.channel_links_container}>
               <div className={Style.channel_data_followrs}>
-                <div className={Style.container_data_item}>
+                {/* <div className={Style.container_data_item}>
                   <span className={Style.title}> 12 </span>
                   <span className={Style.followers}> Uploads</span>
-                </div>
+                </div> */}
                 <div className={Style.container_data_item}>
-                  <span className={Style.title}> 200 </span>
+                  <span className={Style.title}>
+                    {" "}
+                    {ChannelData?.followers?.length}{" "}
+                  </span>
                   <span className={Style.followers}> Followers</span>
                 </div>
               </div>
