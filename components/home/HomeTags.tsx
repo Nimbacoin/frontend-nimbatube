@@ -6,9 +6,9 @@ const HomeTags = () => {
   const Tags = [
     { name: "All" },
     { name: "Live" },
-    // { name: "Trsvel " },
-    // { name: "Crypto" },
-    // { name: "Bitcoin" },
+     { name: "Travel " },
+     { name: "Crypto" },
+     { name: "Bitcoin" },
     // { name: "Blockchain" },
     // { name: "Music" },
     // { name: "Ecommrce" },
