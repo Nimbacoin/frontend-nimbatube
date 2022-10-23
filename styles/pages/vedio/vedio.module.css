@@ -77,10 +77,14 @@
   cursor: pointer;
 }
 .menu {
+  display: none;
+}
+.menu_desktop {
   position: relative;
   right: -5px;
 }
-.menu:last-of-type {
+.menu:last-of-type,
+.menu_desktop:last-of-type {
   margin-left: auto;
 }
 
@@ -134,14 +138,18 @@
   .container {
     flex-basis: 30%;
     height: 300px;
-  
   }
   .title_data {
     max-height: auto;
     background-color: #fff;
   }
   .desc_container {
-    
+  }
+  .menu_desktop {
+    display: none;
+  }
+  .menu {
+    display: block;
   }
 }
 @media screen and (max-width: 900px) {

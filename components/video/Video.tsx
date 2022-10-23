@@ -140,8 +140,11 @@ const Video = ({ VideoData }: any) => {
           <p className={Style.title}>{Title}</p>
           <i
             style={{ color: `${OverElement ? "#030303" : "#F9F9F9"}` }}
-            className={Style.menu}
+            className={Style.menu_desktop}
           >
+            <IoEllipsisVertical />
+          </i>
+          <i className={Style.menu}>
             <IoEllipsisVertical />
           </i>
         </div>
