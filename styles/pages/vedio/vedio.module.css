@@ -141,9 +141,10 @@
   }
   .title_data {
     max-height: auto;
-    background-color: #fff;
+    
   }
   .desc_container {
+    height: auto;
   }
   .menu_desktop {
     display: none;
