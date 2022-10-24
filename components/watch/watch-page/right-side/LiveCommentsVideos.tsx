@@ -90,10 +90,11 @@ const LiveCommentsVideos = () => {
       </div>
 
       <div ref={messagesEndRef} className={Style.comments_container}>
-        {liveCommentsVideo?.length &&
-          liveCommentsVideo.map((comment: any) => (
-            <StreamComment CommentData={comment} />
-          ))}
+        {liveCommentsVideo?.length
+          ? liveCommentsVideo.map((comment: any) => (
+              <StreamComment CommentData={comment} />
+            ))
+          : ""}
       </div>
       <div className={Style.container_hidden}>
         <InputStreamComment VideoId={videoId} />

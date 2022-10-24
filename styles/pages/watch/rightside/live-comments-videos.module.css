@@ -17,7 +17,7 @@
   border-bottom: 1px solid #dbdbdb;
 }
 .comments_container {
-  max-height: 75%;
+  height: 75%;
   overflow-y: auto;
   padding: 10px;
   display: flex;

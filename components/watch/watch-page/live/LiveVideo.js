@@ -83,7 +83,7 @@ const App = () => {
       <div className={Style.on_live_container}>
         <div className={Style.viewers_red}>
           <IoVideocamOutline />
-          <span className={Style.file_text_title_bold_viewers}>· Live</span>
+          <span className={Style.file_text_title_bold_viewers}>· LIVE</span>
         </div>
         <div className={Style.viewers}>
           <IoEyeOutline />

@@ -5,24 +5,48 @@
   display: flex;
   flex-direction: row;
   overflow-x: auto;
-  margin: 0px 0 0px 10px;
+  margin: 0px 0 0px 0px;
   padding: 10px 50px;
   column-gap: 10px;
   border-bottom: 1px solid #dbdbdb;
   background-color: #fff;
 }
 .span {
-  height: auto;
+  max-height: 30px;
   font-size: 14px;
-  border: 1px solid #dbdbdb;
+  border: 1px solid #d4d4d4;
   color: #030303;
   cursor: pointer;
   border-radius: 20px;
-  padding: 5px 20px;
-  background-color: #f9f9f9;
+  padding: 0px 20px;
+  background-color: #ececec;
   margin-top: 0px;
   clear: both;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  /* overflow: hidden; */
+  white-space: nowrap;
+  text-align: center;
+}
+.active_span {
+  max-height: 30px;
+  font-size: 14px;
+  border: 1px solid #030303;
+  color: #ffff;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 5px 20px;
+  background-color: #030303;
+  margin-top: 0px;
+  clear: both;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
   /* overflow: hidden; */
   white-space: nowrap;
   text-align: center;

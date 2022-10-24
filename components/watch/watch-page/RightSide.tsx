@@ -29,14 +29,13 @@ const RightSide = () => {
     if (streaming && streaming.length) {
       if (streaming === "true") {
         setStreamingVideo(true);
-    
       }
     }
   }, [asPath]);
   return (
     <div className={Style.container}>
-      <RightSideTaggs />
       {streamingVideo && <LiveCommentsVideos />}
+      <RightSideTaggs />
 
       {/* <HomeTags /> */}
       {videos.length ? (

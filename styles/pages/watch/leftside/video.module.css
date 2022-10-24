@@ -54,7 +54,7 @@
   font-weight: bolder;
 }
 .viewers_red {
-  background-color: #030303de;
+  background-color: #cc0000;
   border-radius: 20px;
   z-index: 2;
   display: flex;
@@ -65,11 +65,11 @@
   margin: 0;
   padding: 5px 10px;
   width: auto;
-  border: 1px solid #fff;
+  border: 1px solid #cc0000;
   font-weight: bolder;
 }
 .viewers_red > svg {
-  color: #cc0000;
+  color: #fff;
 }
 .viewers > svg {
   color: #fff;
