@@ -17,7 +17,7 @@
   right: 0;
   top: -4px;
   font-size: 12px;
-  padding : 0px 5px;
+  padding: 0px 5px;
   color: #fff;
   border-radius: 100px;
   display: flex;
@@ -30,4 +30,13 @@
 .container:hover {
   box-shadow: #00000017 0px 3px 12px;
   background-color: #f3eeee;
+}
+@media screen and (max-width: 900px) {
+  .container {
+    padding: 0 10px;
+    display: flex;
+  }
+  .container {
+    background-color: #fff;
+  }
 }
