@@ -138,7 +138,7 @@ const ProfileDate = () => {
               <IoCameraOutline />
             </span>
           </label>
-          <div className={Style.image_name_conainer}>
+          <label htmlFor="profile" className={Style.image_name_conainer}>
             <div className={Style.profile_image_container}>
               <div className={Style.profile_image} ref={previewSourceProfile}>
                 <label htmlFor="profile" className={Style.input_label}>
@@ -155,7 +155,7 @@ const ProfileDate = () => {
                 </label>
               </div>
             </div>
-          </div>
+          </label>
         </div>
         <div className={Style.links_container}>
           <span className={Style.name_contanier}>

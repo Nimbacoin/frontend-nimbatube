@@ -37,11 +37,18 @@ const Home = () => {
           //   setRestVideos({ ...restVideos, vidd });
           // });
           const dataa = restVideos.concat(dataRes.responseData);
-
           function onlyUnique(value: any, index: number, self: any) {
             return self.indexOf(value) === index;
           }
-          setRestVideos(dataa.filter(onlyUnique));
+          const ddd = [];
+          const ids = dataa.map(({ videoData }: any) => videoData._id);
+          const filtered = dataa.filter(
+            (videoData: any, index: any) =>
+              !ids.includes(videoData.videoData._id, index + 1)
+          );
+
+          setRestVideos(filtered);
+
           console.log(dataRes?.limit);
           setLimit(dataRes?.limit);
           console.log(dataRes?.limit);
