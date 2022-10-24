@@ -28,7 +28,7 @@ const RightSide = () => {
     if (streaming && streaming.length) {
       if (streaming === "true") {
         setStreamingVideo(true);
-        alert("df");
+    
       }
     }
   }, [asPath]);
