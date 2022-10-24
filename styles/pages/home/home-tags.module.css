@@ -27,6 +27,22 @@
   white-space: nowrap;
   text-align: center;
 }
+.active_span {
+  height: auto;
+  font-size: 14px;
+  border: 1px solid #030303;
+  color: #ffff;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 5px 20px;
+  background-color: #030303;
+  margin-top: 0px;
+  clear: both;
+  display: inline-block;
+  /* overflow: hidden; */
+  white-space: nowrap;
+  text-align: center;
+}
 @media screen and (max-width: 900px) {
   .container {
     padding: 10px 0px;

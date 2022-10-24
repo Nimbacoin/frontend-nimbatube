@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Style from "../../styles/pages/home/home-tags.module.css";
-
+import { IoChevronForwardOutline } from "@react-icons/all-files/io5/IoChevronForwardOutline";
 const HomeTags = () => {
   // const [videos, setVideos] = useState([]);
+  const [activVideos, setActivVideos] = useState(0);
   const Tags = [
     { name: "All" },
     { name: "Live" },
-     { name: "Travel " },
-     { name: "Crypto" },
-     { name: "Bitcoin" },
+    { name: "Travel " },
+    { name: "Crypto" },
+    { name: "Bitcoin" },
     // { name: "Blockchain" },
     // { name: "Music" },
     // { name: "Ecommrce" },
@@ -29,8 +30,15 @@ const HomeTags = () => {
 
   return (
     <div className={Style.container}>
-      {Tags.map(({ name }) => (
-        <span className={Style.span}>{name}</span>
+      {Tags.map(({ name }, index) => (
+        <span
+          onClick={() => {
+            setActivVideos(index);
+          }}
+          className={activVideos == index ? Style.active_span : Style.span}
+        >
+          {name}
+        </span>
       ))}
     </div>
   );

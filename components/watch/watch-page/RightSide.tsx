@@ -7,6 +7,7 @@ import LoaodingAll from "../../modals/LoaodingAll";
 import VideosRight from "../../modals/pages-boforload/VideosRight";
 import Vedio from "../../video/Video";
 import LiveCommentsVideos from "./right-side/LiveCommentsVideos";
+import RightSideTaggs from "./right-side/RightSideTaggs";
 import VideoOption from "./right-side/VideoOption";
 //gospfdpofd
 const RightSide = () => {
@@ -34,6 +35,7 @@ const RightSide = () => {
   }, [asPath]);
   return (
     <div className={Style.container}>
+      <RightSideTaggs />
       {streamingVideo && <LiveCommentsVideos />}
 
       {/* <HomeTags /> */}
