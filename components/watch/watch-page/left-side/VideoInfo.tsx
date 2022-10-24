@@ -88,6 +88,9 @@ const VideoInfo = () => {
   const handelPlayList = () => {
     dispatch(playListRedcuer({ value: "true" }));
   };
+  var check = moment(videoData?.createdAt, "YYYY/MM/DD");
+  var month = check.format("M");
+
   return (
     <div className={Style.video_data}>
       <div className={Style.title}>
@@ -104,7 +107,6 @@ const VideoInfo = () => {
         <div className={Style.icons_container}>
           <p className={Style.icon} onClick={HandelLike}>
             {IsLiked ? <AiFillLike /> : <AiOutlineLike />}
-
             <span className={Style.nubmer_of_likes}>{videoLikes}</span>
           </p>
           <p className={Style.icon} onClick={HandelDisLike}>

@@ -17,6 +17,9 @@ const Descreption = ({ VideoData }: any) => {
   const Title = VideoData?.title;
   // const videoRef = useRef<HTMLVideoElement>(null);
   const Bg = "/images/default-profile.png";
+  var check = moment(VideoData?.createdAt, "YYYY/MM/DD");
+  var month = check.format("M");
+  var year = check.format("YYYY");
 
   return (
     <div
@@ -54,7 +57,7 @@ const Descreption = ({ VideoData }: any) => {
             <strong className={Style.strong_data}>
               {moment(VideoData?.createdAt).startOf("hour").fromNow()}
             </strong>
-            <small className={Style.small_data}>2021</small>
+            <small className={Style.small_data}>{year}</small>
           </p>
         </div>
       </div>
