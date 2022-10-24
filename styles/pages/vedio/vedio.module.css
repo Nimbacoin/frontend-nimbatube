@@ -57,6 +57,7 @@
   row-gap: 5px;
   margin: 0 auto;
   overflow: hidden;
+  min-height: 90px;
 }
 .title_data {
   overflow: hidden;

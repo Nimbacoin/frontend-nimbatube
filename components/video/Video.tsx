@@ -137,7 +137,7 @@ const Video = ({ VideoData }: any) => {
       </div>
       <div className={Style.desc_container}>
         <div className={Style.title_data}>
-          <p className={Style.title}>{Title}</p>
+          <p className={Style.title}>{Title?.slice(0, 70)}</p>
           <i
             style={{ color: `${OverElement ? "#030303" : "#F9F9F9"}` }}
             className={Style.menu_desktop}
