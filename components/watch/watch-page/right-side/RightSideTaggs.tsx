@@ -31,8 +31,7 @@ const RightSideTaggs = () => {
   const handelClick = () => {
     if (divContainer.current) {
       const scrool = divContainer.current.scrollLeft + 50;
-      alert(scrool);
-      if (divContainer.current.scrollWidth <= scrool) {
+      if (scrool <= divContainer.current.scrollWidth) {
         divContainer.current.scrollLeft = scrool;
       }
     }
