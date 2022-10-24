@@ -174,9 +174,11 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
         onClick={HandelSearchPhone}
         className={Style.rest_of_button_search_phone}
       >
-        {IsPhone ? <IoCloseOutline /> : <IoSearchOutline />}
+        <IconHeader
+          Icon={IsPhone ? <IoCloseOutline /> : <IoSearchOutline />}
+          TextValue={IsPhone ? "Search" : "Close"}
+        />
       </button>
-      {/* notfy_drop_down_phone */}
       {!IsPhone && (
         <div className={Style.notfy_drop_down_phone} ref={notfyDropDownPhone}>
           <div
