@@ -6,13 +6,20 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  column-gap: 10px;
+
   background-color: #f9f9f9;
   height: auto;
 }
-.children {
+.children380 {
   margin-top: 60px;
   z-index: 3;
-  width: 100%;
+  width: 100% - 380px;
+  height: auto;
+}
+
+.children100 {
+  margin-top: 60px;
+  z-index: 3;
+  width: 100% - 100px;
   height: auto;
 }

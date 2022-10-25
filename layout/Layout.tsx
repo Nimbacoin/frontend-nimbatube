@@ -171,7 +171,7 @@ const Layout = ({ children }: any) => {
 
         <SideHeader />
 
-        <div style={{ minHeight: `${Height}px` }} className={Style.children}>
+        <div style={{ minHeight: `${Height}px` }} className={MenuBoolean ? Style.children380 :Style.children100 }>
           {children}
         </div>
         {isOver && <HoverText />}

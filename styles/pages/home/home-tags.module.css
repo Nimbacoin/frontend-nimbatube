@@ -5,11 +5,29 @@
   display: flex;
   flex-direction: row;
   overflow-x: auto;
-  margin: 0px 0 0px 0px;
-  padding: 10px 50px;
-  column-gap: 10px;
+  margin: 0px 0 10px 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid #dbdbdb;
   background-color: #fff;
+}
+.main_container {
+  width: 100% - 100px;
+  margin: 0 auto;
+  max-height: 100px;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0px 0 0px 0;
+  padding: 0;
+  column-gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 20px;
 }
 .span {
   max-height: 30px;
@@ -18,7 +36,7 @@
   color: #030303;
   cursor: pointer;
   border-radius: 20px;
-  padding: 0px 20px;
+  padding: 5px 20px;
   background-color: #ececec;
   margin-top: 0px;
   clear: both;
@@ -26,11 +44,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
-  /* overflow: hidden; */
   white-space: nowrap;
   text-align: center;
 }
+.span:hover {
+  background-color: #cacacae8;
+}
+
 .active_span {
   max-height: 30px;
   font-size: 14px;
@@ -50,6 +70,69 @@
   /* overflow: hidden; */
   white-space: nowrap;
   text-align: center;
+}
+.div_scroll {
+  height: 100%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #f9f9f9;
+}
+
+.div_scroll_left {
+  position: relative;
+  height: 100%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #f9f9f9;
+}
+.main_container::-webkit-scrollbar {
+  border-radius: 10px;
+  background-color: #fff;
+  width: 0;
+  display: hidden;
+}
+
+.main_container::-webkit-scrollbar {
+  display: none;
+}
+.main_container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #909090;
+}
+.main_container::-webkit-scrollbar-button {
+  height: 0.1px;
+}
+.forward_outline {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 31px 42px rgba(249, 249, 249, 1);
+}
+.forward_outline:hover {
+  background-color: #d4d4d4;
+}
+@media screen and (max-width: 1100px) {
+  .main_container {
+    width: 100%;
+  }
+  .div_scroll_left,
+  .div_scroll {
+    display: none;
+  }
 }
 @media screen and (max-width: 900px) {
   .container {
