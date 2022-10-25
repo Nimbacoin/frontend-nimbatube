@@ -107,9 +107,9 @@ const OverAllSideMenu = () => {
     const Container = React.useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-      MenuBoolean
-        ? (document.body.style.overflowY = "hidden")
-        : (document.body.style.overflowY = "auto");
+      // MenuBoolean
+      //   ? (document.body.style.overflowY = "hidden")
+      //   : (document.body.style.overflowY = "auto");
 
       if (Container.current) {
         Container.current.style.minHeight = `${window.outerHeight}px`;

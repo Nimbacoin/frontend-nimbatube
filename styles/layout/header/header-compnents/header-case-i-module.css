@@ -1,10 +1,12 @@
 .container_home {
   width: 380px;
+  max-width: 380px;
   height: 100px;
   position: relative;
   top: 60px;
   z-index: 3;
   left: 0;
+  overflow-y: auto;
 }
 .container_home_avtive {
   width: 100px;
@@ -81,14 +83,13 @@
   height: 100%;
 }
 .all_links {
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   background-color: #fff;
-  overflow-y: scroll;
-  padding-bottom: 100px;
+  overflow-y: auto;
 }
 
 .all_links::-webkit-scrollbar {

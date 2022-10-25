@@ -40,6 +40,14 @@ const Layout = ({ children }: any) => {
     setHeight(window.innerHeight);
     dispatch(WindowHeightRedcuer(window.innerHeight - 60));
   }, []);
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    window.addEventListener("load", function () {
+      setIsLoaded(true);
+    });
+  }, []);
+
+  
   useEffect(() => {
     let UserData = Cookies.get("user");
     if (UserData) {
@@ -82,6 +90,7 @@ const Layout = ({ children }: any) => {
     );
   }, [asPath]);
 
+  const childrenRef = React.useRef<HTMLDivElement>(null);
   return (
     <>
       <Head>
@@ -171,9 +180,14 @@ const Layout = ({ children }: any) => {
 
         <SideHeader />
 
-        <div style={{ minHeight: `${Height}px` }} className={MenuBoolean ? Style.children380 :Style.children100 }>
+        <div
+          ref={childrenRef}
+          style={{ minHeight: `${Height}px` }}
+          className={Style.childen}
+        >
           {children}
         </div>
+
         {isOver && <HoverText />}
       </div>
     </>

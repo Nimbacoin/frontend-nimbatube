@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Style from "../../styles/pages/home/home.module.css";
 import allVideosFetch from "../../utils/allVideosFetch";
 import LoaodingAll from "../modals/LoaodingAll";
@@ -54,8 +55,19 @@ const Home = () => {
       }
     };
   }, [limit]);
+  const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
+  useEffect(() => {
+    if (divRef.current) {
+      if (MenuBoolean) {
+        divRef.current.style.minWidth = "1100px";
+      } else {
+        divRef.current.style.minWidth = "1255px";
+      }
+    }
+  }, [MenuBoolean]);
+  const divRef = React.useRef<HTMLDivElement>(null);
   return (
-    <div className={Style.container}>
+    <div ref={divRef} className={Style.container}>
       <HomeTags />
       <div className={Style.vedio_container}>
         {firstVideos.length ? (
