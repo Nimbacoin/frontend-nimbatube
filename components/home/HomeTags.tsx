@@ -3,6 +3,7 @@ import Style from "../../styles/pages/home/home-tags.module.css";
 
 import { IoChevronForwardOutline } from "@react-icons/all-files/io5/IoChevronForwardOutline";
 import { IoChevronBackOutline } from "@react-icons/all-files/io5/IoChevronBackOutline";
+import { useSelector } from "react-redux";
 const RightSideTaggs = () => {
   // const [videos, setVideos] = useState([]);
   const [activVideos, setActivVideos] = useState(0);
@@ -61,8 +62,21 @@ const RightSideTaggs = () => {
     }
   }, [scrollValue]);
 
+  const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
+  useEffect(() => {
+    if (divRef.current) {
+      if (MenuBoolean) {
+        divRef.current.className = Style.container;
+        //"1100px";
+      } else {
+        divRef.current.className = Style.container1255px;
+        ("1255px");
+      }
+    }
+  }, [MenuBoolean]);
+  const divRef = React.useRef<HTMLDivElement>(null);
   return (
-    <div className={Style.container}>
+    <div ref={divRef} className={Style.container}>
       {scrollZero && (
         <div className={Style.div_scroll_left}>
           <span onClick={handelClickLeft} className={Style.forward_outline}>

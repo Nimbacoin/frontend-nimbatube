@@ -1,4 +1,5 @@
-.container {
+.container,
+.container1255px {
   width: 100%;
   margin: 0 auto;
   max-height: 100px;
@@ -6,13 +7,19 @@
   flex-direction: row;
   overflow-x: auto;
   margin: 0px 0 10px 0;
-  padding: 5px 0;
+  padding: 0 0;
   position: relative;
   overflow: hidden;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #dbdbdb;
   background-color: #fff;
+}
+.container {
+  max-width: 1100px;
+}
+.container1255px {
+  max-width: 1255px;
 }
 .main_container {
   width: 100% - 100px;
@@ -136,6 +143,7 @@
 }
 @media screen and (max-width: 900px) {
   .container {
+    display: none;
     padding: 10px 0px;
   }
 }

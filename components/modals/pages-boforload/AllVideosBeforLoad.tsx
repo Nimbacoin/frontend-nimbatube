@@ -1,7 +1,7 @@
 import React from "react";
 import Style from "../../../styles/modals/pages-boforload/all-videos-befor-load.module.css";
 const AllVideosBeforLoad = () => {
-  const repeat = Array(16)
+  const repeat = Array(4)
     .fill(0)
     .map((_, i) => (
       <div className={Style.main_container}>
