@@ -37,7 +37,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  padding: 10px 0;
+  padding: 10px 10px;
   column-gap: 15px;
   border-radius: 2px;
   position: relative;
