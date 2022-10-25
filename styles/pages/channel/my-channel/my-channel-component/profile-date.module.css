@@ -181,9 +181,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
   height: auto;
-  width: 70%;
+  width: 40%;
 }
 .channel_links_container {
   display: flex;
@@ -229,6 +228,6 @@
 }
 @media screen and (max-width: 500px) {
   .bottom_second_container {
-    width: 100%;
+    width: 99%;
   }
 }
