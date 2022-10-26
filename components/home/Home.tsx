@@ -56,16 +56,15 @@ const Home = () => {
     };
   }, [limit]);
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
-  useEffect(() => {
-    if (divRef.current) {
-      if (MenuBoolean) {
-        alert("sd");
-        divRef.current.className = Style.container_MenuBoolean;
-      } else if (!MenuBoolean) {
-        divRef.current.className = Style.container;
-      }
-    }
-  }, [MenuBoolean]);
+  // useEffect(() => {
+  //   if (divRef.current) {
+  //     if (MenuBoolean) {
+  //       divRef.current.className = Style.container_MenuBoolean;
+  //     } else if (!MenuBoolean) {
+  //       divRef.current.className = Style.container;
+  //     }
+  //   }
+  // }, [MenuBoolean]);
   const divRef = React.useRef<HTMLDivElement>(null);
   return (
     <div ref={divRef} className={Style.container}>

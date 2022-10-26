@@ -80,6 +80,13 @@
     display: flex;
     flex-direction: column;
     background-color: #fff;
+    min-height: 800px;
+  }
+  .video_container > div {
     width: 100%;
+    height: 70px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }

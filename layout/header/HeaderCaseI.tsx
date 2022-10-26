@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Style from "../../styles/layout/header/header-compnents/side-header.module.css";
+import Style from "../../styles/layout/header/header-compnents/header-case-i.module.css";
 import { IoHomeOutline } from "@react-icons/all-files/io5/IoHomeOutline";
 import { IoHeartOutline } from "@react-icons/all-files/io5/IoHeartOutline";
 import { IoRibbonOutline } from "@react-icons/all-files/io5/IoRibbonOutline";
@@ -107,12 +107,12 @@ const HeaderCaseI = () => {
   }, [MenuBoolean]);
 
   const HandelOver = () => {
-    if (MenuBoolean) {
-      setIsOverfollow(true);
+    if (!MenuBoolean) {
+      setIsOverfollow(false);
     }
   };
   const HandelLeave = () => {
-    setIsOverfollow(false);
+    setIsOverfollow(true);
   };
 
   return (

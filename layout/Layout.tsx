@@ -47,7 +47,6 @@ const Layout = ({ children }: any) => {
     });
   }, []);
 
-  
   useEffect(() => {
     let UserData = Cookies.get("user");
     if (UserData) {
