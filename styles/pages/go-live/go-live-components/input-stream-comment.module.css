@@ -1,7 +1,6 @@
 /* ------------------------------input container ---------------------------------*/
 
-.reply_input_container,
-.reply_input_container_phone {
+.reply_input_container {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -59,5 +58,4 @@
   background-color: #673de6;
 }
 @media screen and (max-width: 900px) {
-  
 }
