@@ -99,7 +99,7 @@ const HeaderCaseI = () => {
   });
   const [IsOverfollow, setIsOverfollow] = useState(false);
   useEffect(() => {
-    if (!MenuBoolean) {
+    if (MenuBoolean) {
       setSamllMenuItem(NavLinks.slice(0, 6));
     } else {
       setSamllMenuItem(NavLinks);
@@ -124,14 +124,14 @@ const HeaderCaseI = () => {
               onMouseEnter={HandelOver}
               onMouseLeave={HandelLeave}
               className={
-                MenuBoolean ? Style.container_home : Style.container_home_avtive
+                MenuBoolean ? Style.container_home_avtive : Style.container_home
               }
             >
               <div
                 className={
                   !IsOverfollow
-                    ? Style.all_links_overflow_hidden
-                    : Style.all_links
+                    ? Style.all_links
+                    : Style.all_links_overflow_hidden
                 }
               >
                 {samllMenuItem.map(({ name, link, icon }) => (
@@ -145,12 +145,12 @@ const HeaderCaseI = () => {
                   >
                     <Link href={link}>
                       <div
-                        className={MenuBoolean ? Style.link : Style.link_flex}
+                        className={MenuBoolean ? Style.link_flex : Style.link}
                       >
                         <span className={Style.icon}>{icon}</span>
 
                         <span
-                          className={MenuBoolean ? Style.text : Style.text_all}
+                          className={MenuBoolean ? Style.text_all : Style.text}
                         >
                           {name}
                         </span>

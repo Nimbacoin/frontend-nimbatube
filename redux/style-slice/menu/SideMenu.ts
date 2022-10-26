@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  MenuBoolean: true,
+  MenuBoolean: false,
 };
 
 export const SideMenu = createSlice({
