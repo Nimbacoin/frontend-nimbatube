@@ -22,6 +22,27 @@
   border-radius: 2px;
   object-fit: cover;
 }
+.viewers_red {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #cc0000;
+  border-radius: 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  column-gap: 10px;
+  margin: 0;
+  padding: 5px 10px;
+  width: auto;
+  border: 1px solid #cc0000;
+  font-weight: bolder;
+}
+.viewers_red > svg {
+  color: #fff;
+}
 .viewers {
   position: absolute;
   top: 20px;
@@ -151,6 +172,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+    box-shadow: inset 0px -89px 46px -25px rgba(0, 0, 0, 0.812),
+      0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0px 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
   .video_container {
     width: 100%;
@@ -167,13 +191,10 @@
   }
   .comments_main_container {
     width: 100%;
-    height: 100%;
-    padding-top: 20%;
+    height: 70%;
+
     max-height: 100%;
     border-radius: 0 0 10px 10px;
-    box-shadow: inset 0px -89px 46px -25px rgba(0, 0, 0, 0.812),
-      0px 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 
     border-radius: 0 0 10px 10px;
   }

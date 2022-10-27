@@ -7,6 +7,7 @@ import { IoEyeOutline } from "@react-icons/all-files/io5/IoEyeOutline";
 import basedGetUrlRequest from "../../../utils/basedGetUrlRequest";
 import StreamComment from "./StreamComment";
 import InputStreamComment from "./InputStreamComment";
+import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 import { liveVideoLive } from "../../../redux/video-slice/VideoSlice";
 const pc_config = {
   iceServers: [
@@ -180,7 +181,6 @@ const Streaming = () => {
         )}
 
         <video className={Style.video} muted ref={VideoRef} autoPlay />
-
         <p className={Style.viewers}>
           <IoEyeOutline />
           <span className={Style.file_text_title_bold_viewers}>
@@ -188,7 +188,10 @@ const Streaming = () => {
             {viewers.length} viewers
           </span>
         </p>
-        <div className={Style.div_hover}></div>
+        <p className={Style.viewers_red}>
+          <IoVideocamOutline />
+          <span className={Style.file_text_title_bold_viewers}> LIVE</span>
+        </p>
       </div>
 
       <div className={Style.video_container_comments}>
