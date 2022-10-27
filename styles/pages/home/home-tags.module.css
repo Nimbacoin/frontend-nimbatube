@@ -140,10 +140,12 @@
   .div_scroll {
     display: none;
   }
+
+  .container1255px,
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
 }
 @media screen and (max-width: 900px) {
-  .container {
-    display: none;
-    padding: 10px 0px;
-  }
 }
