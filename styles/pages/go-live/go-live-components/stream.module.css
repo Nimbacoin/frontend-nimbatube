@@ -167,7 +167,8 @@
   }
   .comments_main_container {
     width: 100%;
-    height: 80%;
+    height: 100%;
+    padding-top: 20%;
     box-shadow: inset 0px -89px 46px -25px rgba(0, 0, 0, 0.812),
       0px 10px 15px -3px rgba(0, 0, 0, 0.1),
       0px 10px 15px -3px rgba(0, 0, 0, 0.1);
