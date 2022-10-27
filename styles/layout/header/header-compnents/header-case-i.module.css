@@ -1,12 +1,15 @@
 .container_home {
-  width: 30%;
+  width: 380px;
   height: 100%;
   position: sticky;
   top: 60px;
   z-index: 3;
   background-color: #fff;
+  padding-right: 10px;
+  min-height: 1000px;
 }
 .container_home_avtive {
+  min-height: 1000px;
   width: 100px;
   height: 100%;
   position: sticky;
@@ -45,6 +48,7 @@
   justify-content: flex-start;
   background-color: #fff;
   overflow-y: auto;
+  border-bottom: solid 1px #dbdbdb;
 }
 
 .all_links::-webkit-scrollbar {
@@ -69,17 +73,28 @@
   justify-content: flex-start;
   background-color: #fff;
   overflow-y: hidden;
+  border-bottom: solid 1px #dbdbdb;
+}
+.main_menu_div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .link_container {
   padding: 10px 0;
   width: 100%;
   cursor: pointer;
+  border-radius: 10px;
 }
 .link_container_active {
   padding: 10px 0;
   width: 100%;
   cursor: pointer;
   background-color: #f0f0f0;
+  border-radius: 10px;
 }
 .link {
   width: 100%;

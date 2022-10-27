@@ -6,9 +6,9 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-
   background-color: #f9f9f9;
-  height: auto;
+  height: 100%;
+  
 }
 .childen {
   margin-top: 60px;

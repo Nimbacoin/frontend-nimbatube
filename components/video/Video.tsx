@@ -7,12 +7,14 @@ import moment from "moment";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import LoaodingAll from "../modals/LoaodingAll";
 const Video = ({ VideoData }: any) => {
   const [OverElement, setOverElement] = useState(false);
   const [isLaoded, setIsLaoded] = useState(false);
-
   const streaming = VideoData?.streaming;
   const [videoLink, setVideoLink] = useState("");
+  const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
   //console.log(VideoData);
   const HandelOver = () => {
     setOverElement(true);
@@ -116,19 +118,14 @@ const Video = ({ VideoData }: any) => {
           backgroundImage: `url(${thumbnail})`,
           // minHeight: `${IsPhone && ScreenWithByHalf}px`,
         }}
-        className={Style.vedio_container}
+        className={
+          MenuBoolean
+            ? Style.vedio_container_MenuBoolean
+            : Style.vedio_container
+        }
       >
         {!isLaoded && (
-          <div className={Style.lds_roller}>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+          <LoaodingAll />
         )}
 
         <p className={Style.time}>

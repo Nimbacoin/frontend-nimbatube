@@ -61,6 +61,7 @@ const HeaderCaseI = () => {
     { name: "Explore", link: "/explore", icon: <IoCompassOutline /> },
   ];
   const [samllMenuItem, setSamllMenuItem] = useState(NavLinks);
+  const [seconMenuItem, setSeconMenuItem] = useState(NavLinks);
   const { asPath } = useRouter();
   const dispatch = useDispatch();
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
@@ -101,8 +102,10 @@ const HeaderCaseI = () => {
   useEffect(() => {
     if (MenuBoolean) {
       setSamllMenuItem(NavLinks.slice(0, 6));
+      setSeconMenuItem([]);
     } else {
-      setSamllMenuItem(NavLinks);
+      setSamllMenuItem(NavLinks.slice(0, 6));
+      setSeconMenuItem(NavLinks.slice(6, NavLinks.length));
     }
   }, [MenuBoolean]);
 
@@ -113,6 +116,32 @@ const HeaderCaseI = () => {
   };
   const HandelLeave = () => {
     setIsOverfollow(true);
+  };
+  const mainMenuDiv = ({ arrayMap }: any) => {
+    return (
+      <div className={Style.main_menu_div}>
+        {NavLinks.map(({ name, link, icon }: any) => (
+          <div
+            key={link}
+            className={
+              asPath === link
+                ? Style.link_container_active
+                : Style.link_container
+            }
+          >
+            <Link href={link}>
+              <div className={MenuBoolean ? Style.link_flex : Style.link}>
+                <span className={Style.icon}>{icon}</span>
+
+                <span className={MenuBoolean ? Style.text_all : Style.text}>
+                  {name}
+                </span>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
+    );
   };
 
   return (
@@ -134,30 +163,8 @@ const HeaderCaseI = () => {
                     : Style.all_links_overflow_hidden
                 }
               >
-                {samllMenuItem.map(({ name, link, icon }) => (
-                  <div
-                    key={link}
-                    className={
-                      asPath === link
-                        ? Style.link_container_active
-                        : Style.link_container
-                    }
-                  >
-                    <Link href={link}>
-                      <div
-                        className={MenuBoolean ? Style.link_flex : Style.link}
-                      >
-                        <span className={Style.icon}>{icon}</span>
-
-                        <span
-                          className={MenuBoolean ? Style.text_all : Style.text}
-                        >
-                          {name}
-                        </span>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
+                {mainMenuDiv(samllMenuItem)}
+                {mainMenuDiv(seconMenuItem)}
               </div>
             </div>
           );
