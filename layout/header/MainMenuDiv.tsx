@@ -7,30 +7,27 @@ import Style from "../../styles/layout/header/header-compnents/header-case-i.mod
 const MainMenuDiv = ({ arrayMap }: any) => {
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
   const { asPath } = useRouter();
+
   return (
     <div className={Style.main_menu_div}>
-      {arrayMap?.length
-        ? arrayMap.map(({ name, link, icon }: any) => (
-            <div
-              key={link}
-              className={
-                asPath === link
-                  ? Style.link_container_active
-                  : Style.link_container
-              }
-            >
-              <Link href={link}>
-                <div className={MenuBoolean ? Style.link_flex : Style.link}>
-                  <span className={Style.icon}>{icon}</span>
+      {arrayMap.map(({ name, link, icon }: any) => (
+        <div
+          key={link}
+          className={
+            asPath === link ? Style.link_container_active : Style.link_container
+          }
+        >
+          <Link href={link}>
+            <div className={MenuBoolean ? Style.link_flex : Style.link}>
+              <span className={Style.icon}>{icon}</span>
 
-                  <span className={MenuBoolean ? Style.text_all : Style.text}>
-                    {name}
-                  </span>
-                </div>
-              </Link>
+              <span className={MenuBoolean ? Style.text_all : Style.text}>
+                {name}
+              </span>
             </div>
-          ))
-        : "df"}
+          </Link>
+        </div>
+      ))}
     </div>
   );
 };

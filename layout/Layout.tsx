@@ -89,7 +89,16 @@ const Layout = ({ children }: any) => {
     );
   }, [asPath]);
 
+  const menuWidth = useSelector((state: any) => state.SideMenu.menuWidth);
   const childrenRef = React.useRef<HTMLDivElement>(null);
+  // useEffect(() => {
+  //   if (childrenRef.current) {
+  //     const data = childrenRef.current.getBoundingClientRect();
+  //     const width = data.width - menuWidth;
+  
+  //     childrenRef.current.style.maxWidth = `${width}px`;
+  //   }
+  // });
   return (
     <>
       <Head>

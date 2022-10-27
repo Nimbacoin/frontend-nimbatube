@@ -1,23 +1,35 @@
 .container_home {
   width: 380px;
   height: 100%;
-  position: sticky;
+  position: fixed;
   top: 60px;
   z-index: 3;
   background-color: #fff;
-  padding-right: 10px;
+  padding-right: 0;
   min-height: 1000px;
+  left: 0;
 }
 .container_home_avtive {
   min-height: 1000px;
   width: 100px;
   height: 100%;
-  position: sticky;
+  position: fixed;
   top: 60px;
   z-index: 3;
+  left: 0;
   background-color: #fff;
 }
-
+.white_ontainer_home_avtive {
+  width: 100px;
+  height: 100%;
+  background-color: #fff;
+  padding-right: 0;
+}
+.white_ontainer_home {
+  width: 380px;
+  height: 100%;
+  background-color: #fff;
+}
 .all_links_container {
   width: 100%;
   display: flex;
@@ -40,7 +52,6 @@
   height: 100%;
 }
 .all_links {
-  max-height: 600px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -48,7 +59,8 @@
   justify-content: flex-start;
   background-color: #fff;
   overflow-y: auto;
-  border-bottom: solid 1px #dbdbdb;
+  height: 100%;
+  max-height: 600px;
 }
 
 .all_links::-webkit-scrollbar {
@@ -73,7 +85,6 @@
   justify-content: flex-start;
   background-color: #fff;
   overflow-y: hidden;
-  border-bottom: solid 1px #dbdbdb;
 }
 .main_menu_div {
   width: 100%;
@@ -82,6 +93,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-bottom: solid 1px #dbdbdb;
 }
 .link_container {
   padding: 10px 0;

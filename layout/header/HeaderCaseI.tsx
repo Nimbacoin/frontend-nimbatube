@@ -20,9 +20,10 @@ import { IoCompassOutline } from "@react-icons/all-files/io5/IoCompassOutline";
 import { FiSmartphone } from "@react-icons/all-files/fi/FiSmartphone";
 import { FiMenu } from "@react-icons/all-files/fi/FiMenu";
 import { useDispatch, useSelector } from "react-redux";
-import { ToggleMenu } from "../../redux/style-slice/menu/SideMenu";
+import { MenuWidth, ToggleMenu } from "../../redux/style-slice/menu/SideMenu";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import MainMenuDiv from "./MainMenuDiv";
 
 const HeaderCaseI = () => {
   const NavLinks = [
@@ -65,6 +66,7 @@ const HeaderCaseI = () => {
   const { asPath } = useRouter();
   const dispatch = useDispatch();
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
+
   const [UseMenu, setUseMenu] = useState(true);
 
   const HandelToggleMenu = () => {
@@ -117,45 +119,48 @@ const HeaderCaseI = () => {
   const HandelLeave = () => {
     setIsOverfollow(true);
   };
-  const mainMenuDiv = ({ arrayMap }: any) => {
-    return (
-      <div className={Style.main_menu_div}>
-        {NavLinks.map(({ name, link, icon }: any) => (
-          <div
-            key={link}
-            className={
-              asPath === link
-                ? Style.link_container_active
-                : Style.link_container
-            }
-          >
-            <Link href={link}>
-              <div className={MenuBoolean ? Style.link_flex : Style.link}>
-                <span className={Style.icon}>{icon}</span>
-
-                <span className={MenuBoolean ? Style.text_all : Style.text}>
-                  {name}
-                </span>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
-    );
+  const Container = React.useRef<HTMLDivElement | null>(null);
+  const ContainerWhite = React.useRef<HTMLDivElement | null>(null);
+  const handelChangeMenu = () => {
+    if (Container.current) {
+      const data = Container.current.getBoundingClientRect();
+      dispatch(MenuWidth(data.width));
+    }
+    if (Container.current && ContainerWhite.current) {
+      const data = Container.current.getBoundingClientRect();
+      ContainerWhite.current.style.right = `${data.left}px`;
+    }
   };
+  useEffect(() => {
+    if (Container.current) {
+      window.onresize = () => {
+        handelChangeMenu();
+      };
+    }
+    handelChangeMenu();
+  });
 
   return (
-    <>
+    <div
+      ref={ContainerWhite}
+      className={
+        MenuBoolean
+          ? Style.white_ontainer_home_avtive
+          : Style.white_ontainer_home
+      }
+    >
       {(() => {
         if (UseMenu === false) {
           return (
             <div
               onMouseEnter={HandelOver}
               onMouseLeave={HandelLeave}
+              ref={Container}
               className={
                 MenuBoolean ? Style.container_home_avtive : Style.container_home
               }
             >
+              {" "}
               <div
                 className={
                   !IsOverfollow
@@ -163,14 +168,18 @@ const HeaderCaseI = () => {
                     : Style.all_links_overflow_hidden
                 }
               >
-                {mainMenuDiv(samllMenuItem)}
-                {mainMenuDiv(seconMenuItem)}
-              </div>
+                {" "}
+                <MainMenuDiv arrayMap={samllMenuItem} />{" "}
+                {seconMenuItem.length ? (
+                  <MainMenuDiv arrayMap={seconMenuItem} />
+                ) : null}{" "}
+                {/* {mainMenuDiv(samllMenuItem)} {mainMenuDiv(seconMenuItem)} */}{" "}
+              </div>{" "}
             </div>
           );
         }
       })()}
-    </>
+    </div>
   );
 };
 

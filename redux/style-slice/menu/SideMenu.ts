@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   MenuBoolean: false,
+  menuWidth: 0,
 };
 
 export const SideMenu = createSlice({
@@ -11,9 +12,13 @@ export const SideMenu = createSlice({
     ToggleMenu: (state: any) => {
       state.MenuBoolean = !state.MenuBoolean;
     },
+    MenuWidth: (state: any, action: any) => {
+      const playload = action.payload;
+      state.menuWidth = playload;
+    },
   },
 });
 
-export const { ToggleMenu } = SideMenu.actions;
+export const { ToggleMenu, MenuWidth } = SideMenu.actions;
 const AllReducers = SideMenu.reducer;
 export default AllReducers;
