@@ -135,6 +135,7 @@
 @media screen and (max-width: 1100px) {
   .main_container {
     width: 100%;
+    padding: 0;
   }
   .div_scroll_left,
   .div_scroll {
