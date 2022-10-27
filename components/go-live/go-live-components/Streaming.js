@@ -180,6 +180,7 @@ const Streaming = () => {
         )}
 
         <video className={Style.video} muted ref={VideoRef} autoPlay />
+
         <p className={Style.viewers}>
           <IoEyeOutline />
           <span className={Style.file_text_title_bold_viewers}>
@@ -187,6 +188,7 @@ const Streaming = () => {
             {viewers.length} viewers
           </span>
         </p>
+        <div className={Style.div_hover}></div>
       </div>
 
       <div className={Style.video_container_comments}>
