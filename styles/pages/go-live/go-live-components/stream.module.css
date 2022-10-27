@@ -146,9 +146,9 @@
   .video_container_comments {
     position: absolute;
     top: 0;
-    height: 50%;
+    height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.534);
+    background-color: rgba(0, 0, 0, 0);
   }
   .video_container {
     width: 100%;
@@ -169,6 +169,9 @@
     position: fixed;
     background-color: #000;
     bottom: 0;
+  }
+  .div_cooment_top {
+    visibility: hidden;
   }
 }
 @media screen and (max-width: 600px) {
