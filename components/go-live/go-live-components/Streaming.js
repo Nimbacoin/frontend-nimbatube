@@ -201,10 +201,11 @@ const Streaming = () => {
           </span>
         </div>
         <div ref={messagesEndRef} className={Style.comments_main_container}>
-          {liveCommentsVideo?.length &&
-            liveCommentsVideo.map((comment) => (
-              <StreamComment CommentData={comment} />
-            ))}
+          {liveCommentsVideo?.length
+            ? liveCommentsVideo.map((comment) => (
+                <StreamComment CommentData={comment} />
+              ))
+            : null}
         </div>
         <div className={Style.div_input_container}>
           <InputStreamComment VideoId={videoId} />
