@@ -151,6 +151,9 @@ const VideoTag = () => {
             </video>
             <div className={Style.controls_container}>
               <div className={Style.bar_container}>
+                <span className={Style.time_900}>
+                  {timeUpdate + " / " + duration}
+                </span>
                 {timeUpdate > 0 ? (
                   <input
                     ref={redBar}
@@ -186,7 +189,10 @@ const VideoTag = () => {
                   <span className={Style.icon_control}>
                     <IoPlaySkipForward />
                   </span>
-                  <span onClick={handelMuteVid} className={Style.icon_control}>
+                  <span
+                    onClick={handelMuteVid}
+                    className={Style.icon_control_1000}
+                  >
                     {vidMutued ? <IoVolumeMute /> : <IoVolumeMedium />}
                   </span>
                   <input
@@ -201,7 +207,7 @@ const VideoTag = () => {
                   </span>
                 </div>
                 <div className={Style.other_controls}>
-                  <span className={Style.icon_control}>
+                  <span className={Style.icon_control_1000}>
                     <BiFullscreen />
                   </span>
                 </div>
