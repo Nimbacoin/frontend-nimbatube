@@ -96,6 +96,9 @@ const MainVideo = () => {
       Router.push("/auth/sign-in");
     }
   };
+  const handelChannelName = () => {
+    Router.push("/channel/@/" + channelData?._id);
+  };
 
   return (
     <div className={Style.container}>
@@ -108,7 +111,7 @@ const MainVideo = () => {
           className={Style.img}
         ></div>
         <div className={Style.chanel_container}>
-          <span className={Style.chanel_name}>
+          <span onClick={handelChannelName} className={Style.chanel_name}>
             {channelData?.channelData?.name}
           </span>
           <p className={Style.chanel_followers}>

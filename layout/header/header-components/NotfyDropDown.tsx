@@ -14,6 +14,7 @@ const NotfyDropDown = ({ Notification }: any) => {
   const [videoLink, setVideoLink] = useState("");
 
   const hadnelClick = (videoData: any) => {
+    
     Router.push("/watch/watch?watching=true&video=" + videoData?._id);
   };
   return (
