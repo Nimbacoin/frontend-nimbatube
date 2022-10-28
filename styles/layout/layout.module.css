@@ -8,11 +8,22 @@
   justify-content: center;
   background-color: #f9f9f9;
   height: 100%;
-  
 }
 .childen {
   margin-top: 60px;
   z-index: 3;
-  width: 100%;
+  width: 94%;
   height: auto;
+}
+.childen_MenuBoolean {
+  width: 80%;
+  margin-top: 60px;
+  z-index: 3;
+  height: auto;
+}
+@media screen and (max-width: 900px) {
+  .childen_MenuBoolean,
+  .childen {
+    width: 100%;
+  }
 }

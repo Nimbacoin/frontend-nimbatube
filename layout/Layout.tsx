@@ -27,6 +27,9 @@ const Layout = ({ children }: any) => {
   const { asPath } = useRouter();
   const Router = useRouter();
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
+  const MenuBooleanAllOver = useSelector(
+    (state: any) => state.SideMenu.MenuBooleanAllOver
+  );
   const isOver = useSelector((state: any) => state.GenrealStyle.isOver);
   const PopUppBoolean = useSelector((state: any) => state.GenrealStyle.popUpp);
   const copyVideo = useSelector((state: any) => state.GenrealStyle.copyVideo);
@@ -91,12 +94,15 @@ const Layout = ({ children }: any) => {
 
   const menuWidth = useSelector((state: any) => state.SideMenu.menuWidth);
   const childrenRef = React.useRef<HTMLDivElement>(null);
+
   // useEffect(() => {
   //   if (childrenRef.current) {
-  //     const data = childrenRef.current.getBoundingClientRect();
-  //     const width = data.width - menuWidth;
-  
-  //     childrenRef.current.style.maxWidth = `${width}px`;
+  //     window.onresize = () => {
+  //       handelChangeMenu();
+  //     };
+  //   }
+  //   handelChangeMenu();
+  //   if (childrenRef.current) {
   //   }
   // });
   return (
@@ -191,7 +197,11 @@ const Layout = ({ children }: any) => {
         <div
           ref={childrenRef}
           style={{ minHeight: `${Height}px` }}
-          className={Style.childen}
+          className={
+            MenuBoolean && MenuBooleanAllOver
+              ? Style.childen
+              : Style.childen_MenuBoolean
+          }
         >
           {children}
         </div>

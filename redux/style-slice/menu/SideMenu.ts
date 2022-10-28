@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   MenuBoolean: false,
+  menuBooleanAllOver: false,
   menuWidth: 0,
 };
 
@@ -15,6 +16,12 @@ export const SideMenu = createSlice({
     MenuWidth: (state: any, action: any) => {
       const playload = action.payload;
       state.menuWidth = playload;
+    },
+    ToggleMenuOverAll: (state: any, action: any) => {
+      const playload = action.payload;
+      if (playload === "false") {
+        state.MenuBoolean;
+      }
     },
   },
 });

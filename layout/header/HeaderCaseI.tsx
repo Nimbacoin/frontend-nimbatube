@@ -70,7 +70,7 @@ const HeaderCaseI = () => {
   const [UseMenu, setUseMenu] = useState(true);
 
   const HandelToggleMenu = () => {
-    dispatch(ToggleMenu());
+    dispatch(ToggleMenuOverAll());
   };
   useEffect(() => {
     HandelMenu();
@@ -86,6 +86,7 @@ const HeaderCaseI = () => {
     } else {
       if (window.innerWidth <= 900) {
         setUseMenu(true);
+        dispatch(ToggleMenu());
       } else {
         setUseMenu(false);
       }
@@ -113,11 +114,11 @@ const HeaderCaseI = () => {
 
   const HandelOver = () => {
     if (!MenuBoolean) {
-      setIsOverfollow(false);
+      setIsOverfollow(true);
     }
   };
   const HandelLeave = () => {
-    setIsOverfollow(true);
+    setIsOverfollow(false);
   };
   const Container = React.useRef<HTMLDivElement | null>(null);
   const ContainerWhite = React.useRef<HTMLDivElement | null>(null);
@@ -127,8 +128,10 @@ const HeaderCaseI = () => {
       dispatch(MenuWidth(data.width));
     }
     if (Container.current && ContainerWhite.current) {
-      const data = Container.current.getBoundingClientRect();
-      ContainerWhite.current.style.right = `${data.left}px`;
+      const data = ContainerWhite.current.getBoundingClientRect();
+      console.log(data.right);
+      Container.current.style.left = `${data.left}px`;
+      Container.current.style.width = `${data.width}px`;
     }
   };
   useEffect(() => {
@@ -163,7 +166,7 @@ const HeaderCaseI = () => {
               {" "}
               <div
                 className={
-                  !IsOverfollow
+                  IsOverfollow
                     ? Style.all_links
                     : Style.all_links_overflow_hidden
                 }
