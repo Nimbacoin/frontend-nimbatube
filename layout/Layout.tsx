@@ -27,8 +27,8 @@ const Layout = ({ children }: any) => {
   const { asPath } = useRouter();
   const Router = useRouter();
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
-  const MenuBooleanAllOver = useSelector(
-    (state: any) => state.SideMenu.MenuBooleanAllOver
+  const menuBooleanAllOver = useSelector(
+    (state: any) => state.SideMenu.menuBooleanAllOver
   );
   const isOver = useSelector((state: any) => state.GenrealStyle.isOver);
   const PopUppBoolean = useSelector((state: any) => state.GenrealStyle.popUpp);
@@ -94,17 +94,29 @@ const Layout = ({ children }: any) => {
 
   const menuWidth = useSelector((state: any) => state.SideMenu.menuWidth);
   const childrenRef = React.useRef<HTMLDivElement>(null);
+  const handelChangeMenu = () => {
+    if (childrenRef.current) {
+      if (!menuBooleanAllOver) {
+        if (MenuBoolean) {
+        } else {
+          childrenRef.current.className = Style.childen;
+        }
+      } else {
+        childrenRef.current.className = Style.childen_100;
+      }
+    }
+  };
+  useEffect(() => {
+    if (childrenRef.current) {
+      window.onresize = () => {
+        handelChangeMenu();
+      };
+    }
 
-  // useEffect(() => {
-  //   if (childrenRef.current) {
-  //     window.onresize = () => {
-  //       handelChangeMenu();
-  //     };
-  //   }
-  //   handelChangeMenu();
-  //   if (childrenRef.current) {
-  //   }
-  // });
+    if (childrenRef.current) {
+      handelChangeMenu();
+    }
+  });
   return (
     <>
       <Head>
@@ -197,11 +209,7 @@ const Layout = ({ children }: any) => {
         <div
           ref={childrenRef}
           style={{ minHeight: `${Height}px` }}
-          className={
-            MenuBoolean && MenuBooleanAllOver
-              ? Style.childen
-              : Style.childen_MenuBoolean
-          }
+          className={MenuBoolean ? Style.childen : Style.childen_MenuBoolean}
         >
           {children}
         </div>

@@ -20,7 +20,11 @@ import { IoCompassOutline } from "@react-icons/all-files/io5/IoCompassOutline";
 import { FiSmartphone } from "@react-icons/all-files/fi/FiSmartphone";
 import { FiMenu } from "@react-icons/all-files/fi/FiMenu";
 import { useDispatch, useSelector } from "react-redux";
-import { MenuWidth, ToggleMenu } from "../../redux/style-slice/menu/SideMenu";
+import {
+  MenuWidth,
+  ToggleMenu,
+  ToggleMenuOverAll,
+} from "../../redux/style-slice/menu/SideMenu";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import MainMenuDiv from "./MainMenuDiv";
@@ -69,9 +73,6 @@ const HeaderCaseI = () => {
 
   const [UseMenu, setUseMenu] = useState(true);
 
-  const HandelToggleMenu = () => {
-    dispatch(ToggleMenuOverAll());
-  };
   useEffect(() => {
     HandelMenu();
   });
@@ -83,12 +84,14 @@ const HeaderCaseI = () => {
       asPath.includes("/watch/")
     ) {
       setUseMenu(true);
+      dispatch(ToggleMenuOverAll("true"));
     } else {
       if (window.innerWidth <= 900) {
         setUseMenu(true);
-        dispatch(ToggleMenu());
+        dispatch(ToggleMenuOverAll("true"));
       } else {
         setUseMenu(false);
+        dispatch(ToggleMenuOverAll("false"));
       }
     }
   };
@@ -142,7 +145,36 @@ const HeaderCaseI = () => {
     }
     handelChangeMenu();
   });
+  const menuBooleanAllOver = useSelector(
+    (state: any) => state.SideMenu.menuBooleanAllOver
+  );
+  const handelChangeMenuAll = () => {
+    if (ContainerWhite.current) {
+      if (menuBooleanAllOver) {
+        ContainerWhite.current.className = Style.hidden;
+        console.log("hidden");
+      } else {
+        if (MenuBoolean) {
+          ContainerWhite.current.className = Style.white_ontainer_home_avtive;
+          console.log("white_ontainer_home_avtive");
+        } else {
+          ContainerWhite.current.className = Style.white_ontainer_home;
+          console.log("white_ontainer_home");
+        }
+      }
+    }
+  };
+  useEffect(() => {
+    if (ContainerWhite.current) {
+      window.onresize = () => {
+        handelChangeMenuAll();
+      };
+    }
 
+    if (ContainerWhite.current) {
+      handelChangeMenuAll();
+    }
+  });
   return (
     <div
       ref={ContainerWhite}
@@ -152,7 +184,7 @@ const HeaderCaseI = () => {
           : Style.white_ontainer_home
       }
     >
-      {(() => {
+      {/* {(() => {
         if (UseMenu === false) {
           return (
             <div
@@ -171,17 +203,17 @@ const HeaderCaseI = () => {
                     : Style.all_links_overflow_hidden
                 }
               >
-                {" "}
-                <MainMenuDiv arrayMap={samllMenuItem} />{" "}
+            
+             
                 {seconMenuItem.length ? (
                   <MainMenuDiv arrayMap={seconMenuItem} />
-                ) : null}{" "}
-                {/* {mainMenuDiv(samllMenuItem)} {mainMenuDiv(seconMenuItem)} */}{" "}
-              </div>{" "}
+                ) : null}
+                
+              </div>
             </div>
           );
         }
-      })()}
+      })()} */}
     </div>
   );
 };
