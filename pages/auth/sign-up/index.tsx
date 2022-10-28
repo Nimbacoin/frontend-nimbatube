@@ -63,7 +63,19 @@ const SignUp = () => {
           // sessionStorage.setItem("user", JSON.stringify(res.user));
           dispatch(UserSignedIn(res.user));
           setResMessage(res.message);
-          Router.push("/");
+          const HandelSubmiteInitChannel = async (e: any) => {
+            const ReqData: any = { general: "", images: "" };
+            await basedPostUrlRequestLogedIn(
+              "/api/post/channel/init-channel/",
+              ReqData
+            ).then((res) => {
+              if (res?.responsData) {
+                Router.push(
+                  "/channel/create-new-channel/" + res?.responsData?._id
+                );
+              }
+            });
+          };
         } else if (!res.user && res.message) {
           setError(res.message);
           errors.map(({ name, value }) => {

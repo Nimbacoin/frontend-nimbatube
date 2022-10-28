@@ -20,7 +20,7 @@ import { FiMenu } from "@react-icons/all-files/fi/FiMenu";
 const NavLinks = [
   { name: "Home", link: "/", icon: <IoHomeOutline /> },
   { name: "Following", link: "/following", icon: <IoHeartOutline /> },
-  { name: "Premium", link: "/premium", icon: <IoRibbonOutline /> },
+  // { name: "Premium", link: "/premium", icon: <IoRibbonOutline /> },
   { name: "Watch Later", link: "/watch-later", icon: <IoTimeOutline /> },
   { name: "Favorites", link: "/favorites", icon: <IoStarOutline /> },
 
