@@ -8,6 +8,7 @@ import { IoWarningOutline } from "@react-icons/all-files/io5/IoWarningOutline";
 import { UserSignedIn } from "../../../redux/user-slice/UserSignIn";
 import Cookies from "js-cookie";
 import basedGetUrlRequest from "../../../utils/basedGetUrlRequest";
+import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
 
 const errors = [
   {
@@ -76,6 +77,7 @@ const SignUp = () => {
               }
             });
           };
+          HandelSubmiteInitChannel()
         } else if (!res.user && res.message) {
           setError(res.message);
           errors.map(({ name, value }) => {
