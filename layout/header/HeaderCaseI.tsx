@@ -184,7 +184,7 @@ const HeaderCaseI = () => {
           : Style.white_ontainer_home
       }
     >
-      {/* {(() => {
+      {(() => {
         if (UseMenu === false) {
           return (
             <div
@@ -203,17 +203,18 @@ const HeaderCaseI = () => {
                     : Style.all_links_overflow_hidden
                 }
               >
-            
-             
+                {samllMenuItem.length ? (
+                  <MainMenuDiv arrayMap={samllMenuItem} />
+                ) : null}
+
                 {seconMenuItem.length ? (
                   <MainMenuDiv arrayMap={seconMenuItem} />
                 ) : null}
-                
               </div>
             </div>
           );
         }
-      })()} */}
+      })()}
     </div>
   );
 };
