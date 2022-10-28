@@ -64,7 +64,7 @@ const SignUp = () => {
           // sessionStorage.setItem("user", JSON.stringify(res.user));
           dispatch(UserSignedIn(res.user));
           setResMessage(res.message);
-          const HandelSubmiteInitChannel = async (e: any) => {
+          const HandelSubmiteInitChannel = async () => {
             const ReqData: any = { general: "", images: "" };
             await basedPostUrlRequestLogedIn(
               "/api/post/channel/init-channel/",
@@ -77,7 +77,7 @@ const SignUp = () => {
               }
             });
           };
-          HandelSubmiteInitChannel()
+          HandelSubmiteInitChannel();
         } else if (!res.user && res.message) {
           setError(res.message);
           errors.map(({ name, value }) => {
