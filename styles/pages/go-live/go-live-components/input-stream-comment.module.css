@@ -14,7 +14,7 @@
 }
 .reply_input {
   width: 100%;
-  background-color: transparent;
+  background-color: #fff;
   margin: 0;
   padding: 0 10px;
   border: none;
@@ -62,7 +62,7 @@
   background-color: #673de6;
 }
 @media screen and (max-width: 900px) {
-  .comment_btn {
+  /* .comment_btn {
     font-size: 13px;
     font-weight: 400;
     border-left: 1px solid #fff;
@@ -70,7 +70,7 @@
     height: 80%;
     padding: 0px 7px;
   }
-.reply_input {
-color : #fff;
-}
+  .reply_input {
+    color: #fff;
+  } */
 }
