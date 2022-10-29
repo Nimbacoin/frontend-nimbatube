@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import AxiosPostLogedInFormData from "../../../../utils/AxiosPostLogedInFormData";
 import { poPUppRedcuer } from "../../../../redux/style-slice/general-style/GenrealStyle";
 import InputText from "../../../modals/InputText";
+import TextArea from "../../../modals/TextArea";
 
 const NewGeneral = () => {
   const { asPath } = useRouter();
@@ -46,16 +47,25 @@ const NewGeneral = () => {
       setdescription(e.target.value);
     }
   };
+  const HandelChangeName = (e: any) => {
+    dispatch(
+      ActionGenaralChanging({ id: "input_name", input_name: e.target.value })
+    );
+  };
   const HandelChangeTilte = (e: any) => {
-    if (e.target.id === "input_title") {
-      settitle(e.target.value);
-      dispatch(
-        ActionGenaralChanging({
-          id: "input_title",
-          input_title: e.target.value,
-        })
-      );
-    }
+    settitle(e.target.value);
+    dispatch(
+      ActionGenaralChanging({
+        id: "input_title",
+        input_title: e.target.value,
+      })
+    );
+  };
+  const handelChangeDesc = (e: any) => {
+    dispatch(
+      ActionGenaralChanging({ id: "text_desc", text_desc: e.target.value })
+    );
+    setdescription(e.target.value);
   };
   const HandelCancel = () => {
     settitle("");
@@ -89,18 +99,8 @@ const NewGeneral = () => {
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
         <div className={Style.upload_input}>
-          <p className={Style.upload_file}>Name</p>
-          <label htmlFor="input_name" className={Style.input_label}>
-            <input
-              onChange={HandelChange}
-              id="input_name"
-              type="text"
-              value={name}
-              className={Style.input_title}
-            />
-          </label>
           <InputText
-            HandelChange={HandelChangeTilte}
+            HandelChange={HandelChangeName}
             Text={"Title"}
             Placeholder="enter your channel name"
           />
@@ -123,17 +123,11 @@ const NewGeneral = () => {
             />
           </label>
         </div> */}
-        <div className={Style.upload_input}>
-          <p className={Style.upload_file}>Description</p>
-          <label htmlFor="text_desc" className={Style.label_description}>
-            <textarea
-              onChange={HandelChange}
-              id="text_desc"
-              value={description}
-              className={Style.text_desc}
-            />
-          </label>
-        </div>
+        <TextArea
+          HandelChange={handelChangeDesc}
+          Text={"Description"}
+          Placeholder="Description"
+        />
         <div className={Style.div_button_action}>
           <button
             style={{ backgroundColor: ChannelCreated ? "" : "#cccccc" }}

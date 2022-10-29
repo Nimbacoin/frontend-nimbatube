@@ -29,7 +29,8 @@ const HeaderCaseI = () => {
       asPath.includes("/sign-in") ||
       asPath.includes("/chanel/new") ||
       asPath.includes("/sign-up") ||
-      asPath.includes("/watch/")
+      asPath.includes("/watch/") ||
+      asPath.includes("/channel/create-new-channel/")
     ) {
       setUseMenu(true);
       dispatch(ToggleMenuOverAll("true"));
