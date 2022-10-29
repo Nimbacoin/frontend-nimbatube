@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import AxiosPostLogedInFormData from "../../../../utils/AxiosPostLogedInFormData";
 import NormalText from "../../../modals/NormalText";
 import BoldText from "../../../modals/BoldText";
+import TextTilteInputMudum from "../../../modals/TextTilteInputMudum";
 const ProfileDate = () => {
   const coverRef = React.useRef<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
@@ -203,7 +204,7 @@ const ProfileDate = () => {
       </div>
       <div className={Style.second_div_channel_info}>
         <div className={Style.container_top}>
-          <BoldText text={"Create a Channel    > " + linkName} />
+          <TextTilteInputMudum Text={"Create a Channel    > " + linkName} />
           <NormalText
             Text={
               "Your Channel is where people go to learn more about you. Make sure yours has all the information they may need."
