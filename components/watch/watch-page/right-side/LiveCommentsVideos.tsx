@@ -2,14 +2,14 @@ import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import io from "socket.io-client";
-
 import Style from "../../../../styles/pages/watch/rightside/live-comments-videos.module.css";
 import { IoEyeOutline } from "@react-icons/all-files/io5/IoEyeOutline";
 import StreamComment from "../../../go-live/go-live-components/StreamComment";
 import InputStreamComment from "../../../go-live/go-live-components/InputStreamComment";
 import { liveVideoLive } from "../../../../redux/video-slice/VideoSlice";
 import basedGetUrlRequest from "../../../../utils/basedGetUrlRequest";
-
+import BoldText from "../../../modals/BoldText";
+import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 const SOCKEtT_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL;
 
 const LiveCommentsVideos = () => {
@@ -28,6 +28,7 @@ const LiveCommentsVideos = () => {
   }, [asPath]);
 
   const [Comments, setComments] = useState([]);
+
   useEffect(() => {
     let Params = new URL(window.location.href).searchParams;
     const video = Params.get("video");
@@ -81,12 +82,17 @@ const LiveCommentsVideos = () => {
     };
     scrollToBottomWithSmoothScroll();
   }, [liveCommentsVideo]);
+  const [isPhone, setIsPhone] = useState(false);
+  const handelCloseMenu = () => {
+    setIsPhone(!isPhone);
+  };
   return (
-    <div className={Style.container}>
+    <div className={!isPhone ? Style.container : Style.container_phone}>
       <div className={Style.div_cooment_top}>
-        <span className={Style.file_text_title_bold}>
-          Comments : {liveCommentsVideo?.length}
-        </span>
+        <BoldText text={"Comments: " + liveCommentsVideo?.length} />
+        <button onClick={handelCloseMenu} className={Style.close_button}>
+          <IoCloseOutline />
+        </button>
       </div>
 
       <div ref={messagesEndRef} className={Style.comments_container}>
