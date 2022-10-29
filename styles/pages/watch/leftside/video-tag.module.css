@@ -50,8 +50,8 @@
 .seekBar {
   width: 100%;
   height: 2.5px;
-
   cursor: pointer;
+  border-radius: 0;
 }
 .seekBar[type="range"] {
   width: 100%;
@@ -80,7 +80,6 @@
   width: 100%;
   height: auto;
   cursor: pointer;
-  
 }
 .controlrs {
   width: 100%;

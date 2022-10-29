@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import AxiosPostLogedInFormData from "../../../../utils/AxiosPostLogedInFormData";
 import { poPUppRedcuer } from "../../../../redux/style-slice/general-style/GenrealStyle";
+import InputText from "../../../modals/InputText";
 
 const NewGeneral = () => {
   const { asPath } = useRouter();
@@ -43,6 +44,17 @@ const NewGeneral = () => {
         ActionGenaralChanging({ id: "text_desc", text_desc: e.target.value })
       );
       setdescription(e.target.value);
+    }
+  };
+  const HandelChangeTilte = (e: any) => {
+    if (e.target.id === "input_title") {
+      settitle(e.target.value);
+      dispatch(
+        ActionGenaralChanging({
+          id: "input_title",
+          input_title: e.target.value,
+        })
+      );
     }
   };
   const HandelCancel = () => {
@@ -87,9 +99,19 @@ const NewGeneral = () => {
               className={Style.input_title}
             />
           </label>
+          <InputText
+            HandelChange={HandelChangeTilte}
+            Text={"Title"}
+            Placeholder="enter your channel name"
+          />
           <p className={Style.text}>This field cannot be changed.</p>
         </div>
-        <div className={Style.upload_input}>
+        <InputText
+          HandelChange={HandelChangeTilte}
+          Text={"Title"}
+          Placeholder="enter your channel title"
+        />
+        {/* <div className={Style.upload_input}>
           <p className={Style.upload_file}>Tilte</p>
           <label htmlFor="input_title" className={Style.input_label}>
             <input
@@ -100,7 +122,7 @@ const NewGeneral = () => {
               className={Style.input_title}
             />
           </label>
-        </div>
+        </div> */}
         <div className={Style.upload_input}>
           <p className={Style.upload_file}>Description</p>
           <label htmlFor="text_desc" className={Style.label_description}>

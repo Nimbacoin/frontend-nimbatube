@@ -10,6 +10,7 @@ import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLog
 import { ImagesReducer } from "../../../../redux/channel-slice/ChannelSlice";
 import { useRouter } from "next/router";
 import AxiosPostLogedInFormData from "../../../../utils/AxiosPostLogedInFormData";
+import NormalText from "../../../modals/NormalText";
 const ProfileDate = () => {
   const coverRef = React.useRef<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
@@ -184,7 +185,16 @@ const ProfileDate = () => {
           </ul>
         </div>
       </div>
-      {HandelLinkContent()}
+      <div className={Style.second_div_channel_info}>
+        Create a Page .
+        <NormalText
+          Text={
+            "Your Page is where people go to learn more about you. Make sure yours has all the information they may need."
+          }
+        />
+        {HandelLinkContent()}
+      </div>
+      {/* {HandelLinkContent()} */}
     </div>
   );
 };

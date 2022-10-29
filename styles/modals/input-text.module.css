@@ -35,6 +35,11 @@
   font-size: 16px;
   color: #030303;
 }
+.norml_text {
+  font-weight: 400;
+  font-size: 16px;
+  color: #030303;
+}
 .label_description {
   display: flex;
   flex-direction: row;

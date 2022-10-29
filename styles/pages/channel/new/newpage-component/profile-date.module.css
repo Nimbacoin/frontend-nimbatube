@@ -1,19 +1,33 @@
 .container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: inherit;
-  row-gap: 20px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  column-gap: 20px;
   width: 100%;
 }
+
 .container_main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 100%;
+  width: 70%;
   box-shadow: #00000017 0px 3px 12px;
   border-radius: 10px;
+  order: 1;
+}
+.second_div_channel_info {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 30%;
+  box-shadow: #00000017 0px 3px 12px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
 }
 .upload_inputs_container {
   height: 250px;
