@@ -101,6 +101,9 @@
     width: 100%;
     background-color: #fff;
   }
+  .search_button {
+    display: none;
+  }
   .container:last-of-type {
     margin-left: auto;
     /* margin-bottom: auto; */
