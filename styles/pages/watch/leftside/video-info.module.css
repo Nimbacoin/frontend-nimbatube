@@ -256,13 +256,15 @@
   .date {
     font-size: 12px;
   }
-  .icons_container {
+  .icons_container,
+  .icons_second_container {
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
+
   .icon {
     display: flex;
     flex-direction: column;
