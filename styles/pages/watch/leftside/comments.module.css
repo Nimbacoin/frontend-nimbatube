@@ -450,7 +450,7 @@
     width: 100%;
   }
   .chanel {
-    border-top: 1px solid #dbdbdb;
+    /* border-top: 1px solid #dbdbdb; */
     border-bottom: none;
   }
 }
