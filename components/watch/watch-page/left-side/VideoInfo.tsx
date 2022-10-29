@@ -99,37 +99,39 @@ const VideoInfo = () => {
           <IoIosArrowDown />
         </button>
       </div>
+      <span className={Style.date_phone}>
+        {videoData?.views?.length} views -{" "}
+        {moment(videoData?.createdAt).startOf("hour").fromNow()}
+      </span>
       <div className={Style.data_container}>
         <span className={Style.date}>
           {videoData?.views?.length} views -{" "}
           {moment(videoData?.createdAt).startOf("hour").fromNow()}
         </span>
         <div className={Style.icons_container}>
-          <div className={Style.icons_second_container}>
-            <p className={Style.icon} onClick={HandelLike}>
-              {IsLiked ? <AiFillLike /> : <AiOutlineLike />}
-              <span className={Style.nubmer_of_likes}>{videoLikes}</span>
-            </p>
-            <p className={Style.icon} onClick={HandelDisLike}>
-              {IsDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}
-              <span className={Style.disLike}>Dislike</span> {videoDisLikes}
-            </p>
-            <p className={Style.icon}>
-              <FcCircuit />
-              Support
-            </p>
-            <p onClick={handelShareVideo} className={Style.icon}>
-              <IoArrowRedoOutline />
-              Share
-            </p>
-            <p onClick={handelPlayList} className={Style.icon}>
-              <RiPlayListAddFill />
-              Save
-            </p>
-            <p className={Style.icon}>
-              <IoEllipsisHorizontalSharp />
-            </p>
-          </div>
+          <p className={Style.icon} onClick={HandelLike}>
+            {IsLiked ? <AiFillLike /> : <AiOutlineLike />}
+            <span className={Style.nubmer_of_likes}>{videoLikes}</span>
+          </p>
+          <p className={Style.icon} onClick={HandelDisLike}>
+            {IsDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}
+            <span className={Style.disLike}>Dislike</span> {videoDisLikes}
+          </p>
+          <p className={Style.icon}>
+            <FcCircuit />
+            Support
+          </p>
+          <p onClick={handelShareVideo} className={Style.icon}>
+            <IoArrowRedoOutline />
+            Share
+          </p>
+          <p onClick={handelPlayList} className={Style.icon}>
+            <RiPlayListAddFill />
+            Save
+          </p>
+          <p className={Style.icon}>
+            <IoEllipsisHorizontalSharp />
+          </p>
         </div>
       </div>
     </div>
