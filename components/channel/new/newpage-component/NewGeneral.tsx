@@ -111,18 +111,6 @@ const NewGeneral = () => {
           Text={"Title"}
           Placeholder="enter your channel title"
         />
-        {/* <div className={Style.upload_input}>
-          <p className={Style.upload_file}>Tilte</p>
-          <label htmlFor="input_title" className={Style.input_label}>
-            <input
-              id="input_title"
-              onChange={HandelChange}
-              type="text"
-              value={title}
-              className={Style.input_title}
-            />
-          </label>
-        </div> */}
         <TextArea
           HandelChange={handelChangeDesc}
           Text={"Description"}
