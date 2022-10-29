@@ -278,7 +278,7 @@
     align-items: center;
     justify-content: space-between;
     min-width: 100%;
-    column-gap: 30px;
+    column-gap: 40px;
   }
   .icon {
     display: flex;
