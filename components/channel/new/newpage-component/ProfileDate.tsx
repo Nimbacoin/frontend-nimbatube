@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "../../../../styles/pages/channel/new/newpage-component/profile-date.module.css";
 import { IoCameraOutline } from "@react-icons/all-files/io5/IoCameraOutline";
 import NewGeneral from "./NewGeneral";
@@ -11,6 +11,7 @@ import { ImagesReducer } from "../../../../redux/channel-slice/ChannelSlice";
 import { useRouter } from "next/router";
 import AxiosPostLogedInFormData from "../../../../utils/AxiosPostLogedInFormData";
 import NormalText from "../../../modals/NormalText";
+import BoldText from "../../../modals/BoldText";
 const ProfileDate = () => {
   const coverRef = React.useRef<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const ProfileDate = () => {
   const Bg = "/images/default-profile.png";
 
   const [LinkKey, setLinkKey] = useState("general");
+  const [linkName, setLinkName] = useState("General");
   const HandelClick = (key: string) => {
     setLinkKey(key);
   };
@@ -42,6 +44,20 @@ const ProfileDate = () => {
       return <Other />;
     }
   };
+  useEffect(() => {
+    const HandelLinkContentName = () => {
+      if (LinkKey === "general") {
+        setLinkName("General");
+      } else if (LinkKey === "credit-details") {
+        setLinkName("Credit Details");
+      } else if (LinkKey === "tags") {
+        setLinkName("tags");
+      } else if (LinkKey === "other") {
+        setLinkName("other");
+      }
+    };
+    HandelLinkContentName();
+  }, [LinkKey]);
 
   const Path = React.useRef(null);
 
@@ -186,12 +202,14 @@ const ProfileDate = () => {
         </div>
       </div>
       <div className={Style.second_div_channel_info}>
-        Create a Page .
-        <NormalText
-          Text={
-            "Your Page is where people go to learn more about you. Make sure yours has all the information they may need."
-          }
-        />
+        <div className={Style.container_top}>
+          <BoldText text={"Create a Channel    > " + linkName} />
+          <NormalText
+            Text={
+              "Your Channel is where people go to learn more about you. Make sure yours has all the information they may need."
+            }
+          />
+        </div>
         {HandelLinkContent()}
       </div>
       {/* {HandelLinkContent()} */}
