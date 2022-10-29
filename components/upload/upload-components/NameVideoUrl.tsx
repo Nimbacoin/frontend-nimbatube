@@ -174,7 +174,11 @@ const NameVideoUrl = () => {
             </p>
           </div>
         )}
-        <InputText Text={"Title"} Placeholder="enter your video title" />
+        <InputText
+          HandelChange={handelChangeTitle}
+          Text={"Title"}
+          Placeholder="enter your video title"
+        />
         <TextArea
           HandelChange={handelChangeDesc}
           Text={"Description"}
