@@ -78,6 +78,9 @@
 .notfy_drop_down {
   position: relative;
 }
+.div_searching {
+  display: none;
+}
 @media screen and (max-width: 900px) {
   .container {
     width: 50%;

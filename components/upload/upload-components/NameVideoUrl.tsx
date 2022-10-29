@@ -7,6 +7,8 @@ import AxiosPostLogedInFormData from "../../../utils/AxiosPostLogedInFormData";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionVideoDataChanging } from "../../../redux/video-slice/VideoSlice";
 import { useRouter } from "next/router";
+import InputText from "../../modals/InputText";
+import TextArea from "../../modals/TextArea";
 const NameVideoUrl = () => {
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
@@ -172,27 +174,12 @@ const NameVideoUrl = () => {
             </p>
           </div>
         )}
-        <div className={Style.upload_input}>
-          <p className={Style.upload_file}>Tilte</p>
-          <label htmlFor="title" className={Style.input_label}>
-            <input
-              id="title"
-              onChange={handelChangeTitle}
-              type="text"
-              className={Style.input_title}
-            />
-          </label>
-        </div>
-        <div className={Style.upload_input}>
-          <p className={Style.upload_file}>Description</p>
-          <label htmlFor="text_desc" className={Style.label_description}>
-            <textarea
-              id="text_desc"
-              onChange={handelChangeDesc}
-              className={Style.text_desc}
-            />
-          </label>
-        </div>
+        <InputText Text={"Title"} Placeholder="enter your video title" />
+        <TextArea
+          HandelChange={handelChangeDesc}
+          Text={"Description"}
+          Placeholder="Description"
+        />
       </div>
     </div>
   );
