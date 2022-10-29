@@ -11,3 +11,29 @@
   background-color: #000;
   margin-top: 0px;
 }
+.blue_button {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #030303;
+  cursor: pointer;
+  color: #fff;
+  min-width: 100px;
+  border-radius: 20px;
+  padding: 8px 5px;
+  background-color: #673de6;
+  margin-top: 0px;
+}
+.cancel_button {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #030303;
+  cursor: pointer;
+  min-width: 100px;
+  border-radius: 20px;
+  padding: 8px 5px;
+  background-color: #ffffff;
+  margin-top: 0px;
+  border: 1px solid #dbdbdb;
+}

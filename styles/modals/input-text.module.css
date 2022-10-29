@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  row-gap: 10px;
+  row-gap: 5px;
 }
 .input_label {
   display: flex;
@@ -31,17 +31,28 @@
   border-radius: 20px;
 }
 .text {
-  
   font-size: 14.5px;
   font-weight: 500;
   line-height: 20px;
   color: #030303;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: start;
+  white-space: wrap;
 }
 .norml_text {
   font-weight: 400;
   font-size: 15px;
   color: #030303;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: start;
+  white-space: wrap;
 }
 .label_description {
   display: flex;
@@ -76,6 +87,16 @@
   box-shadow: #00000017 0px 3px 12px;
 }
 
+.small_text_back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: start;
+  white-space: wrap;
+  font-size: 14px;
+  color: #030303;
+}
 @media screen and (max-width: 900px) {
   .upload_input {
     width: 100%;

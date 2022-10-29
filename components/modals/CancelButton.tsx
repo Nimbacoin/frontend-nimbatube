@@ -1,6 +1,6 @@
 import React from "react";
 import Style from "../../styles/modals/button-black.module.css";
-const BlueButton = ({ HandelClick, Text }: any) => {
+const CancelButton = ({ HandelClick, Text }: any) => {
   return (
     <button
       onClick={() => {
@@ -8,11 +8,11 @@ const BlueButton = ({ HandelClick, Text }: any) => {
           HandelClick();
         }
       }}
-      className={Style.blue_button}
+      className={Style.cancel_button}
     >
       {Text ? Text : "submit"}
     </button>
   );
 };
 
-export default BlueButton;
+export default CancelButton;
