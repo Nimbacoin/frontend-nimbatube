@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Style from "../../../../styles/pages/watch/leftside/descreption.module.css";
 import { IoEllipsisHorizontalSharp } from "@react-icons/all-files/io5/IoEllipsisHorizontalSharp";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
@@ -7,6 +7,10 @@ import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo
 import moment from "moment";
 
 const Descreption = ({ VideoData }: any) => {
+  const videoData = useSelector(
+    (state: any) => state.VideoSlice.mainVideoDataWatch?.responseData
+  );
+  const [videoLikes, setVideoLikes] = useState<number>(videoData?.likes?.likes);
   const DescreptionBoolean = useSelector(
     (state: any) => state.MainVideo.DescreptionBoolean
   );
@@ -41,9 +45,7 @@ const Descreption = ({ VideoData }: any) => {
         <span className={Style.title}>{Title}</span>
         <div className={Style.video_data_container}>
           <p className={Style.video_data_items}>
-            <strong className={Style.strong_data}>
-              {VideoData?.likes?.length}
-            </strong>
+            <strong className={Style.strong_data}>{videoLikes}</strong>
             <small className={Style.small_data}>Likes</small>
           </p>
           <p className={Style.video_data_items}>

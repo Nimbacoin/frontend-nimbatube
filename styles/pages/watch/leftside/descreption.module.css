@@ -37,7 +37,7 @@
   padding: 20px 10px;
   overflow-y: auto;
 }
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1000px) {
   .container {
     height: auto;
     display: none;
@@ -78,6 +78,7 @@
     justify-content: center;
     width: 100%;
     min-height: 50px;
+    border-bottom: 1px solid #dbdbdb;
   }
   .close_rect {
     width: 50px;
@@ -117,6 +118,7 @@
     justify-content: flex-start;
     /* border-bottom: 1px solid #dbdbdb; */
     padding: 10px 0;
+    border-bottom: 1px solid #dbdbdb;
   }
   .video_data_container {
     width: 100%;
