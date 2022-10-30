@@ -134,9 +134,7 @@ const ProfileDate = () => {
       <div className={Style.container_main}>
         <div
           ref={coverRef}
-          // style={{
-          //   backgroundImage: previewSourceCover && `url(${previewSourceCover})`,
-          // }}
+          style={{}}
           className={Style.upload_inputs_container}
         >
           {previewSourceCover !== "" && (
@@ -145,7 +143,6 @@ const ProfileDate = () => {
 
           <label htmlFor="cover" className={Style.input_label}>
             <input
-              // onChange={handleFileInputChangeCover}
               onChange={readImageCover}
               id="cover"
               type="file"
@@ -158,7 +155,13 @@ const ProfileDate = () => {
           </label>
           <label htmlFor="profile" className={Style.image_name_conainer}>
             <div className={Style.profile_image_container}>
-              <div className={Style.profile_image} ref={previewSourceProfile}>
+              <div
+                className={Style.profile_image}
+                style={{
+                  backgroundImage: `url(${"/images/default-profile.png"})`,
+                }}
+                ref={previewSourceProfile}
+              >
                 <label htmlFor="profile" className={Style.input_label}>
                   <input
                     onChange={readImageProfile}
@@ -176,16 +179,16 @@ const ProfileDate = () => {
           </label>
         </div>
         <div className={Style.links_container}>
-          <span className={Style.name_contanier}>
+          <p className={Style.name_contanier}>
             <span className={Style.name}>
-              {general.name && general.name.slice(0, 40)}
-              {general.name && general.name.length > 40 && "..."}
+              {general.name && general.name.slice(0, 30)}
+              {general.name && general.name.length > 30 && "..."}
             </span>
             <span className={Style.title}>
               {general.title && general.title.slice(0, 40)}
               {general.title && general.title.length > 40 && "..."}
             </span>
-          </span>
+          </p>
 
           <ul className={Style.channel_links}>
             {UlLinks.map(({ name, key }) => (
@@ -201,7 +204,9 @@ const ProfileDate = () => {
             ))}
           </ul>
         </div>
+        
       </div>
+
       <div className={Style.second_div_channel_info}>
         <div className={Style.container_top}>
           <TextTilteInputMudum Text={"Create a Channel    > " + linkName} />
@@ -213,7 +218,6 @@ const ProfileDate = () => {
         </div>
         {HandelLinkContent()}
       </div>
-      {/* {HandelLinkContent()} */}
     </div>
   );
 };

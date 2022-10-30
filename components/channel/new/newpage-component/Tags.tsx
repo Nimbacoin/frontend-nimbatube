@@ -7,6 +7,7 @@ import { IoAddOutline } from "@react-icons/all-files/io5/IoAddOutline";
 
 import Style from "../../../../styles/pages/channel/new/newpage-component/tags.module.css";
 import Link from "next/link";
+import InputText from "../../../modals/InputText";
 
 const Tags = () => {
   return (
@@ -63,10 +64,11 @@ const Tags = () => {
           </div>
         </div>
         <div className={Style.upload_input}>
-          <p className={Style.upload_file}>Add Tags</p>
-          <label htmlFor="input_title" className={Style.input_label}>
-            <input id="input_title" type="text" className={Style.input_title} />
-          </label>
+          <InputText
+            // HandelChange={HandelChangeTilte}
+            Text={"Add Tags"}
+            Placeholder="enter your Tags"
+          />
         </div>
         <div className={Style.upload_input}>
           <p className={Style.upload_file}>Known Tags</p>

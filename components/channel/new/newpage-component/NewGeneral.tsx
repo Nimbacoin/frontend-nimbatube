@@ -12,6 +12,8 @@ import AxiosPostLogedInFormData from "../../../../utils/AxiosPostLogedInFormData
 import { poPUppRedcuer } from "../../../../redux/style-slice/general-style/GenrealStyle";
 import InputText from "../../../modals/InputText";
 import TextArea from "../../../modals/TextArea";
+import CancelButton from "../../../modals/CancelButton";
+import BlueButton from "../../../modals/BlueButton";
 
 const NewGeneral = () => {
   const { asPath } = useRouter();
@@ -117,16 +119,8 @@ const NewGeneral = () => {
           Placeholder="Description"
         />
         <div className={Style.div_button_action}>
-          <button
-            style={{ backgroundColor: ChannelCreated ? "" : "#cccccc" }}
-            onClick={HandelSubmiteNewGeneral}
-            className={Style.button_action}
-          >
-            Submit
-          </button>
-          <button className={Style.button_action_add} onClick={HandelCancel}>
-            Cancel{" "}
-          </button>
+          <BlueButton HandelClick={HandelSubmiteNewGeneral} Text={"Submit"} />
+          <CancelButton HandelClick={HandelCancel} Text={"Cancel"} />
         </div>
       </div>
     </div>
