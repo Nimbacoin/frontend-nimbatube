@@ -103,7 +103,7 @@ const NewGeneral = () => {
         <div className={Style.upload_input}>
           <InputText
             HandelChange={HandelChangeName}
-            Text={"Title"}
+            Text={"Name"}
             Placeholder="enter your channel name"
           />
           <p className={Style.text}>This field cannot be changed.</p>

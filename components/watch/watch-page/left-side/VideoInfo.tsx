@@ -10,6 +10,7 @@ import { IoArrowRedoOutline } from "@react-icons/all-files/io5/IoArrowRedoOutlin
 import { RiPlayListAddFill } from "@react-icons/all-files/ri/RiPlayListAddFill";
 import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
 import { FcCircuit } from "@react-icons/all-files/fc/FcCircuit";
+import { GoCommentDiscussion } from "@react-icons/all-files/go/GoCommentDiscussion";
 
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
@@ -20,7 +21,7 @@ import {
   playListRedcuer,
 } from "../../../../redux/style-slice/general-style/GenrealStyle";
 
-const VideoInfo = () => {
+const VideoInfo = ({ ActiveVideoStream }: any) => {
   const videoData = useSelector(
     (state: any) => state.VideoSlice.mainVideoDataWatch?.responseData
   );
@@ -117,6 +118,13 @@ const VideoInfo = () => {
             {IsDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}
             <span className={Style.disLike}>Dislike</span> {videoDisLikes}
           </p>
+          {!ActiveVideoStream && (
+            <p className={Style.icon_comments}>
+              <GoCommentDiscussion />
+              Live Comments
+            </p>
+          )}
+
           <p className={Style.icon}>
             <FcCircuit />
             Support

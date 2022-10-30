@@ -104,7 +104,7 @@ const MainVideo = () => {
     <div className={Style.container}>
       {!ActiveVideo && <LiveVideo />}
       {ActiveVideo && <VideoTag />}
-      <VideoInfo />
+      <VideoInfo ActiveVideoStream={ActiveVideo}/>
       <div className={Style.chanel}>
         <div
           style={{ backgroundImage: `url(${Bg})` }}
