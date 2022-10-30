@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.481);
+  background-color: rgba(0, 0, 0, 0.656);
   z-index: 10;
   top: 0;
   left: 0;
@@ -23,7 +23,6 @@
   top: 50%;
   transform: translate(-50%, -50%);
   max-width: 2000px;
-
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -40,6 +39,7 @@
   justify-content: center;
   align-items: flex-start;
   row-gap: 10px;
+  box-shadow: #00000017 0px 3px 12px;
 }
 .text_container {
   width: 100%;
@@ -63,7 +63,7 @@
   font-size: 14px;
   color: #030303;
   outline: none;
-  padding: 5px;
+  padding: 0px;
 }
 .link {
   width: 90%;
@@ -94,7 +94,7 @@
   background-color: #673de6;
   height: 100%;
   padding: 0 20px;
-  border-radius: 20px;
+  border-radius: 0 20px 20px 0;
   display: flex;
   flex-direction: row;
   align-items: center;

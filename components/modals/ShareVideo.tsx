@@ -33,12 +33,10 @@ const ShareVideo = () => {
               </button>
             </div>
             <div className={Style.link_container}>
-              <div className={Style.main_link_container}>
-                <p className={Style.link}>
-                  {process.env.NEXT_PUBLIC_ClIENT_URL + asPath}
-                </p>
-                <span className={Style.dots}>...</span>
-              </div>
+              <input
+                value={process.env.NEXT_PUBLIC_ClIENT_URL + asPath}
+                className={Style.main_link_container}
+              />
 
               <button onClick={copyToClipboard} className={Style.button_copy}>
                 Copy
