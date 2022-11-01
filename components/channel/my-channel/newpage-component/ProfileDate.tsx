@@ -98,7 +98,7 @@ const ProfileDate = ({ ChannelData }: any) => {
               </div>
               <div className={Style.data_channel_container}>
                 <span className={Style.name}> {Name} </span>
-                <span className={Style.title}> {Title} </span>
+                <span className={Style.title}> @{Title} </span>
 
                 <ButtonBlack />
               </div>

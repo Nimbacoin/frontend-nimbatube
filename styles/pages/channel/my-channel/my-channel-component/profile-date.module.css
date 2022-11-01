@@ -5,6 +5,7 @@
   justify-content: inherit;
   row-gap: 20px;
   width: 100%;
+  /* overflow: scroll; */
 }
 .container_main {
   display: flex;
@@ -90,9 +91,11 @@
   transform: translateY(-50%);
 }
 .channel_data_followrs {
+  width: 100%;
   display: flex;
   flex-direction: row;
   column-gap: 20px;
+  overflow: auto;
 }
 .container_data_item {
   display: flex;
@@ -181,6 +184,8 @@
   align-items: center;
   height: auto;
   width: 40%;
+  min-width: 500px;
+  overflow: scroll;
 }
 .channel_links_container {
   display: flex;
@@ -224,8 +229,17 @@
     transform: translateY(0);
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .bottom_second_container {
     width: 99%;
+  }
+  .channel_links_container {
+    width: 100%;
+    overflow-y: hidden;
+  }
+  .channel_links {
+    width: 100%;
+    min-width: 600px;
+    overflow-y: hidden;
   }
 }

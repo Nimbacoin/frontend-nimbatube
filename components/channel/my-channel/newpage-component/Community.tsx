@@ -1,20 +1,27 @@
 import React from "react";
 import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOutline";
-import Style from "../../../../styles/pages/channel/new/newpage-component/new-general.module.css";
+import Style from "../../../../styles/pages/channel/my-channel/my-channel-component/community.module.css";
+import TextArea from "../../../modals/TextArea";
+import BlueButton from "../../../modals/BlueButton";
+import OtherChannelData from "./OtherChannelData";
 const Community = ({ Name, Id }: any) => {
   console.log(Name, Id);
+  const handelChangeDesc = () => {};
+  const handelSubmitComment = () => {};
   return (
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
-        <div className={Style.upload_input}>
-          <p className={Style.upload_file}>Comment as {Name}</p>
-          <label htmlFor="text_desc" className={Style.label_description}>
-            <textarea id="text_desc" className={Style.text_desc} />
-          </label>
-        </div>
+        <TextArea
+          HandelChange={handelChangeDesc}
+          Text={"Comment as " + Name}
+          Placeholder="Description"
+        />
         <div className={Style.div_button_action}>
-          <button className={Style.button_action}>Comment</button>
+          <BlueButton HandelClick={handelSubmitComment} Text={"Submit"} />
         </div>
+      </div>
+      <div className={Style.right_side_container}>
+        <OtherChannelData />
       </div>
     </div>
   );

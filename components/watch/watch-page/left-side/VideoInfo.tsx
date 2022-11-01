@@ -121,7 +121,7 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
           {!ActiveVideoStream && (
             <p className={Style.icon_comments}>
               <GoCommentDiscussion />
-              Live Comments
+              Live Chat
             </p>
           )}
 
