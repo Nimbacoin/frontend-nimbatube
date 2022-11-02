@@ -70,7 +70,7 @@ const OverAllSideMenu = () => {
     const handelClick = (link: any) => {
       Router.push(link);
       setTimeout(() => {
-        setUseMenu(false);
+        HandelToggleMenu();
       }, 1000);
     };
 
