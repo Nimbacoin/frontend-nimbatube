@@ -144,6 +144,9 @@ const HeaderDropDown = () => {
     } else {
       Router.push(link);
     }
+    setTimeout(() => {
+      setShowDiv(false);
+    }, 1000);
   };
   return (
     <>

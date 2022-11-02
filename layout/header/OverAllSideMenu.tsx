@@ -66,6 +66,13 @@ const OverAllSideMenu = () => {
         Container.current.style.minHeight = `${window.outerHeight}px`;
       }
     });
+    const Router = useRouter();
+    const handelClick = (link: any) => {
+      Router.push(link);
+      setTimeout(() => {
+        setUseMenu(false);
+      }, 1000);
+    };
 
     if (UseMenu === true) {
       return (
@@ -104,12 +111,17 @@ const OverAllSideMenu = () => {
                             : Style.link_container
                         }
                       >
-                        <Link href={link}>
+                        <div
+                          onClick={() => {
+                            handelClick(link);
+                          }}
+                          // href={link}
+                        >
                           <div className={Style.link}>
                             <span className={Style.icon}>{icon}</span>
                             <span className={Style.text}>{name}</span>
                           </div>
-                        </Link>
+                        </div>
                       </div>
                     ))}
                   </div>
