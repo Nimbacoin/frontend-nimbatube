@@ -27,7 +27,7 @@
 }
 .container_search:hover,
 .container_search_phone:hover {
-  border: none;
+  border: 1px solid#00000017;
   box-shadow: #00000017 0px 3px 12px;
 }
 .search_input {
