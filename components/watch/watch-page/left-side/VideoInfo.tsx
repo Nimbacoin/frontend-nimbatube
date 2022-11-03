@@ -116,7 +116,7 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
           </p>
           <p className={Style.icon} onClick={HandelDisLike}>
             {IsDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}
-            <span className={Style.disLike}>Dislike</span> {videoDisLikes}
+            <span className={Style.disLike}>Dislike {videoDisLikes}</span>
           </p>
           {!ActiveVideoStream && (
             <p className={Style.icon_comments}>

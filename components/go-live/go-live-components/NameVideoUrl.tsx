@@ -63,9 +63,8 @@ const NameVideoUrl = ({ VideoLink }: any) => {
               {title.slice(0, 60)} {title.length >= 60 && "..."}
             </p>
           </div>
-
           <div className={Style.video_data}>
-            {VideoLink.length && <ButtonAndInputAction />}
+            {VideoLink.length && <ButtonAndInputAction CopyValue={VideoLink} />}
           </div>
         </div>
 

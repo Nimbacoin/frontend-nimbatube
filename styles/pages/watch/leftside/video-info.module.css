@@ -290,6 +290,7 @@
     justify-content: space-between;
     min-width: 100%;
     column-gap: 40px;
+    padding: 5px 20px;
   }
   .icon,
   .icon_comments {
@@ -329,5 +330,20 @@
   .icon > svg {
     padding: 2px;
     font-size: 24px;
+  }
+  .icon_comments,
+  .disLike,
+  .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    column-gap: 5px;
+    cursor: pointer;
+    color: #030303;
+    font-size: 12.5px;
+    font-weight: 400;
+    line-height: 14px;
   }
 }
