@@ -53,7 +53,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 100%;
   height: auto;
   min-height: 40px;
@@ -64,6 +64,11 @@
   color: #030303;
   outline: none;
   padding: 0px;
+}
+.link_container > input {
+  background-color: transparent;
+  padding: 0 10px;
+  border-radius: 20px;
 }
 .link {
   width: 90%;
@@ -104,6 +109,9 @@
   font-weight: 500;
   min-height: 40px;
 }
+.button_copy:hover {
+  background-color: #522dc2;
+}
 
 .text {
   font-size: 15px;
@@ -120,6 +128,12 @@
   align-items: center;
   justify-content: center;
 }
+.link_container:hover {
+  background-color: #fafafa;
+  border: solid 1px transparent;
+  box-shadow: #00000017 0px 3px 12px;
+}
+
 @media screen and (max-width: 700px) {
   .share_container {
     width: 90%;

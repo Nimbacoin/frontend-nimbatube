@@ -101,10 +101,7 @@ const NameVideoUrl = () => {
   };
   return (
     <div className={Style.container}>
-      <div className={Style.upload_container}>
-        <IoCloudUploadOutline />
-        <p className={Style.upload_file_text}>Upload a file</p>
-      </div>
+      
 
       <div className={Style.upload_inputs_container}>
         {Uploaded ? (

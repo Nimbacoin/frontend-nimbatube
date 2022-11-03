@@ -8,6 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { ActionVideoDataChanging } from "../../../redux/video-slice/VideoSlice";
 import { useRouter } from "next/router";
 import { poPUppRedcuer } from "../../../redux/style-slice/general-style/GenrealStyle";
+import TextArea from "../../modals/TextArea";
+import InputText from "../../modals/InputText";
+import ButtonAndInputAction from "../../modals/ButtonAndInputCopy";
+import TopTitle from "../../modals/TopTitle";
 const NameVideoUrl = ({ VideoLink }: any) => {
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
 
@@ -47,10 +51,7 @@ const NameVideoUrl = ({ VideoLink }: any) => {
   };
   return (
     <div className={Style.container}>
-      <div className={Style.upload_container}>
-        <IoVideocamOutline />
-        <p className={Style.upload_file_text}>Go Live</p>
-      </div>
+      <TopTitle />
 
       <div className={Style.upload_inputs_container}>
         <div className={Style.video_container_data}>
@@ -62,13 +63,9 @@ const NameVideoUrl = ({ VideoLink }: any) => {
               {title.slice(0, 60)} {title.length >= 60 && "..."}
             </p>
           </div>
-
-          <div className={Style.video_data}>
-            {VideoLink.length && (
-              <div className={Style.upload_input}>
-                <p className={Style.upload_file}>Video link</p>
+          {/* <p className={Style.upload_file}>Video link</p>
                 <div className={Style.input_label}>
-                  {/* <span className={Style.upload_file_text}>{VideoLink}</span> */}
+                  <span className={Style.upload_file_text}>{VideoLink}</span>
                   <input className={Style.upload_file_text} value={VideoLink} />
                   <button
                     className={Style.upload_file_button}
@@ -76,33 +73,22 @@ const NameVideoUrl = ({ VideoLink }: any) => {
                   >
                     Copy
                   </button>
-                </div>
-              </div>
-            )}
+                </div> */}
+          <div className={Style.video_data}>
+            {VideoLink.length && <ButtonAndInputAction />}
           </div>
         </div>
 
-        <div className={Style.upload_input}>
-          <p className={Style.upload_file}>Tilte</p>
-          <label htmlFor="title" className={Style.input_label}>
-            <input
-              id="title"
-              onChange={handelChangeTitle}
-              type="text"
-              className={Style.input_title}
-            />
-          </label>
-        </div>
-        <div className={Style.upload_input}>
-          <p className={Style.upload_file}>Description</p>
-          <label htmlFor="text_desc" className={Style.label_description}>
-            <textarea
-              id="text_desc"
-              onChange={handelChangeDesc}
-              className={Style.text_desc}
-            />
-          </label>
-        </div>
+        <InputText
+          HandelChange={handelChangeTitle}
+          Text={"Title"}
+          Placeholder="enter your video title"
+        />
+        <TextArea
+          HandelChange={handelChangeDesc}
+          Text={"Description"}
+          Placeholder="Description"
+        />
       </div>
     </div>
   );
