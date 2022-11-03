@@ -99,8 +99,8 @@ const SignUp = () => {
               HandelChange={(e: any) => {
                 setemail(e.target.value);
               }}
-              Text={"email address"}
-              Placeholder="enter your video email address"
+              Text={"full name"}
+              Placeholder="enter your full name"
             />
             <div className={Style.error_container}>
               {}
@@ -111,19 +111,15 @@ const SignUp = () => {
                   </span>
                 ))}
             </div>
-            <label className={Style.container_inputs}>
-              <span className={Style.span}>Username </span>
-              <input
-                required
-                onChange={(e) => {
-                  setusername(e.target.value);
-                }}
-                className={Style.input}
-                placeholder="Enter your Username"
-                name="username"
-                type="text"
-              />
-            </label>
+
+            <InputText
+              HandelChange={(e: any) => {
+                setusername(e.target.value);
+              }}
+              Text={"email address"}
+              Placeholder="enter your username"
+            />
+
             <div className={Style.error_container}>
               {Error === "EamilNotFinded" && (
                 <span className={Style.error_message}>
@@ -132,19 +128,14 @@ const SignUp = () => {
                 </span>
               )}
             </div>
-            <label className={Style.container_inputs}>
-              <span className={Style.span}>Password </span>
-              <input
-                required
-                onChange={(e) => {
-                  setpassword(e.target.value);
-                }}
-                className={Style.input}
-                name="password"
-                type="password"
-                placeholder="Enter your password"
-              />{" "}
-            </label>
+
+            <InputText
+              HandelChange={(e: any) => {
+                setpassword(e.target.value);
+              }}
+              Text={"password"}
+              Placeholder="enter your password"
+            />
             <div className={Style.error_container}>
               {Error === "ShortPassWord" && (
                 <p className={Style.error_message}>
@@ -153,20 +144,13 @@ const SignUp = () => {
                 </p>
               )}
             </div>
-
-            <label className={Style.container_inputs}>
-              <span className={Style.span}>Conifirm Password </span>
-              <input
-                required
-                onChange={(e) => {
-                  setconifirmpassword(e.target.value);
-                }}
-                className={Style.input}
-                name="password"
-                type="password"
-                placeholder="Enter your password"
-              />{" "}
-            </label>
+            <InputText
+              HandelChange={(e: any) => {
+                setconifirmpassword(e.target.value);
+              }}
+              Text={"confirm password"}
+              Placeholder="enter your password again"
+            />
             <div className={Style.error_container}>
               {Error === "PasswordNotMatch" && (
                 <p className={Style.error_message}>
