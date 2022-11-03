@@ -9,6 +9,7 @@ import { UserSignedIn } from "../../../redux/user-slice/UserSignIn";
 import Cookies from "js-cookie";
 import basedGetUrlRequest from "../../../utils/basedGetUrlRequest";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
+import InputText from "../../../components/modals/InputText";
 
 const errors = [
   {
@@ -94,19 +95,13 @@ const SignUp = () => {
       {!UserIsSignedIn && (
         <div className={Style.container_form}>
           <form className={Style.form} onSubmit={HandelSignUp}>
-            <label className={Style.container_inputs}>
-              <span className={Style.span}>Email </span>
-              <input
-                required
-                onChange={(e) => {
-                  setemail(e.target.value);
-                }}
-                className={Style.input}
-                placeholder="Enter your Email"
-                name="username"
-                type="text"
-              />
-            </label>
+            <InputText
+              HandelChange={(e: any) => {
+                setemail(e.target.value);
+              }}
+              Text={"email address"}
+              Placeholder="enter your video email address"
+            />
             <div className={Style.error_container}>
               {}
               {Error === "RandomTextNotEmailAdress" ||

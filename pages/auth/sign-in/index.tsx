@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { IoWarningOutline } from "@react-icons/all-files/io5/IoWarningOutline";
 import { UserSignedIn } from "../../../redux/user-slice/UserSignIn";
 import Cookies from "js-cookie";
+import InputText from "../../../components/modals/InputText";
+import InputPassword from "../../../components/modals/InputPassword";
 
 //
 const errors = [
@@ -62,19 +64,13 @@ const LogIn = () => {
       {!UserIsSignedIn && (
         <div className={Style.container_form} onSubmit={HandelLogIn}>
           <form className={Style.form} onSubmit={HandelLogIn}>
-            <label className={Style.container_inputs}>
-              <span className={Style.span}>Email </span>
-              <input
-                required
-                onChange={(e) => {
-                  setemail(e.target.value);
-                }}
-                className={Style.input}
-                placeholder="Enter your Email, Username"
-                name="username"
-                type="text"
-              />
-            </label>
+            <InputText
+              HandelChange={(e: any) => {
+                setemail(e.target.value);
+              }}
+              Text={"Title"}
+              Placeholder="enter your video title"
+            />
             <div className={Style.error_container}>
               {Error === "EamilNotFinded" && (
                 <span className={Style.error_message}>
@@ -83,20 +79,13 @@ const LogIn = () => {
                 </span>
               )}
             </div>
-
-            <label className={Style.container_inputs}>
-              <span className={Style.span}>Password </span>
-              <input
-                required
-                onChange={(e) => {
-                  setpassword(e.target.value);
-                }}
-                className={Style.input}
-                name="password"
-                type="password"
-                placeholder="Enter your password"
-              />{" "}
-            </label>
+            <InputPassword
+              HandelChange={(e: any) => {
+                setpassword(e.target.value);
+              }}
+              Text={"Password"}
+              Placeholder="enter your video Password"
+            />
             <div className={Style.error_container}>
               {Error === "WrongPassWord" && (
                 <p className={Style.error_message}>

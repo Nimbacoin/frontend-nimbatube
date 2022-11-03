@@ -63,17 +63,7 @@ const NameVideoUrl = ({ VideoLink }: any) => {
               {title.slice(0, 60)} {title.length >= 60 && "..."}
             </p>
           </div>
-          {/* <p className={Style.upload_file}>Video link</p>
-                <div className={Style.input_label}>
-                  <span className={Style.upload_file_text}>{VideoLink}</span>
-                  <input className={Style.upload_file_text} value={VideoLink} />
-                  <button
-                    className={Style.upload_file_button}
-                    onClick={handelCopy}
-                  >
-                    Copy
-                  </button>
-                </div> */}
+
           <div className={Style.video_data}>
             {VideoLink.length && <ButtonAndInputAction />}
           </div>

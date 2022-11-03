@@ -146,7 +146,7 @@ const HeaderDropDown = () => {
     }
     setTimeout(() => {
       setShowDiv(false);
-    }, 1000);
+    }, 500);
   };
   return (
     <>

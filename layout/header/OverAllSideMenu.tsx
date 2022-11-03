@@ -71,7 +71,7 @@ const OverAllSideMenu = () => {
       Router.push(link);
       setTimeout(() => {
         HandelToggleMenu();
-      }, 1000);
+      }, 500);
     };
 
     if (UseMenu === true) {
