@@ -1,6 +1,6 @@
 import React from "react";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
-import Style from "../../styles/modals/input-text.module.css";
+import Style from "../../styles/modals/top-title.module.css";
 
 const TopTitle = () => {
   return (

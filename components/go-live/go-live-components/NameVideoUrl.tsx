@@ -39,6 +39,13 @@ const NameVideoUrl = ({ VideoLink }: any) => {
       })
     );
   };
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(VideoLink);
+    dispatch(poPUppRedcuer({ data: "video  link is copied" }));
+    setTimeout(() => {
+      dispatch(poPUppRedcuer({ data: "" }));
+    }, 5000);
+  };
 
   const handelChangeTitle = (e: any) => {
     setTitle(e.target.value);
@@ -64,7 +71,12 @@ const NameVideoUrl = ({ VideoLink }: any) => {
             </p>
           </div>
           <div className={Style.video_data}>
-            {VideoLink.length && <ButtonAndInputAction CopyValue={VideoLink} />}
+            {VideoLink.length && (
+              <ButtonAndInputAction
+                HandelClick={copyToClipboard}
+                CopyValue={VideoLink}
+              />
+            )}
           </div>
         </div>
 

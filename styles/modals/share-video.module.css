@@ -50,6 +50,7 @@
 }
 
 .link_container {
+  background-color: #fff;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -69,6 +70,8 @@
   background-color: transparent;
   padding: 0 10px;
   border-radius: 20px;
+  border: none;
+  outline: none;
 }
 .link {
   width: 90%;
