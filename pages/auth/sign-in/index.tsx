@@ -37,7 +37,6 @@ const LogIn = () => {
   );
   const HandelLogIn = async (e: any) => {
     e.preventDefault();
-    alert(password);
     const Body: any = { email, password };
     basedPostUrlRequest("/api/auth/sign-in", Body).then((res) => {
       if (res) {
@@ -69,8 +68,8 @@ const LogIn = () => {
               HandelChange={(e: any) => {
                 setemail(e.target.value);
               }}
-              Text={"Title"}
-              Placeholder="enter your video title"
+              Text={"email address"}
+              Placeholder="enter your email address"
             />
             <div className={Style.error_container}>
               {Error === "EamilNotFinded" && (
