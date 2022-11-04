@@ -10,6 +10,7 @@ const initialState = {
   popUppData: {},
   copyVideo: false,
   playList: false,
+  cropping: true,
 };
 
 export const GeneralStyle = createSlice({
@@ -61,6 +62,9 @@ export const GeneralStyle = createSlice({
         state.playList = !state.playList;
       }
     },
+    croppingRedcuer: (state: any, action: any) => {
+      state.cropping = !state.cropping;
+    },
   },
 });
 
@@ -71,6 +75,7 @@ export const {
   poPUppRedcuer,
   copyLinkRedcuer,
   playListRedcuer,
+  croppingRedcuer,
 } = GeneralStyle.actions;
 const AllReducers = GeneralStyle.reducer;
 export default AllReducers;

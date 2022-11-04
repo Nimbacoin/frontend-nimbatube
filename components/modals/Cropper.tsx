@@ -26,26 +26,24 @@ export const CropperCom: React.FC = () => {
           <button>Crop Image</button>
         </div>
         <div className={Style.main_container_overfollow}>
-          <div className={Style.main_container}>
-            <div className={Style.container_img}>
-              <FixedCropper
-                src={
-                  "https://images.pexels.com/photos/5006465/pexels-photo-5006465.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
-                }
-                onChange={onChangee}
-                stencilSize={{
-                  width: 1000,
-                  height: 250,
-                }}
-                stencilProps={{
-                  handlers: false,
-                  lines: false,
-                  movable: false,
-                  resizable: true,
-                }}
-                imageRestriction={ImageRestriction.stencil}
-              />
-            </div>
+          <div className={Style.container_img}>
+            <FixedCropper
+              src={
+                "https://images.pexels.com/photos/5006465/pexels-photo-5006465.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+              }
+              onChange={onChangee}
+              stencilSize={{
+                width: 500,
+                height: 250,
+              }}
+              stencilProps={{
+                handlers: false,
+                lines: true,
+                movable: false,
+                resizable: false,
+              }}
+              imageRestriction={ImageRestriction.stencil}
+            />
           </div>
         </div>
       </div>

@@ -32,6 +32,8 @@ const Layout = ({ children }: any) => {
     (state: any) => state.SideMenu.menuBooleanAllOver
   );
   const isOver = useSelector((state: any) => state.GenrealStyle.isOver);
+  const cropping = useSelector((state: any) => state.GenrealStyle.cropping);
+ 
   const PopUppBoolean = useSelector((state: any) => state.GenrealStyle.popUpp);
   const copyVideo = useSelector((state: any) => state.GenrealStyle.copyVideo);
   const playList = useSelector((state: any) => state.GenrealStyle.playList);
@@ -204,7 +206,8 @@ const Layout = ({ children }: any) => {
         {playList && <AddToPalayList />}
         {PopUppBoolean && <PopUpp />}
         {copyVideo && <ShareVideo />}
-        <CropperCom />
+        {cropping && <CropperCom />}
+
         <SideHeader />
 
         <div
