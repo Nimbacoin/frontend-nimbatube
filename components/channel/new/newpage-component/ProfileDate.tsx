@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Style from "../../../../styles/pages/channel/new/newpage-component/profile-date.module.css";
 import { IoCameraOutline } from "@react-icons/all-files/io5/IoCameraOutline";
+import { IoCropOutline } from "@react-icons/all-files/io5/IoCropOutline";
 import NewGeneral from "./NewGeneral";
+
 import CreditDetails from "./CreditDetails";
 import Tags from "./Tags";
 import Other from "./Other";
@@ -14,6 +16,8 @@ import NormalText from "../../../modals/NormalText";
 import BoldText from "../../../modals/BoldText";
 import TextTilteInputMudum from "../../../modals/TextTilteInputMudum";
 import CropperCom from "../../../modals/Cropper";
+import { croppingRedcuer } from "../../../../redux/style-slice/general-style/GenrealStyle";
+import IconHeader from "../../../modals/IconHeader";
 const ProfileDate = () => {
   const coverRef = React.useRef<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
@@ -60,6 +64,9 @@ const ProfileDate = () => {
     };
     HandelLinkContentName();
   }, [LinkKey]);
+  const handelCropp = () => {
+    dispatch(croppingRedcuer());
+  };
 
   const Path = React.useRef(null);
 
@@ -141,7 +148,14 @@ const ProfileDate = () => {
           {previewSourceCover !== "" && (
             <div className={Style.hover_container}></div>
           )}
-
+          <div className={Style.container_icons}>
+            <IconHeader
+              FuncOutSide={true}
+              MainFuncOutSide={handelCropp}
+              Icon={<IoCropOutline />}
+              TextValue={"cropp"}
+            />
+          </div>
           <label htmlFor="cover" className={Style.input_label}>
             <input
               onChange={readImageCover}
@@ -154,6 +168,7 @@ const ProfileDate = () => {
               <IoCameraOutline />
             </span>
           </label>
+
           <label htmlFor="profile" className={Style.image_name_conainer}>
             <div className={Style.profile_image_container}>
               <div
@@ -218,7 +233,6 @@ const ProfileDate = () => {
         </div>
         {HandelLinkContent()}
       </div>
-
     </div>
   );
 };

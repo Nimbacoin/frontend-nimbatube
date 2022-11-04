@@ -7,17 +7,23 @@ import {
 import Style from "../../styles/modals/icon-header.module.css";
 import { useRouter } from "next/router";
 
-const IconHeader = ({ TextValue, Icon, Url, NumberData, Number }: any) => {
+const IconHeader = ({
+  TextValue,
+  Icon,
+  Url,
+  NumberData,
+  Number,
+  FuncOutSide,
+  MainFuncOutSide,
+}: any) => {
   const Router = useRouter();
   const dispatch = useDispatch();
   const buttonRef = React.useRef<HTMLDivElement | null>(null);
   const handelOver = () => {
     if (buttonRef.current) {
       const data = buttonRef.current.getBoundingClientRect();
-
       const top = data.top + data.height;
       const left = data.left;
-
       dispatch(overTextReducer({ top: top, left: left, text: TextValue }));
     }
   };
@@ -25,8 +31,12 @@ const IconHeader = ({ TextValue, Icon, Url, NumberData, Number }: any) => {
     dispatch(leaveTextReducer());
   };
   const handelClick = () => {
-    dispatch(leaveTextReducer());
-    Url && Router.push(Url);
+    if (FuncOutSide) {
+      MainFuncOutSide();
+    } else {
+      dispatch(leaveTextReducer());
+      Url && Router.push(Url);
+    }
   };
   return (
     <div

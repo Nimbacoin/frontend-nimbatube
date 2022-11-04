@@ -10,7 +10,8 @@ const initialState = {
   popUppData: {},
   copyVideo: false,
   playList: false,
-  cropping: true,
+  cropping: false,
+  croppingImg: {},
 };
 
 export const GeneralStyle = createSlice({
@@ -62,8 +63,11 @@ export const GeneralStyle = createSlice({
         state.playList = !state.playList;
       }
     },
-    croppingRedcuer: (state: any, action: any) => {
+    croppingRedcuer: (state: any) => {
       state.cropping = !state.cropping;
+      if (state.cropping) {
+        alert("sd");
+      }
     },
   },
 });

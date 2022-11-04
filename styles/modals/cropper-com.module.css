@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 10;
   background-color: rgba(0, 0, 0, 0.656);
   overflow: hidden;
   display: flex;
@@ -13,7 +13,8 @@
   justify-content: center;
 }
 .main_container_main {
-  padding: 20px;
+  padding: 0 20px;
+  padding-bottom: 20px;
   background-color: #fff;
   border-radius: 20px;
   overflow-y: hidden;
@@ -23,6 +24,11 @@
 .div_main_container_top {
   width: 100%;
   border-bottom: 1px solid #dbddbd;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
 }
 .main_container_overfollow {
   max-height: 90%;
@@ -63,7 +69,6 @@
 }
 @media screen and (max-width: 600px) {
   .main_container_main {
-    padding: 20px;
     background-color: #fff;
     border-radius: 20px;
     overflow-y: hidden;
