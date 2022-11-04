@@ -9,6 +9,7 @@ import Content from "./Content";
 import Community from "./Community";
 import About from "./About";
 import ButtonBlack from "../../../modals/ButtonBlack";
+import CropperCom from "../../../modals/Cropper";
 
 const ProfileDate = ({ ChannelData }: any) => {
   const UlLinks = [
@@ -134,6 +135,7 @@ const ProfileDate = ({ ChannelData }: any) => {
           </div>
         </div>
       </div>
+
       {HandelLinkContent()}
     </div>
   );

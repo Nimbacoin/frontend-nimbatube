@@ -19,6 +19,7 @@ import HoverText from "../components/modals/HoverText";
 import { PopUpp } from "../components/modals/PopUpp";
 import ShareVideo from "../components/modals/ShareVideo";
 import AddToPalayList from "../components/modals/AddToPlayList";
+import CropperCom from "../components/modals/Cropper";
 
 interface main {
   children: any;
@@ -203,7 +204,7 @@ const Layout = ({ children }: any) => {
         {playList && <AddToPalayList />}
         {PopUppBoolean && <PopUpp />}
         {copyVideo && <ShareVideo />}
-
+        <CropperCom />
         <SideHeader />
 
         <div

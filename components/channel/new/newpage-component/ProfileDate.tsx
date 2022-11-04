@@ -13,6 +13,7 @@ import AxiosPostLogedInFormData from "../../../../utils/AxiosPostLogedInFormData
 import NormalText from "../../../modals/NormalText";
 import BoldText from "../../../modals/BoldText";
 import TextTilteInputMudum from "../../../modals/TextTilteInputMudum";
+import CropperCom from "../../../modals/Cropper";
 const ProfileDate = () => {
   const coverRef = React.useRef<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
@@ -204,7 +205,6 @@ const ProfileDate = () => {
             ))}
           </ul>
         </div>
-        
       </div>
 
       <div className={Style.second_div_channel_info}>
@@ -218,6 +218,7 @@ const ProfileDate = () => {
         </div>
         {HandelLinkContent()}
       </div>
+
     </div>
   );
 };
