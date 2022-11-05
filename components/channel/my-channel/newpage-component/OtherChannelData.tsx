@@ -4,9 +4,15 @@ import Style from "../../../../styles/pages/channel/my-channel/my-channel-compon
 import basedGetUrlRequest from "../../../../utils/basedGetUrlRequest";
 import { useRouter } from "next/router";
 import AllVideosBeforLoad from "../../../modals/pages-boforload/AllVideosBeforLoad";
+import { useSelector } from "react-redux";
+import BoldText from "../../../modals/BoldText";
 const OtherChannelData = () => {
   const { asPath } = useRouter();
   const [videos, setVideos] = useState([]);
+  const ChannelSlice = useSelector(
+    (state: any) => state.ChannelSlice.activeChannelData
+  );
+  console;
   useEffect(() => {
     const dataUrl = asPath.replace("/channel/@/", "");
     const locaFetch = async () => {
@@ -21,7 +27,26 @@ const OtherChannelData = () => {
     };
     locaFetch();
   }, [asPath]);
-  return <div className={Style.container}>dr</div>;
+  console.log(ChannelSlice);
+  return (
+    <div className={Style.container}>
+      <div className={Style.main_top}>
+        <BoldText text={"Channel Data"} />
+      </div>
+      <div className={Style.channel_data_followrs}>
+        {/* <div className={Style.container_data_item}>
+                  <span className={Style.title}> 12 </span>
+                  <span className={Style.followers}> Uploads</span>
+                </div> */}
+        <div className={Style.container_data_item}>
+          <span className={Style.followers}>
+            {ChannelSlice?.followers?.length}
+          </span>{" "}
+          <span className={Style.title}>followers</span>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default OtherChannelData;

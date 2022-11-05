@@ -24,9 +24,12 @@ const Home = () => {
   }, [asPath]);
   return (
     <div className={Style.container}>
-      <div className={Style.right_side_container}>
-        <OtherChannelData />
+      <div className={Style.div_container_top}>
+        <div className={Style.right_side_container}>
+          <OtherChannelData />
+        </div>
       </div>
+
       <div className={Style.vedio_container}>
         {videos?.length ? (
           videos.map((vid) => <Vedio VideoData={vid} />)

@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: space-around;
   width: 70%;
-  box-shadow: #00000017 0px 3px 12px;
+  /* box-shadow: #00000017 0px 3px 12px; */
   border-radius: 10px;
   order: 1;
   position: relative;
@@ -135,7 +135,7 @@
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+  /* box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px; */
 
   padding: 20px 50px;
   /* padding-left: 180px; */

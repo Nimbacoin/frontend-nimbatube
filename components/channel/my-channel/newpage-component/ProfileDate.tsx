@@ -100,24 +100,10 @@ const ProfileDate = ({ ChannelData }: any) => {
               <div className={Style.data_channel_container}>
                 <span className={Style.name}> {Name} </span>
                 <span className={Style.title}> @{Title} </span>
-
                 <ButtonBlack />
               </div>
             </div>
             <div className={Style.channel_links_container}>
-              <div className={Style.channel_data_followrs}>
-                {/* <div className={Style.container_data_item}>
-                  <span className={Style.title}> 12 </span>
-                  <span className={Style.followers}> Uploads</span>
-                </div> */}
-                <div className={Style.container_data_item}>
-                  <span className={Style.title}>
-                    {" "}
-                    {ChannelData?.followers?.length}{" "}
-                  </span>
-                  <span className={Style.followers}> Followers</span>
-                </div>
-              </div>
               <div className={Style.channel_links}>
                 {UlLinks.map(({ name, key }) => (
                   <span
@@ -135,8 +121,9 @@ const ProfileDate = ({ ChannelData }: any) => {
           </div>
         </div>
       </div>
-
-      {HandelLinkContent()}
+      <div className={Style.container_main_all_content}>
+        {HandelLinkContent()}
+      </div>
     </div>
   );
 };

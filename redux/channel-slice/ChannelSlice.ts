@@ -8,6 +8,7 @@ const initialState = {
   general: {},
   images: {},
   ChannelCreated: false,
+  activeChannelData: {},
 };
 
 export const ChannelSlice = createSlice({
@@ -63,6 +64,9 @@ export const ChannelSlice = createSlice({
       state.images = {};
       state.ChannelCreated = false;
     },
+    avtiveChannelReducer: (state: any, action: any) => {
+      state.activeChannelData = action.payload;
+    },
   },
 });
 
@@ -74,6 +78,7 @@ export const {
   CreditDetails,
   ResetNewChannel,
   ImagesReducer,
+  avtiveChannelReducer,
 } = ChannelSlice.actions;
 const AllReducers = ChannelSlice.reducer;
 export default AllReducers;

@@ -29,7 +29,6 @@
   background-size: cover;
   background-position: center;
   position: relative;
-  border-radius: 10px 10px 0 0;
 }
 .hover_container {
   position: absolute;
@@ -40,7 +39,6 @@
   box-shadow: 0px 10px 5px #888, 0px -10px 5px #888;
   box-shadow: inset 3px -100px 86px -61px rgba(0, 0, 0, 0.812);
   z-index: 0;
-  border-radius: 10px 10px 0 0;
 }
 .image_name_conainer {
   position: relative;
@@ -73,16 +71,12 @@
   cursor: pointer;
 }
 .title {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   color: #727272;
   cursor: pointer;
 }
-.followers {
-  font-size: 15px;
-  font-weight: 500;
-  color: #030303;
-}
+
 .data_channel_container > button {
   position: absolute;
 
@@ -90,19 +84,7 @@
   top: 50%;
   transform: translateY(-50%);
 }
-.channel_data_followrs {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  column-gap: 20px;
-  overflow: auto;
-}
-.container_data_item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+
 .name_contanier {
   display: flex;
   flex-direction: row;
@@ -128,8 +110,7 @@
 
 .links_container {
   min-height: 100px;
-  background-color: #fff;
-  border-radius: 0px 0px 20px 20px;
+
   width: 100%;
 }
 .bottom_second_container {
@@ -180,12 +161,14 @@
 .channel_links {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  column-gap: 40px;
   height: auto;
-  width: 40%;
+  width: 100%;
   min-width: 500px;
-  overflow: scroll;
+  overflow-x: auto;
+  /* background-color: red; */
 }
 .channel_links_container {
   display: flex;
@@ -209,6 +192,17 @@
   text-decoration-style: solid;
   text-decoration-thickness: 2px;
   cursor: pointer;
+}
+.container_main_all_content {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.links_container {
+  border-bottom: 1px solid #dbdbdd;
 }
 @media screen and (max-width: 900px) {
   .bottom_second_container {
