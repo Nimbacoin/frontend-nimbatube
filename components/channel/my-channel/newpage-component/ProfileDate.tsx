@@ -10,6 +10,7 @@ import Community from "./Community";
 import About from "./About";
 import ButtonBlack from "../../../modals/ButtonBlack";
 import CropperCom from "../../../modals/Cropper";
+import OtherChannelData from "./OtherChannelData";
 
 const ProfileDate = ({ ChannelData }: any) => {
   const UlLinks = [
@@ -103,6 +104,7 @@ const ProfileDate = ({ ChannelData }: any) => {
                 <ButtonBlack />
               </div>
             </div>
+            <OtherChannelData />
             <div className={Style.channel_links_container}>
               <div className={Style.channel_links}>
                 {UlLinks.map(({ name, key }) => (

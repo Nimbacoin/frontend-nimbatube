@@ -77,13 +77,13 @@
   cursor: pointer;
 }
 
-.data_channel_container > button {
+/* .data_channel_container > button {
   position: absolute;
 
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-}
+} */
 
 .name_contanier {
   display: flex;
@@ -168,7 +168,6 @@
   width: 100%;
   min-width: 500px;
   overflow-x: auto;
-  /* background-color: red; */
 }
 .channel_links_container {
   display: flex;
@@ -178,6 +177,7 @@
   align-items: center;
   /* column-gap: 50px; */
   height: auto;
+  margin-top: 20px;
 }
 
 .link {

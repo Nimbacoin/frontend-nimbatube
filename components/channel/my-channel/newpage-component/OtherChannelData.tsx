@@ -30,19 +30,24 @@ const OtherChannelData = () => {
   console.log(ChannelSlice);
   return (
     <div className={Style.container}>
-      <div className={Style.main_top}>
-        <BoldText text={"Channel Data"} />
-      </div>
       <div className={Style.channel_data_followrs}>
-        {/* <div className={Style.container_data_item}>
-                  <span className={Style.title}> 12 </span>
-                  <span className={Style.followers}> Uploads</span>
-                </div> */}
         <div className={Style.container_data_item}>
           <span className={Style.followers}>
             {ChannelSlice?.followers?.length}
           </span>{" "}
           <span className={Style.title}>followers</span>
+        </div>
+        <div className={Style.container_data_item}>
+          <span className={Style.followers}>
+            {ChannelSlice?.followers?.length}
+          </span>{" "}
+          <span className={Style.title}>Videos</span>
+        </div>
+        <div className={Style.container_data_item}>
+          <span className={Style.followers}>
+            {ChannelSlice?.followers?.length}
+          </span>{" "}
+          <span className={Style.title}>Likes</span>
         </div>
       </div>
     </div>

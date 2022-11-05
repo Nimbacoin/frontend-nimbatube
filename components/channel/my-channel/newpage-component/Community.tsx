@@ -21,7 +21,7 @@ const Community = ({ Name, Id }: any) => {
         </div>
       </div>
       <div className={Style.right_side_container}>
-        <OtherChannelData />
+       
       </div>
     </div>
   );
