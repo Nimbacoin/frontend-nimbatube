@@ -5,7 +5,9 @@ import TextArea from "../../../modals/TextArea";
 import BlueButton from "../../../modals/BlueButton";
 import OtherChannelData from "./OtherChannelData";
 const ActiveVideo = ({ Name, Id }: any) => {
-  return <div className={Style.container}></div>;
+  return <div className={Style.container}>
+    <div className={Style.container_video}></div>
+  </div>;
 };
 
 export default ActiveVideo;
