@@ -33,7 +33,7 @@ const Layout = ({ children }: any) => {
   );
   const isOver = useSelector((state: any) => state.GenrealStyle.isOver);
   const cropping = useSelector((state: any) => state.GenrealStyle.cropping);
- 
+
   const PopUppBoolean = useSelector((state: any) => state.GenrealStyle.popUpp);
   const copyVideo = useSelector((state: any) => state.GenrealStyle.copyVideo);
   const playList = useSelector((state: any) => state.GenrealStyle.playList);
@@ -134,6 +134,11 @@ const Layout = ({ children }: any) => {
           name="google-site-verification"
           content="eK_yN2eql5QORNEY1Yxu9sze98et_wKh_j4Awl-lDlo"
         />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9261275339248060"
+          crossOrigin="anonymous"
+        ></script>
         <link rel="icon" href="/favicon.jpg" />
         <script
           type="application/ld+json"
