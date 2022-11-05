@@ -18,7 +18,7 @@ import {
   croppingRedcuer,
   FinishCroppingRedcuer,
 } from "../../redux/style-slice/general-style/GenrealStyle";
-import { saveAs } from "file-saver";
+
 const defaultSrc =
   "https://raw.githubusercontent.com/roadmanfong/react-cropper/master/example/img/child.jpg";
 
