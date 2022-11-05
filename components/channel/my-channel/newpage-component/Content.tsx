@@ -5,6 +5,7 @@ import basedGetUrlRequest from "../../../../utils/basedGetUrlRequest";
 import { useRouter } from "next/router";
 import AllVideosBeforLoad from "../../../modals/pages-boforload/AllVideosBeforLoad";
 import OtherChannelData from "./OtherChannelData";
+import ActiveVideo from "./ActiveVideo";
 const Home = () => {
   const { asPath } = useRouter();
   const [videos, setVideos] = useState([]);
@@ -25,6 +26,7 @@ const Home = () => {
   return (
     <div className={Style.container}>
       <div className={Style.div_container_top}>
+        <div className={Style.div_video_avtive_container}><ActiveVideo /> </div>
         <div className={Style.right_side_container}>
           <OtherChannelData />
         </div>

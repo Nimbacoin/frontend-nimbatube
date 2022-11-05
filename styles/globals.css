@@ -3,8 +3,22 @@
 @tailwind utilities;
 
 body {
-  padding: 0;
+  margin: 0;
   margin: 0;
   font-family: "Roboto", sans-serif;
   /* overflow-x: hidden; */
+}
+
+body::-webkit-scrollbar {
+  border-radius: 10px;
+  background-color: #fff;
+  width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #909090;
+}
+body::-webkit-scrollbar-button {
+  height: 1px;
 }
