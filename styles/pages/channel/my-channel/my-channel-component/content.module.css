@@ -24,7 +24,9 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  height: auto;
+  padding: 10px;
 }
 .right_side_container {
   width: 30%;

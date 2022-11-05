@@ -8,8 +8,12 @@
 }
 .container_video {
   width: 55%;
-  height: 220px;
+  min-height: 220px;
   background-color: #dbdbdb;
+  border-radius: 10px;
+}
+.container_video > video {
+  border-radius: 10px;
 }
 .container_video_data {
   width: 43%;
