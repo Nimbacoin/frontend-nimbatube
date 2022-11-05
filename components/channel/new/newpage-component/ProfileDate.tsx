@@ -65,8 +65,10 @@ const ProfileDate = () => {
     HandelLinkContentName();
   }, [LinkKey]);
   const handelCropp = () => {
-    const coverImgData = URL.createObjectURL(Path.current);
-    dispatch(croppingRedcuer(coverImgData));
+    if (Path.current) {
+      const coverImgData = URL.createObjectURL(Path.current);
+      dispatch(croppingRedcuer(coverImgData));
+    }
   };
 
   const Path = React.useRef(null);

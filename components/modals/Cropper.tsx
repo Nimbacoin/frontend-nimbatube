@@ -60,7 +60,7 @@ export const CropperCom: React.FC = () => {
               onChange={onChangee}
               stencilSize={{
                 width: 500,
-                height: 250,
+                height: 200,
               }}
               stencilProps={{
                 handlers: false,
