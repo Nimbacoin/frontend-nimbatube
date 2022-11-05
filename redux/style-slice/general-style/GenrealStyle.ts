@@ -12,6 +12,7 @@ const initialState = {
   playList: false,
   cropping: false,
   croppingImg: {},
+  croppedImg: "",
 };
 
 export const GeneralStyle = createSlice({
@@ -63,10 +64,16 @@ export const GeneralStyle = createSlice({
         state.playList = !state.playList;
       }
     },
-    croppingRedcuer: (state: any) => {
+    croppingRedcuer: (state: any, action: any) => {
       state.cropping = !state.cropping;
-      if (state.cropping) {
-        alert("sd");
+      if (state.cropping && action.payload) {
+        state.croppingImg = action.payload;
+      }
+    },
+    FinishCroppingRedcuer: (state: any, action: any) => {
+      state.cropping = !state.cropping;
+      if (!state.cropping && action.payload) {
+        state.croppedImg = action.payload;
       }
     },
   },
@@ -80,6 +87,7 @@ export const {
   copyLinkRedcuer,
   playListRedcuer,
   croppingRedcuer,
+  FinishCroppingRedcuer,
 } = GeneralStyle.actions;
 const AllReducers = GeneralStyle.reducer;
 export default AllReducers;

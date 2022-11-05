@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "cropperjs/dist/cropper.css";
 import Style from "../../styles/modals/cropper-com.module.css";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   CropperRef,
@@ -14,7 +14,11 @@ import {
 import "react-advanced-cropper/dist/style.css";
 import BlueButton from "./BlueButton";
 import IconHeader from "./IconHeader";
-import { croppingRedcuer } from "../../redux/style-slice/general-style/GenrealStyle";
+import {
+  croppingRedcuer,
+  FinishCroppingRedcuer,
+} from "../../redux/style-slice/general-style/GenrealStyle";
+import { saveAs } from "file-saver";
 const defaultSrc =
   "https://raw.githubusercontent.com/roadmanfong/react-cropper/master/example/img/child.jpg";
 
@@ -24,16 +28,24 @@ export const CropperCom: React.FC = () => {
   const onChangee = (cropper: CropperRef) => {
     setImage(cropper.getCanvas()?.toDataURL());
   };
+  const croppingImg = useSelector(
+    (state: any) => state.GenrealStyle.croppingImg
+  );
 
   const handelClose = () => {
-    alert("dlkf");
-    dispatch(croppingRedcuer());
+    dispatch(croppingRedcuer(undefined));
   };
+  const handelFinshCropping = () => {
+    if (image?.length) {
+      dispatch(FinishCroppingRedcuer(image));
+    }
+  };
+
   return (
     <div className={Style.container}>
       <div className={Style.main_container_main}>
         <div className={Style.div_main_container_top}>
-          <BlueButton Text="crop" />
+          <BlueButton HandelClick={handelFinshCropping} Text="crop" />
           <IconHeader
             FuncOutSide={true}
             MainFuncOutSide={handelClose}
@@ -44,9 +56,7 @@ export const CropperCom: React.FC = () => {
         <div className={Style.main_container_overfollow}>
           <div className={Style.container_img}>
             <FixedCropper
-              src={
-                "https://images.pexels.com/photos/5006465/pexels-photo-5006465.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
-              }
+              src={croppingImg}
               onChange={onChangee}
               stencilSize={{
                 width: 500,

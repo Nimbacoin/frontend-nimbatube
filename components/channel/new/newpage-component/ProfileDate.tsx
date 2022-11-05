@@ -65,7 +65,8 @@ const ProfileDate = () => {
     HandelLinkContentName();
   }, [LinkKey]);
   const handelCropp = () => {
-    dispatch(croppingRedcuer());
+    const coverImgData = URL.createObjectURL(Path.current);
+    dispatch(croppingRedcuer(coverImgData));
   };
 
   const Path = React.useRef(null);
@@ -73,25 +74,32 @@ const ProfileDate = () => {
   const readImageCover = async (event: any) => {
     if (event.target.files && event.target.files[0]) {
       Path.current = event.target.files[0];
-      handelSubmitecoverRef();
+      if (coverRef.current) {
+        // coverRef.current.style.backgroundImage = `url(${
+        // )})`;
+        handelSubmitecoverRef(Path.current);
+        //
+      }
+
+      //
     }
   };
-  const handelSubmitecoverRef = async () => {
+  const handelSubmitecoverRef = async (imageData: any) => {
     const channelId = asPath.replace("/channel/create-new-channel/", "");
     const isValid = channelId.toString();
-    console.log(channelId);
+    console.log("image is here ");
     let formData = new FormData();
-    if (Path.current) {
+    if (imageData) {
       if (isValid) {
         formData.append("channelId", isValid);
       }
-      formData.append("thumbnail", Path.current);
+      formData.append("thumbnail", imageData);
     }
     await AxiosPostLogedInFormData(
       "/api/post/channel/channel-cover-image/",
       formData
     ).then(({ data }) => {
-      console.log(data);
+      console.log("recieved", data);
       const { file }: any = data;
       if (coverRef.current) {
         coverRef.current.style.backgroundImage = `url(${
@@ -99,6 +107,12 @@ const ProfileDate = () => {
           "/api/get/read/images/" +
           file.filename
         })`;
+        console.log(
+          "image set",
+          process.env.NEXT_PUBLIC_BACK_END_URL +
+            "/api/get/read/images/" +
+            file.filename
+        );
       }
     });
   };
@@ -137,14 +151,38 @@ const ProfileDate = () => {
     });
   };
 
+  //
+  const croppedImg = useSelector((state: any) => state.GenrealStyle.croppedImg);
+  useEffect(() => {
+    if (croppedImg.length && coverRef.current) {
+      const urltoFile = async (url: any, filename: any, mimeType: any) => {
+        mimeType = mimeType || (url.match(/^data:([^;]+);/) || "")[1];
+        return fetch(url)
+          .then(function (res) {
+            return res.arrayBuffer();
+          })
+          .then(function (buf) {
+            return new File([buf], filename, { type: mimeType });
+          });
+      };
+
+      //Usage example:
+      urltoFile(croppedImg, "hfhfhfhfhfh", "image/png").then(function (
+        file: any
+      ) {
+        handelSubmitecoverRef(file);
+        // console.log("main-file", file);
+      });
+
+      //
+      // coverRef.current.style.backgroundImage = `url(${croppedImg})`;
+    }
+  }, [croppedImg]);
+
   return (
     <div className={Style.container}>
       <div className={Style.container_main}>
-        <div
-          ref={coverRef}
-          style={{}}
-          className={Style.upload_inputs_container}
-        >
+        <div ref={coverRef} className={Style.upload_inputs_container}>
           {previewSourceCover !== "" && (
             <div className={Style.hover_container}></div>
           )}
@@ -155,19 +193,19 @@ const ProfileDate = () => {
               Icon={<IoCropOutline />}
               TextValue={"cropp"}
             />
+            <label htmlFor="cover" className={Style.input_label}>
+              <input
+                onChange={readImageCover}
+                id="cover"
+                type="file"
+                accept="image/x-png,image/gif,image/jpeg"
+                className={Style.input_upload}
+              />
+              <span className={Style.camera_of_button}>
+                <IoCameraOutline />
+              </span>
+            </label>
           </div>
-          <label htmlFor="cover" className={Style.input_label}>
-            <input
-              onChange={readImageCover}
-              id="cover"
-              type="file"
-              accept="image/x-png,image/gif,image/jpeg"
-              className={Style.input_upload}
-            />
-            <span className={Style.camera_of_button}>
-              <IoCameraOutline />
-            </span>
-          </label>
 
           <label htmlFor="profile" className={Style.image_name_conainer}>
             <div className={Style.profile_image_container}>
