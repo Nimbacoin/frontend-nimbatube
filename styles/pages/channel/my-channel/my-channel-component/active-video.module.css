@@ -1,9 +1,17 @@
 .container {
   width: 100%;
   height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 .container_video {
-  width: 60%;
-  height: 200px;
+  width: 55%;
+  height: 220px;
   background-color: #dbdbdb;
+}
+.container_video_data {
+  width: 43%;
+  height: auto;
 }
