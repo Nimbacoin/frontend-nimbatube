@@ -27,6 +27,9 @@
   z-index: 3;
   height: auto;
 }
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 100, "GRAD" -25, "opsz" 48;
+}
 @media screen and (max-width: 900px) {
   .childen_MenuBoolean,
   .childen {

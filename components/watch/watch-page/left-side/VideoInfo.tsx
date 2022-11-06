@@ -11,6 +11,7 @@ import { RiPlayListAddFill } from "@react-icons/all-files/ri/RiPlayListAddFill";
 import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
 import { FcCircuit } from "@react-icons/all-files/fc/FcCircuit";
 import { GoCommentDiscussion } from "@react-icons/all-files/go/GoCommentDiscussion";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
@@ -20,6 +21,7 @@ import {
   copyLinkRedcuer,
   playListRedcuer,
 } from "../../../../redux/style-slice/general-style/GenrealStyle";
+import GoogleIcon from "../../../modals/GoogleIcon";
 
 const VideoInfo = ({ ActiveVideoStream }: any) => {
   const videoData = useSelector(
@@ -91,6 +93,22 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
   };
   var check = moment(videoData?.createdAt, "YYYY/MM/DD");
   var month = check.format("M");
+  const Svggg = (
+    <svg
+      viewBox="0 0 24 24"
+      preserveAspectRatio="xMidYMid meet"
+      focusable="false"
+      className="style-scope yt-icon"
+      style="pointer-events: none; display: block; width: 100%; height: 100%;"
+    >
+      <g mirror-in-rtl="" className="style-scope yt-icon">
+        <path
+          d="M15,5.63L20.66,12L15,18.37V15v-1h-1c-3.96,0-7.14,1-9.75,3.09c1.84-4.07,5.11-6.4,9.89-7.1L15,9.86V9V5.63 M14,3v6 C6.22,10.13,3.11,15.33,2,21c2.78-3.97,6.44-6,12-6v6l8-9L14,3L14,3z"
+          className="style-scope yt-icon"
+        ></path>
+      </g>
+    </svg>
+  );
 
   return (
     <div className={Style.video_data}>
@@ -111,12 +129,20 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
         </span>
         <div className={Style.icons_container}>
           <p className={Style.icon} onClick={HandelLike}>
-            {IsLiked ? <AiFillLike /> : <AiOutlineLike />}
+            {IsLiked ? (
+              <GoogleIcon Fill={true} IconName={"thumb_up_off"} />
+            ) : (
+              <GoogleIcon IconName={"thumb_up_off"} />
+            )}
             <span className={Style.nubmer_of_likes}>{videoLikes}</span>
           </p>
           <p className={Style.icon} onClick={HandelDisLike}>
-            {IsDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}
-            <span className={Style.disLike}>Dislike {videoDisLikes}</span>
+            {IsDisLiked ? (
+              <GoogleIcon Fill={true} IconName={"thumb_down_off"} />
+            ) : (
+              <GoogleIcon IconName={"thumb_down_off"} />
+            )}
+            <span className={Style.disLike}> {videoDisLikes}</span>
           </p>
           {!ActiveVideoStream && (
             <p className={Style.icon_comments}>
@@ -134,7 +160,7 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
             Share
           </p>
           <p onClick={handelPlayList} className={Style.icon}>
-            <RiPlayListAddFill />
+            <GoogleIcon IconName={"playlist_add"} />
             Save
           </p>
           <p className={Style.icon}>
