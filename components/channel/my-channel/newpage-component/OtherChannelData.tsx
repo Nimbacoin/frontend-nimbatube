@@ -39,13 +39,13 @@ const OtherChannelData = () => {
         </div>
         <div className={Style.container_data_item}>
           <span className={Style.followers}>
-            {ChannelSlice?.followers?.length}
+            {"35345"}
           </span>{" "}
           <span className={Style.title}>Videos</span>
         </div>
         <div className={Style.container_data_item}>
           <span className={Style.followers}>
-            {ChannelSlice?.followers?.length}
+            {"25534"}
           </span>{" "}
           <span className={Style.title}>Likes</span>
         </div>
