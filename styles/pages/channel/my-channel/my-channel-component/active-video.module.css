@@ -13,7 +13,7 @@
   border-radius: 10px;
 }
 .container_video > video {
-  border-radius: 10px;
+  border-radius: 2px;
 }
 .container_video_data {
   width: 43%;
