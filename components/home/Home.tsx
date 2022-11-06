@@ -13,9 +13,10 @@ const Home = () => {
   useEffect(() => {
     const locaFetch = async () => {
       const dataRes: any = await allVideosFetch(0);
+      const allVids = dataRes.responseData;
       setVideos(dataRes.responseData);
-      setFirstVideos(dataRes.responseData.slice(0, 4));
-      setRestVideos(dataRes.responseData.slice(4, dataRes.responseData.length));
+      setFirstVideos(allVids.slice(0, 4));
+      setRestVideos(allVids.slice(4, 5));
       setLimit(dataRes?.limit);
       console.log(dataRes?.limit);
     };
@@ -23,7 +24,7 @@ const Home = () => {
   }, []);
 
   const [firstVideos, setFirstVideos] = useState(videos.slice(0, 4));
-  const [restVideos, setRestVideos] = useState<{ [key: string]: any }>([]);
+  const [restVideos, setRestVideos] = useState(videos.slice(4, 5));
 
   useEffect(() => {
     window.onscroll = function (ev) {
@@ -33,7 +34,6 @@ const Home = () => {
       ) {
         const locaFetch = async () => {
           console.log(limit);
-
           const dataRes: any = await allVideosFetch(limit);
           if (dataRes?.responseData?.length >= 1) {
             const dataa = restVideos.concat(dataRes.responseData);
@@ -42,7 +42,8 @@ const Home = () => {
               (videoData: any, index: any) =>
                 !ids.includes(videoData.videoData._id, index + 1)
             );
-            setRestVideos(filtered);
+            setFirstVideos(filtered.slice(0, 4));
+            setRestVideos(filtered.slice(4, filtered.length));
             setLimit(dataRes?.limit);
           }
         };
