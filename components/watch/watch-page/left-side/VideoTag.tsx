@@ -143,7 +143,7 @@ const VideoTag = () => {
             <video
               className={Style.video_tag}
               ref={videoTag}
-              muted
+              // muted
               autoPlay
               loop
             >
