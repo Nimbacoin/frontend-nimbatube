@@ -16,7 +16,7 @@ const Home = () => {
       const allVids = dataRes.responseData;
       setVideos(dataRes.responseData);
       setFirstVideos(allVids.slice(0, 4));
-      setRestVideos(allVids.slice(4, 5));
+      setRestVideos(allVids.slice(4, allVids.length));
       setLimit(dataRes?.limit);
       console.log(dataRes?.limit);
     };
@@ -24,7 +24,7 @@ const Home = () => {
   }, []);
 
   const [firstVideos, setFirstVideos] = useState(videos.slice(0, 4));
-  const [restVideos, setRestVideos] = useState(videos.slice(4, 5));
+  const [restVideos, setRestVideos] = useState(videos.slice(4, videos.length));
 
   useEffect(() => {
     window.onscroll = function (ev) {
