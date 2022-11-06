@@ -26,10 +26,9 @@ const Home = () => {
   return (
     <div className={Style.container}>
       <div className={Style.div_container_top}>
-        <div className={Style.div_video_avtive_container}><ActiveVideo /> </div>
-        <div className={Style.right_side_container}>
-          
-        </div>
+        
+          <ActiveVideo />{" "}
+        
       </div>
 
       <div className={Style.vedio_container}>
