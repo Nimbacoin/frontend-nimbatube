@@ -62,12 +62,13 @@
   width: 100%;
   min-height: 102px;
   border: 1px solid#DBDBDB;
-  border-radius: 20px;
+
   position: relative;
   font-size: 14px;
   color: #030303;
   outline: none;
   padding: 0;
+  border-radius: 10px;
 }
 .text_desc {
   width: 100%;
@@ -78,7 +79,7 @@
   padding: 10px;
   resize: none;
   overflow-y: auto;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .input_label:hover,
