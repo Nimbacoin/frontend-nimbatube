@@ -128,7 +128,7 @@ const Video = ({ VideoData }: any) => {
 
         <p className={Style.time}>
           {VideoData?.videoData?.duration}
-           {/* <GoogleIcon IconName={"videocam"} /> */}
+          {/* <GoogleIcon IconName={"videocam"} /> */}
           <IoVideocamOutline />{" "}
         </p>
       </div>
@@ -136,12 +136,9 @@ const Video = ({ VideoData }: any) => {
         <div className={Style.title_data}>
           <p className={Style.title}>{Title?.slice(0, 70)}</p>
           <i
-            style={{ color: `${OverElement ? "#030303" : "#F9F9F9"}` }}
-            className={Style.menu_desktop}
+            // style={{ color: `${OverElement ? "#030303" : "#F9F9F9"}` }}
+            className={OverElement ? Style.menu_desktop : Style.menu}
           >
-            <IoEllipsisVertical />
-          </i>
-          <i className={Style.menu}>
             <IoEllipsisVertical />
           </i>
         </div>

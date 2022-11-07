@@ -83,7 +83,7 @@
   cursor: pointer;
 }
 .menu {
-  display: none;
+  visibility: hidden;
 }
 .menu_desktop,
 .menu {
@@ -150,17 +150,8 @@
     height: auto;
   }
 
-  .menu_desktop {
-    visibility: none;
-  }
   .menu {
-    display: block;
-    position: absolute;
-    right: -2px;
-    z-index: 100;
-  }
-  .menu:last-of-type {
-    margin-left: auto;
+    visibility: visible;
   }
 }
 @media screen and (max-width: 900px) {
@@ -169,7 +160,7 @@
   }
   .vedio_container,
   .vedio_container_MenuBoolean {
-    height: 300px;
+    height: 200px;
   }
   .desc_container {
     margin: 0 10px;
@@ -184,6 +175,12 @@
   .vedio_container,
   .vedio_container_MenuBoolean {
     height: 200px;
+  }
+}
+@media screen and (max-width: 690px) {
+  .vedio_container,
+  .vedio_container_MenuBoolean {
+    height: 150px;
   }
 }
 @media screen and (max-width: 600px) {
@@ -203,7 +200,7 @@
   .vedio_container,
   .vedio_container_MenuBoolean {
     width: 100%;
-    height: 300px;
+    height: 250px;
   }
 }
 @media screen and (max-width: 400px) {
@@ -215,7 +212,7 @@
 @media screen and (max-width: 300px) {
   .vedio_container,
   .vedio_container_MenuBoolean {
-    height: 150px;
+    height: 120px;
   }
 }
 @media screen and (max-width: 200px) {
