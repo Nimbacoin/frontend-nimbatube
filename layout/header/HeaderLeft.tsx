@@ -6,6 +6,7 @@ import { FiMenu } from "@react-icons/all-files/fi/FiMenu";
 import { useDispatch } from "react-redux";
 import { ToggleMenu } from "../../redux/style-slice/menu/SideMenu";
 import { FaPlayCircle } from "@react-icons/all-files/fa/FaPlayCircle";
+import GoogleIcon from "../../components/modals/GoogleIcon";
 const HeaderLeft = () => {
   const dispatch = useDispatch();
   const HandelToggleMenu = () => {
@@ -13,9 +14,9 @@ const HeaderLeft = () => {
   };
   return (
     <div className={Style.container}>
-      <span onClick={HandelToggleMenu}>
-        <FiMenu />
-      </span>
+      <div onClick={HandelToggleMenu}>
+        <GoogleIcon IconName={"menu"} />
+      </div>
       <Link href="/">
         <p className={Style.logo}>
           <span className={Style.icon}>

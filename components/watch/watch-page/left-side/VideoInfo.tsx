@@ -93,7 +93,6 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
   };
   var check = moment(videoData?.createdAt, "YYYY/MM/DD");
   var month = check.format("M");
-  
 
   return (
     <div className={Style.video_data}>
@@ -131,7 +130,8 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
           </p>
           {!ActiveVideoStream && (
             <p className={Style.icon_comments}>
-              <GoCommentDiscussion />
+              {/* <GoCommentDiscussion /> */}
+              <GoogleIcon IconName={"forum"} />
               <span className={Style.live_chat}>Live Chat</span>
             </p>
           )}

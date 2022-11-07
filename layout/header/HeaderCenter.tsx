@@ -166,7 +166,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
             <IconHeader
               Url={"/auth/sign-in"}
               Icon={<GoogleIcon IconName={"video_call"} />}
-              Icon={<IoVideocamOutline />}
+          
               TextValue={"Go lIVE"}
             />
           </>
