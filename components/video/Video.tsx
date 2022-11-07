@@ -9,13 +9,13 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import LoaodingAll from "../modals/LoaodingAll";
+import GoogleIcon from "../modals/GoogleIcon";
 const Video = ({ VideoData }: any) => {
   const [OverElement, setOverElement] = useState(false);
   const [isLaoded, setIsLaoded] = useState(false);
   const streaming = VideoData?.streaming;
   const [videoLink, setVideoLink] = useState("");
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
-  //console.log(VideoData);
   const HandelOver = () => {
     setOverElement(true);
   };
@@ -124,12 +124,12 @@ const Video = ({ VideoData }: any) => {
             : Style.vedio_container
         }
       >
-        {!isLaoded && (
-          <LoaodingAll />
-        )}
+        {!isLaoded && <LoaodingAll />}
 
         <p className={Style.time}>
-          {VideoData?.videoData?.duration} <IoVideocamOutline />{" "}
+          {VideoData?.videoData?.duration}
+           {/* <GoogleIcon IconName={"videocam"} /> */}
+          <IoVideocamOutline />{" "}
         </p>
       </div>
       <div className={Style.desc_container}>

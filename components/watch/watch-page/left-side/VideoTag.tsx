@@ -47,9 +47,9 @@ const VideoTag = () => {
       if (video) {
         setVideoId(video);
       }
-      if (typeof window !== "undefined") {
-        videoTag.current.src =
-          process.env.NEXT_PUBLIC_BACK_END_URL + "/api/get/read/video/" + video;
+      if (typeof window !== "undefined" && videoData && videoData?.location) {
+        videoTag.current.src = videoData.location;
+        // process.env.NEXT_PUBLIC_BACK_END_URL + "/api/get/read/video/" + video;
       }
     }
   }, [asPath]);

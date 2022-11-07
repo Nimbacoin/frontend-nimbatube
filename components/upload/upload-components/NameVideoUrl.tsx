@@ -17,6 +17,7 @@ const NameVideoUrl = () => {
 
   const [FileName, setFileName] = useState("");
   const [VideoLink, setVideoLink] = useState("");
+  const [videoLocation, setVideoLocation] = useState("");
   const [Uploaded, setUploaded] = useState(false);
   const [videoPath, setVideoPath] = useState("");
 
@@ -29,19 +30,16 @@ const NameVideoUrl = () => {
       reader.readAsDataURL(event.target.files[0]);
       HandelSubmiteNewGeneral();
       reader.onload = function (e: any) {
-        if (videoTag.current) {
-          videoTag.current.src = e.target.result;
-          videoTag.current.play();
-        }
+        // if (videoTag.current) {
+        //   videoTag.current.src = e.target.result;
+        //   videoTag.current.play();
+        // }
       };
     }
   };
   useEffect(() => {
-    if (videoTag.current) {
-      videoTag.current.src =
-        process.env.NEXT_PUBLIC_BACK_END_URL +
-        "/api/get/read/video/" +
-        videoPath;
+    if (videoTag.current && videoLocation?.length) {
+      videoTag.current.src = videoLocation;
       videoTag.current.play();
     }
   }, [Uploaded, videoPath]);
@@ -58,6 +56,9 @@ const NameVideoUrl = () => {
     ).then(({ data }) => {
       console.log(data);
       const { file }: any = data;
+      if (file) {
+        setVideoLocation(file.location);
+      }
       if (file._id) {
         dispatch(
           ActionVideoDataChanging({
@@ -101,8 +102,6 @@ const NameVideoUrl = () => {
   };
   return (
     <div className={Style.container}>
-      
-
       <div className={Style.upload_inputs_container}>
         {Uploaded ? (
           <div className={Style.video_container_data}>
