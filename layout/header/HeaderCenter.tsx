@@ -120,7 +120,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
           <>
             <IconHeader
               Url={"/upload"}
-              Icon={<IoCloudUploadOutline />}
+              Icon={<GoogleIcon IconName={"cloud_upload"} />}
               TextValue={"upload"}
             />
 
@@ -133,7 +133,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
                 <IconHeader
                   Number={true}
                   NumberData={numberNotfy}
-                  Icon={<IoNotificationsOutline />}
+                  Icon={<GoogleIcon IconName={"notifications"} />}
                   TextValue={"Notification"}
                 />
               </div>
@@ -144,7 +144,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
 
             <IconHeader
               Url={"/go-live/go-live"}
-              Icon={<IoVideocamOutline />}
+              Icon={<GoogleIcon IconName={"video_call"} />}
               TextValue={"Go lIVE"}
             />
           </>
@@ -159,12 +159,13 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
             <div className={Style.notfy_drop_down}>
               <IconHeader
                 Url={"/auth/sign-in"}
-                Icon={<IoNotificationsOutline />}
+                Icon={<GoogleIcon IconName={"notifications"} />}
                 TextValue={"Notification"}
               />
             </div>
             <IconHeader
               Url={"/auth/sign-in"}
+              Icon={<GoogleIcon IconName={"video_call"} />}
               Icon={<IoVideocamOutline />}
               TextValue={"Go lIVE"}
             />
