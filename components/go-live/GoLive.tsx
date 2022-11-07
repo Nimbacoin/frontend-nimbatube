@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import basedPostUrlRequestLogedIn from "../../utils/basedPostUrlRequestLogedIn";
 import { useSelector } from "react-redux";
 import Streaming from "./go-live-components/Streaming";
+import GoogleIcon from "../modals/GoogleIcon";
 const GoLivePage = () => {
   const Router = useRouter();
   const { asPath } = useRouter();
@@ -63,7 +64,7 @@ const GoLivePage = () => {
             <div className={Style.go_live}>
               <div className={Style.conainter_live_desc}>
                 <div className={Style.go_live_icon}>
-                  <IoVideocamOutline />
+                  <GoogleIcon IconName={"video_call"} />
                 </div>
                 <p className={Style.file_text_title_bold}>Start a Live Video</p>
                 <p className={Style.file_text_paragef}>
