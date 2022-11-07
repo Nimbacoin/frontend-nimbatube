@@ -9,10 +9,15 @@
   max-height: 60px;
 }
 
-.container > span > svg {
-  font-size: 20px;
-  cursor: pointer;
-  color: #727272;
+.container_menu {
+  padding: 5px;
+  border: solid 1px #6f4b4b00;
+}
+.container_menu:hover {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  
+  box-shadow: #00000017 0px 3px 12px;
 }
 .icon {
   font-size: 24px;
@@ -53,4 +58,3 @@
     column-gap: 10px;
   }
 }
-

@@ -104,14 +104,14 @@
   padding: 10px 0;
   width: 100%;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 .link_container_active {
   padding: 10px 0;
   width: 100%;
   cursor: pointer;
   background-color: #f0f0f0;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 .link {
   width: 100%;

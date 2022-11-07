@@ -94,15 +94,19 @@ const Video = ({ VideoData }: any) => {
   });
   const Router = useRouter();
   const handelClickVideo = (e: any) => {
-    if (channelNameRef && channelNameRef.current) {
+    if (channelNameRef && channelNameRef.current && Spanlem.current) {
       const channelNameRefCurnt = channelNameRef.current;
+      const SpanlemCurnt = Spanlem.current;
       if (channelNameRefCurnt.contains(e.target)) {
         Router.push("/channel/@/" + VideoData?.channelData?._id);
+      } else if (SpanlemCurnt.contains(e.target)) {
       } else {
         Router.push(videoLink);
       }
     }
   };
+  const Spanlem = React.useRef<HTMLSpanElement>(null);
+
   return (
     <div
       ref={containerRef}
@@ -135,12 +139,12 @@ const Video = ({ VideoData }: any) => {
       <div className={Style.desc_container}>
         <div className={Style.title_data}>
           <p className={Style.title}>{Title?.slice(0, 70)}</p>
-          <i
-            // style={{ color: `${OverElement ? "#030303" : "#F9F9F9"}` }}
+          <span
+            ref={Spanlem}
             className={OverElement ? Style.menu_desktop : Style.menu}
           >
             <IoEllipsisVertical />
-          </i>
+          </span>
         </div>
         <div className={Style.chanel_data}>
           <div

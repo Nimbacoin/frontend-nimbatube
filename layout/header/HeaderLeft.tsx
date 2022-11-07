@@ -14,13 +14,12 @@ const HeaderLeft = () => {
   };
   return (
     <div className={Style.container}>
-      <div onClick={HandelToggleMenu}>
+      <div className={Style.container_menu} onClick={HandelToggleMenu}>
         <GoogleIcon IconName={"menu"} />
       </div>
       <Link href="/">
         <p className={Style.logo}>
           <span className={Style.icon}>
-            {" "}
             <FaPlayCircle />
           </span>
           NimbaTube
