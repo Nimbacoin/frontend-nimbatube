@@ -153,7 +153,9 @@ const Layout = ({ children }: any) => {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9261275339248060"
           crossOrigin="anonymous"
         ></script>
-        <link rel="icon" href="/favicon.jpg" />
+        {/* <link rel="icon" href="/favicon.png" /> */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

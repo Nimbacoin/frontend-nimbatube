@@ -127,6 +127,15 @@ const VideoTag = () => {
       videoTag.current.muted = !videoTag.current.muted;
     }
   };
+  useEffect(() => {
+    function format(s: any) {
+      timeUpdate
+    }
+
+    console.log(format(25));
+    console.log(format(250));
+    console.log(format(31));
+  }, []);
 
   return (
     <>
@@ -143,7 +152,7 @@ const VideoTag = () => {
             <video
               className={Style.video_tag}
               ref={videoTag}
-              // muted
+              muted
               autoPlay
               loop
             >
