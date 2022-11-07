@@ -93,22 +93,7 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
   };
   var check = moment(videoData?.createdAt, "YYYY/MM/DD");
   var month = check.format("M");
-  const Svggg = (
-    <svg
-      viewBox="0 0 24 24"
-      preserveAspectRatio="xMidYMid meet"
-      focusable="false"
-      className="style-scope yt-icon"
-      style="pointer-events: none; display: block; width: 100%; height: 100%;"
-    >
-      <g mirror-in-rtl="" className="style-scope yt-icon">
-        <path
-          d="M15,5.63L20.66,12L15,18.37V15v-1h-1c-3.96,0-7.14,1-9.75,3.09c1.84-4.07,5.11-6.4,9.89-7.1L15,9.86V9V5.63 M14,3v6 C6.22,10.13,3.11,15.33,2,21c2.78-3.97,6.44-6,12-6v6l8-9L14,3L14,3z"
-          className="style-scope yt-icon"
-        ></path>
-      </g>
-    </svg>
-  );
+  
 
   return (
     <div className={Style.video_data}>
