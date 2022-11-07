@@ -142,7 +142,7 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
             ) : (
               <GoogleIcon IconName={"thumb_down_off"} />
             )}
-            <span className={Style.disLike}> {videoDisLikes}</span>
+            {/* <span className={Style.disLike}> {videoDisLikes}</span> */}
           </p>
           {!ActiveVideoStream && (
             <p className={Style.icon_comments}>
