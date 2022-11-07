@@ -13,6 +13,7 @@ import SearchDropDown from "./header-components/SearchDropDown";
 import IconHeader from "../../components/modals/IconHeader";
 import NotfyDropDown from "./header-components/NotfyDropDown";
 import { useSelector } from "react-redux";
+import GoogleIcon from "../../components/modals/GoogleIcon";
 
 const HeaderCenter = ({ UserIsSignedIn }: any) => {
   const { asPath } = useRouter();
@@ -189,7 +190,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
             <IconHeader
               Number={true}
               NumberData={numberNotfy}
-              Icon={<IoNotificationsOutline />}
+              Icon={<GoogleIcon IconName={"notifications"} />}
               TextValue={"Notification"}
             />
           </div>
