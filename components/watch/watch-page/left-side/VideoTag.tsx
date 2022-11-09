@@ -103,7 +103,7 @@ const VideoTag = () => {
     };
     if (videoTag.current && hiddenDiv.current) {
       const dataDiv = videoTag.current.getBoundingClientRect();
-      hiddenDiv.current.style.height = `${dataDiv.height + 10}px`;
+      hiddenDiv.current.style.height = `${dataDiv.height}px`;
     }
   });
   const [play, setPlay] = useState(false);
@@ -143,6 +143,28 @@ const VideoTag = () => {
     }
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShowDivControls(false);
+    }, 5000);
+  }, []);
+  const [showDivControls, setShowDivControls] = useState(true);
+
+  useEffect(() => {
+    const HandelClick = (e: any) => {
+      if (containerRef && containerRef.current) {
+        const refany = containerRef.current;
+        if (refany.contains(e.target)) {
+          setShowDivControls(true);
+        } else {
+          if (showDivControls) {
+            setShowDivControls(false);
+          }
+        }
+      }
+    };
+    window.addEventListener("mouseover", HandelClick);
+  }, [showDivControls]);
   return (
     <>
       <div className={Style.hiddenDiv} ref={hiddenDiv}></div>
@@ -158,56 +180,61 @@ const VideoTag = () => {
             <video className={Style.video_tag} ref={videoTag} loop autoPlay>
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
-            <div className={Style.controls_container}>
-              <div className={Style.bar_container}>
-                <span className={Style.time_900}>
-                  {timeUpdate + " / " + duration}
-                </span>
-                <VideoBar HandelClick={setProgress} Width={timeValue} />
-              </div>
-              <div className={Style.controlrs}>
-                <div className={Style.play_sound_controls}>
-                  <span className={Style.icon_control}>
-                    <SkipPreviousSharpIcon />
-                  </span>
-                  {play ? (
-                    <span onClick={handelPlay} className={Style.icon_control}>
-                      <PlayArrowIcon />
-                    </span>
-                  ) : (
-                    <span onClick={handelPuase} className={Style.icon_control}>
-                      <PauseSharpIcon />
-                    </span>
-                  )}
-                  <span className={Style.icon_control}>
-                    <SkipNextSharpIcon />
-                  </span>
-
-                  <div className={Style.div_sound_container_bar}>
-                    <span
-                      onClick={handelMuteVid}
-                      className={Style.icon_control_1000}
-                    >
-                      {vidMutued ? (
-                        <VolumeOffSharpIcon />
-                      ) : (
-                        <VolumeUpSharpIcon />
-                      )}
-                    </span>
-                    <SoundBar HandelClick={changeVolume} />
-                  </div>
-
-                  <span className={Style.time}>
+            {showDivControls && (
+              <div className={Style.controls_container}>
+                <div className={Style.bar_container}>
+                  <span className={Style.time_900}>
                     {timeUpdate + " / " + duration}
                   </span>
+                  <VideoBar HandelClick={setProgress} Width={timeValue} />
                 </div>
-                <div className={Style.other_controls}>
-                  <span className={Style.icon_control_1000}>
-                    <FullscreenSharpIcon />
-                  </span>
+                <div className={Style.controlrs}>
+                  <div className={Style.play_sound_controls}>
+                    <span className={Style.icon_control}>
+                      <SkipPreviousSharpIcon />
+                    </span>
+                    {play ? (
+                      <span onClick={handelPlay} className={Style.icon_control}>
+                        <PlayArrowIcon />
+                      </span>
+                    ) : (
+                      <span
+                        onClick={handelPuase}
+                        className={Style.icon_control}
+                      >
+                        <PauseSharpIcon />
+                      </span>
+                    )}
+                    <span className={Style.icon_control}>
+                      <SkipNextSharpIcon />
+                    </span>
+
+                    <div className={Style.div_sound_container_bar}>
+                      <span
+                        onClick={handelMuteVid}
+                        className={Style.icon_control_1000}
+                      >
+                        {vidMutued ? (
+                          <VolumeOffSharpIcon />
+                        ) : (
+                          <VolumeUpSharpIcon />
+                        )}
+                      </span>
+                      <SoundBar HandelClick={changeVolume} />
+                    </div>
+
+                    <span className={Style.time}>
+                      {timeUpdate + " / " + duration}
+                    </span>
+                  </div>
+                  <div className={Style.other_controls}>
+                    <span className={Style.icon_control_1000}>
+                      <FullscreenSharpIcon />
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       )}
