@@ -3,8 +3,8 @@ import Style from "../../../styles/modals/pages-boforload/videos-right.module.cs
 const VideosRight = () => {
   const repeat = Array(10)
     .fill(0)
-    .map((_, i) => (
-      <div className={Style.main_container}>
+    .map((_, index) => (
+      <div key={index} className={Style.main_container}>
         <div className={Style.vedio_container}></div>
 
         <div className={Style.desc_container}>

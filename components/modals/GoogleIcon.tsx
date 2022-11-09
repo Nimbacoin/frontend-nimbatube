@@ -3,7 +3,7 @@ import Style from "../../styles/modals/pop-upp.module.css";
 
 const GoogleIcon = ({ IconName, Fill, Sharp }: any) => {
   return (
-    <p
+    <span
       className={
         Fill ? Style.material_symbols_fill : Style.material_symbols_outlined
       }
@@ -15,7 +15,7 @@ const GoogleIcon = ({ IconName, Fill, Sharp }: any) => {
       >
         {IconName}
       </span>
-    </p>
+    </span>
   );
 };
 export default GoogleIcon;
