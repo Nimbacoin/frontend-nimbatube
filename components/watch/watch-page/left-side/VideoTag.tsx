@@ -70,6 +70,7 @@ const VideoTag = () => {
     const CurrentVideo = videoTag.current;
     if (CurrentVideo) {
       CurrentVideo.onloadedmetadata = (event) => {
+        console.log(event);
         if (CurrentVideo && CurrentVideo.src) {
           CurrentVideo.play();
           const TimeVideo = CurrentVideo.duration;
