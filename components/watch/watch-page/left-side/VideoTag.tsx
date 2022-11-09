@@ -70,7 +70,6 @@ const VideoTag = () => {
     const CurrentVideo = videoTag.current;
     if (CurrentVideo) {
       CurrentVideo.onloadedmetadata = (event) => {
-        console.log(event);
         if (CurrentVideo && CurrentVideo.src) {
           CurrentVideo.play();
           const TimeVideo = CurrentVideo.duration;
@@ -132,6 +131,16 @@ const VideoTag = () => {
       videoTag.current.currentTime = newTime * videoTag.current.duration;
     }
   };
+  const changeVolume = (newTime: number) => {
+    if (videoTag.current) {
+      videoTag.current.volume = newTime;
+      if (newTime <= 0.1) {
+        setVidMutued(true);
+      } else {
+        setVidMutued(false);
+      }
+    }
+  };
 
   return (
     <>
@@ -145,7 +154,7 @@ const VideoTag = () => {
               </div>
             )}
 
-            <video className={Style.video_tag} ref={videoTag} muted autoPlay>
+            <video className={Style.video_tag} ref={videoTag} loop autoPlay>
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
             <div className={Style.controls_container}>
@@ -180,7 +189,7 @@ const VideoTag = () => {
                   </span>
 
                   <div className={Style.div_sound_container_bar}>
-                    <SoundBar />
+                    <SoundBar HandelClick={changeVolume} />
                   </div>
 
                   <span className={Style.time}>

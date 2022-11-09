@@ -52,7 +52,9 @@ const VideoBar = ({ Width, HandelClick }: any) => {
           ref={progressFill}
           style={{ width: `${Width}` }}
           className={Style.bar_container}
-        ><div className={Style.the_circel}></div> </div>
+        >
+          <div className={Style.the_circel}></div>{" "}
+        </div>
       </div>
     </div>
   );

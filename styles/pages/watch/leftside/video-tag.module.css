@@ -127,7 +127,7 @@
 }
 
 .div_sound_container_bar {
-  min-width: 100px;
+  min-width: 80px;
 }
 @media screen and (max-width: 1000px) {
   .video_container {

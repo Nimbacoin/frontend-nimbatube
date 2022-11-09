@@ -10,9 +10,12 @@ const VideoBar = ({ Width, HandelClick }: any) => {
     if (progressSlider.current && progressFill.current) {
       const newTime =
         e.nativeEvent.offsetX / progressSlider.current.offsetWidth;
-      console.log(e.nativeEvent.offsetX);
       progressFill.current.style.width = `${newTime * 100}%`;
-      HandelClick(newTime);
+      let volume = e.nativeEvent.offsetX / progressSlider.current.offsetWidth;
+      if (volume <= 0.1) {
+        volume = 0;
+      }
+      HandelClick(volume);
     }
   };
   const onMouseDownActive = () => {
@@ -31,7 +34,7 @@ const VideoBar = ({ Width, HandelClick }: any) => {
           e.nativeEvent.offsetX / progressSlider.current.offsetWidth;
         console.log(e.nativeEvent.offsetX);
         progressFill.current.style.width = `${newTime * 100}%`;
-        HandelClick(newTime);
+        // HandelClick(newTime);
       }
     }
   };
