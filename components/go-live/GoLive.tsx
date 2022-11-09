@@ -8,6 +8,7 @@ import basedPostUrlRequestLogedIn from "../../utils/basedPostUrlRequestLogedIn";
 import { useSelector } from "react-redux";
 import Streaming from "./go-live-components/Streaming";
 import GoogleIcon from "../modals/GoogleIcon";
+import BlueButton from "../modals/BlueButton";
 const GoLivePage = () => {
   const Router = useRouter();
   const { asPath } = useRouter();
@@ -72,12 +73,10 @@ const GoLivePage = () => {
                 </p>
               </div>
               <div className={Style.div_button_action}>
-                <button
-                  className={Style.button_action}
-                  onClick={handelSubmiteLiveVideo}
-                >
-                  Go Live
-                </button>
+                <BlueButton
+                  HandelClick={handelSubmiteLiveVideo}
+                  Text={"Go Live"}
+                />
               </div>
             </div>
           )}

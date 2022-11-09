@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import Style from "../../../../styles/pages/watch/leftside/input_reply.module.css";
+import Style from "../../../../styles/pages/watch/leftside/input_comment.module.css";
 import { MdSort } from "@react-icons/all-files/md/MdSort";
 import { AiOutlineDislike } from "@react-icons/all-files/ai/AiOutlineDislike";
 import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
@@ -18,6 +18,8 @@ import { IoChevronUp } from "@react-icons/all-files/io5/IoChevronUp";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 import { MainVideoDataReducer } from "../../../../redux/video-slice/VideoSlice";
 import { useRouter } from "next/router";
+import BlueButton from "../../../modals/BlueButton";
+import CancelButton from "../../../modals/CancelButton";
 
 const ReplyInput = ({ VideoData }: any) => {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -106,14 +108,9 @@ const ReplyInput = ({ VideoData }: any) => {
         />
         <div className={Style.input_reply_buttons_continer}>
           {comment?.length >= 1 && (
-            <button onClick={HandelCancel} className={Style.cancel_btn}>
-              Cancel
-            </button>
+            <CancelButton HandelClick={HandelCancel} Text={"Cancel"} />
           )}
-
-          <button onClick={handelCreateComments} className={Style.comment_btn}>
-            Comment
-          </button>
+          <BlueButton HandelClick={handelCreateComments} Text={"Comment"} />
         </div>
       </div>
     </div>

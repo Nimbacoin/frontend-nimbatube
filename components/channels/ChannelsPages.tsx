@@ -8,6 +8,7 @@ import { AllChannelsRedcuer } from "../../redux/channel-slice/ChannelSlice";
 import basedPostUrlRequestLogedIn from "../../utils/basedPostUrlRequestLogedIn";
 import { useRouter } from "next/router";
 import ChannelsLaoding from "../modals/pages-boforload/ChannelsLaoding";
+import BlueButton from "../modals/BlueButton";
 
 const ChannelsPages = () => {
   const Router = useRouter();
@@ -32,12 +33,12 @@ const ChannelsPages = () => {
     <div className={Style.container}>
       <div className={Style.head_container}>
         <div className={Style.title}>Your Active channels </div>
-        {/* <Link href="/channel/new"> */}
-        <button onClick={HandelSubmiteInitChannel} className={Style.button}>
-          {" "}
-          New Chanel{" "}
-        </button>
-        {/* </Link> */}
+        
+        <BlueButton
+          HandelClick={HandelSubmiteInitChannel}
+          Text={"New Chanel"}
+        />
+       
       </div>
       <div className={Style.channels_container}>
         {channels && channels.length ? (

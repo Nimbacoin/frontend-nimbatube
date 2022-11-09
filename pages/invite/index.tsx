@@ -9,9 +9,9 @@ const index = () => {
   const HandelCopyLink = () => {};
   const VideoLink = process.env.NEXT_PUBLIC_ClIENT_URL;
   const CopyLinkText =
-    "Earn  for inviting subscribers, followers, fans, friends, etc. to join and follow you on Odysee. You can use invites just like affiliate links.";
+    "Earn  for inviting subscribers, followers, fans, friends, etc. to join and follow you on Nimbatube. You can use invites just like affiliate links.";
   const VideoEmail =
-    "Invite someone you know by email and earn  when they join Odysee.";
+    "Invite someone you know by email and earn  when they join Nimbatube.";
   return (
     <div className={Style.container}>
       <div className={Style.container_inputs}>

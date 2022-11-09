@@ -57,7 +57,7 @@
   justify-content: space-between;
   width: 100%;
   height: auto;
-  min-height: 40px;
+  min-height: 35px;
   border: 1px solid#DBDBDB;
   border-radius: 20px;
   position: relative;
@@ -110,7 +110,7 @@
   color: #fff;
   font-size: 15px;
   font-weight: 500;
-  min-height: 40px;
+  min-height: 35px;
 }
 .button_copy:hover {
   background-color: #522dc2;

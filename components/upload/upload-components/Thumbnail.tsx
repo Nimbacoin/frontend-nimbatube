@@ -7,6 +7,8 @@ import { ActionVideoDataChanging } from "../../../redux/video-slice/VideoSlice";
 import AxiosPostLogedInFormData from "../../../utils/AxiosPostLogedInFormData";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
 import { poPUppRedcuer } from "../../../redux/style-slice/general-style/GenrealStyle";
+import BlueButton from "../../modals/BlueButton";
+import CancelButton from "../../modals/CancelButton";
 
 const Thumbnail = () => {
   const Path = useRef(null);
@@ -98,10 +100,8 @@ const Thumbnail = () => {
         </div>
       </div>
       <div className={Style.div_button_action}>
-        <button className={Style.button_action} onClick={handelSubmiteVideos}>
-          Submit
-        </button>
-        <button className={Style.button_action_add}>Cancel </button>
+        <BlueButton HandelClick={handelSubmiteVideos} Text={"Submit"} />
+        <CancelButton Text={"Cancel"} />
       </div>
     </div>
   );

@@ -7,6 +7,8 @@ import { ActionVideoDataChanging } from "../../../redux/video-slice/VideoSlice";
 import AxiosPostLogedInFormData from "../../../utils/AxiosPostLogedInFormData";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
 import { useRouter } from "next/router";
+import BlueButton from "../../modals/BlueButton";
+import CancelButton from "../../modals/CancelButton";
 
 const Thumbnail = ({ VideoLink, VideoId }: any) => {
   const Path = useRef(null);
@@ -100,10 +102,8 @@ const Thumbnail = ({ VideoLink, VideoId }: any) => {
         </div>
       </div>
       <div className={Style.div_button_action}>
-        <button className={Style.button_action} onClick={handelSubmiteVideos}>
-          Submit
-        </button>
-        <button className={Style.button_action_add}>Cancel </button>
+        <BlueButton HandelClick={handelSubmiteVideos} Text={"Submit"} />
+        <CancelButton Text={"Cancel"} />
       </div>
     </div>
   );
