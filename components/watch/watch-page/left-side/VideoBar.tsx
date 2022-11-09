@@ -3,6 +3,7 @@ import Style from "../../../../styles/pages/watch/leftside/video-bar.module.css"
 
 const VideoBar = ({ Width, HandelClick }: any) => {
   const [isMouseDown, setIsMouseDown] = useState(false);
+   const [changeClassName, setChangeClassName] = useState(false);
   const progressSlider = React.useRef<HTMLDivElement | null>(null);
   const progressFill = React.useRef<HTMLDivElement | null>(null);
 
@@ -24,6 +25,7 @@ const VideoBar = ({ Width, HandelClick }: any) => {
   const onMouseUpActive = () => {
     setIsMouseDown(false);
   };
+  
   const onMouseOverActive = (e: any) => {
     if (isMouseDown) {
       if (progressSlider.current && progressFill.current) {

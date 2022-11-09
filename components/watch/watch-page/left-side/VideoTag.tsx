@@ -27,6 +27,7 @@ import VideoBar from "./VideoBar";
 import VideoTimeReader from "../../../../utils/VideoTimeReader";
 import VideoTimeReaderChanging from "../../../../utils/VideoTimeReaderChanging";
 import SoundBar from "./SoundBar";
+import FullscreenSharpIcon from "@mui/icons-material/FullscreenSharp";
 
 const VideoTag = () => {
   const ResDD = useSelector(
@@ -198,7 +199,7 @@ const VideoTag = () => {
                 </div>
                 <div className={Style.other_controls}>
                   <span className={Style.icon_control_1000}>
-                    <BiFullscreen />
+                    <FullscreenSharpIcon />
                   </span>
                 </div>
               </div>

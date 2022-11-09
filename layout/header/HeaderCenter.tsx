@@ -120,7 +120,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
           <>
             <IconHeader
               Url={"/upload"}
-              Icon={<GoogleIcon IconName={"cloud_upload"} />}
+              Icon={<GoogleIcon Sharp={true} IconName={"cloud_upload"} />}
               TextValue={"upload"}
             />
 
@@ -144,8 +144,9 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
 
             <IconHeader
               Url={"/go-live/go-live"}
-              Icon={<GoogleIcon IconName={"video_call"} />}
+              Icon={<GoogleIcon Sharp={true} IconName={"video_call"} />}
               TextValue={"Go lIVE"}
+              
             />
           </>
         ) : (
@@ -165,8 +166,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
             </div>
             <IconHeader
               Url={"/auth/sign-in"}
-              Icon={<GoogleIcon IconName={"video_call"} />}
-          
+              Icon={<GoogleIcon Sharp={true} IconName={"video_call"} />}
               TextValue={"Go lIVE"}
             />
           </>

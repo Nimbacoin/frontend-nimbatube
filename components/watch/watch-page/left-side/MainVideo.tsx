@@ -29,11 +29,7 @@ const MainVideo = () => {
     ResDD?.channelData
   );
   const userSignIn = useSelector((state: any) => state.UserSignIn.userdata);
-  const [videoId, setVideoId] = useState<string>("");
-  const [videoLikes, setVideoLikes] = useState<number>(videoData?.likes?.likes);
-  const [videoDisLikes, setVideoDisLikes] = useState<number>(
-    videoData?.disLikes?.disLikes
-  );
+  
   const Bg = channelData?.channelData?.profileImg?.url
     ? process.env.NEXT_PUBLIC_BACK_END_URL +
       "/api/get/read/images/" +

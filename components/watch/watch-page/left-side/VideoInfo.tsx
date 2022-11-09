@@ -112,45 +112,49 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
           {moment(videoData?.createdAt).startOf("hour").fromNow()}
         </span>
         <div className={Style.icons_container}>
-          <p className={Style.icon} onClick={HandelLike}>
-            {IsLiked ? (
-              <GoogleIcon Fill={true} IconName={"thumb_up_off"} />
-            ) : (
-              <GoogleIcon IconName={"thumb_up_off"} />
-            )}
-            <span className={Style.nubmer_of_likes}>{videoLikes}</span>
-          </p>
-          <p className={Style.icon} onClick={HandelDisLike}>
-            {IsDisLiked ? (
-              <GoogleIcon Fill={true} IconName={"thumb_down_off"} />
-            ) : (
-              <GoogleIcon IconName={"thumb_down_off"} />
-            )}
-            {/* <span className={Style.disLike}> {videoDisLikes}</span> */}
-          </p>
-          {!ActiveVideoStream && (
-            <p className={Style.icon_comments}>
-              {/* <GoCommentDiscussion /> */}
-              <GoogleIcon IconName={"forum"} />
-              <span className={Style.live_chat}>Live Chat</span>
+          <div className={Style.container_thmp}>
+            <p className={Style.icon_1} onClick={HandelLike}>
+              {IsLiked ? (
+                <GoogleIcon Fill={true} IconName={"thumb_up_off"} />
+              ) : (
+                <GoogleIcon IconName={"thumb_up_off"} />
+              )}
+              <span className={Style.nubmer_of_likes}>{videoLikes}</span>
             </p>
-          )}
+            <p className={Style.icon_2} onClick={HandelDisLike}>
+              {IsDisLiked ? (
+                <GoogleIcon Fill={true} IconName={"thumb_down_off"} />
+              ) : (
+                <GoogleIcon IconName={"thumb_down_off"} />
+              )}
+              {/* <span className={Style.disLike}> {videoDisLikes}</span> */}
+            </p>
+          </div>
+          <div className={Style.container_thmp}>
+            {!ActiveVideoStream && (
+              <p className={Style.icon_comments}>
+                {/* <GoCommentDiscussion /> */}
+                <GoogleIcon IconName={"forum"} />
+                <span className={Style.live_chat}>Live Chat</span>
+              </p>
+            )}
 
-          <p className={Style.icon}>
-            <FcCircuit />
-            Support
-          </p>
-          <p onClick={handelShareVideo} className={Style.icon}>
-            <IoArrowRedoOutline />
-            Share
-          </p>
-          <p onClick={handelPlayList} className={Style.icon}>
-            <GoogleIcon IconName={"playlist_add"} />
-            Save
-          </p>
-          <p className={Style.icon}>
-            <IoEllipsisHorizontalSharp />
-          </p>
+            <p className={Style.icon_2}>
+              <FcCircuit />
+              Support
+            </p>
+            <p onClick={handelShareVideo} className={Style.icon_2}>
+              <IoArrowRedoOutline />
+              Share
+            </p>
+            <p onClick={handelPlayList} className={Style.icon_2}>
+              <GoogleIcon IconName={"playlist_add"} />
+              Save
+            </p>
+            <p className={Style.icon_2}>
+              <IoEllipsisHorizontalSharp />
+            </p>
+          </div>
         </div>
       </div>
     </div>
