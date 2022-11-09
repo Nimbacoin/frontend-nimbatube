@@ -80,7 +80,7 @@ const App = () => {
 
   return (
     <>
-    <div className={Style.div_container_video_1000}></div>
+      <div className={Style.div_container_video_1000}></div>
       <div className={Style.video_container}>
         <div className={Style.on_live_container}>
           <div className={Style.viewers_red}>
@@ -100,7 +100,6 @@ const App = () => {
             id="remotevideo"
             ref={videoRef}
             autoPlay
-            muted
           ></video>
         </div>
       </div>

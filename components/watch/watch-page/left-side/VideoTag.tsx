@@ -145,20 +145,42 @@ const VideoTag = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setShowDivControls(false);
+      if (window.innerWidth > 900) {
+        setShowDivControls(false);
+      } else {
+        setShowDivControls(true);
+      }
     }, 5000);
   }, []);
   const [showDivControls, setShowDivControls] = useState(true);
+  const [showDivControlsBar, setShowDivControlsBar] = useState(true);
 
   useEffect(() => {
     const HandelClick = (e: any) => {
-      if (containerRef && containerRef.current) {
+      if (containerRef && containerRef.current && window.innerWidth > 900) {
         const refany = containerRef.current;
         if (refany.contains(e.target)) {
           setShowDivControls(true);
+          setShowDivControlsBar(true);
         } else {
           if (showDivControls) {
             setShowDivControls(false);
+            setShowDivControlsBar(false);
+          }
+        }
+      } else if (
+        containerRef &&
+        containerRef.current &&
+        window.innerWidth <= 900
+      ) {
+        const refany = containerRef.current;
+        if (refany.contains(e.target)) {
+          setShowDivControls(true);
+          setShowDivControlsBar(true);
+        } else {
+          if (showDivControls) {
+            setShowDivControls(true);
+            setShowDivControlsBar(true);
           }
         }
       }
@@ -200,21 +222,25 @@ const VideoTag = () => {
             <video
               className={Style.video_tag}
               ref={videoTag}
-              muted
+              
               loop
               autoPlay
             >
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
             <div onClick={HandelClickPues} className={Style.div_hover}></div>
-            {showDivControls && (
-              <div className={Style.controls_container}>
+
+            <div className={Style.controls_container}>
+              {showDivControlsBar && (
                 <div className={Style.bar_container}>
                   <span className={Style.time_900}>
                     {timeUpdate + " / " + duration}
                   </span>
                   <VideoBar HandelClick={setProgress} Width={timeValue} />
                 </div>
+              )}
+
+              {showDivControls && (
                 <div className={Style.controlrs}>
                   <div className={Style.play_sound_controls}>
                     <span className={Style.icon_control}>
@@ -263,8 +289,8 @@ const VideoTag = () => {
                     </span>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       )}

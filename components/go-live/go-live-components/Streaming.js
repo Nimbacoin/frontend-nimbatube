@@ -29,6 +29,7 @@ const Streaming = () => {
   const pcRef = useRef(null);
   const [peerConnections, setPeerConnections] = useState({});
   const VideoRef = useRef(null);
+  const ContainreoRef = useRef(null);
   const [videoId, setVideoId] = useState("");
   const [broadcaster, setBroadcaster] = useState("");
   const [viewers, setViewers] = useState([]);
@@ -166,8 +167,26 @@ const Streaming = () => {
     };
     scrollToBottomWithSmoothScroll();
   }, [liveCommentsVideo]);
+  const openFullscreen = () => {
+    if (ContainreoRef.current) {
+      if (ContainreoRef.current.requestFullscreen) {
+        ContainreoRef.current.requestFullscreen();
+      }
+    }
+  };
+  useEffect(() => {
+    const localFetch = () => {
+      if (window) openFullscreen();
+    };
+    localFetch();
+  }, []);
+
   return (
-    <div className={Style.container}>
+    <div
+      onClick={openFullscreen}
+      ref={ContainreoRef}
+      className={Style.container}
+    >
       <div className={Style.video_container}>
         {started && (
           <div className={Style.startLive}>
