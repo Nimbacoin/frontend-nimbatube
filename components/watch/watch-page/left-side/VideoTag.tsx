@@ -182,12 +182,6 @@ const VideoTag = () => {
     if (containerRef.current) {
       if (containerRef.current.requestFullscreen) {
         containerRef.current.requestFullscreen();
-      } else if (containerRef.current.webkitRequestFullscreen) {
-        /* Safari */
-        containerRef.current.webkitRequestFullscreen();
-      } else if (containerRef.current.msRequestFullscreen) {
-        /* IE11 */
-        containerRef.current.msRequestFullscreen();
       }
     }
   }
