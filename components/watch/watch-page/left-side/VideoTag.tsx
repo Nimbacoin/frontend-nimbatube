@@ -182,14 +182,18 @@ const VideoTag = () => {
                   <span className={Style.icon_control}>
                     <SkipNextSharpIcon />
                   </span>
-                  <span
-                    onClick={handelMuteVid}
-                    className={Style.icon_control_1000}
-                  >
-                    {vidMutued ? <VolumeOffSharpIcon /> : <VolumeUpSharpIcon />}
-                  </span>
 
                   <div className={Style.div_sound_container_bar}>
+                    <span
+                      onClick={handelMuteVid}
+                      className={Style.icon_control_1000}
+                    >
+                      {vidMutued ? (
+                        <VolumeOffSharpIcon />
+                      ) : (
+                        <VolumeUpSharpIcon />
+                      )}
+                    </span>
                     <SoundBar HandelClick={changeVolume} />
                   </div>
 
