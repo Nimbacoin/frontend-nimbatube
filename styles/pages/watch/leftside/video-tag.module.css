@@ -222,3 +222,13 @@
     bottom: -8px;
   }
 }
+
+.controls_container {
+ 
+}
+.div_hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+}

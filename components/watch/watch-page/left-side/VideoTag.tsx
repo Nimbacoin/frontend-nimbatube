@@ -165,6 +165,30 @@ const VideoTag = () => {
     };
     window.addEventListener("mouseover", HandelClick);
   }, [showDivControls]);
+  const HandelClickPues = () => {
+    if (videoTag.current) {
+      if (window.innerWidth > 900) {
+        if (videoTag.current.paused) {
+          handelPlay();
+        } else if (!videoTag.current.paused) {
+          handelPuase();
+        }
+      } else {
+        setShowDivControls(!showDivControls);
+      }
+    }
+  };
+  function openFullscreen() {
+    if (containerRef.current.requestFullscreen) {
+      containerRef.current.requestFullscreen();
+    } else if (containerRef.current.webkitRequestFullscreen) {
+      /* Safari */
+      containerRef.current.webkitRequestFullscreen();
+    } else if (containerRef.current.msRequestFullscreen) {
+      /* IE11 */
+      containerRef.current.msRequestFullscreen();
+    }
+  }
   return (
     <>
       <div className={Style.hiddenDiv} ref={hiddenDiv}></div>
@@ -177,9 +201,16 @@ const VideoTag = () => {
               </div>
             )}
 
-            <video className={Style.video_tag} ref={videoTag} loop autoPlay>
+            <video
+              className={Style.video_tag}
+              ref={videoTag}
+              muted
+              loop
+              autoPlay
+            >
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
+            <div onClick={HandelClickPues} className={Style.div_hover}></div>
             {showDivControls && (
               <div className={Style.controls_container}>
                 <div className={Style.bar_container}>
@@ -228,7 +259,10 @@ const VideoTag = () => {
                     </span>
                   </div>
                   <div className={Style.other_controls}>
-                    <span className={Style.icon_control_1000}>
+                    <span
+                      onClick={openFullscreen}
+                      className={Style.icon_control_1000}
+                    >
                       <FullscreenSharpIcon />
                     </span>
                   </div>
