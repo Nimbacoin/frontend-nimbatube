@@ -193,7 +193,7 @@
     justify-content: space-between;
     min-width: 100%;
     column-gap: 40px;
-    padding: 2.5px 10px;
+    padding: 2.5px 0px;
   }
   .icon,
   .icon_comments {
