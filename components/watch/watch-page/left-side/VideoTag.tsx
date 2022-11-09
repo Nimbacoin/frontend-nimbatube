@@ -14,6 +14,19 @@ import { IoVolumeMedium } from "@react-icons/all-files/io5/IoVolumeMedium";
 import { IoVolumeMute } from "@react-icons/all-files/io5/IoVolumeMute";
 import { IoPlay } from "@react-icons/all-files/io5/IoPlay";
 import LaodingCirculOne from "../../../modals/LaodingCirculOne";
+import GoogleIcon from "../../../modals/GoogleIcon";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PauseSharpIcon from "@mui/icons-material/PauseSharp";
+import { IoIosPause } from "@react-icons/all-files/io/IoIosPause";
+import SkipNextSharpIcon from "@mui/icons-material/SkipNextSharp";
+import SkipPreviousSharpIcon from "@mui/icons-material/SkipPreviousSharp";
+import VolumeOffSharpIcon from "@mui/icons-material/VolumeOffSharp";
+import VolumeUpSharpIcon from "@mui/icons-material/VolumeUpSharp";
+import Slider, { SliderProps } from "@mui/material/Slider";
+import VideoBar from "./VideoBar";
+import VideoTimeReader from "../../../../utils/VideoTimeReader";
+import VideoTimeReaderChanging from "../../../../utils/VideoTimeReaderChanging";
+import SoundBar from "./SoundBar";
 
 const VideoTag = () => {
   const ResDD = useSelector(
@@ -29,15 +42,15 @@ const VideoTag = () => {
 
   const userSignIn = useSelector((state: any) => state.UserSignIn.userdata);
   const [videoId, setVideoId] = useState<string>("");
-  const duration = videoData?.duration;
+  const [duration, setDuration] = useState("00:00");
 
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const hiddenDiv = React.useRef<HTMLDivElement | null>(null);
   const redBar = React.useRef<HTMLInputElement | null>(null);
-  const grayBar = React.useRef<HTMLDivElement | null>(null);
-
+  const [timeUpdate, setTimeUpdate] = useState("00:00");
+  const [timeValue, setTimeValue] = useState("0");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,49 +62,34 @@ const VideoTag = () => {
       }
       if (typeof window !== "undefined" && videoData && videoData?.location) {
         videoTag.current.src = videoData.location;
-        // process.env.NEXT_PUBLIC_BACK_END_URL + "/api/get/read/video/" + video;
       }
     }
   }, [asPath]);
-  const [timeUpdate, setTimeUpdate] = useState(0);
-  const [timeValue, setTimeValue] = useState("0");
+
   useEffect(() => {
-    if (videoTag.current) {
-      videoTag.current.play();
-      videoTag.current.onloadedmetadata = (event) => {
-        if (videoTag.current) {
+    const CurrentVideo = videoTag.current;
+    if (CurrentVideo) {
+      CurrentVideo.onloadedmetadata = (event) => {
+        if (CurrentVideo && CurrentVideo.src) {
+          CurrentVideo.play();
+          const TimeVideo = CurrentVideo.duration;
+          setDuration(VideoTimeReader(TimeVideo));
+        }
+        if (CurrentVideo) {
           setLoadeded(true);
-          videoTag.current.play();
+          CurrentVideo.play();
         }
       };
-      videoTag.current.addEventListener("timeupdate", () => {
-        if (videoTag.current && redBar.current) {
-          const num =
-            (videoTag.current.currentTime / videoTag.current.duration) *
-            Number(redBar.current.max);
-          redBar.current.value = num.toString();
-        }
-        if (redBar.current) {
-          redBar.current.addEventListener("change", () => {
-            if (redBar.current && videoTag.current) {
-              videoTag.current.currentTime =
-                (videoTag.current.duration * Number(redBar.current.value)) /
-                Number(redBar.current.max);
-            }
-          });
-        }
-      });
-
-      videoTag.current.addEventListener("timeupdate", () => {
+      CurrentVideo.addEventListener("timeupdate", () => {
         if (videoTag.current) {
-          var num = Number(videoTag.current.currentTime / 60);
-          var roundedString = num.toFixed(2);
-          var rounded = Number(roundedString);
-          setTimeUpdate(rounded);
+          const num =
+            (videoTag.current.currentTime / videoTag.current.duration) * 100;
+          setTimeValue(`${num}%`);
+          setTimeUpdate(VideoTimeReaderChanging(videoTag.current.currentTime));
         }
       });
     }
-  }, [videoTag, redBar]);
+  }, [videoTag.current, videoSrc.current]);
 
   useEffect(() => {
     if (redBar.current) {
@@ -127,15 +125,12 @@ const VideoTag = () => {
       videoTag.current.muted = !videoTag.current.muted;
     }
   };
-  useEffect(() => {
-    function format(s: any) {
-      timeUpdate
-    }
 
-    console.log(format(25));
-    console.log(format(250));
-    console.log(format(31));
-  }, []);
+  const setProgress = (newTime: any) => {
+    if (videoTag.current) {
+      videoTag.current.currentTime = newTime * videoTag.current.duration;
+    }
+  };
 
   return (
     <>
@@ -149,13 +144,7 @@ const VideoTag = () => {
               </div>
             )}
 
-            <video
-              className={Style.video_tag}
-              ref={videoTag}
-              muted
-              autoPlay
-              loop
-            >
+            <video className={Style.video_tag} ref={videoTag} muted autoPlay>
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
             <div className={Style.controls_container}>
@@ -163,54 +152,36 @@ const VideoTag = () => {
                 <span className={Style.time_900}>
                   {timeUpdate + " / " + duration}
                 </span>
-                {timeUpdate > 0 ? (
-                  <input
-                    ref={redBar}
-                    className={Style.seekBar}
-                    type="range"
-                    min="0"
-                    max="100"
-                  />
-                ) : (
-                  <input
-                    value="0"
-                    className={Style.seekBar}
-                    type="range"
-                    min="0"
-                    max="100"
-                  />
-                )}
+                <VideoBar HandelClick={setProgress} Width={timeValue} />
               </div>
               <div className={Style.controlrs}>
                 <div className={Style.play_sound_controls}>
                   <span className={Style.icon_control}>
-                    <IoPlaySkipBack />
+                    <SkipPreviousSharpIcon />
                   </span>
                   {play ? (
                     <span onClick={handelPlay} className={Style.icon_control}>
-                      <IoPlay />
+                      <PlayArrowIcon />
                     </span>
                   ) : (
                     <span onClick={handelPuase} className={Style.icon_control}>
-                      <IoPauseSharp />
+                      <PauseSharpIcon />
                     </span>
                   )}
                   <span className={Style.icon_control}>
-                    <IoPlaySkipForward />
+                    <SkipNextSharpIcon />
                   </span>
                   <span
                     onClick={handelMuteVid}
                     className={Style.icon_control_1000}
                   >
-                    {vidMutued ? <IoVolumeMute /> : <IoVolumeMedium />}
+                    {vidMutued ? <VolumeOffSharpIcon /> : <VolumeUpSharpIcon />}
                   </span>
-                  <input
-                    // ref={redBar}
-                    className={Style.seekBar_sound}
-                    type="range"
-                    min="0"
-                    max="100"
-                  />
+
+                  <div className={Style.div_sound_container_bar}>
+                    <SoundBar />
+                  </div>
+
                   <span className={Style.time}>
                     {timeUpdate + " / " + duration}
                   </span>
