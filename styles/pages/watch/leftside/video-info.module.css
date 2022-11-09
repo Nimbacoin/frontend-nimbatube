@@ -85,10 +85,10 @@
 .icon_2 > p > span {
   font-size: 22px;
 }
-.nubmer_of_likes {
-  font-size: 15px;
-  font-weight: 400;
-}
+/* .icon_1:hover,
+.icon_2:hover {
+  background-color: #dbdbdb;
+} */
 .icon_1 {
   border-right: 1px solid #dbdbdb;
   padding: 0 10px;
@@ -98,10 +98,10 @@
 .icon_comments > svg {
   font-size: 20px;
 }
-.icon_1,
-.icon_2 > span,
-.icon_comments > span {
-  font-size: 20px;
+
+.nubmer_of_likes {
+  font-size: 14px;
+  font-weight: 500;
 }
 .date_phone {
   display: none;
@@ -206,9 +206,7 @@
   .disLike {
     display: none;
   }
-  .chanel {
-    border-bottom: 1px solid #dbdbdb;
-  }
+  
   .right_container,
   .img {
     margin-right: 10px;

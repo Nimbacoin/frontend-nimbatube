@@ -141,15 +141,17 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
 
             <p className={Style.icon_2}>
               <FcCircuit />
-              Support
+
+              <span className={Style.nubmer_of_likes}>Support</span>
             </p>
             <p onClick={handelShareVideo} className={Style.icon_2}>
               <IoArrowRedoOutline />
-              Share
+
+              <span className={Style.nubmer_of_likes}>Share</span>
             </p>
             <p onClick={handelPlayList} className={Style.icon_2}>
               <GoogleIcon IconName={"playlist_add"} />
-              Save
+              <span className={Style.nubmer_of_likes}>Save</span>
             </p>
             <p className={Style.icon_2}>
               <IoEllipsisHorizontalSharp />
