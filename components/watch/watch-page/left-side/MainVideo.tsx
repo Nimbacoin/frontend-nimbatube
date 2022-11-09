@@ -104,12 +104,14 @@ const MainVideo = () => {
     <div className={Style.container}>
       {!ActiveVideo && <LiveVideo />}
       {ActiveVideo && <VideoTag />}
-      <VideoInfo ActiveVideoStream={ActiveVideo}/>
+      <VideoInfo ActiveVideoStream={ActiveVideo} />
       <div className={Style.chanel}>
-        <div
-          style={{ backgroundImage: `url(${Bg})` }}
-          className={Style.img}
-        ></div>
+        <div className={Style.main_img_container}>
+          <div
+            style={{ backgroundImage: `url(${Bg})` }}
+            className={Style.img}
+          ></div>
+        </div>
         <div className={Style.chanel_container}>
           <span onClick={handelChannelName} className={Style.chanel_name}>
             {channelData?.channelData?.name}

@@ -43,6 +43,9 @@
   position: relative;
   /* border-top: 1px solid #dbdbdb; */
 }
+.main_img_container {
+  min-width: 50px;
+}
 
 .img {
   width: 48px;
@@ -58,6 +61,8 @@
   align-items: flex-start;
   justify-content: center;
   row-gap: 0;
+  min-width: 50%;
+  overflow: hidden;
 }
 .chanel_name {
   color: #030303;
@@ -67,6 +72,10 @@
   cursor: pointer;
   padding: 0;
   margin: 0;
+  clear: both;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .chanel_followers {
   color: #606060;
