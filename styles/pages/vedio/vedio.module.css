@@ -148,6 +148,7 @@
   .container {
     flex-basis: 30%;
     height: auto;
+    margin: 10px 0;
   }
 
   .menu {
