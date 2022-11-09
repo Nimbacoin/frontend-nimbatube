@@ -148,6 +148,11 @@ const Layout = ({ children }: any) => {
           name="google-site-verification"
           content="eK_yN2eql5QORNEY1Yxu9sze98et_wKh_j4Awl-lDlo"
         />
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
+
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9261275339248060"
