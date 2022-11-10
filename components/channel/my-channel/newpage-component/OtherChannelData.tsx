@@ -13,20 +13,20 @@ const OtherChannelData = () => {
     (state: any) => state.ChannelSlice.activeChannelData
   );
   console;
-  useEffect(() => {
-    const dataUrl = asPath.replace("/channel/@/", "");
-    const locaFetch = async () => {
-      if (dataUrl !== "[channel]") {
-        const dataRes: any = await basedGetUrlRequest(
-          "/api/get/channel/all-vidoes/" + dataUrl,
-          false
-        );
-        console.log(dataRes);
-        setVideos(dataRes.responseData);
-      }
-    };
-    locaFetch();
-  }, [asPath]);
+  // useEffect(() => {
+  //   const dataUrl = asPath.replace("/channel/@/", "");
+  //   const locaFetch = async () => {
+  //     if (dataUrl !== "[channel]") {
+  //       const dataRes: any = await basedGetUrlRequest(
+  //         "/api/get/channel/all-vidoes/" + dataUrl,
+  //         false
+  //       );
+  //       console.log(dataRes);
+  //       setVideos(dataRes.responseData);
+  //     }
+  //   };
+  //   locaFetch();
+  // }, [asPath]);
   console.log(ChannelSlice);
   return (
     <div className={Style.container}>
@@ -39,14 +39,12 @@ const OtherChannelData = () => {
         </div>
         <div className={Style.container_data_item}>
           <span className={Style.followers}>
-            {"35345"}
-          </span>{" "}
+            {ChannelSlice.channelData?.numbers?.uploads}
+          </span>
           <span className={Style.title}>Videos</span>
         </div>
         <div className={Style.container_data_item}>
-          <span className={Style.followers}>
-            {"25534"}
-          </span>{" "}
+          <span className={Style.followers}>{"25534"}</span>{" "}
           <span className={Style.title}>Likes</span>
         </div>
       </div>

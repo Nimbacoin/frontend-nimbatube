@@ -52,7 +52,7 @@ const ChannelsPages = () => {
               ProfileImg={channelData && channelData.profileImg}
               Uploads={uploads.length}
               Followers={followers.length}
-              ChannelData={channelData}
+              channelData={channelData}
             />
           ))
         ) : allChannelsFetched ? (
