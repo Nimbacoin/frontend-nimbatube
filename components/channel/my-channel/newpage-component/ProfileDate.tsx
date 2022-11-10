@@ -38,9 +38,15 @@ const ProfileDate = ({ ChannelData }: any) => {
     } else if (LinkKey === "playlists") {
       return <Content />;
     } else if (LinkKey === "about") {
-      return <About ChannelData={ChannelData.channelData} />;
+      return <About ChannelData={ChannelData} />;
     } else if (LinkKey === "community") {
-      return <Community Name={Name} Id={ChannelData._id} />;
+      return (
+        <Community
+          Name={Name}
+          ChannelData={ChannelData}
+          Id={ChannelData?._id}
+        />
+      );
     }
   };
   const [BgUrl, setBgUrl] = useState(Bg);

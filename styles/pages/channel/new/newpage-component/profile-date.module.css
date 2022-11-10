@@ -203,7 +203,15 @@
 .link_active:hover {
   box-shadow: #00000017 0px 3px 12px;
 }
-
+.div_button_action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 20px;
+  width: 100%;
+  padding : 20px ;
+}
 @media screen and (max-width: 1000px) {
   .container {
     display: flex;

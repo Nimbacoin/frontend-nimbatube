@@ -7,6 +7,7 @@ const initialState = {
   NewChannel: [],
   general: {},
   images: {},
+  other: {},
   ChannelCreated: false,
   activeChannelData: {},
 };
@@ -49,7 +50,14 @@ export const ChannelSlice = createSlice({
         state.NewChannelData[0].tags = action.payload;
       }
     },
-    ActionOther: (state: any, action: any) => {},
+    ActionOther: (state: any, action: any) => {
+      const Action = action.payload;
+      if (Action.id === "website") {
+        state.other["website"] = Action.website;
+      } else if (Action.id === "email") {
+        state.other["email"] = Action.email;
+      }
+    },
     CreditDetails: (state: any, action: any) => {},
     ImagesReducer: (state: any, action: any) => {
       const Action = action.payload;

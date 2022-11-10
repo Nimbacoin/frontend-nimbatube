@@ -1,12 +1,20 @@
 .container {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 20px;
+  padding: 0px;
 }
-
+.main_container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0 auto;
+  row-gap: 20px;
+}
 .upload_inputs_container {
   width: 65%;
   display: flex;
@@ -21,4 +29,10 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+}
+.all_comments_container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0px;
 }

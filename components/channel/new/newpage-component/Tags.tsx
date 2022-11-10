@@ -87,10 +87,10 @@ const Tags = () => {
             </div>
           </div>
         </div>
-        <div className={Style.div_button_action}>
+        {/* <div className={Style.div_button_action}>
           <button className={Style.button_action}>Submit</button>
           <button className={Style.button_action_add}>Cancel </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

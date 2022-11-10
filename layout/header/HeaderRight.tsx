@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import HeaderRightPhoneUserLogedOut from "./header-components/HeaderRightPhoneUserLogedOut";
 import CancelButton from "../../components/modals/CancelButton";
 import BlueButton from "../../components/modals/BlueButton";
+import Link from "next/link"; //import this
 
 const HeaderRight = () => {
   const Router = useRouter();
@@ -14,8 +15,20 @@ const HeaderRight = () => {
     <>
       <HeaderRightPhoneUserLogedOut />
       <div className={Style.container}>
-        <CancelButton Text="Sign in" />
-        <BlueButton Text={"Sign up"} />
+        <Link href="/auth/sign-in">
+          <a>
+            <CancelButton Text="Sign in" />
+          </a>
+        </Link>
+
+        <Link href="/auth/sign-up">
+          <a>
+            <BlueButton
+              // HandelClick={HandelPush("/auth/sign-up")}
+              Text={"Sign up"}
+            />
+          </a>
+        </Link>
       </div>
     </>
   );

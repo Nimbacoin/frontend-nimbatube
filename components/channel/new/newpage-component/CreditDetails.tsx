@@ -29,10 +29,10 @@ const CreditDetails = () => {
           />
           <SmallTextBlack Icon={<FcCircuit />} Text={"0.2581 available. ."} />
         </div>
-        <div className={Style.div_button_action}>
+        {/* <div className={Style.div_button_action}>
           <BlueButton Text={"Submite"}/>
           <CancelButton Text={"Cancel"} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

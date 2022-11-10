@@ -9,6 +9,7 @@ import ActiveVideo from "./ActiveVideo";
 const Home = () => {
   const { asPath } = useRouter();
   const [videos, setVideos] = useState([]);
+  const [mainVideo, setMainVideo] = useState([]);
   useEffect(() => {
     const dataUrl = asPath.replace("/channel/@/", "");
     const locaFetch = async () => {
@@ -19,16 +20,23 @@ const Home = () => {
         );
         console.log(dataRes);
         setVideos(dataRes.responseData);
+        const filter = dataRes.responseData.filter(
+          ({ videoData }: any) => videoData.location !== undefined
+        );
+        setMainVideo(filter.slice(0, 1));
+        console.log(mainVideo);
       }
     };
     locaFetch();
   }, [asPath]);
+
   return (
     <div className={Style.container}>
       <div className={Style.div_container_top}>
-        
-          <ActiveVideo />{" "}
-        
+        {" "}
+        {mainVideo.map((VideoData: any) => (
+          <ActiveVideo VideoData={VideoData} />
+        ))}
       </div>
 
       <div className={Style.vedio_container}>

@@ -9,22 +9,36 @@ import Tags from "./Tags";
 import Other from "./Other";
 import { useSelector, useDispatch } from "react-redux";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
-import { ImagesReducer } from "../../../../redux/channel-slice/ChannelSlice";
+import {
+  ActionGenaralChanging,
+  ImagesReducer,
+  ResetNewChannel,
+} from "../../../../redux/channel-slice/ChannelSlice";
 import { useRouter } from "next/router";
 import AxiosPostLogedInFormData from "../../../../utils/AxiosPostLogedInFormData";
 import NormalText from "../../../modals/NormalText";
 import BoldText from "../../../modals/BoldText";
 import TextTilteInputMudum from "../../../modals/TextTilteInputMudum";
 import CropperCom from "../../../modals/Cropper";
-import { croppingRedcuer } from "../../../../redux/style-slice/general-style/GenrealStyle";
+import {
+  croppingRedcuer,
+  poPUppRedcuer,
+} from "../../../../redux/style-slice/general-style/GenrealStyle";
 import IconHeader from "../../../modals/IconHeader";
+import BlueButton from "../../../modals/BlueButton";
+import CancelButton from "../../../modals/CancelButton";
 const ProfileDate = () => {
   const coverRef = React.useRef<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
-  const general = useSelector((state: any) => state.ChannelSlice.general);
+  const images = useSelector((state: any) => state.ChannelSlice.images);
+
   const previewSourceProfile = React.useRef<HTMLDivElement | null>(null);
   const [previewSourceCover, setPreviewSourceCover] = useState("");
   const { asPath } = useRouter();
+  const general = useSelector((state: any) => state.ChannelSlice.general);
+  const other = useSelector((state: any) => state.ChannelSlice.other);
+
+  const Router = useRouter();
 
   const UlLinks = [
     { name: "General", key: "general" },
@@ -169,17 +183,40 @@ const ProfileDate = () => {
       };
 
       //Usage example:
-      urltoFile(croppedImg, "hfhfhfhfhfh", "image/png").then(function (
-        file: any
-      ) {
+      urltoFile(croppedImg, "imgageee", "image/png").then(function (file: any) {
         handelSubmitecoverRef(file);
         // console.log("main-file", file);
       });
-
-      //
       // coverRef.current.style.backgroundImage = `url(${croppedImg})`;
     }
   }, [croppedImg]);
+  const HandelCancel = () => {
+    // settitle("");
+    // setname("");
+    // setdescription("");
+    dispatch(ResetNewChannel());
+  };
+
+  const HandelSubmiteNewGeneral = async (e: any) => {
+    const channelId = asPath.replace("/channel/create-new-channel/", "");
+    const isValid = channelId.toString();
+    const ReqData: any = { general, images, other, channelId: isValid };
+    await basedPostUrlRequestLogedIn(
+      "/api/post/channel/create-new-channel",
+      ReqData
+    ).then((res) => {
+      if (res) {
+        dispatch(poPUppRedcuer({ data: "new channel created" }));
+        setTimeout(() => {
+          dispatch(poPUppRedcuer({ data: "" }));
+        }, 5000);
+        dispatch(ActionGenaralChanging(""));
+        dispatch(ResetNewChannel());
+        // HandelCancel();
+        // Router.push("/channels");
+      }
+    });
+  };
 
   return (
     <div className={Style.container}>
@@ -272,6 +309,10 @@ const ProfileDate = () => {
           />
         </div>
         {HandelLinkContent()}
+        <div className={Style.div_button_action}>
+          <CancelButton HandelClick={HandelCancel} Text={"Cancel"} />
+          <BlueButton HandelClick={HandelSubmiteNewGeneral} Text={"Submit"} />
+        </div>
       </div>
     </div>
   );

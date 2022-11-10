@@ -4,6 +4,7 @@ import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOu
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 import {
   ActionGenaralChanging,
+  ActionOther,
   ResetNewChannel,
 } from "../../../../redux/channel-slice/ChannelSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,62 +13,49 @@ import InputText from "../../../modals/InputText";
 import CancelButton from "../../../modals/CancelButton";
 import BlueButton from "../../../modals/BlueButton";
 const Other = () => {
+  const dispatch = useDispatch();
   const [website, setwebsite] = useState("");
   const [email, setemail] = useState("");
+  const other = useSelector((state: any) => state.ChannelSlice.other);
 
-  const HandelChange = (e: any) => {
-    if (e.target.id === "input_website") {
-      setwebsite(e.target.value);
-    } else if (e.target.id === "input_email") {
-      setemail(e.target.value);
-    }
+  const handelChangeWebsite = (e: any) => {
+    dispatch(ActionOther({ id: "website", website: e.target.value }));
+    setwebsite(e.target.value);
+  };
+
+  const handelChangeEmail = (e: any) => {
+    dispatch(ActionOther({ id: "email", email: e.target.value }));
+    setemail(e.target.value);
   };
 
   const HandelCancel = (e: any) => {
     setwebsite("");
     setemail("");
   };
-  const HandelSubmiteNewGeneral = async (e: any) => {
-    e.preventDefault();
-    const Body: any = { website, email };
-    basedPostUrlRequestLogedIn(
-      "/api/post/channel/create-new-channel/other",
-      Body
-    ).then((res) => {
-      if (res) {
-        console.log(res);
-      }
-    });
-  };
+
   return (
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
         <div className={Style.upload_input}>
           <InputText
-            HandelChange={HandelChange}
+            HandelChange={handelChangeWebsite}
             Text={"website"}
+            Value={other.website && other.website}
             Placeholder="enter your website address"
           />
         </div>
         <div className={Style.upload_input}>
           <InputText
-            HandelChange={HandelChange}
+            HandelChange={handelChangeEmail}
             Text={"email address"}
+            Value={other.email && other.email}
             Placeholder="enter your email address"
           />
-
-          <input
-            onChange={HandelChange}
-            id="input_email"
-            type="text"
-            value={email}
-            className={Style.input_title}
-          />
         </div>
-        <div className={Style.div_button_action}>
+        {/* <div className={Style.div_button_action}>
           <BlueButton HandelClick={HandelSubmiteNewGeneral} Text={"Submite"} />
           <CancelButton HandelClick={HandelCancel} Text={"Cancel"} />
-        </div>
+        </div> */}
         {/* <div className={Style.upload_input}>
           <p className={Style.upload_file}> Delete this Channel</p>
           <div className={Style.div_button_action}>

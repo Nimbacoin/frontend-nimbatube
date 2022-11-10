@@ -28,27 +28,7 @@ const NewGeneral = () => {
   const ChannelCreated = useSelector(
     (state: any) => state.ChannelSlice.ChannelCreated
   );
-  const HandelChange = (e: any) => {
-    if (e.target.id === "input_title") {
-      settitle(e.target.value);
-      dispatch(
-        ActionGenaralChanging({
-          id: "input_title",
-          input_title: e.target.value,
-        })
-      );
-    } else if (e.target.id === "input_name") {
-      dispatch(
-        ActionGenaralChanging({ id: "input_name", input_name: e.target.value })
-      );
-      setname(e.target.value);
-    } else if (e.target.id === "text_desc") {
-      dispatch(
-        ActionGenaralChanging({ id: "text_desc", text_desc: e.target.value })
-      );
-      setdescription(e.target.value);
-    }
-  };
+
   const HandelChangeName = (e: any) => {
     dispatch(
       ActionGenaralChanging({ id: "input_name", input_name: e.target.value })
@@ -104,6 +84,7 @@ const NewGeneral = () => {
           <InputText
             HandelChange={HandelChangeName}
             Text={"Name"}
+            Value={general.name && general.name}
             Placeholder="enter your channel name"
           />
           <p className={Style.text}>This field cannot be changed.</p>
@@ -111,17 +92,19 @@ const NewGeneral = () => {
         <InputText
           HandelChange={HandelChangeTilte}
           Text={"Title"}
+          Value={general.title && general.title}
           Placeholder="enter your channel title"
         />
         <TextArea
           HandelChange={handelChangeDesc}
           Text={"Description"}
+          Value={general.description && general.description}
           Placeholder="Description"
         />
-        <div className={Style.div_button_action}>
+        {/* <div className={Style.div_button_action}>
           <BlueButton HandelClick={HandelSubmiteNewGeneral} Text={"Submit"} />
           <CancelButton HandelClick={HandelCancel} Text={"Cancel"} />
-        </div>
+        </div> */}
       </div>
     </div>
   );
