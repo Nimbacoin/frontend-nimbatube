@@ -10,7 +10,7 @@ const ActiveVideo = ({ Name, Id, VideoData }: any) => {
   return (
     <div className={Style.container}>
       <div className={Style.container_video}>
-        <video className={Style.video_tag} autoPlay controls loop>
+        <video className={Style.video_tag} muted autoPlay controls loop>
           <source
             src={VideoData.videoData.location}
             className={Style.video}
