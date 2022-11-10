@@ -154,14 +154,13 @@
 @media screen and (max-width: 900px) {
   .container {
     width: 100%;
-    height: 60px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     row-gap: 0px;
     /* border-bottom: 1px solid #dbdbdb; */
-    margin-bottom: 10px;
   }
   .div_laoding_comments {
     display: none;
@@ -188,7 +187,7 @@
   .container_conmments {
     width: 100%;
     padding: 0 10px;
-    margin: 50px 0px;
+    height: auto;
   }
 
   .lable_open_all_comments {
@@ -204,6 +203,7 @@
     padding: 20px;
     border-radius: 20px;
     background-color: #f2f2f2;
+    margin: 0 0;
   }
   .arrows {
     display: flex;

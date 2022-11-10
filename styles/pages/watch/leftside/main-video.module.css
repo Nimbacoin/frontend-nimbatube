@@ -139,19 +139,6 @@
   padding: 8px;
   border-radius: 50%;
 }
-.controls_container {
-  margin: 0 auto;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  /* background-color: #fff; */
-  padding: 20px;
-  row-gap: 20px;
-}
 
 @media screen and (max-width: 1000px) {
   .container {
@@ -161,7 +148,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    row-gap: 0px;
   }
   .video_container {
     display: flex;
