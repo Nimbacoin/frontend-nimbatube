@@ -41,22 +41,24 @@ const Comments = ({ VideoData }: any) => {
   return (
     <div className={CommentsBoolean ? Style.container_phone : Style.container}>
       {!CommentsBoolean && (
-        <label
-          className={Style.lable_open_all_comments}
-          htmlFor="input_open_all_comments"
-        >
-          Comments · {videoData?.comments?.length}
-          <input
-            onClick={() => dispatch(ToggleCommentsOpen())}
-            className={Style.input_open_all_comments}
-            id="input_open_all_comments"
-            type="text"
-          />
-          <span className={Style.arrows}>
-            <IoChevronUp />
-            <IoChevronDown />
-          </span>
-        </label>
+        <div className={Style.container_conmments}>
+          <label
+            className={Style.lable_open_all_comments}
+            htmlFor="input_open_all_comments"
+          >
+            Comments · {videoData?.comments?.length}
+            <input
+              onClick={() => dispatch(ToggleCommentsOpen())}
+              className={Style.input_open_all_comments}
+              id="input_open_all_comments"
+              type="text"
+            />
+            <span className={Style.arrows}>
+              <IoChevronUp />
+              <IoChevronDown />
+            </span>
+          </label>
+        </div>
       )}
       {CommentsBoolean && (
         <div className={Style.container_descreption_phone}>
