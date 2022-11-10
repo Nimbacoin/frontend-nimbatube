@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import moment from "moment";
+import TextTilteInputMudum from "../../../components/modals/TextTilteInputMudum";
+import SmallTextBlack from "../../../components/modals/SmallTextBlack";
 
 const NotfyDropDown = ({ Notification }: any) => {
   const Notify: any = [];
@@ -14,7 +16,6 @@ const NotfyDropDown = ({ Notification }: any) => {
   const [videoLink, setVideoLink] = useState("");
 
   const hadnelClick = (videoData: any) => {
-    
     Router.push("/watch/watch?watching=true&video=" + videoData?._id);
   };
   return (
@@ -41,9 +42,11 @@ const NotfyDropDown = ({ Notification }: any) => {
                   ></div>
                 </div>
                 <div className={Style.desc_container}>
-                  <p className={Style.text}>
-                    {channelData?.channelData?.name + videoData?.title}
-                  </p>
+                  <TextTilteInputMudum
+                    Text={channelData?.channelData?.name + ":"}
+                  />
+                  {/* <p className={Style.text}>{videoData?.title}</p> */}
+                  <SmallTextBlack Text={videoData?.title} />
                   <p className={Style.text_date}>
                     {moment(vid?.from?.createAt).startOf("hour").fromNow()}
                   </p>
