@@ -25,7 +25,6 @@
   column-gap: 10px;
   align-items: center;
   justify-content: flex-start;
- 
 }
 .span {
   max-height: 30px;
@@ -34,7 +33,7 @@
   color: #030303;
   cursor: pointer;
   border-radius: 20px;
-  padding: 5px 20px;
+  padding: 2.5px 10px;
   background-color: #ececec;
   margin-top: 0px;
   clear: both;
@@ -52,7 +51,7 @@
   color: #ffff;
   cursor: pointer;
   border-radius: 20px;
-  padding: 5px 20px;
+  padding: 2.5px 10px;
   background-color: #030303;
   margin-top: 0px;
   clear: both;
