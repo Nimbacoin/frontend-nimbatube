@@ -33,12 +33,11 @@ const ChannelsPages = () => {
     <div className={Style.container}>
       <div className={Style.head_container}>
         <div className={Style.title}>Your Active channels </div>
-        
+
         <BlueButton
           HandelClick={HandelSubmiteInitChannel}
           Text={"New Chanel"}
         />
-       
       </div>
       <div className={Style.channels_container}>
         {channels && channels.length ? (
@@ -53,6 +52,7 @@ const ChannelsPages = () => {
               ProfileImg={channelData && channelData.profileImg}
               Uploads={uploads.length}
               Followers={followers.length}
+              ChannelData={channelData}
             />
           ))
         ) : allChannelsFetched ? (
