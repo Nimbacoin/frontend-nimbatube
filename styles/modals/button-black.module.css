@@ -31,12 +31,16 @@
   line-height: 20px;
   color: #030303;
   cursor: pointer;
-  min-width: 100px;
+  min-width: 80px;
   border-radius: 20px;
   padding: 6px 5px;
   background-color: #ffffff;
   margin-top: 0px;
   border: 1px solid #dbdbdb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 4px;
 }
 
 .cancel_button:hover,

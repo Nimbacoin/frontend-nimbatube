@@ -154,7 +154,10 @@ const HeaderDropDown = () => {
       {(() => {
         return (
           <div className={Style.container}>
-            <CancelButton IconFirst={<FcCircuit />} Text={"0.25"} />
+            <div className={Style.drop_down_option_sold}>
+              
+              <CancelButton IconFirst={<FcCircuit />} Text={"0.25"} />
+            </div>
 
             <div className={Style.drop_down_option} ref={InputSearch}>
               {Bg !== "/images/default-profile.png" ? (
