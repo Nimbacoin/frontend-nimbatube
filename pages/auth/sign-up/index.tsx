@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 import basedGetUrlRequest from "../../../utils/basedGetUrlRequest";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
 import InputText from "../../../components/modals/InputText";
+import InputPassword from "../../../components/modals/InputPassword";
 
 const errors = [
   {
@@ -58,8 +59,10 @@ const SignUp = () => {
     const Body: any = { email, password, conifirmpassword, username };
     setError("");
     setResMessage("");
+
     basedPostUrlRequest("/api/auth/sign-up", Body).then((res) => {
       if (res) {
+        console.log(res);
         if (res.user) {
           Cookies.set("user", JSON.stringify(res.user));
           // sessionStorage.setItem("user", JSON.stringify(res.user));
@@ -97,7 +100,7 @@ const SignUp = () => {
           <form className={Style.form} onSubmit={HandelSignUp}>
             <InputText
               HandelChange={(e: any) => {
-                setemail(e.target.value);
+                setusername(e.target.value);
               }}
               Text={"full name"}
               Placeholder="enter your full name"
@@ -114,7 +117,7 @@ const SignUp = () => {
 
             <InputText
               HandelChange={(e: any) => {
-                setusername(e.target.value);
+                setemail(e.target.value);
               }}
               Text={"email address"}
               Placeholder="enter your username"
@@ -129,7 +132,7 @@ const SignUp = () => {
               )}
             </div>
 
-            <InputText
+            <InputPassword
               HandelChange={(e: any) => {
                 setpassword(e.target.value);
               }}
@@ -144,7 +147,7 @@ const SignUp = () => {
                 </p>
               )}
             </div>
-            <InputText
+            <InputPassword
               HandelChange={(e: any) => {
                 setconifirmpassword(e.target.value);
               }}
@@ -161,7 +164,11 @@ const SignUp = () => {
             </div>
             <div className={Style.container_actions}>
               <div className={Style.div_button_action}>
-                <button type="submit" className={Style.button_action}>
+                <button
+                  onClick={HandelSignUp}
+                  type="submit"
+                  className={Style.button_action}
+                >
                   Sign up{" "}
                 </button>
                 <Link href={"/auth/sign-in"}>
