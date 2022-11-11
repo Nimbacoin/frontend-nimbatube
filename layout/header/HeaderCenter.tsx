@@ -7,13 +7,14 @@ import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificatio
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 import { IoSettingsOutline } from "@react-icons/all-files/io5/IoSettingsOutline";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
-
+// import IoNotificationsOutline from "@mui/icons-material/NotificationsSharp";
 import { useRouter } from "next/router";
 import SearchDropDown from "./header-components/SearchDropDown";
 import IconHeader from "../../components/modals/IconHeader";
 import NotfyDropDown from "./header-components/NotfyDropDown";
 import { useSelector } from "react-redux";
 import GoogleIcon from "../../components/modals/GoogleIcon";
+import BackupSharpIcon from "@mui/icons-material/BackupSharp";
 
 const HeaderCenter = ({ UserIsSignedIn }: any) => {
   const { asPath } = useRouter();
@@ -120,7 +121,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
           <>
             <IconHeader
               Url={"/upload"}
-              Icon={<GoogleIcon Sharp={true} IconName={"cloud_upload"} />}
+              Icon={<IoCloudUploadOutline />}
               TextValue={"upload"}
             />
 
@@ -133,7 +134,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
                 <IconHeader
                   Number={true}
                   NumberData={numberNotfy}
-                  Icon={<GoogleIcon IconName={"notifications"} />}
+                  Icon={<IoNotificationsOutline />}
                   TextValue={"Notification"}
                 />
               </div>
@@ -144,9 +145,8 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
 
             <IconHeader
               Url={"/go-live/go-live"}
-              Icon={<GoogleIcon Sharp={true} IconName={"video_call"} />}
+              Icon={<IoVideocamOutline />}
               TextValue={"Go lIVE"}
-              
             />
           </>
         ) : (
@@ -160,13 +160,13 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
             <div className={Style.notfy_drop_down}>
               <IconHeader
                 Url={"/auth/sign-in"}
-                Icon={<GoogleIcon IconName={"notifications"} />}
+                Icon={<IoNotificationsOutline />}
                 TextValue={"Notification"}
               />
             </div>
             <IconHeader
               Url={"/auth/sign-in"}
-              Icon={<GoogleIcon Sharp={true} IconName={"video_call"} />}
+              Icon={<IoVideocamOutline />}
               TextValue={"Go lIVE"}
             />
           </>
@@ -191,7 +191,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
             <IconHeader
               Number={true}
               NumberData={numberNotfy}
-              Icon={<GoogleIcon IconName={"notifications"} />}
+              Icon={<IoNotificationsOutline />}
               TextValue={"Notification"}
             />
           </div>
