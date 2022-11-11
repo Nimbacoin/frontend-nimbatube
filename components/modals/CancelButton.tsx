@@ -1,6 +1,6 @@
 import React from "react";
 import Style from "../../styles/modals/button-black.module.css";
-const CancelButton = ({ HandelClick, Text }: any) => {
+const CancelButton = ({ HandelClick, Text, IconFirst }: any) => {
   return (
     <button
       onClick={() => {
@@ -10,7 +10,7 @@ const CancelButton = ({ HandelClick, Text }: any) => {
       }}
       className={Style.cancel_button}
     >
-      {Text ? Text : "submit"}
+      {IconFirst && IconFirst }  {Text ? Text : "submit"}
     </button>
   );
 };

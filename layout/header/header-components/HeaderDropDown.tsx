@@ -16,6 +16,7 @@ import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificatio
 
 import Cookies from "js-cookie";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
+import CancelButton from "../../../components/modals/CancelButton";
 
 const HeaderDropDown = () => {
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
@@ -153,10 +154,8 @@ const HeaderDropDown = () => {
       {(() => {
         return (
           <div className={Style.container}>
-            <div className={Style.drop_down_option_sold}>
-              <FcCircuit />
-              <span className={Style.sold}>0.25</span>
-            </div>
+            <CancelButton IconFirst={<FcCircuit />} Text={"0.25"} />
+
             <div className={Style.drop_down_option} ref={InputSearch}>
               {Bg !== "/images/default-profile.png" ? (
                 <div
