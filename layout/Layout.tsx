@@ -20,6 +20,7 @@ import { PopUpp } from "../components/modals/PopUpp";
 import ShareVideo from "../components/modals/ShareVideo";
 import AddToPalayList from "../components/modals/AddToPlayList";
 import CropperCom from "../components/modals/Cropper";
+import ButtonLive from "../components/modals/ButtonLive";
 
 interface main {
   children: any;
@@ -245,6 +246,7 @@ const Layout = ({ children }: any) => {
         </div>
 
         {isOver && <HoverText />}
+        <ButtonLive />
       </div>
     </>
   );
