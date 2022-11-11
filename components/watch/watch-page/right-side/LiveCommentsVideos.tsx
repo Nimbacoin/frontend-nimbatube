@@ -89,7 +89,7 @@ const LiveCommentsVideos = () => {
     scrollToBottomWithSmoothScroll();
   }, [liveCommentsVideo]);
   const [isPhone, setIsPhone] = useState(false);
-  const handelCloseMenu = () => {
+  const handelCloseCommets = () => {
     // setIsPhone(!isPhone);
     dispatch(liveVideoCommentsReducer());
   };
@@ -99,7 +99,7 @@ const LiveCommentsVideos = () => {
     >
       <div className={Style.div_cooment_top}>
         <BoldText text={"Comments: " + liveCommentsVideo?.length} />
-        <button onClick={handelCloseMenu} className={Style.close_button}>
+        <button onClick={handelCloseCommets} className={Style.close_button}>
           <IoCloseOutline />
         </button>
       </div>

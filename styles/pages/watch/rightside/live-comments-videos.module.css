@@ -12,6 +12,10 @@
   border: 1px solid #dbdbdb;
   background-color: #fff;
 }
+.close_button {
+  font-size: 20px;
+}
+
 .div_comment_top {
   height: 10%;
   width: 100%;

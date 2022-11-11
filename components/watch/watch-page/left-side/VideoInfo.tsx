@@ -22,6 +22,7 @@ import {
   playListRedcuer,
 } from "../../../../redux/style-slice/general-style/GenrealStyle";
 import GoogleIcon from "../../../modals/GoogleIcon";
+import { liveVideoCommentsReducer } from "../../../../redux/video-slice/VideoSlice";
 
 const VideoInfo = ({ ActiveVideoStream }: any) => {
   const videoData = useSelector(
@@ -93,7 +94,10 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
   };
   var check = moment(videoData?.createdAt, "YYYY/MM/DD");
   var month = check.format("M");
-
+  const handelCloseCommets = () => {
+    // setIsPhone(!isPhone);
+    dispatch(liveVideoCommentsReducer());
+  };
   return (
     <div className={Style.video_data}>
       <div className={Style.title}>
@@ -132,9 +136,10 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
           </div>
           <div className={Style.container_thmp}>
             {!ActiveVideoStream && (
-              <div className={Style.icon_2}>
-                
-                <span className={Style.custtom_icon}><VscCommentDiscussion /></span>
+              <div onClick={handelCloseCommets} className={Style.icon_2}>
+                <span className={Style.custtom_icon}>
+                  <VscCommentDiscussion />
+                </span>
                 {/* <GoogleIcon IconName={"forum"} /> */}
                 <span className={Style.nubmer_of_likes}>Live Chat</span>
               </div>

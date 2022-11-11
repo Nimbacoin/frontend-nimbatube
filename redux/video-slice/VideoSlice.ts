@@ -48,7 +48,7 @@ export const VideoSlice = createSlice({
         state.liveCommentsVideo = action.payload.comments;
       }
     },
-    liveVideoCommentsReducer: (state: any, action: any) => {
+    liveVideoCommentsReducer: (state: any) => {
       state.liveVideoComments = !state.liveVideoComments;
     },
   },
