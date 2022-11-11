@@ -17,11 +17,11 @@
   line-height: 20px;
   color: #030303;
   cursor: pointer;
-  color: #fff;
+  color: #000;
   min-width: 100px;
   border-radius: 20px;
   padding: 6px 5px;
-  background-color: #673de6;
+  background-color: #fbbd18;
   margin-top: 0px;
   border: 1px solid transparent;
 }

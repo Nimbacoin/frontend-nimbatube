@@ -16,12 +16,12 @@
 .container_menu:hover {
   background-color: #f0f0f0;
   border-radius: 20px;
-  
+
   box-shadow: #00000017 0px 3px 12px;
 }
 .icon {
   font-size: 24px;
-  color: #673de6;
+  color: #fbbd18;
 }
 .logo {
   color: #030303;
