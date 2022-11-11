@@ -95,13 +95,13 @@ const App = () => {
           </div>
         </div>
         <div className={Style.video_container_2}>
-          {/* <video
+          <video
             className={Style.video}
             id="remotevideo"
             ref={videoRef}
             autoPlay
-            muted
-          ></video> */}
+            
+          ></video>
         </div>
       </div>
     </>
