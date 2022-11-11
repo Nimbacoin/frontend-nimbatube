@@ -37,11 +37,17 @@
 }
 .icon {
   width: 30px;
-  height: 20px;
-  background-image: url("/images/video_icon.png");
+  height: 30px;
   background-size: cover;
   background-position: center;
-  background-color: black;
+  /* background-color: black; */
+}
+
+.container_icon > div {
+  background-image: url("/images/upload-to-cloud.png");
+}
+.container_icon_2 > div {
+  background-image: url("/images/video_icon.png");
 }
 .div_conntnt {
   width: 150px;
