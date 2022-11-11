@@ -227,6 +227,13 @@
     height: 200px;
   }
 }
+@media screen and (max-width: 650px) {
+ 
+  .video_container,
+  .video_container_img {
+    height: 150px;
+  }
+}
 
 @media screen and (max-width: 500px) {
   .chanel_data {
@@ -245,9 +252,10 @@
   }
   .video_container,
   .video_container_img {
-    height: 300px;
+    height: 250px;
   }
 }
+
 @media screen and (max-width: 400px) {
   .video_container,
   .video_container_img {
