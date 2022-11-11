@@ -10,7 +10,7 @@ import { IoArrowRedoOutline } from "@react-icons/all-files/io5/IoArrowRedoOutlin
 import { RiPlayListAddFill } from "@react-icons/all-files/ri/RiPlayListAddFill";
 import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
 import { FcCircuit } from "@react-icons/all-files/fc/FcCircuit";
-import { GoCommentDiscussion } from "@react-icons/all-files/go/GoCommentDiscussion";
+import { VscCommentDiscussion } from "@react-icons/all-files/vsc/VscCommentDiscussion";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -132,16 +132,15 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
           </div>
           <div className={Style.container_thmp}>
             {!ActiveVideoStream && (
-              <div className={Style.icon_comments}>
-                {/* <GoCommentDiscussion /> */}
-                <GoogleIcon IconName={"forum"} />
-                <span className={Style.live_chat}>Live Chat</span>
+              <div className={Style.icon_2}>
+                <VscCommentDiscussion />
+                {/* <GoogleIcon IconName={"forum"} /> */}
+                <span className={Style.nubmer_of_likes}>Live Chat</span>
               </div>
             )}
 
             <div className={Style.icon_2}>
               <FcCircuit />
-
               <span className={Style.nubmer_of_likes}>Support</span>
             </div>
             <div onClick={handelShareVideo} className={Style.icon_2}>
