@@ -12,8 +12,8 @@
   border: 1px solid #dbdbdb;
   background-color: #fff;
 }
-.close_button {
-  font-size: 20px;
+.close_button > svg {
+  font-size: 25px;
 }
 
 .div_comment_top {
