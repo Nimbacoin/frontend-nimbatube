@@ -6,7 +6,10 @@ import Style from "../../../../styles/pages/watch/rightside/live-comments-videos
 import { IoEyeOutline } from "@react-icons/all-files/io5/IoEyeOutline";
 import StreamComment from "../../../go-live/go-live-components/StreamComment";
 import InputStreamComment from "../../../go-live/go-live-components/InputStreamComment";
-import { liveVideoLive } from "../../../../redux/video-slice/VideoSlice";
+import {
+  liveVideoCommentsReducer,
+  liveVideoLive,
+} from "../../../../redux/video-slice/VideoSlice";
 import basedGetUrlRequest from "../../../../utils/basedGetUrlRequest";
 import BoldText from "../../../modals/BoldText";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
@@ -55,6 +58,9 @@ const LiveCommentsVideos = () => {
     (state: any) => state.socketSlice.socketRedux
   );
   const isSocket = useSelector((state: any) => state.socketSlice.isSocket);
+  const liveVideoComments = useSelector(
+    (state: any) => state.VideoSlice.liveVideoComments
+  );
   const [socketIdd, setSocketIdd] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
@@ -84,10 +90,13 @@ const LiveCommentsVideos = () => {
   }, [liveCommentsVideo]);
   const [isPhone, setIsPhone] = useState(false);
   const handelCloseMenu = () => {
-    setIsPhone(!isPhone);
+    // setIsPhone(!isPhone);
+    dispatch(liveVideoCommentsReducer());
   };
   return (
-    <div className={!isPhone ? Style.container : Style.container_phone}>
+    <div
+      className={!liveVideoComments ? Style.container : Style.container_phone}
+    >
       <div className={Style.div_cooment_top}>
         <BoldText text={"Comments: " + liveCommentsVideo?.length} />
         <button onClick={handelCloseMenu} className={Style.close_button}>

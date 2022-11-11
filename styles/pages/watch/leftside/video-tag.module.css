@@ -28,6 +28,8 @@
 .video_tag {
   width: 100%;
   height: auto;
+  max-height: 300px;
+  object-fit: contain;
 }
 .controls_container {
   margin: 0 auto;

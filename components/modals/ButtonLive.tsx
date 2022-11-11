@@ -8,9 +8,14 @@ const ButtonLive = () => {
   const HandelClick = () => {
     setShowDiv(!showDiv);
   };
-  
 
   const [showDiv, setShowDiv] = useState(false);
+  const HandelMouseDown = () => {
+    // setTimeout(() => {
+    //   alert("df");
+    // }, 2000);
+    // alert("Sd")
+  };
   return (
     <div className={Style.wrap}>
       {showDiv && (
@@ -33,7 +38,11 @@ const ButtonLive = () => {
           <div className={Style.triangle_right}></div>
         </div>
       )}
-      <button onClick={HandelClick} className={Style.button}>
+      <button
+        onMouseDown={HandelMouseDown}
+        onClick={HandelClick}
+        className={Style.button}
+      >
         <VideoCallSharpIcon />
       </button>
     </div>
