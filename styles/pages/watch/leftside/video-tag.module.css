@@ -28,7 +28,7 @@
 .video_tag {
   width: 100%;
   height: auto;
-  max-height: 300px;
+  max-height: 450px;
   object-fit: contain;
 }
 .controls_container {
