@@ -133,7 +133,8 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
           <div className={Style.container_thmp}>
             {!ActiveVideoStream && (
               <div className={Style.icon_2}>
-                <VscCommentDiscussion />
+                
+                <span className={Style.custtom_icon}><VscCommentDiscussion /></span>
                 {/* <GoogleIcon IconName={"forum"} /> */}
                 <span className={Style.nubmer_of_likes}>Live Chat</span>
               </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "../../styles/modals/button-live.module.css";
 import VideoCallSharpIcon from "@mui/icons-material/VideoCallSharp";
 import { FcVideoCall } from "@react-icons/all-files/fc/FcVideoCall";
@@ -8,6 +8,8 @@ const ButtonLive = () => {
   const HandelClick = () => {
     setShowDiv(!showDiv);
   };
+  
+
   const [showDiv, setShowDiv] = useState(false);
   return (
     <div className={Style.wrap}>

@@ -68,7 +68,6 @@
   padding: 5px 0;
 }
 
-
 .icon_1,
 .icon_2 {
   display: flex;
@@ -87,10 +86,7 @@
 .icon_2 > p > span {
   font-size: 22px;
 }
-/* .icon_1:hover,
-.icon_2:hover {
-  background-color: #dbdbdb;
-} */
+
 .icon_1 {
   border-right: 1px solid #dbdbdb;
   padding: 0 10px;
@@ -100,10 +96,17 @@
 .icon_comments > svg {
   font-size: 20px;
 }
+.custtom_icon {
+  font-size: 18px;
+}
 
 .nubmer_of_likes {
   font-size: 14px;
   font-weight: 500;
+  clear: both;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .date_phone {
   display: none;
@@ -208,7 +211,7 @@
   .disLike {
     display: none;
   }
-  
+
   .right_container,
   .img {
     margin-right: 10px;
