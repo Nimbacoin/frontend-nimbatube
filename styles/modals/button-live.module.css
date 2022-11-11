@@ -20,6 +20,28 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+  background-size: cover;
+}
+.container_icon,
+.container_icon_2 {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container_icon_2 > div {
+  background-image: url("/images/video_icon.png");
+}
+.container_icon {
+  border-right: 1px solid #dbdbdd;
+}
+.icon {
+  width: 40px;
+  height: 40px;
+  background-image: url("/images/video_icon.png");
+  background-size: cover;
+  /* background-color: black; */
 }
 .div_conntnt {
   width: 150px;
