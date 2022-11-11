@@ -113,49 +113,48 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
         </span>
         <div className={Style.icons_container}>
           <div className={Style.container_thmp}>
-            <p className={Style.icon_1} onClick={HandelLike}>
+            <div className={Style.icon_1} onClick={HandelLike}>
               {IsLiked ? (
                 <GoogleIcon Fill={true} IconName={"thumb_up_off"} />
               ) : (
                 <GoogleIcon IconName={"thumb_up_off"} />
               )}
               <span className={Style.nubmer_of_likes}>{videoLikes}</span>
-            </p>
-            <p className={Style.icon_2} onClick={HandelDisLike}>
+            </div>
+            <div className={Style.icon_2} onClick={HandelDisLike}>
               {IsDisLiked ? (
                 <GoogleIcon Fill={true} IconName={"thumb_down_off"} />
               ) : (
                 <GoogleIcon IconName={"thumb_down_off"} />
               )}
               {/* <span className={Style.disLike}> {videoDisLikes}</span> */}
-            </p>
+            </div>
           </div>
           <div className={Style.container_thmp}>
             {!ActiveVideoStream && (
-              <p className={Style.icon_comments}>
+              <div className={Style.icon_comments}>
                 {/* <GoCommentDiscussion /> */}
                 <GoogleIcon IconName={"forum"} />
                 <span className={Style.live_chat}>Live Chat</span>
-              </p>
+              </div>
             )}
 
-            <p className={Style.icon_2}>
+            <div className={Style.icon_2}>
               <FcCircuit />
 
               <span className={Style.nubmer_of_likes}>Support</span>
-            </p>
-            <p onClick={handelShareVideo} className={Style.icon_2}>
+            </div>
+            <div onClick={handelShareVideo} className={Style.icon_2}>
               <IoArrowRedoOutline />
-
               <span className={Style.nubmer_of_likes}>Share</span>
-            </p>
-            <p onClick={handelPlayList} className={Style.icon_2}>
+            </div>
+            <div onClick={handelPlayList} className={Style.icon_2}>
               <GoogleIcon IconName={"playlist_add"} />
               <span className={Style.nubmer_of_likes}>Save</span>
-            </p>
-            <p className={Style.icon_2}>
+            </div>
+            <div className={Style.icon_2}>
               <IoEllipsisHorizontalSharp />
-            </p>
+            </div>
           </div>
         </div>
       </div>

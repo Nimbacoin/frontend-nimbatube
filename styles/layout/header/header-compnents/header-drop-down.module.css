@@ -144,6 +144,10 @@
   .container {
     width: 40px;
   }
+  .img_img {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .drop_down_option_sold:hover {
