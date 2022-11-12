@@ -82,20 +82,12 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  font-family: "Nunito", sans-serif;
   font-size: 22px;
-  text-transform: uppercase;
-  letter-spacing: 1.3px;
   font-weight: 700;
   color: #313133;
   background: #cc0000;
-  /* background: linear-gradient(
-    90deg,
-    rgba(129, 230, 217, 1) 0%,
-    rgba(79, 209, 197, 1) 100%
-  ); */
   border: none;
-  border-radius: 1000px;
+  border-radius: 50%;
   box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
   transition: all 0.3s ease-in-out 0s;
   cursor: pointer;
@@ -110,7 +102,7 @@
   min-width: calc(40px + 12px);
   min-height: calc(40px + 12px);
   border: 6px solid #cc0000;
-  /* box-shadow: 0 0 40px rgba(0, 255, 203, 0.64); */
+  box-shadow: 0 0 40px rgba(0, 255, 203, 0.64);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -157,8 +149,8 @@
     opacity: 1;
   }
   100% {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     opacity: 0;
   }
 }

@@ -145,11 +145,7 @@ const VideoTag = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      if (window.innerWidth > 900) {
-        setShowDivControls(false);
-      } else {
-        setShowDivControls(true);
-      }
+      setShowDivControls(false);
     }, 5000);
   }, []);
   const [showDivControls, setShowDivControls] = useState(true);
