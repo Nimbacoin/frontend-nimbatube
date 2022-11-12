@@ -2,10 +2,15 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: column;
-  height: 20px;
+  height: 60px;
   cursor: pointer;
+  padding-bottom: 25px;
+  left: 0;
+  position: relative;
+  bottom: -10px;
+  /* //background-color: red; */
 }
 .main_second_container {
   width: 100%;
@@ -38,12 +43,17 @@
 .container:hover .the_circel {
   height: 13px;
 }
-.container:hover .main_second_container:hover {
+.container:hover .main_second_container {
   height: 5px;
 }
 
 @media screen and (max-width: 900px) {
   .container {
     justify-content: flex-end;
+    padding-bottom: 0px;
+
+    left: 0;
+    position: relative;
+    bottom: 0;
   }
 }

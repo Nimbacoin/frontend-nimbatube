@@ -26,30 +26,32 @@ const VideoBar = ({ Width, HandelClick }: any) => {
     setIsMouseDown(false);
   };
 
-  const functionToChangeTime = () => {
+  const functionToChangeTime = (Number: number) => {
     if (progressSlider.current && progressFill.current) {
-      const newTime =
-        e.nativeEvent.offsetX / progressSlider.current.offsetWidth;
-      console.log(e.nativeEvent.offsetX);
+      const newTime = Number / progressSlider.current.offsetWidth;
       progressFill.current.style.width = `${newTime * 100}%`;
       HandelClick(newTime);
     }
   };
   const onMouseOverActive = (e: any) => {
     if (isMouseDown) {
-      functionToChangeTime();
+      functionToChangeTime(e.nativeEvent.offsetX);
     }
   };
   useEffect(() => {}, []);
   const handelTouchStart = (e: any) => {
     console.log("start");
+    functionToChangeTime(e.targetTouches[0].clientX);
   };
   const handelTouchMove = (e: any) => {
     console.log("move");
-    functionToChangeTime();
+    console.log(e.targetTouches[0].clientX);
+    functionToChangeTime(e.targetTouches[0].clientX);
+    // functionToChangeTime(e);
   };
   const handelonTouchEnd = (e: any) => {
     console.log("end");
+    // functionToChangeTime(e.targetTouches[0].clientX);
   };
   return (
     <div
