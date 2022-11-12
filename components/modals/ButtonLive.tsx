@@ -17,14 +17,22 @@ const ButtonLive = () => {
     // alert("Sd")
   };
   const handelTouchMove = (e: any) => {
+    setShowDiv(false);
     console.log("move");
     const ggg = e.targetTouches[0].clientX;
     const gggy = e.targetTouches[0].clientY;
-    if (animatedRef.current && animatedRefFixed.current) {
-      document.body.style.position = "fixed";
+    if (
+      animatedRef.current &&
+      animatedRefFixed.current &&
+      mainContainerRef.current
+    ) {
+      document.body.style.overflow = "hidden";
       animatedRef.current.style.position = "fixed";
       animatedRef.current.style.left = ggg + "px";
       animatedRef.current.style.top = gggy + "px";
+      mainContainerRef.current.style.left =
+        ggg - mainContainerRef.current.offsetWidth + 40 + "px";
+      mainContainerRef.current.style.top = gggy + "px";
     }
     // functionToChangeTime(e);
   };
@@ -37,12 +45,18 @@ const ButtonLive = () => {
       animatedRef.current &&
       animatedRefFixed.current
     ) {
+      // document.body.style.position = "static";
+      animatedRef.current.style.right = animatedRefFixed.current.style.right;
+      animatedRef.current.style.top = animatedRefFixed.current.style.top;
+      const ifrstt = animatedRefFixed.current;
+      document.body.style.overflow = "auto";
+
       // animatedRef.current.style.position = "relative";
-      document.body.style.position = "static";
-      const ggg = animatedRefFixed.current.style.top;
-      const gggy = animatedRefFixed.current.style.left;
-      animatedRef.current.style.left = ggg;
-      animatedRef.current.style.top = gggy;
+
+      // const ggg = animatedRefFixed.current.style.top;
+      // const gggy = animatedRefFixed.current.style.left;
+      // animatedRef.current.style.left = ggg;
+      // animatedRef.current.style.top = gggy;
       // functionToChangeTime(e);
     }
   };
