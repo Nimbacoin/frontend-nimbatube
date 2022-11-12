@@ -52,6 +52,7 @@ const VideoBar = ({ Width, HandelClick }: any) => {
   const handelonTouchEnd = (e: any) => {
     console.log("end");
     // functionToChangeTime(e.targetTouches[0].clientX);
+    
   };
   return (
     <div

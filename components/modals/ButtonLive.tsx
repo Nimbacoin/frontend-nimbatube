@@ -20,19 +20,17 @@ const ButtonLive = () => {
     console.log("move");
     const ggg = e.targetTouches[0].clientX;
     const gggy = e.targetTouches[0].clientY;
-    if (mainContainerRef.current) {
-      mainContainerRef.current.style.left = ggg + "px";
-      mainContainerRef.current.style.top = gggy + "px";
+    if (buttonRef.current) {
+      buttonRef.current.style.position = "fixed";
+      buttonRef.current.style.left = ggg + "px";
+      buttonRef.current.style.top = gggy + "px";
     }
     // functionToChangeTime(e);
   };
   const mainContainerRef = React.useRef<HTMLDivElement | null>(null);
+  const buttonRef = React.useRef<HTMLButtonElement | null>(null);
   return (
-    <div
-      ref={mainContainerRef}
-      onTouchMove={handelTouchMove}
-      className={Style.wrap}
-    >
+    <div ref={mainContainerRef} className={Style.wrap}>
       {showDiv && (
         <div className={Style.div_conntnt}>
           <div className={Style.container_icons}>
@@ -56,6 +54,8 @@ const ButtonLive = () => {
       <button
         onMouseDown={HandelMouseDown}
         onClick={HandelClick}
+        onTouchMove={handelTouchMove}
+        ref={buttonRef}
         className={Style.button}
       >
         <VideoCallSharpIcon />
