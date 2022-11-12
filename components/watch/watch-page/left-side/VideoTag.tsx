@@ -219,13 +219,7 @@ const VideoTag = () => {
               </div>
             )}
 
-            <video
-              className={Style.video_tag}
-              ref={videoTag}
-              
-              loop
-              autoPlay
-            >
+            <video className={Style.video_tag} ref={videoTag} loop autoPlay>
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
             <div onClick={HandelClickPues} className={Style.div_hover}></div>
@@ -240,56 +234,65 @@ const VideoTag = () => {
                 </div>
               )}
 
-              {showDivControls && (
-                <div className={Style.controlrs}>
-                  <div className={Style.play_sound_controls}>
-                    <span className={Style.icon_control}>
-                      <SkipPreviousSharpIcon />
-                    </span>
-                    {play ? (
-                      <span onClick={handelPlay} className={Style.icon_control}>
-                        <PlayArrowIcon />
+              <div className={Style.controlrs}>
+                <div
+                  onClick={HandelClickPues}
+                  className={Style.div_hover_2}
+                ></div>
+                {showDivControls && (
+                  <div className={Style.div_containner_controlers}>
+                    <div className={Style.play_sound_controls}>
+                      <span className={Style.icon_control}>
+                        <SkipPreviousSharpIcon />
                       </span>
-                    ) : (
-                      <span
-                        onClick={handelPuase}
-                        className={Style.icon_control}
-                      >
-                        <PauseSharpIcon />
+                      {play ? (
+                        <span
+                          onClick={handelPlay}
+                          className={Style.icon_control}
+                        >
+                          <PlayArrowIcon />
+                        </span>
+                      ) : (
+                        <span
+                          onClick={handelPuase}
+                          className={Style.icon_control}
+                        >
+                          <PauseSharpIcon />
+                        </span>
+                      )}
+                      <span className={Style.icon_control}>
+                        <SkipNextSharpIcon />
                       </span>
-                    )}
-                    <span className={Style.icon_control}>
-                      <SkipNextSharpIcon />
-                    </span>
 
-                    <div className={Style.div_sound_container_bar}>
+                      <div className={Style.div_sound_container_bar}>
+                        <span
+                          onClick={handelMuteVid}
+                          className={Style.icon_control_1000}
+                        >
+                          {vidMutued ? (
+                            <VolumeOffSharpIcon />
+                          ) : (
+                            <VolumeUpSharpIcon />
+                          )}
+                        </span>
+                        <SoundBar HandelClick={changeVolume} />
+                      </div>
+
+                      <span className={Style.time}>
+                        {timeUpdate + " / " + duration}
+                      </span>
+                    </div>
+                    <div className={Style.other_controls}>
                       <span
-                        onClick={handelMuteVid}
+                        onClick={openFullscreen}
                         className={Style.icon_control_1000}
                       >
-                        {vidMutued ? (
-                          <VolumeOffSharpIcon />
-                        ) : (
-                          <VolumeUpSharpIcon />
-                        )}
+                        <FullscreenSharpIcon />
                       </span>
-                      <SoundBar HandelClick={changeVolume} />
                     </div>
-
-                    <span className={Style.time}>
-                      {timeUpdate + " / " + duration}
-                    </span>
                   </div>
-                  <div className={Style.other_controls}>
-                    <span
-                      onClick={openFullscreen}
-                      className={Style.icon_control_1000}
-                    >
-                      <FullscreenSharpIcon />
-                    </span>
-                  </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </div>
