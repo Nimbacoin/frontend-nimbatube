@@ -88,14 +88,16 @@ const ButtonLive = () => {
       )}
       <div ref={animatedRefFixed} className={Style.button_container}>
         <div
-          className={Style.button}
           onMouseDown={HandelMouseDown}
           onClick={HandelClick}
           onTouchMove={handelTouchMove}
           ref={animatedRef}
           onTouchEnd={handelonTouchEnd}
+          className={Style.div_container_button}
         >
-          <VideoCallSharpIcon />
+          <div className={Style.button}>
+            <VideoCallSharpIcon />
+          </div>
         </div>
       </div>
     </div>
