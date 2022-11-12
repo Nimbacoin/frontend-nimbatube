@@ -20,15 +20,36 @@ const ButtonLive = () => {
     console.log("move");
     const ggg = e.targetTouches[0].clientX;
     const gggy = e.targetTouches[0].clientY;
-    if (buttonRef.current) {
-      buttonRef.current.style.position = "fixed";
-      buttonRef.current.style.left = ggg + "px";
-      buttonRef.current.style.top = gggy + "px";
+    if (animatedRef.current && animatedRefFixed.current) {
+      document.body.style.position = "fixed";
+      animatedRef.current.style.position = "fixed";
+      animatedRef.current.style.left = ggg + "px";
+      animatedRef.current.style.top = gggy + "px";
     }
     // functionToChangeTime(e);
   };
+  const handelonTouchEnd = (e: any) => {
+    console.log("end");
+    // functionToChangeTime(e.targetTouches[0].clientX);
+
+    if (
+      mainContainerRef.current &&
+      animatedRef.current &&
+      animatedRefFixed.current
+    ) {
+      // animatedRef.current.style.position = "relative";
+      document.body.style.position = "static";
+      const ggg = animatedRefFixed.current.style.top;
+      const gggy = animatedRefFixed.current.style.left;
+      animatedRef.current.style.left = ggg;
+      animatedRef.current.style.top = gggy;
+      // functionToChangeTime(e);
+    }
+  };
+
   const mainContainerRef = React.useRef<HTMLDivElement | null>(null);
-  const buttonRef = React.useRef<HTMLButtonElement | null>(null);
+  const animatedRef = React.useRef<HTMLDivElement | null>(null);
+  const animatedRefFixed = React.useRef<HTMLDivElement | null>(null);
   return (
     <div ref={mainContainerRef} className={Style.wrap}>
       {showDiv && (
@@ -51,15 +72,18 @@ const ButtonLive = () => {
           <div className={Style.triangle_right}></div>
         </div>
       )}
-      <button
-        onMouseDown={HandelMouseDown}
-        onClick={HandelClick}
-        onTouchMove={handelTouchMove}
-        ref={buttonRef}
-        className={Style.button}
-      >
-        <VideoCallSharpIcon />
-      </button>
+      <div ref={animatedRefFixed} className={Style.button_container}>
+        <div
+          className={Style.button}
+          onMouseDown={HandelMouseDown}
+          onClick={HandelClick}
+          onTouchMove={handelTouchMove}
+          ref={animatedRef}
+          onTouchEnd={handelonTouchEnd}
+        >
+          <VideoCallSharpIcon />
+        </div>
+      </div>
     </div>
   );
 };
