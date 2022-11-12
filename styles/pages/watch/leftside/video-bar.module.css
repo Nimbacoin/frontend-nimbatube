@@ -55,5 +55,6 @@
     left: 0;
     position: relative;
     bottom: 0;
+    height: auto;
   }
 }
