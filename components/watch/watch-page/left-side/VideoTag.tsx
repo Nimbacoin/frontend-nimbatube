@@ -146,7 +146,7 @@ const VideoTag = () => {
   useEffect(() => {
     setTimeout(() => {
       setShowDivControls(false);
-    }, 5000);
+    }, 2000);
   }, []);
   const [showDivControls, setShowDivControls] = useState(true);
   const [showDivControlsBar, setShowDivControlsBar] = useState(true);
