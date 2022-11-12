@@ -65,6 +65,7 @@ const SignUp = () => {
         console.log(res);
         if (res.user) {
           Cookies.set("user", JSON.stringify(res.user));
+          Cookies.set("expires", "Fri, 31 Dec 9999 23:59:59 GMT");
           // sessionStorage.setItem("user", JSON.stringify(res.user));
           dispatch(UserSignedIn(res.user));
           setResMessage(res.message);

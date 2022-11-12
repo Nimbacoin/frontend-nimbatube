@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Style from "../../styles/modals/button-live.module.css";
 import VideoCallSharpIcon from "@mui/icons-material/VideoCallSharp";
 import { FcVideoCall } from "@react-icons/all-files/fc/FcVideoCall";
@@ -16,8 +16,23 @@ const ButtonLive = () => {
     // }, 2000);
     // alert("Sd")
   };
+  const handelTouchMove = (e: any) => {
+    console.log("move");
+    const ggg = e.targetTouches[0].clientX;
+    const gggy = e.targetTouches[0].clientY;
+    if (mainContainerRef.current) {
+      mainContainerRef.current.style.left = ggg + "px";
+      mainContainerRef.current.style.top = gggy + "px";
+    }
+    // functionToChangeTime(e);
+  };
+  const mainContainerRef = React.useRef<HTMLDivElement | null>(null);
   return (
-    <div className={Style.wrap}>
+    <div
+      ref={mainContainerRef}
+      onTouchMove={handelTouchMove}
+      className={Style.wrap}
+    >
       {showDiv && (
         <div className={Style.div_conntnt}>
           <div className={Style.container_icons}>
