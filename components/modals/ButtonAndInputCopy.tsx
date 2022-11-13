@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { poPUppRedcuer } from "../../redux/style-slice/general-style/GenrealStyle";
-import Style from "../../styles/modals/share-video.module.css";
+import Style from "../../styles/modals/input-file.module.css";
 import TextTilteInputMudum from "./TextTilteInputMudum";
 
 const ButtonAndInputAction = ({
@@ -16,7 +16,7 @@ const ButtonAndInputAction = ({
   const dispatch = useDispatch();
 
   return (
-    <>
+    <div className={Style.container}>
       <TextTilteInputMudum Icon={Icon && Icon} Text={Text && Text} />
       <div className={Style.link_container}>
         <input
@@ -27,7 +27,7 @@ const ButtonAndInputAction = ({
           {ButtonTextValue ? ButtonTextValue : "Copy"}
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

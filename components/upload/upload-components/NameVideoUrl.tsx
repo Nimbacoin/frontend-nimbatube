@@ -9,6 +9,8 @@ import { ActionVideoDataChanging } from "../../../redux/video-slice/VideoSlice";
 import { useRouter } from "next/router";
 import InputText from "../../modals/InputText";
 import TextArea from "../../modals/TextArea";
+import ButtonAndInputAction from "../../modals/ButtonAndInputCopy";
+import FileUplaodInputAction from "../../modals/FileUplaodInputAction";
 const NameVideoUrl = () => {
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
@@ -43,13 +45,15 @@ const NameVideoUrl = () => {
       videoTag.current.play();
     }
   }, [Uploaded, videoPath]);
-  const HandelSubmiteNewGeneral = async () => {
+
+  const HandelSubmiteNewGeneral = async (dataFile: any) => {
     let formData = new FormData();
-    if (Path.current) {
-      formData.append("channelId", Channels[0]._id);
-      formData.append("video", Path.current);
+    const channelId = Channels[0]._id;
+    if (dataFile && channelId) {
+      formData.append("channelId", channelId);
+      formData.append("video", dataFile);
     }
-    console.log(Channels[0]._id);
+    // console.log(Channels[0]._id);
     await AxiosPostLogedInFormData(
       "/api/post/video/create-new-video/",
       formData
@@ -100,6 +104,7 @@ const NameVideoUrl = () => {
       })
     );
   };
+
   return (
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
@@ -123,46 +128,23 @@ const NameVideoUrl = () => {
               </video>
             </div>
             <div className={Style.video_data}>
-              <div className={Style.upload_input}>
-                <p className={Style.upload_file}>Video link</p>
-                <div className={Style.input_label}>
-                  <span className={Style.upload_file_text}>{VideoLink}</span>
-                  <span
-                    className={Style.upload_file_button}
-                    onClick={handelCopy}
-                  >
-                    Copy
-                  </span>
-                </div>
-              </div>
-
-              <div className={Style.upload_input}>
-                <span className={Style.upload_file}>Filename</span>
-                <div className={Style.input_label}>
-                  <span className={Style.upload_file_text}>{FileName}</span>
-                  <span className={Style.upload_file_text_dots}>...</span>
-                </div>
-              </div>
+              <ButtonAndInputAction
+                Text={"Video link"}
+                HandelClick={handelCopy}
+                CopyValue={VideoLink}
+                ButtonTextValue={"copy"}
+              />
             </div>
           </div>
         ) : (
           <div className={Style.upload_input}>
-            <label htmlFor="input_upload" className={Style.input_label}>
-              <span className={Style.upload_file_text}>
-                Select video, audio or image file to upload
-              </span>
-              <span className={Style.upload_file_text_dots}>...</span>
-              <input
-                onChange={readVideo}
-                id="input_upload"
-                type="file"
-                name="video"
-                accept="video/mp4"
-                className={Style.input_upload}
-              />
-              <span className={Style.upload_file_button}>Browse</span>
-            </label>
-
+            <div className={Style.div_container_img}></div>
+            <div className={Style.upload_input}></div>
+            <FileUplaodInputAction
+              Accept="video/mp4"
+              ButtonTextValue={"Browse"}
+              handelSubmiteFile={HandelSubmiteNewGeneral}
+            />
             <p className={Style.text}>
               For video content, use MP4s in H264/AAC format and a friendly
               bitrate (under 8 Mbps) for more reliable streaming. NimbaTube

@@ -21,6 +21,7 @@ import ShareVideo from "../components/modals/ShareVideo";
 import AddToPalayList from "../components/modals/AddToPlayList";
 import CropperCom from "../components/modals/Cropper";
 import ButtonLive from "../components/modals/ButtonLive";
+import ElementOver from "../components/modals/ElementOver";
 
 interface main {
   children: any;
@@ -38,6 +39,9 @@ const Layout = ({ children }: any) => {
   const PopUppBoolean = useSelector((state: any) => state.GenrealStyle.popUpp);
   const copyVideo = useSelector((state: any) => state.GenrealStyle.copyVideo);
   const playList = useSelector((state: any) => state.GenrealStyle.playList);
+  const elementOverLayt = useSelector(
+    (state: any) => state.GenrealStyle.elementOverLayt
+  );
   const UserIsSignedIn = useSelector(
     (state: any) => state.UserSignIn.UserIsSignedIn
   );
@@ -246,6 +250,7 @@ const Layout = ({ children }: any) => {
         </div>
 
         {isOver && <HoverText />}
+        {elementOverLayt && <ElementOver />}
         <ButtonLive />
       </div>
     </>

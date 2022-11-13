@@ -1,0 +1,85 @@
+.container {
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.link_container {
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  min-height: 35px;
+  border: 1px solid#DBDBDB;
+  border-radius: 20px;
+  position: relative;
+  font-size: 14px;
+  color: #030303;
+  outline: none;
+  padding: 0px 0 0 5px;
+}
+.link_container > input {
+  background-color: transparent;
+  padding: 0 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+.main_link_container {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: baseline;
+}
+
+.button_copy {
+  background-color: #fbbd18;
+  height: 100%;
+  padding: 0 20px;
+  border-radius: 0 20px 20px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #030303;
+  font-size: 15px;
+  font-weight: 500;
+  min-height: 35px;
+}
+.button_copy:hover {
+  background-color: #f7b500;
+}
+
+.text {
+  font-size: 15px;
+  font-weight: 500;
+}
+.svg {
+  cursor: pointer;
+  border: none;
+
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.link_container:hover {
+  background-color: #fafafa;
+  border: solid 1px transparent;
+  box-shadow: #00000017 0px 3px 12px;
+}
+
+@media screen and (max-width: 700px) {
+  .share_container {
+    width: 90%;
+  }
+}

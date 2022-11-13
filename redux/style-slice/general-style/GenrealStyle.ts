@@ -13,6 +13,8 @@ const initialState = {
   cropping: false,
   croppingImg: {},
   croppedImg: "",
+  elementOverLayt: false,
+  elementOverContent: [],
 };
 
 export const GeneralStyle = createSlice({
@@ -76,6 +78,15 @@ export const GeneralStyle = createSlice({
         state.croppedImg = action.payload;
       }
     },
+    elementOverLaytRedcuer: (state: any, action: any) => {
+      state.elementOverLayt = true;
+      state.elementOverContent = [action.payload];
+      console.log(action.payload);
+    },
+    elementOverLaytRedcuerHide: (state: any) => {
+      state.elementOverLayt = false;
+      state.elementOverContent = [];
+    },
   },
 });
 
@@ -88,6 +99,8 @@ export const {
   playListRedcuer,
   croppingRedcuer,
   FinishCroppingRedcuer,
+  elementOverLaytRedcuer,
+  elementOverLaytRedcuerHide,
 } = GeneralStyle.actions;
 const AllReducers = GeneralStyle.reducer;
 export default AllReducers;

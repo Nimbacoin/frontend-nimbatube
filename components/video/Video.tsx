@@ -110,32 +110,34 @@ const Video = ({ VideoData }: any) => {
   return (
     <div
       ref={containerRef}
-      onClick={handelClickVideo}
+      // onClick={handelClickVideo}
       onMouseOver={HandelOver}
       onMouseLeave={HandelLeave}
       className={Style.container}
     >
-      <div
-        onLoad={handelImagLaod}
-        ref={ThumbnailImg}
-        style={{
-          backgroundImage: `url(${thumbnail})`,
-          // minHeight: `${IsPhone && ScreenWithByHalf}px`,
-        }}
-        className={
-          MenuBoolean
-            ? Style.vedio_container_MenuBoolean
-            : Style.vedio_container
-        }
-      >
-        {!isLaoded && <LoaodingAll />}
+      <Link href={videoLink}>
+        <div
+          onLoad={handelImagLaod}
+          ref={ThumbnailImg}
+          style={{
+            backgroundImage: `url(${thumbnail})`,
+            // minHeight: `${IsPhone && ScreenWithByHalf}px`,
+          }}
+          className={
+            MenuBoolean
+              ? Style.vedio_container_MenuBoolean
+              : Style.vedio_container
+          }
+        >
+          {!isLaoded && <LoaodingAll />}
 
-        <p className={Style.time}>
-          {VideoData?.videoData?.duration}
-          {/* <GoogleIcon IconName={"videocam"} /> */}
-          <IoVideocamOutline />{" "}
-        </p>
-      </div>
+          <p className={Style.time}>
+            {VideoData?.videoData?.duration}
+            {/* <GoogleIcon IconName={"videocam"} /> */}
+            <IoVideocamOutline />{" "}
+          </p>
+        </div>
+      </Link>
       <div className={Style.desc_container}>
         <div className={Style.title_data}>
           <p className={Style.title}>{Title?.slice(0, 70)}</p>

@@ -9,6 +9,7 @@ import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedI
 import { poPUppRedcuer } from "../../../redux/style-slice/general-style/GenrealStyle";
 import BlueButton from "../../modals/BlueButton";
 import CancelButton from "../../modals/CancelButton";
+import FileUplaodInputAction from "../../modals/FileUplaodInputAction";
 
 const Thumbnail = () => {
   const Path = useRef(null);
@@ -20,22 +21,22 @@ const Thumbnail = () => {
   const socketRedux = useSelector(
     (state: any) => state.socketSlice.socketRedux
   );
-  const readImageThumbnail = async (event: any) => {
-    if (event.target.files && event.target.files[0]) {
-      Path.current = event.target.files[0];
-      handelSubmiteThumbnail();
-    }
-  };
-  const handelSubmiteThumbnail = async () => {
+  // const readImageThumbnail = async (event: any) => {
+  //   if (event.target.files && event.target.files[0]) {
+  //     Path.current = event.target.files[0];
+  //     handelSubmiteThumbnail();
+  //   }
+  // };
+  const handelSubmiteThumbnail = async (dataFile: any) => {
     let formData = new FormData();
-    if (Path.current) {
+    if (dataFile) {
       if (Channels[0]._id) {
         formData.append("channelId", Channels[0]._id);
       }
       if (videoData.video_id) {
         formData.append("videoId", videoData.video_id);
       }
-      formData.append("thumbnail", Path.current);
+      formData.append("thumbnail", dataFile);
     }
     await AxiosPostLogedInFormData(
       "/api/post/video/create-new-thumbnail/",
@@ -79,6 +80,12 @@ const Thumbnail = () => {
           {!Uploaded && <IoImageOutline />}{" "}
         </div>
         <div className={Style.input_upload_thumbnail}>
+          <FileUplaodInputAction
+            Accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
+            // Accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
+            ButtonTextValue={"Browse"}
+            handelSubmiteFile={handelSubmiteThumbnail}
+          />
           <label htmlFor="input_upload_thumbnail" className={Style.input_label}>
             <span className={Style.upload_file_text}>
               Choose an enticing thumbnail{" "}
@@ -87,8 +94,8 @@ const Thumbnail = () => {
             <input
               id="input_upload_thumbnail"
               type="file"
-              accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
-              onChange={readImageThumbnail}
+              // accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
+              // onChange={readImageThumbnail}
               className={Style.input_upload}
             />
             <span className={Style.upload_file_button}>Browse</span>
