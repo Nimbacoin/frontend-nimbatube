@@ -25,20 +25,20 @@ const NameVideoUrl = () => {
 
   const dispatch = useDispatch();
   const Router = useRouter();
-  const readVideo = async (event: any) => {
-    if (event.target.files && event.target.files[0]) {
-      Path.current = event.target.files[0];
-      var reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      HandelSubmiteNewGeneral();
-      reader.onload = function (e: any) {
-        // if (videoTag.current) {
-        //   videoTag.current.src = e.target.result;
-        //   videoTag.current.play();
-        // }
-      };
-    }
-  };
+  // const readVideo = async (event: any) => {
+  //   if (event.target.files && event.target.files[0]) {
+  //     Path.current = event.target.files[0];
+  //     var reader = new FileReader();
+  //     reader.readAsDataURL(event.target.files[0]);
+  //     HandelSubmiteNewGeneral();
+  //     reader.onload = function (e: any) {
+  //       // if (videoTag.current) {
+  //       //   videoTag.current.src = e.target.result;
+  //       //   videoTag.current.play();
+  //       // }
+  //     };
+  //   }
+  // };
   useEffect(() => {
     if (videoTag.current && videoLocation?.length) {
       videoTag.current.src = videoLocation;
