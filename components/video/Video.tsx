@@ -140,7 +140,9 @@ const Video = ({ VideoData }: any) => {
       </Link>
       <div className={Style.desc_container}>
         <div className={Style.title_data}>
-          <p className={Style.title}>{Title?.slice(0, 70)}</p>
+          <Link href={videoLink}>
+            <p className={Style.title}>{Title?.slice(0, 70)}</p>
+          </Link>
           <span
             ref={Spanlem}
             className={OverElement ? Style.menu_desktop : Style.menu}
@@ -153,18 +155,20 @@ const Video = ({ VideoData }: any) => {
             style={{ backgroundImage: `url(${BgP})` }}
             className={Style.chanel_img}
           ></div>
-          <div className={Style.chanel_details}>
-            <div ref={channelNameRef} className={Style.chanel_name}>
-              {VideoData?.channelData?.channelData?.name}
+          <Link href={videoLink}>
+            <div className={Style.chanel_details}>
+              <div ref={channelNameRef} className={Style.chanel_name}>
+                {VideoData?.channelData?.channelData?.name}
+              </div>
+              <span className={Style.date}>
+                {VideoData?.videoData?.views?.length}{" "}
+                {VideoData?.videoData?.views?.length && " views - "}
+                {moment(VideoData?.videoData?.createdAt)
+                  .startOf("hour")
+                  .fromNow()}
+              </span>
             </div>
-            <span className={Style.date}>
-              {VideoData?.videoData?.views?.length}{" "}
-              {VideoData?.videoData?.views?.length && " views - "}
-              {moment(VideoData?.videoData?.createdAt)
-                .startOf("hour")
-                .fromNow()}
-            </span>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
