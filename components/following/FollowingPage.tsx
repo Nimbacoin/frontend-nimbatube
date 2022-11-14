@@ -21,7 +21,7 @@ const FollowingPage = ({}: any) => {
   }, []);
   return (
     <div className={Style.container}>
-      <TopTitle Icon=<IoHeartOutline /> Text={"following"} />
+      <TopTitle Icon={<IoHeartOutline />} Text={"following"} />
       {/* <Chanel IsChanelPage={true} /> */}
       {ChannelsData.length
         ? ChannelsData.map(({ _id, channelData }: any) => (

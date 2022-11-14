@@ -13,6 +13,7 @@
   background-color: #030303;
   overflow: hidden;
   cursor: pointer;
+  border-radius: 10px;
 }
 .video_container_img {
   width: 100%;
@@ -27,6 +28,7 @@
   background-size: cover;
   background-position: center;
   background-color: #e3e3e3;
+  border-radius: 10px;
 }
 
 .time {
@@ -225,10 +227,10 @@
   .video_container,
   .video_container_img {
     height: 200px;
+    border-radius: 0px;
   }
 }
 @media screen and (max-width: 650px) {
- 
   .video_container,
   .video_container_img {
     height: 150px;
@@ -253,6 +255,7 @@
   .video_container,
   .video_container_img {
     height: 250px;
+    border-radius: 0px;
   }
 }
 
