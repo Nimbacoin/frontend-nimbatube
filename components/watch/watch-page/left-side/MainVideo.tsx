@@ -14,6 +14,7 @@ import VideoInfo from "./VideoInfo";
 import { MainVideoDataReducer } from "../../../../redux/video-slice/VideoSlice";
 import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
 import VideoTag from "./VideoTag";
+import CancelButton from "../../../modals/CancelButton";
 
 const MainVideo = () => {
   const ResDD = useSelector(
@@ -126,16 +127,15 @@ const MainVideo = () => {
               onClick={HandelFollow}
               className={Style.follow_button_black}
             >
-              Subscribe
+              follow
             </button>
           ) : (
             <div className={Style.followed_button_container}>
-              <button onClick={HandelFollow} className={Style.follow_button}>
-                Subscribed
-              </button>
-              <button onClick={HandelFollow} className={Style.notf_button}>
-                <IoNotificationsOutline />
-              </button>
+              <button
+                onClick={HandelFollow}
+                className={Style.follow_button}
+              ></button>
+              <CancelButton Text={"following"} />
             </div>
           )}
         </div>

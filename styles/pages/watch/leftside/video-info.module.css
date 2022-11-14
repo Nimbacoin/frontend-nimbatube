@@ -1,6 +1,6 @@
 @font-face {
   font-family: "myFirstFont";
-  src: url("../../../../public/fonts/YouTubeSansDarkSemibold.otf");
+  src: url("../../../../public/fonts/YouTubeSansSemibold.otf");
 }
 
 .video_data {
@@ -48,6 +48,7 @@
   font-size: 22px;
   color: #030303;
   font-weight: 100;
+  line-height: 12px;
   font-family: myFirstFont;
 }
 .icons_container {
@@ -231,8 +232,7 @@
     color: #030303;
   }
   .title_text {
-    font-size: 25px;
-    
+    font-size: 22px;
   }
 }
 .disLike,
