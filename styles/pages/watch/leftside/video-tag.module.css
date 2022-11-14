@@ -164,6 +164,12 @@
   }
   .video_container_2 {
   }
+  .video_tag {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: contain;
+  }
   .controls_container {
     position: absolute;
     width: 100%;
