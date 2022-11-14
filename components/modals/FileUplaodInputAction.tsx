@@ -48,9 +48,9 @@ const FileUplaodInputAction = ({
           className={Style.hidden}
           style={{ display: "none" }}
         />
-        <button onClick={HandelClick} className={Style.button_copy}>
+        <span className={Style.button_copy}>
           {ButtonTextValue ? ButtonTextValue : "Copy"}
-        </button>
+        </span>
       </label>
     </div>
   );
