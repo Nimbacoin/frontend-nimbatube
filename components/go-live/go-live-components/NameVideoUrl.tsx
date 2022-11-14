@@ -59,7 +59,6 @@ const NameVideoUrl = ({ VideoLink }: any) => {
   return (
     <div className={Style.container}>
       <TopTitle />
-
       <div className={Style.upload_inputs_container}>
         <div className={Style.video_container_data}>
           <div className={Style.video_container}>

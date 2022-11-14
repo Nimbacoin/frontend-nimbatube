@@ -30,6 +30,7 @@
   position: relative;
   background-color: #cacacae8;
   margin: 0 auto;
+  border-radius: 10px;
 }
 
 .desc_container {
@@ -89,6 +90,9 @@
   .main_container {
     flex-basis: 100%;
     width: 100%;
+  }
+  .vedio_container {
+    border-radius: 0px;
   }
 }
 

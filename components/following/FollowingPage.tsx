@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import Chanel from "./components/ChannelCard";
 import Style from "../../styles/pages/following/following.module.css";
 import basedGetUrlRequestLogedIn from "../../utils/basedGetUrlRequestLogedIn";
+import { IoHeartOutline } from "@react-icons/all-files/io5/IoHeartOutline";
+
+import TopTitle from "../modals/TopTitle";
 const FollowingPage = ({}: any) => {
   const [ChannelsData, setChannelsData] = useState([]);
   useEffect(() => {
@@ -18,6 +21,7 @@ const FollowingPage = ({}: any) => {
   }, []);
   return (
     <div className={Style.container}>
+      <TopTitle Icon=<IoHeartOutline /> Text={"following"} />
       {/* <Chanel IsChanelPage={true} /> */}
       {ChannelsData.length
         ? ChannelsData.map(({ _id, channelData }: any) => (
