@@ -45,7 +45,7 @@
   display: none;
 }
 .title_text {
-  font-size: 20px;
+  font-size: 22px;
   color: #030303;
   font-weight: 100;
   font-family: myFirstFont;
@@ -231,7 +231,8 @@
     color: #030303;
   }
   .title_text {
-    font-size: 16px;
+    font-size: 20px;
+    
   }
 }
 .disLike,
