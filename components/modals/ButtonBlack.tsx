@@ -1,10 +1,13 @@
 import React from "react";
 import Style from "../../styles/modals/button-black.module.css";
-const ButtonBlack = () => {
-  const HandelClick = () => {};
+const ButtonBlack = ({ HandelClick, Text }: any) => {
+  const HandelClicked = () => {
+    HandelClick && HandelClick()
+   
+  };
   return (
-    <button onClick={HandelClick} className={Style.follow_button_black}>
-      Subscribe
+    <button onClick={HandelClicked} className={Style.follow_button_black}>
+      {Text ? Text : "Subscribe"}
     </button>
   );
 };

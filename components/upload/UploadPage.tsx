@@ -13,31 +13,38 @@ import { useRouter } from "next/router";
 
 const UploadPage = () => {
   const Router = useRouter();
-  const dispatch = useDispatch();
-  useEffect(() => {}, []);
-  const handelClose = () => {
-    dispatch(elementOverLaytRedcuerHide());
-    Router.push("/");
-  };
-  dispatch(
-    elementOverLaytRedcuer(
-      <div className={Style.main_container}>
-        <div className={Style.div_main_container_top}>
-          <IconHeader
-            FuncOutSide={true}
-            MainFuncOutSide={handelClose}
-            Icon={<IoCloseOutline />}
-            TextValue={"Close"}
-          />
-        </div>
-        <div className={Style.second_container}>
-          <NameVideoUrl />
-          <Thumbnail />
-        </div>
+  // const dispatch = useDispatch();
+  // useEffect(() => {}, []);
+  // const handelClose = () => {
+  //   dispatch(elementOverLaytRedcuerHide());
+  //   Router.push("/");
+  // };
+  // dispatch(
+  //   elementOverLaytRedcuer(
+  //     <div className={Style.main_container}>
+  //       {/* <div className={Style.div_main_container_top}>
+  //         <IconHeader
+  //           FuncOutSide={true}
+  //           MainFuncOutSide={handelClose}
+  //           Icon={<IoCloseOutline />}
+  //           TextValue={"Close"}
+  //         />
+  //       </div> */}
+  //       <div className={Style.second_container}>
+  //         <NameVideoUrl />
+  //         <Thumbnail />
+  //       </div>
+  //     </div>
+  //   )
+  // );
+  return (
+    <div className={Style.main_container}>
+      <div className={Style.second_container}>
+        <NameVideoUrl />
+        <Thumbnail />
       </div>
-    )
+    </div>
   );
-  return <></>;
 };
 
 export default UploadPage;
