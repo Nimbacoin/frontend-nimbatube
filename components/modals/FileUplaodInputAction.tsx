@@ -42,9 +42,7 @@ const FileUplaodInputAction = ({
           ref={inputTag2}
           id="input_upload_FileUplaodInputAction"
           type="file"
-          accept={
-            "image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
-          }
+          accept={"image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"}
           onChange={readImageThumbnail}
           value={CopyValue ? CopyValue : null}
           className={Style.hidden}

@@ -10,7 +10,7 @@ import { IoArrowRedoOutline } from "@react-icons/all-files/io5/IoArrowRedoOutlin
 import { RiPlayListAddFill } from "@react-icons/all-files/ri/RiPlayListAddFill";
 import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
 import { FcCircuit } from "@react-icons/all-files/fc/FcCircuit";
-import { VscCommentDiscussion } from "@react-icons/all-files/vsc/VscCommentDiscussion";
+import { GoCommentDiscussion } from "@react-icons/all-files/go/GoCommentDiscussion";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -22,7 +22,6 @@ import {
   playListRedcuer,
 } from "../../../../redux/style-slice/general-style/GenrealStyle";
 import GoogleIcon from "../../../modals/GoogleIcon";
-import { liveVideoCommentsReducer } from "../../../../redux/video-slice/VideoSlice";
 
 const VideoInfo = ({ ActiveVideoStream }: any) => {
   const videoData = useSelector(
@@ -94,10 +93,7 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
   };
   var check = moment(videoData?.createdAt, "YYYY/MM/DD");
   var month = check.format("M");
-  const handelCloseCommets = () => {
-    // setIsPhone(!isPhone);
-    dispatch(liveVideoCommentsReducer());
-  };
+
   return (
     <div className={Style.video_data}>
       <div className={Style.title}>
@@ -117,49 +113,49 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
         </span>
         <div className={Style.icons_container}>
           <div className={Style.container_thmp}>
-            <div className={Style.icon_1} onClick={HandelLike}>
+            <p className={Style.icon_1} onClick={HandelLike}>
               {IsLiked ? (
                 <GoogleIcon Fill={true} IconName={"thumb_up_off"} />
               ) : (
                 <GoogleIcon IconName={"thumb_up_off"} />
               )}
               <span className={Style.nubmer_of_likes}>{videoLikes}</span>
-            </div>
-            <div className={Style.icon_2} onClick={HandelDisLike}>
+            </p>
+            <p className={Style.icon_2} onClick={HandelDisLike}>
               {IsDisLiked ? (
                 <GoogleIcon Fill={true} IconName={"thumb_down_off"} />
               ) : (
                 <GoogleIcon IconName={"thumb_down_off"} />
               )}
               {/* <span className={Style.disLike}> {videoDisLikes}</span> */}
-            </div>
+            </p>
           </div>
           <div className={Style.container_thmp}>
             {!ActiveVideoStream && (
-              <div onClick={handelCloseCommets} className={Style.icon_2}>
-                <span className={Style.custtom_icon}>
-                  <VscCommentDiscussion />
-                </span>
-                {/* <GoogleIcon IconName={"forum"} /> */}
-                <span className={Style.nubmer_of_likes}>Live Chat</span>
-              </div>
+              <p className={Style.icon_comments}>
+                {/* <GoCommentDiscussion /> */}
+                <GoogleIcon IconName={"forum"} />
+                <span className={Style.live_chat}>Live Chat</span>
+              </p>
             )}
 
-            <div className={Style.icon_2}>
+            <p className={Style.icon_2}>
               <FcCircuit />
+
               <span className={Style.nubmer_of_likes}>Support</span>
-            </div>
-            <div onClick={handelShareVideo} className={Style.icon_2}>
+            </p>
+            <p onClick={handelShareVideo} className={Style.icon_2}>
               <IoArrowRedoOutline />
+
               <span className={Style.nubmer_of_likes}>Share</span>
-            </div>
-            <div onClick={handelPlayList} className={Style.icon_2}>
+            </p>
+            <p onClick={handelPlayList} className={Style.icon_2}>
               <GoogleIcon IconName={"playlist_add"} />
               <span className={Style.nubmer_of_likes}>Save</span>
-            </div>
-            <div className={Style.icon_2}>
+            </p>
+            <p className={Style.icon_2}>
               <IoEllipsisHorizontalSharp />
-            </div>
+            </p>
           </div>
         </div>
       </div>

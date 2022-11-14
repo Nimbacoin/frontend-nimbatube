@@ -2,11 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Style from "../../styles/layout/header/header-compnents/header-left.module.css";
-import { FiMenu } from "@react-icons/all-files/fi/FiMenu";
+import { VscMenu } from "@react-icons/all-files/vsc/VscMenu";
 import { useDispatch } from "react-redux";
 import { ToggleMenu } from "../../redux/style-slice/menu/SideMenu";
 import { FaPlayCircle } from "@react-icons/all-files/fa/FaPlayCircle";
 import GoogleIcon from "../../components/modals/GoogleIcon";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PlayArrowOutlinedIcon from "@mui/icons-material/PlayArrowOutlined";
 const HeaderLeft = () => {
   const dispatch = useDispatch();
   const HandelToggleMenu = () => {
@@ -15,12 +17,12 @@ const HeaderLeft = () => {
   return (
     <div className={Style.container}>
       <div className={Style.container_menu} onClick={HandelToggleMenu}>
-        <GoogleIcon IconName={"menu"} />
+        <VscMenu />
       </div>
       <Link href="/">
         <p className={Style.logo}>
           <span className={Style.icon}>
-            <FaPlayCircle />
+            <PlayArrowIcon />
           </span>
           NimbaTube
         </p>

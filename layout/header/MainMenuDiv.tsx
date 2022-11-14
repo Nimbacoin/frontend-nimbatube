@@ -20,7 +20,6 @@ const MainMenuDiv = ({ arrayMap }: any) => {
           <Link href={link}>
             <div className={MenuBoolean ? Style.link_flex : Style.link}>
               <span className={Style.icon}>{icon}</span>
-
               <span className={MenuBoolean ? Style.text_all : Style.text}>
                 {name}
               </span>
