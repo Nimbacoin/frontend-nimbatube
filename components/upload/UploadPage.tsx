@@ -38,11 +38,9 @@ const UploadPage = () => {
   //   )
   // );
   return (
-    <div className={Style.main_container}>
-      <div className={Style.second_container}>
-        <NameVideoUrl />
-        <Thumbnail />
-      </div>
+    <div className={Style.container}>
+      <NameVideoUrl />
+      <Thumbnail />
     </div>
   );
 };
