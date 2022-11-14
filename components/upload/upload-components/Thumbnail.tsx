@@ -86,7 +86,7 @@ const Thumbnail = () => {
             ButtonTextValue={"Browse"}
             handelSubmiteFile={handelSubmiteThumbnail}
           />
-          <label htmlFor="input_upload_thumbnail" className={Style.input_label}>
+          {/* <label htmlFor="input_upload_thumbnail" className={Style.input_label}>
             <span className={Style.upload_file_text}>
               Choose an enticing thumbnail{" "}
             </span>
@@ -99,7 +99,7 @@ const Thumbnail = () => {
               className={Style.input_upload}
             />
             <span className={Style.upload_file_button}>Browse</span>
-          </label>
+          </label> */}
           <p className={Style.text}>
             Upload your thumbnail to nimbatube.com Recommended ratio is 16:9,
             5MB max.
