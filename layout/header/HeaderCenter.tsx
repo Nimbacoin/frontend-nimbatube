@@ -15,6 +15,7 @@ import NotfyDropDown from "./header-components/NotfyDropDown";
 import { useSelector } from "react-redux";
 import GoogleIcon from "../../components/modals/GoogleIcon";
 import BackupSharpIcon from "@mui/icons-material/BackupSharp";
+import SearchFunc from "./SearchFunc";
 
 const HeaderCenter = ({ UserIsSignedIn }: any) => {
   const { asPath } = useRouter();
@@ -107,6 +108,9 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
           ref={InputSearch}
           className={Style.search_input}
           placeholder="search"
+          onChange={async (e: any) => {
+            await SearchFunc(e.target.value);
+          }}
         />
         <button className={Style.search_button}>
           <IoSearchOutline />

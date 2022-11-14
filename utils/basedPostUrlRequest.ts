@@ -11,7 +11,6 @@ const basedPostUrlRequest = async (
   dataBody: EnumServiceGetOrderBy
 ) => {
   console.log(document.cookie);
-  const UserCookie = Cookies.get("user");
   const response = await fetch(process.env.NEXT_PUBLIC_BACK_END_URL + url, {
     method: "POST",
     headers: {
