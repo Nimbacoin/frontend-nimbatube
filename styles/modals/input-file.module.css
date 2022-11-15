@@ -21,8 +21,9 @@
   font-size: 14px;
   color: #030303;
   outline: none;
-  padding: 0px 0 0 5px;
+  padding: 0 0 0 5px;
   cursor: pointer;
+  
 }
 .link_container > input {
   background-color: transparent;
