@@ -15,6 +15,7 @@ import { MainVideoDataReducer } from "../../../../redux/video-slice/VideoSlice";
 import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
 import VideoTag from "./VideoTag";
 import CancelButton from "../../../modals/CancelButton";
+import ButtonBlack from "../../../modals/ButtonBlack";
 
 const MainVideo = () => {
   const ResDD = useSelector(
@@ -62,10 +63,6 @@ const MainVideo = () => {
     if (videoTag.current) {
       if (video) {
         setVideoId(video);
-      }
-      if (typeof window !== "undefined") {
-        videoTag.current.src =
-          process.env.NEXT_PUBLIC_BACK_END_URL + "/api/get/read/video/" + video;
       }
     }
   }, [asPath]);
@@ -123,19 +120,10 @@ const MainVideo = () => {
         </div>
         <div className={Style.right_container}>
           {!IsFollowed ? (
-            <button
-              onClick={HandelFollow}
-              className={Style.follow_button_black}
-            >
-              follow
-            </button>
+            <ButtonBlack Text={"follow"} HandelClick={HandelFollow} />
           ) : (
             <div className={Style.followed_button_container}>
-              <button
-                onClick={HandelFollow}
-                className={Style.follow_button}
-              ></button>
-              <CancelButton Text={"following"} />
+              <CancelButton HandelClick={HandelFollow} Text={"following"} />
             </div>
           )}
         </div>

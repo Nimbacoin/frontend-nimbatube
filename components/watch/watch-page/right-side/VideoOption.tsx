@@ -58,14 +58,7 @@ const VideoOption = ({ VideoData, Key }: any) => {
           </div>
         ) : (
           <video width="100%" height="30px" autoPlay muted loop>
-            <source
-              // src={
-              //   process.env.NEXT_PUBLIC_BACK_END_URL +
-              //   "/api/get/read/video/" +
-              //   VideoData?.videoData?._id
-              // }
-              type="video/mp4"
-            />
+            <source src={VideoData?.videoData.location} type="video/mp4" />
           </video>
         )}
       </div>

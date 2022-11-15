@@ -56,16 +56,14 @@ const VideoTag = () => {
 
   useEffect(() => {
     let Params = new URL(window.location.href).searchParams;
-    const video: string | null = Params.get("video");
-    if (videoTag.current) {
-      if (video) {
-        setVideoId(video);
-      }
-      if (typeof window !== "undefined" && videoData && videoData?.location) {
-        videoTag.current.src = videoData.location;
-      }
+    if (
+      videoTag.current &&
+      videoTag.current.src !== ResDD?.responseData.location
+    ) {
+      videoTag.current.src = ResDD?.responseData.location;
+      console.log(ResDD?.responseData.location);
     }
-  }, [asPath]);
+  }, [asPath, ResDD]);
 
   useEffect(() => {
     const CurrentVideo = videoTag.current;
