@@ -58,10 +58,10 @@ const VideoTag = () => {
     let Params = new URL(window.location.href).searchParams;
     if (
       videoTag.current &&
-      videoTag.current.src !== ResDD?.responseData.location
+      videoTag.current.src !== ResDD?.responseData?.location
     ) {
-      videoTag.current.src = ResDD?.responseData.location;
-      console.log(ResDD?.responseData.location);
+      videoTag.current.src = ResDD?.responseData?.location;
+      
     }
   }, [asPath, ResDD]);
 
