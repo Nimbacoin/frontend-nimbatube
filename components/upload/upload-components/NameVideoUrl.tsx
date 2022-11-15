@@ -11,6 +11,7 @@ import InputText from "../../modals/InputText";
 import TextArea from "../../modals/TextArea";
 import ButtonAndInputAction from "../../modals/ButtonAndInputCopy";
 import FileUplaodInputAction from "../../modals/FileUplaodInputAction";
+import UplaodingAnimation from "./UplaodingAnimation";
 const NameVideoUrl = () => {
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
@@ -21,24 +22,13 @@ const NameVideoUrl = () => {
   const [VideoLink, setVideoLink] = useState("");
   const [videoLocation, setVideoLocation] = useState("");
   const [Uploaded, setUploaded] = useState(false);
+  const [Uploading, setUploading] = useState(false);
+  const [UploadingWait, setUploadingWait] = useState(false);
+  const [UploadFinsh, setUploadFinsh] = useState(false);
   const [videoPath, setVideoPath] = useState("");
 
   const dispatch = useDispatch();
   const Router = useRouter();
-  // const readVideo = async (event: any) => {
-  //   if (event.target.files && event.target.files[0]) {
-  //     Path.current = event.target.files[0];
-  //     var reader = new FileReader();
-  //     reader.readAsDataURL(event.target.files[0]);
-  //     HandelSubmiteNewGeneral();
-  //     reader.onload = function (e: any) {
-  //       // if (videoTag.current) {
-  //       //   videoTag.current.src = e.target.result;
-  //       //   videoTag.current.play();
-  //       // }
-  //     };
-  //   }
-  // };
   useEffect(() => {
     if (videoTag.current && videoLocation?.length) {
       videoTag.current.src = videoLocation;
@@ -52,8 +42,9 @@ const NameVideoUrl = () => {
     if (dataFile && channelId) {
       formData.append("channelId", channelId);
       formData.append("video", dataFile);
+      setUploading(true);
+      setUploadingWait(true);
     }
-    // console.log(Channels[0]._id);
     await AxiosPostLogedInFormData(
       "/api/post/video/create-new-video/",
       formData
@@ -71,7 +62,7 @@ const NameVideoUrl = () => {
           })
         );
       }
-
+      // setUploading(false);
       setFileName(file.filename);
       setVideoPath(file._id);
       setVideoLink(
@@ -79,7 +70,11 @@ const NameVideoUrl = () => {
           "/watch/watch?watching=true&video=" +
           file._id
       );
-      setUploaded(true);
+      setUploadFinsh(true);
+      setUploadingWait(false);
+      setTimeout(() => {
+        setUploaded(true);
+      }, 4000);
     });
   };
 
@@ -108,34 +103,45 @@ const NameVideoUrl = () => {
   return (
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
-        {Uploaded ? (
-          <div className={Style.video_container_data}>
-            <div className={Style.video_container}>
-              <video
-                controlsList="nodownload"
-                className={Style.video}
-                ref={videoTag}
-                autoPlay
-                muted
-                loop
-              >
-                your broswer does not Support videos
-                <source
-                  ref={videoSrc}
-                  className={Style.video}
-                  type="video/mp4"
-                />
-              </video>
-            </div>
-            <div className={Style.video_data}>
-              <ButtonAndInputAction
-                Text={"Video link"}
-                HandelClick={handelCopy}
-                CopyValue={VideoLink}
-                ButtonTextValue={"copy"}
+        {Uploading ? (
+          <>
+            {!Uploaded ? (
+              <UplaodingAnimation
+                Uploaded={Uploaded}
+                Uploading={Uploading}
+                UploadingWait={UploadingWait}
+                UploadFinsh={UploadFinsh}
               />
-            </div>
-          </div>
+            ) : (
+              <div className={Style.video_container_data}>
+                <div className={Style.video_container}>
+                  <video
+                    controlsList="nodownload"
+                    className={Style.video}
+                    ref={videoTag}
+                    autoPlay
+                    muted
+                    loop
+                  >
+                    your broswer does not Support videos
+                    <source
+                      ref={videoSrc}
+                      className={Style.video}
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+                <div className={Style.video_data}>
+                  <ButtonAndInputAction
+                    Text={"Video link"}
+                    HandelClick={handelCopy}
+                    CopyValue={VideoLink}
+                    ButtonTextValue={"copy"}
+                  />
+                </div>
+              </div>
+            )}
+          </>
         ) : (
           <div className={Style.upload_input}>
             <div className={Style.div_container_img}></div>
@@ -152,16 +158,18 @@ const NameVideoUrl = () => {
             </p>
           </div>
         )}
-        <InputText
-          HandelChange={handelChangeTitle}
-          Text={"Title"}
-          Placeholder="enter your video title"
-        />
-        <TextArea
-          HandelChange={handelChangeDesc}
-          Text={"Description"}
-          Placeholder="Description"
-        />
+        <div className={Style.div_main_inputs_all}>
+          <InputText
+            HandelChange={handelChangeTitle}
+            Text={"Title"}
+            Placeholder="enter your video title"
+          />
+          <TextArea
+            HandelChange={handelChangeDesc}
+            Text={"Description"}
+            Placeholder="Description"
+          />
+        </div>
       </div>
     </div>
   );
