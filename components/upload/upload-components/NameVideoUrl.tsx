@@ -12,6 +12,7 @@ import TextArea from "../../modals/TextArea";
 import ButtonAndInputAction from "../../modals/ButtonAndInputCopy";
 import FileUplaodInputAction from "../../modals/FileUplaodInputAction";
 import UplaodingAnimation from "./UplaodingAnimation";
+import SmallTextBlack from "../../modals/SmallTextBlack";
 const NameVideoUrl = () => {
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
@@ -19,6 +20,8 @@ const NameVideoUrl = () => {
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
 
   const [FileName, setFileName] = useState("");
+  const [Title, setTitle] = useState("");
+
   const [VideoLink, setVideoLink] = useState("");
   const [videoLocation, setVideoLocation] = useState("");
   const [Uploaded, setUploaded] = useState(false);
@@ -91,6 +94,7 @@ const NameVideoUrl = () => {
   };
 
   const handelChangeTitle = (e: any) => {
+    setTitle(e.target.value);
     console.log(e.target.id);
     dispatch(
       ActionVideoDataChanging({
@@ -131,6 +135,7 @@ const NameVideoUrl = () => {
                     />
                   </video>
                 </div>
+                <SmallTextBlack Text={Title.slice(0,40)} />
                 <div className={Style.video_data}>
                   <ButtonAndInputAction
                     Text={"Video link"}
