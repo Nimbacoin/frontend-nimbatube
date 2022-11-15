@@ -135,7 +135,7 @@ const NameVideoUrl = () => {
                     />
                   </video>
                 </div>
-                <SmallTextBlack Text={Title.slice(0,40)} />
+                <SmallTextBlack Text={Title.slice(0,100)} />
                 <div className={Style.video_data}>
                   <ButtonAndInputAction
                     Text={"Video link"}
