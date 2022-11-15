@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  cursor: pointer;
 }
 
 .link_container {
@@ -21,6 +22,7 @@
   color: #030303;
   outline: none;
   padding: 0px 0 0 5px;
+  cursor: pointer;
 }
 .link_container > input {
   background-color: transparent;

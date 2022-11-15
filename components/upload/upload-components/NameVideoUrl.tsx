@@ -13,6 +13,7 @@ import ButtonAndInputAction from "../../modals/ButtonAndInputCopy";
 import FileUplaodInputAction from "../../modals/FileUplaodInputAction";
 import UplaodingAnimation from "./UplaodingAnimation";
 import SmallTextBlack from "../../modals/SmallTextBlack";
+import SkinyGrayText from "../../modals/SkinyGrayText";
 const NameVideoUrl = () => {
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
@@ -103,7 +104,8 @@ const NameVideoUrl = () => {
       })
     );
   };
-
+  const text =
+    "By submitting your videos to Nimbatube, you acknowledge that you agree to Nimbatube's Terms of Service and Community Guidelines. Please make sure that you do not violate others' copyright or privacy rights. Learn more";
   return (
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
@@ -135,7 +137,7 @@ const NameVideoUrl = () => {
                     />
                   </video>
                 </div>
-                <SmallTextBlack Text={Title.slice(0,100)} />
+                <SmallTextBlack Text={Title.slice(0, 100)} />
                 <div className={Style.video_data}>
                   <ButtonAndInputAction
                     Text={"Video link"}
@@ -149,18 +151,17 @@ const NameVideoUrl = () => {
           </>
         ) : (
           <div className={Style.upload_input}>
-            <div className={Style.div_container_img}></div>
-            <div className={Style.upload_input}></div>
             <FileUplaodInputAction
               Accept="video/mp4"
               ButtonTextValue={"Browse"}
               handelSubmiteFile={HandelSubmiteNewGeneral}
             />
-            <p className={Style.text}>
-              For video content, use MP4s in H264/AAC format and a friendly
-              bitrate (under 8 Mbps) for more reliable streaming. NimbaTube
-              uploads are restricted to 16 GB. Upload Guide{" "}
-            </p>
+            <SmallTextBlack
+              Text={
+                "For video content, use MP4s in H264/AAC format and a friendly bitrate (under 8 Mbps) for more reliable streaming. NimbaTube uploads are restricted to 16 GB. Upload Guide"
+              }
+            />
+            <SkinyGrayText Text={text} />
           </div>
         )}
         <div className={Style.div_main_inputs_all}>
