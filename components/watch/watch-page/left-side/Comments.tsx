@@ -57,6 +57,10 @@ const Comments = ({ VideoData }: any) => {
               <IoChevronUp />
               <IoChevronDown />
             </span>
+            <input
+              onClick={() => dispatch(ToggleCommentsOpen())}
+              className={Style.div_input_comment}
+            />
           </label>
         </div>
       )}
