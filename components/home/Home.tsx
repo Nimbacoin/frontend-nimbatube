@@ -4,6 +4,7 @@ import Style from "../../styles/pages/home/home.module.css";
 import allVideosFetch from "../../utils/allVideosFetch";
 import LoaodingAll from "../modals/LoaodingAll";
 import AllVideosBeforLoad from "../modals/pages-boforload/AllVideosBeforLoad";
+import LoadingRoom from "../modals/pages-boforload/LoadingRoom";
 import TopTitle from "../modals/TopTitle";
 import Vedio from "../video/Video";
 import HomeTags from "./HomeTags";
@@ -71,6 +72,8 @@ const Home = () => {
   return (
     <div ref={divRef} className={Style.container}>
       <HomeTags />
+      {/* <LoadingRoom /> */}
+      {/* <AllVideosBeforLoad /> */}
       <div className={Style.vedio_container}>
         {firstVideos.length ? (
           firstVideos.map((vid) => <Vedio VideoData={vid} />)
