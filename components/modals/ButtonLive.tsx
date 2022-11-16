@@ -6,12 +6,22 @@ import SmallTextBlack from "./SmallTextBlack";
 import Link from "next/link";
 import GoLiveOption from "./GoLiveOption";
 import PhoneBarOpen from "./PhoneBarOpen";
+import { useDispatch, useSelector } from "react-redux";
+import { phoneBarOpenRedcuerHide } from "../../redux/style-slice/general-style/GenrealStyle";
 const ButtonLive = () => {
   const HandelClick = () => {
     setShowDiv(!showDiv);
+    HandelDescreptionToggle();
   };
 
   const [showDiv, setShowDiv] = useState(false);
+  const phoneBarOpen = useSelector(
+    (state: any) => state.GenrealStyle.phoneBarOpen
+  );
+  const dispatch = useDispatch();
+  const HandelDescreptionToggle = () => {
+    dispatch(phoneBarOpenRedcuerHide());
+  };
   const HandelMouseDown = () => {};
   const handelTouchMove = (e: any) => {
     setShowDiv(false);
@@ -54,11 +64,8 @@ const ButtonLive = () => {
   const animatedRefFixed = React.useRef<HTMLDivElement | null>(null);
   return (
     <>
-      <PhoneBarOpen></PhoneBarOpen>
-
-      <div ref={mainContainerRef} className={Style.wrap}>
-        {/* <GoLiveOption /> */}
-        {showDiv && (
+      {phoneBarOpen && (
+        <PhoneBarOpen>
           <div className={Style.div_conntnt}>
             <div className={Style.container_icons}>
               <Link href="/upload">
@@ -77,7 +84,13 @@ const ButtonLive = () => {
 
             <div className={Style.triangle_right}></div>
           </div>
-        )}
+        </PhoneBarOpen>
+      )}
+      <div ref={mainContainerRef} className={Style.wrap}>
+        {/* <GoLiveOption /> */}
+        {/* {showDiv && (
+          
+        )} */}
         <div ref={animatedRefFixed} className={Style.button_container}>
           <div
             onMouseDown={HandelMouseDown}

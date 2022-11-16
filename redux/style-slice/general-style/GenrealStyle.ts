@@ -89,8 +89,7 @@ export const GeneralStyle = createSlice({
       state.elementOverContent = [];
     },
     phoneBarOpenRedcuerHide: (state: any) => {
-      state.elementOverLayt = false;
-      state.elementOverContent = [];
+      state.phoneBarOpen = !state.phoneBarOpen;
     },
   },
 });
@@ -106,6 +105,7 @@ export const {
   FinishCroppingRedcuer,
   elementOverLaytRedcuer,
   elementOverLaytRedcuerHide,
+  phoneBarOpenRedcuerHide,
 } = GeneralStyle.actions;
 const AllReducers = GeneralStyle.reducer;
 export default AllReducers;

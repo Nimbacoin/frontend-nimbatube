@@ -6,19 +6,25 @@ import SmallTextBlack from "./SmallTextBlack";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 
 import Link from "next/link";
+import { phoneBarOpenRedcuerHide } from "../../redux/style-slice/general-style/GenrealStyle";
+import { useDispatch } from "react-redux";
 
 const PhoneBarOpen = ({ children }: any) => {
+  const dispatch = useDispatch();
+  const HandelDescreptionToggle = () => {
+    dispatch(phoneBarOpenRedcuerHide());
+  };
   return (
     <div className={Style.container_phone}>
       <div
-        // onTouchMove={HandelDescreptionToggle}
+        onTouchMove={HandelDescreptionToggle}
         className={Style.container_descreption_phone}
       >
         <div className={Style.close_rect}></div>
         <div className={Style.phone_desc_container}>
           <span className={Style.descreption}>Create</span>
           <button
-            // onClick={HandelDescreptionToggle}
+            onClick={HandelDescreptionToggle}
             className={Style.close_button}
           >
             <IoCloseOutline />
