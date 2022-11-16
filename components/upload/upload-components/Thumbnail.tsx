@@ -81,10 +81,11 @@ const Thumbnail = () => {
         </div>
         <div className={Style.input_upload_thumbnail}>
           <FileUplaodInputAction
-            Accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
+            Accept="image"
             // Accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
             ButtonTextValue={"Browse"}
             handelSubmiteFile={handelSubmiteThumbnail}
+            CopyValue={"Choose an enticing thumbnail"}
           />
           {/* <label htmlFor="input_upload_thumbnail" className={Style.input_label}>
             <span className={Style.upload_file_text}>

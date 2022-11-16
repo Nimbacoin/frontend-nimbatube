@@ -30,6 +30,7 @@ const FileUplaodInputAction = ({
   });
   return (
     <div className={Style.container}>
+      {Accept}
       <TextTilteInputMudum Icon={Icon && Icon} Text={Text && Text} />
       <label
         htmlFor="input_upload_FileUplaodInputAction"
@@ -38,19 +39,32 @@ const FileUplaodInputAction = ({
         <div className={Style.div_container_text}>
           <SmallTextBlack Text={CopyValue ? CopyValue : "uplaod"} />
         </div>
-        <input
-          ref={inputTag2}
-          id="input_upload_FileUplaodInputAction"
-          type="file"
-          // accept={"image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"}
-          onChange={readImageThumbnail}
-          value={CopyValue ? CopyValue : null}
-          className={Style.hidden}
-          style={{ display: "none" }}
-        />
-        <span className={Style.button_copy}>
-          {ButtonTextValue ? ButtonTextValue : "Copy"}
-        </span>
+
+        {Accept === "image" ? (
+          <input
+            ref={inputTag2}
+            id="input_upload_FileUplaodInputAction"
+            type="file"
+            accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
+            onChange={readImageThumbnail}
+            className={Style.hidden}
+            style={{ display: "none" }}
+          />
+        ) : (
+          <input
+            ref={inputTag2}
+            id="input_upload_FileUplaodInputAction"
+            type="file"
+            accept="video/mp4"
+            onChange={readImageThumbnail}
+            className={Style.hidden}
+            style={{ display: "none" }}
+          />
+        )}
+
+        <div className={Style.button_copy}>
+          <SmallTextBlack Text={ButtonTextValue ? ButtonTextValue : "Copy"} />
+        </div>
       </label>
     </div>
   );

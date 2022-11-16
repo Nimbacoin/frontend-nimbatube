@@ -152,8 +152,9 @@ const NameVideoUrl = () => {
         ) : (
           <div className={Style.upload_input}>
             <FileUplaodInputAction
-              Accept="video/mp4"
+              Accept="video"
               ButtonTextValue={"Browse"}
+              CopyValue={"Select video file to upload"}
               handelSubmiteFile={HandelSubmiteNewGeneral}
             />
             <SmallTextBlack
