@@ -16,6 +16,7 @@
   width: 100%;
   background-color: #e7e7e7;
   border-radius: 20px;
+  transition: 100 ease-in-out;
 }
 .desc_button {
   color: #606060;
@@ -153,4 +154,8 @@
   .desc_button {
     display: none;
   }
+}
+
+.container:hover {
+  background-color: #e5e5e5;
 }
