@@ -11,13 +11,13 @@ const RightSideTaggs = () => {
     { name: "Travel " },
     { name: "Crypto" },
     { name: "Bitcoin" },
-    // { name: "Blockchain" },
-    // { name: "Music" },
-    // { name: "Ecommrce" },
-    // { name: "covid-19" },
-    // { name: "USA" },
+    { name: "Blockchain" },
+    { name: "Music" },
+    { name: "Ecommrce" },
+    { name: "covid-19" },
+    { name: "USA" },
 
-    // { name: "Javascript" },
+    { name: "Javascript" },
 
     { name: "Travel" },
   ];
@@ -71,7 +71,8 @@ const RightSideTaggs = () => {
 
       <div ref={divContainer} className={Style.main_container}>
         {Tags.map(({ name }, index) => (
-          <span key={index}
+          <span
+            key={index}
             onClick={() => {
               setActivVideos(index);
             }}

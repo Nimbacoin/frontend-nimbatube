@@ -34,7 +34,6 @@ const RightSide = () => {
   }, [asPath]);
   return (
     <div className={Style.container}>
-      <VideosRight />
       {streamingVideo && <LiveCommentsVideos />}
       <RightSideTaggs />
 

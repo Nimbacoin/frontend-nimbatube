@@ -14,6 +14,9 @@ const Descreption = ({ VideoData }: any) => {
   const DescreptionBoolean = useSelector(
     (state: any) => state.MainVideo.DescreptionBoolean
   );
+  const [mainTexDesc, setMainTexDesc] = useState(
+    VideoData?.descreption.slice(0, 350)
+  );
   const dispatch = useDispatch();
   const HandelDescreptionToggle = () => {
     dispatch(ToggleDescreption());
@@ -24,7 +27,9 @@ const Descreption = ({ VideoData }: any) => {
   var check = moment(VideoData?.createdAt, "YYYY/MM/DD");
   var month = check.format("M");
   var year = check.format("YYYY");
-
+  const handelShowAllDesc = () => {
+    setMainTexDesc(VideoData?.descreption);
+  };
   return (
     <div
       className={DescreptionBoolean ? Style.container_phone : Style.container}
@@ -67,10 +72,12 @@ const Descreption = ({ VideoData }: any) => {
         </div>
       </div>
       <div className={Style.descreption_text_container}>
-        <p className={Style.descreption_text}>{VideoData?.descreption}</p>
+        <p className={Style.descreption_text}>{mainTexDesc}</p>
       </div>
-      {VideoData?.descreption?.length >= 100 && (
-        <button className={Style.desc_button}>Show More</button>
+      {VideoData?.descreption?.length >= 351 && (
+        <button onClick={handelShowAllDesc} className={Style.desc_button}>
+          Show More
+        </button>
       )}
     </div>
   );

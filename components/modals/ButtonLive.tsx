@@ -4,6 +4,7 @@ import VideoCallSharpIcon from "@mui/icons-material/VideoCallSharp";
 import { FcVideoCall } from "@react-icons/all-files/fc/FcVideoCall";
 import SmallTextBlack from "./SmallTextBlack";
 import Link from "next/link";
+// import GoLiveOption from "./GoLiveOption";
 const ButtonLive = () => {
   const HandelClick = () => {
     setShowDiv(!showDiv);
@@ -66,6 +67,7 @@ const ButtonLive = () => {
   const animatedRefFixed = React.useRef<HTMLDivElement | null>(null);
   return (
     <div ref={mainContainerRef} className={Style.wrap}>
+      {/* <GoLiveOption /> */}
       {showDiv && (
         <div className={Style.div_conntnt}>
           <div className={Style.container_icons}>
