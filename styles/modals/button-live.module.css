@@ -26,13 +26,17 @@
 }
 .container_icon,
 .container_icon_2 {
-  width: 50%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  height: 100%;
+  justify-content: flex-start;
+  height: auto;
   cursor: pointer;
+  padding: 0 20px;
+  column-gap: 20px;
+  /* background-color: red; */
+  min-height: 50px;
 }
 
 .icon {
