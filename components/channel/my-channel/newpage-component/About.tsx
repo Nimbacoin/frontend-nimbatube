@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Style from "../../../../styles/pages/channel/my-channel/my-channel-component/about.module.css";
 import SmallTextBlack from "../../../modals/SmallTextBlack";
-import TextTilteInputMudum from "../../../modals/TextTilteInputMudum";
+import TextTilteInputMudum from "../../../modals/text/TextTilteInputMudum";
 
 const About = ({ ChannelData }: any) => {
   console.log("ChannelData", ChannelData);

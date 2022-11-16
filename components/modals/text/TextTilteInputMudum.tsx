@@ -1,5 +1,5 @@
 import React from "react";
-import Style from "../../styles/modals/input-text.module.css";
+import Style from "../../../styles/modals/input-text.module.css";
 
 const TextTilteInputMudum = ({ Text, Icon }: any) => {
   return (

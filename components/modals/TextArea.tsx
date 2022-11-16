@@ -1,6 +1,6 @@
 import React from "react";
 import Style from "../../styles/modals/input-text.module.css";
-import TextTilteInputMudum from "./TextTilteInputMudum";
+import TextTilteInputMudum from "./text/TextTilteInputMudum";
 
 const TextArea = ({ Placeholder, Text, HandelChange, Value }: any) => {
   return (

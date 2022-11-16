@@ -2,7 +2,7 @@ import React from "react";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 import Style from "../../styles/modals/top-title.module.css";
 import NormalText from "./NormalText";
-import TextTilteInputMudum from "./TextTilteInputMudum";
+import TextTilteInputMudum from "./text/TextTilteInputMudum";
 
 const TopTitle = ({ Icon, Text }: any) => {
   return (

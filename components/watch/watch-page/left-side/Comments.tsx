@@ -19,7 +19,7 @@ import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLog
 import ReplyInput from "./ReplyInput";
 import EachComment from "./EachComment";
 import LoaodingAll from "../../../modals/LoaodingAll";
-import TextTilteInputMudum from "../../../modals/TextTilteInputMudum";
+import TextTilteInputMudum from "../../../modals/text/TextTilteInputMudum";
 
 //--------------------------------------ReplyInput----------------------------------------------//
 

@@ -111,7 +111,14 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .vedio_container {
+    height: 200px;
+  }
 }
 
 @keyframes placeHolderShimmer {

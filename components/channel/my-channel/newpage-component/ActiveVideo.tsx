@@ -5,7 +5,7 @@ import TextArea from "../../../modals/TextArea";
 import BlueButton from "../../../modals/BlueButton";
 import OtherChannelData from "./OtherChannelData";
 import SmallTextBlack from "../../../modals/SmallTextBlack";
-import TextTilteInputMudum from "../../../modals/TextTilteInputMudum";
+import TextTilteInputMudum from "../../../modals/text/TextTilteInputMudum";
 const ActiveVideo = ({ Name, Id, VideoData }: any) => {
   return (
     <div className={Style.container}>

@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
 import AxiosPostLogedInFormData from "../../../../utils/AxiosPostLogedInFormData";
 import NormalText from "../../../modals/NormalText";
 import BoldText from "../../../modals/BoldText";
-import TextTilteInputMudum from "../../../modals/TextTilteInputMudum";
+import TextTilteInputMudum from "../../../modals/text/TextTilteInputMudum";
 import CropperCom from "../../../modals/Cropper";
 import {
   croppingRedcuer,

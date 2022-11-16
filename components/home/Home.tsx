@@ -71,6 +71,7 @@ const Home = () => {
   const divRef = React.useRef<HTMLDivElement>(null);
   return (
     <div ref={divRef} className={Style.container}>
+      <AllVideosBeforLoad />
       <HomeTags />
       {/* <LoadingRoom /> */}
       {/* <AllVideosBeforLoad /> */}

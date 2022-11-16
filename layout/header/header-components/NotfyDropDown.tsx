@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import TextTilteInputMudum from "../../../components/modals/TextTilteInputMudum";
+import TextTilteInputMudum from "../../../components/modals/text/TextTilteInputMudum";
 import SmallTextBlack from "../../../components/modals/SmallTextBlack";
 
 const NotfyDropDown = ({ Notification }: any) => {

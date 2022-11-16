@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { poPUppRedcuer } from "../../redux/style-slice/general-style/GenrealStyle";
 import Style from "../../styles/modals/input-file.module.css";
 import SmallTextBlack from "./SmallTextBlack";
-import TextTilteInputMudum from "./TextTilteInputMudum";
+import TextTilteInputMudum from "./text/TextTilteInputMudum";
 
 const FileUplaodInputAction = ({
   CopyValue,

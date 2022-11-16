@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { poPUppRedcuer } from "../../redux/style-slice/general-style/GenrealStyle";
 import Style from "../../styles/modals/input-file.module.css";
-import TextTilteInputMudum from "./TextTilteInputMudum";
+import TextTilteInputMudum from "./text/TextTilteInputMudum";
 
 const ButtonAndInputAction = ({
   CopyValue,
