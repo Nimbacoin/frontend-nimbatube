@@ -29,7 +29,10 @@ const Descreption = ({ VideoData }: any) => {
     <div
       className={DescreptionBoolean ? Style.container_phone : Style.container}
     >
-      <div className={Style.container_descreption_phone}>
+      <div
+        onTouchMove={HandelDescreptionToggle}
+        className={Style.container_descreption_phone}
+      >
         <div className={Style.close_rect}></div>
         <div className={Style.phone_desc_container}>
           <span className={Style.descreption}>Descreption</span>

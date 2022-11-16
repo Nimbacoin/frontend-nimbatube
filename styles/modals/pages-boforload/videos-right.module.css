@@ -25,6 +25,21 @@
   position: relative;
   background-color: #e3e3e3;
   margin: 0 auto;
+  border-radius: 10px;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+
+  background: linear-gradient(
+    to right,
+    #cacaca98 16%,
+    #e3e3e3 40%,
+    #cacaca98 50%
+  );
+  background-size: 200px 62px;
+  position: relative;
 }
 
 .desc_container {
@@ -118,5 +133,14 @@
 @media screen and (max-width: 200px) {
   .vedio_container {
     height: 80px;
+  }
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -800px 0;
+  }
+  100% {
+    background-position: 800px 0;
   }
 }
