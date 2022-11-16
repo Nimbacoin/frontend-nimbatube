@@ -19,6 +19,7 @@ import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLog
 import ReplyInput from "./ReplyInput";
 import EachComment from "./EachComment";
 import LoaodingAll from "../../../modals/LoaodingAll";
+import TextTilteInputMudum from "../../../modals/TextTilteInputMudum";
 
 //--------------------------------------ReplyInput----------------------------------------------//
 
@@ -46,18 +47,18 @@ const Comments = ({ VideoData }: any) => {
             className={Style.lable_open_all_comments}
             htmlFor="input_open_all_comments"
           >
-            Comments · {videoData?.comments?.length}
+            <TextTilteInputMudum
+              Text={"Comments:" + videoData?.comments?.length}
+            />
+
             <input
               onClick={() => dispatch(ToggleCommentsOpen())}
               className={Style.input_open_all_comments}
               id="input_open_all_comments"
               type="text"
             />
-            <span className={Style.arrows}>
-              <IoChevronUp />
-              <IoChevronDown />
-            </span>
             <input
+              placeholder="write your comment here"
               onClick={() => dispatch(ToggleCommentsOpen())}
               className={Style.div_input_comment}
             />
