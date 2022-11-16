@@ -66,23 +66,19 @@ const ButtonLive = () => {
     <>
       {phoneBarOpen && (
         <PhoneBarOpen>
-          <div className={Style.div_conntnt}>
-            <div className={Style.container_icons}>
-              <Link href="/upload">
-                <div className={Style.container_icon}>
-                  <div className={Style.icon}></div>
-                  <SmallTextBlack Text={"upload"} />
-                </div>
-              </Link>
-              <Link href="/go-live/go-live">
-                <div className={Style.container_icon_2}>
-                  <div className={Style.icon}></div>
-                  <SmallTextBlack Text={"go live"} />
-                </div>
-              </Link>
-            </div>
-
-            <div className={Style.triangle_right}></div>
+          <div className={Style.container_icons}>
+            <Link href="/upload">
+              <div className={Style.container_icon}>
+                <div className={Style.icon}></div>
+                <SmallTextBlack Text={"upload"} />
+              </div>
+            </Link>
+            <Link href="/go-live/go-live">
+              <div className={Style.container_icon_2}>
+                <div className={Style.icon}></div>
+                <SmallTextBlack Text={"go live"} />
+              </div>
+            </Link>
           </div>
         </PhoneBarOpen>
       )}
