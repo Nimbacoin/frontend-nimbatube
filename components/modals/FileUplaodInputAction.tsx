@@ -25,12 +25,9 @@ const FileUplaodInputAction = ({
 
   const inputTag1 = React.useRef<HTMLInputElement | null>(null);
   const inputTag2 = React.useRef<HTMLInputElement | null>(null);
-  useEffect(() => {
-    console.log(inputTag2);
-  });
+
   return (
     <div className={Style.container}>
-      {Accept}
       <TextTilteInputMudum Icon={Icon && Icon} Text={Text && Text} />
       <label
         htmlFor="input_upload_FileUplaodInputAction"

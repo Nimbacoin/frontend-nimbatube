@@ -1,0 +1,131 @@
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 10px auto;
+}
+.main_container {
+  height: auto;
+  flex-basis: 25%;
+  width: 100%;
+  padding: 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  row-gap: 10px;
+}
+
+.vedio_container {
+  height: 140px;
+  width: 95%;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  position: relative;
+  background-color: #cacacae8;
+  margin: 0 auto;
+  border-radius: 10px;
+
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+
+  background: linear-gradient(
+    to right,
+    #cacaca98 16%,
+    #e3e3e3 40%,
+    #cacaca98 50%
+  );
+  background-size: 200px 62px;
+  position: relative;
+}
+
+.desc_container {
+  width: 95%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  cursor: pointer;
+  column-gap: 0px;
+  margin: 0 auto;
+}
+
+.chanel_data {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 10px;
+  width: 20%;
+}
+.chanel_img {
+  height: 40px;
+  width: 40px;
+
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #e3e3e3;
+}
+
+.title_data {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  row-gap: 10px;
+}
+.small_bar {
+  width: 80%;
+  height: 15px;
+  background-color: #e3e3e3;
+  border-radius: 20px;
+}
+.big_bar {
+  background-color: #e3e3e3;
+  width: 90%;
+  height: 20px;
+  border-radius: 20px;
+}
+@media screen and (max-width: 900px) {
+  .container {
+    justify-content: center;
+    align-items: center;
+  }
+  .main_container {
+    flex-basis: 100%;
+    width: 100%;
+  }
+  .vedio_container {
+    border-radius: 0px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .vedio_container {
+    height: 200px;
+  }
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -800px 0;
+  }
+  100% {
+    background-position: 800px 0;
+  }
+}

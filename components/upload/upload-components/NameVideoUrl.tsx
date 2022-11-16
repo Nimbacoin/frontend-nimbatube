@@ -14,6 +14,7 @@ import FileUplaodInputAction from "../../modals/FileUplaodInputAction";
 import UplaodingAnimation from "./UplaodingAnimation";
 import SmallTextBlack from "../../modals/SmallTextBlack";
 import SkinyGrayText from "../../modals/SkinyGrayText";
+import VideoMainDemosData from "./VideoMainDemosData";
 const NameVideoUrl = () => {
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
@@ -106,10 +107,10 @@ const NameVideoUrl = () => {
   };
   const text =
     "By submitting your videos to Nimbatube, you acknowledge that you agree to Nimbatube's Terms of Service and Community Guidelines. Please make sure that you do not violate others' copyright or privacy rights. Learn more";
-  return (
-    <div className={Style.container}>
-      <div className={Style.upload_inputs_container}>
-        {Uploading ? (
+  const animtationFunc = () => {
+    return (
+      <>
+        {Uploading && (
           <>
             {!Uploaded ? (
               <UplaodingAnimation
@@ -149,34 +150,47 @@ const NameVideoUrl = () => {
               </div>
             )}
           </>
-        ) : (
-          <div className={Style.upload_input}>
-            <FileUplaodInputAction
-              Accept="video"
-              ButtonTextValue={"Browse"}
-              CopyValue={"Select video file to upload"}
-              handelSubmiteFile={HandelSubmiteNewGeneral}
-            />
-            <SmallTextBlack
-              Text={
-                "For video content, use MP4s in H264/AAC format and a friendly bitrate (under 8 Mbps) for more reliable streaming. NimbaTube uploads are restricted to 16 GB. Upload Guide"
-              }
-            />
-            <SkinyGrayText Text={text} />
-          </div>
         )}
-        <div className={Style.div_main_inputs_all}>
-          <InputText
-            HandelChange={handelChangeTitle}
-            Text={"Title"}
-            Placeholder="enter your video title"
-          />
-          <TextArea
-            HandelChange={handelChangeDesc}
-            Text={"Description"}
-            Placeholder="Description"
-          />
+      </>
+    );
+  };
+  return (
+    <div className={Style.container}>
+      <div className={Style.upload_inputs_container}>
+        <div className={Style.div_left_side}>
+          <VideoMainDemosData />
         </div>
+        <div className={Style.container_div_right}>
+          {animtationFunc()}
+          {!Uploading && (
+            <div className={Style.upload_input}>
+              <FileUplaodInputAction
+                Accept="video"
+                ButtonTextValue={"Browse"}
+                CopyValue={"Select video file to upload"}
+                handelSubmiteFile={HandelSubmiteNewGeneral}
+              />
+              <SmallTextBlack
+                Text={
+                  "For video content, use MP4s in H264/AAC format and a friendly bitrate (under 8 Mbps) for more reliable streaming. NimbaTube uploads are restricted to 16 GB. Upload Guide"
+                }
+              />
+            </div>
+          )}
+          <div className={Style.div_main_inputs_all}>
+            <InputText
+              HandelChange={handelChangeTitle}
+              Text={"Title"}
+              Placeholder="enter your video title"
+            />
+            <TextArea
+              HandelChange={handelChangeDesc}
+              Text={"Description"}
+              Placeholder="Description"
+            />
+          </div>
+        </div>
+        <SkinyGrayText Text={text} />
       </div>
     </div>
   );

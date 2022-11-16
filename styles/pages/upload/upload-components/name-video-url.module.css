@@ -5,6 +5,18 @@
   justify-content: inherit;
   row-gap: 20px;
   width: 100%;
+  background-color: #fff;
+}
+.div_left_side {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.container_div_right {
+  width: 70%;
 }
 .upload_img_icon {
   width: 25%;
@@ -74,14 +86,14 @@
 .upload_inputs_container {
   width: 100%;
   height: auto;
-  background-color: #fff;
   border-radius: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
   row-gap: 20px;
   column-gap: 20px;
   justify-content: space-between;
+  flex-wrap: wrap;
   border: 1px solid#DBDBDB;
   padding: 20px;
 }
@@ -126,10 +138,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  width: 55%;
+  width: 100%;
+  /* background-color: red; */
 }
 
+.video_container {
+  width: 30%;
+  /* background-color: black; */
+}
 @media screen and (max-width: 900px) {
   .upload_inputs_container {
     display: flex;
