@@ -7,7 +7,6 @@
   width: 100%;
 }
 .container_about_links {
-  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -19,6 +18,6 @@
 
 @media screen and (max-width: 900px) {
   .container_about_links {
-    width: 100%;
+    width: 80%;
   }
 }

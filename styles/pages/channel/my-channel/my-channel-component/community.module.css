@@ -36,3 +36,44 @@
   flex-direction: column;
   row-gap: 0px;
 }
+
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0px;
+  }
+  .main_container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 0 auto;
+    row-gap: 20px;
+  }
+  .upload_inputs_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    row-gap: 10px;
+  }
+  .right_side_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .all_comments_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0px;
+  }
+}
