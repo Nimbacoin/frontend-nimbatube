@@ -14,6 +14,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+  height: auto;
 }
 .container_div_right {
   width: 70%;
@@ -161,6 +162,12 @@
     width: 100%;
   }
   .upload_input {
+    width: 100%;
+  }
+  .div_left_side {
+    width: 100%;
+  }
+  .container_div_right {
     width: 100%;
   }
 }
