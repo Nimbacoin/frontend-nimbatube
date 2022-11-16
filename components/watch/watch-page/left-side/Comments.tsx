@@ -39,6 +39,7 @@ const Comments = ({ VideoData }: any) => {
       : (document.body.style.overflowY = "auto");
   });
   // console.log(videoData?.comments);
+
   return (
     <div className={CommentsBoolean ? Style.container_phone : Style.container}>
       {!CommentsBoolean && (
@@ -66,7 +67,10 @@ const Comments = ({ VideoData }: any) => {
         </div>
       )}
       {CommentsBoolean && (
-        <div className={Style.container_descreption_phone}>
+        <div
+          onTouchMove={() => dispatch(ToggleCommentsClose())}
+          className={Style.container_descreption_phone}
+        >
           <div className={Style.close_rect}></div>
           <div className={Style.phone_desc_container}>
             <span className={Style.descreption}>Comments</span>
