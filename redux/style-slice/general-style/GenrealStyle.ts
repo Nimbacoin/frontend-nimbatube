@@ -13,6 +13,7 @@ const initialState = {
   cropping: false,
   croppingImg: {},
   croppedImg: "",
+  phoneBarOpen: false,
   elementOverLayt: false,
   elementOverContent: [],
 };
@@ -84,6 +85,10 @@ export const GeneralStyle = createSlice({
       console.log(action.payload);
     },
     elementOverLaytRedcuerHide: (state: any) => {
+      state.elementOverLayt = false;
+      state.elementOverContent = [];
+    },
+    phoneBarOpenRedcuerHide: (state: any) => {
       state.elementOverLayt = false;
       state.elementOverContent = [];
     },

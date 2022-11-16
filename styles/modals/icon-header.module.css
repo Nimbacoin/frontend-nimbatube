@@ -15,10 +15,10 @@
 
 .number {
   position: absolute;
-  right: 0;
-  top: 2px;
-  font-size: 11px;
-  padding: 1px 4.5px;
+  right: 6px;
+  top: 4px;
+  font-size: 9.5px;
+  padding: 1px 5px;
   color: #fff;
   border-radius: 100px;
   display: flex;

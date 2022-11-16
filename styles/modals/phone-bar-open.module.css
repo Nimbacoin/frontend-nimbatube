@@ -1,0 +1,107 @@
+.container,
+.container_phone {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .container_phone {
+    width: 100%;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: start;
+    border-radius: 20px 20px 0 0;
+    padding: 0;
+    margin: 0;
+    white-space: pre-wrap;
+    position: fixed;
+    top: 30%;
+    bottom: -100px;
+    height: 70% + 100px;
+    z-index: 500;
+    padding-bottom: 100px;
+  }
+  .container_descreption_phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50px;
+    border-bottom: 1px solid #dbdbdb;
+  }
+  .close_rect {
+    width: 50px;
+    height: 5px;
+    background-color: #dbdbdb;
+    border-radius: 10px;
+  }
+  .phone_desc_container {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .descreption {
+    font-weight: 600;
+    font-size: 18px;
+    color: #030303;
+  }
+  .title {
+    padding: 0 10px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #030303;
+  }
+  .close_button {
+    font-size: 26px;
+    color: #030303;
+    cursor: pointer;
+  }
+  .video_data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 10px;
+    justify-content: flex-start;
+    /* border-bottom: 1px solid #dbdbdb; */
+    padding: 10px 0;
+    border-bottom: 1px solid #dbdbdb;
+  }
+  .video_data_container {
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .video_data_items {
+    font-weight: 600;
+    font-size: 18px;
+    color: #030303;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .small_data {
+    font-weight: 400;
+    font-size: 13.5px;
+    color: #606060;
+  }
+
+  .descreption_text_container {
+    height: 70%;
+    width: 100%;
+    padding: 20px 10px;
+    overflow-y: auto;
+  }
+  .desc_button {
+    display: none;
+  }
+}

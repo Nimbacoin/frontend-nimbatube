@@ -5,6 +5,7 @@ import { FcVideoCall } from "@react-icons/all-files/fc/FcVideoCall";
 import SmallTextBlack from "./SmallTextBlack";
 import Link from "next/link";
 import GoLiveOption from "./GoLiveOption";
+import PhoneBarOpen from "./PhoneBarOpen";
 const ButtonLive = () => {
   const HandelClick = () => {
     setShowDiv(!showDiv);
@@ -52,43 +53,47 @@ const ButtonLive = () => {
   const animatedRef = React.useRef<HTMLDivElement | null>(null);
   const animatedRefFixed = React.useRef<HTMLDivElement | null>(null);
   return (
-    <div ref={mainContainerRef} className={Style.wrap}>
-      {/* <GoLiveOption /> */}
-      {showDiv && (
-        <div className={Style.div_conntnt}>
-          <div className={Style.container_icons}>
-            <Link href="/upload">
-              <div className={Style.container_icon}>
-                <div className={Style.icon}></div>
-                <SmallTextBlack Text={"upload"} />
-              </div>
-            </Link>
-            <Link href="/go-live/go-live">
-              <div className={Style.container_icon_2}>
-                <div className={Style.icon}></div>
-                <SmallTextBlack Text={"go live"} />
-              </div>
-            </Link>
-          </div>
+    <>
+      <PhoneBarOpen></PhoneBarOpen>
 
-          <div className={Style.triangle_right}></div>
-        </div>
-      )}
-      <div ref={animatedRefFixed} className={Style.button_container}>
-        <div
-          onMouseDown={HandelMouseDown}
-          onClick={HandelClick}
-          onTouchMove={handelTouchMove}
-          ref={animatedRef}
-          onTouchEnd={handelonTouchEnd}
-          className={Style.div_container_button}
-        >
-          <div className={Style.button}>
-            <VideoCallSharpIcon />
+      <div ref={mainContainerRef} className={Style.wrap}>
+        {/* <GoLiveOption /> */}
+        {showDiv && (
+          <div className={Style.div_conntnt}>
+            <div className={Style.container_icons}>
+              <Link href="/upload">
+                <div className={Style.container_icon}>
+                  <div className={Style.icon}></div>
+                  <SmallTextBlack Text={"upload"} />
+                </div>
+              </Link>
+              <Link href="/go-live/go-live">
+                <div className={Style.container_icon_2}>
+                  <div className={Style.icon}></div>
+                  <SmallTextBlack Text={"go live"} />
+                </div>
+              </Link>
+            </div>
+
+            <div className={Style.triangle_right}></div>
+          </div>
+        )}
+        <div ref={animatedRefFixed} className={Style.button_container}>
+          <div
+            onMouseDown={HandelMouseDown}
+            onClick={HandelClick}
+            onTouchMove={handelTouchMove}
+            ref={animatedRef}
+            onTouchEnd={handelonTouchEnd}
+            className={Style.div_container_button}
+          >
+            <div className={Style.button}>
+              <VideoCallSharpIcon />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
