@@ -154,29 +154,66 @@ const NameVideoUrl = () => {
       </>
     );
   };
+  const animtationFunc2 = () => {
+    return (
+      <>
+        {!Uploading ? (
+          <VideoMainDemosData />
+        ) : (
+          <div className={Style.video_container_data}>
+            <div className={Style.video_container}>
+              <video
+                controlsList="nodownload"
+                className={Style.video}
+                ref={videoTag}
+                autoPlay
+                muted
+                loop
+              >
+                your broswer does not Support videos
+                <source
+                  ref={videoSrc}
+                  className={Style.video}
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+            <SmallTextBlack Text={Title.slice(0, 100)} />
+            <div className={Style.video_data}>
+              <ButtonAndInputAction
+                Text={"Video link"}
+                HandelClick={handelCopy}
+                CopyValue={VideoLink}
+                ButtonTextValue={"copy"}
+              />
+            </div>
+          </div>
+        )}
+      </>
+    );
+  };
   return (
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
-        <div className={Style.div_left_side}>
-          <VideoMainDemosData />
+        <div className={Style.upload_input}>
+          <FileUplaodInputAction
+            Accept="video"
+            ButtonTextValue={"Browse"}
+            CopyValue={"Select video file to upload"}
+            handelSubmiteFile={HandelSubmiteNewGeneral}
+          />
+          <SmallTextBlack
+            Text={
+              "Upload your thumbnail to nimbatube.com Recommended ratio is  16 GB."
+            }
+          />
         </div>
+        <div className={Style.div_left_side}>{animtationFunc2()}</div>
         <div className={Style.container_div_right}>
           {animtationFunc()}
-          {!Uploading && (
-            <div className={Style.upload_input}>
-              <FileUplaodInputAction
-                Accept="video"
-                ButtonTextValue={"Browse"}
-                CopyValue={"Select video file to upload"}
-                handelSubmiteFile={HandelSubmiteNewGeneral}
-              />
-              <SmallTextBlack
-                Text={
-                  "For video content, use MP4s in H264/AAC format and a friendly bitrate (under 8 Mbps) for more reliable streaming. NimbaTube uploads are restricted to 16 GB. Upload Guide"
-                }
-              />
-            </div>
-          )}
+          {/* {!Uploading && (
+            
+          )} */}
           <div className={Style.div_main_inputs_all}>
             <InputText
               HandelChange={handelChangeTitle}

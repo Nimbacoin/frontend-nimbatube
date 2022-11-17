@@ -1,16 +1,6 @@
-.container {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  margin: 10px auto;
-}
 .main_container {
   height: auto;
-  flex-basis: 25%;
+  flex-basis: 100%;
   width: 100%;
   padding: 0%;
   display: flex;
@@ -22,7 +12,7 @@
 }
 
 .vedio_container {
-  height: 140px;
+  height: 120px;
   width: 95%;
   background-size: cover;
   background-position: center;
@@ -66,7 +56,7 @@
   align-items: center;
   justify-content: flex-start;
   column-gap: 10px;
-  width: 20%;
+  width: 30%;
 }
 .chanel_img {
   height: 40px;
@@ -78,7 +68,7 @@
 }
 
 .title_data {
-  width: 80%;
+  min-width: 70% ;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
