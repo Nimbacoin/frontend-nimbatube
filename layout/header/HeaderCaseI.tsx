@@ -81,19 +81,12 @@ const HeaderCaseI = () => {
     }
     if (Container.current && ContainerWhite.current) {
       const data = ContainerWhite.current.getBoundingClientRect();
-      console.log(data.right);
+     
       Container.current.style.left = `${data.left}px`;
       Container.current.style.width = `${data.width}px`;
     }
   };
-  useEffect(() => {
-    if (Container.current) {
-      window.onresize = () => {
-        handelChangeMenu();
-      };
-    }
-    handelChangeMenu();
-  });
+
   const menuBooleanAllOver = useSelector(
     (state: any) => state.SideMenu.menuBooleanAllOver
   );
@@ -105,24 +98,25 @@ const HeaderCaseI = () => {
       } else {
         if (MenuBoolean) {
           ContainerWhite.current.className = Style.white_ontainer_home_avtive;
-          console.log("white_ontainer_home_avtive");
+          
         } else {
           ContainerWhite.current.className = Style.white_ontainer_home;
-          console.log("white_ontainer_home");
+         
         }
       }
     }
   };
-  useEffect(() => {
-    if (ContainerWhite.current) {
-      window.onresize = () => {
-        handelChangeMenuAll();
-      };
-    }
 
-    if (ContainerWhite.current) {
+  useEffect(() => {
+  
+    window.addEventListener("resize", () => {
       handelChangeMenuAll();
-    }
+     
+      handelChangeMenu();
+    });
+
+    handelChangeMenuAll();
+    handelChangeMenu();
   });
   return (
     <div

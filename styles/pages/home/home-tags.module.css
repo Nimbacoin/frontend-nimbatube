@@ -1,6 +1,6 @@
 .container,
 .container1255px {
-  width: 100%;
+  width: 99%;
   margin: 0 auto;
   max-height: 100px;
   display: flex;
@@ -8,12 +8,13 @@
   overflow-x: auto;
   margin: 0px 0 10px 0;
   padding: 0 0;
-  position: relative;
+  /* position: relative; */
   overflow: hidden;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #dbdbdb;
   background-color: #fff;
+  /* display: none; */
 }
 .container {
   max-width: 1255px;

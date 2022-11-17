@@ -91,7 +91,7 @@ const Layout = ({ children }: any) => {
             if (res?.responsData?.notification) {
               dispatch(notificationReudcer(res.responsData.notification));
             }
-            console.log(res.responsData.notification);
+            
           }
         } catch (error) {
           console.log(error);
@@ -101,6 +101,7 @@ const Layout = ({ children }: any) => {
   }, [asPath]);
 
   const menuWidth = useSelector((state: any) => state.SideMenu.menuWidth);
+  
   const childrenRef = React.useRef<HTMLDivElement>(null);
   const handelChangeMenu = () => {
     if (childrenRef.current) {
@@ -114,16 +115,12 @@ const Layout = ({ children }: any) => {
       }
     }
   };
-  useEffect(() => {
-    if (childrenRef.current) {
-      window.onresize = () => {
-        handelChangeMenu();
-      };
-    }
 
-    if (childrenRef.current) {
+  useEffect(() => {
+    window.addEventListener("resize", () => {
       handelChangeMenu();
-    }
+    });
+    handelChangeMenu();
   });
 
   return (
@@ -238,7 +235,6 @@ const Layout = ({ children }: any) => {
         {PopUppBoolean && <PopUpp />}
         {copyVideo && <ShareVideo />}
         {cropping && <CropperCom />}
-
         <SideHeader />
 
         <div

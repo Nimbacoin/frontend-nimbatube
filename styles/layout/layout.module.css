@@ -32,6 +32,18 @@
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 100, "GRAD" -25, "opsz" 48;
 }
+@media screen and (max-width: 1200px) {
+  .childen_MenuBoolean,
+  .childen {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .childen_MenuBoolean,
+  .childen {
+    width: 75%;
+  }
+}
 @media screen and (max-width: 900px) {
   .childen_MenuBoolean,
   .childen {
