@@ -6,7 +6,8 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
+  background-color: #fff;
   height: 100%;
 }
 .childen {
