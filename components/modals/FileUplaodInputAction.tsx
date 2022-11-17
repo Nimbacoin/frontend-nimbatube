@@ -37,22 +37,23 @@ const FileUplaodInputAction = ({
           <SmallTextBlack Text={CopyValue ? CopyValue : "uplaod"} />
         </div>
 
-        {Accept === "image" ? (
-          <input
-            ref={inputTag2}
-            id="input_upload_FileUplaodInputAction"
-            type="file"
-            accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
-            onChange={readImageThumbnail}
-            className={Style.hidden}
-            style={{ display: "none" }}
-          />
-        ) : (
+        {Accept === "video" && (
           <input
             ref={inputTag2}
             id="input_upload_FileUplaodInputAction"
             type="file"
             accept="video/mp4"
+            onChange={readImageThumbnail}
+            className={Style.hidden}
+            style={{ display: "none" }}
+          />
+        )}
+        {Accept === "image" && (
+          <input
+            ref={inputTag2}
+            id="input_upload_FileUplaodInputAction"
+            type="file"
+            accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
             onChange={readImageThumbnail}
             className={Style.hidden}
             style={{ display: "none" }}
