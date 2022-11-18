@@ -10,6 +10,7 @@ import { poPUppRedcuer } from "../../../redux/style-slice/general-style/GenrealS
 import BlueButton from "../../modals/BlueButton";
 import CancelButton from "../../modals/CancelButton";
 import FileUplaodInputAction from "../../modals/FileUplaodInputAction";
+import SmallTextBlack from "../../modals/SmallTextBlack";
 
 const Thumbnail = () => {
   const Path = useRef(null);
@@ -76,35 +77,23 @@ const Thumbnail = () => {
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
         <p className={Style.upload_file}>Thumbnail</p>
-        <div ref={Thumbnail} className={Style.upload_img_icon}>
-          {!Uploaded && <IoImageOutline />}{" "}
-        </div>
-        <div className={Style.input_upload_thumbnail}>
-          <FileUplaodInputAction
-            Accept="image"
-            // Accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
-            ButtonTextValue={"Browse"}
-            handelSubmiteFile={handelSubmiteThumbnail}
-            CopyValue={"Choose an enticing thumbnail"}
-          />
-          {/* <label htmlFor="input_upload_thumbnail" className={Style.input_label}>
-            <span className={Style.upload_file_text}>
-              Choose an enticing thumbnail{" "}
-            </span>
-            <span className={Style.upload_file_text_dots}>...</span>
-            <input
-              id="input_upload_thumbnail"
-              type="file"
-              // accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
-              // onChange={readImageThumbnail}
-              className={Style.input_upload}
+        <div className={Style.main_div_data_container}>
+          <div ref={Thumbnail} className={Style.upload_img_icon}>
+            {!Uploaded && <IoImageOutline />}{" "}
+          </div>
+          <div className={Style.input_upload_thumbnail}>
+            <FileUplaodInputAction
+              Accept="image"
+              ButtonTextValue={"Browse"}
+              handelSubmiteFile={handelSubmiteThumbnail}
+              CopyValue={"Choose an enticing thumbnail"}
             />
-            <span className={Style.upload_file_button}>Browse</span>
-          </label> */}
-          <p className={Style.text}>
-            Upload your thumbnail to nimbatube.com Recommended ratio is 16:9,
-            5MB max.
-          </p>
+            <SmallTextBlack
+              Text={
+                "Upload your thumbnail to nimbatube.com Recommended ratio is 16:9, 5MB max."
+              }
+            />
+          </div>
         </div>
       </div>
       <div className={Style.div_button_action}>
