@@ -169,19 +169,20 @@ const NameVideoUrl = () => {
               ButtonTextValue={"copy"}
             />
           ) : (
-            <FileUplaodInputAction
-              Accept="video"
-              ButtonTextValue={"Browse"}
-              CopyValue={"Select video file to upload"}
-              handelSubmiteFile={HandelSubmiteNewGeneral}
-            />
+            <>
+              <FileUplaodInputAction
+                Accept="video"
+                ButtonTextValue={"Browse"}
+                CopyValue={"Select video file to upload"}
+                handelSubmiteFile={HandelSubmiteNewGeneral}
+              />
+              <SmallTextBlack
+                Text={
+                  "Upload your thumbnail to nimbatube.com Recommended ratio is  16 GB."
+                }
+              />
+            </>
           )}
-
-          <SmallTextBlack
-            Text={
-              "Upload your thumbnail to nimbatube.com Recommended ratio is  16 GB."
-            }
-          />
         </div>
         <div className={Style.div_left_side}>{animtationFunc2()}</div>
         <div className={Style.container_div_right}>
