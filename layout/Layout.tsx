@@ -22,6 +22,7 @@ import AddToPalayList from "../components/modals/AddToPlayList";
 import CropperCom from "../components/modals/Cropper";
 import ButtonLive from "../components/modals/ButtonLive";
 import ElementOver from "../components/modals/ElementOver";
+import UplaodFile from "../components/modals/UplaodFile";
 
 interface main {
   children: any;
@@ -252,6 +253,7 @@ const Layout = ({ children }: any) => {
         {isOver && <HoverText />}
         {elementOverLayt && <ElementOver />}
         <ButtonLive />
+        <UplaodFile />
       </div>
     </>
   );

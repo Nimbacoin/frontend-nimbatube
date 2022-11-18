@@ -23,7 +23,6 @@
   outline: none;
   padding: 0 0 0 5px;
   cursor: pointer;
-  
 }
 .link_container > input {
   background-color: transparent;
@@ -80,7 +79,19 @@
   border: solid 1px transparent;
   box-shadow: #00000017 0px 3px 12px;
 }
-
+.div_container_text {
+  overflow: hidden;
+}
+.div_container_text > p {
+  clear: both;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.main_container_text{
+  
+}
 @media screen and (max-width: 700px) {
   .share_container {
     width: 90%;
