@@ -111,6 +111,12 @@ const NameVideoUrl = () => {
   const animtationFunc = () => {
     return (
       <>
+        <UplaodingAnimation
+          Uploaded={Uploaded}
+          Uploading={Uploading}
+          UploadingWait={UploadingWait}
+          UploadFinsh={UploadFinsh}
+        />
         {Uploading && (
           <>
             {!Uploaded ? (
