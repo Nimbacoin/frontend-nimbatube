@@ -15,6 +15,7 @@ import UplaodingAnimation from "./UplaodingAnimation";
 import SmallTextBlack from "../../modals/SmallTextBlack";
 import SkinyGrayText from "../../modals/SkinyGrayText";
 import VideoMainDemosData from "./VideoMainDemosData";
+import TextTilteInputMudum from "../../modals/text/TextTilteInputMudum";
 const NameVideoUrl = () => {
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
@@ -129,40 +130,31 @@ const NameVideoUrl = () => {
   };
   const animtationFunc2 = () => {
     return (
-      <>
+      <div className={Style.main_right_container}>
         {!Uploading ? (
           <VideoMainDemosData />
         ) : (
-          <div className={Style.video_container_data}>
-            <div className={Style.video_container}>
+          <div className={Style.video_container_main}>
+            <div className={Style.video_container_data}>
               <video
-                controlsList="nodownload"
                 className={Style.video}
+                controlsList="nodownload"
                 ref={videoTag}
                 autoPlay
                 muted
                 loop
+                src="https://www.w3schools.com/html/mov_bbb.mp4"
               >
                 your broswer does not Support videos
-                <source
-                  ref={videoSrc}
-                  className={Style.video}
-                  type="video/mp4"
-                />
+                <source ref={videoSrc} type="video/mp4" />
               </video>
             </div>
-            <SmallTextBlack Text={Title.slice(0, 100)} />
-            <div className={Style.video_data}>
-              <ButtonAndInputAction
-                Text={"Video link"}
-                HandelClick={handelCopy}
-                CopyValue={VideoLink}
-                ButtonTextValue={"copy"}
-              />
+            <div className={Style.div_container}>
+              <TextTilteInputMudum Text={Title} />
             </div>
           </div>
         )}
-      </>
+      </div>
     );
   };
   return (

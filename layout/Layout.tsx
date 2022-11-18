@@ -91,7 +91,6 @@ const Layout = ({ children }: any) => {
             if (res?.responsData?.notification) {
               dispatch(notificationReudcer(res.responsData.notification));
             }
-            
           }
         } catch (error) {
           console.log(error);
@@ -101,7 +100,7 @@ const Layout = ({ children }: any) => {
   }, [asPath]);
 
   const menuWidth = useSelector((state: any) => state.SideMenu.menuWidth);
-  
+
   const childrenRef = React.useRef<HTMLDivElement>(null);
   const handelChangeMenu = () => {
     if (childrenRef.current) {
@@ -145,7 +144,12 @@ const Layout = ({ children }: any) => {
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet"
         />
-
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
+          rel="stylesheet"
+        ></link>
         <meta
           name="google-site-verification"
           content="eK_yN2eql5QORNEY1Yxu9sze98et_wKh_j4Awl-lDlo"
