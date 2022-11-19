@@ -74,12 +74,6 @@ const UplaodFirstStep2 = () => {
               <TextTilteInputMudum
                 Text={title.slice(0, 80) + `${title.length > 80 ? "..." : ""}`}
               />
-              <ButtonAndInputAction
-                // Text={"Video link"}
-                HandelClick={handelCopy}
-                CopyValue={VideoLink}
-                ButtonTextValue={"copy"}
-              />
             </div>
           </div>
         </div>
@@ -94,6 +88,12 @@ const UplaodFirstStep2 = () => {
             placeholder={"write your decreption here"}
             className={Style.textarea}
             onChange={handelChangeDesc}
+          />
+          <ButtonAndInputAction
+            Text={"Video link"}
+            HandelClick={handelCopy}
+            CopyValue={VideoLink}
+            ButtonTextValue={"copy"}
           />
         </div>
       </div>
