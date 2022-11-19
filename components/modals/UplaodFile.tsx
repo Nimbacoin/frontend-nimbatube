@@ -13,6 +13,7 @@ import UplaodFirstStep2 from "./UplaodFirstStep2";
 import { VscArrowLeft } from "react-icons/vsc";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import IconHeader from "./IconHeader";
+import { elementOverLaytRedcuerHide } from "../../redux/style-slice/general-style/GenrealStyle";
 
 const UplaodFile = () => {
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
@@ -103,7 +104,13 @@ const UplaodFile = () => {
         <div className={Style.main_top}>
           {topHeader()}
           <BoldText text={"create"} />
-          <IconHeader Icon={<IoCloseOutline />} />
+          <IconHeader
+            FuncOutSide={true}
+            MainFuncOutSide={() => {
+              dispatch(elementOverLaytRedcuerHide());
+            }}
+            Icon={<IoCloseOutline />}
+          />
         </div>
 
         {/* {Uploaded && (

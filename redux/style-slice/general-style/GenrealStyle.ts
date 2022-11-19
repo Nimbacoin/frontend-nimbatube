@@ -79,10 +79,9 @@ export const GeneralStyle = createSlice({
         state.croppedImg = action.payload;
       }
     },
-    elementOverLaytRedcuer: (state: any, action: any) => {
+    elementOverLaytRedcuer: (state: any) => {
       state.elementOverLayt = true;
       // state.elementOverContent = [action.payload];
-      console.log(action.payload);
     },
     elementOverLaytRedcuerHide: (state: any) => {
       state.elementOverLayt = false;

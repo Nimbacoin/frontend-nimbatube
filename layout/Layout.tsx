@@ -6,7 +6,11 @@ import Style from "../styles/layout/layout.module.css";
 import SideHeader from "./header/SideHeader";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { WindowHeightRedcuer } from "../redux/style-slice/general-style/GenrealStyle";
+import {
+  elementOverLaytRedcuer,
+  elementOverLaytRedcuerHide,
+  WindowHeightRedcuer,
+} from "../redux/style-slice/general-style/GenrealStyle";
 import { useSession } from "next-auth/react";
 import {
   notificationReudcer,
@@ -75,11 +79,11 @@ const Layout = ({ children }: any) => {
     }
   });
   useEffect(() => {
-    // basedGetUrlRequestLogedIn("/api/get/channel/following-channels/").then(
-    //   () => {
-    //     alert("As");
-    //   }
-    // );
+    if (asPath === "/upload") {
+      dispatch(elementOverLaytRedcuer());
+    } else {
+      dispatch(elementOverLaytRedcuerHide());
+    }
     basedGetUrlRequestLogedIn("/api/get/channel/all-channels").then(
       (res: any) => {
         try {
