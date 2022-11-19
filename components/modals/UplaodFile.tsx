@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import AxiosPostLogedInFormData from "../../utils/AxiosPostLogedInFormData";
 import { ActionVideoDataChanging } from "../../redux/video-slice/VideoSlice";
 import UplaodingAnimation from "../upload/upload-components/UplaodingAnimation";
+import UplaodFirstStep2 from "./UplaodFirstStep2";
 
 const UplaodFile = () => {
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
@@ -55,7 +56,6 @@ const UplaodFile = () => {
           })
         );
       }
-      // setUploading(false);
       setFileName(file.filename);
       setVideoPath(file._id);
       setVideoLink(
@@ -70,6 +70,7 @@ const UplaodFile = () => {
       }, 4000);
     });
   };
+
   return (
     <div className={Style.container}>
       {Uploading && (
@@ -86,11 +87,18 @@ const UplaodFile = () => {
           )}
         </>
       )}
-      <div className={Style.main_contaier}>
+      <div
+        className={!Uploaded ? Style.main_contaier_big : Style.main_contaier}
+      >
         <div className={Style.main_top}>
           <BoldText text={"create"} />
         </div>
-        <UplaodFirstStep handelChangeInput={HandelSubmiteNewGeneral} />
+
+        {Uploaded && (
+          <UplaodFirstStep handelChangeInput={HandelSubmiteNewGeneral} />
+        )}
+        {!Uploaded && <UplaodFirstStep2 />}
+
         {videoLocation}
       </div>
     </div>
