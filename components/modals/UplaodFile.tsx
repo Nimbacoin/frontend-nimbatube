@@ -10,6 +10,9 @@ import AxiosPostLogedInFormData from "../../utils/AxiosPostLogedInFormData";
 import { ActionVideoDataChanging } from "../../redux/video-slice/VideoSlice";
 import UplaodingAnimation from "../upload/upload-components/UplaodingAnimation";
 import UplaodFirstStep2 from "./UplaodFirstStep2";
+import { VscArrowLeft } from "react-icons/vsc";
+import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
+import IconHeader from "./IconHeader";
 
 const UplaodFile = () => {
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
@@ -20,13 +23,14 @@ const UplaodFile = () => {
   const [FileName, setFileName] = useState("");
   const [Title, setTitle] = useState("");
 
-  const [VideoLink, setVideoLink] = useState("");
+  const [VideoLink, setVideoLink] = useState("sdoodpsd");
   const [videoLocation, setVideoLocation] = useState("");
   const [Uploaded, setUploaded] = useState(false);
   const [Uploading, setUploading] = useState(false);
   const [UploadingWait, setUploadingWait] = useState(false);
   const [UploadFinsh, setUploadFinsh] = useState(false);
   const [videoPath, setVideoPath] = useState("");
+  const [firstStep, setFirstStep] = useState("1");
 
   const dispatch = useDispatch();
   const Router = useRouter();
@@ -70,7 +74,13 @@ const UplaodFile = () => {
       }, 4000);
     });
   };
-
+  const topHeader = () => {
+    if (firstStep === "0") {
+      return <BoldText text={"create"} />;
+    } else if (firstStep === "1") {
+      return <IconHeader Icon={<VscArrowLeft />} />;
+    }
+  };
   return (
     <div className={Style.container}>
       {Uploading && (
@@ -91,13 +101,15 @@ const UplaodFile = () => {
         className={!Uploaded ? Style.main_contaier_big : Style.main_contaier}
       >
         <div className={Style.main_top}>
+          {topHeader()}
           <BoldText text={"create"} />
+          <IconHeader Icon={<IoCloseOutline />} />
         </div>
 
-        {Uploaded && (
+        {/* {Uploaded && (
           <UplaodFirstStep handelChangeInput={HandelSubmiteNewGeneral} />
-        )}
-        {!Uploaded && <UplaodFirstStep2 />}
+        )} */}
+        {/* {!Uploaded && <UplaodFirstStep2 VideoLink={VideoLink} />} */}
 
         {videoLocation}
       </div>

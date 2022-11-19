@@ -29,7 +29,7 @@ export const GeneralStyle = createSlice({
       state.elementTop = action.payload.top;
       state.elemntLeft = action.payload.left;
       state.textValue = action.payload.text;
-      if (state.textValue.length) {
+      if (state.textValue?.length) {
         state.isOver = true;
       }
     },
@@ -81,12 +81,12 @@ export const GeneralStyle = createSlice({
     },
     elementOverLaytRedcuer: (state: any, action: any) => {
       state.elementOverLayt = true;
-      state.elementOverContent = [action.payload];
+      // state.elementOverContent = [action.payload];
       console.log(action.payload);
     },
     elementOverLaytRedcuerHide: (state: any) => {
       state.elementOverLayt = false;
-      state.elementOverContent = [];
+      // state.elementOverContent = [];
     },
     phoneBarOpenRedcuerHide: (state: any) => {
       state.phoneBarOpen = !state.phoneBarOpen;

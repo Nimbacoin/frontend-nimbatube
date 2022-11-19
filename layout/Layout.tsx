@@ -251,9 +251,8 @@ const Layout = ({ children }: any) => {
         </div>
 
         {isOver && <HoverText />}
-        {elementOverLayt && <ElementOver />}
+        {elementOverLayt && <UplaodFile />}
         <ButtonLive />
-        <UplaodFile />
       </div>
     </>
   );

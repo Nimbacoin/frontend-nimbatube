@@ -6,9 +6,8 @@ import ButtonAndInputAction from "./ButtonAndInputCopy";
 import SmallTextBlack from "./SmallTextBlack";
 import TextTilteInputMudum from "./text/TextTilteInputMudum";
 
-const UplaodFirstStep2 = () => {
+const UplaodFirstStep2 = ({ VideoLink }: any) => {
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
-  const [VideoLink, setVideoLink] = useState("");
   const dispatch = useDispatch();
   const channelData = Channels[0];
   const [title, setTitle] = useState("");
