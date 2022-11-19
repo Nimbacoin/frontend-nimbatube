@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ActionVideoDataChanging } from "../../redux/video-slice/VideoSlice";
 import Style from "../../styles/modals/uplaod-first-step2.module.css";
 import ButtonAndInputAction from "./ButtonAndInputCopy";
+import SmallTextBlack from "./SmallTextBlack";
 import TextTilteInputMudum from "./text/TextTilteInputMudum";
 
 const UplaodFirstStep2 = () => {
@@ -67,10 +68,18 @@ const UplaodFirstStep2 = () => {
                 style={{ backgroundImage: `url(${Bg})` }}
                 className={Style.channel_img}
               ></div>
-              <TextTilteInputMudum Text={channelData?.channelData?.name} />
+              <SmallTextBlack Text={channelData?.channelData?.name} />
             </div>
             <div className={Style.container_data}>
-              <TextTilteInputMudum Text={title} />
+              <TextTilteInputMudum
+                Text={title.slice(0, 80) + `${title.length > 80 ? "..." : ""}`}
+              />
+              <ButtonAndInputAction
+                // Text={"Video link"}
+                HandelClick={handelCopy}
+                CopyValue={VideoLink}
+                ButtonTextValue={"copy"}
+              />
             </div>
           </div>
         </div>
@@ -87,12 +96,6 @@ const UplaodFirstStep2 = () => {
             onChange={handelChangeDesc}
           />
         </div>
-        <ButtonAndInputAction
-          Text={"Video link"}
-          HandelClick={handelCopy}
-          CopyValue={VideoLink}
-          ButtonTextValue={"copy"}
-        />
       </div>
     </div>
   );

@@ -94,3 +94,12 @@
   font-weight: 500;
   border: 1px solid#DBDBDB;
 }
+
+@media screen and (max-width: 700px) {
+  .main_contaier {
+    width: 95%;
+  }
+  .main_contaier_big {
+    width: 100%;
+  }
+}
