@@ -8,6 +8,7 @@ import GoLiveOption from "./GoLiveOption";
 import PhoneBarOpen from "./PhoneBarOpen";
 import { useDispatch, useSelector } from "react-redux";
 import { phoneBarOpenRedcuerHide } from "../../redux/style-slice/general-style/GenrealStyle";
+import TextTilteInputMudum from "./text/TextTilteInputMudum";
 const ButtonLive = () => {
   const HandelClick = () => {
     setShowDiv(!showDiv);
@@ -70,13 +71,15 @@ const ButtonLive = () => {
             <Link href="/upload">
               <div className={Style.container_icon}>
                 <div className={Style.icon}></div>
-                <SmallTextBlack Text={"upload"} />
+                {/* <SmallTextBlack Text={"upload"} /> */}
+                <TextTilteInputMudum Text={"upload"} />
               </div>
             </Link>
             <Link href="/go-live/go-live">
               <div className={Style.container_icon_2}>
                 <div className={Style.icon}></div>
-                <SmallTextBlack Text={"go live"} />
+                {/* <SmallTextBlack Text={"go live"} /> */}
+                <TextTilteInputMudum Text={"go live"} />
               </div>
             </Link>
           </div>
