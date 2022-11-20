@@ -34,7 +34,7 @@ export const ElementOver: React.FC = () => {
   );
 
   const handelClose = () => {
-    dispatch(elementOverLaytRedcuer(1));
+    dispatch(elementOverLaytRedcuer());
   };
   const handelFinshCropping = () => {
     if (image?.length) {
