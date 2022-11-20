@@ -5,6 +5,8 @@ import moment from "moment";
 import { useRouter } from "next/router";
 
 const VideoWatchLater = ({ VideoData }: any) => {
+  const [IsOverVideo, setIsOverVideo] = useState(false);
+
   const Router = useRouter();
   const thumbnail =
     process.env.NEXT_PUBLIC_BACK_END_URL +
@@ -41,17 +43,9 @@ const VideoWatchLater = ({ VideoData }: any) => {
       if (mediaContainer && mediaContainer.current) {
         const refany = mediaContainer.current;
         if (refany.contains(e.target)) {
-          setVideoStyle({ zIndex: "12" });
-          setThumbnailStyle({
-            zIndex: "10",
-            backgroundImage: `url(${""})`,
-          });
+          setIsOverVideo(true);
         } else {
-          setVideoStyle({ zIndex: "10" });
-          setThumbnailStyle({
-            zIndex: "11",
-            backgroundImage: `url(${thumbnail})`,
-          });
+          setIsOverVideo(false);
         }
       }
     };
@@ -69,18 +63,23 @@ const VideoWatchLater = ({ VideoData }: any) => {
   return (
     <div onClick={handelClick} className={Style.container}>
       <div ref={mediaContainer} className={Style.video_container}>
-        <div style={thumbnailStyle} className={Style.thumbnail_container}></div>
-        <video
-          ref={videoTag}
-          style={videoStyle}
-          className={Style.video}
-          autoPlay
-          muted
-          loop
-        >
-          <source type="video/mp4" />
-        </video>
-        <span className={Style.time}> 5:50</span>
+        {!IsOverVideo ? (
+          <div
+            style={thumbnailStyle}
+            className={Style.thumbnail_container}
+          ></div>
+        ) : (
+          <video
+            ref={videoTag}
+            style={videoStyle}
+            className={Style.video}
+            autoPlay
+            muted
+            loop
+          >
+            <source src={VideoData?.videoData?.location} type="video/mp4" />
+          </video>
+        )}
       </div>
       <div className={Style.video_date_containe}>
         <span className={Style.chanel_name}>{VideoData?.videoData?.title}</span>

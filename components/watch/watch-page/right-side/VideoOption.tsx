@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Style from "../../../../styles/pages/watch/rightside/video-option.module.css";
 import { IoEllipsisVerticalSharp } from "@react-icons/all-files/io5/IoEllipsisVerticalSharp";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
@@ -6,6 +6,7 @@ import moment from "moment";
 import { useRouter } from "next/router";
 
 const VideoOption = ({ VideoData, Key }: any) => {
+  const mediaContainer = React.useRef<HTMLDivElement>(null);
   const Router = useRouter();
   const HandelIsOverVideoLeave = () => {
     setIsOverVideo(false);
@@ -38,6 +39,20 @@ const VideoOption = ({ VideoData, Key }: any) => {
       );
     }
   };
+
+  useEffect(() => {
+    const handelClick = (e: any) => {
+      if (mediaContainer && mediaContainer.current) {
+        const refany = mediaContainer.current;
+        if (refany.contains(e.target)) {
+          setIsOverVideo(true);
+        } else {
+          setIsOverVideo(false);
+        }
+      }
+    };
+    window.addEventListener("mouseover", handelClick);
+  });
   return (
     <div key={Key} onClick={handelClickhh} className={Style.container}>
       <div
@@ -58,7 +73,7 @@ const VideoOption = ({ VideoData, Key }: any) => {
           </div>
         ) : (
           <video width="100%" height="30px" autoPlay muted loop>
-            <source src={VideoData?.videoData.location} type="video/mp4" />
+            <source src={VideoData?.videoData?.location} type="video/mp4" />
           </video>
         )}
       </div>
