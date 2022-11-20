@@ -45,12 +45,13 @@
   display: none;
 }
 .title_text {
-  font-size: 22px;
+  font-weight: 600;
+  font-size: 20px;
+  /* font-size: 22px;
   color: #030303;
-  font-weight: 100;
-  line-height: 26px;
-  font-family: myFirstFont;
   
+  line-height: 26px;
+  font-family: myFirstFont; */
 }
 .icons_container {
   width: 70%;
