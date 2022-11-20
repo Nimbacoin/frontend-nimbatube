@@ -6,10 +6,13 @@ import HomeTags from "../../home/HomeTags";
 import LoaodingAll from "../../modals/LoaodingAll";
 import VideosRight from "../../modals/pages-boforload/VideosRight";
 import Vedio from "../../video/Video";
+import VideoWatchLater from "../../watch-later/VideoWatchLater";
 import LiveCommentsVideos from "./right-side/LiveCommentsVideos";
 import RightSideTaggs from "./right-side/RightSideTaggs";
 import VideoOption from "./right-side/VideoOption";
-//gospfdpofd
+
+import AllVideosBeforLoad from "../../modals/pages-boforload/AllVideosBeforLoad";
+
 const RightSide = () => {
   const { asPath } = useRouter();
   const [videos, setVideos] = useState([]);
@@ -37,14 +40,22 @@ const RightSide = () => {
       {streamingVideo && <LiveCommentsVideos />}
       <RightSideTaggs />
 
-      {/* <HomeTags /> */}
-      {videos.length ? (
-        videos.map((vid, index) => (
-          <VideoOption key={index} Key={index} VideoData={vid} />
-        ))
-      ) : (
-        <VideosRight />
-      )}
+      <div className={Style.container_desktop}>
+        {videos.length ? (
+          videos.map((vid, index) => (
+            <VideoOption key={index} Key={index} VideoData={vid} />
+          ))
+        ) : (
+          <VideosRight />
+        )}
+      </div>
+      <div className={Style.vedio_container}>
+        {videos.length ? (
+          videos.map((vid: any) => <Vedio VideoData={vid} />)
+        ) : (
+          <AllVideosBeforLoad />
+        )}
+      </div>
       <LoaodingAll />
     </div>
   );
