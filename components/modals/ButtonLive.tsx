@@ -20,6 +20,13 @@ const ButtonLive = () => {
   const phoneBarOpen = useSelector(
     (state: any) => state.GenrealStyle.phoneBarOpen
   );
+  useEffce(() => {
+    if (showDiv) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showDiv]);
   const dispatch = useDispatch();
   const HandelDescreptionToggle = () => {
     dispatch(phoneBarOpenRedcuerHide());
