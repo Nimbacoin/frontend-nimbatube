@@ -12,6 +12,11 @@
   background-color: rgba(0, 0, 0, 0.656);
 }
 
+.container_top_close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
 .main_contaier {
   width: 500px;
   height: 450px;

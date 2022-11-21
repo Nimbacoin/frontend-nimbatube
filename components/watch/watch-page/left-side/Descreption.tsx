@@ -15,7 +15,7 @@ const Descreption = ({ VideoData }: any) => {
     (state: any) => state.MainVideo.DescreptionBoolean
   );
   const [mainTexDesc, setMainTexDesc] = useState(
-    VideoData?.descreption.slice(0, 350)
+    VideoData?.descreption?.slice(0, 350)
   );
   const dispatch = useDispatch();
   const HandelDescreptionToggle = () => {

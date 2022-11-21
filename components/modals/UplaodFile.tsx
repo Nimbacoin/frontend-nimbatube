@@ -14,14 +14,18 @@ import { VscArrowLeft } from "react-icons/vsc";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import IconHeader from "./IconHeader";
 import { elementOverLaytRedcuerHide } from "../../redux/style-slice/general-style/GenrealStyle";
+import BlueButton from "./BlueButton";
 
 const UplaodFile = () => {
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
+  const videoData = useSelector((state: any) => state.VideoSlice.videoData);
+
   const Path = useRef(null);
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
 
   const [FileName, setFileName] = useState("");
+  const [Thumbnail, setThumbnail] = useState("");
   const [Title, setTitle] = useState("");
 
   const [VideoLink, setVideoLink] = useState("sdoodpsd");
@@ -31,7 +35,7 @@ const UplaodFile = () => {
   const [UploadingWait, setUploadingWait] = useState(false);
   const [UploadFinsh, setUploadFinsh] = useState(false);
   const [videoPath, setVideoPath] = useState("");
-  const [firstStep, setFirstStep] = useState("1");
+  const [firstStep, setFirstStep] = useState(0);
 
   const dispatch = useDispatch();
   const Router = useRouter();
@@ -61,6 +65,7 @@ const UplaodFile = () => {
           })
         );
       }
+      setFirstStep("1");
       setFileName(file.filename);
       setVideoPath(file._id);
       setVideoLink(
@@ -76,14 +81,60 @@ const UplaodFile = () => {
     });
   };
   const topHeader = () => {
-    if (firstStep === "0") {
+    if (firstStep <= 0) {
       return <BoldText text={"create"} />;
-    } else if (firstStep === "1") {
+    } else if (firstStep >= 1) {
       return <IconHeader Icon={<VscArrowLeft />} />;
+    }
+  };
+  const handelSubmiteThumbnail = async (dataFile: any) => {
+    let formData = new FormData();
+    if (dataFile) {
+      if (Channels[0]._id) {
+        formData.append("channelId", Channels[0]._id);
+      }
+      if (videoData.video_id) {
+        formData.append("videoId", videoData.video_id);
+      }
+      formData.append("thumbnail", dataFile);
+    }
+    await AxiosPostLogedInFormData(
+      "/api/post/video/create-new-thumbnail/",
+      formData
+    ).then(({ data }) => {
+      const { file }: any = data;
+      // if (Thumbnail.current) {
+      //   Thumbnail.current.style.backgroundImage = `url(${
+      //     process.env.NEXT_PUBLIC_BACK_END_URL +
+      //     "/api/get/read/images/" +
+      //     file.filename
+      //   })`;
+      // }
+    });
+  };
+  const HandelNext = () => {
+    alert(videoData.title);
+    if (videoData.title) {
+      if (firstStep == 0) {
+        setFirstStep(1);
+      } else if (firstStep == 1) {
+        setFirstStep(2);
+      }
     }
   };
   return (
     <div className={Style.container}>
+      <div className={Style.container_top_close}>
+        {" "}
+        <IconHeader
+          FuncOutSide={true}
+          MainFuncOutSide={() => {
+            dispatch(elementOverLaytRedcuerHide());
+          }}
+          Icon={<IoCloseOutline />}
+        />
+      </div>
+
       {Uploading && (
         <>
           {!Uploaded ? (
@@ -103,22 +154,23 @@ const UplaodFile = () => {
       >
         <div className={Style.main_top}>
           {topHeader()}
-          <BoldText text={"create"} />
-          <IconHeader
-            FuncOutSide={true}
-            MainFuncOutSide={() => {
-              dispatch(elementOverLaytRedcuerHide());
-            }}
-            Icon={<IoCloseOutline />}
-          />
+          {firstStep >= 0 && <BoldText text={"create"} />}
+          {firstStep >= 1 && (
+            <BlueButton HandelClick={HandelNext} Text={"Next"} />
+          )}
         </div>
-
-        {/* {Uploaded && (
+        {!Uploaded && (
           <UplaodFirstStep handelChangeInput={HandelSubmiteNewGeneral} />
-        )} */}
-        {/* {!Uploaded && <UplaodFirstStep2 VideoLink={VideoLink} />} */}
-
-        {videoLocation}
+        )}{" "}
+        {Uploaded && (
+          <UplaodFirstStep2
+            handelChangeInputImage={handelSubmiteThumbnail}
+            VideoLocation={videoLocation}
+            VideoLink={VideoLink}
+            Thumbnail={Thumbnail}
+            Step={firstStep}
+          />
+        )}
       </div>
     </div>
   );

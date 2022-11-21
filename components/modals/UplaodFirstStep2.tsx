@@ -5,8 +5,15 @@ import Style from "../../styles/modals/uplaod-first-step2.module.css";
 import ButtonAndInputAction from "./ButtonAndInputCopy";
 import SmallTextBlack from "./SmallTextBlack";
 import TextTilteInputMudum from "./text/TextTilteInputMudum";
+import Thump from "./Thump";
 
-const UplaodFirstStep2 = ({ VideoLink }: any) => {
+const UplaodFirstStep2 = ({
+  VideoLink,
+  VideoLocation,
+  handelChangeInputImage,
+  Thumbnail,
+  Step,
+}: any) => {
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
   const dispatch = useDispatch();
   const channelData = Channels[0];
@@ -55,7 +62,7 @@ const UplaodFirstStep2 = ({ VideoLink }: any) => {
               autoPlay
               muted
               loop
-              src="https://www.w3schools.com/html/mov_bbb.mp4"
+              src={VideoLocation}
             >
               your broswer does not Support videos
               <source type="video/mp4" />
@@ -77,17 +84,22 @@ const UplaodFirstStep2 = ({ VideoLink }: any) => {
           </div>
         </div>
 
+        {Step == 2 && <Thump />}
+        {Step == 1 && (
+          <>
+            <input
+              placeholder={"write your title here"}
+              className={Style.input}
+              onChange={handelChangeTitle}
+            />
+            <textarea
+              placeholder={"write your decreption here"}
+              className={Style.textarea}
+              onChange={handelChangeDesc}
+            />
+          </>
+        )}
         <div className={Style.second_container}>
-          <input
-            placeholder={"write your title here"}
-            className={Style.input}
-            onChange={handelChangeTitle}
-          />
-          <textarea
-            placeholder={"write your decreption here"}
-            className={Style.textarea}
-            onChange={handelChangeDesc}
-          />
           <ButtonAndInputAction
             Text={"Video link"}
             HandelClick={handelCopy}
