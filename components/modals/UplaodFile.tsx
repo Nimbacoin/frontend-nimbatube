@@ -13,8 +13,13 @@ import UplaodFirstStep2 from "./UplaodFirstStep2";
 import { VscArrowLeft } from "react-icons/vsc";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import IconHeader from "./IconHeader";
-import { elementOverLaytRedcuerHide } from "../../redux/style-slice/general-style/GenrealStyle";
+import {
+  elementOverLaytRedcuerHide,
+  poPUppRedcuer,
+} from "../../redux/style-slice/general-style/GenrealStyle";
 import BlueButton from "./BlueButton";
+import { socketReduxRecuder } from "../../redux/socket-slice/socketSlice";
+import basedPostUrlRequestLogedIn from "../../utils/basedPostUrlRequestLogedIn";
 
 const UplaodFile = () => {
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
@@ -35,7 +40,7 @@ const UplaodFile = () => {
   const [UploadingWait, setUploadingWait] = useState(false);
   const [UploadFinsh, setUploadFinsh] = useState(false);
   const [videoPath, setVideoPath] = useState("");
-  const [firstStep, setFirstStep] = useState(2);
+  const [firstStep, setFirstStep] = useState(0);
 
   const dispatch = useDispatch();
   const Router = useRouter();
@@ -52,7 +57,7 @@ const UplaodFile = () => {
       "/api/post/video/create-new-video/",
       formData
     ).then(({ data }) => {
-      console.log(data);
+      setFirstStep(1);
       const { file }: any = data;
       if (file) {
         setVideoLocation(file.location);
@@ -65,7 +70,7 @@ const UplaodFile = () => {
           })
         );
       }
-      setFirstStep(1);
+
       setFileName(file.filename);
       setVideoPath(file._id);
       setVideoLink(
@@ -113,14 +118,32 @@ const UplaodFile = () => {
       // }
     });
   };
+
+  const handelSubmiteVideos = async () => {
+    console.log(videoData);
+    await basedPostUrlRequestLogedIn(
+      "/api/post/video/submite-video/",
+      videoData
+    ).then(({ file }) => {
+      dispatch(poPUppRedcuer({ data: "new video uploaded" }));
+      setTimeout(() => {
+        dispatch(poPUppRedcuer({ data: "" }));
+      }, 5000);
+      // socketReduxRecuder.emit("notification", {
+      //   videoId: videoData?.video_id,
+      //   channelId: Channels[0]?._id,
+      // });
+    });
+  };
+
   const HandelNext = () => {
     alert(videoData.title);
+    if (videoData.title && firstStep >= 2) {
+      handelSubmiteVideos();
+      alert("edf");
+    }
     if (videoData.title) {
-      if (firstStep == 0) {
-        setFirstStep(1);
-      } else if (firstStep == 1) {
-        setFirstStep(2);
-      }
+      setFirstStep(firstStep + 1);
     }
   };
   return (

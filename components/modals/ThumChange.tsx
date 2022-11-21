@@ -1,24 +1,30 @@
-import React from "react";
-import Style from "../../styles/modals/thun-change.module.css";
-import BoldText from "./BoldText";
-import { IoImagesOutline } from "@react-icons/all-files/io5/IoImagesOutline";
-import SkinyGrayText from "./SkinyGrayText";
+import Style from "../../styles/modals/thum-change.module.css";
 
-const ThumChange = ({ handelChangeInputImage }: any) => {
-  const text =
-    "By submitting your videos to Nimbatube, you acknowledge that you agree to Nimbatube's Terms of Service and Community Guidelines. Please make sure that you do not violate others' copyright or privacy rights. Learn more";
-  const handelChange = (e: any) => {
-    if (e.target.files && e.target.files[0]) {
-      handelChangeInputImage(e.target.files[0]);
-    }
-  };
+const VideoMainDemosData = ({ Thumbnail }: any) => {
   return (
-    <div className={Style.container_bottom}>
-      <div className={Style.div_img}>
-        
+    <div className={Style.main_container}>
+      <div
+        style={{
+          backgroundImage: `url(${
+            Thumbnail &&
+            process.env.NEXT_PUBLIC_BACK_END_URL +
+              "/api/get/read/images/" +
+              Thumbnail
+          })`,
+        }}
+        className={Style.vedio_container}
+      ></div>
+      <div className={Style.desc_container}>
+        {/* <div className={Style.chanel_data}>
+          <div className={Style.chanel_img}></div>
+        </div> */}
+        {/* <div className={Style.title_data}>
+          <div className={Style.big_bar}></div>
+          <div className={Style.small_bar}></div>
+        </div> */}
       </div>
     </div>
   );
 };
 
-export default ThumChange;
+export default VideoMainDemosData;

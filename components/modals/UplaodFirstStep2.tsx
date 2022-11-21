@@ -5,6 +5,7 @@ import Style from "../../styles/modals/uplaod-first-step2.module.css";
 import ButtonAndInputAction from "./ButtonAndInputCopy";
 import SmallTextBlack from "./SmallTextBlack";
 import TextTilteInputMudum from "./text/TextTilteInputMudum";
+import ThumChange from "./ThumChange";
 import Thump from "./Thump";
 
 const UplaodFirstStep2 = ({
@@ -83,8 +84,18 @@ const UplaodFirstStep2 = ({
             </div>
           </div>
         </div>
-        {Thumbnail}
-        {Step == 2 && <Thump handelChangeInputImage={handelChangeInputImage} />}
+
+        {}
+
+        {Step == 2 && (
+          <>
+            {Thumbnail ? (
+              <ThumChange Thumbnail={Thumbnail} />
+            ) : (
+              <Thump handelChangeInputImage={handelChangeInputImage} />
+            )}
+          </>
+        )}
         {Step == 1 && (
           <>
             <input

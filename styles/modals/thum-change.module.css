@@ -1,0 +1,96 @@
+.main_container {
+  height: auto;
+  flex-basis: 100%;
+  width: 100%;
+  padding: 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  row-gap: 10px;
+  /* background-color: red; */
+}
+
+.vedio_container {
+  width: 200px;
+  
+  aspect-ratio: 1.5 / 1;
+  /* height: 50vw; */
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  position: relative;
+  background-color: #cacacae8;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg_container {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.desc_container {
+  width: 95%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  cursor: pointer;
+  column-gap: 0px;
+  margin: 0 auto;
+}
+
+.chanel_data {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 10px;
+  width: 30%;
+}
+.chanel_img {
+  height: 40px;
+  width: 40px;
+
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #e3e3e3;
+}
+
+.title_data {
+  min-width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  row-gap: 10px;
+}
+.small_bar {
+  width: 80%;
+  height: 15px;
+  background-color: #e3e3e3;
+  border-radius: 20px;
+}
+.big_bar {
+  background-color: #e3e3e3;
+  width: 90%;
+  height: 20px;
+  border-radius: 20px;
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -800px 0;
+  }
+  100% {
+    background-position: 800px 0;
+  }
+}
