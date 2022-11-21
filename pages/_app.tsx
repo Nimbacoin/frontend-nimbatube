@@ -8,7 +8,7 @@ import SocketHandler from "../libs/socket";
 import { Web3ReactProvider } from "@web3-react/core";
 import Web3 from "web3";
 
-function getLibrary(provider) {
+function getLibrary(provider:any) {
   return new Web3(provider);
 }
 function MyApp({ Component, pageProps }: AppProps) {
