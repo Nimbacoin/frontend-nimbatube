@@ -9,12 +9,13 @@ import PhoneBarOpen from "./PhoneBarOpen";
 import { useDispatch, useSelector } from "react-redux";
 import { phoneBarOpenRedcuerHide } from "../../redux/style-slice/general-style/GenrealStyle";
 import TextTilteInputMudum from "./text/TextTilteInputMudum";
+import { useRouter } from "next/router";
 const ButtonLive = () => {
   const HandelClick = () => {
-    setShowDiv(true);
     HandelDescreptionToggle();
     // document.body.style.overflow = "hidden";
   };
+  const Router = useRouter();
 
   const [showDiv, setShowDiv] = useState(false);
   const phoneBarOpen = useSelector(
@@ -74,25 +75,40 @@ const ButtonLive = () => {
   const mainContainerRef = React.useRef<HTMLDivElement | null>(null);
   const animatedRef = React.useRef<HTMLDivElement | null>(null);
   const animatedRefFixed = React.useRef<HTMLDivElement | null>(null);
+  const HandelClickElemt = (ele: string) => {
+    if (ele === "upload") {
+      Router.push("/upload");
+    } else if ("live") {
+      Router.push("/go-live/go-live");
+    }
+    HandelClick();
+  };
   return (
     <>
       {phoneBarOpen && (
         <PhoneBarOpen>
           <div className={Style.container_icons}>
-            <Link href="/upload">
-              <div className={Style.container_icon}>
-                <div className={Style.icon}></div>
-                {/* <SmallTextBlack Text={"upload"} /> */}
-                <TextTilteInputMudum Text={"upload"} />
-              </div>
-            </Link>
-            <Link href="/go-live/go-live">
-              <div className={Style.container_icon_2}>
-                <div className={Style.icon}></div>
-                {/* <SmallTextBlack Text={"go live"} /> */}
-                <TextTilteInputMudum Text={"go live"} />
-              </div>
-            </Link>
+            <div
+              onClick={() => {
+                HandelClickElemt("upload");
+              }}
+              className={Style.container_icon}
+            >
+              <div className={Style.icon}></div>
+              {/* <SmallTextBlack Text={"upload"} /> */}
+              <TextTilteInputMudum Text={"upload"} />
+            </div>
+
+            <div
+              onClick={() => {
+                HandelClickElemt("live");
+              }}
+              className={Style.container_icon_2}
+            >
+              <div className={Style.icon}></div>
+              {/* <SmallTextBlack Text={"go live"} /> */}
+              <TextTilteInputMudum Text={"go live"} />
+            </div>
           </div>
         </PhoneBarOpen>
       )}
