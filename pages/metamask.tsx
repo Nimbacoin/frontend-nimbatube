@@ -21,14 +21,8 @@ const wallet = () => {
   };
   return (
     <div>
-      {/* {injected} */}
-      <button onClick={connect}>connect</button>
+      <button onClick={connect}>connect metamask</button>
       <br />
-      <button>not connect</button>
-      <br />
-      {active ? "active with" + account : "not connected"}
-      <br />
-      <button onClick={deconnect}>deconnect</button>
     </div>
   );
 };

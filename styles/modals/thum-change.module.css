@@ -5,16 +5,13 @@
   padding: 0%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
-  row-gap: 10px;
-  /* background-color: red; */
 }
 
 .vedio_container {
   width: 200px;
-  
   aspect-ratio: 1.5 / 1;
   /* height: 50vw; */
   background-size: cover;

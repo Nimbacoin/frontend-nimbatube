@@ -33,7 +33,7 @@ const coinbase = () => {
   }, [askUser]);
   return (
     <div>
-      <button onClick={hsd}>zxzxzxzxzx</button>
+      <button onClick={hsd}>connect coinbase</button>
     </div>
   );
 };
