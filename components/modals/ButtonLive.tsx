@@ -11,9 +11,9 @@ import { phoneBarOpenRedcuerHide } from "../../redux/style-slice/general-style/G
 import TextTilteInputMudum from "./text/TextTilteInputMudum";
 const ButtonLive = () => {
   const HandelClick = () => {
-    setShowDiv(!showDiv);
+    setShowDiv(true);
     HandelDescreptionToggle();
-    document.body.style.overflow = "hidden";
+    // document.body.style.overflow = "hidden";
   };
 
   const [showDiv, setShowDiv] = useState(false);
@@ -21,10 +21,13 @@ const ButtonLive = () => {
     (state: any) => state.GenrealStyle.phoneBarOpen
   );
   useEffect(() => {
-    if (showDiv) {
-      document.body.style.overflow = "hidden";
-    } else if (!showDiv) {
+    if (!phoneBarOpen) {
       document.body.style.overflow = "auto";
+      console.log(document.body.style.overflow);
+    }
+    if (phoneBarOpen) {
+      document.body.style.overflow = "hidden";
+      console.log(document.body.style.overflow);
     }
   });
   const dispatch = useDispatch();
