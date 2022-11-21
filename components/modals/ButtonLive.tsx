@@ -20,7 +20,7 @@ const ButtonLive = () => {
   const phoneBarOpen = useSelector(
     (state: any) => state.GenrealStyle.phoneBarOpen
   );
-  useEffce(() => {
+  useEffect(() => {
     if (showDiv) {
       document.body.style.overflow = "hidden";
     } else {
