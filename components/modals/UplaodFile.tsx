@@ -35,7 +35,7 @@ const UplaodFile = () => {
   const [UploadingWait, setUploadingWait] = useState(false);
   const [UploadFinsh, setUploadFinsh] = useState(false);
   const [videoPath, setVideoPath] = useState("");
-  const [firstStep, setFirstStep] = useState(0);
+  const [firstStep, setFirstStep] = useState(2);
 
   const dispatch = useDispatch();
   const Router = useRouter();
@@ -103,6 +103,7 @@ const UplaodFile = () => {
       formData
     ).then(({ data }) => {
       const { file }: any = data;
+      setThumbnail(file.filename);
       // if (Thumbnail.current) {
       //   Thumbnail.current.style.backgroundImage = `url(${
       //     process.env.NEXT_PUBLIC_BACK_END_URL +

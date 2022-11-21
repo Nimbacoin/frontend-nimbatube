@@ -101,7 +101,7 @@ const VideoWatchLater = ({ VideoData }: any) => {
           </p>
         </div>
         <p className={Style.chanel_followers}>
-          {VideoData?.videoData?.descreption.slice(0, 50)}
+          {VideoData?.videoData?.descreption?.slice(0, 50)}
         </p>
       </div>
       <div className={Style.right_container}>

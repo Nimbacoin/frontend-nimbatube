@@ -83,8 +83,8 @@ const UplaodFirstStep2 = ({
             </div>
           </div>
         </div>
-
-        {Step == 2 && <Thump />}
+        {Thumbnail}
+        {Step == 2 && <Thump handelChangeInputImage={handelChangeInputImage} />}
         {Step == 1 && (
           <>
             <input
@@ -97,16 +97,16 @@ const UplaodFirstStep2 = ({
               className={Style.textarea}
               onChange={handelChangeDesc}
             />
+            <div className={Style.second_container}>
+              <ButtonAndInputAction
+                Text={"Video link"}
+                HandelClick={handelCopy}
+                CopyValue={VideoLink}
+                ButtonTextValue={"copy"}
+              />
+            </div>
           </>
         )}
-        <div className={Style.second_container}>
-          <ButtonAndInputAction
-            Text={"Video link"}
-            HandelClick={handelCopy}
-            CopyValue={VideoLink}
-            ButtonTextValue={"copy"}
-          />
-        </div>
       </div>
     </div>
   );
