@@ -65,7 +65,7 @@ const UplaodFile = () => {
           })
         );
       }
-      setFirstStep("1");
+      setFirstStep(1);
       setFileName(file.filename);
       setVideoPath(file._id);
       setVideoLink(
