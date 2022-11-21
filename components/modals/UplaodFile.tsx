@@ -154,7 +154,7 @@ const UplaodFile = () => {
       >
         <div className={Style.main_top}>
           {topHeader()}
-          {firstStep >= 0 && <BoldText text={"create"} />}
+          {firstStep >= 1 && <BoldText text={"create"} />}
           {firstStep >= 1 && (
             <BlueButton HandelClick={HandelNext} Text={"Next"} />
           )}
