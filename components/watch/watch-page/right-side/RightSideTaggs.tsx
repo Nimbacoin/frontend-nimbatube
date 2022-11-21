@@ -53,8 +53,10 @@ const RightSideTaggs = () => {
     if (divContainer.current) {
       if (divContainer.current.scrollLeft >= 1) {
         setScrollZero(true);
+        divContainer.current.style.width = "80%";
       } else {
         setScrollZero(false);
+        divContainer.current.style.width = "90%";
       }
     }
   }, [scrollValue]);

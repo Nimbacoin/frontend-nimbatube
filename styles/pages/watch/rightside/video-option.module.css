@@ -6,10 +6,11 @@
   align-items: flex-start;
   justify-content: space-between;
   column-gap: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .container:hover {
-  background-color: #f2f2f231;
+  background-color: #f2f2f279;
+  border: 1px solid #0303032f;
 }
 .container:focus {
   background-color: #030303;
