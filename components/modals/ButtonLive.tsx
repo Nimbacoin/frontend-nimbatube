@@ -23,10 +23,10 @@ const ButtonLive = () => {
   useEffect(() => {
     if (showDiv) {
       document.body.style.overflow = "hidden";
-    } else {
+    } else if (!showDiv) {
       document.body.style.overflow = "auto";
     }
-  }, [showDiv]);
+  });
   const dispatch = useDispatch();
   const HandelDescreptionToggle = () => {
     dispatch(phoneBarOpenRedcuerHide());
