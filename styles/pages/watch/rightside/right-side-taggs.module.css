@@ -28,11 +28,11 @@
 .span {
   max-height: 30px;
   font-size: 14px;
-  border: 1px solid #d4d4d4;
+  /* border: 1px solid #d4d4d4; */
   color: #030303;
   cursor: pointer;
-  border-radius: 20px;
-  padding: 2.5px 10px;
+  border-radius: 10px;
+  padding: 5px 15px;
   background-color: #ececec;
   margin-top: 0px;
   clear: both;
@@ -42,15 +42,17 @@
   justify-content: center;
   white-space: nowrap;
   text-align: center;
+  font-weight: 400;
 }
 .active_span {
   max-height: 30px;
   font-size: 14px;
+  font-weight: 400;
   border: 1px solid #030303;
   color: #ffff;
   cursor: pointer;
-  border-radius: 20px;
-  padding: 2.5px 10px;
+  border-radius: 10px;
+  padding: 5px 15px;
   background-color: #030303;
   margin-top: 0px;
   clear: both;
