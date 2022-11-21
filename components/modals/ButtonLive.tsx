@@ -13,6 +13,7 @@ const ButtonLive = () => {
   const HandelClick = () => {
     setShowDiv(!showDiv);
     HandelDescreptionToggle();
+    document.body.style.overflow = "hidden";
   };
 
   const [showDiv, setShowDiv] = useState(false);
