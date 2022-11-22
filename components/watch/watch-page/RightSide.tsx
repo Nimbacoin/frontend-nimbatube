@@ -12,18 +12,31 @@ import RightSideTaggs from "./right-side/RightSideTaggs";
 import VideoOption from "./right-side/VideoOption";
 
 import AllVideosBeforLoad from "../../modals/pages-boforload/AllVideosBeforLoad";
+import { nextVideoReducer } from "../../../redux/video-slice/VideoSlice";
+import { useDispatch } from "react-redux";
 
 const RightSide = () => {
+  const dipatch = useDispatch();
   const { asPath } = useRouter();
   const [videos, setVideos] = useState([]);
   const [streamingVideo, setStreamingVideo] = useState(false);
   useEffect(() => {
     const locaFetch = async () => {
+      let Params = new URL(window.location.href).searchParams;
+      const video: string | null = Params.get("video");
+
       const dataRes: any = await allVideosFetch(0);
       setVideos(dataRes.responseData);
+      if (dataRes?.responseData?.length >= 1) {
+        const newVideo = dataRes?.responseData.filter(
+          ({ videoData }: any) => videoData._id === video
+        );
+        console.log(newVideo);
+        dipatch(nextVideoReducer("sd"));
+      }
     };
     locaFetch();
-  }, []);
+  }, [asPath]);
 
   useEffect(() => {
     let Params = new URL(window.location.href).searchParams;

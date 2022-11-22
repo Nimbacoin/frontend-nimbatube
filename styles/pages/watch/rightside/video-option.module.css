@@ -10,7 +10,6 @@
 }
 .container:hover {
   background-color: #f2f2f279;
-  border: 1px solid #0303032f;
 }
 .container:focus {
   background-color: #030303;
@@ -184,18 +183,13 @@
 .icon,
 .icon_phone {
   padding: 8px;
-  background-color: red;
   border-radius: 50%;
 }
-.right_container {
-  padding: 20px;
-  background-color: red;
+.icon:hover,
+.icon_phone:hover {
+  background-color: #ececec;
 }
-/* .right_container:last-of-type {
-  margin-left: auto;
-  padding: 20px;
-  background-color: red;
-} */
+
 @media screen and (max-width: 1149px) {
   .container {
     flex-basis: 49.5%;
