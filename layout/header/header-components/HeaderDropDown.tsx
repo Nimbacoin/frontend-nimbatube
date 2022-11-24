@@ -3,7 +3,7 @@ import Style from "../../../styles/layout/header/header-compnents/header-drop-do
 import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOutline";
 import { IoPersonOutline } from "@react-icons/all-files/io5/IoPersonOutline";
 import { IoPeopleOutline } from "@react-icons/all-files/io5/IoPeopleOutline";
-import { IoRibbonOutline } from "@react-icons/all-files/io5/IoRibbonOutline";
+import { IoWalletOutline } from "@react-icons/all-files/io5/IoWalletOutline";
 import { IoSettingsOutline } from "@react-icons/all-files/io5/IoSettingsOutline";
 import { IoMdHelpCircleOutline } from "@react-icons/all-files/io/IoMdHelpCircleOutline";
 import { IoLogOutOutline } from "@react-icons/all-files/io5/IoLogOutOutline";
@@ -91,9 +91,9 @@ const HeaderDropDown = () => {
       classname: Style.link_container,
     },
     {
-      name: "nimbatube premium",
-      link: "/premium",
-      icon: <IoRibbonOutline />,
+      name: "wallet",
+      link: "/wallet",
+      icon: <IoWalletOutline />,
       classname: Style.link_container,
     },
     {

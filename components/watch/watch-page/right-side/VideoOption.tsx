@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 
 const VideoOption = ({ VideoData, Key }: any) => {
   const mediaContainer = React.useRef<HTMLDivElement>(null);
+  const videoContainer = React.useRef<HTMLVideoElement>(null);
   const Router = useRouter();
   const HandelIsOverVideoLeave = () => {
     setIsOverVideo(false);
@@ -53,12 +54,21 @@ const VideoOption = ({ VideoData, Key }: any) => {
     };
     window.addEventListener("mouseover", handelClick);
   });
+  useEffect(() => {
+    if (videoContainer.current) {
+      videoContainer.current.playbackRate = 5;
+    }
+  }, [videoContainer.current]);
+
+  //playbackRate = 1.25;
+
   return (
     <div key={Key} onClick={handelClickhh} className={Style.container}>
       <div
         className={Style.video_container}
         onMouseOver={HandelIsOverVideoOver}
         onMouseLeave={HandelIsOverVideoLeave}
+        ref={mediaContainer}
       >
         {!IsOverVideo ? (
           <div
@@ -72,7 +82,14 @@ const VideoOption = ({ VideoData, Key }: any) => {
             </p>
           </div>
         ) : (
-          <video width="100%" height="30px" autoPlay muted loop>
+          <video
+            ref={videoContainer}
+            width="100%"
+            height="30px"
+            autoPlay
+            muted
+            loop
+          >
             <source src={VideoData?.videoData?.location} type="video/mp4" />
           </video>
         )}

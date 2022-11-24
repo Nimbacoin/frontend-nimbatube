@@ -61,7 +61,6 @@ const VideoTag = () => {
       videoTag.current.src !== ResDD?.responseData?.location
     ) {
       videoTag.current.src = ResDD?.responseData?.location;
-      
     }
   }, [asPath, ResDD]);
 
@@ -201,6 +200,11 @@ const VideoTag = () => {
       }
     }
   }
+  // useEffect(() => {
+  //   if (videoTag.current) {
+  //     videoTag.current.playbackRate = 5;
+  //   }
+  // }, [videoTag.current]);
   return (
     <>
       <div className={Style.hiddenDiv} ref={hiddenDiv}></div>
