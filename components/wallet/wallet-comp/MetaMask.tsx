@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import { injected } from "../utils/wallet-comp/connector";
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "../../../utils/wallet/connector";
@@ -13,7 +13,22 @@ const MetaMask = () => {
       console.log("SD");
     }
   };
-  connect();
+  const desconnect = async () => {
+    try {
+      await deactivate();
+    } catch (erro) {
+      console.log("SD");
+    }
+  };
+
+  useEffect(() => {
+    connect();
+    // setTimeout(() => {
+    //   alert("time to desconnect ");
+    //   desconnect();
+    // }, 10000);
+  }, []);
+
   return <div></div>;
 };
 

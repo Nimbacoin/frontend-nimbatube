@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import Style from "../../../styles/pages/wallet/wallet-comp/WalletsConntent.module.css";
 import SmallTextBlack from "../../modals/SmallTextBlack";
+import CoinBase from "./CoinBase";
 import MetaMask from "./MetaMask";
 
 const WalletsConntent = () => {
   const ContainerWlt = React.useRef<HTMLDivElement | null>(null);
   const [metaMakeB, seTMetaMaskb] = useState(false);
+  const [coinBaseB, setCoinBase] = useState(false);
   const HandelConnectMt = (e: any) => {
     seTMetaMaskb(!metaMakeB);
+  };
+  const HandelConnectCB = (e: any) => {
+    setCoinBase(!coinBaseB);
   };
   const wallets = [
     {
@@ -15,13 +20,18 @@ const WalletsConntent = () => {
       img: "/images/metamask.png",
       HandelConnect: HandelConnectMt,
     },
-    { name: "coinbase", img: "/images/coinbase.png" },
+    {
+      name: "coinbase",
+      img: "/images/coinbase.png",
+      HandelConnect: HandelConnectCB,
+    },
     { name: "trustwallet", img: "/images/trustwallet.png" },
   ];
 
   return (
     <div ref={ContainerWlt} className={Style.container}>
       {metaMakeB && <MetaMask />}
+      {coinBaseB && <CoinBase />}
       {/* <MetaMask /> */}
       {wallets.map(({ name, img, HandelConnect }, index) => (
         <div
