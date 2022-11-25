@@ -26,9 +26,10 @@ const CoinBase = () => {
     );
 
     if (askUser) {
-      ethereum
-        .request({ method: "eth_requestAccounts" })
-        .then((response) => console.log(response));
+      //   ethereum
+      //     .request({ method: "eth_requestAccounts" })
+      //     .then((response) => console.log(response));
+      ethereum.request({ method: "eth_requestAccounts" });
     }
   }, [askUser]);
   useEffect(() => {
