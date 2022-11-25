@@ -10,6 +10,11 @@
   padding: 8px 5px;
   background-color: #000;
   margin-top: 0px;
+  cursor: pointer;
+}
+.follow_button_black:hover{
+  background-color: rgba(32, 29, 29, 0.823);
+
 }
 .blue_button {
   font-size: 14px;
@@ -50,4 +55,53 @@
 }
 .blue_button:hover {
   background-color: #f7b500;
+}
+
+.ripple_button {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #030303;
+  cursor: pointer;
+  min-width: 100px;
+  border-radius: 20px;
+  padding: 6px 5px;
+  background-color: #fbbd18;
+  margin-top: 0px;
+  border: 1px solid #fbbe1800;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.ripple_button > .ripple {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background: #63a4ff;
+  display: block;
+  content: "";
+  border-radius: 9999px;
+  opacity: 1;
+  animation: 0.9s ease 1 forwards ripple_effect;
+}
+
+@keyframes ripple_effect {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(10);
+    opacity: 0.375;
+  }
+  100% {
+    transform: scale(35);
+    opacity: 0;
+  }
+}
+
+.ripple_button > .content {
+  position: relative;
+  z-index: 2;
 }
