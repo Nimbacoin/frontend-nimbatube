@@ -89,8 +89,15 @@
 .icon_control > svg,
 .icon_control_1000 > svg {
   color: #fff;
-  font-size: 30px;
+
   cursor: pointer;
+}
+.icon_control > svg {
+  font-size: 32px;
+}
+
+.icon_control_1000 > svg {
+  font-size: 26px;
 }
 
 .other_controls {
