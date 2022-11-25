@@ -5,10 +5,8 @@ import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
 import moment from "moment";
-import { useRouter } from "next/router";
 
 const Descreption = ({ VideoData }: any) => {
-  const { asPath } = useRouter();
   const videoData = useSelector(
     (state: any) => state.VideoSlice.mainVideoDataWatch?.responseData
   );
@@ -16,24 +14,21 @@ const Descreption = ({ VideoData }: any) => {
   const DescreptionBoolean = useSelector(
     (state: any) => state.MainVideo.DescreptionBoolean
   );
-  const [mainTexDesc, setMainTexDesc] = useState("");
-  useEffect(() => {
-    setMainTexDesc(VideoData?.descreption?.slice(0, 350));
-  }, [VideoData, asPath]);
+  const [mainTexDesc, setMainTexDesc] = useState(
+    videoData?.descreption?.slice(0, 350)
+  );
   const dispatch = useDispatch();
   const HandelDescreptionToggle = () => {
-    if (DescreptionBoolean) {
-      dispatch(ToggleDescreption());
-    }
+    dispatch(ToggleDescreption());
   };
-  const Title = VideoData?.title;
+  const Title = videoData?.title;
   // const videoRef = useRef<HTMLVideoElement>(null);
   const Bg = "/images/default-profile.png";
   var check = moment(VideoData?.createdAt, "YYYY/MM/DD");
   var month = check.format("M");
   var year = check.format("YYYY");
   const handelShowAllDesc = () => {
-    setMainTexDesc(VideoData?.descreption);
+    setMainTexDesc(videoData?.descreption);
   };
   return (
     <div
@@ -70,7 +65,7 @@ const Descreption = ({ VideoData }: any) => {
           </p>
           <p className={Style.video_data_items}>
             <strong className={Style.strong_data}>
-              {moment(VideoData?.createdAt).startOf("hour").fromNow()}
+              {moment(videoData?.createdAt).startOf("hour").fromNow()}
             </strong>
             <small className={Style.small_data}>{year}</small>
           </p>
@@ -79,7 +74,7 @@ const Descreption = ({ VideoData }: any) => {
       <div className={Style.descreption_text_container}>
         <p className={Style.descreption_text}>{mainTexDesc}</p>
       </div>
-      {VideoData?.descreption?.length >= 351 && (
+      {videoData?.descreption?.length >= 351 && (
         <button onClick={handelShowAllDesc} className={Style.desc_button}>
           Show More
         </button>
