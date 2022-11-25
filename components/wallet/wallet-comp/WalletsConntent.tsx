@@ -6,7 +6,7 @@ import MetaMask from "./MetaMask";
 
 const WalletsConntent = () => {
   const ContainerWlt = React.useRef<HTMLDivElement | null>(null);
-  const [metaMakeB, seTMetaMaskb] = useState(true);
+  const [metaMakeB, seTMetaMaskb] = useState(false);
   const [coinBaseB, setCoinBase] = useState(false);
   const HandelConnectMt = (e: any) => {
     seTMetaMaskb(!metaMakeB);
