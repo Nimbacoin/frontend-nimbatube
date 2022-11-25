@@ -19,7 +19,9 @@ const Descreption = ({ VideoData }: any) => {
   );
   const dispatch = useDispatch();
   const HandelDescreptionToggle = () => {
-    dispatch(ToggleDescreption());
+    if (DescreptionBoolean) {
+      dispatch(ToggleDescreption());
+    }
   };
   const Title = VideoData?.title;
   // const videoRef = useRef<HTMLVideoElement>(null);
