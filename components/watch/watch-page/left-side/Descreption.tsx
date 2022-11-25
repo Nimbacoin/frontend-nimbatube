@@ -5,8 +5,10 @@ import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
 import moment from "moment";
+import { useRouter } from "next/router";
 
 const Descreption = ({ VideoData }: any) => {
+  const { asPath } = useRouter();
   const videoData = useSelector(
     (state: any) => state.VideoSlice.mainVideoDataWatch?.responseData
   );
@@ -14,9 +16,10 @@ const Descreption = ({ VideoData }: any) => {
   const DescreptionBoolean = useSelector(
     (state: any) => state.MainVideo.DescreptionBoolean
   );
-  const [mainTexDesc, setMainTexDesc] = useState(
-    VideoData?.descreption?.slice(0, 350)
-  );
+  const [mainTexDesc, setMainTexDesc] = useState("");
+  useEffect(() => {
+    setMainTexDesc(VideoData?.descreption?.slice(0, 350));
+  }, [VideoData, asPath]);
   const dispatch = useDispatch();
   const HandelDescreptionToggle = () => {
     if (DescreptionBoolean) {

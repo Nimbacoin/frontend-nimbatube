@@ -12,19 +12,19 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-evenly;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   row-gap: 10px;
 }
 
 .vedio_container {
   height: 100px;
-  width: 40%;
+  width: 47%;
   background-size: cover;
   background-position: center;
   cursor: pointer;
   position: relative;
   background-color: #e3e3e3;
-  margin: 0 auto;
+  margin: 0;
   border-radius: 10px;
   animation-duration: 5s;
   animation-fill-mode: forwards;
