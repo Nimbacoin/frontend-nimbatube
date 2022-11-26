@@ -22,7 +22,40 @@ import {
   playListRedcuer,
 } from "../../../../redux/style-slice/general-style/GenrealStyle";
 import GoogleIcon from "../../../modals/GoogleIcon";
+export const ContainerEffectedClick = ({ children, style, Stylied }: any) => {
+  const handelUp = () => {
+    if (Ref.current) {
+      Ref.current.className = Style.container_normal;
+    }
+  };
+  const handelDown = () => {
+    if (Ref.current) {
+      Ref.current.className = Style.container_clicked;
+      setTimeout(() => {
+        if (Ref.current) {
+          Ref.current.className = Style.thum_left_1;
+        }
+      }, 500);
+    }
+  };
+  const Ref = React.useRef<HTMLDivElement | null>(null);
 
+  return (
+    <div
+      onClick={handelDown}
+      onMouseUp={handelUp}
+      ref={Ref}
+      className={Style.thum_left_1}
+      style={style}
+    >
+      {Stylied ? (
+        <div className={Style.container_stylied}> {children}</div>
+      ) : (
+        <div className={Style.container_defualt}> {children}</div>
+      )}
+    </div>
+  );
+};
 const VideoInfo = ({ ActiveVideoStream }: any) => {
   const videoData = useSelector(
     (state: any) => state.VideoSlice.mainVideoDataWatch?.responseData
@@ -98,7 +131,10 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
     <div className={Style.icons_container}>
       <div className={Style.continer_second}>
         <div className={Style.container_thmp}>
-          <div className={Style.thum_left}>
+          <ContainerEffectedClick
+            Stylied={true}
+            style={{ borderRadius: "20px 0 0 20px" }}
+          >
             <p className={Style.icon_1} onClick={HandelLike}>
               {IsLiked ? (
                 <GoogleIcon Fill={true} IconName={"thumb_up_off"} />
@@ -107,8 +143,11 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
               )}
               <span className={Style.nubmer_of_likes}>{videoLikes}</span>
             </p>
-          </div>
-          <div className={Style.thum_left}>
+          </ContainerEffectedClick>
+          <ContainerEffectedClick
+            Stylied={true}
+            style={{ borderRadius: "0px 20px 20px 0" }}
+          >
             <p className={Style.icon_2} onClick={HandelDisLike}>
               {IsDisLiked ? (
                 <GoogleIcon Fill={true} IconName={"thumb_down_off"} />
@@ -117,7 +156,7 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
               )}
               {/* <span className={Style.disLike}> {videoDisLikes}</span> */}
             </p>
-          </div>
+          </ContainerEffectedClick>
         </div>
         <div className={Style.container__right}>
           {!ActiveVideoStream && (

@@ -4,6 +4,7 @@ import { IoEllipsisVerticalSharp } from "@react-icons/all-files/io5/IoEllipsisVe
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 import moment from "moment";
 import { useRouter } from "next/router";
+import { ContainerEffectedClick } from "../left-side/VideoInfo";
 
 const VideoOption = ({ VideoData, Key }: any) => {
   const mediaContainer = React.useRef<HTMLDivElement>(null);
@@ -64,64 +65,68 @@ const VideoOption = ({ VideoData, Key }: any) => {
 
   return (
     <div key={Key} onClick={handelClickhh} className={Style.container}>
-      <div
-        className={Style.video_container}
-        onMouseOver={HandelIsOverVideoOver}
-        onMouseLeave={HandelIsOverVideoLeave}
-        ref={mediaContainer}
-      >
-        {!IsOverVideo ? (
+      <ContainerEffectedClick style={{ borderRadius: "10px" }}>
+        <div className={Style.container_secend}>
           <div
-            style={{
-              backgroundImage: `url(${Bg})`,
-            }}
-            className={Style.video_container_img}
+            className={Style.video_container}
+            onMouseOver={HandelIsOverVideoOver}
+            onMouseLeave={HandelIsOverVideoLeave}
+            ref={mediaContainer}
           >
-            <p className={Style.time}>
-              {VideoData?.videoData?.duration} <IoVideocamOutline />{" "}
-            </p>
+            {!IsOverVideo ? (
+              <div
+                style={{
+                  backgroundImage: `url(${Bg})`,
+                }}
+                className={Style.video_container_img}
+              >
+                <p className={Style.time}>
+                  {VideoData?.videoData?.duration} <IoVideocamOutline />{" "}
+                </p>
+              </div>
+            ) : (
+              <video
+                ref={videoContainer}
+                width="100%"
+                height="30px"
+                autoPlay
+                muted
+                loop
+              >
+                <source src={VideoData?.videoData?.location} type="video/mp4" />
+              </video>
+            )}
           </div>
-        ) : (
-          <video
-            ref={videoContainer}
-            width="100%"
-            height="30px"
-            autoPlay
-            muted
-            loop
-          >
-            <source src={VideoData?.videoData?.location} type="video/mp4" />
-          </video>
-        )}
-      </div>
-      <div className={Style.chanel_data}>
-        <h3 className={Style.title}>
-          {Title}
-          <span className={Style.icon_phone}>
+          <div className={Style.chanel_data}>
+            <h3 className={Style.title}>
+              {Title}
+              <span className={Style.icon_phone}>
+                <IoEllipsisVerticalSharp />
+              </span>
+            </h3>
+            <div className={Style.chanel_data_container}>
+              <div
+                style={{ backgroundImage: `url(${BgP})` }}
+                className={Style.chanel_img}
+              ></div>
+              <p className={Style.chanel_details}>
+                <span className={Style.chanel_name}>
+                  {VideoData?.channelData?.channelData?.name}
+                </span>
+                <span className={Style.date}>
+                  {VideoData?.videoData?.views?.length} views -{" "}
+                  {moment(VideoData?.videoData?.createdAt)
+                    .startOf("hour")
+                    .fromNow()}
+                </span>
+              </p>
+            </div>
+          </div>
+          <span ref={InputSearch} className={Style.icon}>
             <IoEllipsisVerticalSharp />
           </span>
-        </h3>
-        <div className={Style.chanel_data_container}>
-          <div
-            style={{ backgroundImage: `url(${BgP})` }}
-            className={Style.chanel_img}
-          ></div>
-          <p className={Style.chanel_details}>
-            <span className={Style.chanel_name}>
-              {VideoData?.channelData?.channelData?.name}
-            </span>
-            <span className={Style.date}>
-              {VideoData?.videoData?.views?.length} views -{" "}
-              {moment(VideoData?.videoData?.createdAt)
-                .startOf("hour")
-                .fromNow()}
-            </span>
-          </p>
         </div>
-      </div>
-      <span ref={InputSearch} className={Style.icon}>
-        <IoEllipsisVerticalSharp />
-      </span>
+      </ContainerEffectedClick>
     </div>
   );
 };

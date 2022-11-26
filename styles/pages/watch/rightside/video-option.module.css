@@ -1,6 +1,8 @@
 .container {
   width: 100%;
   height: auto;
+}
+.container_secend {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -8,16 +10,6 @@
   column-gap: 5px;
   border-radius: 10px;
 }
-.container:hover {
-  background-color: #f2f2f279;
-}
-.container:focus {
-  background-color: #030303;
-}
-.container::focus {
-  background-color: #030303;
-}
-
 .video_container {
   width: 60%;
   height: 100px;
@@ -190,108 +182,3 @@
   background-color: #ececec;
 }
 
-@media screen and (max-width: 1149px) {
-  .container {
-    flex-basis: 49.5%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    column-gap: 5px;
-  }
-  .video_container {
-    width: 100%;
-  }
-  .title {
-    width: 100%;
-  }
-  .icon {
-    display: none;
-  }
-
-  .icon_phone {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: flex-end;
-    text-align: end;
-    cursor: pointer;
-    color: #030303;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-  }
-  .chanel_data {
-    width: 100%;
-  }
-  .chanel_img {
-    height: 40px;
-    width: 40px;
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    border-radius: 50%;
-    display: block;
-  }
-}
-@media screen and (max-width: 900px) {
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    column-gap: 5px;
-  }
-  .video_container,
-  .video_container_img {
-    height: 200px;
-    border-radius: 0px;
-  }
-}
-@media screen and (max-width: 650px) {
-  .video_container,
-  .video_container_img {
-    height: 150px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .chanel_data {
-    width: 98%;
-    margin: auto;
-  }
-  .title {
-    margin-top: 10px;
-  }
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    column-gap: 5px;
-  }
-  .video_container,
-  .video_container_img {
-    height: 250px;
-    border-radius: 0px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .video_container,
-  .video_container_img {
-    height: 200px;
-  }
-}
-@media screen and (max-width: 300px) {
-  .video_container,
-  .video_container_img {
-    height: 150px;
-  }
-}
-@media screen and (max-width: 200px) {
-  .video_container,
-  .video_container_img {
-    height: 80px;
-  }
-}
