@@ -23,11 +23,6 @@ import {
 } from "../../../../redux/style-slice/general-style/GenrealStyle";
 import GoogleIcon from "../../../modals/GoogleIcon";
 export const ContainerEffectedClick = ({ children, style, Stylied }: any) => {
-  const handelUp = () => {
-    if (Ref.current) {
-      Ref.current.className = Style.container_normal;
-    }
-  };
   const handelDown = () => {
     if (Ref.current) {
       Ref.current.className = Style.container_clicked;
@@ -43,15 +38,20 @@ export const ContainerEffectedClick = ({ children, style, Stylied }: any) => {
   return (
     <div
       onClick={handelDown}
-      onMouseUp={handelUp}
       ref={Ref}
       className={Style.thum_left_1}
       style={style}
     >
       {Stylied ? (
-        <div className={Style.container_stylied}> {children}</div>
+        <div style={style} className={Style.container_stylied}>
+          {" "}
+          {children}
+        </div>
       ) : (
-        <div className={Style.container_defualt}> {children}</div>
+        <div style={style} className={Style.container_defualt}>
+          {" "}
+          {children}
+        </div>
       )}
     </div>
   );
@@ -167,13 +167,16 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
             </p>
           )}
           <div className={Style.container__right}>
-            <div className={Style.thum_left}>
+            <ContainerEffectedClick
+              Stylied={true}
+              style={{ borderRadius: "20px" }}
+            >
               <p className={Style.icon_2}>
                 <FcCircuit />
 
                 <span className={Style.nubmer_of_likes}>Support</span>
               </p>
-            </div>
+            </ContainerEffectedClick>
           </div>
           <div className={Style.container__right}>
             <div className={Style.thum_left}>
