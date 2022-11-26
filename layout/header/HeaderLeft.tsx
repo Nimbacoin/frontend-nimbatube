@@ -9,13 +9,13 @@ import { FaPlayCircle } from "@react-icons/all-files/fa/FaPlayCircle";
 import GoogleIcon from "../../components/modals/GoogleIcon";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PlayArrowOutlinedIcon from "@mui/icons-material/PlayArrowOutlined";
-const HeaderLeft = () => {
+export const MainHeaderLeft = () => {
   const dispatch = useDispatch();
   const HandelToggleMenu = () => {
     dispatch(ToggleMenu());
   };
   return (
-    <div className={Style.container}>
+    <div className={Style.container_main}>
       <div className={Style.container_menu} onClick={HandelToggleMenu}>
         <VscMenu />
       </div>
@@ -30,5 +30,17 @@ const HeaderLeft = () => {
     </div>
   );
 };
-//Fdf
+const HeaderLeft = () => {
+  const dispatch = useDispatch();
+  const HandelToggleMenu = () => {
+    dispatch(ToggleMenu());
+  };
+
+  return (
+    <div className={Style.container}>
+      <MainHeaderLeft />
+    </div>
+  );
+};
+
 export default HeaderLeft;

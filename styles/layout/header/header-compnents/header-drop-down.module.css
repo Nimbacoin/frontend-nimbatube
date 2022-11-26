@@ -5,7 +5,8 @@
   align-items: center;
   justify-content: flex-end;
   column-gap: 20px;
-  width: 30%;
+  width: 20%;
+  /* background-color: red; */
 }
 .drop_down_option {
   background-color: #f9f9f9;
@@ -21,9 +22,7 @@
   cursor: pointer;
 }
 .drop_down_option_sold {
- 
   display: flex;
-  
 }
 .drop_down_container {
   position: absolute;
@@ -138,4 +137,3 @@
     height: 35px;
   }
 }
-

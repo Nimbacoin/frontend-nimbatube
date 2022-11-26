@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import moment from "moment";
 import TextTilteInputMudum from "../../../components/modals/text/TextTilteInputMudum";
 import SmallTextBlack from "../../../components/modals/SmallTextBlack";
+import SkinyGrayText from "../../../components/modals/SkinyGrayText";
 
 const NotfyDropDown = ({ Notification }: any) => {
   const Notify: any = [];
@@ -46,10 +47,23 @@ const NotfyDropDown = ({ Notification }: any) => {
                     Text={channelData?.channelData?.name + ":"}
                   />
                   {/* <p className={Style.text}>{videoData?.title}</p> */}
-                  <SmallTextBlack Text={videoData?.title} />
-                  <p className={Style.text_date}>
+                  <SmallTextBlack
+                    Text={
+                      `${videoData?.title && videoData?.title.slice(0, 80)}` +
+                      "" +
+                      `${
+                        videoData?.title &&
+                        videoData?.title?.length >= 80 &&
+                        "..."
+                      }`
+                    }
+                  />
+                  <SkinyGrayText
+                    Text={moment(vid?.from?.createAt).startOf("hour").fromNow()}
+                  />
+                  {/* <p className={Style.text_date}>
                     {moment(vid?.from?.createAt).startOf("hour").fromNow()}
-                  </p>
+                  </p> */}
                 </div>
                 <div className={Style.video_container}>
                   <div

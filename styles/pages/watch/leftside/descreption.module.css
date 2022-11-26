@@ -15,8 +15,9 @@
   white-space: pre-wrap;
   width: 100%;
   background-color: #e7e7e7;
-  border-radius: 20px;
+  border-radius: 10px;
   transition: 100 ease-in-out;
+  min-height: 100px;
 }
 .desc_button {
   color: #606060;
@@ -33,10 +34,14 @@
   display: none;
 }
 .descreption_text_container {
-  height: 70%;
+  height: auto;
   width: 100%;
-  padding: 20px 10px;
+  padding: 00px 10px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 @media screen and (max-width: 1000px) {
   .container {

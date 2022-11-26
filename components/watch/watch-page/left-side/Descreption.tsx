@@ -5,6 +5,8 @@ import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
 import moment from "moment";
+import NormalText from "../../../modals/NormalText";
+import TextTilteInputMudum from "../../../modals/text/TextTilteInputMudum";
 
 const Descreption = ({ VideoData }: any) => {
   const videoData = useSelector(
@@ -14,9 +16,7 @@ const Descreption = ({ VideoData }: any) => {
   const DescreptionBoolean = useSelector(
     (state: any) => state.MainVideo.DescreptionBoolean
   );
-  const [mainTexDesc, setMainTexDesc] = useState(
-    videoData?.descreption?.slice(0, 350)
-  );
+  const [mainTexDesc, setMainTexDesc] = useState(false);
   const dispatch = useDispatch();
   const HandelDescreptionToggle = () => {
     dispatch(ToggleDescreption());
@@ -28,7 +28,7 @@ const Descreption = ({ VideoData }: any) => {
   var month = check.format("M");
   var year = check.format("YYYY");
   const handelShowAllDesc = () => {
-    setMainTexDesc(videoData?.descreption);
+    setMainTexDesc(!mainTexDesc);
   };
   return (
     <div
@@ -72,13 +72,20 @@ const Descreption = ({ VideoData }: any) => {
         </div>
       </div>
       <div className={Style.descreption_text_container}>
-        <p className={Style.descreption_text}>{mainTexDesc}</p>
+        <TextTilteInputMudum Text={"Descreption"} />
+        <NormalText
+          Text={
+            mainTexDesc
+              ? videoData?.descreption
+              : videoData?.descreption.slice(0, 351)
+          }
+        />
+        {videoData?.descreption?.length >= 351 && (
+          <button onClick={handelShowAllDesc} className={Style.desc_button}>
+            {mainTexDesc ? "Show Less" : " Show More"}
+          </button>
+        )}
       </div>
-      {videoData?.descreption?.length >= 351 && (
-        <button onClick={handelShowAllDesc} className={Style.desc_button}>
-          Show More
-        </button>
-      )}
     </div>
   );
 };

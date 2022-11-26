@@ -96,48 +96,9 @@
   flex-direction: row;
   align-items: center;
   padding: 0;
-  justify-content: center;
+  justify-content: flex-end;
   min-width: 20%;
   background-color: #fff;
-}
-.follow_button_black {
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 20px;
-  color: #030303;
-  cursor: pointer;
-  color: #fff;
-  min-width: 100px;
-  border-radius: 20px;
-  padding: 8px 5px;
-  background-color: #000;
-  margin-top: 0px;
-}
-.followed_button_container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  column-gap: 5px;
-}
-.follow_button {
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 20px;
-  color: #030303;
-  cursor: pointer;
-  min-width: 100px;
-  border-radius: 20px;
-  padding: 8px 5px;
-  background-color: #e7e7e7;
-  margin-top: 0px;
-}
-.notf_button {
-  font-size: 20px;
-  color: #030303;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
 }
 
 @media screen and (max-width: 1000px) {

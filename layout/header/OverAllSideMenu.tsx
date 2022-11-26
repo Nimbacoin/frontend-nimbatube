@@ -7,6 +7,7 @@ import { ToggleMenu } from "../../redux/style-slice/menu/SideMenu";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import NavLinks from "./NavLinks";
+import { MainHeaderLeft } from "./HeaderLeft";
 
 const OverAllSideMenu = () => {
   const { asPath } = useRouter();
@@ -87,13 +88,7 @@ const OverAllSideMenu = () => {
               <div className={Style.container_fixed}>
                 <div className={Style.all_links_container}>
                   <div className={Style.top_container}>
-                    <span onClick={HandelToggleMenu}>
-                      {" "}
-                      <FiMenu />
-                    </span>
-                    <Link href="/">
-                      <p className={Style.logo}>NimbaTube</p>
-                    </Link>
+                    <MainHeaderLeft />
                   </div>
                   <div
                     className={

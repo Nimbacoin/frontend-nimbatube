@@ -6,7 +6,7 @@
   flex-direction: column;
   height: 60px;
   cursor: pointer;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
   left: 0;
   position: relative;
   bottom: -10px;
@@ -16,7 +16,7 @@
   width: 100%;
   height: auto;
   height: 3px;
-  background-color: #958d8b;
+  background-color: #b9b9b771;
 }
 .bar_container {
   width: 100%;
