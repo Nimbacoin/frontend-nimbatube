@@ -96,66 +96,68 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
 
   return (
     <div className={Style.icons_container}>
-      <div className={Style.container_thmp}>
-        <div className={Style.thum_left}>
-          <p className={Style.icon_1} onClick={HandelLike}>
-            {IsLiked ? (
-              <GoogleIcon Fill={true} IconName={"thumb_up_off"} />
-            ) : (
-              <GoogleIcon IconName={"thumb_up_off"} />
-            )}
-            <span className={Style.nubmer_of_likes}>{videoLikes}</span>
-          </p>
-        </div>
-        <div className={Style.thum_left}>
-          <p className={Style.icon_2} onClick={HandelDisLike}>
-            {IsDisLiked ? (
-              <GoogleIcon Fill={true} IconName={"thumb_down_off"} />
-            ) : (
-              <GoogleIcon IconName={"thumb_down_off"} />
-            )}
-            {/* <span className={Style.disLike}> {videoDisLikes}</span> */}
-          </p>
-        </div>
-      </div>
-      <div className={Style.container__right}>
-        {!ActiveVideoStream && (
-          <p className={Style.icon_comments}>
-            {/* <GoCommentDiscussion /> */}
-            <GoogleIcon IconName={"forum"} />
-            <span className={Style.live_chat}>Live Chat</span>
-          </p>
-        )}
-        <div className={Style.container__right}>
+      <div className={Style.continer_second}>
+        <div className={Style.container_thmp}>
           <div className={Style.thum_left}>
-            <p className={Style.icon_2}>
-              <FcCircuit />
+            <p className={Style.icon_1} onClick={HandelLike}>
+              {IsLiked ? (
+                <GoogleIcon Fill={true} IconName={"thumb_up_off"} />
+              ) : (
+                <GoogleIcon IconName={"thumb_up_off"} />
+              )}
+              <span className={Style.nubmer_of_likes}>{videoLikes}</span>
+            </p>
+          </div>
+          <div className={Style.thum_left}>
+            <p className={Style.icon_2} onClick={HandelDisLike}>
+              {IsDisLiked ? (
+                <GoogleIcon Fill={true} IconName={"thumb_down_off"} />
+              ) : (
+                <GoogleIcon IconName={"thumb_down_off"} />
+              )}
+              {/* <span className={Style.disLike}> {videoDisLikes}</span> */}
+            </p>
+          </div>
+        </div>
+        <div className={Style.container__right}>
+          {!ActiveVideoStream && (
+            <p className={Style.icon_comments}>
+              {/* <GoCommentDiscussion /> */}
+              <GoogleIcon IconName={"forum"} />
+              <span className={Style.live_chat}>Live Chat</span>
+            </p>
+          )}
+          <div className={Style.container__right}>
+            <div className={Style.thum_left}>
+              <p className={Style.icon_2}>
+                <FcCircuit />
 
-              <span className={Style.nubmer_of_likes}>Support</span>
-            </p>
+                <span className={Style.nubmer_of_likes}>Support</span>
+              </p>
+            </div>
           </div>
-        </div>
-        <div className={Style.container__right}>
-          <div className={Style.thum_left}>
-            <p onClick={handelShareVideo} className={Style.icon_2}>
-              <IoArrowRedoOutline />
-              <span className={Style.nubmer_of_likes}>Share</span>
-            </p>
+          <div className={Style.container__right}>
+            <div className={Style.thum_left}>
+              <p onClick={handelShareVideo} className={Style.icon_2}>
+                <IoArrowRedoOutline />
+                <span className={Style.nubmer_of_likes}>Share</span>
+              </p>
+            </div>
           </div>
-        </div>
-        <div className={Style.container__right}>
-          <div className={Style.thum_left}>
-            <p onClick={handelPlayList} className={Style.icon_2}>
-              <GoogleIcon IconName={"playlist_add"} />
-              <span className={Style.nubmer_of_likes}>Save</span>
-            </p>
+          <div className={Style.container__right}>
+            <div className={Style.thum_left}>
+              <p onClick={handelPlayList} className={Style.icon_2}>
+                <GoogleIcon IconName={"playlist_add"} />
+                <span className={Style.nubmer_of_likes}>Save</span>
+              </p>
+            </div>
           </div>
-        </div>
-        <div className={Style.container__right}>
-          <div className={Style.thum_left}>
-            <p className={Style.icon_2}>
-              <IoEllipsisHorizontalSharp />
-            </p>
+          <div className={Style.container__right}>
+            <div className={Style.thum_left}>
+              <p className={Style.icon_2}>
+                <IoEllipsisHorizontalSharp />
+              </p>
+            </div>
           </div>
         </div>
       </div>

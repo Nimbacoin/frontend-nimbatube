@@ -33,6 +33,14 @@
   -ms-overflow-style: none;
   scrollbar-width: none; /* Firefox */
 }
+
+.continer_second {
+  width: 100%;
+  column-gap: 20px;
+  overflow: scroll;
+  display: flex;
+  flex-direction: row;
+}
 .title {
   width: 100%;
   display: flex;
@@ -63,7 +71,7 @@
   column-gap: 30px;
   /* min-width: 600px; */
   overflow: auto;
-  /* background-color: red; */
+  /* */
 }
 .icon_comments {
   display: none;
@@ -96,7 +104,7 @@
   cursor: pointer;
   padding: 0 10px;
   margin: 0;
-  /* background-color: red; */
+  /* */
 }
 .thum_left {
   height: 100%;
@@ -155,7 +163,7 @@
   margin: 0;
 }
 
-/* @media screen and (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
   .icon_comments {
     display: flex;
   }
@@ -271,6 +279,19 @@
 }
 
 @media screen and (max-width: 900px) {
+  .icons_container {
+    /* width: 100%; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 30px;
+    overflow: scroll;
+    padding: 0 10px;
+  }
+  .continer_second {
+    min-width: 400px;
+  }
   .icon {
     font-size: 12.5px;
   }
@@ -293,34 +314,11 @@
     font-weight: 400;
     line-height: 14px;
   }
-}*/
+}
 
 @media screen and (max-width: 600px) {
   .icon_1 > span > span,
   .icon_2 > span > span {
     font-size: 19px;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .container_video_data {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-  .chanel {
-    order: 1;
-  }
-
-  .icons_container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    column-gap: 30px;
-    min-width: 600px;
-    overflow: auto;
-    /* background-color: red; */
   }
 }
