@@ -106,6 +106,10 @@ const VideoName = ({ ActiveVideoStream }: any) => {
         {videoData?.views?.length} views -{" "}
         {moment(videoData?.createdAt).startOf("hour").fromNow()}
       </span>
+      <span className={Style.date}>
+        {videoData?.views?.length} views -{" "}
+        {moment(videoData?.createdAt).startOf("hour").fromNow()}
+      </span>
     </div>
   );
 };
