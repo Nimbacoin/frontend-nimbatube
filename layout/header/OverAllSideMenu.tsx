@@ -48,9 +48,7 @@ const OverAllSideMenu = () => {
     };
   });
   const [IsOverfollow, setIsOverfollow] = useState(false);
-  const HandelOver = () => {
-    setIsOverfollow(true);
-  };
+
   const HandelLeave = () => {
     setIsOverfollow(false);
   };
@@ -79,24 +77,13 @@ const OverAllSideMenu = () => {
       return (
         <>
           {MenuBoolean && (
-            <div
-              onMouseEnter={HandelOver}
-              onMouseLeave={HandelLeave}
-              className={Style.container}
-              ref={Container}
-            >
+            <div className={Style.container} ref={Container}>
               <div className={Style.container_fixed}>
                 <div className={Style.all_links_container}>
                   <div className={Style.top_container}>
                     <MainHeaderLeft />
                   </div>
-                  <div
-                    className={
-                      !IsOverfollow
-                        ? Style.all_links_overflow_hidden
-                        : Style.all_links
-                    }
-                  >
+                  <div className={Style.all_links}>
                     {NavLinks.map(({ name, link, icon }) => (
                       <div
                         key={link}
