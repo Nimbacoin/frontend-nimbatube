@@ -7,6 +7,7 @@ import {
 } from "../../redux/style-slice/general-style/GenrealStyle";
 import Style from "../../styles/modals/share-video.module.css";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
+import OverAll from "./OverAll";
 const ShareVideo = () => {
   const { asPath } = useRouter();
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const ShareVideo = () => {
 
   return (
     <div className={Style.container}>
+      <OverAll>
       <div className={Style.main_first_container}>
         <div className={Style.main_container}>
           <div className={Style.share_container}>
@@ -45,6 +47,8 @@ const ShareVideo = () => {
           </div>
         </div>
       </div>
+      </OverAll>
+      
     </div>
   );
 };

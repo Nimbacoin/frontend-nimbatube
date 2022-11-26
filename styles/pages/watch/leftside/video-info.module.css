@@ -78,6 +78,9 @@
   column-gap: 0px;
   overflow: hidden;
 }
+.container__right {
+  column-gap: 10px;
+}
 .container_thmp {
   background-color: #f2f2f2;
 }
@@ -99,6 +102,7 @@
   height: 100%;
   padding: 6px 0;
   transition: all 0.3s ease;
+  background-color: #f2f2f2;
 }
 .thum_left:hover {
   background-color: #e5e5e5;

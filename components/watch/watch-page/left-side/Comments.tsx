@@ -20,6 +20,7 @@ import ReplyInput from "./ReplyInput";
 import EachComment from "./EachComment";
 import LoaodingAll from "../../../modals/LoaodingAll";
 import TextTilteInputMudum from "../../../modals/text/TextTilteInputMudum";
+import BoldText from "../../../modals/BoldText";
 
 //--------------------------------------ReplyInput----------------------------------------------//
 
@@ -84,13 +85,7 @@ const Comments = ({ VideoData }: any) => {
         </div>
       )}
       <div className={Style.comments_setting}>
-        <p className={Style.comments_number}>
-          {videoData?.comments?.length} Comments
-        </p>
-        {/* <p className={Style.icon}>
-          <MdSort />
-          <span className={Style.container}>SORT BY </span>
-        </p> */}
+        <BoldText text={videoData?.comments?.length + " Comments"} />
       </div>
       <ReplyInput VideoData={videoData} />
       <div

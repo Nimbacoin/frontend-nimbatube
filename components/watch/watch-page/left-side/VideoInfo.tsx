@@ -126,24 +126,38 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
             <span className={Style.live_chat}>Live Chat</span>
           </p>
         )}
+        <div className={Style.container__right}>
+          <div className={Style.thum_left}>
+            <p className={Style.icon_2}>
+              <FcCircuit />
 
-        <p className={Style.icon_2}>
-          <FcCircuit />
-
-          <span className={Style.nubmer_of_likes}>Support</span>
-        </p>
-        <p onClick={handelShareVideo} className={Style.icon_2}>
-          <IoArrowRedoOutline />
-
-          <span className={Style.nubmer_of_likes}>Share</span>
-        </p>
-        <p onClick={handelPlayList} className={Style.icon_2}>
-          <GoogleIcon IconName={"playlist_add"} />
-          <span className={Style.nubmer_of_likes}>Save</span>
-        </p>
-        <p className={Style.icon_2}>
-          <IoEllipsisHorizontalSharp />
-        </p>
+              <span className={Style.nubmer_of_likes}>Support</span>
+            </p>
+          </div>
+        </div>
+        <div className={Style.container__right}>
+          <div className={Style.thum_left}>
+            <p onClick={handelShareVideo} className={Style.icon_2}>
+              <IoArrowRedoOutline />
+              <span className={Style.nubmer_of_likes}>Share</span>
+            </p>
+          </div>
+        </div>
+        <div className={Style.container__right}>
+          <div className={Style.thum_left}>
+            <p onClick={handelPlayList} className={Style.icon_2}>
+              <GoogleIcon IconName={"playlist_add"} />
+              <span className={Style.nubmer_of_likes}>Save</span>
+            </p>
+          </div>
+        </div>
+        <div className={Style.container__right}>
+          <div className={Style.thum_left}>
+            <p className={Style.icon_2}>
+              <IoEllipsisHorizontalSharp />
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
