@@ -223,7 +223,7 @@ const VideoTag = () => {
               ref={videoTag}
               loop
               autoPlay
-              muted
+              
             >
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
