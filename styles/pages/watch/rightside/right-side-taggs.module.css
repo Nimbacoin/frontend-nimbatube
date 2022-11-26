@@ -31,7 +31,7 @@
   /* border: 1px solid #d4d4d4; */
   color: #030303;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 5px 15px;
   background-color: #ececec;
   margin-top: 0px;
@@ -51,7 +51,7 @@
   border: 1px solid #030303;
   color: #ffff;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 5px 15px;
   background-color: #030303;
   margin-top: 0px;
@@ -94,7 +94,7 @@
   box-shadow: 0px 0 73px rgb(206, 207, 218);
 }
 .main_container::-webkit-scrollbar {
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: #fff;
   width: 0;
   display: hidden;
@@ -104,7 +104,7 @@
   display: none;
 }
 .main_container::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: #909090;
 }
 .main_container::-webkit-scrollbar-button {

@@ -23,7 +23,7 @@ import {
 } from "../../../../redux/style-slice/general-style/GenrealStyle";
 import GoogleIcon from "../../../modals/GoogleIcon";
 
-const VideoInfo = ({ ActiveVideoStream }: any) => {
+const VideoName = ({ ActiveVideoStream }: any) => {
   const videoData = useSelector(
     (state: any) => state.VideoSlice.mainVideoDataWatch?.responseData
   );
@@ -95,58 +95,19 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
   var month = check.format("M");
 
   return (
-    <div className={Style.icons_container}>
-      <div className={Style.container_thmp}>
-        <div className={Style.thum_left}>
-          <p className={Style.icon_1} onClick={HandelLike}>
-            {IsLiked ? (
-              <GoogleIcon Fill={true} IconName={"thumb_up_off"} />
-            ) : (
-              <GoogleIcon IconName={"thumb_up_off"} />
-            )}
-            <span className={Style.nubmer_of_likes}>{videoLikes}</span>
-          </p>
-        </div>
-        <div className={Style.thum_left}>
-          <p className={Style.icon_2} onClick={HandelDisLike}>
-            {IsDisLiked ? (
-              <GoogleIcon Fill={true} IconName={"thumb_down_off"} />
-            ) : (
-              <GoogleIcon IconName={"thumb_down_off"} />
-            )}
-            {/* <span className={Style.disLike}> {videoDisLikes}</span> */}
-          </p>
-        </div>
+    <div className={Style.video_data}>
+      <div className={Style.title}>
+        <p className={Style.title_text}>{videoData?.title}</p>
+        <button onClick={HandelDescreptionToggle}>
+          <IoIosArrowDown />
+        </button>
       </div>
-      <div className={Style.container__right}>
-        {!ActiveVideoStream && (
-          <p className={Style.icon_comments}>
-            {/* <GoCommentDiscussion /> */}
-            <GoogleIcon IconName={"forum"} />
-            <span className={Style.live_chat}>Live Chat</span>
-          </p>
-        )}
-
-        <p className={Style.icon_2}>
-          <FcCircuit />
-
-          <span className={Style.nubmer_of_likes}>Support</span>
-        </p>
-        <p onClick={handelShareVideo} className={Style.icon_2}>
-          <IoArrowRedoOutline />
-
-          <span className={Style.nubmer_of_likes}>Share</span>
-        </p>
-        <p onClick={handelPlayList} className={Style.icon_2}>
-          <GoogleIcon IconName={"playlist_add"} />
-          <span className={Style.nubmer_of_likes}>Save</span>
-        </p>
-        <p className={Style.icon_2}>
-          <IoEllipsisHorizontalSharp />
-        </p>
-      </div>
+      <span className={Style.date_phone}>
+        {videoData?.views?.length} views -{" "}
+        {moment(videoData?.createdAt).startOf("hour").fromNow()}
+      </span>
     </div>
   );
 };
 
-export default VideoInfo;
+export default VideoName;

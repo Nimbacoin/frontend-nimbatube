@@ -16,6 +16,7 @@ import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificatio
 import VideoTag from "./VideoTag";
 import CancelButton from "../../../modals/CancelButton";
 import ButtonBlack from "../../../modals/ButtonBlack";
+import VideoName from "./VideoName";
 
 const MainVideo = () => {
   const ResDD = useSelector(
@@ -102,32 +103,36 @@ const MainVideo = () => {
     <div className={Style.container}>
       {!ActiveVideo && <LiveVideo />}
       {ActiveVideo && <VideoTag />}
-      <VideoInfo ActiveVideoStream={ActiveVideo} />
-      <div className={Style.chanel}>
-        <div className={Style.main_img_container}>
-          <div
-            style={{ backgroundImage: `url(${Bg})` }}
-            className={Style.img}
-          ></div>
+      <VideoName />
+      <div className={Style.container_video_data}>
+        <div className={Style.chanel}>
+          <div className={Style.main_img_container}>
+            <div
+              style={{ backgroundImage: `url(${Bg})` }}
+              className={Style.img}
+            ></div>
+          </div>
+          <div className={Style.chanel_container}>
+            <span onClick={handelChannelName} className={Style.chanel_name}>
+              {channelData?.channelData?.name}
+            </span>
+            <p className={Style.chanel_followers}>
+              <span className={Style.Followers}>{followers} - Followers</span>
+            </p>
+          </div>
+          <div className={Style.right_container}>
+            {!IsFollowed ? (
+              <ButtonBlack Text={"follow"} HandelClick={HandelFollow} />
+            ) : (
+              <div className={Style.followed_button_container}>
+                <CancelButton HandelClick={HandelFollow} Text={"following"} />
+              </div>
+            )}
+          </div>
         </div>
-        <div className={Style.chanel_container}>
-          <span onClick={handelChannelName} className={Style.chanel_name}>
-            {channelData?.channelData?.name}
-          </span>
-          <p className={Style.chanel_followers}>
-            <span className={Style.Followers}>{followers} - Followers</span>
-          </p>
-        </div>
-        <div className={Style.right_container}>
-          {!IsFollowed ? (
-            <ButtonBlack Text={"follow"} HandelClick={HandelFollow} />
-          ) : (
-            <div className={Style.followed_button_container}>
-              <CancelButton HandelClick={HandelFollow} Text={"following"} />
-            </div>
-          )}
-        </div>
+        <VideoInfo ActiveVideoStream={ActiveVideo} />
       </div>
+
       <Descreption VideoData={videoData} />
       <Comments VideoData={videoData} />
     </div>
