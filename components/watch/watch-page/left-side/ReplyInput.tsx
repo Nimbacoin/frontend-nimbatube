@@ -43,29 +43,31 @@ const ReplyInput = ({ VideoData }: any) => {
     setComment(e.target.value);
   };
   const handelCreateComments = async () => {
-    const body: any = { videoId: VideoData._id, comment: comment };
-    await basedPostUrlRequestLogedIn(
-      "/api/post/video/comment-video/",
-      body
-    ).then((res) => {
-      if (res) {
-        dispatch(
-          MainVideoDataReducer({
-            message: "comments",
+    if (comment.length >= 1) {
+      const body: any = { videoId: VideoData._id, comment: comment };
+      await basedPostUrlRequestLogedIn(
+        "/api/post/video/comment-video/",
+        body
+      ).then((res) => {
+        if (res) {
+          dispatch(
+            MainVideoDataReducer({
+              message: "comments",
+              comments: res.responseData,
+            })
+          );
+          socketRedux.emit("new-comment", {
             comments: res.responseData,
-          })
-        );
-        socketRedux.emit("new-comment", {
-          comments: res.responseData,
-          videoId: VideoData._id,
-        });
-        console.log(res);
-        setComment("");
-        if (inputRef.current) {
-          inputRef.current.value = "";
+            videoId: VideoData._id,
+          });
+          console.log(res);
+          setComment("");
+          if (inputRef.current) {
+            inputRef.current.value = "";
+          }
         }
-      }
-    });
+      });
+    }
   };
   const HandelCancel = () => {
     setComment("");

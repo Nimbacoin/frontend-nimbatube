@@ -30,6 +30,10 @@ const UplaodFirstStep2 = ({
     }
   }, [Channels]);
   const handelChangeDesc = (e: any) => {
+    if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
+      alert("sñld");
+    }
+    // ("&nbsp");
     dispatch(
       ActionVideoDataChanging({
         id: "text_desc",

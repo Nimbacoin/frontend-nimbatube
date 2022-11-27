@@ -30,6 +30,8 @@ const Descreption = ({ VideoData }: any) => {
   const handelShowAllDesc = () => {
     setMainTexDesc(!mainTexDesc);
   };
+  
+
   return (
     <div
       className={DescreptionBoolean ? Style.container_phone : Style.container}
@@ -73,7 +75,12 @@ const Descreption = ({ VideoData }: any) => {
       </div>
       <div className={Style.descreption_text_container}>
         <TextTilteInputMudum Text={"Descreption"} />
+        {/* <div
+          className={Style.ddddddd}
+          dangerouslySetInnerHTML={{ __html: urlify(videoData?.descreption) }}
+        ></div> */}
         <NormalText
+          // Links={true}
           Text={
             mainTexDesc
               ? videoData?.descreption

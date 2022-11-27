@@ -19,6 +19,13 @@
   transition: 100 ease-in-out;
   min-height: 100px;
 }
+
+.ddddddd {
+  color: red;
+}
+.ddddddd > a {
+  color: #065fd4;
+}
 .desc_button {
   color: #606060;
   font-size: 12px;

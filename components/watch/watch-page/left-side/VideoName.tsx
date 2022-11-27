@@ -104,11 +104,11 @@ const VideoName = ({ ActiveVideoStream }: any) => {
       </div>
       <span className={Style.date_phone}>
         {videoData?.views?.length} views -{" "}
-        {moment(videoData?.createdAt).startOf("hour").fromNow()}
+        {moment(videoData?.createdAt).fromNow()}{" "}
       </span>
       <span className={Style.date}>
         {videoData?.views?.length} views -{" "}
-        {moment(videoData?.createdAt).startOf("hour").fromNow()}
+        {moment(videoData?.createdAt).fromNow()}{" "}
       </span>
     </div>
   );
