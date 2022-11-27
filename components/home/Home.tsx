@@ -17,16 +17,16 @@ const Home = () => {
       const dataRes: any = await allVideosFetch(0);
       const allVids = dataRes.responseData;
       setVideos(dataRes.responseData);
-      setFirstVideos(allVids.slice(0, 4));
-      setRestVideos(allVids.slice(4, allVids.length));
+      setFirstVideos(allVids.slice(0, 8));
+      setRestVideos(allVids.slice(8, allVids.length));
       setLimit(dataRes?.limit);
       console.log(dataRes?.limit);
     };
     locaFetch();
   }, []);
 
-  const [firstVideos, setFirstVideos] = useState(videos.slice(0, 4));
-  const [restVideos, setRestVideos] = useState(videos.slice(4, videos.length));
+  const [firstVideos, setFirstVideos] = useState(videos.slice(0, 8));
+  const [restVideos, setRestVideos] = useState(videos.slice(8, videos.length));
 
   useEffect(() => {
     window.onscroll = function (ev) {
@@ -44,8 +44,8 @@ const Home = () => {
               (videoData: any, index: any) =>
                 !ids.includes(videoData.videoData._id, index + 1)
             );
-            setFirstVideos(filtered.slice(0, 4));
-            setRestVideos(filtered.slice(4, filtered.length));
+            setFirstVideos(filtered.slice(0, 8));
+            setRestVideos(filtered.slice(8, filtered.length));
             setLimit(dataRes?.limit);
           }
         };
@@ -79,7 +79,10 @@ const Home = () => {
         {firstVideos.length ? (
           firstVideos.map((vid) => <Vedio VideoData={vid} />)
         ) : (
-          <AllVideosBeforLoad />
+          <>
+            <AllVideosBeforLoad />
+            <AllVideosBeforLoad />
+          </>
         )}
       </div>
       <TopTitle />

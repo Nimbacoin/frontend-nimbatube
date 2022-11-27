@@ -160,47 +160,54 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
         </div>
         <div className={Style.container__right}>
           {!ActiveVideoStream && (
-            <p className={Style.icon_comments}>
-              {/* <GoCommentDiscussion /> */}
-              <GoogleIcon IconName={"forum"} />
-              <span className={Style.live_chat}>Live Chat</span>
-            </p>
-          )}
-          <div className={Style.container__right}>
             <ContainerEffectedClick
               Stylied={true}
               style={{ borderRadius: "20px" }}
             >
-              <p className={Style.icon_2}>
-                <FcCircuit />
-
-                <span className={Style.nubmer_of_likes}>Support</span>
+              <p className={Style.icon_comments}>
+                {/* <GoCommentDiscussion /> */}
+                <GoogleIcon IconName={"forum"} />
+                <span className={Style.live_chat}>Live Chat</span>
               </p>
             </ContainerEffectedClick>
-          </div>
-          <div className={Style.container__right}>
-            <div className={Style.thum_left}>
-              <p onClick={handelShareVideo} className={Style.icon_2}>
-                <IoArrowRedoOutline />
-                <span className={Style.nubmer_of_likes}>Share</span>
-              </p>
-            </div>
-          </div>
-          <div className={Style.container__right}>
-            <div className={Style.thum_left}>
-              <p onClick={handelPlayList} className={Style.icon_2}>
-                <GoogleIcon IconName={"playlist_add"} />
-                <span className={Style.nubmer_of_likes}>Save</span>
-              </p>
-            </div>
-          </div>
-          <div className={Style.container__right}>
-            <div className={Style.thum_left}>
-              <p className={Style.icon_2}>
-                <IoEllipsisHorizontalSharp />
-              </p>
-            </div>
-          </div>
+          )}
+          <ContainerEffectedClick
+            Stylied={true}
+            style={{ borderRadius: "20px" }}
+          >
+            <p className={Style.icon_2}>
+              <FcCircuit />
+
+              <span className={Style.nubmer_of_likes}>Support</span>
+            </p>
+          </ContainerEffectedClick>
+
+          <ContainerEffectedClick
+            Stylied={true}
+            style={{ borderRadius: "20px" }}
+          >
+            <p onClick={handelShareVideo} className={Style.icon_2}>
+              <IoArrowRedoOutline />
+              <span className={Style.nubmer_of_likes}>Share</span>
+            </p>
+          </ContainerEffectedClick>
+          <ContainerEffectedClick
+            Stylied={true}
+            style={{ borderRadius: "20px" }}
+          >
+            <p onClick={handelPlayList} className={Style.icon_2}>
+              <GoogleIcon IconName={"playlist_add"} />
+              <span className={Style.nubmer_of_likes}>Save</span>
+            </p>
+          </ContainerEffectedClick>
+          <ContainerEffectedClick
+            Stylied={true}
+            style={{ borderRadius: "20px" }}
+          >
+            <p className={Style.icon_2}>
+              <IoEllipsisHorizontalSharp />
+            </p>
+          </ContainerEffectedClick>
         </div>
       </div>
     </div>

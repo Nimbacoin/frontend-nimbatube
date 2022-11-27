@@ -32,12 +32,13 @@
 .icons_container {
   -ms-overflow-style: none;
   scrollbar-width: none; /* Firefox */
+  overflow-y: hidden;
 }
 
 .continer_second {
   width: 100%;
   column-gap: 20px;
-  overflow-y: auto;
+  overflow-y: hidden;
   display: flex;
   flex-direction: row;
 }
@@ -88,7 +89,7 @@
   column-gap: 10px;
 }
 .container_thmp {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .icon_1,
 .icon_2 {
@@ -121,8 +122,8 @@
 }
 .thum_left_1 {
   transition: all 0.3s ease;
-  border-top: 1px solid transparent;
-  border-left: 1px solid transparent;
+  border: 1px solid #ffffff00;
+  /* border: 1px solid #dbdbdb; */
 }
 
 .container_clicked {
@@ -302,11 +303,12 @@
     align-items: center;
     justify-content: flex-start;
     column-gap: 30px;
-    overflow: scroll;
+    overflow-y: auto;
     padding: 0 10px;
   }
   .continer_second {
     min-width: 400px;
+    overflow-y: auto;
   }
   .icon {
     font-size: 12.5px;
