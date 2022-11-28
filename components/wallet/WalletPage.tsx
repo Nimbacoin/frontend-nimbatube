@@ -7,22 +7,22 @@ import { isAndroid, isIOS } from "react-device-detect";
 
 const WalletPage = () => {
   const redirecttoNativeApp = (/*potential params */) => {
-    document.location = "instagram://";
+    document.location = "metamask://";
   };
   useEffect(() => {
     if (isAndroid) {
       const url =
-        "intent://instagram.com/#Intent;scheme=https;package=com.instagram.android;end";
+        "intent://metamask.com/#Intent;scheme=https;package=com.metamask.android;end";
       window.location.replace(url);
     } else if (isIOS) {
-      window.location.replace("instagram://");
+      window.location.replace("metamask://");
       setTimeout(() => {
         window.location.replace(
-          "https://apps.apple.com/us/app/instagram/id389801252"
+          "https://apps.apple.com/us/app/metamask/id389801252"
         );
       }, 10000);
     } else {
-      window.location.replace("https://instagram.com");
+      window.location.replace("https://metamask.com");
     }
   }, []);
   return (
@@ -37,15 +37,15 @@ const WalletPage = () => {
         <WalletsConntent />
       </div>
       {isAndroid ? (
-        <a href="https://play.google.com/store/apps/details?id=com.instagram.android">
+        <a href="https://play.google.com/store/apps/details?id=com.metamask.android">
           Open Android app
         </a>
       ) : isIOS ? (
-        <a href="https://apps.apple.com/us/app/instagram/id389801252">
+        <a href="https://apps.apple.com/us/app/metamask/id389801252">
           Open iOS app
         </a>
       ) : (
-        <a href="https://instagram.com">Open Web app</a>
+        <a href="https://metamask.com">Open Web app</a>
       )}
       <button onClick={redirecttoNativeApp}>Click to go to doordash</button>
     </div>
