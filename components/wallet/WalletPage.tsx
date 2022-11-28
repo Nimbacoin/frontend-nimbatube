@@ -11,8 +11,8 @@ const WalletPage = () => {
   };
   useEffect(() => {
     if (isAndroid) {
-      const url =
-        "intent://instagram.com/#Intent;scheme=https;package=io.metamask.android;end";
+      const url = "https://metamask.app.link/dapp/nimbatube.com/";
+
       window.location.replace(url);
     } else if (isIOS) {
       window.location.replace("metamask://");
@@ -38,7 +38,7 @@ const WalletPage = () => {
         <WalletsConntent />
       </div>
       {isAndroid ? (
-        <a href="https://play.google.com/store/apps/details?id=io.metamask.android">
+        <a href="https://metamask.app.link/dapp/nimbatube.com/        ">
           Open Android app
         </a>
       ) : isIOS ? (
