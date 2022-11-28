@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TopTitle from "../modals/TopTitle";
 import Style from "../../styles/pages/wallet/wallet.module.css";
 import { IoWalletOutline } from "@react-icons/all-files/io5/IoWalletOutline";
@@ -9,6 +9,22 @@ const WalletPage = () => {
   const redirecttoNativeApp = (/*potential params */) => {
     document.location = "instagram://";
   };
+  useEffect(() => {
+    if (isAndroid) {
+      const url =
+        "intent://instagram.com/#Intent;scheme=https;package=com.instagram.android;end";
+      window.location.replace(url);
+    } else if (isIOS) {
+      window.location.replace("instagram://");
+      setTimeout(() => {
+        window.location.replace(
+          "https://apps.apple.com/us/app/instagram/id389801252"
+        );
+      }, 10000);
+    } else {
+      window.location.replace("https://instagram.com");
+    }
+  }, []);
   return (
     <div className={Style.container}>
       <TopTitle
