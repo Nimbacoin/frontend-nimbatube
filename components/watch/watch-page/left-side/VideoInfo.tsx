@@ -22,6 +22,7 @@ import {
   playListRedcuer,
 } from "../../../../redux/style-slice/general-style/GenrealStyle";
 import GoogleIcon from "../../../modals/GoogleIcon";
+import { VideoInfoIconsAll } from "./VideoInfoIcons";
 export const ContainerEffectedClick = ({ children, style, Stylied }: any) => {
   const handelDown = () => {
     if (Ref.current) {
@@ -159,55 +160,7 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
           </ContainerEffectedClick>
         </div>
         <div className={Style.container__right}>
-          {!ActiveVideoStream && (
-            <ContainerEffectedClick
-              Stylied={true}
-              style={{ borderRadius: "20px" }}
-            >
-              <p className={Style.icon_comments}>
-                {/* <GoCommentDiscussion /> */}
-                <GoogleIcon IconName={"forum"} />
-                <span className={Style.live_chat}>Live Chat</span>
-              </p>
-            </ContainerEffectedClick>
-          )}
-          <ContainerEffectedClick
-            Stylied={true}
-            style={{ borderRadius: "20px" }}
-          >
-            <p className={Style.icon_2}>
-              <FcCircuit />
-
-              <span className={Style.nubmer_of_likes}>Support</span>
-            </p>
-          </ContainerEffectedClick>
-
-          <ContainerEffectedClick
-            Stylied={true}
-            style={{ borderRadius: "20px" }}
-          >
-            <p onClick={handelShareVideo} className={Style.icon_2}>
-              <IoArrowRedoOutline />
-              <span className={Style.nubmer_of_likes}>Share</span>
-            </p>
-          </ContainerEffectedClick>
-          <ContainerEffectedClick
-            Stylied={true}
-            style={{ borderRadius: "20px" }}
-          >
-            <p onClick={handelPlayList} className={Style.icon_2}>
-              <GoogleIcon IconName={"playlist_add"} />
-              <span className={Style.nubmer_of_likes}>Save</span>
-            </p>
-          </ContainerEffectedClick>
-          <ContainerEffectedClick
-            Stylied={true}
-            style={{ borderRadius: "20px" }}
-          >
-            <p className={Style.icon_2}>
-              <IoEllipsisHorizontalSharp />
-            </p>
-          </ContainerEffectedClick>
+          <VideoInfoIconsAll ActiveVideoStream={ActiveVideoStream} />
         </div>
       </div>
     </div>

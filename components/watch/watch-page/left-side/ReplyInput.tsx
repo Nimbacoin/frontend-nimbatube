@@ -42,7 +42,12 @@ const ReplyInput = ({ VideoData }: any) => {
   const handelChangeComment = (e: any) => {
     setComment(e.target.value);
   };
-  const handelCreateComments = async () => {
+  const handelCreateComments = async (e: any) => {
+    if (typeof e !== "undefined") {
+      e.preventDefault();
+      alert("df");
+    }
+
     if (comment.length >= 1) {
       const body: any = { videoId: VideoData._id, comment: comment };
       await basedPostUrlRequestLogedIn(
@@ -86,6 +91,19 @@ const ReplyInput = ({ VideoData }: any) => {
       setStreamingVid(true);
     }
   }, [asPath]);
+
+  useEffect(() => {
+    if (document.activeElement === inputRef.current) {
+      alert("sdñl");
+      window.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          // do something here
+          alert("window");
+        }
+      });
+    }
+  });
+
   return (
     <div
       className={

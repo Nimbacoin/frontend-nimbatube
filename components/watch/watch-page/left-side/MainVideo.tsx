@@ -132,7 +132,6 @@ const MainVideo = () => {
         </div>
         <VideoInfo ActiveVideoStream={ActiveVideo} />
       </div>
-
       <Descreption VideoData={videoData} />
       <Comments VideoData={videoData} />
     </div>

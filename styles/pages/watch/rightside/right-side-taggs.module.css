@@ -44,6 +44,9 @@
   text-align: center;
   font-weight: 400;
 }
+.span:hover {
+  background-color: #cacacae8;
+}
 .active_span {
   max-height: 30px;
   font-size: 14px;

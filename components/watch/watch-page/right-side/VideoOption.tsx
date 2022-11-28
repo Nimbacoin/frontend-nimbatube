@@ -99,7 +99,8 @@ const VideoOption = ({ VideoData, Key }: any) => {
           </div>
           <div className={Style.chanel_data}>
             <h3 className={Style.title}>
-              {Title}
+              {Title && Title.slice(0, 80)}
+              {Title && Title.length > 80 && "..."}
               <span className={Style.icon_phone}>
                 <IoEllipsisVerticalSharp />
               </span>

@@ -85,7 +85,7 @@ const Comments = ({ VideoData }: any) => {
         </div>
       )}
       <div className={Style.comments_setting}>
-        <BoldText text={videoData?.comments?.length + " Comments"} />
+        <TextTilteInputMudum Text={videoData?.comments?.length + " Comments"} />
       </div>
       <ReplyInput VideoData={videoData} />
       <div
