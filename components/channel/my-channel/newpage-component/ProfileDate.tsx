@@ -15,7 +15,7 @@ import OtherChannelData from "./OtherChannelData";
 const ProfileDate = ({ ChannelData }: any) => {
   const UlLinks = [
     { name: "Content", key: "content" },
-    { name: "Playlists", key: "playlists" },
+    // { name: "Playlists", key: "playlists" },
     { name: "About", key: "about" },
     { name: "Support", key: "support" },
     { name: "Community", key: "community" },

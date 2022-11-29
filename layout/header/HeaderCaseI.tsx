@@ -56,11 +56,11 @@ const HeaderCaseI = () => {
   const [IsOverfollow, setIsOverfollow] = useState(false);
   useEffect(() => {
     if (MenuBoolean) {
-      setSamllMenuItem(NavLinks.slice(0, 6));
+      setSamllMenuItem(NavLinks.slice(0, 5));
       setSeconMenuItem([]);
     } else {
-      setSamllMenuItem(NavLinks.slice(0, 6));
-      setSeconMenuItem(NavLinks.slice(6, NavLinks.length));
+      setSamllMenuItem(NavLinks.slice(0, 5));
+      setSeconMenuItem(NavLinks.slice(5, NavLinks.length));
     }
   }, [MenuBoolean]);
 
@@ -81,7 +81,7 @@ const HeaderCaseI = () => {
     }
     if (Container.current && ContainerWhite.current) {
       const data = ContainerWhite.current.getBoundingClientRect();
-     
+
       Container.current.style.left = `${data.left}px`;
       Container.current.style.width = `${data.width}px`;
     }
@@ -98,20 +98,17 @@ const HeaderCaseI = () => {
       } else {
         if (MenuBoolean) {
           ContainerWhite.current.className = Style.white_ontainer_home_avtive;
-          
         } else {
           ContainerWhite.current.className = Style.white_ontainer_home;
-         
         }
       }
     }
   };
 
   useEffect(() => {
-  
     window.addEventListener("resize", () => {
       handelChangeMenuAll();
-     
+
       handelChangeMenu();
     });
 

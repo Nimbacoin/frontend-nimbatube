@@ -24,7 +24,7 @@ const NavLinks = [
   { name: "Watch Later", link: "/watch-later", icon: <IoTimeOutline /> },
   { name: "Favorites", link: "/favorites", icon: <IoStarOutline /> },
 
-  { name: "Lists", link: "/lists", icon: <IoLayersOutline /> },
+  // { name: "Lists", link: "/lists", icon: <IoLayersOutline /> },
   { name: "Watch History", link: "/watch-history", icon: <RiHistoryLine /> },
 
   { name: "Featured", link: "/featured", icon: <GiPartyHat /> },
