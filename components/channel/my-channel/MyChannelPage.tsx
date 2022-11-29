@@ -17,22 +17,24 @@ const MychannelPage = () => {
     if (typeof window !== "undefined" && !asPath.includes("[")) {
       const ChannelId: string = asPath.replace("/channel/@/", "");
       const EditedId: string = ChannelId.toString();
-      basedGetUrlRequest("/api/get/channel" + EditedId, false).then(
-        (res: any) => {
-          try {
-            if (res.responsData) {
-              setChannelData(res.responsData);
+      const UserCookie = document.cookie;
+      basedGetUrlRequest(
+        "/api/get/channel/" + EditedId + "/" + UserCookie,
+        false
+      ).then((res: any) => {
+        try {
+          if (res.responsData) {
+            setChannelData(res.responsData);
 
-              dispatch(avtiveChannelReducer(res.responsData));
-            }
-          } catch (error) {
-            console.log(error);
+            dispatch(avtiveChannelReducer(res.responsData));
           }
+        } catch (error) {
+          console.log(error);
         }
-      );
+      });
     }
   }, [asPath]);
-  //
+
   return (
     <div className={Style.container}>
       <ProfileDate ChannelData={ChannelData} />

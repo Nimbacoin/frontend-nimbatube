@@ -19,12 +19,14 @@ const Home = () => {
           false
         );
         console.log(dataRes);
-        setVideos(dataRes.responseData);
-        const filter = dataRes.responseData.filter(
-          ({ videoData }: any) => videoData.location !== undefined
-        );
-        setMainVideo(filter.slice(0, 1));
-        console.log(mainVideo);
+        if (dataRes && dataRes?.responseData) {
+          setVideos(dataRes.responseData);
+          const filter = dataRes.responseData.filter(
+            ({ videoData }: any) => videoData.location !== undefined
+          );
+          setMainVideo(filter.slice(0, 1));
+          console.log(mainVideo);
+        }
       }
     };
     locaFetch();

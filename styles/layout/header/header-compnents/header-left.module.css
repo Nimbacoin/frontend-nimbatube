@@ -72,10 +72,16 @@
     font-weight: 800;
     font-size: 17px;
   }
+  .container_main {
+    column-gap: 15px;
+  }
 }
 
 @media screen and (max-width: 500px) {
   .container {
+    column-gap: 10px;
+  }
+  .container_main {
     column-gap: 10px;
   }
 }
