@@ -94,13 +94,11 @@ const ReplyInput = ({ VideoData }: any) => {
 
   useEffect(() => {
     if (document.activeElement === inputRef.current) {
-      alert("sdñl");
-      window.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-          // do something here
-          alert("window");
+      window.onkeypress = (e) => {
+        if (document.activeElement === inputRef.current && e.key === "Enter") {
+          handelCreateComments();
         }
-      });
+      };
     }
   });
 

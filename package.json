@@ -16,6 +16,8 @@
     "@mui/material": "^5.10.12",
     "@react-icons/all-files": "^4.1.0",
     "@reduxjs/toolkit": "^1.8.3",
+    "@thirdweb-dev/react": "^3.6.3",
+    "@thirdweb-dev/sdk": "^3.6.3",
     "@types/socket.io-client": "1.4.34",
     "@types/video-react": "^0.15.0",
     "@web3-react/core": "^6.1.9",
