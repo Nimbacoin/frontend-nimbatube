@@ -23,13 +23,15 @@
 }
 
 .data_container::-webkit-scrollbar,
-.icons_container::-webkit-scrollbar {
+.icons_container::-webkit-scrollbar,
+.continer_second::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge add Firefox */
 .data_container,
-.icons_container {
+.icons_container,
+.continer_second {
   -ms-overflow-style: none;
   scrollbar-width: none; /* Firefox */
   overflow-y: hidden;
@@ -367,6 +369,11 @@
   .icon_1 > svg {
     font-size: 15px;
   }
+  .nubmer_of_likes {
+    font-size: 13px;
+    font-weight: 400;
+  }
   .container_stylied {
+    padding: 4px 0 ;
   }
 }
