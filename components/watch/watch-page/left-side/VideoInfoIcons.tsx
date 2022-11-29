@@ -86,7 +86,6 @@ export const VideoInfoIconsAll = ({ ActiveVideoStream }: any) => {
         <ContainerEffectedClick Stylied={true} style={{ borderRadius: "20px" }}>
           <p className={Style.icon_2}>
             <FcCircuit />
-
             <span className={Style.nubmer_of_likes}>Support</span>
           </p>
         </ContainerEffectedClick>

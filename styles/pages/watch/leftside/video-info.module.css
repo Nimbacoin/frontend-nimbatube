@@ -58,11 +58,9 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 28px;
-  /* font-size: 22px;
-  color: #030303;
-  
-  line-height: 26px;
-  font-family: myFirstFont; */
+}
+.container__right_cons_phone {
+  display: none;
 }
 .container__right_cons_phone,
 .container__right_cons_desktop {
@@ -323,6 +321,7 @@
   .continer_second {
     min-width: 400px;
     overflow-y: auto;
+    justify-content: flex-start;
   }
   .icon {
     font-size: 12.5px;
@@ -355,8 +354,19 @@
 }
 
 @media screen and (max-width: 600px) {
+  .icon_1 > p > span,
+  .icon_2 > p > span {
+    font-size: 50px;
+  }
+
   .icon_1 > span > span,
   .icon_2 > span > span {
-    font-size: 19px;
+    font-size: 15px;
+  }
+  .icon_2 > svg,
+  .icon_1 > svg {
+    font-size: 15px;
+  }
+  .container_stylied {
   }
 }
