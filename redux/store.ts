@@ -8,7 +8,7 @@ import MainVideo from "./style-slice/video/MainVideo";
 import GenrealStyle from "./style-slice/general-style/GenrealStyle";
 import UserSignIn from "./user-slice/UserSignIn";
 import ChannelSlice from "./channel-slice/ChannelSlice";
-
+import seoReducer from "./seo-slice/seoSlice";
 export const store = configureStore({
   reducer: {
     SideMenu,
@@ -18,6 +18,7 @@ export const store = configureStore({
     ChannelSlice,
     VideoSlice,
     socketSlice,
+    seoReducer,
   },
   middleware: [thunk],
 });

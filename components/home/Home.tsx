@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { seoReducer } from "../../redux/seo-slice/seoSlice";
 import Style from "../../styles/pages/home/home.module.css";
 import allVideosFetch from "../../utils/allVideosFetch";
 import LoaodingAll from "../modals/LoaodingAll";
@@ -12,6 +13,7 @@ import HomeTags from "./HomeTags";
 const Home = () => {
   const [videos, setVideos] = useState([]);
   const [limit, setLimit] = useState(0);
+  const dispatch = useDispatch();
   useEffect(() => {
     const locaFetch = async () => {
       const dataRes: any = await allVideosFetch(0);
@@ -69,6 +71,9 @@ const Home = () => {
   //   }
   // }, [MenuBoolean]);
   const divRef = React.useRef<HTMLDivElement>(null);
+
+  dispatch(seoReducer({ title: "Home" }));
+
   return (
     <div ref={divRef} className={Style.container}>
       {/* <AllVideosBeforLoad /> */}

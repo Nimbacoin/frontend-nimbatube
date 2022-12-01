@@ -17,13 +17,16 @@ import VideoTag from "./VideoTag";
 import CancelButton from "../../../modals/CancelButton";
 import ButtonBlack from "../../../modals/ButtonBlack";
 import VideoName from "./VideoName";
+import { seoReducer } from "../../../../redux/seo-slice/seoSlice";
 
 const MainVideo = () => {
+  const dipatch = useDispatch();
   const ResDD = useSelector(
     (state: any) => state.VideoSlice.mainVideoDataWatch
   );
   const { asPath, pathname } = useRouter();
   const Router = useRouter();
+  dipatch(seoReducer({ title: ResDD?.responseData?.title }));
   const [ActiveVideo, setActiveVideo] = useState(true);
   const [videoData, setVideoData] = useState<{ [key: string]: any }>(
     ResDD?.responseData

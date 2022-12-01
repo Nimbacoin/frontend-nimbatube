@@ -27,6 +27,7 @@ import {
 import IconHeader from "../../../modals/IconHeader";
 import BlueButton from "../../../modals/BlueButton";
 import CancelButton from "../../../modals/CancelButton";
+import { seoReducer } from "../../../../redux/seo-slice/seoSlice";
 const ProfileDate = () => {
   const coverRef = React.useRef<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
@@ -37,19 +38,19 @@ const ProfileDate = () => {
   const { asPath } = useRouter();
   const general = useSelector((state: any) => state.ChannelSlice.general);
   const other = useSelector((state: any) => state.ChannelSlice.other);
-
+  const [LinkKey, setLinkKey] = useState("general");
+  const [linkName, setLinkName] = useState("General");
   const Router = useRouter();
-
   const UlLinks = [
     { name: "General", key: "general" },
     { name: "Credit Details", key: "credit-details" },
     { name: "Tags", key: "tags" },
     { name: "Other", key: "other" },
   ];
+  dispatch(seoReducer({ title: "create new channnel" + linkName }));
+
   const Bg = "/images/default-profile.png";
 
-  const [LinkKey, setLinkKey] = useState("general");
-  const [linkName, setLinkName] = useState("General");
   const HandelClick = (key: string) => {
     setLinkKey(key);
   };

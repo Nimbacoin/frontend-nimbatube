@@ -50,6 +50,7 @@ const Layout = ({ children }: any) => {
   const UserIsSignedIn = useSelector(
     (state: any) => state.UserSignIn.UserIsSignedIn
   );
+  const seoPage = useSelector((state: any) => state.seoReducer.seoPage);
   const dispatch = useDispatch();
   const [Height, setHeight] = useState(800);
   useEffect(() => {
@@ -205,7 +206,7 @@ const Layout = ({ children }: any) => {
         />
       </Head>
       <NextSeo
-        title="Using More of Config"
+        title={seoPage?.title}
         description="This example uses more of the available config options."
         canonical="https://www.canonical.ie/"
         openGraph={{

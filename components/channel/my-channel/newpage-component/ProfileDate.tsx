@@ -11,6 +11,8 @@ import About from "./About";
 import ButtonBlack from "../../../modals/ButtonBlack";
 import CropperCom from "../../../modals/Cropper";
 import OtherChannelData from "./OtherChannelData";
+import { seoReducer } from "../../../../redux/seo-slice/seoSlice";
+import { useDispatch } from "react-redux";
 
 const ProfileDate = ({ ChannelData }: any) => {
   const UlLinks = [
@@ -28,7 +30,14 @@ const ProfileDate = ({ ChannelData }: any) => {
   ];
   const Bg = "/images/default-profile.png";
 
+  const dipatch = useDispatch();
   const [LinkKey, setLinkKey] = useState("content");
+  dipatch(
+    seoReducer({
+      title: ChannelData?.channelData?.title,
+    })
+  );
+
   const HandelClick = (key: string) => {
     setLinkKey(key);
   };

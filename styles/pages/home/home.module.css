@@ -20,6 +20,7 @@
   margin: 0 auto;
   padding: 0;
   overflow: hidden;
+  background-color: red;
 }
 .vedio_container {
   overflow: hidden;
