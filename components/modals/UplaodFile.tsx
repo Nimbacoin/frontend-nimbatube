@@ -120,7 +120,6 @@ const UplaodFile = () => {
   };
 
   const handelSubmiteVideos = async () => {
-    console.log(videoData);
     await basedPostUrlRequestLogedIn(
       "/api/post/video/submite-video/",
       videoData
@@ -137,10 +136,8 @@ const UplaodFile = () => {
   };
 
   const HandelNext = () => {
-    alert(videoData.title);
     if (videoData.title && firstStep >= 2) {
       handelSubmiteVideos();
-      alert("edf");
     }
     if (videoData.title) {
       setFirstStep(firstStep + 1);

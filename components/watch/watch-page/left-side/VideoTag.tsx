@@ -27,8 +27,11 @@ import VideoBar from "./VideoBar";
 import VideoTimeReader from "../../../../utils/VideoTimeReader";
 import VideoTimeReaderChanging from "../../../../utils/VideoTimeReaderChanging";
 import SoundBar from "./SoundBar";
-import FullscreenSharpIcon from "@mui/icons-material/FullscreenSharp";
-
+import Crop32SharpIcon from "@mui/icons-material/Crop32Sharp";
+import CropFreeSharpIcon from "@mui/icons-material/CropFreeSharp";
+import SettingsSharpIcon from "@mui/icons-material/VideoSettingsSharp";
+import Crop75SharpIcon from "@mui/icons-material/Crop75Sharp";
+import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 const VideoTag = () => {
   const ResDD = useSelector(
     (state: any) => state.VideoSlice.mainVideoDataWatch
@@ -68,7 +71,7 @@ const VideoTag = () => {
     const CurrentVideo = videoTag.current;
     if (CurrentVideo) {
       CurrentVideo.onloadedmetadata = (event) => {
-        console.log(event)
+        console.log(event);
         if (CurrentVideo && CurrentVideo.src) {
           CurrentVideo.play();
           const TimeVideo = CurrentVideo.duration;
@@ -218,13 +221,7 @@ const VideoTag = () => {
               </div>
             )}
 
-            <video
-              className={Style.video_tag}
-              ref={videoTag}
-              loop
-              autoPlay
-              
-            >
+            <video className={Style.video_tag} ref={videoTag} loop autoPlay>
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
             <div onClick={HandelClickPues} className={Style.div_hover}></div>
@@ -292,7 +289,26 @@ const VideoTag = () => {
                         onClick={openFullscreen}
                         className={Style.icon_control_1000}
                       >
-                        <FullscreenSharpIcon />
+                        <CameraAltOutlinedIcon />
+                      </span>
+                      <span
+                        onClick={openFullscreen}
+                        className={Style.icon_control_1000}
+                      >
+                        <SettingsSharpIcon />
+                      </span>
+                      <span
+                        onClick={openFullscreen}
+                        className={Style.icon_control_1000}
+                      >
+                        {/* <Crop32SharpIcon /> */}
+                        <Crop75SharpIcon />
+                      </span>
+                      <span
+                        onClick={openFullscreen}
+                        className={Style.icon_control_1000}
+                      >
+                        <CropFreeSharpIcon />
                       </span>
                     </div>
                   </div>
