@@ -120,7 +120,7 @@ const MainVideo = () => {
               {channelData?.channelData?.name}
             </span>
             <p className={Style.chanel_followers}>
-              <span className={Style.Followers}>{followers} - Followers</span>
+              <span className={Style.Followers}>{followers} - followers</span>
             </p>
           </div>
           <div className={Style.right_container}>

@@ -32,6 +32,7 @@ import CropFreeSharpIcon from "@mui/icons-material/CropFreeSharp";
 import SettingsSharpIcon from "@mui/icons-material/VideoSettingsSharp";
 import Crop75SharpIcon from "@mui/icons-material/Crop75Sharp";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
+import VideoSettings from "./VideoSettings";
 const VideoTag = () => {
   const ResDD = useSelector(
     (state: any) => state.VideoSlice.mainVideoDataWatch
@@ -197,18 +198,43 @@ const VideoTag = () => {
       }
     }
   };
+  const [isFullScreen, setIsFullScreen] = useState(false);
   function openFullscreen() {
-    if (containerRef.current) {
-      if (containerRef.current.requestFullscreen) {
-        containerRef.current.requestFullscreen();
+    setIsFullScreen(!isFullScreen);
+    if (containerRef.current && videoTag.current) {
+      if (!isFullScreen) {
+        if (containerRef.current.requestFullscreen) {
+          containerRef.current.requestFullscreen();
+          videoTag.current.className = Style.video_tag_100_100;
+        }
+      } else if (isFullScreen) {
+        if (containerRef.current) {
+          document.exitFullscreen();
+          videoTag.current.className = Style.video_tag;
+        }
       }
     }
   }
-  // useEffect(() => {
-  //   if (videoTag.current) {
-  //     videoTag.current.playbackRate = 5;
-  //   }
-  // }, [videoTag.current]);
+
+  const handelScreenShot = () => {
+    if (videoTag.current) {
+      let canvas = document.createElement("canvas");
+      const video = videoTag.current;
+      canvas.width = 1920;
+      canvas.height = 1080;
+      let ctx = canvas.getContext("2d");
+      if (ctx) {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        let image = canvas.toDataURL("image/jpeg");
+        alert(image);
+      } else {
+        alert(ctx);
+      }
+    } else {
+      alert("ctx");
+    }
+  };
+
   return (
     <>
       <div className={Style.hiddenDiv} ref={hiddenDiv}></div>
@@ -286,17 +312,18 @@ const VideoTag = () => {
                     </div>
                     <div className={Style.other_controls}>
                       <span
-                        onClick={openFullscreen}
+                        onClick={handelScreenShot}
                         className={Style.icon_control_1000}
                       >
                         <CameraAltOutlinedIcon />
                       </span>
-                      <span
+                      <div
                         onClick={openFullscreen}
                         className={Style.icon_control_1000}
                       >
+                        <VideoSettings />
                         <SettingsSharpIcon />
-                      </span>
+                      </div>
                       <span
                         onClick={openFullscreen}
                         className={Style.icon_control_1000}
