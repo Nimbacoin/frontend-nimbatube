@@ -24,6 +24,7 @@ const UplaodFirstStep = ({ handelChangeInput }: any) => {
             onChange={handelChange}
             type="file"
             id="uplaod"
+            accept="video/mp4,video/x-m4v,video/*"
             style={{ display: "none" }}
           />
           <BoldText text={"uplaod yuur videos from here"} />
