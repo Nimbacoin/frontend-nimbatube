@@ -81,9 +81,9 @@ const Descreption = ({ VideoData }: any) => {
         <NormalText
           // Links={true}
           Text={
-            videoData?.descreption?.length > 1 && mainTexDesc
+            videoData?.descreption?.length > 1 ? mainTexDesc
               ? videoData?.descreption
-              : videoData?.descreption?.slice(0, 351)
+              : videoData?.descreption?.slice(0, 351) : ""
           }
         />
         {videoData?.descreption?.length >= 351 && (
