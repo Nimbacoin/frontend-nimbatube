@@ -209,8 +209,8 @@ const VideoTag = () => {
         }
       } else if (isFullScreen) {
         if (containerRef.current) {
-          document.exitFullscreen();
           videoTag.current.className = Style.video_tag;
+          document.exitFullscreen();
         }
       }
     }
