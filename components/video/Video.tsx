@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import LoaodingAll from "../modals/LoaodingAll";
 import GoogleIcon from "../modals/GoogleIcon";
+import { ContainerEffectedClick } from "../watch/watch-page/left-side/VideoInfo";
 const Video = ({ VideoData }: any) => {
   const [OverElement, setOverElement] = useState(false);
   const [isLaoded, setIsLaoded] = useState(false);
@@ -115,62 +116,66 @@ const Video = ({ VideoData }: any) => {
       onMouseLeave={HandelLeave}
       className={Style.container}
     >
-      <Link href={videoLink}>
-        <div
-          onLoad={handelImagLaod}
-          ref={ThumbnailImg}
-          style={{
-            backgroundImage: `url(${thumbnail})`,
-            // minHeight: `${IsPhone && ScreenWithByHalf}px`,
-          }}
-          className={
-            MenuBoolean
-              ? Style.vedio_container_MenuBoolean
-              : Style.vedio_container
-          }
-        >
-          {!isLaoded && <LoaodingAll />}
+      <ContainerEffectedClick style={{ borderRadius: "10px" }}>
+        <div className={Style.container_secend}>
+          <Link href={videoLink}>
+            <div
+              onLoad={handelImagLaod}
+              ref={ThumbnailImg}
+              style={{
+                backgroundImage: `url(${thumbnail})`,
+                // minHeight: `${IsPhone && ScreenWithByHalf}px`,
+              }}
+              className={
+                MenuBoolean
+                  ? Style.vedio_container_MenuBoolean
+                  : Style.vedio_container
+              }
+            >
+              {!isLaoded && <LoaodingAll />}
 
-          <p className={Style.time}>
-            {VideoData?.videoData?.duration}
-            {/* <GoogleIcon IconName={"videocam"} /> */}
-            <IoVideocamOutline />{" "}
-          </p>
-        </div>
-      </Link>
-      <div className={Style.desc_container}>
-        <div className={Style.title_data}>
-          <Link href={videoLink}>
-            <p className={Style.title}>{Title?.slice(0, 70)}</p>
-          </Link>
-          <span
-            ref={Spanlem}
-            className={OverElement ? Style.menu_desktop : Style.menu}
-          >
-            <IoEllipsisVertical />
-          </span>
-        </div>
-        <div className={Style.chanel_data}>
-          <div
-            style={{ backgroundImage: `url(${BgP})` }}
-            className={Style.chanel_img}
-          ></div>
-          <Link href={videoLink}>
-            <div className={Style.chanel_details}>
-              <div ref={channelNameRef} className={Style.chanel_name}>
-                {VideoData?.channelData?.channelData?.name}
-              </div>
-              <span className={Style.date}>
-                {VideoData?.videoData?.views?.length}{" "}
-                {VideoData?.videoData?.views?.length && " views - "}
-                {moment(VideoData?.videoData?.createdAt)
-                  .startOf("hour")
-                  .fromNow()}
-              </span>
+              <p className={Style.time}>
+                {VideoData?.videoData?.duration}
+                {/* <GoogleIcon IconName={"videocam"} /> */}
+                <IoVideocamOutline />{" "}
+              </p>
             </div>
           </Link>
+          <div className={Style.desc_container}>
+            <div className={Style.title_data}>
+              <Link href={videoLink}>
+                <p className={Style.title}>{Title?.slice(0, 70)}</p>
+              </Link>
+              <span
+                ref={Spanlem}
+                className={OverElement ? Style.menu_desktop : Style.menu}
+              >
+                <IoEllipsisVertical />
+              </span>
+            </div>
+            <div className={Style.chanel_data}>
+              <div
+                style={{ backgroundImage: `url(${BgP})` }}
+                className={Style.chanel_img}
+              ></div>
+              <Link href={videoLink}>
+                <div className={Style.chanel_details}>
+                  <div ref={channelNameRef} className={Style.chanel_name}>
+                    {VideoData?.channelData?.channelData?.name}
+                  </div>
+                  <span className={Style.date}>
+                    {VideoData?.videoData?.views?.length}{" "}
+                    {VideoData?.videoData?.views?.length && " views - "}
+                    {moment(VideoData?.videoData?.createdAt)
+                      .startOf("hour")
+                      .fromNow()}
+                  </span>
+                </div>
+              </Link>
+            </div>
+          </div>
         </div>
-      </div>
+      </ContainerEffectedClick>
     </div>
   );
 };

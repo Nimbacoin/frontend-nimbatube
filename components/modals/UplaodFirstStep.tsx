@@ -3,6 +3,7 @@ import Style from "../../styles/modals/uplaod-file.module.css";
 import BoldText from "./BoldText";
 import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOutline";
 import SkinyGrayText from "./SkinyGrayText";
+import { ContainerEffectedClick } from "../watch/watch-page/left-side/VideoInfo";
 
 const UplaodFirstStep = ({ handelChangeInput }: any) => {
   const text =
@@ -26,6 +27,10 @@ const UplaodFirstStep = ({ handelChangeInput }: any) => {
             style={{ display: "none" }}
           />
           <BoldText text={"uplaod yuur videos from here"} />
+          <ContainerEffectedClick
+            Stylied={true}
+            style={{ borderRadius: "20px" }}
+          ></ContainerEffectedClick>
           <span className={Style.button_action_add}>Select video </span>
         </label>
       </div>
