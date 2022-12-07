@@ -7,6 +7,7 @@ import MetaMaskSDK from "@metamask/sdk";
 import { MetaMaskInpageProvider } from "@metamask/providers";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
 import { useSelector } from "react-redux";
+import { initializeProvider } from "@metamask/providers";
 
 const MetaMask = () => {
   const [accountId, setAccountId] = useState("");
@@ -32,17 +33,19 @@ const MetaMask = () => {
   };
 
   useEffect(() => {
-    const MMSDK = new MetaMaskSDK({});
-    const ethereum = MMSDK.getProvider(); // You can also access via window.ethereum
+    // const MMSDK = new MetaMaskSDK({});
+    // const ethereum = MMSDK.getProvider(); // You can also access via window.ethereum
 
-    // const provider = window.ethereum.providers.find(
+    // const provider: any = window.ethereum.providers.find(
     //   (provider) => provider.isMetaMask
     // );
-    const provider = ethereum.providers.find(
-      (provider: any) => provider.isMetaMask
-    );
-
-    provider.request({});
+    // const provider = ethereum.providers.find(
+    //   (provider: any) => provider.isMetaMask
+    // );
+    if (window.ethereum) {
+      alert("yes");
+    }
+    // provider.request({});
     //{ method: "eth_requestAccounts" }
     // .then(async (rsl: any) => {
     //   console.log(rsl[0]);
@@ -63,6 +66,10 @@ const MetaMask = () => {
     //   alert("time to desconnect ");
     //   desconnect();
     // }, 10000);
+    const metamaskStream = new LocalMessageDuplexStream({
+      name: "inpage",
+      target: "contentscript",
+    });
   }, []);
 
   return <div>{accountId}</div>;

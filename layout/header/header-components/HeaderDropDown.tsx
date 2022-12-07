@@ -59,11 +59,7 @@ const HeaderDropDown = () => {
       typeof channel?.channelData?.profileImg !== "undefined"
     ) {
       setName(channel.channelData.name);
-      setBg(
-        process.env.NEXT_PUBLIC_BACK_END_URL +
-          "/api/get/read/images/" +
-          channel.channelData?.profileImg?.url
-      );
+      setBg(channel.channelData?.profileImg?.url);
     }
   });
   const allLinks = [

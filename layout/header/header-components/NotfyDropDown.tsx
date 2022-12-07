@@ -33,11 +33,7 @@ const NotfyDropDown = ({ Notification }: any) => {
                 <div className={Style.img_container}>
                   <div
                     style={{
-                      backgroundImage: `url(${
-                        process.env.NEXT_PUBLIC_BACK_END_URL +
-                        "/api/get/read/images/" +
-                        channelData?.channelData?.profileImg?.url
-                      })`,
+                      backgroundImage: `url(${channelData?.channelData?.profileImg?.url})`,
                     }}
                     className={Style.channel_img}
                   ></div>
@@ -68,11 +64,7 @@ const NotfyDropDown = ({ Notification }: any) => {
                 <div className={Style.video_container}>
                   <div
                     style={{
-                      backgroundImage: `url(${
-                        process.env.NEXT_PUBLIC_BACK_END_URL +
-                        "/api/get/read/images/" +
-                        videoData?.thumbnail
-                      })`,
+                      backgroundImage: `url(${videoData?.thumbnail})`,
                     }}
                     className={Style.video_img}
                   ></div>

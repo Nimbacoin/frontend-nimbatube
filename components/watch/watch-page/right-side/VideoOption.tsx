@@ -21,15 +21,10 @@ const VideoOption = ({ VideoData, Key }: any) => {
 
   const Title = VideoData?.videoData?.title;
   // const videoRef = useRef<HTMLVideoElement>(null);
-  const Bg =
-    process.env.NEXT_PUBLIC_BACK_END_URL +
-    "/api/get/read/images/" +
-    VideoData?.videoData?.thumbnail;
+  const Bg = VideoData?.videoData?.thumbnail;
 
   const BgP = VideoData?.channelData?.channelData?.profileImg?.url
-    ? process.env.NEXT_PUBLIC_BACK_END_URL +
-      "/api/get/read/images/" +
-      VideoData?.channelData?.channelData?.profileImg?.url
+    ? VideoData?.channelData?.channelData?.profileImg?.url
     : "/images/default-profile.png";
 
   const handelClickhh = (e: any) => {

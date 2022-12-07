@@ -149,13 +149,7 @@ const Channel = ({
         <div
           onClick={handelClickUrl}
           style={{
-            backgroundImage: `url(${
-              ProfileImg?.url
-                ? process.env.NEXT_PUBLIC_BACK_END_URL +
-                  "/api/get/read/images/" +
-                  ProfileImg.url
-                : Bg
-            })`,
+            backgroundImage: `url(${ProfileImg?.url ? ProfileImg.url : Bg})`,
           }}
           className={Style.img}
         ></div>
@@ -166,7 +160,7 @@ const Channel = ({
         <p className={Style.channel_followers}>
           <span className={Style.Followers}>
             {" "}
-            {Followers ? Followers : "0 - "} {" followers"} &nbsp; &nbsp; 
+            {Followers ? Followers : "0 - "} {" followers"} &nbsp; &nbsp;
             {"    " + channelData?.numbers?.uploads
               ? channelData?.numbers?.uploads
               : "0 "}{" "}

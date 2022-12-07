@@ -119,17 +119,7 @@ const ProfileDate = () => {
       console.log("recieved", data);
       const { file }: any = data;
       if (coverRef.current) {
-        coverRef.current.style.backgroundImage = `url(${
-          process.env.NEXT_PUBLIC_BACK_END_URL +
-          "/api/get/read/images/" +
-          file.filename
-        })`;
-        console.log(
-          "image set",
-          process.env.NEXT_PUBLIC_BACK_END_URL +
-            "/api/get/read/images/" +
-            file.filename
-        );
+        coverRef.current.style.backgroundImage = `url(${file.channelData.coverImg.url})`;
       }
     });
   };
@@ -159,11 +149,7 @@ const ProfileDate = () => {
       console.log(data);
       const { file }: any = data;
       if (previewSourceProfile.current) {
-        previewSourceProfile.current.style.backgroundImage = `url(${
-          process.env.NEXT_PUBLIC_BACK_END_URL +
-          "/api/get/read/images/" +
-          file.filename
-        })`;
+        previewSourceProfile.current.style.backgroundImage = `url(${file.channelData.profileImg.url})`;
       }
     });
   };

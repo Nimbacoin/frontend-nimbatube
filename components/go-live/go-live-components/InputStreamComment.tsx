@@ -11,7 +11,10 @@ import { AiFillDislike } from "@react-icons/all-files/ai/AiFillDislike";
 import { IoChevronDown } from "@react-icons/all-files/io5/IoChevronDown";
 import { IoChevronUp } from "@react-icons/all-files/io5/IoChevronUp";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
-import { liveVideoLive, MainVideoDataReducer } from "../../../redux/video-slice/VideoSlice";
+import {
+  liveVideoLive,
+  MainVideoDataReducer,
+} from "../../../redux/video-slice/VideoSlice";
 import { useRouter } from "next/router";
 
 const InputStreamComment = ({ VideoData, VideoId }: any) => {
@@ -27,9 +30,7 @@ const InputStreamComment = ({ VideoData, VideoId }: any) => {
     (state: any) => state.socketSlice.socketRedux
   );
   const Bg = channelsData?.channelData?.profileImg?.url
-    ? process.env.NEXT_PUBLIC_BACK_END_URL +
-      "/api/get/read/images/" +
-      channelsData?.channelData?.profileImg?.url
+    ? channelsData?.channelData?.profileImg?.url
     : "/images/default-profile.png";
 
   const handelChangeComment = (e: any) => {
@@ -55,7 +56,6 @@ const InputStreamComment = ({ VideoData, VideoId }: any) => {
           });
         }
 
-       
         setComment("");
         if (inputRef.current) {
           inputRef.current.value = "";

@@ -34,9 +34,7 @@ const ReplyInput = ({ VideoData }: any) => {
     (state: any) => state.socketSlice.socketRedux
   );
   const Bg = channelsData?.channelData?.profileImg?.url
-    ? process.env.NEXT_PUBLIC_BACK_END_URL +
-      "/api/get/read/images/" +
-      channelsData?.channelData?.profileImg?.url
+    ? channelsData?.channelData?.profileImg?.url
     : "/images/default-profile.png";
 
   const handelChangeComment = (e: any) => {
@@ -94,7 +92,7 @@ const ReplyInput = ({ VideoData }: any) => {
 
   useEffect(() => {
     if (document.activeElement === inputRef.current) {
-      window.onkeypress = (e:any) => {
+      window.onkeypress = (e: any) => {
         if (document.activeElement === inputRef.current && e.key === "Enter") {
           handelCreateComments(e);
         }

@@ -66,17 +66,12 @@ const Video = ({ VideoData }: any) => {
   });
 
   const BgP = VideoData?.channelData?.channelData?.profileImg?.url
-    ? process.env.NEXT_PUBLIC_BACK_END_URL +
-      "/api/get/read/images/" +
-      VideoData?.channelData?.channelData?.profileImg?.url
+    ? VideoData?.channelData?.channelData?.profileImg?.url
     : "/images/default-profile.png";
 
   const Title = VideoData?.videoData?.title;
 
-  const thumbnail =
-    process.env.NEXT_PUBLIC_BACK_END_URL +
-    "/api/get/read/images/" +
-    VideoData?.videoData?.thumbnail;
+  const thumbnail = VideoData?.videoData?.thumbnail;
   const handelImagLaod = () => {};
   useEffect(() => {
     const thumImg = VideoData?.videoData?.thumbnail;

@@ -5,12 +5,7 @@ const VideoMainDemosData = ({ Thumbnail }: any) => {
     <div className={Style.main_container}>
       <div
         style={{
-          backgroundImage: `url(${
-            Thumbnail &&
-            process.env.NEXT_PUBLIC_BACK_END_URL +
-              "/api/get/read/images/" +
-              Thumbnail
-          })`,
+          backgroundImage: `url(${Thumbnail && Thumbnail})`,
         }}
         className={Style.vedio_container}
       ></div>

@@ -18,10 +18,7 @@ import { IoChevronUp } from "@react-icons/all-files/io5/IoChevronUp";
 import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLogedIn";
 
 const EachComment = ({ CommentData }: any) => {
-  const Bg =
-    process.env.NEXT_PUBLIC_BACK_END_URL +
-    "/api/get/read/images/" +
-    CommentData?.creatoreData?.profileImg?.url;
+  const Bg = CommentData?.creatoreData?.profileImg?.url;
   const [IsLiked, setIsLiked] = useState(false);
   const [IsDisLiked, setIsDisLiked] = useState(false);
   const HandelLike = () => {

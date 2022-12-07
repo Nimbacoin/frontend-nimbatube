@@ -111,8 +111,7 @@ const UplaodFile = () => {
       setThumbnail(file.filename);
       // if (Thumbnail.current) {
       //   Thumbnail.current.style.backgroundImage = `url(${
-      //     process.env.NEXT_PUBLIC_BACK_END_URL +
-      //     "/api/get/read/images/" +
+
       //     file.filename
       //   })`;
       // }

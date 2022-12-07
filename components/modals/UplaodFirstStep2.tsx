@@ -22,11 +22,7 @@ const UplaodFirstStep2 = ({
   const [Bg, setBg] = useState("/images/default-profile.png");
   useEffect(() => {
     if (channelData?.channelData?.profileImg?.url) {
-      setBg(
-        process.env.NEXT_PUBLIC_BACK_END_URL +
-          "/api/get/read/images/" +
-          channelData?.channelData?.profileImg?.url
-      );
+      setBg(channelData?.channelData?.profileImg?.url);
     }
   }, [Channels]);
   const handelChangeDesc = (e: any) => {

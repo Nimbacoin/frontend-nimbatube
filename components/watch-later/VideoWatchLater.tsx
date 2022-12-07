@@ -8,10 +8,7 @@ const VideoWatchLater = ({ VideoData }: any) => {
   const [IsOverVideo, setIsOverVideo] = useState(false);
 
   const Router = useRouter();
-  const thumbnail =
-    process.env.NEXT_PUBLIC_BACK_END_URL +
-    "/api/get/read/images/" +
-    VideoData?.videoData?.thumbnail;
+  const thumbnail = VideoData?.videoData?.thumbnail;
 
   const [videoStyle, setVideoStyle] = useState({ zIndex: "10" });
   const [thumbnailStyle, setThumbnailStyle] = useState({
@@ -20,9 +17,7 @@ const VideoWatchLater = ({ VideoData }: any) => {
   });
 
   const Bg = VideoData?.channelData?.channelData?.profileImg?.url
-    ? process.env.NEXT_PUBLIC_BACK_END_URL +
-      "/api/get/read/images/" +
-      VideoData?.channelData?.channelData?.profileImg?.url
+    ? VideoData?.channelData?.channelData?.profileImg?.url
     : "/images/default-profile.png";
 
   const verLi = React.useRef<HTMLButtonElement>(null);
@@ -53,10 +48,7 @@ const VideoWatchLater = ({ VideoData }: any) => {
   });
   useEffect(() => {
     if (videoTag.current) {
-      videoTag.current.src =
-        process.env.NEXT_PUBLIC_BACK_END_URL +
-        "/api/get/read/video/" +
-        VideoData?.videoData?._id;
+      videoTag.current.src = VideoData?.videoData?._id;
     }
   }, []);
 
