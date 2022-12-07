@@ -5,7 +5,7 @@ import Style from "../../styles/pages/watch/watch.module.css";
 import { useDispatch } from "react-redux";
 import { MainVideoDataReducer } from "../../redux/video-slice/VideoSlice";
 const WatchPage = ({ VideoData }: any) => {
-  //VideoData
+  //VideoData dsoidsoidsoid
   // console.log("watch page", VideoData);
   const dispatch = useDispatch();
   dispatch(MainVideoDataReducer({ message: "data", data: VideoData }));
@@ -16,5 +16,6 @@ const WatchPage = ({ VideoData }: any) => {
     </div>
   );
 };
+
 
 export default WatchPage;
