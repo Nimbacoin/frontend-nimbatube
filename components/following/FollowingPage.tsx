@@ -10,9 +10,10 @@ const FollowingPage = ({}: any) => {
   useEffect(() => {
     const locaFetch = async () => {
       await basedGetUrlRequestLogedIn(
-        "/api/get/channel/following-channels/"
+        "/api/get/channel/following-channels"
       ).then((res) => {
         if (res?.responseData) {
+          console.log(res?.responseData);
           setChannelsData(res.responseData);
         }
       });
@@ -35,6 +36,7 @@ const FollowingPage = ({}: any) => {
               ProfileImg={channelData?.profileImg}
               // Uploads={uploads.length}
               Followers={channelData?.followers?.length}
+              // Followers={followers.length}
             />
           ))
         : null}
