@@ -254,7 +254,7 @@ const Layout = ({ children }: any) => {
         {PopUppBoolean && <PopUpp />}
         {copyVideo && <ShareVideo />}
         {cropping && <CropperCom />}
-        <Support />
+        {/* <Support /> */}
         {/* <WalletCard /> */}
         <SideHeader />
 
