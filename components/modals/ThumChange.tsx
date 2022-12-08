@@ -5,7 +5,7 @@ const VideoMainDemosData = ({ Thumbnail }: any) => {
     <div className={Style.main_container}>
       <div
         style={{
-          backgroundImage: `url(${Thumbnail && Thumbnail})`,
+          backgroundImage: `url(${Thumbnail && Thumbnail?.thumbnail})`,
         }}
         className={Style.vedio_container}
       ></div>

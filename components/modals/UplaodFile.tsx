@@ -106,15 +106,10 @@ const UplaodFile = () => {
     await AxiosPostLogedInFormData(
       "/api/post/video/create-new-thumbnail/",
       formData
-    ).then(({ data }) => {
-      const { file }: any = data;
-      setThumbnail(file.filename);
-      // if (Thumbnail.current) {
-      //   Thumbnail.current.style.backgroundImage = `url(${
-
-      //     file.filename
-      //   })`;
-      // }
+    ).then((data) => {
+      const file: any = data?.file;
+      console.log("file", file);
+      setThumbnail(file);
     });
   };
 
