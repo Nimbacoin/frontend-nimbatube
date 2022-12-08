@@ -311,26 +311,26 @@ const VideoTag = () => {
                       </span>
                     </div>
                     <div className={Style.other_controls}>
-                      <span
+                      {/* <span
                         onClick={handelScreenShot}
                         className={Style.icon_control_1000}
                       >
                         <CameraAltOutlinedIcon />
-                      </span>
-                      <div
+                      </span> */}
+                      {/* <div
                         onClick={openFullscreen}
                         className={Style.icon_control_1000}
                       >
                         <VideoSettings />
                         <SettingsSharpIcon />
-                      </div>
-                      <span
+                      </div> */}
+                      {/* <span
                         onClick={openFullscreen}
                         className={Style.icon_control_1000}
                       >
-                        {/* <Crop32SharpIcon /> */}
+                       
                         <Crop75SharpIcon />
-                      </span>
+                      </span> */}
                       <span
                         onClick={openFullscreen}
                         className={Style.icon_control_1000}
