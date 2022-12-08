@@ -12,6 +12,7 @@ import TextTilteInputMudum from "./text/TextTilteInputMudum";
 import SmallTextBlack from "./SmallTextBlack";
 import BlueButton from "./BlueButton";
 import CancelButton from "./CancelButton";
+import { useSelector } from "react-redux";
 const Support = () => {
   const handelClickClose = () => {};
   const { asPath, pathname } = useRouter();
@@ -20,7 +21,8 @@ const Support = () => {
   const [defaultAccount, setDefaultAccount] = useState("");
   const [userBalance, setUserBalance] = useState(null);
   const [connButtonText, setConnButtonText] = useState("Connect Wallet");
-
+  const ResDD = useSelector((state) => state.VideoSlice.mainVideoDataWatch);
+  console.log("ResDD", ResDD);
   const connectWalletHandler = () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
       console.log("MetaMask Here!");
@@ -120,8 +122,10 @@ const Support = () => {
                 min="0"
                 className={Style.container_input}
               />
-              <BlueButton HandelClick={handelSendToken} Text={"Send Tip"} />{" "}
-              <CancelButton Text={"wallet connected"} />
+              <div className={Style.container_main_buttones}>
+                <BlueButton HandelClick={handelSendToken} Text={"Send Tip"} />
+                <CancelButton Text={connButtonText} />
+              </div>
             </div>
           </div>
         </div>

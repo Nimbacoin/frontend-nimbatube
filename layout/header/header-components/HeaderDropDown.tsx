@@ -153,7 +153,10 @@ const HeaderDropDown = () => {
           <div className={Style.container}>
             <div className={Style.drop_down_option_sold}>
               <Link href="/wallet">
-                <CancelButton IconFirst={<FcCircuit />} Text={"0.25"} />
+                <CancelButton
+                  IconFirst={<FcCircuit />}
+                  Text={"connect wallet"}
+                />
               </Link>
             </div>
 
