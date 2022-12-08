@@ -137,15 +137,18 @@ const UplaodFile = () => {
       setFirstStep(firstStep + 1);
     }
   };
+  const HandelClose = () => {
+    dispatch(elementOverLaytRedcuerHide());
+    Router.push("/");
+  };
+
   return (
     <div className={Style.container}>
       <div className={Style.container_top_close}>
         {" "}
         <IconHeader
           FuncOutSide={true}
-          MainFuncOutSide={() => {
-            dispatch(elementOverLaytRedcuerHide());
-          }}
+          MainFuncOutSide={HandelClose}
           Icon={<IoCloseOutline />}
         />
       </div>

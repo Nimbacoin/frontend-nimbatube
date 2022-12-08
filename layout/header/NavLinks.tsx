@@ -19,38 +19,78 @@ import { FiSmartphone } from "@react-icons/all-files/fi/FiSmartphone";
 import { FiMenu } from "@react-icons/all-files/fi/FiMenu";
 const NavLinks = [
   { name: "Home", link: "/", icon: <IoHomeOutline /> },
-  { name: "Following", link: "/following", icon: <IoHeartOutline /> },
-  // { name: "Premium", link: "/premium", icon: <IoRibbonOutline /> },
-  { name: "Watch Later", link: "/watch-later", icon: <IoTimeOutline /> },
-  { name: "Favorites", link: "/favorites", icon: <IoStarOutline /> },
+  {
+    name: "Following",
+    link: "/following",
+    icon: <IoHeartOutline />,
+  },
+  // { name: "Premium", link: "/feed/query?category=premium", icon: <IoRibbonOutline /> },
+  {
+    name: "Watch Later",
+    link: "/watch-later",
+    icon: <IoTimeOutline />,
+  },
+  {
+    name: "Favorites",
+    link: "/favorites",
+    icon: <IoStarOutline />,
+  },
 
-  // { name: "Lists", link: "/lists", icon: <IoLayersOutline /> },
-  { name: "Watch History", link: "/watch-history", icon: <RiHistoryLine /> },
+  // { name: "Lists", link: "/feed/query?category=lists", icon: <IoLayersOutline /> },
+  {
+    name: "Watch History",
+    link: "/watch-history",
+    icon: <RiHistoryLine />,
+  },
 
-  { name: "Featured", link: "/featured", icon: <GiPartyHat /> },
+  {
+    name: "Featured",
+    link: "/feed/query?category=featured",
+    icon: <GiPartyHat />,
+  },
 
-  { name: "Artists", link: "/artists", icon: <IoBrushOutline /> },
-  { name: "Education", link: "/education", icon: <IoBookOutline /> },
-  { name: "Lifestyle", link: "/lifestyle", icon: <IoAccessibilityOutline /> },
+  {
+    name: "Artists",
+    link: "/feed/query?category=artists",
+    icon: <IoBrushOutline />,
+  },
+  {
+    name: "Education",
+    link: "/feed/query?category=education",
+    icon: <IoBookOutline />,
+  },
+  {
+    name: "Lifestyle",
+    link: "/feed/query?category=lifestyle",
+    icon: <IoAccessibilityOutline />,
+  },
 
-  { name: "Music", link: "/music", icon: <IoMusicalNotesOutline /> },
+  {
+    name: "Music",
+    link: "/feed/query?category=music",
+    icon: <IoMusicalNotesOutline />,
+  },
   {
     name: "Gaming",
-    link: "/gaming",
+    link: "/feed/query?category=gaming",
     icon: <IoGameControllerOutline />,
   },
-  { name: "Tech", link: "/tech", icon: <FiSmartphone /> },
+  { name: "Tech", link: "/feed/query?category=tech", icon: <FiSmartphone /> },
   {
     name: "Finance",
-    link: "/finance",
+    link: "/feed/query?category=finance",
     icon: <RiMoneyDollarCircleLine />,
   },
   {
     name: "News & politics",
-    link: "/news-politics",
+    link: "/feed/query?category=news-politics",
     icon: <IoNewspaperOutline />,
   },
-  { name: "Explore", link: "/explore", icon: <IoCompassOutline /> },
+  {
+    name: "Explore",
+    link: "/feed/query?category=explore",
+    icon: <IoCompassOutline />,
+  },
 ];
 
 export default NavLinks;
