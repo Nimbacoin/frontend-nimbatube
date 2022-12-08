@@ -28,6 +28,7 @@ import ButtonLive from "../components/modals/ButtonLive";
 import ElementOver from "../components/modals/ElementOver";
 import UplaodFile from "../components/modals/UplaodFile";
 import Support from "../components/modals/Support";
+import WalletCard from "../components/modals/WalletCard";
 
 interface main {
   children: any;
@@ -254,6 +255,7 @@ const Layout = ({ children }: any) => {
         {copyVideo && <ShareVideo />}
         {cropping && <CropperCom />}
         <Support />
+        {/* <WalletCard /> */}
         <SideHeader />
 
         <div
