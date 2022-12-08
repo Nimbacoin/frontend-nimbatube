@@ -3,7 +3,6 @@ import React from "react";
 import UploadPage from "../components/upload/UploadPage";
 import Cookies from "js-cookie";
 import { getCookie } from "cookies-next";
-import { cookieParser } from "cookie-parser";
 import * as cookie from "cookie";
 
 const Upload = () => {
