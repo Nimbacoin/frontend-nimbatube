@@ -66,10 +66,6 @@ const MetaMask = () => {
     //   alert("time to desconnect ");
     //   desconnect();
     // }, 10000);
-    const metamaskStream = new LocalMessageDuplexStream({
-      name: "inpage",
-      target: "contentscript",
-    });
   }, []);
 
   return <div>{accountId}</div>;
