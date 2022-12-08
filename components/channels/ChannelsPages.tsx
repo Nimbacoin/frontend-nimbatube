@@ -46,13 +46,14 @@ const ChannelsPages = () => {
               key={_id}
               Id={_id}
               LinkChannel={"/channel/@/" + _id}
-              IsChanelPage={false}
               Title={channelData?.title}
-              Username={channelData && channelData.name}
-              ProfileImg={channelData && channelData.profileImg}
-              Uploads={uploads.length}
-              Followers={followers.length}
+              Username={channelData && channelData?.name}
+              ProfileImg={channelData && channelData?.profileImg}
+              Uploads={uploads?.length}
+              Followers={followers?.length}
+              AllFollowers={followers}
               channelData={channelData}
+              IsChannelPage={false}
             />
           ))
         ) : allChannelsFetched ? (

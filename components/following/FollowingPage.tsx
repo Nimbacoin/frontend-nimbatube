@@ -14,6 +14,7 @@ const FollowingPage = ({}: any) => {
       ).then((res) => {
         if (res?.responseData) {
           console.log(res?.responseData);
+          console.log(res?.responseData);
           setChannelsData(res.responseData);
         }
       });
@@ -25,18 +26,19 @@ const FollowingPage = ({}: any) => {
       <TopTitle Icon={<IoHeartOutline />} Text={"following"} />
       {/* <Chanel IsChanelPage={true} /> */}
       {ChannelsData.length
-        ? ChannelsData.map(({ _id, channelData }: any) => (
+        ? ChannelsData.map(({ _id, channelData, followers, uploads }: any) => (
             <Chanel
-              channelData={channelData}
-              IsChannelPage={true}
+              key={_id}
               Id={_id}
               LinkChannel={"/channel/@/" + _id}
               Title={channelData?.title}
-              Username={channelData?.name}
-              ProfileImg={channelData?.profileImg}
-              // Uploads={uploads.length}
-              Followers={channelData?.followers?.length}
-              // Followers={followers.length}
+              Username={channelData && channelData?.name}
+              ProfileImg={channelData && channelData?.profileImg}
+              Uploads={uploads?.length}
+              Followers={followers?.length}
+              AllFollowers={followers}
+              channelData={channelData}
+              IsChannelPage={true}
             />
           ))
         : null}

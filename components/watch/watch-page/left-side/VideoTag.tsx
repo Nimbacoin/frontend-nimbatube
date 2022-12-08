@@ -247,7 +247,7 @@ const VideoTag = () => {
               </div>
             )}
 
-            <video className={Style.video_tag} ref={videoTag} loop autoPlay>
+            <video className={Style.video_tag} ref={videoTag} muted loop autoPlay>
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
             <div onClick={HandelClickPues} className={Style.div_hover}></div>

@@ -20,7 +20,7 @@ const OverAllSideMenu = () => {
   };
   useEffect(() => {
     HandelMenu();
-  });
+  } );
   const HandelMenu = () => {
     if (
       asPath.includes("/sign-in") ||

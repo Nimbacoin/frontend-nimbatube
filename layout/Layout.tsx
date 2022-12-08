@@ -27,6 +27,7 @@ import CropperCom from "../components/modals/Cropper";
 import ButtonLive from "../components/modals/ButtonLive";
 import ElementOver from "../components/modals/ElementOver";
 import UplaodFile from "../components/modals/UplaodFile";
+import Support from "../components/modals/Support";
 
 interface main {
   children: any;
@@ -64,21 +65,28 @@ const Layout = ({ children }: any) => {
     });
   }, []);
 
+  const userSignIn = useSelector((state: any) => state.UserSignIn.mainUserData);
+
   useEffect(() => {
-    let UserData = Cookies.get("user");
-    if (UserData) {
-      var obj = JSON.parse(UserData);
-      if (obj.email) {
-        dispatch(UserSignedIn(obj));
-        if (
-          (UserIsSignedIn && asPath === "/auth/sign-up") ||
-          asPath === "/auth/sign-in"
-        ) {
-          Router.push("/");
+    const localFetch = async () => {
+      await basedGetUrlRequestLogedIn("/api/get/user/user-data/").then(
+        (data) => {
+          const resData = data?.responseData?.userData;
+          let UserData = Cookies.get("user");
+          if (UserData) {
+            var obj = JSON.parse(UserData);
+            if (obj.email) {
+              if (resData) {
+                console.log("resData", resData, obj);
+                dispatch(UserSignedIn({ mainUserData: resData, data: obj }));
+              }
+            }
+          }
         }
-      }
-    }
-  });
+      );
+    };
+    localFetch();
+  }, []);
   useEffect(() => {
     if (asPath === "/upload") {
       dispatch(elementOverLaytRedcuer());
@@ -245,6 +253,7 @@ const Layout = ({ children }: any) => {
         {PopUppBoolean && <PopUpp />}
         {copyVideo && <ShareVideo />}
         {cropping && <CropperCom />}
+        <Support />
         <SideHeader />
 
         <div

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   UserIsSignedIn: false,
   userdata: {},
+  mainUserData: {},
   notification: [],
   notificationNoSeen: [],
 };
@@ -13,7 +14,12 @@ export const UserSignIn = createSlice({
   reducers: {
     UserSignedIn: (state: any, action: any) => {
       state.UserIsSignedIn = true;
-      state.userdata = action.payload;
+      if (typeof action.payload.data !== "undefined") {
+        state.userdata = action.payload.data;
+      }
+      if (typeof action.payload.mainUserData !== "undefined") {
+        state.mainUserData = action.payload.mainUserData;
+      }
     },
     UserSignOut: (state: any) => {
       state.UserIsSignedIn = false;

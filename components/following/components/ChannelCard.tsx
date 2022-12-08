@@ -14,6 +14,8 @@ import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedI
 import { poPUppRedcuer } from "../../../redux/style-slice/general-style/GenrealStyle";
 import { MainVideoDataReducer } from "../../../redux/video-slice/VideoSlice";
 import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
+import ButtonBlack from "../../modals/ButtonBlack";
+import CancelButton from "../../modals/CancelButton";
 const Channel = ({
   IsChannelPage,
   Title,
@@ -21,13 +23,20 @@ const Channel = ({
   Uploads,
   Followers,
   LinkChannel,
+  AllFollowers,
   Id,
   ProfileImg,
   channelData,
 }: any) => {
-  console.log(Title);
+  const userSignIn = useSelector((state: any) => state.UserSignIn.mainUserData);
+  console.log("IsChannelPage", IsChannelPage);
   const [IsFollowed, setIsFollowed] = useState(
-    channelData?.followers?.followed
+    AllFollowers?.length &&
+      AllFollowers.some(({ id }: any) => id === userSignIn?._id)
+  );
+
+  const followeddd = AllFollowers?.some(
+    ({ id }: any) => id === userSignIn?._id
   );
   const [ShowDiv, setShowDiv] = useState(false);
   const Ref = React.useRef<HTMLDivElement>(null);
@@ -35,13 +44,8 @@ const Channel = ({
   const dispatch = useDispatch();
   const inputSearch = React.useRef<HTMLButtonElement>(null);
   const Router = useRouter();
-
+  const [followers, setFollowers] = useState(channelData?.followers?.followers);
   const HandelFollow = async () => {
-    const userSignIn = useSelector((state: any) => state.UserSignIn.userdata);
-    const [followers, setFollowers] = useState(
-      channelData?.followers?.followers
-    );
-
     const userId = userSignIn.email;
     setIsFollowed(!IsFollowed);
     if (userId) {
@@ -167,24 +171,17 @@ const Channel = ({
             {" - uploads"}
           </span>
         </p>
-        {IsChannelPage &&
-          (!IsFollowed ? (
-            <button
-              onClick={HandelFollow}
-              className={Style.follow_button_black}
-            >
-              Subscribe
-            </button>
-          ) : (
-            <div className={Style.followed_button_container}>
-              <button onClick={HandelFollow} className={Style.follow_button}>
-                Subscribed
-              </button>
-              <button onClick={HandelFollow} className={Style.notf_button}>
-                <IoNotificationsOutline />
-              </button>
-            </div>
-          ))}
+        {(() => {
+          if (IsChannelPage) {
+            if (followeddd) {
+              return (
+                <CancelButton HandelClick={HandelFollow} Text={"following"} />
+              );
+            } else {
+              return <ButtonBlack Text={"follow"} HandelClick={HandelFollow} />;
+            }
+          }
+        })()}
       </div>
       <div className={Style.right_container}>
         <button ref={inputSearch} className={Style.IoEllipsisVertical}>
