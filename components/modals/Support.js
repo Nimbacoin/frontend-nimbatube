@@ -11,6 +11,7 @@ import basedPostUrlRequestLogedIn from "../../utils/basedPostUrlRequestLogedIn";
 import TextTilteInputMudum from "./text/TextTilteInputMudum";
 import SmallTextBlack from "./SmallTextBlack";
 import BlueButton from "./BlueButton";
+import CancelButton from "./CancelButton";
 const Support = () => {
   const handelClickClose = () => {};
   const { asPath, pathname } = useRouter();
@@ -62,17 +63,17 @@ const Support = () => {
 
   useEffect(() => {
     window.ethereum.on("accountsChanged", accountChangedHandler);
-
     window.ethereum.on("chainChanged", chainChangedHandler);
+    connectWalletHandler();
   }, []);
   const handelSendToken = () => {
-    const makeTr = () => {
+    const makeTr = (accountNumber) => {
       window.ethereum
         .request({
           method: "eth_sendTransaction",
           params: [
             {
-              from: defaultAccount,
+              from: accountNumber,
               to: "0x2f318C334780961FB129D2a6c30D0763d9a5C970",
               value: "0x29a2241af62c0000",
               gasPrice: "0x09184e72a000",
@@ -84,7 +85,7 @@ const Support = () => {
         .catch((error) => console.error);
     };
     if (defaultAccount.length >= 1) {
-      makeTr();
+      makeTr(defaultAccount);
     } else {
       connectWalletHandler();
       makeTr();
@@ -103,9 +104,6 @@ const Support = () => {
             </div>
             <div className={Style.link_container}>
               <div className="walletCard">
-                <h4>
-                  {"Connection to MetaMask using window.ethereum methods"}{" "}
-                </h4>
                 <button onClick={connectWalletHandler}>{connButtonText}</button>
                 <div className="accountDisplay">
                   <h3>Address: {defaultAccount}</h3>
@@ -122,7 +120,8 @@ const Support = () => {
                 min="0"
                 className={Style.container_input}
               />
-              <BlueButton HandelClick={handelSendToken} Text={"Send Tip"} />
+              <BlueButton HandelClick={handelSendToken} Text={"Send Tip"} />{" "}
+              <CancelButton Text={"wallet connected"} />
             </div>
           </div>
         </div>

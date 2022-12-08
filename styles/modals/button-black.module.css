@@ -7,14 +7,13 @@
   color: #fff;
   min-width: 100px;
   border-radius: 20px;
-  padding: 8px 5px;
+  padding: 8px 20px;
   background-color: #000;
   margin-top: 0px;
   cursor: pointer;
 }
-.follow_button_black:hover{
+.follow_button_black:hover {
   background-color: rgba(32, 29, 29, 0.823);
-
 }
 .blue_button {
   font-size: 14px;
@@ -25,7 +24,7 @@
   color: #000;
   min-width: 100px;
   border-radius: 20px;
-  padding: 6px 5px;
+  padding: 8px 20px;
   background-color: #fbbd18;
   margin-top: 0px;
   border: 1px solid transparent;
@@ -38,7 +37,7 @@
   cursor: pointer;
   min-width: 100px;
   border-radius: 20px;
-  padding: 8px 5px;
+  padding: 8px 20px;
   background-color: #ffffff;
   margin-top: 0px;
   border: 1px solid #dbdbdb;
