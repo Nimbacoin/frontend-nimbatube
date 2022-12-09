@@ -15,12 +15,11 @@ import BlueButton from "./BlueButton";
 import CancelButton from "./CancelButton";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
+import { ContainerEffectedClick } from "../watch/watch-page/left-side/VideoInfo";
 const Support = () => {
   const { asPath, pathname } = useRouter();
   const dispatch = useDispatch();
-  const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState("");
-  const [userBalance, setUserBalance] = useState(null);
   const [connButtonText, setConnButtonText] = useState("Connect Wallet");
   const handelClickClose = () => {
     dispatch(supportReducer({ value: false }));
@@ -37,12 +36,9 @@ const Support = () => {
           getAccountBalance(result[0]);
           Cookies.set("metamask", JSON.stringify({ metamask: true }));
         })
-        .catch((error) => {
-          setErrorMessage(error.message);
-        });
+        .catch((error) => {});
     } else {
       console.log("Need to install MetaMask");
-      setErrorMessage("Please install MetaMask browser extension to interact");
     }
   };
 
@@ -55,12 +51,8 @@ const Support = () => {
   const getAccountBalance = (account) => {
     window.ethereum
       .request({ method: "eth_getBalance", params: [account, "latest"] })
-      .then((balance) => {
-        setUserBalance(ethers.utils.formatEther(balance));
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-      });
+      .then((balance) => {})
+      .catch((error) => {});
   };
 
   const chainChangedHandler = () => {
@@ -70,9 +62,10 @@ const Support = () => {
   useEffect(() => {
     window.ethereum.on("accountsChanged", accountChangedHandler);
     window.ethereum.on("chainChanged", chainChangedHandler);
-    // connectWalletHandler();
     const isMetaMask = Cookies.get("metamask");
+
     if (typeof isMetaMask !== "undefined" && isMetaMask?.length >= 1) {
+      connectWalletHandler();
       const userMetaMask = JSON.parse(isMetaMask);
     }
   }, []);
@@ -114,23 +107,27 @@ const Support = () => {
             </div>
             <div className={Style.link_container}>
               <div className="walletCard">
-                {/* <button onClick={connectWalletHandler}>{connButtonText}</button> */}
                 <div className="accountDisplay">
-                  <h3>Address: {defaultAccount}</h3>
+                  <SmallTextBlack Text={"Your address: " + defaultAccount} />
                 </div>
-                <div className="balanceDisplay">
-                  <h3>Balance: {userBalance}</h3>
-                </div>
-                {errorMessage}
               </div>
-              <SmallTextBlack Text={"your address"} />
-              <input
-                type={"number"}
-                placeholder="0"
-                min="0"
-                className={Style.container_input}
-              />
-              <div className={Style.container_main_buttone}>
+              <div className={Style.container_input_vlaue}>
+                <div className={Style.container_input_coin}>
+                  <ContainerEffectedClick
+                    // Stylied={true}
+                    style={{ borderRadius: "20px" }}
+                  >
+                    <input
+                      type={"number"}
+                      placeholder="0"
+                      min="0"
+                      className={Style.container_input}
+                    />
+                  </ContainerEffectedClick>
+                </div>
+              </div>
+
+              <div className={Style.container_main_buttones}>
                 <BlueButton HandelClick={handelSendToken} Text={"Send Tip"} />
                 <CancelButton
                   onClick={connectWalletHandler}

@@ -43,7 +43,6 @@ const ReplyInput = ({ VideoData }: any) => {
   const handelCreateComments = async (e: any) => {
     if (typeof e !== "undefined") {
       e.preventDefault();
-      alert("df");
     }
 
     if (comment.length >= 1) {
