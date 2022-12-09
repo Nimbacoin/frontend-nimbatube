@@ -146,6 +146,9 @@ const HeaderDropDown = () => {
       setShowDiv(false);
     }, 500);
   };
+  const connectWalletHandler = () => {
+    Router.push("/wallet");
+  };
   return (
     <>
       {(() => {
@@ -154,6 +157,7 @@ const HeaderDropDown = () => {
             <div className={Style.drop_down_option_sold}>
               <Link href="/wallet">
                 <CancelButton
+                  HandelClick={connectWalletHandler}
                   IconFirst={<FcCircuit />}
                   Text={"connect wallet"}
                 />

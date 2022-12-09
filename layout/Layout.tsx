@@ -259,15 +259,42 @@ const Layout = ({ children }: any) => {
         {support && <Support />}
         {/* <WalletCard /> */}
         <SideHeader />
-
-        <div
+        {/* <div
           ref={childrenRef}
           style={{ minHeight: `${Height}px` }}
           className={MenuBoolean ? Style.childen : Style.childen_MenuBoolean}
         >
           {children}
-        </div>
-
+        </div> */}
+        {(() => {
+          if (
+            asPath.includes("/sign-in") ||
+            asPath.includes("/chanel/new") ||
+            asPath.includes("/sign-up") ||
+            asPath.includes("/watch/") ||
+            asPath.includes("/channel/create-new-channel/")
+          ) {
+            return (
+              <div
+                ref={childrenRef}
+                style={{ minHeight: `${Height}px` }}
+                className={Style.childen}
+              >
+                {children}
+              </div>
+            );
+          } else {
+            return (
+              <div
+                ref={childrenRef}
+                style={{ minHeight: `${Height}px` }}
+                className={Style.childen_MenuBoolean}
+              >
+                {children}
+              </div>
+            );
+          }
+        })()}
         {isOver && <HoverText />}
         {elementOverLayt && <UplaodFile />}
         <ButtonLive />
