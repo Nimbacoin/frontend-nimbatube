@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import {
   playListRedcuer,
   poPUppRedcuer,
+  supportReducer,
 } from "../../redux/style-slice/general-style/GenrealStyle";
 import Style from "../../styles/modals/support.module.css";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
@@ -12,17 +13,19 @@ import TextTilteInputMudum from "./text/TextTilteInputMudum";
 import SmallTextBlack from "./SmallTextBlack";
 import BlueButton from "./BlueButton";
 import CancelButton from "./CancelButton";
+import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 const Support = () => {
-  const handelClickClose = () => {};
   const { asPath, pathname } = useRouter();
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState("");
   const [userBalance, setUserBalance] = useState(null);
   const [connButtonText, setConnButtonText] = useState("Connect Wallet");
+  const handelClickClose = () => {
+    dispatch(supportReducer({ value: false }));
+  };
   const ResDD = useSelector((state) => state.VideoSlice.mainVideoDataWatch);
-  console.log("ResDD", ResDD);
   const connectWalletHandler = () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
       console.log("MetaMask Here!");
@@ -32,6 +35,7 @@ const Support = () => {
           accountChangedHandler(result[0]);
           setConnButtonText("Wallet Connected");
           getAccountBalance(result[0]);
+          Cookies.set("metamask", JSON.stringify({ metamask: true }));
         })
         .catch((error) => {
           setErrorMessage(error.message);
@@ -66,7 +70,11 @@ const Support = () => {
   useEffect(() => {
     window.ethereum.on("accountsChanged", accountChangedHandler);
     window.ethereum.on("chainChanged", chainChangedHandler);
-    connectWalletHandler();
+    // connectWalletHandler();
+    const isMetaMask = Cookies.get("metamask");
+    if (typeof isMetaMask !== "undefined" && isMetaMask?.length >= 1) {
+      const userMetaMask = JSON.parse(isMetaMask);
+    }
   }, []);
   const handelSendToken = () => {
     const makeTr = (accountNumber) => {
@@ -106,7 +114,7 @@ const Support = () => {
             </div>
             <div className={Style.link_container}>
               <div className="walletCard">
-                <button onClick={connectWalletHandler}>{connButtonText}</button>
+                {/* <button onClick={connectWalletHandler}>{connButtonText}</button> */}
                 <div className="accountDisplay">
                   <h3>Address: {defaultAccount}</h3>
                 </div>
@@ -122,9 +130,12 @@ const Support = () => {
                 min="0"
                 className={Style.container_input}
               />
-              <div className={Style.container_main_buttones}>
+              <div className={Style.container_main_buttone}>
                 <BlueButton HandelClick={handelSendToken} Text={"Send Tip"} />
-                <CancelButton Text={connButtonText} />
+                <CancelButton
+                  onClick={connectWalletHandler}
+                  Text={connButtonText}
+                />
               </div>
             </div>
           </div>

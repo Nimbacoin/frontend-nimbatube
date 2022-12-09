@@ -45,6 +45,8 @@ const Layout = ({ children }: any) => {
 
   const PopUppBoolean = useSelector((state: any) => state.GenrealStyle.popUpp);
   const copyVideo = useSelector((state: any) => state.GenrealStyle.copyVideo);
+  const support = useSelector((state: any) => state.GenrealStyle.support);
+
   const playList = useSelector((state: any) => state.GenrealStyle.playList);
   const elementOverLayt = useSelector(
     (state: any) => state.GenrealStyle.elementOverLayt
@@ -254,7 +256,7 @@ const Layout = ({ children }: any) => {
         {PopUppBoolean && <PopUpp />}
         {copyVideo && <ShareVideo />}
         {cropping && <CropperCom />}
-        {/* <Support /> */}
+        {support && <Support />}
         {/* <WalletCard /> */}
         <SideHeader />
 

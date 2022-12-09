@@ -67,6 +67,7 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
   const [videoId, setVideoId] = useState<string>(videoData?._id);
   const dispatch = useDispatch();
   const [videoLikes, setVideoLikes] = useState<number>(videoData?.likes?.likes);
+
   const [videoDisLikes, setVideoDisLikes] = useState<number>(
     videoData?.disLikes?.disLikes
   );

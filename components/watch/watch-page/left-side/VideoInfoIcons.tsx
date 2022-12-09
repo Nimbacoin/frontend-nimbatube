@@ -20,6 +20,7 @@ import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLog
 import {
   copyLinkRedcuer,
   playListRedcuer,
+  supportReducer,
 } from "../../../../redux/style-slice/general-style/GenrealStyle";
 import GoogleIcon from "../../../modals/GoogleIcon";
 import { ContainerEffectedClick } from "./VideoInfo";
@@ -32,7 +33,10 @@ export const VideoInfoIconsAll = ({ ActiveVideoStream }: any) => {
   const handelPlayList = () => {
     dispatch(playListRedcuer({ value: "true" }));
   };
-
+  const support = useSelector((state: any) => state.GenrealStyle.support);
+  const handelSupport = () => {
+    dispatch(supportReducer({ value: true }));
+  };
   const videoData = useSelector(
     (state: any) => state.VideoSlice.mainVideoDataWatch?.responseData
   );
@@ -52,7 +56,7 @@ export const VideoInfoIconsAll = ({ ActiveVideoStream }: any) => {
           </ContainerEffectedClick>
         )}
         <ContainerEffectedClick Stylied={true} style={{ borderRadius: "20px" }}>
-          <p className={Style.icon_2}>
+          <p onClick={handelSupport} className={Style.icon_2}>
             <FcCircuit />
 
             <span className={Style.nubmer_of_likes}>Support</span>
@@ -84,7 +88,7 @@ export const VideoInfoIconsAll = ({ ActiveVideoStream }: any) => {
           </ContainerEffectedClick>
         )}
         <ContainerEffectedClick Stylied={true} style={{ borderRadius: "20px" }}>
-          <p className={Style.icon_2}>
+          <p onClick={handelSupport} className={Style.icon_2}>
             <FcCircuit />
             <span className={Style.nubmer_of_likes}>Support</span>
           </p>

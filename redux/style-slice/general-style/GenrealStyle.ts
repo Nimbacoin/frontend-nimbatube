@@ -15,6 +15,7 @@ const initialState = {
   croppedImg: "",
   phoneBarOpen: false,
   elementOverLayt: false,
+  support: false,
   elementOverContent: [],
 };
 
@@ -90,6 +91,9 @@ export const GeneralStyle = createSlice({
     phoneBarOpenRedcuerHide: (state: any) => {
       state.phoneBarOpen = !state.phoneBarOpen;
     },
+    supportReducer: (state: any, action: any) => {
+      state.support = action.payload.value;
+    },
   },
 });
 
@@ -105,6 +109,7 @@ export const {
   elementOverLaytRedcuer,
   elementOverLaytRedcuerHide,
   phoneBarOpenRedcuerHide,
+  supportReducer,
 } = GeneralStyle.actions;
 const AllReducers = GeneralStyle.reducer;
 export default AllReducers;
