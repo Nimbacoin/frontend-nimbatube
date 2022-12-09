@@ -22,7 +22,6 @@ const Home = () => {
       setFirstVideos(allVids.slice(0, 8));
       setRestVideos(allVids.slice(8, allVids.length));
       setLimit(dataRes?.limit);
-      console.log(dataRes?.limit);
     };
     locaFetch();
   }, []);
@@ -37,7 +36,6 @@ const Home = () => {
         document.body.offsetHeight - 60
       ) {
         const locaFetch = async () => {
-          console.log(limit);
           const dataRes: any = await allVideosFetch(limit);
           if (dataRes?.responseData?.length >= 1) {
             const dataa = restVideos.concat(dataRes.responseData);
@@ -52,11 +50,10 @@ const Home = () => {
           }
         };
         locaFetch();
-        console.log("botoom");
       } else if (document.documentElement.scrollTop < 1000) {
-        console.log("SF");
+
       } else if (document.documentElement.scrollTop >= 1000) {
-        console.log("DF");
+
       }
     };
   }, [limit]);

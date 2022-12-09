@@ -83,9 +83,7 @@ const VideoTag = () => {
           const theDistance = grayBar.current.getBoundingClientRect();
           const duration = videoData.duration;
           const theSpeed = theDistance.width / duration;
-          console.log(theSpeed);
           const distance = theSpeed * duration;
-          console.log(distance);
         }
       }
     };
@@ -120,9 +118,8 @@ const VideoTag = () => {
         const theDistance = grayBar.current.getBoundingClientRect();
         const duration = videoData.duration;
         const theSpeed = theDistance.width / duration;
-        console.log(theSpeed);
+        
         const distance = theSpeed * duration;
-        console.log(distance);
       }
     }
   }, [videoTag, redBar]);

@@ -42,7 +42,6 @@ const LiveCommentsVideos = () => {
       ).then((res: any) => {
         if (res.responseData) {
           const allResComments = res.responseData.comments;
-          console.log(allResComments);
           dispatch(
             liveVideoLive({
               comments: allResComments,
@@ -106,8 +105,8 @@ const LiveCommentsVideos = () => {
 
       <div ref={messagesEndRef} className={Style.comments_container}>
         {liveCommentsVideo?.length
-          ? liveCommentsVideo.map((comment: any) => (
-              <StreamComment CommentData={comment} />
+          ? liveCommentsVideo.map((comment: any , index:number) => (
+              <StreamComment Key={index} key={index} CommentData={comment} />
             ))
           : ""}
       </div>

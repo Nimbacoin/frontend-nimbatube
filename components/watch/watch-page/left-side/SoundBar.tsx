@@ -32,7 +32,6 @@ const VideoBar = ({ Width, HandelClick }: any) => {
       if (progressSlider.current && progressFill.current) {
         const newTime =
           e.nativeEvent.offsetX / progressSlider.current.offsetWidth;
-        console.log(e.nativeEvent.offsetX);
         progressFill.current.style.width = `${newTime * 100}%`;
         // HandelClick(newTime);
       }

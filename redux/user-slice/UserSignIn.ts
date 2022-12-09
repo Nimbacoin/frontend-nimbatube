@@ -27,7 +27,6 @@ export const UserSignIn = createSlice({
     notificationReudcer: (state: any, action: any) => {
       const Payload = action.payload;
       state.notification = Payload;
-      console.log(Payload);
       state.notificationNoSeen = Payload.filter(
         ({ vid }: any) => vid.seen == false
       );

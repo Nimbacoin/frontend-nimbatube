@@ -58,7 +58,6 @@ const NewGeneral = () => {
   const HandelSubmiteNewGeneral = async (e: any) => {
     const channelId = asPath.replace("/channel/create-new-channel/", "");
     const isValid = channelId.toString();
-    console.log(channelId);
     const ReqData: any = { general, images, channelId: isValid };
     await basedPostUrlRequestLogedIn(
       "/api/post/channel/create-new-channel",

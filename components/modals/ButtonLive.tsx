@@ -24,11 +24,9 @@ const ButtonLive = () => {
   useEffect(() => {
     if (!phoneBarOpen) {
       document.body.style.overflow = "auto";
-      console.log(document.body.style.overflow);
     }
     if (phoneBarOpen) {
       document.body.style.overflow = "hidden";
-      console.log(document.body.style.overflow);
     }
   });
   const dispatch = useDispatch();
@@ -38,7 +36,6 @@ const ButtonLive = () => {
   const HandelMouseDown = () => {};
   const handelTouchMove = (e: any) => {
     setShowDiv(false);
-    console.log("move");
     const ggg = e.targetTouches[0].clientX;
     const gggy = e.targetTouches[0].clientY;
     if (
@@ -57,7 +54,6 @@ const ButtonLive = () => {
     // functionToChangeTime(e);
   };
   const handelonTouchEnd = (e: any) => {
-    console.log("end");
     // functionToChangeTime(e.targetTouches[0].clientX);
 
     if (

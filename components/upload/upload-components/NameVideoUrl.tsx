@@ -55,7 +55,6 @@ const NameVideoUrl = () => {
       "/api/post/video/create-new-video/",
       formData
     ).then(({ data }) => {
-      console.log(data);
       const { file }: any = data;
       if (file) {
         setVideoLocation(file.location);
@@ -98,7 +97,6 @@ const NameVideoUrl = () => {
 
   const handelChangeTitle = (e: any) => {
     setTitle(e.target.value);
-    console.log(e.target.id);
     dispatch(
       ActionVideoDataChanging({
         id: "title",

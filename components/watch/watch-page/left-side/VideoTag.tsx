@@ -72,7 +72,6 @@ const VideoTag = () => {
     const CurrentVideo = videoTag.current;
     if (CurrentVideo) {
       CurrentVideo.onloadedmetadata = (event) => {
-        console.log(event);
         if (CurrentVideo && CurrentVideo.src) {
           CurrentVideo.play();
           const TimeVideo = CurrentVideo.duration;
@@ -247,7 +246,13 @@ const VideoTag = () => {
               </div>
             )}
 
-            <video className={Style.video_tag} ref={videoTag} muted loop autoPlay>
+            <video
+              className={Style.video_tag}
+              ref={videoTag}
+              muted
+              loop
+              autoPlay
+            >
               <source ref={videoSrc} className={Style.video} type="video/mp4" />
             </video>
             <div onClick={HandelClickPues} className={Style.div_hover}></div>

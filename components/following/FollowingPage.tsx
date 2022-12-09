@@ -13,8 +13,6 @@ const FollowingPage = ({}: any) => {
         "/api/get/channel/following-channels"
       ).then((res) => {
         if (res?.responseData) {
-          console.log(res?.responseData);
-          console.log(res?.responseData);
           setChannelsData(res.responseData);
         }
       });

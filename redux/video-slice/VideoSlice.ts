@@ -15,7 +15,6 @@ export const VideoSlice = createSlice({
     ActionVideoDataChanging: (state: any, action: any) => {
       const Action = action.payload;
       if (Action.id === "title") {
-        console.log(Action.title);
         state.videoData["title"] = Action.title;
       } else if (Action.id === "text_desc") {
         state.videoData["descreption"] = Action.text_desc;
@@ -32,20 +31,13 @@ export const VideoSlice = createSlice({
         state.mainVideoDataWatch.responseData.comments =
           action.payload.comments;
       } else if (message === "followers") {
-        console.log(
-          "followers 1",
-          current(state.mainVideoDataWatch.channelData.followers)
-        );
-        console.log("payload", action.payload.followers);
         state.mainVideoDataWatch.channelData.followers =
           action.payload.followers;
-        // console.log("followers 1", current(state.mainVideoDataWatch));
       }
     },
     liveVideoLive: (state: any, action: any) => {
       const Action = action.payload.comments;
       if (Action) {
-        console.log(Action.comments);
         state.liveCommentsVideo = action.payload.comments;
       }
     },

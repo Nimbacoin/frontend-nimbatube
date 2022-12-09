@@ -16,7 +16,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const query = context.query;
   const cookies = context.req.headers.cookie;
-  console.log(query);
   await basedGetUrlRequest(
     "/api/get/video/" +
       query.video +

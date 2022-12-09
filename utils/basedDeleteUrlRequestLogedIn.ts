@@ -10,7 +10,6 @@ const basedDeleteUrlRequestLogedIn = async (
   dataBody: EnumServiceGetOrderBy
 ) => {
   const UserCookie = Cookies.get("user");
-  console.log(UserCookie);
   const response = await fetch(
     process.env.NEXT_PUBLIC_BACK_END_URL + url + UserCookie,
     {
@@ -23,7 +22,6 @@ const basedDeleteUrlRequestLogedIn = async (
     }
   );
   const data = await response.json();
-  console.log(data);
   return data;
 };
 

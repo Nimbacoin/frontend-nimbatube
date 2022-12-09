@@ -80,7 +80,6 @@ const Layout = ({ children }: any) => {
             var obj = JSON.parse(UserData);
             if (obj.email) {
               if (resData) {
-                console.log("resData", resData, obj);
                 dispatch(UserSignedIn({ mainUserData: resData, data: obj }));
               }
             }
@@ -110,7 +109,6 @@ const Layout = ({ children }: any) => {
             }
           }
         } catch (error) {
-          console.log(error);
         }
       }
     );

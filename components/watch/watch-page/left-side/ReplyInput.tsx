@@ -62,7 +62,6 @@ const ReplyInput = ({ VideoData }: any) => {
             comments: res.responseData,
             videoId: VideoData._id,
           });
-          console.log(res);
           setComment("");
           if (inputRef.current) {
             inputRef.current.value = "";

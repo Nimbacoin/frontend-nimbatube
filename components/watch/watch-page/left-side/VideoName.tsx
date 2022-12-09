@@ -91,8 +91,6 @@ const VideoName = ({ ActiveVideoStream }: any) => {
   const handelPlayList = () => {
     dispatch(playListRedcuer({ value: "true" }));
   };
-  var check = moment(videoData?.createdAt, "YYYY/MM/DD");
-  var month = check.format("M");
 
   return (
     <div className={Style.video_data}>
@@ -104,11 +102,11 @@ const VideoName = ({ ActiveVideoStream }: any) => {
       </div>
       <span className={Style.date_phone}>
         {videoData?.views?.length} views -{" "}
-        {moment(videoData?.createdAt).fromNow()}{" "}
+        {videoData?.createdAt ? moment(videoData?.createdAt).fromNow():"00:00"}{" "}
       </span>
       <span className={Style.date}>
         {videoData?.views?.length} views -{" "}
-        {moment(videoData?.createdAt).fromNow()}{" "}
+        {videoData?.createdAt ? moment(videoData?.createdAt).fromNow():"00:00"}{" "}
       </span>
     </div>
   );

@@ -29,7 +29,6 @@ const MychannelPage = () => {
             dispatch(avtiveChannelReducer(res.responsData));
           }
         } catch (error) {
-          console.log(error);
         }
       });
     }

@@ -54,9 +54,7 @@ const Streaming = () => {
         if (VideoRef.current) {
           VideoRef.current.srcObject = stream;
         }
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
     localFetch();
   }, []);
@@ -124,7 +122,6 @@ const Streaming = () => {
       ).then((res) => {
         if (res.responseData) {
           const allResComments = res.responseData.comments;
-          console.log(allResComments);
           dispatch(
             liveVideoLive({
               comments: allResComments,
@@ -202,8 +199,8 @@ const Streaming = () => {
         </div>
         <div ref={messagesEndRef} className={Style.comments_main_container}>
           {liveCommentsVideo?.length
-            ? liveCommentsVideo.map((comment) => (
-                <StreamComment CommentData={comment} />
+            ? liveCommentsVideo.map((comment, index) => (
+                <StreamComment Key={index} CommentData={comment} />
               ))
             : null}
         </div>

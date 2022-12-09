@@ -9,14 +9,12 @@ const wallet = () => {
     try {
       await activate(injected);
     } catch (erro) {
-      console.log("SD");
     }
   };
   const deconnect = async () => {
     try {
     } catch (erro) {
       await deactivate();
-      console.log("SD");
     }
   };
   return (

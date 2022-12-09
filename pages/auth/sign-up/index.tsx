@@ -62,7 +62,6 @@ const SignUp = () => {
 
     basedPostUrlRequest("/api/auth/sign-up", Body).then((res) => {
       if (res) {
-        console.log(res);
         if (res.user) {
           Cookies.set("user", JSON.stringify(res.user));
           Cookies.set("expires", "Fri, 31 Dec 9999 23:59:59 GMT");

@@ -39,7 +39,6 @@ const Comments = ({ VideoData }: any) => {
       ? (document.body.style.overflowY = "hidden")
       : (document.body.style.overflowY = "auto");
   });
-  // console.log(videoData?.comments);
 
   return (
     <div className={CommentsBoolean ? Style.container_phone : Style.container}>
@@ -96,8 +95,8 @@ const Comments = ({ VideoData }: any) => {
         }
       >
         {videoData?.comments?.length
-          ? videoData?.comments.map((comment: any) => (
-              <EachComment CommentData={comment} />
+          ? videoData?.comments.map((comment: any , index:number) => (
+              <EachComment Key={index} key={index} CommentData={comment} />
             ))
           : null}
       </div>

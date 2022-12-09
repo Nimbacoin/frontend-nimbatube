@@ -8,7 +8,6 @@ import basedPostUrlRequestLogedIn from "../../../../utils/basedPostUrlRequestLog
 import EachComment from "../../../watch/watch-page/left-side/EachComment";
 import BoldText from "../../../modals/BoldText";
 const Community = ({ Name, Id, ChannelData }: any) => {
-  console.log(Name, Id);
   const handelChangeDesc = (e: any) => {
     setComment(e.target.value);
   };

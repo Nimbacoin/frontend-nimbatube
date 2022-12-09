@@ -27,7 +27,6 @@ const Support = () => {
   const ResDD = useSelector((state) => state.VideoSlice.mainVideoDataWatch);
   const connectWalletHandler = () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
-      console.log("MetaMask Here!");
       window.ethereum
         .request({ method: "eth_requestAccounts" })
         .then((result) => {
@@ -38,7 +37,6 @@ const Support = () => {
         })
         .catch((error) => {});
     } else {
-      console.log("Need to install MetaMask");
     }
   };
 
@@ -84,7 +82,7 @@ const Support = () => {
             },
           ],
         })
-        .then((txHash) => console.log(txHash))
+        .then((txHash) => {})
         .catch((error) => console.error);
     };
     if (defaultAccount.length >= 1) {

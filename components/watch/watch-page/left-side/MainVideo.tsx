@@ -82,7 +82,6 @@ const MainVideo = () => {
         body
       ).then((responseData) => {
         if (responseData) {
-          console.log(responseData);
           setFollowers(responseData?.responseData?.followers);
           dispatch(
             MainVideoDataReducer({

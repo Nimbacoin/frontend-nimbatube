@@ -3,7 +3,7 @@ import Style from "../../../styles/pages/go-live/go-live-components/stream-comme
 
 import moment from "moment";
 
-const StreamComment = ({ CommentData }: any) => {
+const StreamComment = ({ CommentData, Key }: any) => {
   const Bg = CommentData?.creatoreData?.profileImg?.url;
   const [IsLiked, setIsLiked] = useState(false);
   const [IsDisLiked, setIsDisLiked] = useState(false);
@@ -16,7 +16,7 @@ const StreamComment = ({ CommentData }: any) => {
     setIsDisLiked(!IsDisLiked);
   };
   return (
-    <div className={Style.chanel}>
+    <div key={Key && Key} className={Style.chanel}>
       <div
         style={{ backgroundImage: `url(${Bg})` }}
         className={Style.img}

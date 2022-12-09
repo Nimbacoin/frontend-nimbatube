@@ -21,13 +21,11 @@ const OtherChannelData = () => {
   //         "/api/get/channel/all-vidoes/" + dataUrl,
   //         false
   //       );
-  //       console.log(dataRes);
   //       setVideos(dataRes.responseData);
   //     }
   //   };
   //   locaFetch();
   // }, [asPath]);
-  console.log(ChannelSlice);
   return (
     <div className={Style.container}>
       <div className={Style.channel_data_followrs}>

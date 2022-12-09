@@ -35,7 +35,6 @@ const Video = ({ VideoData }: any) => {
     const socketId = streaming?.socketId;
 
     if (isLive && created) {
-      console.log("yes");
       setVideoLink(
         "/watch/watch?streaming=true&video=" +
           VideoData?._id +
@@ -105,6 +104,7 @@ const Video = ({ VideoData }: any) => {
 
   return (
     <div
+      key={VideoData?.videoData?._id}
       ref={containerRef}
       // onClick={handelClickVideo}
       onMouseOver={HandelOver}

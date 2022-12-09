@@ -14,8 +14,6 @@ export default VidioId;
 //   const query = context.query;
 //   const cookies = context.req.headers.cookie;
 //   if (typeof cookies !== "undefined" && typeof query.channel !== "undefined") {
-//     console.log("query:", query);
-//     // console.log(cookies);
 //     await basedGetUrlRequest(
 //       "/api/get/channel/" + query.channel + "/" + cookies,
 //       true

@@ -51,7 +51,7 @@ export const VideoInfoIconsAll = ({ ActiveVideoStream }: any) => {
             <p className={Style.icon_comments}>
               {/* <GoCommentDiscussion /> */}
               <GoogleIcon IconName={"forum"} />
-              <span className={Style.live_chat}>Live Chat</span>
+              <span className={Style.nubmer_of_likes}>Live Chat</span>
             </p>
           </ContainerEffectedClick>
         )}
@@ -83,7 +83,7 @@ export const VideoInfoIconsAll = ({ ActiveVideoStream }: any) => {
             <p className={Style.icon_comments}>
               {/* <GoCommentDiscussion /> */}
               <GoogleIcon IconName={"forum"} />
-              <span className={Style.live_chat}>Live Chat</span>
+              <span className={Style.nubmer_of_likes}>Live Chat</span>
             </p>
           </ContainerEffectedClick>
         )}

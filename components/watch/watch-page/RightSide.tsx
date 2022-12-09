@@ -31,7 +31,6 @@ const RightSide = () => {
         const newVideo = dataRes?.responseData.filter(
           ({ videoData }: any) => videoData._id === video
         );
-        console.log(newVideo);
         dipatch(nextVideoReducer("sd"));
       }
     };
@@ -64,7 +63,9 @@ const RightSide = () => {
       </div>
       <div className={Style.vedio_container}>
         {videos.length ? (
-          videos.map((vid: any) => <Vedio VideoData={vid} />)
+          videos.map((vid: any, index) => (
+            <Vedio key={index} Key={index} VideoData={vid} />
+          ))
         ) : (
           <AllVideosBeforLoad />
         )}

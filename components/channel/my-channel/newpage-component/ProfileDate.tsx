@@ -62,10 +62,8 @@ const ProfileDate = ({ ChannelData }: any) => {
   const [BgUrlCover, setBgUrlCover] = useState("");
   const [Name, setName] = useState("");
   const [Title, setTitle] = useState("");
-  console.log("ChannelData", ChannelData);
   useEffect(() => {
     if (ChannelData && ChannelData.channelData?.profileImg) {
-      console.log(ChannelData.channelData?.profileImg);
       setBgUrl(ChannelData.channelData.profileImg.url);
     }
     if (ChannelData && ChannelData.channelData?.coverImg) {

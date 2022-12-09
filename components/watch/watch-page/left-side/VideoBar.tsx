@@ -11,7 +11,6 @@ const VideoBar = ({ Width, HandelClick }: any) => {
     if (progressSlider.current && progressFill.current) {
       const newTime =
         e.nativeEvent.offsetX / progressSlider.current.offsetWidth;
-      console.log(e.nativeEvent.offsetX);
       progressFill.current.style.width = `${newTime * 100}%`;
       HandelClick(newTime);
     }
@@ -40,19 +39,13 @@ const VideoBar = ({ Width, HandelClick }: any) => {
   };
   useEffect(() => {}, []);
   const handelTouchStart = (e: any) => {
-    console.log("start");
     functionToChangeTime(e.targetTouches[0].clientX);
   };
   const handelTouchMove = (e: any) => {
-    console.log("move");
-    console.log(e.targetTouches[0].clientX);
-    functionToChangeTime(e.targetTouches[0].clientX);
     // functionToChangeTime(e);
   };
   const handelonTouchEnd = (e: any) => {
-    console.log("end");
     // functionToChangeTime(e.targetTouches[0].clientX);
-    
   };
   return (
     <div

@@ -39,7 +39,6 @@ const UplaodFirstStep2 = ({
   };
   const handelChangeTitle = (e: any) => {
     setTitle(e.target.value);
-    console.log(e.target.id);
     dispatch(
       ActionVideoDataChanging({
         id: "title",

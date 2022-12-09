@@ -21,14 +21,12 @@ const MetaMask = () => {
     try {
       await activate(injected);
     } catch (erro) {
-      console.log("SD");
     }
   };
   const desconnect = async () => {
     try {
       await deactivate();
     } catch (erro) {
-      console.log("SD");
     }
   };
 
@@ -48,7 +46,6 @@ const MetaMask = () => {
     // provider.request({});
     //{ method: "eth_requestAccounts" }
     // .then(async (rsl: any) => {
-    //   console.log(rsl[0]);
     //   if (rsl && rsl?.length >= 1 && Channels && Channels?.length) {
     //     setAccountId(rsl[0]);
     //     const channelId = Channels[0]._id;
@@ -57,7 +54,6 @@ const MetaMask = () => {
     //       "/api/post/crypto/add-wallet",
     //       ReqData
     //     ).then((rslt) => {
-    //       console.log(rslt);
     //     });
     //   }
     // });

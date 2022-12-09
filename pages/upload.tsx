@@ -23,21 +23,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     if (typeof User !== "undefined") {
       const userTokken = JSON.parse(User);
-      console.log(userTokken);
       if (userTokken.email) {
         isLogged = true;
-        console.log("is loged in ");
       } else {
         isLogged = false;
-        console.log("no logged in ");
       }
     } else {
       isLogged = false;
-      console.log("no logged in ");
     }
   } else {
     isLogged = false;
-    console.log("no logged in ");
   }
 
   if (!isLogged) {

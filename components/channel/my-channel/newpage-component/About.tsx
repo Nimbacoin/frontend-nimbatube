@@ -6,7 +6,6 @@ import SmallTextBlack from "../../../modals/SmallTextBlack";
 import TextTilteInputMudum from "../../../modals/text/TextTilteInputMudum";
 
 const About = ({ ChannelData }: any) => {
-  console.log("ChannelData", ChannelData);
   const [Description, setDescription] = useState("");
   useEffect(() => {
     if (ChannelData) {

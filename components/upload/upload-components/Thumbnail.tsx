@@ -43,7 +43,6 @@ const Thumbnail = () => {
       "/api/post/video/create-new-thumbnail/",
       formData
     ).then(({ data }) => {
-      console.log(data);
       const { file }: any = data;
       if (Thumbnail.current) {
         Thumbnail.current.style.backgroundImage = `url(${file.filename})`;
@@ -52,7 +51,6 @@ const Thumbnail = () => {
     });
   };
   const handelSubmiteVideos = async () => {
-    console.log(videoData);
     await basedPostUrlRequestLogedIn(
       "/api/post/video/submite-video/",
       videoData
@@ -65,7 +63,6 @@ const Thumbnail = () => {
         videoId: videoData?.video_id,
         channelId: Channels[0]?._id,
       });
-      console.log(file);
     });
   };
 

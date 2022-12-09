@@ -104,7 +104,7 @@ const ProfileDate = () => {
   const handelSubmitecoverRef = async (imageData: any) => {
     const channelId = asPath.replace("/channel/create-new-channel/", "");
     const isValid = channelId.toString();
-    console.log("image is here ");
+    
     let formData = new FormData();
     if (imageData) {
       if (isValid) {
@@ -116,7 +116,6 @@ const ProfileDate = () => {
       "/api/post/channel/channel-cover-image/",
       formData
     ).then(({ data }) => {
-      console.log("recieved", data);
       const { file }: any = data;
       if (coverRef.current) {
         coverRef.current.style.backgroundImage = `url(${file.channelData.coverImg.url})`;
@@ -134,7 +133,6 @@ const ProfileDate = () => {
   const handelSubmiteProfileRef = async () => {
     const channelId = asPath.replace("/channel/create-new-channel/", "");
     const isValid = channelId.toString();
-    console.log(channelId);
     let formData = new FormData();
     if (Path.current) {
       if (isValid) {
@@ -146,7 +144,6 @@ const ProfileDate = () => {
       "/api/post/channel/channel-profile-image/",
       formData
     ).then(({ data }) => {
-      console.log(data);
       const { file }: any = data;
       if (previewSourceProfile.current) {
         previewSourceProfile.current.style.backgroundImage = `url(${file.channelData.profileImg.url})`;
@@ -172,7 +169,6 @@ const ProfileDate = () => {
       //Usage example:
       urltoFile(croppedImg, "imgageee", "image/png").then(function (file: any) {
         handelSubmitecoverRef(file);
-        // console.log("main-file", file);
       });
       // coverRef.current.style.backgroundImage = `url(${croppedImg})`;
     }

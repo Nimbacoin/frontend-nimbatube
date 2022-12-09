@@ -28,7 +28,7 @@ const coinbase = () => {
     if (askUser) {
       ethereum
         .request({ method: "eth_requestAccounts" })
-        .then((response) => console.log(response));
+        .then((response) => {});
     }
   }, [askUser]);
   return (

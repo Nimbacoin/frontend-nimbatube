@@ -94,7 +94,6 @@ const HeaderCaseI = () => {
     if (ContainerWhite.current) {
       if (menuBooleanAllOver) {
         ContainerWhite.current.className = Style.hidden;
-        console.log("hidden");
       } else {
         if (MenuBoolean) {
           ContainerWhite.current.className = Style.white_ontainer_home_avtive;

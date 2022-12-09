@@ -108,7 +108,6 @@ const UplaodFile = () => {
       formData
     ).then(({ data }: any) => {
       const { file }: any = data;
-      console.log("file", file);
       setThumbnail(file);
     });
   };

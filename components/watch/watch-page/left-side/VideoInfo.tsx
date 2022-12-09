@@ -126,8 +126,6 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
   const handelPlayList = () => {
     dispatch(playListRedcuer({ value: "true" }));
   };
-  var check = moment(videoData?.createdAt, "YYYY/MM/DD");
-  var month = check.format("M");
 
   return (
     <div className={Style.icons_container}>

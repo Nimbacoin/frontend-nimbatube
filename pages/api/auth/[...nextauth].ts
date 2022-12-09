@@ -18,14 +18,12 @@ export default NextAuth({
           credentials.username === "john" &&
           credentials.password === "test"
         ) {
-          console.log(credentials);
           return {
             id: 2,
             name: "John",
             email: "johndoe@test.com",
           };
         } else {
-          console.log("failed");
         }
         return null;
       },
@@ -33,7 +31,6 @@ export default NextAuth({
   ],
   callbacks: {
     async signIn({ user }) {
-      console.log("G");
       return true;
     },
     // jwt: ({ token, user }) => {
@@ -46,7 +43,6 @@ export default NextAuth({
       if (token) {
         // session.id = token.id;
       }
-      console.log("session:", session);
       return session;
     },
   },

@@ -18,14 +18,13 @@ const Home = () => {
           "/api/get/channel/all-vidoes/" + dataUrl,
           false
         );
-        console.log(dataRes);
+        
         if (dataRes && dataRes?.responseData) {
           setVideos(dataRes.responseData);
           const filter = dataRes.responseData.filter(
             ({ videoData }: any) => videoData.location !== undefined
           );
           setMainVideo(filter.slice(0, 1));
-          console.log(mainVideo);
         }
       }
     };

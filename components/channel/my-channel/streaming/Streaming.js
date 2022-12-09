@@ -44,9 +44,7 @@ const App = () => {
         if (VideoRef.current) {
           VideoRef.current.srcObject = stream;
         }
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
     localFetch();
   }, []);
@@ -61,7 +59,6 @@ const App = () => {
     socket.on("watcher", (id) => {
       const peerConnection = new RTCPeerConnection(pc_config);
       peerConnections[id] = peerConnection;
-      console.log("new watcher");
       setPeerConnections((peerConnections[id] = peerConnection));
       let stream = VideoRef.current.srcObject;
       stream

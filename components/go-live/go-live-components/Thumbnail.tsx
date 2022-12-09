@@ -41,8 +41,6 @@ const Thumbnail = ({ VideoLink, VideoId }: any) => {
       "/api/post/video/create-new-thumbnail/",
       formData
     ).then(({ data }) => {
-      console.log("data");
-      console.log(data);
       const { file }: any = data;
       if (Thumbnail.current) {
         Thumbnail.current.style.backgroundImage = `url(${file.filename})`;

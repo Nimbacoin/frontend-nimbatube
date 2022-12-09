@@ -10,7 +10,6 @@ const basedPostUrlRequest = async (
   url: string,
   dataBody: EnumServiceGetOrderBy
 ) => {
-  console.log(document.cookie);
   const response = await fetch(process.env.NEXT_PUBLIC_BACK_END_URL + url, {
     method: "POST",
     headers: {

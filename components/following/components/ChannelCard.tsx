@@ -29,7 +29,6 @@ const Channel = ({
   channelData,
 }: any) => {
   const userSignIn = useSelector((state: any) => state.UserSignIn.mainUserData);
-  console.log("IsChannelPage", IsChannelPage);
   const [IsFollowed, setIsFollowed] = useState(
     AllFollowers?.length &&
       AllFollowers.some(({ id }: any) => id === userSignIn?._id)
@@ -58,7 +57,6 @@ const Channel = ({
         body
       ).then((responseData) => {
         if (responseData) {
-          console.log(responseData);
           setFollowers(responseData?.responseData?.followers);
           dispatch(
             MainVideoDataReducer({
@@ -95,19 +93,16 @@ const Channel = ({
   let Body: any = { channelId: Id };
 
   const handelDeleteChannel = async () => {
-    console.log("Id", Id);
     await basedPostUrlRequestLogedIn(
       "/api/post/channel/delete-channel/",
       Body
     ).then((res: any) => {
-      console.log("channel removed");
       dispatch(poPUppRedcuer({ data: "channel removed" }));
       setTimeout(() => {
         dispatch(poPUppRedcuer({ data: "" }));
       }, 5000);
       setShowDiv(false);
       dispatch(AllChannelsRedcuer(res.responsData));
-      console.log(res);
     });
   };
   function copyToClipboard(value: any) {

@@ -6,7 +6,6 @@ const SearchFunc = async (dataBody: any) => {
   await basedPostUrlRequest("/api/post/search/searching", body).then(
     (searchData) => {
       if (searchData) {
-        console.log(searchData);
       }
     }
   );

@@ -9,8 +9,6 @@ const WalletCard = () => {
 
   const connectWalletHandler = () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
-      console.log("MetaMask Here!");
-
       window.ethereum
         .request({ method: "eth_requestAccounts" })
         .then((result) => {
