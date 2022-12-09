@@ -1,5 +1,4 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
 import Layout from "../layout/Layout";
 import { store, wrapper } from "../redux/store";
 import { Provider } from "react-redux";
@@ -11,7 +10,7 @@ import Web3 from "web3";
 function getLibrary(provider:any) {
   return new Web3(provider);
 }
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: any) {
   return (
     <Provider store={store}>
       <SessionProvider session={pageProps.session}>
