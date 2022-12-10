@@ -15,6 +15,7 @@ import { useSession } from "next-auth/react";
 import {
   notificationReudcer,
   UserSignedIn,
+  userSignedInReucerData,
 } from "../redux/user-slice/UserSignIn";
 import Cookies from "js-cookie";
 import basedGetUrlRequestLogedIn from "../utils/basedGetUrlRequestLogedIn";
@@ -71,18 +72,21 @@ const Layout = ({ children }: any) => {
   const userSignIn = useSelector((state: any) => state.UserSignIn.mainUserData);
 
   useEffect(() => {
+    // userSignedInReucerData;
+    let userData = Cookies.get("user");
+    if (typeof userData !== "undefined") {
+      var obj: any = JSON.parse(userData);
+      if (obj?.email) {
+        dispatch(userSignedInReucerData({ data: obj }));
+      }
+    }
+
     const localFetch = async () => {
       await basedGetUrlRequestLogedIn("/api/get/user/user-data/").then(
         (data) => {
           const resData = data?.responseData?.userData;
-          let UserData = Cookies.get("user");
-          if (UserData) {
-            var obj = JSON.parse(UserData);
-            if (obj.email) {
-              if (resData) {
-                dispatch(UserSignedIn({ mainUserData: resData, data: obj }));
-              }
-            }
+          if (resData) {
+            dispatch(UserSignedIn({ mainUserData: resData }));
           }
         }
       );
@@ -108,8 +112,7 @@ const Layout = ({ children }: any) => {
               dispatch(notificationReudcer(res.responsData.notification));
             }
           }
-        } catch (error) {
-        }
+        } catch (error) {}
       }
     );
   }, [asPath]);

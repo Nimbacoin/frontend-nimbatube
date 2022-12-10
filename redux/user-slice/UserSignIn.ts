@@ -21,6 +21,12 @@ export const UserSignIn = createSlice({
         state.mainUserData = action.payload.mainUserData;
       }
     },
+    userSignedInReucerData: (state: any, action: any) => {
+      state.UserIsSignedIn = true;
+      if (typeof action.payload.data !== "undefined") {
+        state.userdata = action.payload.data;
+      }
+    },
     UserSignOut: (state: any) => {
       state.UserIsSignedIn = false;
     },
@@ -34,7 +40,11 @@ export const UserSignIn = createSlice({
   },
 });
 
-export const { UserSignedIn, UserSignOut, notificationReudcer } =
-  UserSignIn.actions;
+export const {
+  UserSignedIn,
+  UserSignOut,
+  notificationReudcer,
+  userSignedInReucerData,
+} = UserSignIn.actions;
 const AllReducers = UserSignIn.reducer;
 export default AllReducers;
