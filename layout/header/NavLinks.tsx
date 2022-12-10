@@ -38,7 +38,7 @@ const NavLinks = [
 
   // { name: "Lists", link: "/feed/query?category=lists", icon: <IoLayersOutline /> },
   {
-    name: "Watch History",
+    name: "History",
     link: "/watch-history",
     icon: <RiHistoryLine />,
   },

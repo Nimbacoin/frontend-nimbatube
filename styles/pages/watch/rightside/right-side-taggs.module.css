@@ -31,9 +31,10 @@
   /* border: 1px solid #d4d4d4; */
   color: #030303;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 5px 10px;
   background-color: #ececec;
+  border: 3px solid #ececec;
   margin-top: 0px;
   clear: both;
   display: flex;
@@ -46,7 +47,8 @@
 }
 .span:hover {
   background-color: #cacacae8;
-  text-decoration: underline;
+  border: 3px solid #cacacae8;
+
   transition: all 0.3s ease;
   transform: rotate(360deg);
   transform: scale(1.01);
@@ -55,10 +57,10 @@
   max-height: 30px;
   font-size: 14px;
   font-weight: 500;
-  border: 1px solid #030303;
+  border: 3px solid #030303;
   color: #ffff;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 5px 10px;
   background-color: #030303;
   margin-top: 0px;
@@ -96,7 +98,7 @@
   box-shadow: 13px 4px 12px 5px #fff;
 }
 .main_container::-webkit-scrollbar {
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: #fff;
   width: 0;
   display: hidden;
@@ -106,7 +108,7 @@
   display: none;
 }
 .main_container::-webkit-scrollbar-thumb {
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: #909090;
 }
 .main_container::-webkit-scrollbar-button {

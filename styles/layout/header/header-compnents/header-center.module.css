@@ -20,7 +20,7 @@
   justify-content: space-between;
   width: 80%;
   height: 38px;
-  border: 1px solid#f0f0f0;
+  border: 1px solid#cccccc;
   border-radius: 20px;
   position: relative;
   padding: 0;
@@ -38,7 +38,7 @@
   border-radius: 20px;
 }
 .search_button {
-  background-color: #f0f0f0;
+  background-color: #f8f8f8;
   width: 60px;
   height: 100%;
   display: flex;
@@ -49,6 +49,7 @@
   font-size: 20px;
   margin: 0;
   border-radius: 0 20px 20px 0;
+  border-left: 1px solid#cccccc;
 }
 
 .buttons_container {
