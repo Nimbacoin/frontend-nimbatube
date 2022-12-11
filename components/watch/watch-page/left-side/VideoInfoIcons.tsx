@@ -71,6 +71,7 @@ export const VideoInfoIconsAll = ({ ActiveVideoStream }: any) => {
         <ContainerEffectedClick Stylied={true} style={{ borderRadius: "20px" }}>
           <p className={Style.icon_2}>
             <IoEllipsisHorizontalSharp />
+            <span className={Style.nubmer_of_likes}>More</span>
           </p>
         </ContainerEffectedClick>
       </div>

@@ -12,7 +12,15 @@ import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
 import { FcCircuit } from "@react-icons/all-files/fc/FcCircuit";
 import { GoCommentDiscussion } from "@react-icons/all-files/go/GoCommentDiscussion";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+//
+import { FiThumbsUp } from "react-icons/fi";
 
+import {
+  RiThumbUpFill,
+  RiThumbDownLine,
+  RiThumbDownFill,
+  RiThumbUpLine,
+} from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
 import { useRouter } from "next/router";
@@ -130,33 +138,28 @@ const VideoInfo = ({ ActiveVideoStream }: any) => {
   return (
     <div className={Style.icons_container}>
       <div className={Style.continer_second}>
-        <div className={Style.container_thmp}>
-          <ContainerEffectedClick
-            Stylied={true}
-            style={{ borderRadius: "20px 0 0 20px" }}
-          >
-            <p className={Style.icon_1} onClick={HandelLike}>
-              {IsLiked ? (
-                <GoogleIcon Fill={true} IconName={"thumb_up_off"} />
-              ) : (
-                <GoogleIcon IconName={"thumb_up_off"} />
-              )}
-              <span className={Style.nubmer_of_likes}>{videoLikes}</span>
-            </p>
-          </ContainerEffectedClick>
-          <ContainerEffectedClick
-            Stylied={true}
-            style={{ borderRadius: "0px 20px 20px 0" }}
-          >
-            <p className={Style.icon_2} onClick={HandelDisLike}>
-              {IsDisLiked ? (
-                <GoogleIcon Fill={true} IconName={"thumb_down_off"} />
-              ) : (
-                <GoogleIcon IconName={"thumb_down_off"} />
-              )}
-              {/* <span className={Style.disLike}> {videoDisLikes}</span> */}
-            </p>
-          </ContainerEffectedClick>
+        <div className={Style.div_main}>
+          <div className={Style.container__left}>
+            <ContainerEffectedClick
+              Stylied={true}
+              style={{ borderRadius: "20px 0px 0px 20px" }}
+            >
+              <p onClick={HandelLike} className={Style.icon_1_1}>
+                {IsLiked ? <RiThumbUpFill /> : <RiThumbUpLine />}
+                <span className={Style.nubmer_of_likes}>{videoLikes}</span>
+              </p>
+            </ContainerEffectedClick>
+            <ContainerEffectedClick
+              Stylied={true}
+              style={{ borderRadius: "0px 20px 20px 0px" }}
+            >
+              <p onClick={HandelDisLike} className={Style.icon_1_1}>
+                {IsDisLiked ? <RiThumbDownFill /> : <RiThumbDownLine />}
+
+                <span className={Style.nubmer_of_likes}>Dislike</span>
+              </p>
+            </ContainerEffectedClick>
+          </div>
         </div>
         <div className={Style.container__right}>
           <VideoInfoIconsAll ActiveVideoStream={ActiveVideoStream} />
