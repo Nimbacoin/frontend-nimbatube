@@ -21,7 +21,9 @@ const RightSideTaggs = () => {
     { name: "USA" },
     { name: "Travel" },
     { name: "Javascript" },
-
+    { name: "World cup" },
+    { name: "2022" },
+    { name: "Crypto" },
     { name: "Travel" },
   ];
   // useEffect(() => {

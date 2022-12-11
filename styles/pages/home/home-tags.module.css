@@ -11,7 +11,7 @@
   overflow: hidden;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #dbdbdb;
+  /* border-bottom: 1px solid #dbdbdb; */
   background-color: #fff;
 }
 
@@ -33,12 +33,13 @@
 .span {
   max-height: 30px;
   font-size: 14px;
-  border: 1px solid #ececec;
+  /* border: 1px solid #d4d4d4; */
   color: #030303;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 5px 10px;
   background-color: #ececec;
+  border: 3px solid #ececec;
   margin-top: 0px;
   clear: both;
   display: flex;

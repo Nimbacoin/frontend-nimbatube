@@ -121,16 +121,16 @@ const Layout = ({ children }: any) => {
 
   const childrenRef = React.useRef<HTMLDivElement>(null);
   const handelChangeMenu = () => {
-    if (childrenRef.current) {
-      if (!menuBooleanAllOver) {
-        if (MenuBoolean) {
-        } else {
-          childrenRef.current.className = Style.childen;
-        }
-      } else {
-        childrenRef.current.className = Style.childen_100;
-      }
-    }
+    // if (childrenRef.current) {
+    //   if (!menuBooleanAllOver) {
+    //     if (MenuBoolean) {
+    //     } else {
+    //       childrenRef.current.className = Style.childen;
+    //     }
+    //   } else {
+    //     childrenRef.current.className = Style.childen_100;
+    //   }
+    // }
   };
 
   useEffect(() => {
