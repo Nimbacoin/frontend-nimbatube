@@ -105,7 +105,6 @@
   padding: 0;
   margin: 0;
   position: relative;
-  background-color: red;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -115,7 +114,7 @@
 
 .menu_desktop > svg,
 .menu > svg {
-  font-size:20px;
+  font-size:18px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,10 +126,14 @@
 .menu_desktop,
 .menu {
   border-radius: 50%;
+  border: 1px solid #dbdbdb;
+
 }
 .menu_desktop:hover,
 .menu:hover {
-  background-color: #ececec;
+  border: 1px solid #dbdbdb;
+
+  /* background-color: #ececec; */
 }
 
 .menu:last-of-type,
