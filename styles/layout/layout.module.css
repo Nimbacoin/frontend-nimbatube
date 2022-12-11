@@ -16,21 +16,18 @@
   width: 94%;
   height: auto;
   position: relative;
-  /* background-color: red; */
 }
 .childen_100 {
   width: 100%;
   margin-top: 60px;
   z-index: 3;
   height: auto;
-  /* background-color: blue; */
 }
 .childen_MenuBoolean {
   width: 80%;
   margin-top: 60px;
   z-index: 3;
   height: auto;
-  /* background-color: black; */
 }
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 100, "GRAD" -25, "opsz" 48;

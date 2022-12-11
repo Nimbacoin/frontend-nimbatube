@@ -98,6 +98,7 @@
   align-items: center;
   justify-content: center;
   border-bottom: solid 1px #dbdbdb;
+  row-gap: 2px;
 }
 .link_container {
   padding: 9px 0;

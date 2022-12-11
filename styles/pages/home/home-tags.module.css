@@ -52,13 +52,14 @@
 }
 .span:hover {
   background-color: #cacacae8;
+  border: 3px solid #cacacae8;
 }
 
 .active_span {
   max-height: 30px;
   font-size: 14px;
   font-weight: 500;
-  border: 1px solid #030303;
+  border: 3px solid #030303;
   color: #ffff;
   cursor: pointer;
   border-radius: 8px;

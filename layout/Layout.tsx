@@ -279,21 +279,33 @@ const Layout = ({ children }: any) => {
               <div
                 ref={childrenRef}
                 style={{ minHeight: `${Height}px` }}
-                className={Style.childen}
+                className={Style.childen_100}
               >
                 {children}
               </div>
             );
           } else {
-            return (
-              <div
-                ref={childrenRef}
-                style={{ minHeight: `${Height}px` }}
-                className={Style.childen_MenuBoolean}
-              >
-                {children}
-              </div>
-            );
+            if (MenuBoolean) {
+              return (
+                <div
+                  ref={childrenRef}
+                  style={{ minHeight: `${Height}px` }}
+                  className={Style.childen}
+                >
+                  {children}
+                </div>
+              );
+            } else {
+              return (
+                <div
+                  ref={childrenRef}
+                  style={{ minHeight: `${Height}px` }}
+                  className={Style.childen_MenuBoolean}
+                >
+                  {children}
+                </div>
+              );
+            }
           }
         })()}
         {isOver && <HoverText />}
