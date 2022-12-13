@@ -13,7 +13,7 @@
 .video_container {
   width: 50%;
   height: 100px;
-  background-color: #030303;
+  background-color: #03030300;
   overflow: hidden;
   cursor: pointer;
   border-radius: 8px;

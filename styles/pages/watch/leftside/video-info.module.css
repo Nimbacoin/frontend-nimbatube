@@ -130,6 +130,17 @@
   padding: 6px 10px;
   margin: 0;
 }
+
+.icon_1,
+.icon_2 {
+  border-radius: 20px;
+}
+.icon_1:hover,
+.icon_2:hover {
+  background-color: #e5e5e5;
+  overflow: hidden;
+}
+
 .div_main {
   height: auto;
   /* margin: auto; */
@@ -168,7 +179,7 @@
 }
 
 .container_clicked {
-  border: 1px solid #dbdbdb;
+  border: 1px solid #cccccc;
 }
 .thum_left_1:hover {
   height: 100%;
