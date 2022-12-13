@@ -33,7 +33,6 @@ const ChannelsPages = () => {
     <div className={Style.container}>
       <div className={Style.head_container}>
         <div className={Style.title}>Your Active channels </div>
-
         <BlueButton
           HandelClick={HandelSubmiteInitChannel}
           Text={"New Chanel"}

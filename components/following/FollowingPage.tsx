@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Chanel from "./components/ChannelCard";
+import Channel from "./components/ChannelCard";
 import Style from "../../styles/pages/following/following.module.css";
 import basedGetUrlRequestLogedIn from "../../utils/basedGetUrlRequestLogedIn";
 import { IoHeartOutline } from "@react-icons/all-files/io5/IoHeartOutline";
 
 import TopTitle from "../modals/TopTitle";
+import ChannelsLaoding from "../modals/pages-boforload/ChannelsLaoding";
 const FollowingPage = ({}: any) => {
   const [ChannelsData, setChannelsData] = useState([]);
   useEffect(() => {
@@ -21,11 +22,13 @@ const FollowingPage = ({}: any) => {
   }, []);
   return (
     <div className={Style.container}>
-      <TopTitle Icon={<IoHeartOutline />} Text={"following"} />
-      {/* <Chanel IsChanelPage={true} /> */}
-      {ChannelsData.length
-        ? ChannelsData.map(({ _id, channelData, followers, uploads }: any) => (
-            <Chanel
+      <div className={Style.head_container}>
+        <TopTitle Icon={<IoHeartOutline />} Text={"following"} />
+      </div>
+      <div className={Style.channels_container}>
+        {ChannelsData && ChannelsData.length ? (
+          ChannelsData.map(({ _id, channelData, followers, uploads }: any) => (
+            <Channel
               key={_id}
               Id={_id}
               LinkChannel={"/channel/@/" + _id}
@@ -36,11 +39,35 @@ const FollowingPage = ({}: any) => {
               Followers={followers?.length}
               AllFollowers={followers}
               channelData={channelData}
-              IsChannelPage={true}
+              IsChannelPage={false}
             />
           ))
-        : null}
+        ) : (
+          <ChannelsLaoding />
+        )}
+      </div>
     </div>
+
+    // <div className={Style.container}>
+    //   <TopTitle Icon={<IoHeartOutline />} Text={"following"} />
+    //   {ChannelsData.length
+    //     ? ChannelsData.map(({ _id, channelData, followers, uploads }: any) => (
+    //         <Chanel
+    //           key={_id}
+    //           Id={_id}
+    //           LinkChannel={"/channel/@/" + _id}
+    //           Title={channelData?.title}
+    //           Username={channelData && channelData?.name}
+    //           ProfileImg={channelData && channelData?.profileImg}
+    //           Uploads={uploads?.length}
+    //           Followers={followers?.length}
+    //           AllFollowers={followers}
+    //           channelData={channelData}
+    //           IsChannelPage={true}
+    //         />
+    //       ))
+    //     : null}
+    // </div>
   );
 };
 

@@ -111,17 +111,12 @@ const Support = () => {
               </div>
               <div className={Style.container_input_vlaue}>
                 <div className={Style.container_input_coin}>
-                  <ContainerEffectedClick
-                    // Stylied={true}
-                    style={{ borderRadius: "20px" }}
-                  >
-                    <input
-                      type={"number"}
-                      placeholder="0"
-                      min="0"
-                      className={Style.container_input}
-                    />
-                  </ContainerEffectedClick>
+                  <input
+                    type={"number"}
+                    placeholder="0"
+                    min="0"
+                    className={Style.container_input}
+                  />
                 </div>
               </div>
 

@@ -19,20 +19,7 @@
   margin: 10px auto;
   row-gap: 20px;
 }
-.button {
-  background-color: #673de6;
-  height: 100%;
-  padding: 0 20px;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 500;
-  min-height: 40px;
-}
+
 .head_container {
   display: flex;
   flex-direction: row;

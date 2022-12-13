@@ -97,7 +97,7 @@
 }
 .icon_control > svg,
 .icon_control_1000 > svg {
-  color: #fff;
+  color: #f4f1f1;
   cursor: pointer;
 }
 .icon_control > svg {
@@ -171,7 +171,7 @@
 }
 .time {
   display: flex;
-  color: #fff;
+  color: #f4f1f1;
   font-size: 13px;
   font-weight: 300;
 }
@@ -252,7 +252,7 @@
   .time_900 {
     padding: 0 20px;
     display: flex;
-    color: #fff;
+    color: #f4f1f1;
     font-size: 13px;
     font-weight: 300;
   }
