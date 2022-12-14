@@ -11,7 +11,10 @@ import basedDeleteUrlRequestLogedIn from "../../../utils/basedDeleteUrlRequestLo
 import { AllChannelsRedcuer } from "../../../redux/channel-slice/ChannelSlice";
 import { useDispatch, useSelector } from "react-redux";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
-import { poPUppRedcuer } from "../../../redux/style-slice/general-style/GenrealStyle";
+import {
+  poPUppRedcuer,
+  supportReducer,
+} from "../../../redux/style-slice/general-style/GenrealStyle";
 import { MainVideoDataReducer } from "../../../redux/video-slice/VideoSlice";
 import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
 import ButtonBlack from "../../modals/ButtonBlack";
@@ -44,6 +47,9 @@ const Channel = ({
   const inputSearch = React.useRef<HTMLButtonElement>(null);
   const Router = useRouter();
   const [followers, setFollowers] = useState(channelData?.followers?.followers);
+  const handelSupport = () => {
+    dispatch(supportReducer({ value: true }));
+  };
   const HandelFollow = async () => {
     const userId = userSignIn.email;
     setIsFollowed(!IsFollowed);
@@ -120,7 +126,7 @@ const Channel = ({
   const AllLink = [
     {
       name: "Support",
-      func: HandelFunc,
+      func: handelSupport,
       icon: <FcCircuit />,
     },
     {
