@@ -14,7 +14,14 @@ import Style from "../../styles/modals/button-black.module.css";
 //     </button>
 //   );
 // };
-const BlueButton = ({ HandelClick, Text, children, onClick }: any) => {
+const BlueButton = ({
+  HandelClick,
+  Text,
+  children,
+  onClick,
+  submit,
+  HandelSubmit,
+}: any) => {
   const [coords, setCoords] = React.useState({ x: -1, y: -1 });
   const [isRippling, setIsRippling] = React.useState(false);
 
@@ -34,9 +41,18 @@ const BlueButton = ({ HandelClick, Text, children, onClick }: any) => {
     if (rect) {
       setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
       onClick && onClick(e);
-      HandelClick();
+      // HandelClick();
+      if (submit) {
+        if (ref.current) {
+          ref.current.addEventListener("submit", HandelSubmit);
+        }
+      } else {
+        ref.current && ref.current.addEventListener("click", HandelClick);
+      }
     }
   };
+  React.useEffect(() => {}, []);
+
   return (
     <button ref={ref} className={Style.ripple_button} onClick={OnClickEvent}>
       {isRippling ? (
