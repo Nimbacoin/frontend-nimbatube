@@ -217,14 +217,14 @@ const Support = () => {
               <>
                 <div className={Style.link_container}>
                   <div className="walletCard">
-                    <div className="accountDisplay">
+                    {/* <div className="accountDisplay">
                       <SmallTextBlack
                         Text={"Your address: " + defaultAccount}
                       />
                       <SmallTextBlack
                         Text={"Your balance: " + userBalance + " NimbaCoin"}
                       />
-                    </div>
+                    </div> */}
                   </div>
                   <div className={Style.container_input_support_address}>
                     <div className={Style.channe}>
@@ -237,6 +237,9 @@ const Support = () => {
                       />
                     </div>
                     <div className={Style.container_input_coin}>
+                      <SmallTextBlack
+                        Text={channelData?.channelData?.name + "address"}
+                      />
                       <input
                         // placeholder="0"
                         defaultValue={ResDD}
