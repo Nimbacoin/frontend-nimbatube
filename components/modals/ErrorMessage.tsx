@@ -1,4 +1,4 @@
-export default function ErrorMessage({ message }) {
+export default function ErrorMessage({ message }:any) {
   if (!message) return null;
 
   return (
