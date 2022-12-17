@@ -23,7 +23,9 @@ const Support = () => {
   const { asPath, pathname } = useRouter();
   const dispatch = useDispatch();
   const contractOjb = useRef(null);
-
+  const ResDD = useSelector(
+    (state) => state.VideoSlice.mainVideoDataWatch?.channelData.walletId
+  );
   const [defaultAccount, setDefaultAccount] = useState("");
   const [connButtonText, setConnButtonText] = useState("Connect Wallet");
   const [etherValue, setEtherValue] = useState("0");
@@ -39,7 +41,6 @@ const Support = () => {
   const handelClickClose = () => {
     dispatch(supportReducer({ value: false }));
   };
-  const ResDD = useSelector((state) => state.VideoSlice.mainVideoDataWatch);
   const connectWalletHandler = () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
       window.ethereum
@@ -80,11 +81,14 @@ const Support = () => {
   }, []);
 
   const handelSendToken = async () => {
-    try {
-      const rrr = ethers.utils.parseEther(etherValue);
-      const valueHex = rrr._hex;
-      await contractOjb.current.transfer(defaultAccount, valueHex);
-    } catch (errro) {}
+    // console.log("ResDD", ResDD);
+    if (ResDD && ResDD.length) {
+      try {
+        const rrr = ethers.utils.parseEther(etherValue);
+        const valueHex = rrr._hex;
+        await contractOjb.current.transfer(ResDD, valueHex);
+      } catch (errro) {}
+    }
   };
   var provider2;
   var signer;
@@ -212,7 +216,9 @@ const Support = () => {
                       <SmallTextBlack
                         Text={"Your address: " + defaultAccount}
                       />
-                      <SmallTextBlack Text={"Balance: " + userBalance} />
+                      <SmallTextBlack
+                        Text={"Balance: " + userBalance + " NimbaCoin"}
+                      />
                     </div>
                   </div>
                   <div className={Style.container_input_vlaue}>

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   playListRedcuer,
   poPUppRedcuer,
@@ -11,6 +11,15 @@ import basedPostUrlRequestLogedIn from "../../utils/basedPostUrlRequestLogedIn";
 const AddToPalayList = () => {
   const { asPath, pathname } = useRouter();
   const dispatch = useDispatch();
+  const ResDD = useSelector(
+    (state: any) => state.VideoSlice.mainVideoDataWatch?.library
+  );
+  const [savedToWatchLater, setsavedToWatchLater] = useState(
+    ResDD?.savedToWatchLater
+  );
+  const [savedToFavorites, setSavedToFavorites] = useState(
+    ResDD?.savedToFavorites
+  );
   //   const copyToClipboard = () => {
   //     navigator.clipboard.writeText(process.env.NEXT_PUBLIC_ClIENT_URL + asPath);
   //     dispatch(poPUppRedcuer({ data: "video  link is copied" }));
@@ -21,6 +30,8 @@ const AddToPalayList = () => {
   const handelClickClose = () => {
     dispatch(playListRedcuer({ value: "false" }));
   };
+
+  console.log("ResDD", ResDD);
 
   const [videoId, setVideoId] = useState<string>("");
   useEffect(() => {
@@ -49,10 +60,14 @@ const AddToPalayList = () => {
     ).then((res: any) => {});
   };
   const listToSave = [
-    { name: "Favorites", func: handelAddToFavorites },
-    { name: "Watch Later", func: handelAddToWatchLater },
+    { name: "Favorites", func: handelAddToFavorites, isIn: savedToFavorites },
+    {
+      name: "Watch Later",
+      func: handelAddToWatchLater,
+      isIn: savedToWatchLater,
+    },
   ];
-//
+  //
   return (
     <div className={Style.container}>
       <div className={Style.main_first_container}>
@@ -65,9 +80,13 @@ const AddToPalayList = () => {
               </button>
             </div>
             <div className={Style.link_container}>
-              {listToSave.map(({ name, func }) => (
+              {listToSave.map(({ name, func, isIn }) => (
                 <div onClick={func} className={Style.main_link_container}>
-                  <input type="checkbox" className={Style.check_box} />
+                  <input
+                    type="checkbox"
+                    checked={isIn}
+                    className={Style.check_box}
+                  />
                   <p className={Style.link}>{name}</p>
                 </div>
               ))}
