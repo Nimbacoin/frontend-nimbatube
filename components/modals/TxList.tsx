@@ -1,9 +1,9 @@
-export default function TxList({ txs }) {
+export default function TxList({ txs }: any) {
     if (txs.length === 0) return null;
-  
+  //h
     return (
       <>
-        {txs.map((item) => (
+        {txs.map((item:any) => (
           <div key={item} className="alert alert-info mt-5">
             <div className="flex-1">
               <label>{item.hash}</label>
