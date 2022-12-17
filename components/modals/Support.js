@@ -79,10 +79,12 @@ const Support = () => {
     }
   }, []);
 
-  const handelSendToken = () => {
-    const rrr = ethers.utils.parseEther(etherValue);
-    const valueHex = rrr._hex;
-    contractOjb.current.transfer(defaultAccount, valueHex);
+  const handelSendToken = async () => {
+    try {
+      const rrr = ethers.utils.parseEther(etherValue);
+      const valueHex = rrr._hex;
+      await contractOjb.current.transfer(defaultAccount, valueHex);
+    } catch (errro) {}
   };
   var provider2;
   var signer;
