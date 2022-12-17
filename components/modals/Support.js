@@ -56,8 +56,6 @@ const Support = () => {
     }
   };
 
-  // update account, will cause component re-render
-
   const chainChangedHandler = () => {
     window.location.reload();
   };
@@ -65,6 +63,9 @@ const Support = () => {
   useEffect(() => {
     if (window.ethereum) {
       setNetWorkId(window.ethereum.networkVersion);
+      if (window.ethereum.networkVersion === "56") {
+        setIsBNB(true);
+      }
       setProvider(new ethers.providers.Web3Provider(window.ethereum));
     }
     window.ethereum.on("chainChanged", chainChangedHandler);
@@ -77,8 +78,6 @@ const Support = () => {
   }, []);
 
   const handelSendToken = () => {
-    alert();
-    console.log("tokens", contractOjb);
     const rrr = ethers.utils.parseEther(etherValue);
     const valueHex = rrr._hex;
     contractOjb.current.transfer(defaultAccount, valueHex);
@@ -86,7 +85,6 @@ const Support = () => {
   var provider2;
   var signer;
   var signerAddress;
-
   const tokenContractAddress = "0x2f8A45dE29bbfBB0EE802B340B4f91af492C6DE7";
   const tokenABI = AbiJson;
   var tokenContract;
@@ -179,51 +177,62 @@ const Support = () => {
       <div className={Style.main_first_container}>
         <div className={Style.main_container}>
           <div className={Style.share_container}>
-            <button
-              onClick={() => handleNetworkSwitch("bsc")}
-              className="mt-2 mb-2 bg-warning border-warning btn submit-button focus:ring focus:outline-none w-full"
-            >
-              {netWorkTextName}
-            </button>
-            {error}
-            {isBNB}
-            <>
-              <div className={Style.text_container}>
-                <TextTilteInputMudum Text={"Support"} />
-                <button onClick={handelClickClose} className={Style.svg}>
-                  <IoCloseOutline />
-                </button>
-              </div>
-              <div className={Style.link_container}>
-                <div className="walletCard">
-                  <div className="accountDisplay">
-                    <SmallTextBlack Text={"Your address: " + defaultAccount} />
-                    <SmallTextBlack Text={"Balance: " + userBalance} />
-                  </div>
+            {(() => {
+              if (defaultAccount.length > 10) {
+                return (
+                  <button
+                    onClick={() => handleNetworkSwitch("bsc")}
+                    className="mt-2 mb-2 bg-warning border-warning btn submit-button focus:ring focus:outline-none w-full"
+                  >
+                    {netWorkTextName}
+                  </button>
+                );
+              }
+            })()}
+            {isBNB && defaultAccount.length > 10 && (
+              <>
+                <div className={Style.text_container}>
+                  <TextTilteInputMudum Text={"Support"} />
+                  <button onClick={handelClickClose} className={Style.svg}>
+                    <IoCloseOutline />
+                  </button>
                 </div>
-                <div className={Style.container_input_vlaue}>
-                  <div className={Style.container_input_coin}>
-                    <input
-                      // type={"number"}
-                      placeholder="0"
-                      // min="0"
-                      onChange={(e) => {
-                        setEtherValue(e.target.value);
-                      }}
-                      className={Style.container_input}
+                <div className={Style.link_container}>
+                  <div className="walletCard">
+                    <div className="accountDisplay">
+                      <SmallTextBlack
+                        Text={"Your address: " + defaultAccount}
+                      />
+                      <SmallTextBlack Text={"Balance: " + userBalance} />
+                    </div>
+                  </div>
+                  <div className={Style.container_input_vlaue}>
+                    <div className={Style.container_input_coin}>
+                      <input
+                        // type={"number"}
+                        placeholder="0"
+                        // min="0"
+                        onChange={(e) => {
+                          setEtherValue(e.target.value);
+                        }}
+                        className={Style.container_input}
+                      />
+                    </div>
+                  </div>
+
+                  <div className={Style.container_main_buttones}>
+                    <BlueButton
+                      HandelClick={handelSendToken}
+                      Text={"Send Tip"}
+                    />
+                    <CancelButton
+                      HandelClick={connectWalletHandler}
+                      Text={connButtonText}
                     />
                   </div>
                 </div>
-
-                <div className={Style.container_main_buttones}>
-                  <BlueButton HandelClick={handelSendToken} Text={"Send Tip"} />
-                  <CancelButton
-                    HandelClick={connectWalletHandler}
-                    Text={connButtonText}
-                  />
-                </div>
-              </div>
-            </>
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -50,6 +50,7 @@ const BlueButton = ({
         ref.current && ref.current.addEventListener("click", HandelClick);
       }
     }
+    HandelClick()
   };
   React.useEffect(() => {}, []);
 
