@@ -72,8 +72,10 @@ const Support = () => {
     const isMetaMask = Cookies.get("metamask");
 
     if (typeof isMetaMask !== "undefined" && isMetaMask?.length >= 1) {
-      connectWalletHandler();
       const userMetaMask = JSON.parse(isMetaMask);
+      if (userMetaMask.metamask) {
+        connectWalletHandler();
+      }
     }
   }, []);
 
@@ -193,12 +195,10 @@ const Support = () => {
                 );
               } else if (defaultAccount.length >= 1 && !isBNB) {
                 return (
-                  <button
-                    onClick={() => handleNetworkSwitch("bsc")}
-                    className="mt-2 mb-2 bg-warning border-warning btn submit-button focus:ring focus:outline-none w-full"
-                  >
-                    {netWorkTextName}
-                  </button>
+                  <CancelButton
+                    HandelClick={() => handleNetworkSwitch("bsc")}
+                    Text={netWorkTextName}
+                  />
                 );
               }
             })()}
