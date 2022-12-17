@@ -250,6 +250,7 @@ const Support = () => {
                   <div className={Style.container_input_vlaue}>
                     <div className={Style.container_input_coin}>
                       <input
+                        defaultValue={"1"}
                         placeholder="0"
                         onChange={(e) => {
                           setEtherValue(e.target.value);
