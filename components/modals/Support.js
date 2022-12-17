@@ -26,6 +26,10 @@ const Support = () => {
   const ResDD = useSelector(
     (state) => state.VideoSlice.mainVideoDataWatch?.channelData.walletId
   );
+  const channelData = useSelector(
+    (state) => state.VideoSlice.mainVideoDataWatch?.channelData
+  );
+  console.log(channelData);
   const [defaultAccount, setDefaultAccount] = useState("");
   const [connButtonText, setConnButtonText] = useState("Connect Wallet");
   const [etherValue, setEtherValue] = useState("0");
@@ -218,6 +222,21 @@ const Support = () => {
                       />
                       <SmallTextBlack
                         Text={"Balance: " + userBalance + " NimbaCoin"}
+                      />
+                    </div>
+                  </div>
+                  <div className={Style.container_input_support_address}>
+                    <TextTilteInputMudum
+                      Text={channelData?.channelData?.name}
+                    />
+                    <div className={Style.container_input_coin}>
+                      <input
+                        // placeholder="0"
+                        defaultValue={ResDD}
+                        onChange={(e) => {
+                          setEtherValue(e.target.value);
+                        }}
+                        className={Style.container_input}
                       />
                     </div>
                   </div>

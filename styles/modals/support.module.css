@@ -48,6 +48,10 @@
   justify-content: center;
   justify-content: space-between;
 }
+.container_input_support_address {
+  width: 100%;
+  height: auto;
+}
 
 .link_container {
   width: 100%;
