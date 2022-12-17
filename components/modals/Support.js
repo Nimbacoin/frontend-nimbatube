@@ -222,20 +222,19 @@ const Support = () => {
                         Text={"Your address: " + defaultAccount}
                       />
                       <SmallTextBlack
-                        Text={"Balance: " + userBalance + " NimbaCoin"}
+                        Text={"Your balance: " + userBalance + " NimbaCoin"}
                       />
                     </div>
                   </div>
                   <div className={Style.container_input_support_address}>
-                    
                     <div className={Style.channe}>
                       <div
                         style={{ backgroundImage: `url(${Bg})` }}
                         className={Style.img}
                       ></div>
                       <TextTilteInputMudum
-                      Text={channelData?.channelData?.name}
-                    />
+                        Text={channelData?.channelData?.name}
+                      />
                     </div>
                     <div className={Style.container_input_coin}>
                       <input

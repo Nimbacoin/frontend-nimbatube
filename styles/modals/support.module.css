@@ -51,6 +51,11 @@
 .container_input_support_address {
   width: 100%;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items : center ;
+  justify-content: flex-start;
+  row-gap: 5px;
 }
 
 .link_container {
@@ -145,8 +150,10 @@
   width: 100%;
   height: auto;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  column-gap: 5px;
 }
 .container_input {
   padding: 5px 20px;
