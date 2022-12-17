@@ -15,7 +15,7 @@ const initialState = {
   croppedImg: "",
   phoneBarOpen: false,
   elementOverLayt: false,
-  support: false,
+  support: true,
   elementOverContent: [],
 };
 

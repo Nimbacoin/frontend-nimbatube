@@ -24,12 +24,13 @@ const Support = () => {
   const dispatch = useDispatch();
   const contractOjb = useRef(null);
   const ResDD = useSelector(
-    (state) => state.VideoSlice.mainVideoDataWatch?.channelData.walletId
+    (state) => state.VideoSlice.mainVideoDataWatch?.channelData?.walletId
   );
   const channelData = useSelector(
     (state) => state.VideoSlice.mainVideoDataWatch?.channelData
   );
-  console.log(channelData);
+  const Bg = channelData?.channelData?.profileImg?.url;
+  console.log(Bg);
   const [defaultAccount, setDefaultAccount] = useState("");
   const [connButtonText, setConnButtonText] = useState("Connect Wallet");
   const [etherValue, setEtherValue] = useState("0");
@@ -226,9 +227,16 @@ const Support = () => {
                     </div>
                   </div>
                   <div className={Style.container_input_support_address}>
-                    <TextTilteInputMudum
+                    
+                    <div className={Style.channe}>
+                      <div
+                        style={{ backgroundImage: `url(${Bg})` }}
+                        className={Style.img}
+                      ></div>
+                      <TextTilteInputMudum
                       Text={channelData?.channelData?.name}
                     />
+                    </div>
                     <div className={Style.container_input_coin}>
                       <input
                         // placeholder="0"
@@ -236,7 +244,7 @@ const Support = () => {
                         onChange={(e) => {
                           setEtherValue(e.target.value);
                         }}
-                        className={Style.container_input}
+                        className={Style.container_input_support_id}
                       />
                     </div>
                   </div>
