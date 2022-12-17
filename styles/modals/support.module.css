@@ -52,6 +52,11 @@
 .link_container {
   width: 100%;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  row-gap: 5px;
 }
 .link {
   width: 90%;

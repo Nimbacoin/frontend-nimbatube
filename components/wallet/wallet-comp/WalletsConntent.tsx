@@ -32,7 +32,6 @@ const WalletsConntent = () => {
     <div ref={ContainerWlt} className={Style.container}>
       {metaMakeB && <MetaMask />}
       {coinBaseB && <CoinBase />}
-      {/* <MetaMask /> */}
       {wallets.map(({ name, img, HandelConnect }, index) => (
         <div
           onClick={HandelConnect}

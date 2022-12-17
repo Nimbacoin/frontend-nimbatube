@@ -177,8 +177,21 @@ const Support = () => {
       <div className={Style.main_first_container}>
         <div className={Style.main_container}>
           <div className={Style.share_container}>
+            <div className={Style.text_container}>
+              <TextTilteInputMudum Text={"Support"} />
+              <button onClick={handelClickClose} className={Style.svg}>
+                <IoCloseOutline />
+              </button>
+            </div>
             {(() => {
-              if (defaultAccount.length > 10) {
+              if (defaultAccount.length <= 0) {
+                return (
+                  <CancelButton
+                    HandelClick={connectWalletHandler}
+                    Text={connButtonText}
+                  />
+                );
+              } else if (defaultAccount.length >= 1 && !isBNB) {
                 return (
                   <button
                     onClick={() => handleNetworkSwitch("bsc")}
@@ -191,12 +204,6 @@ const Support = () => {
             })()}
             {isBNB && defaultAccount.length > 10 && (
               <>
-                <div className={Style.text_container}>
-                  <TextTilteInputMudum Text={"Support"} />
-                  <button onClick={handelClickClose} className={Style.svg}>
-                    <IoCloseOutline />
-                  </button>
-                </div>
                 <div className={Style.link_container}>
                   <div className="walletCard">
                     <div className="accountDisplay">
@@ -209,9 +216,7 @@ const Support = () => {
                   <div className={Style.container_input_vlaue}>
                     <div className={Style.container_input_coin}>
                       <input
-                        // type={"number"}
                         placeholder="0"
-                        // min="0"
                         onChange={(e) => {
                           setEtherValue(e.target.value);
                         }}
@@ -219,15 +224,10 @@ const Support = () => {
                       />
                     </div>
                   </div>
-
                   <div className={Style.container_main_buttones}>
                     <BlueButton
                       HandelClick={handelSendToken}
                       Text={"Send Tip"}
-                    />
-                    <CancelButton
-                      HandelClick={connectWalletHandler}
-                      Text={connButtonText}
                     />
                   </div>
                 </div>

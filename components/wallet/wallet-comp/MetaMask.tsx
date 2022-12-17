@@ -11,57 +11,38 @@ import { initializeProvider } from "@metamask/providers";
 
 const MetaMask = () => {
   const [accountId, setAccountId] = useState("");
-  const { active, account, library, connector, activate, deactivate } =
-    useWeb3React();
+
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
 
-  const connect = async () => {
-    const provider = await detectEthereumProvider();
-
-    try {
-      await activate(injected);
-    } catch (erro) {
-    }
-  };
-  const desconnect = async () => {
-    try {
-      await deactivate();
-    } catch (erro) {
-    }
-  };
-
   useEffect(() => {
-    // const MMSDK = new MetaMaskSDK({});
-    // const ethereum = MMSDK.getProvider(); // You can also access via window.ethereum
+    (async () => {
+      const MMSDK = new MetaMaskSDK({});
+      const ethereum = MMSDK.getProvider();
 
-    // const provider: any = window.ethereum.providers.find(
-    //   (provider) => provider.isMetaMask
-    // );
-    // const provider = ethereum.providers.find(
-    //   (provider: any) => provider.isMetaMask
-    // );
-    if (window.ethereum) {
-      alert("yes");
-    }
-    // provider.request({});
-    //{ method: "eth_requestAccounts" }
-    // .then(async (rsl: any) => {
-    //   if (rsl && rsl?.length >= 1 && Channels && Channels?.length) {
-    //     setAccountId(rsl[0]);
-    //     const channelId = Channels[0]._id;
-    //     const ReqData: any = { channelId, walletId: rsl[0] };
-    //     await basedPostUrlRequestLogedIn(
-    //       "/api/post/crypto/add-wallet",
-    //       ReqData
-    //     ).then((rslt) => {
-    //     });
-    //   }
-    // });
-    // connect();
-    // setTimeout(() => {
-    //   alert("time to desconnect ");
-    //   desconnect();
-    // }, 10000);
+      // const provider: any = window.ethereum.providers.find(
+      //   (provider) => provider.isMetaMask
+      // );
+      // const provider = ethereum.providers.find(
+      //   (provider: any) => provider.isMetaMask
+      // );
+      // const provider = await window.ethereum.providers.find(
+      //   (provider) => provider.isMetaMask
+      // );
+
+      ethereum
+        .request({ method: "eth_requestAccounts" })
+        .then(async (rsl: any) => {
+          if (rsl && rsl?.length >= 1 && Channels && Channels?.length) {
+            setAccountId(rsl[0]);
+            const channelId = Channels[0]._id;
+            const ReqData: any = { channelId, walletId: rsl[0] };
+            await basedPostUrlRequestLogedIn(
+              "/api/post/crypto/add-wallet",
+              ReqData
+            ).then((rslt) => {});
+          }
+        });
+    })();
   }, []);
 
   return <div>{accountId}</div>;
