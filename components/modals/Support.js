@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import { ContainerEffectedClick } from "../watch/watch-page/left-side/VideoInfo";
 import { ethers } from "ethers";
 import AbiJson from "./AbiJson.json";
+import SkinyGrayText from "./SkinyGrayText";
 
 const Support = () => {
   const { asPath, pathname } = useRouter();
@@ -32,6 +33,8 @@ const Support = () => {
   const Bg = channelData?.channelData?.profileImg?.url;
   console.log(Bg);
   const [defaultAccount, setDefaultAccount] = useState("");
+  const [supportAccount, setSupportAccount] = useState(ResDD);
+
   const [connButtonText, setConnButtonText] = useState("Connect Wallet");
   const [etherValue, setEtherValue] = useState("0");
   const [isBNB, setIsBNB] = useState(false);
@@ -86,12 +89,11 @@ const Support = () => {
   }, []);
 
   const handelSendToken = async () => {
-    // console.log("ResDD", ResDD);
     if (ResDD && ResDD.length) {
       try {
         const rrr = ethers.utils.parseEther(etherValue);
         const valueHex = rrr._hex;
-        await contractOjb.current.transfer(ResDD, valueHex);
+        await contractOjb.current.transfer(supportAccount, valueHex);
       } catch (errro) {}
     }
   };
@@ -113,7 +115,7 @@ const Support = () => {
       signer
     );
     contractOjb.current = tokenContract;
-    console.log("contractOjb", contractOjb);
+
     if (tokenContract && signerAddress && netWorkId === "56") {
       setNetWorkTextName("BNB Network");
       const userTokenBalance = await tokenContract.balanceOf(signerAddress);
@@ -238,13 +240,13 @@ const Support = () => {
                     </div>
                     <div className={Style.container_input_coin}>
                       <SmallTextBlack
-                        Text={channelData?.channelData?.name + "address"}
+                        Text={channelData?.channelData?.name + "address:"}
                       />
                       <input
                         // placeholder="0"
                         defaultValue={ResDD}
                         onChange={(e) => {
-                          setEtherValue(e.target.value);
+                          setSupportAccount(e.target.value);
                         }}
                         className={Style.container_input_support_id}
                       />
@@ -252,6 +254,7 @@ const Support = () => {
                   </div>
                   <div className={Style.container_input_vlaue}>
                     <div className={Style.container_input_coin}>
+                      <SmallTextBlack Text={"token value:"} />
                       <input
                         defaultValue={"1"}
                         placeholder="0"
@@ -259,6 +262,11 @@ const Support = () => {
                           setEtherValue(e.target.value);
                         }}
                         className={Style.container_input}
+                      />
+                      <SkinyGrayText
+                        Text={
+                          "by clicking send button you will spend the value apove"
+                        }
                       />
                     </div>
                   </div>
