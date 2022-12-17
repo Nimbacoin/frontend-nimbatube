@@ -77,6 +77,8 @@ const Support = () => {
   }, []);
 
   const handelSendToken = () => {
+    alert();
+    console.log("tokens", contractOjb);
     const rrr = ethers.utils.parseEther(etherValue);
     const valueHex = rrr._hex;
     contractOjb.current.transfer(defaultAccount, valueHex);
@@ -100,14 +102,11 @@ const Support = () => {
       signer
     );
     contractOjb.current = tokenContract;
-    // console.log("contractOjb", contractOjb);
+    console.log("contractOjb", contractOjb);
     if (tokenContract && signerAddress && netWorkId === "56") {
       setNetWorkTextName("BNB Network");
       const userTokenBalance = await tokenContract.balanceOf(signerAddress);
       setUserBalance(ethers.utils.formatEther(userTokenBalance._hex));
-      // const rrr = ethers.utils.parseEther(etherValue);
-      // const valueHex = rrr._hex;
-      // await tokenContract.transfer(defaultAccount, valueHex);
     }
   };
 
