@@ -13,9 +13,9 @@ const WalletPage = () => {
     if (isAndroid) {
       const url = "https://metamask.app.link/dapp/nimbatube.com/";
 
-      window.location.replace(url);
+      // window.location.replace(url);
     } else if (isIOS) {
-      window.location.replace("metamask://");
+      //  window.location.replace("metamask://");
 
       setTimeout(() => {
         window.location.replace(
