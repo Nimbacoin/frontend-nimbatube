@@ -10,13 +10,13 @@ import { useWeb3React } from "@web3-react/core";
 
 function App() {
   const CoinbaseWallet = new WalletLinkConnector({
-    url: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
+    url: `https://mainnet.infura.io/v3/8ea65bb07c494d30bce16b7fd3fe4f3f`,
     appName: "Web3-react Demo",
     supportedChainIds: [56],
   });
 
   const WalletConnect = new WalletConnectConnector({
-    rpcUrl: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
+    rpcUrl: `https://mainnet.infura.io/v3/8ea65bb07c494d30bce16b7fd3fe4f3f`,
     bridge: "https://bridge.walletconnect.org",
     qrcode: true,
   });
