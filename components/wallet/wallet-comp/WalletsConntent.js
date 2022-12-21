@@ -85,7 +85,14 @@ function App() {
     }
   };
 
-  function checkConnection() {
+  const checkConnection = async () => {
+    console.log("g", active);
+    const isUnlocked = await window?.ethereum?._metamask?.isUnlocked();
+    console.log("data", isUnlocked);
+    const isUnlockedtt = await window?.ethereum?._coinbase?.isUnlocked();
+
+    console.log("datadata", isUnlockedtt);
+
     if (window.ethereum) {
       window.ethereum
         .request({ method: "eth_accounts" })
@@ -94,10 +101,31 @@ function App() {
         })
         .catch(console.error);
     }
-  }
+  };
   useEffect(() => {
     checkConnection();
-  }, []);
+    let unlocked;
+    async function checkConnectionrt() {
+      console.log("datar35gggg", window?.ethereum);
+
+      const web3Provider = new ethers.providers.Web3Provider(
+        window.ethereum,
+        "any"
+      );
+      const signer = await web3Provider.getSigner();
+      signer
+        .getAddress()
+        .then((address) => {
+          console.log("address-address", address);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+
+    checkConnectionrt();
+    console.log("eeeeetttffpph", unlocked);
+  });
 
   return (
     <div className="App">
