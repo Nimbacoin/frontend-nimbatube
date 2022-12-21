@@ -51,9 +51,7 @@ const Home = () => {
         };
         locaFetch();
       } else if (document.documentElement.scrollTop < 1000) {
-
       } else if (document.documentElement.scrollTop >= 1000) {
-
       }
     };
   }, [limit]);

@@ -3,78 +3,133 @@
 import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import { useState, useEffect } from "react";
-import WalletConnect from "@walletconnect/web3-provider";
-import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
+import { WalletLinkConnector } from "@web3-react/walletlink-connector";
+import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
+import { InjectedConnector } from "@web3-react/injected-connector";
+import { useWeb3React } from "@web3-react/core";
 
 function App() {
-  console.log(process.env.INFURA_ID);
-  const providerOptions = {
-    binancechainwallet: {
-      package: true,
-    },
-    walletconnect: {
-      package: WalletConnect, // required
-      options: {
-        infuraId: process.env.INFURA_ID, // required
-      },
-    },
-
-    coinbasewallet: {
-      package: CoinbaseWalletSDK, // Required
-      options: {
-        appName: "Coinbase", // Required
-        infuraId: process.env.INFURA_ID, // Required
-        chainId: 4, //4 for Rinkeby, 1 for mainnet (default)
-      },
-    },
-  };
-
-  const [connectedAccount, setConnectedAccount] = useState("");
-
-  const connectWeb3Wallet = async () => {
-    try {
-      const web3Modal = new Web3Modal({
-        network: "rinkeby",
-        theme: "light",
-        cacheProvider: false,
-        providerOptions,
-      });
-      const web3Provider = await web3Modal.connect();
-      const library = new ethers.providers.Web3Provider(web3Provider);
-      const web3Accounts = await library.listAccounts();
-      setConnectedAccount(web3Accounts[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const disconnectWeb3Modal = async () => {
-    await web3Modal.clearCachedProvider();
-    setConnectedAccount("");
-  };
-  useEffect(() => {
-    const dumenttt = document.getElementById("WEB3_CONNECT_MODAL_ID");
-    console.log(dumenttt);
-    if (typeof dumenttt !== null) {
-      dumenttt.style.zIndex = "1000";
-      dumenttt.style.position = "absolute";
-    }
+  const CoinbaseWallet = new WalletLinkConnector({
+    url: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
+    appName: "Web3-react Demo",
+    supportedChainIds: [56],
   });
+
+  const WalletConnect = new WalletConnectConnector({
+    rpcUrl: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
+    bridge: "https://bridge.walletconnect.org",
+    qrcode: true,
+  });
+
+  const Injected = new InjectedConnector({
+    supportedChainIds: [56],
+  });
+  const { active, activate, deactivate, chainId, account, library } =
+    useWeb3React();
+  const networks = {
+    polygon: {
+      chainId: `0x${Number(137).toString(16)}`,
+      chainName: "Polygon Mainnet",
+      nativeCurrency: {
+        name: "MATIC",
+        symbol: "MATIC",
+        decimals: 18,
+      },
+      rpcUrls: ["https://polygon-rpc.com/"],
+      blockExplorerUrls: ["https://polygonscan.com/"],
+    },
+    bsc: {
+      chainId: `0x${Number(56).toString(16)}`,
+      chainName: "Binance Smart Chain Mainnet",
+      nativeCurrency: {
+        name: "Binance Chain Native Token",
+        symbol: "BNB",
+        decimals: 18,
+      },
+      rpcUrls: [
+        "https://bsc-dataseed1.binance.org",
+        "https://bsc-dataseed2.binance.org",
+        "https://bsc-dataseed3.binance.org",
+        "https://bsc-dataseed4.binance.org",
+        "https://bsc-dataseed1.defibit.io",
+        "https://bsc-dataseed2.defibit.io",
+        "https://bsc-dataseed3.defibit.io",
+        "https://bsc-dataseed4.defibit.io",
+        "https://bsc-dataseed1.ninicoin.io",
+        "https://bsc-dataseed2.ninicoin.io",
+        "https://bsc-dataseed3.ninicoin.io",
+        "https://bsc-dataseed4.ninicoin.io",
+        "wss://bsc-ws-node.nariox.org",
+      ],
+      blockExplorerUrls: ["https://bscscan.com"],
+    },
+  };
+  const [Error, setError] = useState("");
+
+  const handleNetworkSwitch = async (networkName) => {
+    await changeNetwork({ networkName, setError });
+  };
+  const changeNetwork = async ({ networkName, setError }) => {
+    try {
+      if (!window.ethereum) throw new Error("No crypto wallet found");
+      await library.provider.request({
+        method: "wallet_addEthereumChain",
+        params: [
+          {
+            ...networks[networkName],
+          },
+        ],
+      });
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  function checkConnection() {
+    if (window.ethereum) {
+      window.ethereum
+        .request({ method: "eth_accounts" })
+        .then((handleAccountsChanged) => {
+          console.log("handleAccountsChanged", handleAccountsChanged);
+        })
+        .catch(console.error);
+    }
+  }
+  useEffect(() => {
+    checkConnection();
+  }, []);
 
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <br />
+      <button
+        onClick={() => {
+          activate(CoinbaseWallet);
+        }}
+      >
+        Coinbase Wallet
+      </button>
 
-        {connectedAccount && <p>Connected to ${connectedAccount}</p>}
+      <button
+        onClick={() => {
+          activate(WalletConnect);
+        }}
+      >
+        Wallet Connect
+      </button>
+      <button
+        onClick={() => {
+          activate(Injected);
+        }}
+      >
+        Metamask
+      </button>
 
-        {!connectedAccount ? (
-          <button onClick={connectWeb3Wallet}>Connect Wallet</button>
-        ) : (
-          <button onClick={disconnectWeb3Modal}>Disconnect</button>
-        )}
-      </header>
+      <button onClick={deactivate}>Disconnect</button>
+      <div>Connection Status: {active}</div>
+      <div>Account: {account}</div>
+      <div onClick={() => handleNetworkSwitch("bsc")}>
+        Network ID: {chainId}
+      </div>
     </div>
   );
 }

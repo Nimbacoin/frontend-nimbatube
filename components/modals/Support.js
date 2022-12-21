@@ -66,7 +66,7 @@ const Support = () => {
   };
 
   const chainChangedHandler = () => {
-    window.location.reload();
+    // window.location.reload();
   };
 
   useEffect(() => {
@@ -89,7 +89,8 @@ const Support = () => {
   }, []);
 
   const handelSendToken = async () => {
-    if (ResDD && ResDD.length) {
+    if (supportAccount && supportAccount.length) {
+      console.log(supportAccount, etherValue);
       try {
         const rrr = ethers.utils.parseEther(etherValue);
         const valueHex = rrr._hex;
@@ -244,7 +245,7 @@ const Support = () => {
                       />
                       <input
                         // placeholder="0"
-                        defaultValue={ResDD}
+                        defaultValue={supportAccount}
                         onChange={(e) => {
                           setSupportAccount(e.target.value);
                         }}
@@ -254,7 +255,7 @@ const Support = () => {
                   </div>
                   <div className={Style.container_input_vlaue}>
                     <div className={Style.container_input_coin}>
-                      <SmallTextBlack Text={"token value:"} />
+                      <SmallTextBlack Text={"NimbaCoin:"} />
                       <input
                         defaultValue={"1"}
                         placeholder="0"
