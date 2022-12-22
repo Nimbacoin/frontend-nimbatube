@@ -124,9 +124,17 @@ function CryptoWalletConnect() {
     checkConnectionrt();
   });
   const connectorsArray = [
-    { name: "Metamask", image: "/images/metamask.png" },
-    { name: "Coinbase", image: "/images/coinbase.png" },
-    { name: "WalletConnect", image: "/images/wallet-connect.png" },
+    { name: "Metamask", image: "/images/metamask.png", handelClick: Injected },
+    {
+      name: "Coinbase",
+      image: "/images/coinbase.png",
+      handelClick: CoinbaseWallet,
+    },
+    {
+      name: "WalletConnect",
+      image: "/images/wallet-connect.png",
+      handelClick: WalletConnect,
+    },
   ];
   return (
     <OverAll>
@@ -141,8 +149,20 @@ function CryptoWalletConnect() {
             }
           />
           <div className={Style.second_container_connect}>
-            {connectorsArray.map(({ image, name }) => (
-              <div className={Style.connect_wallet_main_container}>
+            <button
+              onClick={() => {
+                activate(WalletConnect);
+              }}
+            >
+              Wallet Connect
+            </button>
+            {connectorsArray.map(({ image, name, handelClick }) => (
+              <div
+                onClick={() => {
+                  activate(WalletConnect);
+                }}
+                className={Style.connect_wallet_main_container}
+              >
                 <div
                   style={{
                     backgroundImage: `url(${image})`,

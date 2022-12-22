@@ -257,7 +257,7 @@ const Layout = ({ children }: any) => {
         {copyVideo && <ShareVideo />}
         {cropping && <CropperCom />}
         {support && <Support />}
-        <CryptoWalletConnect />
+        {/* <CryptoWalletConnect /> */}
         <SideHeader />
         {/* <div
           ref={childrenRef}
