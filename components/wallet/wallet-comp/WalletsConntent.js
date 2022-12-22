@@ -126,7 +126,7 @@ function App() {
       >
         Coinbase Wallet
       </button>
-
+      <br />
       <button
         onClick={() => {
           activate(WalletConnect);
@@ -134,6 +134,7 @@ function App() {
       >
         Wallet Connect
       </button>
+      <br />
       <button
         onClick={() => {
           activate(Injected);
@@ -141,7 +142,7 @@ function App() {
       >
         Metamask
       </button>
-
+      <br />
       <button onClick={deactivate}>Disconnect</button>
       <div>Connection Status: {active}</div>
       <div>Account: {account}</div>
