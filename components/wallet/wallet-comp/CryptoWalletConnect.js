@@ -7,8 +7,15 @@ import { WalletLinkConnector } from "@web3-react/walletlink-connector";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { useWeb3React } from "@web3-react/core";
+// import Style from "../styles/pages/wallet/wallet.module.css";
+// import Style from "../../../styles/pages/wallet/crypto-wallet-connect.module.css";
+import Style from "../../../styles/pages/wallet/wallet-comp/crypto-wallet-connect.module.css";
+import OverAll from "../../modals/OverAll";
+import BoldText from "../../modals/BoldText";
+import SmallTextBlack from "../../modals/SmallTextBlack";
+import TextTilteInputMudum from "../../modals/text/TextTilteInputMudum";
 
-function App() {
+function CryptoWalletConnect() {
   const CoinbaseWallet = new WalletLinkConnector({
     url: `https://mainnet.infura.io/v3/8ea65bb07c494d30bce16b7fd3fe4f3f`,
     appName: "Web3-react Demo",
@@ -116,40 +123,40 @@ function App() {
 
     checkConnectionrt();
   });
-
+  const connectorsArray = [
+    { name: "Metamask", image: "/images/metamask.png" },
+    { name: "Coinbase", image: "/images/coinbase.png" },
+    { name: "WalletConnect", image: "/images/wallet-connect.png" },
+  ];
   return (
-    <div className="App">
-      <button
-        onClick={() => {
-          activate(CoinbaseWallet);
-        }}
-      >
-        Coinbase Wallet
-      </button>
-
-      <button
-        onClick={() => {
-          activate(WalletConnect);
-        }}
-      >
-        Wallet Connect
-      </button>
-      <button
-        onClick={() => {
-          activate(Injected);
-        }}
-      >
-        Metamask
-      </button>
-
-      <button onClick={deactivate}>Disconnect</button>
-      <div>Connection Status: {active}</div>
-      <div>Account: {account}</div>
-      <div onClick={() => handleNetworkSwitch("bsc")}>
-        Network ID: {chainId}
+    <OverAll>
+      <div className={Style.container}>
+        <div className={Style.main_top}>
+          <BoldText text={"Connect wallet"} />
+        </div>
+        <div className={Style.second_container}>
+          <SmallTextBlack
+            Text={
+              "By connecting a wallet, you agree to Uniswap Labs’ Terms of Service and consent to its Privacy Policy."
+            }
+          />
+          <div className={Style.second_container_connect}>
+            {connectorsArray.map(({ image, name }) => (
+              <div className={Style.connect_wallet_main_container}>
+                <div
+                  style={{
+                    backgroundImage: `url(${image})`,
+                  }}
+                  className={Style.connect_wallet_main_container_image}
+                ></div>
+                <TextTilteInputMudum Text={name} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </OverAll>
   );
 }
 
-export default App;
+export default CryptoWalletConnect;
