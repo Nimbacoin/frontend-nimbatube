@@ -20,6 +20,7 @@ import { useDispatch } from "react-redux";
 import { walletReducer } from "../../../redux/style-slice/general-style/GenrealStyle";
 import CopyInput from "../../modals/CopyInput";
 import AbiJson from "../../modals/AbiJson.json";
+import CancelButton from "../../modals/CancelButton";
 function Wallet() {
   const { active, activate, deactivate, chainId, account, library } =
     useWeb3React();
@@ -138,6 +139,9 @@ function Wallet() {
   useEffect(() => {
     startFunction();
   });
+  const handelDesconnect =()=>{
+    deactivate()
+  }
   return (
     <OverAll>
       <div className={Style.container}>
@@ -189,6 +193,10 @@ function Wallet() {
               <BoldText text={"NimbaCoin"} />{" "}
               <TextTilteInputMudum Text={userBalance + "    NIMBA"} />
             </div>
+          </div>
+          <div className={Style.div_button_container}>
+            {" "}
+            <CancelButton Text={"Desconnect"} HandelClick={deactivate}/>{" "}
           </div>
         </div>
       </div>

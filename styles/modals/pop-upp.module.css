@@ -11,7 +11,7 @@
 
 .container_second {
   padding: 10px;
-  border-radius: 50px;
+  border-radius: 8px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -52,7 +52,6 @@
 
 .container_second:hover {
   background-color: #fafafa;
-  text-decoration: underline #071c55;
   border: solid 1px transparent;
 }
 .material_symbols_outlined,

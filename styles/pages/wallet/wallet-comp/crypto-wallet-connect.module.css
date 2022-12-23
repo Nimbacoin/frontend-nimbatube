@@ -102,3 +102,12 @@
   align-items: flex-start;
   justify-content: space-between;
 }
+
+.div_button_container {
+  width: 100%;
+  height: auto;
+}
+
+.div_button_container > button {
+  width: 100%;
+}
