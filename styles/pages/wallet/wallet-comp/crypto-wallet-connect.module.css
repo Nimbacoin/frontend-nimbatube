@@ -15,10 +15,14 @@
   justify-content: space-between;
   padding: 0 20px;
 }
-.second_container {
+.second_container_main {
   width: 100%;
   height: auto;
   padding: 10px 20px;
+}
+.second_container {
+  width: 100%;
+  height: auto;
 }
 .second_container_connect {
   width: 100%;
@@ -40,9 +44,13 @@
   padding: 5px;
   cursor: pointer;
 }
-
-.connect_wallet_main_container_image {
-  width: 40px;
+.second_container_connect_top {
+  background-color: #000;
+  border-radius: 20px;
+  padding : 20px;
+}
+.second_container_connect_top_image {
+  width: 20px;
   /* height: 50px; */
   background-position: center;
   background-size: cover;

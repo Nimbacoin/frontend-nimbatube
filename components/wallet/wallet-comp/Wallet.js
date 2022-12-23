@@ -112,12 +112,22 @@ function Wallet() {
             Icon={<IoCloseOutline />}
           />
         </div>
-        <div className={Style.second_container}>
-          <CopyInput Text={"Your Address"} Value={walletAddress} />
-          <div className={Style.second_container_connect}>
-            <div className={Style.container_uplaod_input}>
-              <SmallTextBlack Text={""} />
-              <span></span>
+        <div className={Style.second_container_main}>
+          <div className={Style.second_container}>
+            <CopyInput Text={"Your Address"} Value={walletAddress} />
+            <div className={Style.second_container_connect}>
+              <div className={Style.container_uplaod_input}>
+                <SmallTextBlack Text={""} />
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div className={Style.second_container}>
+            <div className={Style.second_container_connect_top}>
+              <div
+                style={{ backgroundImage: `url("/images/bnb-icon.jpg")` }}
+                className={Style.second_container_connect_top_image}
+              ></div>
             </div>
           </div>
         </div>
