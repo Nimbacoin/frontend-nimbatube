@@ -31,6 +31,8 @@ import UplaodFile from "../components/modals/UplaodFile";
 import Support from "../components/modals/Support";
 import Web3 from "web3";
 import CryptoWalletConnect from "../components/wallet/wallet-comp/CryptoWalletConnect";
+import Wallet from "../components/wallet/wallet-comp/Wallet";
+
 import { Web3ReactProvider } from "@web3-react/core";
 interface main {
   children: any;
@@ -274,7 +276,7 @@ const Layout = ({ children }: any) => {
           {cropping && <CropperCom />}
           {support && <Support />}
           {walletConnect && <CryptoWalletConnect />}
-
+          <Wallet />
           <SideHeader />
           {/* <div
           ref={childrenRef}

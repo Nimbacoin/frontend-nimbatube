@@ -17,7 +17,8 @@ const initialState = {
   elementOverLayt: false,
   support: false,
   elementOverContent: [],
-  walletConnect: true,
+  walletConnect: false,
+  wallet: true,
 };
 
 export const GeneralStyle = createSlice({
@@ -98,6 +99,9 @@ export const GeneralStyle = createSlice({
     walletConnectReducer: (state: any, action: any) => {
       state.walletConnect = action.payload.value;
     },
+    walletReducer: (state: any, action: any) => {
+      state.wallet = action.payload.value;
+    },
   },
 });
 
@@ -115,6 +119,7 @@ export const {
   phoneBarOpenRedcuerHide,
   supportReducer,
   walletConnectReducer,
+  walletReducer,
 } = GeneralStyle.actions;
 const AllReducers = GeneralStyle.reducer;
 export default AllReducers;
