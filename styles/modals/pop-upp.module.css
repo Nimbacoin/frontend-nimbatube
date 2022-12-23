@@ -3,7 +3,7 @@
   top: -20%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100;
+  z-index: 10000;
   /* animation: mymove 1s; */
   /* animation-delay: 2000ms; */
   animation: mymove 500ms ease-in-out 500ms forwards;
@@ -65,17 +65,16 @@
 }
 .material_symbols_outlined > span {
   font-size: 25px;
-  
+
   font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 100, "opsz" 48;
 }
 .material_symbols_fill > span {
   font-size: 25px;
-  
+
   font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 100, "opsz" 48;
 }
 
 .material-symbols-sharp {
-  
   font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 100, "opsz" 48;
 }
 

@@ -15,10 +15,7 @@ export const PopUpp = ({
   const dispatch = useDispatch();
   const handelClick = () => dispatch(poPUppRedcuer({ data: "" }));
   return (
-    
-
     <div className={Style.container}>
-      
       <div className={Style.container_second}>
         <p>{popUppData}</p>
         <button onClick={handelClick} className={Style.svg}>

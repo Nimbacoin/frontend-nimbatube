@@ -113,7 +113,7 @@ function Wallet() {
           />
         </div>
         <div className={Style.second_container}>
-          <CopyInput Value={walletAddress} />
+          <CopyInput Text={"Your Address"} Value={walletAddress} />
           <div className={Style.second_container_connect}>
             <div className={Style.container_uplaod_input}>
               <SmallTextBlack Text={""} />
