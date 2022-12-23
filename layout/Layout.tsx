@@ -48,6 +48,9 @@ const Layout = ({ children }: any) => {
   const PopUppBoolean = useSelector((state: any) => state.GenrealStyle.popUpp);
   const copyVideo = useSelector((state: any) => state.GenrealStyle.copyVideo);
   const support = useSelector((state: any) => state.GenrealStyle.support);
+  const walletConnect = useSelector(
+    (state: any) => state.GenrealStyle.walletConnect
+  );
 
   const playList = useSelector((state: any) => state.GenrealStyle.playList);
   const elementOverLayt = useSelector(
@@ -263,7 +266,8 @@ const Layout = ({ children }: any) => {
           {copyVideo && <ShareVideo />}
           {cropping && <CropperCom />}
           {support && <Support />}
-          <CryptoWalletConnect />
+          {walletConnect && <CryptoWalletConnect />}
+
           <SideHeader />
           {/* <div
           ref={childrenRef}

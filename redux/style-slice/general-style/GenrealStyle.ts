@@ -17,6 +17,7 @@ const initialState = {
   elementOverLayt: false,
   support: false,
   elementOverContent: [],
+  walletConnect: true,
 };
 
 export const GeneralStyle = createSlice({
@@ -94,6 +95,9 @@ export const GeneralStyle = createSlice({
     supportReducer: (state: any, action: any) => {
       state.support = action.payload.value;
     },
+    walletConnectReducer: (state: any, action: any) => {
+      state.walletConnect = action.payload.value;
+    },
   },
 });
 
@@ -110,6 +114,7 @@ export const {
   elementOverLaytRedcuerHide,
   phoneBarOpenRedcuerHide,
   supportReducer,
+  walletConnectReducer,
 } = GeneralStyle.actions;
 const AllReducers = GeneralStyle.reducer;
 export default AllReducers;

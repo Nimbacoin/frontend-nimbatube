@@ -14,7 +14,10 @@ import OverAll from "../../modals/OverAll";
 import BoldText from "../../modals/BoldText";
 import SmallTextBlack from "../../modals/SmallTextBlack";
 import TextTilteInputMudum from "../../modals/text/TextTilteInputMudum";
-
+import IconHeader from "../../modals/IconHeader";
+import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
+import { useDispatch } from "react-redux";
+import { walletConnectReducer } from "../../../redux/style-slice/general-style/GenrealStyle";
 function CryptoWalletConnect() {
   const CoinbaseWallet = new WalletLinkConnector({
     url: `https://mainnet.infura.io/v3/8ea65bb07c494d30bce16b7fd3fe4f3f`,
@@ -72,7 +75,7 @@ function CryptoWalletConnect() {
     },
   };
   const [Error, setError] = useState("");
-
+  const dispatch = useDispatch();
   const handleNetworkSwitch = async (networkName) => {
     await changeNetwork({ networkName, setError });
   };
@@ -136,11 +139,19 @@ function CryptoWalletConnect() {
       handelClick: WalletConnect,
     },
   ];
+  const handelClose = () => {
+    dispatch(walletConnectReducer({ value: false }));
+  };
   return (
     <OverAll>
       <div className={Style.container}>
         <div className={Style.main_top}>
           <BoldText text={"Connect wallet"} />
+          <IconHeader
+            FuncOutSide={true}
+            MainFuncOutSide={handelClose}
+            Icon={<IoCloseOutline />}
+          />
         </div>
         <div className={Style.second_container}>
           <SmallTextBlack
