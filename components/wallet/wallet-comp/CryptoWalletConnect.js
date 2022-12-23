@@ -149,13 +149,6 @@ function CryptoWalletConnect() {
             }
           />
           <div className={Style.second_container_connect}>
-            <button
-              onClick={() => {
-                activate(WalletConnect);
-              }}
-            >
-              Wallet Connect
-            </button>
             {connectorsArray.map(({ image, name, handelClick }) => (
               <div
                 onClick={() => {
