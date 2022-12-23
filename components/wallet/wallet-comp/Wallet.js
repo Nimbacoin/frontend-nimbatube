@@ -139,9 +139,10 @@ function Wallet() {
   useEffect(() => {
     startFunction();
   });
-  const handelDesconnect =()=>{
-    deactivate()
-  }
+  const handelDesconnect = () => {
+    deactivate();
+    console.log()
+  };
   return (
     <OverAll>
       <div className={Style.container}>
@@ -196,7 +197,10 @@ function Wallet() {
           </div>
           <div className={Style.div_button_container}>
             {" "}
-            <CancelButton Text={"Desconnect"} HandelClick={deactivate}/>{" "}
+            <CancelButton
+              Text={"Desconnect"}
+              HandelClick={handelDesconnect}
+            />{" "}
           </div>
         </div>
       </div>
