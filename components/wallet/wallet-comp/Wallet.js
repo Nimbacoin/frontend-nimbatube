@@ -25,8 +25,10 @@ function Wallet() {
     useWeb3React();
   const [walletAddress, setWalletAddress] = useState("");
   const [userBalance, setUserBalance] = useState("");
+  const [netWorkId, setNetWorkId] = useState("");
+
   const provider = useRef();
-  const contractOjb = useRef()
+  const contractOjb = useRef();
   var signer;
   var signerAddress;
   const tokenContractAddress = "0x2f8A45dE29bbfBB0EE802B340B4f91af492C6DE7";
@@ -77,6 +79,7 @@ function Wallet() {
   const changeNetwork = async ({ networkName, setError }) => {
     try {
       if (!window.ethereum) throw new Error("No crypto wallet found");
+
       await library.provider.request({
         method: "wallet_addEthereumChain",
         params: [
@@ -123,7 +126,11 @@ function Wallet() {
     );
     contractOjb.current = tokenContract;
 
-    if (tokenContract && signerAddress && netWorkId === "56") {
+    if (
+      tokenContract &&
+      signerAddress &&
+      window.ethereum.networkVersion === "56"
+    ) {
       const userTokenBalance = await tokenContract.balanceOf(signerAddress);
       setUserBalance(ethers.utils.formatEther(userTokenBalance._hex));
     }
@@ -144,7 +151,11 @@ function Wallet() {
         </div>
         <div className={Style.second_container_main}>
           <div className={Style.second_container}>
-            <CopyInput Text={"Your Address"} Value={walletAddress} />
+            <CopyInput
+              CopiedText={"Your wallet address copied"}
+              Text={"Your Address"}
+              Value={walletAddress}
+            />
           </div>
           <div className={Style.second_container}>
             <div className={Style.second_container_connect_top}>
@@ -176,7 +187,7 @@ function Wallet() {
             </div> */}
             <div className={Style.second_container_items}>
               <BoldText text={"NimbaCoin"} />{" "}
-              <TextTilteInputMudum Text={userBalance} />
+              <TextTilteInputMudum Text={userBalance + "    NIMBA"} />
             </div>
           </div>
         </div>

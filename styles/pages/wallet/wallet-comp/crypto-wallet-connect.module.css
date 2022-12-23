@@ -1,9 +1,10 @@
 .container {
   width: 350px;
-  min-height: 400px;
+  height: auto;
   background-color: #fff;
   border-radius: 8px;
   position: absolute;
+  /* padding-bottom : 100px; */
 }
 .main_top {
   width: 100%;
@@ -74,11 +75,10 @@
 }
 .second_container_connect_top_image {
   width: 20px;
-  /* height: 50px; */
+  height: 20px;
   background-position: center;
   background-size: cover;
   border-radius: 50%;
-  aspect-ratio: 1.5 / 1.5;
 }
 .second_container_connect_top_right {
   border-radius: 20px;
@@ -94,7 +94,6 @@
   font-size: 14px;
   font-weight: 600;
 }
-
 
 .second_container_items {
   width: 100%;

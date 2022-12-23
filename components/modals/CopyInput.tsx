@@ -13,11 +13,13 @@ const CopyInput = ({
   Number,
   Icon,
   Value,
+  CopiedText
+
 }: any) => {
   const dispatch = useDispatch();
   const handelCopy = () => {
     navigator.clipboard.writeText(Value);
-    dispatch(poPUppRedcuer({ data: "video Linke copied" }));
+    dispatch(poPUppRedcuer({ data:CopiedText }));
     setTimeout(() => {
       dispatch(poPUppRedcuer({ data: "" }));
     }, 5000);
