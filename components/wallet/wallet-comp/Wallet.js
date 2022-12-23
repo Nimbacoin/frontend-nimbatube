@@ -133,6 +133,16 @@ function Wallet() {
               ></div>
             </div>
           </div>
+          <div className={Style.second_container_main}>
+            <div className={Style.second_container_items}>
+              <BoldText text={"Your Address"} />{" "}
+              <BoldText text={"Your Address"} />
+            </div>
+            <div className={Style.second_container_items}>
+              <BoldText text={"Your Address"} />{" "}
+              <BoldText text={"Your Address"} />
+            </div>
+          </div>
         </div>
       </div>
     </OverAll>
