@@ -18,24 +18,11 @@ import IconHeader from "../../modals/IconHeader";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useDispatch } from "react-redux";
 import { walletReducer } from "../../../redux/style-slice/general-style/GenrealStyle";
+import CopyInput from "../../modals/CopyInput";
 function Wallet() {
-  const CoinbaseWallet = new WalletLinkConnector({
-    url: `https://mainnet.infura.io/v3/8ea65bb07c494d30bce16b7fd3fe4f3f`,
-    appName: "Web3-react Demo",
-    supportedChainIds: [56],
-  });
-
-  const WalletConnect = new WalletConnectConnector({
-    rpcUrl: `https://mainnet.infura.io/v3/8ea65bb07c494d30bce16b7fd3fe4f3f`,
-    bridge: "https://bridge.walletconnect.org",
-    qrcode: true,
-  });
-
-  const Injected = new InjectedConnector({
-    supportedChainIds: [56],
-  });
   const { active, activate, deactivate, chainId, account, library } =
     useWeb3React();
+  const [walletAddress, setWalletAddress] = useState("");
   const networks = {
     polygon: {
       chainId: `0x${Number(137).toString(16)}`,
@@ -74,7 +61,6 @@ function Wallet() {
       blockExplorerUrls: ["https://bscscan.com"],
     },
   };
-  const [Error, setError] = useState("");
   const dispatch = useDispatch();
   const handleNetworkSwitch = async (networkName) => {
     await changeNetwork({ networkName, setError });
@@ -96,49 +82,22 @@ function Wallet() {
   };
 
   const checkConnection = async () => {
-    const isUnlocked = await window?.ethereum?._metamask?.isUnlocked();
-    const isUnlockedtt = await window?.ethereum?._coinbase?.isUnlocked();
-
     if (window.ethereum) {
       window.ethereum
         .request({ method: "eth_accounts" })
         .then((handleAccountsChanged) => {
-          console.log("handleAccountsChanged", handleAccountsChanged);
+          if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
+            setWalletAddress(handleAccountsChanged[0]);
+            console.log("handleAccountsChanged", handleAccountsChanged[0]);
+          }
         })
         .catch(console.error);
     }
   };
   useEffect(() => {
     checkConnection();
-    let unlocked;
-    async function checkConnectionrt() {
-      const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = await web3Provider.getSigner();
-      signer
-        .getAddress()
-        .then((address) => {
-          console.log("address-address", address);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-
-    checkConnectionrt();
   });
-  const connectorsArray = [
-    { name: "Metamask", image: "/images/metamask.png", handelClick: Injected },
-    {
-      name: "Coinbase",
-      image: "/images/coinbase.png",
-      handelClick: CoinbaseWallet,
-    },
-    {
-      name: "WalletConnect",
-      image: "/images/wallet-connect.png",
-      handelClick: WalletConnect,
-    },
-  ];
+
   const handelClose = () => {
     dispatch(walletReducer({ value: false }));
   };
@@ -154,28 +113,12 @@ function Wallet() {
           />
         </div>
         <div className={Style.second_container}>
-          <SmallTextBlack
-            Text={
-              "By connecting a wallet, you agree to Uniswap Labs’ Terms of Service and consent to its Privacy Policy."
-            }
-          />
+          <CopyInput Value={walletAddress} />
           <div className={Style.second_container_connect}>
-            {connectorsArray.map(({ image, name, handelClick }) => (
-              <div
-                onClick={() => {
-                  activate(handelClick);
-                }}
-                className={Style.connect_wallet_main_container}
-              >
-                <div
-                  style={{
-                    backgroundImage: `url(${image})`,
-                  }}
-                  className={Style.connect_wallet_main_container_image}
-                ></div>
-                <TextTilteInputMudum Text={name} />
-              </div>
-            ))}
+            <div className={Style.container_uplaod_input}>
+              <SmallTextBlack Text={""} />
+              <span></span>
+            </div>
           </div>
         </div>
       </div>

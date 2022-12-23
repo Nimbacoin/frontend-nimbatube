@@ -53,6 +53,9 @@ const Layout = ({ children }: any) => {
   const walletConnect = useSelector(
     (state: any) => state.GenrealStyle.walletConnect
   );
+  const wallet = useSelector(
+    (state: any) => state.GenrealStyle.wallet
+  );
 
   const playList = useSelector((state: any) => state.GenrealStyle.playList);
   const elementOverLayt = useSelector(
@@ -276,7 +279,7 @@ const Layout = ({ children }: any) => {
           {cropping && <CropperCom />}
           {support && <Support />}
           {walletConnect && <CryptoWalletConnect />}
-          <Wallet />
+         {wallet &&<Wallet /> }
           <SideHeader />
           {/* <div
           ref={childrenRef}
