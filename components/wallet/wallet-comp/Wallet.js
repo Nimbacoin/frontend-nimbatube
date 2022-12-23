@@ -2,7 +2,7 @@
 // import "./App.css";
 import Web3Modal from "web3modal";
 import { ethers } from "ethers";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { WalletLinkConnector } from "@web3-react/walletlink-connector";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import { InjectedConnector } from "@web3-react/injected-connector";
@@ -19,10 +19,19 @@ import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useDispatch } from "react-redux";
 import { walletReducer } from "../../../redux/style-slice/general-style/GenrealStyle";
 import CopyInput from "../../modals/CopyInput";
+import AbiJson from "../../modals/AbiJson.json";
 function Wallet() {
   const { active, activate, deactivate, chainId, account, library } =
     useWeb3React();
   const [walletAddress, setWalletAddress] = useState("");
+  const [userBalance, setUserBalance] = useState("");
+  const provider = useRef();
+  const contractOjb = useRef()
+  var signer;
+  var signerAddress;
+  const tokenContractAddress = "0x2f8A45dE29bbfBB0EE802B340B4f91af492C6DE7";
+  const tokenABI = AbiJson;
+  var tokenContract;
   const networks = {
     polygon: {
       chainId: `0x${Number(137).toString(16)}`,
@@ -101,6 +110,27 @@ function Wallet() {
   const handelClose = () => {
     dispatch(walletReducer({ value: false }));
   };
+
+  const startFunction = async () => {
+    await ethereum.request({ method: "eth_requestAccounts" });
+    provider.current = new ethers.providers.Web3Provider(window.ethereum);
+    signer = provider.current.getSigner();
+    signerAddress = await signer.getAddress();
+    tokenContract = await new ethers.Contract(
+      tokenContractAddress,
+      tokenABI,
+      signer
+    );
+    contractOjb.current = tokenContract;
+
+    if (tokenContract && signerAddress && netWorkId === "56") {
+      const userTokenBalance = await tokenContract.balanceOf(signerAddress);
+      setUserBalance(ethers.utils.formatEther(userTokenBalance._hex));
+    }
+  };
+  useEffect(() => {
+    startFunction();
+  });
   return (
     <OverAll>
       <div className={Style.container}>
@@ -125,22 +155,28 @@ function Wallet() {
 
               <span className={Style.text_white}>BNB Smart Chain </span>
             </div>
-            <div className={Style.second_container_connect_top_right}>
+            <a
+              target="_blank"
+              href={`https://bscscan.com/address/${walletAddress}`}
+              className={Style.second_container_connect_top_right}
+            >
               <BoldText text={"BscScan"} />
               <div
-                style={{ backgroundImage: `url("/images/etherscan-logo.jpg")` }}
+                style={{
+                  backgroundImage: `url("/images/etherscan-logo.jpg")`,
+                }}
                 className={Style.second_container_connect_top_image}
               ></div>
-            </div>
+            </a>
           </div>
           <div className={Style.second_container_main}>
+            {/* <div className={Style.second_container_items}>
+              <BoldText text={"BNB Balance"} />{" "}
+              <TextTilteInputMudum Text={"0.00"} />
+            </div> */}
             <div className={Style.second_container_items}>
-              <BoldText text={"Your Address"} />{" "}
-              <BoldText text={"Your Address"} />
-            </div>
-            <div className={Style.second_container_items}>
-              <BoldText text={"Your Address"} />{" "}
-              <BoldText text={"Your Address"} />
+              <BoldText text={"NimbaCoin"} />{" "}
+              <TextTilteInputMudum Text={userBalance} />
             </div>
           </div>
         </div>
