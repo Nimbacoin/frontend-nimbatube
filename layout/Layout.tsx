@@ -146,7 +146,14 @@ const Layout = ({ children }: any) => {
   function getLibrary(provider: any) {
     return new Web3(provider);
   }
-
+  useEffect(() => {
+    if (walletConnect) {
+      document.body.style.overflow = "auto";
+    }
+    if (walletConnect) {
+      document.body.style.overflow = "hidden";
+    }
+  });
   return (
     <>
       <Web3ReactProvider getLibrary={getLibrary}>
