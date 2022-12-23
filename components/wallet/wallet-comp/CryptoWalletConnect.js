@@ -159,7 +159,7 @@ function CryptoWalletConnect() {
             {connectorsArray.map(({ image, name, handelClick }) => (
               <div
                 onClick={() => {
-                  activate(WalletConnect);
+                  activate(handelClick);
                 }}
                 className={Style.connect_wallet_main_container}
               >

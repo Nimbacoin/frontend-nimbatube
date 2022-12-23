@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Style from "../../styles/modals/uplaod-file.module.css";
+import Style from "../../styles/modals/over-all.module.css";
 import BoldText from "./BoldText";
 import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOutline";
 import SkinyGrayText from "./SkinyGrayText";

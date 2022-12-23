@@ -17,12 +17,12 @@ function MyApp({ Component, pageProps }: any) {
       <SessionProvider session={pageProps.session}>
         <SocketHandler />
         <MetaMaskProvider>
-        <Layout>
-          <Web3ReactProvider getLibrary={getLibrary}>
-            <Component {...pageProps} />
-          </Web3ReactProvider>
-        </Layout>
-       </MetaMaskProvider>
+          <Layout>
+            <Web3ReactProvider getLibrary={getLibrary}>
+              <Component {...pageProps} />
+            </Web3ReactProvider>
+          </Layout>
+        </MetaMaskProvider>
       </SessionProvider>
     </Provider>
   );
