@@ -147,11 +147,12 @@ function CryptoWalletConnect() {
     dispatch(walletConnectReducer({ value: false }));
   };
   const connectFunc = (walletName) => {
-    var walletName = JSON.parse(localStorage.getItem("walletName"));
+    var walletNameStrg = JSON.parse(localStorage.getItem("walletName"));
     var walletConnected = JSON.parse(localStorage.getItem("walletConnected"));
     localStorage.setItem("walletName", JSON.stringify(walletName));
     localStorage.setItem("walletConnected", JSON.stringify(true));
     dispatch(walletConnectReducer({ value: false }));
+    alert("walletName: " + walletName + " isAndroid: " + isAndroid);
     if (walletName === "Metamask" && isAndroid) {
       alert("hey man");
       Router.push("https://metamask.app.link/dapp/www.nimbatube.com/");
