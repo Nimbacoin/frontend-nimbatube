@@ -141,7 +141,6 @@ function Wallet() {
   });
   const handelDesconnect = () => {
     deactivate();
-    console.log()
   };
   return (
     <OverAll>
