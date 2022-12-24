@@ -18,7 +18,10 @@ import Cookies from "js-cookie";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
 import CancelButton from "../../../components/modals/CancelButton";
 import Link from "next/link";
-import { walletConnectReducer } from "../../../redux/style-slice/general-style/GenrealStyle";
+import {
+  walletConnectReducer,
+  walletReducer,
+} from "../../../redux/style-slice/general-style/GenrealStyle";
 
 const HeaderDropDown = () => {
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
@@ -29,7 +32,7 @@ const HeaderDropDown = () => {
   const Ref = React.useRef<HTMLDivElement>(null);
   const InputSearch = React.useRef<HTMLDivElement>(null);
   const [Bg, setBg] = useState("/images/default-profile.png");
-  
+
   const [Name, setName] = useState("");
   const allChannelsFetched = useSelector(
     (state: any) => state.ChannelSlice.allChannelsFetched
@@ -143,7 +146,17 @@ const HeaderDropDown = () => {
         HandelSubmiteInitChannel();
       }
     } else if (id === "wallet") {
-       dispatch(walletConnectReducer({ value: true }));
+      var walletName = JSON.parse(
+        window.localStorage.getItem("walletName") as string
+      );
+      var walletConnected = JSON.parse(
+        window.localStorage.getItem("walletConnected") as string
+      );
+      if (walletConnected) {
+        dispatch(walletReducer({ value: true }));
+      } else if (!walletConnected) {
+        dispatch(walletConnectReducer({ value: true }));
+      }
     } else {
       Router.push(link);
     }
