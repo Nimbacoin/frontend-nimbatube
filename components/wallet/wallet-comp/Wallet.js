@@ -9,7 +9,7 @@ import { InjectedConnector } from "@web3-react/injected-connector";
 import { useWeb3React } from "@web3-react/core";
 // import Style from "../styles/pages/wallet/wallet.module.css";
 // import Style from "../../../styles/pages/wallet/crypto-wallet-connect.module.css";
-import Style from "../../../styles/pages/wallet/wallet-comp/crypto-wallet-connect.module.css";
+import Style from "../../../styles/pages/wallet/wallet-comp/wallet.module.css";
 import OverAll from "../../modals/OverAll";
 import BoldText from "../../modals/BoldText";
 import SmallTextBlack from "../../modals/SmallTextBlack";
@@ -101,7 +101,6 @@ function Wallet() {
         .then((handleAccountsChanged) => {
           if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
             setWalletAddress(handleAccountsChanged[0]);
-            console.log("handleAccountsChanged", handleAccountsChanged[0]);
           }
         })
         .catch(console.error);
@@ -141,6 +140,8 @@ function Wallet() {
   });
   const handelDesconnect = () => {
     deactivate();
+    localStorage.removeItem("walletName");
+    localStorage.removeItem("walletConnected");
   };
   return (
     <OverAll>

@@ -18,6 +18,7 @@ import Cookies from "js-cookie";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
 import CancelButton from "../../../components/modals/CancelButton";
 import Link from "next/link";
+import { walletConnectReducer } from "../../../redux/style-slice/general-style/GenrealStyle";
 
 const HeaderDropDown = () => {
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
@@ -28,6 +29,7 @@ const HeaderDropDown = () => {
   const Ref = React.useRef<HTMLDivElement>(null);
   const InputSearch = React.useRef<HTMLDivElement>(null);
   const [Bg, setBg] = useState("/images/default-profile.png");
+  
   const [Name, setName] = useState("");
   const allChannelsFetched = useSelector(
     (state: any) => state.ChannelSlice.allChannelsFetched
@@ -92,6 +94,7 @@ const HeaderDropDown = () => {
       link: "/wallet",
       icon: <IoWalletOutline />,
       classname: Style.link_container,
+      id: "wallet",
     },
     {
       name: "Settings",
@@ -139,6 +142,8 @@ const HeaderDropDown = () => {
       } else {
         HandelSubmiteInitChannel();
       }
+    } else if (id === "wallet") {
+       dispatch(walletConnectReducer({ value: true }));
     } else {
       Router.push(link);
     }
@@ -149,6 +154,7 @@ const HeaderDropDown = () => {
   const connectWalletHandler = () => {
     Router.push("/wallet");
   };
+
   return (
     <>
       {(() => {

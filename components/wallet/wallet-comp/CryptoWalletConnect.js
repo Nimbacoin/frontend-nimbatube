@@ -18,6 +18,10 @@ import IconHeader from "../../modals/IconHeader";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useDispatch } from "react-redux";
 import { walletConnectReducer } from "../../../redux/style-slice/general-style/GenrealStyle";
+
+
+
+
 function CryptoWalletConnect() {
   const CoinbaseWallet = new WalletLinkConnector({
     url: `https://mainnet.infura.io/v3/8ea65bb07c494d30bce16b7fd3fe4f3f`,
@@ -142,6 +146,9 @@ function CryptoWalletConnect() {
   const handelClose = () => {
     dispatch(walletConnectReducer({ value: false }));
   };
+  const connectFunc = (walletName) => {
+    alert(walletName)
+  };
   return (
     <OverAll>
       <div className={Style.container}>
@@ -164,6 +171,7 @@ function CryptoWalletConnect() {
               <div
                 onClick={() => {
                   activate(handelClick);
+                  connectFunc(name)
                 }}
                 className={Style.connect_wallet_main_container}
               >

@@ -17,8 +17,8 @@ const initialState = {
   elementOverLayt: false,
   support: false,
   elementOverContent: [],
-  walletConnect: false,
-  wallet: true,
+  walletConnect: true,
+  wallet: false,
 };
 
 export const GeneralStyle = createSlice({
