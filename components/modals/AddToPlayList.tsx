@@ -8,6 +8,7 @@ import {
 import Style from "../../styles/modals/add-to-play-list.module.css";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import basedPostUrlRequestLogedIn from "../../utils/basedPostUrlRequestLogedIn";
+import SmallTextBlack from "./SmallTextBlack";
 const AddToPalayList = () => {
   const { asPath, pathname } = useRouter();
   const dispatch = useDispatch();
@@ -49,7 +50,14 @@ const AddToPalayList = () => {
     await basedPostUrlRequestLogedIn(
       "/api/post/video/add-to-favorites/",
       body
-    ).then((res: any) => {});
+    ).then((res: any) => {
+      const responseData = res?.responseData?.data;
+      if (responseData) {
+        console.log("res", responseData);
+
+        setsavedToWatchLater(responseData);
+      }
+    });
   };
   const handelAddToWatchLater = async () => {
     //add-to-watch-later
@@ -57,7 +65,13 @@ const AddToPalayList = () => {
     await basedPostUrlRequestLogedIn(
       "/api/post/video/add-to-watch-later/",
       body
-    ).then((res: any) => {});
+    ).then((res: any) => {
+      const responseData = res?.responseData?.data;
+      if (responseData) {
+        console.log("res", responseData);
+        setSavedToFavorites(responseData);
+      }
+    });
   };
   const listToSave = [
     { name: "Favorites", func: handelAddToFavorites, isIn: savedToFavorites },
@@ -82,12 +96,20 @@ const AddToPalayList = () => {
             <div className={Style.link_container}>
               {listToSave.map(({ name, func, isIn }) => (
                 <div onClick={func} className={Style.main_link_container}>
-                  <input
-                    type="checkbox"
-                    checked={isIn}
-                    className={Style.check_box}
-                  />
-                  <p className={Style.link}>{name}</p>
+                  {isIn ? (
+                    <input
+                      type="checkbox"
+                      checked={true}
+                      className={Style.check_box}
+                    />
+                  ) : (
+                    <input
+                      type="checkbox"
+                      checked={false}
+                      className={Style.check_box}
+                    />
+                  )}
+                  <SmallTextBlack Text={name} />
                 </div>
               ))}
             </div>

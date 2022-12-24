@@ -79,12 +79,13 @@
   white-space: nowrap;
 }
 .main_link_container {
-  width: 80%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: baseline;
+  justify-content: flex-start;
+  column-gap: 10px;
 }
 
 .button_copy {
@@ -116,6 +117,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.check_box {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
 }
 @media screen and (max-width: 700px) {
   .share_container {
