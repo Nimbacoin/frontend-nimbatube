@@ -1,7 +1,7 @@
 import React from "react";
 import Style from "../../styles/modals/pop-upp.module.css";
 import { IoMailOpenOutline } from "@react-icons/all-files/io5/IoMailOpenOutline";
-import { IoCloseCircleOutline } from "@react-icons/all-files/io5/IoCloseCircleOutline";
+import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useSelector, useDispatch } from "react-redux";
 import { poPUppRedcuer } from "../../redux/style-slice/general-style/GenrealStyle";
 export const PopUpp = ({
@@ -19,7 +19,7 @@ export const PopUpp = ({
       <div className={Style.container_second}>
         <p>{popUppData}</p>
         <button onClick={handelClick} className={Style.svg}>
-          <IoCloseCircleOutline />
+          <IoCloseOutline />
         </button>
       </div>
     </div>
