@@ -148,6 +148,8 @@ function CryptoWalletConnect() {
     var walletConnected = JSON.parse(localStorage.getItem("walletConnected"));
     localStorage.setItem("walletName", JSON.stringify(walletName));
     localStorage.setItem("walletConnected", JSON.stringify(true));
+    dispatch(walletConnectReducer({ value: false }));
+
   };
   return (
     <OverAll>
