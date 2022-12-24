@@ -18,8 +18,11 @@ import IconHeader from "../../modals/IconHeader";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useDispatch } from "react-redux";
 import { walletConnectReducer } from "../../../redux/style-slice/general-style/GenrealStyle";
+import { isAndroid, isIOS } from "react-device-detect";
+import { useRouter } from "next/router";
 
 function CryptoWalletConnect() {
+  const Router = useRouter();
   const CoinbaseWallet = new WalletLinkConnector({
     url: `https://mainnet.infura.io/v3/8ea65bb07c494d30bce16b7fd3fe4f3f`,
     appName: "Web3-react Demo",
@@ -149,7 +152,10 @@ function CryptoWalletConnect() {
     localStorage.setItem("walletName", JSON.stringify(walletName));
     localStorage.setItem("walletConnected", JSON.stringify(true));
     dispatch(walletConnectReducer({ value: false }));
-
+    if (walletName === "Metamask" && isAndroid) {
+      alert("hey man");
+      Router.push("https://metamask.app.link/dapp/www.nimbatube.com/");
+    }
   };
   return (
     <OverAll>
