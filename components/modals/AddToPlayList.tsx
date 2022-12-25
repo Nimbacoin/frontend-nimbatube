@@ -21,13 +21,8 @@ const AddToPalayList = () => {
   const [savedToFavorites, setSavedToFavorites] = useState(
     ResDD?.savedToFavorites
   );
-  //   const copyToClipboard = () => {
-  //     navigator.clipboard.writeText(process.env.NEXT_PUBLIC_ClIENT_URL + asPath);
-  //     dispatch(poPUppRedcuer({ data: "video  link is copied" }));
-  //     setTimeout(() => {
-  //       dispatch(poPUppRedcuer({ data: "" }));
-  //     }, 5000);
-  //   };
+  const [message, setMessage] = useState("");
+
   const handelClickClose = () => {
     dispatch(playListRedcuer({ value: "false" }));
   };
@@ -52,35 +47,39 @@ const AddToPalayList = () => {
       body
     ).then((res: any) => {
       const responseData = res?.responseData?.data;
+      console.log("res-favorites", responseData);
+      setSavedToFavorites(responseData);
       if (responseData) {
-        console.log("res", responseData);
-
-        setsavedToWatchLater(responseData);
+        setMessage("Video added to favorites");
+      } else if (!responseData) {
+        setMessage("Video removed from favorites");
       }
+      dispatch(poPUppRedcuer({ data: message }));
+      setTimeout(() => {
+        dispatch(poPUppRedcuer({ data: "" }));
+      }, 5000);
     });
   };
   const handelAddToWatchLater = async () => {
-    //add-to-watch-later
     const body: any = { videoId };
     await basedPostUrlRequestLogedIn(
       "/api/post/video/add-to-watch-later/",
       body
     ).then((res: any) => {
       const responseData = res?.responseData?.data;
+      setsavedToWatchLater(responseData);
       if (responseData) {
-        console.log("res", responseData);
-        setSavedToFavorites(responseData);
+        setMessage("Video added to watch later");
+      } else if (!responseData) {
+        setMessage("Video removed from watch later");
       }
+      dispatch(poPUppRedcuer({ data: message }));
+      setTimeout(() => {
+        dispatch(poPUppRedcuer({ data: "" }));
+      }, 5000);
     });
   };
-  const listToSave = [
-    { name: "Favorites", func: handelAddToFavorites, isIn: savedToFavorites },
-    {
-      name: "Watch Later",
-      func: handelAddToWatchLater,
-      isIn: savedToWatchLater,
-    },
-  ];
+
   //
   return (
     <div className={Style.container}>
@@ -94,24 +93,44 @@ const AddToPalayList = () => {
               </button>
             </div>
             <div className={Style.link_container}>
-              {listToSave.map(({ name, func, isIn }) => (
-                <div onClick={func} className={Style.main_link_container}>
-                  {isIn ? (
-                    <input
-                      type="checkbox"
-                      checked={true}
-                      className={Style.check_box}
-                    />
-                  ) : (
-                    <input
-                      type="checkbox"
-                      checked={false}
-                      className={Style.check_box}
-                    />
-                  )}
-                  <SmallTextBlack Text={name} />
-                </div>
-              ))}
+              <div
+                onClick={handelAddToWatchLater}
+                className={Style.main_link_container}
+              >
+                {savedToWatchLater ? (
+                  <input
+                    type="checkbox"
+                    checked={true}
+                    className={Style.check_box}
+                  />
+                ) : (
+                  <input
+                    type="checkbox"
+                    checked={false}
+                    className={Style.check_box}
+                  />
+                )}
+                <SmallTextBlack Text={"Watch later"} />
+              </div>
+              <div
+                onClick={handelAddToFavorites}
+                className={Style.main_link_container}
+              >
+                {savedToFavorites ? (
+                  <input
+                    type="checkbox"
+                    checked={true}
+                    className={Style.check_box}
+                  />
+                ) : (
+                  <input
+                    type="checkbox"
+                    checked={false}
+                    className={Style.check_box}
+                  />
+                )}
+                <SmallTextBlack Text={"Save to favorites"} />
+              </div>
             </div>
           </div>
         </div>
