@@ -152,7 +152,6 @@ function CryptoWalletConnect() {
     localStorage.setItem("walletName", JSON.stringify(walletName));
     localStorage.setItem("walletConnected", JSON.stringify(true));
     dispatch(walletConnectReducer({ value: false }));
-    localStorage.setItem("isMobileMetaMask", JSON.stringify(true));
     var isMobileMetaMask = JSON.parse(localStorage.getItem("isMobileMetaMask"));
     if (walletName === "Metamask") {
       if (isAndroid) {
@@ -163,6 +162,8 @@ function CryptoWalletConnect() {
           );
           alert("is not connected");
         } else if (isMobileMetaMask) {
+          localStorage.removeItem("isMobileMetaMask");
+
           alert("is connected");
         }
       }
