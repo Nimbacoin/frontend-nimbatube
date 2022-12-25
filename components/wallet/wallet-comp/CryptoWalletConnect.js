@@ -155,7 +155,7 @@ function CryptoWalletConnect() {
     // alert("walletName: " + walletName + " isAndroid: " + isAndroid);
     if (walletName === "Metamask" && isAndroid) {
       // alert("hey man");
-      Router.push("https://metamask.app.link/dapp/www.nimbatube.com/");
+      Router.push("https://metamask.app.link/dapp/www.metamask.nimbatube.com/");
     }
   };
   return (
