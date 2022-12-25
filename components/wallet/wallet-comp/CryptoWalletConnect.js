@@ -152,10 +152,17 @@ function CryptoWalletConnect() {
     localStorage.setItem("walletName", JSON.stringify(walletName));
     localStorage.setItem("walletConnected", JSON.stringify(true));
     dispatch(walletConnectReducer({ value: false }));
-    // alert("walletName: " + walletName + " isAndroid: " + isAndroid);
+
     if (walletName === "Metamask" && isAndroid) {
-      // alert("hey man");
-      Router.push("https://metamask.app.link/dapp/www.metamask.nimbatube.com/");
+      localStorage.setItem("isMobileMetaMask", JSON.stringify(true));
+      var isMobileMetaMask = JSON.parse(
+        localStorage.getItem("isMobileMetaMask")
+      );
+      if (!isMobileMetaMask) {
+        Router.push(
+          "https://metamask.app.link/dapp/www.nimbatube.com/?metamask=true&metamask=metamask"
+        );
+      }
     }
   };
   return (
