@@ -158,7 +158,6 @@ function CryptoWalletConnect() {
       if (isAndroid) {
         if (!isMobileMetaMask) {
           localStorage.setItem("isMobileMetaMask", JSON.stringify(true));
-
           Router.push(
             "https://metamask.app.link/dapp/www.nimbatube.com/?metamask=true&metamask=true"
           );
