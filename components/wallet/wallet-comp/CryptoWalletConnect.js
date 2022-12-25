@@ -154,14 +154,16 @@ function CryptoWalletConnect() {
     dispatch(walletConnectReducer({ value: false }));
     localStorage.setItem("isMobileMetaMask", JSON.stringify(true));
     var isMobileMetaMask = JSON.parse(localStorage.getItem("isMobileMetaMask"));
-
     if (walletName === "Metamask") {
+      localStorage.setItem("isMobileMetaMask", JSON.stringify(true));
       if (isAndroid) {
-        Router.push(
-          "https://metamask.app.link/dapp/www.nimbatube.com/?metamask=true&metamask=true"
-        );
         if (!isMobileMetaMask) {
-          localStorage.setItem("isMobileMetaMask", JSON.stringify(true));
+          Router.push(
+            "https://metamask.app.link/dapp/www.nimbatube.com/?metamask=true&metamask=true"
+          );
+          alert("is not connected");
+        } else if (isMobileMetaMask) {
+          alert("is connected");
         }
       }
     }
