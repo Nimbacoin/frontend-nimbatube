@@ -162,7 +162,6 @@ function CryptoWalletConnect() {
           );
           alert("is not connected");
         } else if (isMobileMetaMask) {
-          localStorage.removeItem("isMobileMetaMask");
 
           alert("is connected");
         }
