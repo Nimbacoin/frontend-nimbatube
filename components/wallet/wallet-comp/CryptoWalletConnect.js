@@ -156,7 +156,7 @@ function CryptoWalletConnect() {
     if (walletName === "Metamask") {
       if (isAndroid) {
         if (window.ethereum) {
-          alert("")
+          alert("is in theruim")
         }
         if (!isMobileMetaMask) {
           localStorage.setItem("isMobileMetaMask", JSON.stringify(true));
