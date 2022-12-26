@@ -157,10 +157,6 @@ const HeaderDropDown = () => {
           .request({ method: "eth_accounts" })
           .then((handleAccountsChanged: any) => {
             if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
-              alert(handleAccountsChanged[0]);
-              dispatch(walletReducer({ value: true }));
-              alert("walletConnected" + walletConnected);
-
               if (walletConnected) {
                 dispatch(
                   walletReducer({
@@ -210,7 +206,6 @@ const HeaderDropDown = () => {
         .request({ method: "eth_accounts" })
         .then((handleAccountsChanged: any) => {
           if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
-            dispatch(walletReducer({ value: true }));
             if (walletConnected) {
               dispatch(
                 walletReducer({

@@ -101,7 +101,6 @@ export const GeneralStyle = createSlice({
       state.walletConnect = action.payload.value;
     },
     walletReducer: (state: any, action: any) => {
-      state.wallet = action.payload.value;
       if (typeof action.payload.value !== "undefined") {
         state.wallet = action.payload.value;
       }
