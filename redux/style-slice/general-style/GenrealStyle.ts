@@ -19,6 +19,7 @@ const initialState = {
   elementOverContent: [],
   walletConnect: false,
   wallet: false,
+  walletAdress: "",
 };
 
 export const GeneralStyle = createSlice({
@@ -101,6 +102,13 @@ export const GeneralStyle = createSlice({
     },
     walletReducer: (state: any, action: any) => {
       state.wallet = action.payload.value;
+      if (typeof action.payload.value !== "undefined") {
+        state.wallet = action.payload.value;
+      }
+
+      if (typeof action.payload.walletAdress !== "undefined") {
+        state.walletAdress = action.payload.walletAdress;
+      }
     },
   },
 });

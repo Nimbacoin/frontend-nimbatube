@@ -133,6 +133,7 @@ const HeaderDropDown = () => {
     });
   };
   const handelClick = (e: any, link: string, id: any) => {
+    alert("data");
     if (id === "sign-out") {
       e.preventDefault();
       //.removeItem("user");
@@ -146,36 +147,45 @@ const HeaderDropDown = () => {
         HandelSubmiteInitChannel();
       }
     } else if (id === "wallet") {
+      alert("data-main-wallet");
       var walletName = JSON.parse(
         window.localStorage.getItem("walletName") as string
       );
       var walletConnected = JSON.parse(
         window.localStorage.getItem("walletConnected") as string
       );
-      let address = "";
       if (window.ethereum) {
         window.ethereum
           .request({ method: "eth_accounts" })
           .then((handleAccountsChanged: any) => {
             if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
-              address = handleAccountsChanged[0];
+              alert(handleAccountsChanged[0]);
+              dispatch(walletReducer({ value: true }));
+              alert("walletConnected" + walletConnected);
+
+              if (walletConnected) {
+                dispatch(
+                  walletReducer({
+                    value: true,
+                    walletAdress: handleAccountsChanged[0],
+                  })
+                );
+                dispatch(walletConnectReducer({ value: false }));
+              } else {
+                dispatch(walletConnectReducer({ value: true }));
+                dispatch(walletReducer({ value: false }));
+              }
+            } else {
+              if (walletConnected) {
+                dispatch(walletReducer({ value: false }));
+                dispatch(walletConnectReducer({ value: true }));
+              } else {
+                dispatch(walletConnectReducer({ value: true }));
+                dispatch(walletReducer({ value: false }));
+              }
             }
           })
           .catch(console.error);
-      }
-      if (walletConnected) {
-        if (address.length >= 5) {
-          dispatch(walletReducer({ value: true }));
-        } else {
-          dispatch(walletReducer({ value: true }));
-        }
-      } else if (!walletConnected) {
-        if (address.length >= 5){
-          dispatch(walletConnectReducer({ value: true }));
-        }else {
-          dispatch(walletConnectReducer({ value: true }));
-        }
-        
       }
     } else {
       Router.push(link);
@@ -187,6 +197,32 @@ const HeaderDropDown = () => {
   const connectWalletHandler = () => {
     Router.push("/wallet");
   };
+  const walletAdress = useSelector(
+    (state: any) => state.GenrealStyle.walletAdress
+  );
+  const [addess, setAddress] = useState("");
+  useEffect(() => {
+    var walletConnected = JSON.parse(
+      window.localStorage.getItem("walletConnected") as string
+    );
+    if (window.ethereum) {
+      window.ethereum
+        .request({ method: "eth_accounts" })
+        .then((handleAccountsChanged: any) => {
+          if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
+            dispatch(walletReducer({ value: true }));
+            if (walletConnected) {
+              dispatch(
+                walletReducer({
+                  walletAdress: handleAccountsChanged[0],
+                })
+              );
+            }
+          }
+        })
+        .catch(console.error);
+    }
+  });
 
   return (
     <>
@@ -198,7 +234,11 @@ const HeaderDropDown = () => {
                 <CancelButton
                   HandelClick={connectWalletHandler}
                   IconFirst={<FcCircuit />}
-                  Text={"connect wallet"}
+                  Text={
+                    walletAdress.length > 5
+                      ? walletAdress.slice(0, 8) + "..."
+                      : "connect wallet"
+                  }
                 />
               </Link>
             </div>
