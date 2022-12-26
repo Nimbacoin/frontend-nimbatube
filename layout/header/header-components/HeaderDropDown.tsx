@@ -167,10 +167,12 @@ const HeaderDropDown = () => {
         if (address.length >= 5) {
           dispatch(walletReducer({ value: true }));
         } else {
-          dispatch(walletReducer({ value: false }));
+          dispatch(walletReducer({ value: true }));
         }
       } else if (!walletConnected) {
         if (address.length >= 5){
+          dispatch(walletConnectReducer({ value: true }));
+        }else {
           dispatch(walletConnectReducer({ value: true }));
         }
         
