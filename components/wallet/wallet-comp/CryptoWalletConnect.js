@@ -155,17 +155,10 @@ function CryptoWalletConnect() {
     var isMobileMetaMask = JSON.parse(localStorage.getItem("isMobileMetaMask"));
     if (walletName === "Metamask") {
       if (isAndroid) {
-        if (window.ethereum) {
-          alert("is in theruim")
-        }
-        if (!isMobileMetaMask) {
-          localStorage.setItem("isMobileMetaMask", JSON.stringify(true));
+        if (!window.ethereum) {
           Router.push(
             "https://metamask.app.link/dapp/www.nimbatube.com/?metamask=true&metamask=true"
           );
-          alert("is not connected");
-        } else if (isMobileMetaMask) {
-          alert("is connected");
         }
       }
     }
