@@ -155,6 +155,9 @@ function CryptoWalletConnect() {
     var isMobileMetaMask = JSON.parse(localStorage.getItem("isMobileMetaMask"));
     if (walletName === "Metamask") {
       if (isAndroid) {
+        if (window.ethereum) {
+          alert("")
+        }
         if (!isMobileMetaMask) {
           localStorage.setItem("isMobileMetaMask", JSON.stringify(true));
           Router.push(
@@ -162,7 +165,6 @@ function CryptoWalletConnect() {
           );
           alert("is not connected");
         } else if (isMobileMetaMask) {
-
           alert("is connected");
         }
       }
