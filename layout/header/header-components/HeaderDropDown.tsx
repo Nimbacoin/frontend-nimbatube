@@ -133,7 +133,6 @@ const HeaderDropDown = () => {
     });
   };
   const handelClick = (e: any, link: string, id: any) => {
-    alert("data");
     if (id === "sign-out") {
       e.preventDefault();
       //.removeItem("user");
@@ -147,7 +146,6 @@ const HeaderDropDown = () => {
         HandelSubmiteInitChannel();
       }
     } else if (id === "wallet") {
-      alert("data-main-wallet");
       var walletName = JSON.parse(
         window.localStorage.getItem("walletName") as string
       );
@@ -186,6 +184,8 @@ const HeaderDropDown = () => {
             }
           })
           .catch(console.error);
+      } else {
+        dispatch(walletConnectReducer({ value: true }));
       }
     } else {
       Router.push(link);
