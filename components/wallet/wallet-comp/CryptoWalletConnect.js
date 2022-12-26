@@ -154,6 +154,7 @@ function CryptoWalletConnect() {
     dispatch(walletConnectReducer({ value: false }));
     var isMobileMetaMask = JSON.parse(localStorage.getItem("isMobileMetaMask"));
     if (walletName === "Metamask") {
+      
       if (isAndroid) {
         if (!window.ethereum) {
           Router.push(

@@ -152,10 +152,28 @@ const HeaderDropDown = () => {
       var walletConnected = JSON.parse(
         window.localStorage.getItem("walletConnected") as string
       );
+      let address = "";
+      if (window.ethereum) {
+        window.ethereum
+          .request({ method: "eth_accounts" })
+          .then((handleAccountsChanged: any) => {
+            if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
+              address = handleAccountsChanged[0];
+            }
+          })
+          .catch(console.error);
+      }
       if (walletConnected) {
-        dispatch(walletReducer({ value: true }));
+        if (address.length >= 5) {
+          dispatch(walletReducer({ value: true }));
+        } else {
+          dispatch(walletReducer({ value: false }));
+        }
       } else if (!walletConnected) {
-        dispatch(walletConnectReducer({ value: true }));
+        if (address.length >= 5){
+          dispatch(walletConnectReducer({ value: true }));
+        }
+        
       }
     } else {
       Router.push(link);
