@@ -5,6 +5,10 @@ import { NextSeo } from "next-seo";
 import Style from "../styles/layout/layout.module.css";
 import SideHeader from "./header/SideHeader";
 import { useDispatch, useSelector } from "react-redux";
+import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { arbitrum, mainnet, polygon } from "wagmi/chains";
+import { useWeb3Modal } from "@web3modal/react";
+import { Web3Modal } from "@web3modal/react";
 import { useRouter } from "next/router";
 import {
   elementOverLaytRedcuer,
@@ -35,6 +39,11 @@ import Wallet from "../components/wallet/wallet-comp/Wallet";
 import Web3Provider from "web3-react";
 import { Web3ReactProvider } from "@web3-react/core";
 import { Connectors } from "web3-react";
+import {
+  EthereumClient,
+  modalConnectors,
+  walletConnectProvider,
+} from "@web3modal/ethereum";
 const { InjectedConnector, NetworkOnlyConnector } = Connectors;
 const MetaMask = new InjectedConnector({ supportedNetworks: [1, 4] });
 const Infura = new NetworkOnlyConnector({
@@ -46,6 +55,36 @@ interface main {
   children: any;
 }
 const Layout = ({ children }: any) => {
+  const chains = [
+    arbitrum,
+    mainnet,
+
+    {
+      id: 0x38,
+      name: "Binance Smart Chain Mainnet",
+      nativeCurrency: {
+        name: "Binance Chain Native Token",
+        symbol: "BNB",
+        decimals: 18,
+      },
+      rpcUrls: [
+        "https://bsc-dataseed1.binance.org",
+        "https://bsc-dataseed2.binance.org",
+        "https://bsc-dataseed3.binance.org",
+        "https://bsc-dataseed4.binance.org",
+        "https://bsc-dataseed1.defibit.io",
+        "https://bsc-dataseed2.defibit.io",
+        "https://bsc-dataseed3.defibit.io",
+        "https://bsc-dataseed4.defibit.io",
+        "https://bsc-dataseed1.ninicoin.io",
+        "https://bsc-dataseed2.ninicoin.io",
+        "https://bsc-dataseed3.ninicoin.io",
+        "https://bsc-dataseed4.ninicoin.io",
+        "wss://bsc-ws-node.nariox.org",
+      ],
+      blockExplorerUrls: ["https://bscscan.com"],
+    },
+  ];
   const { asPath } = useRouter();
   const Router = useRouter();
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
@@ -165,9 +204,27 @@ const Layout = ({ children }: any) => {
       document.body.style.overflow = "hidden";
     }
   });
+  const { provider } = configureChains(chains, [
+    walletConnectProvider({ projectId: "<YOUR_PROJECT_ID>" }),
+  ]);
+  const wagmiClient = createClient({
+    autoConnect: true,
+    connectors: modalConnectors({ appName: "web3Modal", chains }),
+    provider,
+  });
+  const ethereumClient = new EthereumClient(wagmiClient, chains);
+
   return (
     <>
       <Web3ReactProvider getLibrary={getLibrary}>
+        <WagmiConfig client={wagmiClient}>
+          <Web3Modal
+            projectId="<YOUR_PROJECT_ID>"
+            ethereumClient={ethereumClient}
+          />
+
+          {/* <Web3NetworkSwitch /> */}
+        </WagmiConfig>
         <Head>
           <link
             rel="stylesheet"

@@ -6,17 +6,19 @@ import {
 
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { Web3NetworkSwitch } from "@web3modal/react";
-
+import { useEffect, useRef } from "react";
 import { arbitrum, mainnet, polygon } from "wagmi/chains";
 import { useWeb3Modal } from "@web3modal/react";
 import { useWeb3ModalNetwork } from "@web3modal/react";
 import { useWeb3ModalTheme } from "@web3modal/react";
 import { Web3Modal } from "@web3modal/react";
 import { Web3Button } from "@web3modal/react";
+import Style from "../../../styles/pages/wallet/wallet-comp/wallet.module.css";
 
 function MetaMask() {
   // const { theme, setTheme } = useWeb3ModalTheme();
-
+  const containerRef = useRef();
+  const eventClicked = useRef();
   const { isOpen, open, close } = useWeb3Modal();
   // const { selectedChain, setSelectedChain } = useWeb3ModalNetwork();
   console.log("isOpen", isOpen);
@@ -67,12 +69,15 @@ function MetaMask() {
   return (
     <>
       <WagmiConfig client={wagmiClient}>
-        <Web3Button />
-        <Web3Modal
-          projectId="<YOUR_PROJECT_ID>"
-          ethereumClient={ethereumClient}
-        />
-
+        <div ref={containerRef} className={Style.main_container}>
+          <Web3Modal
+            projectId="<YOUR_PROJECT_ID>"
+            ethereumClient={ethereumClient}
+          />
+        </div>
+        <button onClick={open} ref={eventClicked}>
+          add event
+        </button>
         <Web3NetworkSwitch />
       </WagmiConfig>
     </>
@@ -80,13 +85,3 @@ function MetaMask() {
 }
 
 export default MetaMask;
-
-// import React from 'react'
-
-// const MetaMask = () => {
-//   return (
-//     <div>MetaMask</div>
-//   )
-// }
-
-// export default MetaMask
