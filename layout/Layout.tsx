@@ -55,7 +55,7 @@ interface main {
   children: any;
 }
 const Layout = ({ children }: any) => {
-  const chains = [
+  const chains: any = [
     arbitrum,
     mainnet,
 
