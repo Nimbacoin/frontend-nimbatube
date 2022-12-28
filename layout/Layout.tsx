@@ -253,23 +253,27 @@ const Layout = ({ children }: any) => {
             description: "Open Graph Description",
             images: [
               {
-                url: "faviconv.png",
+                url: "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
                 width: 800,
                 height: 600,
                 alt: "Og Image Alt",
-                type: "image/png",
+                type: "image/jpeg",
               },
               {
-                url: "https://www.example.ie/og-image-02.jpg",
+                url: "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
                 width: 900,
                 height: 800,
                 alt: "Og Image Alt Second",
                 type: "image/jpeg",
               },
-              { url: "https://www.example.ie/og-image-03.jpg" },
-              { url: "https://www.example.ie/og-image-04.jpg" },
+              {
+                url: "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
+              },
+              {
+                url: "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
+              },
             ],
-            site_name: "SiteName",
+            site_name: "Nimbatube",
           }}
           twitter={{
             handle: "@handle",
