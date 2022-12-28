@@ -56,9 +56,6 @@ interface main {
 }
 const Layout = ({ children }: any) => {
   const chains: any = [
-    arbitrum,
-    mainnet,
-
     {
       id: 0x38,
       name: "Binance Smart Chain Mainnet",

@@ -172,9 +172,6 @@ function CryptoWalletConnect() {
           );
         }
       }
-    } else if (walletName === "WalletConnect") {
-      alert("s");
-      // dispatch(walletConnectReducer({ value: false }));
     }
   };
 
