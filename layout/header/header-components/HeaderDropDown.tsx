@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { UserSignOut } from "../../../redux/user-slice/UserSignIn";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
+import { useWeb3Context } from "web3-react";
 
 import Cookies from "js-cookie";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
@@ -201,6 +202,7 @@ const HeaderDropDown = () => {
     var walletConnected = JSON.parse(
       window.localStorage.getItem("walletConnected") as string
     );
+
     if (window.ethereum) {
       window.ethereum
         .request({ method: "eth_accounts" })
@@ -237,7 +239,7 @@ const HeaderDropDown = () => {
                 />
               </Link>
             </div>
-
+            
             <div className={Style.drop_down_option} ref={InputSearch}>
               {Bg !== "/images/default-profile.png" ? (
                 <div

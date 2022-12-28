@@ -100,7 +100,6 @@ function App() {
   };
   useEffect(() => {
     checkConnection();
-    let unlocked;
     async function checkConnectionrt() {
       const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = await web3Provider.getSigner();
@@ -113,6 +112,22 @@ function App() {
           console.error(error);
         });
     }
+    async function checkConnectionrt3() {
+      // const user = useWeb3React();
+      // console.log(user);
+      console.log(active, CoinbaseWallet, window.ethereum);
+      const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = await web3Provider.getSigner();
+      signer
+        .getAddress()
+        .then((address) => {
+          console.log("address-address", address);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+    checkConnectionrt3();
 
     checkConnectionrt();
   });

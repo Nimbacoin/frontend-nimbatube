@@ -32,8 +32,16 @@ import Support from "../components/modals/Support";
 import Web3 from "web3";
 import CryptoWalletConnect from "../components/wallet/wallet-comp/CryptoWalletConnect";
 import Wallet from "../components/wallet/wallet-comp/Wallet";
-
+import Web3Provider from "web3-react";
 import { Web3ReactProvider } from "@web3-react/core";
+import { Connectors } from "web3-react";
+const { InjectedConnector, NetworkOnlyConnector } = Connectors;
+const MetaMask = new InjectedConnector({ supportedNetworks: [1, 4] });
+const Infura = new NetworkOnlyConnector({
+  providerURL: "https://mainnet.infura.io/v3/...",
+});
+
+const connectors = { MetaMask, Infura };
 interface main {
   children: any;
 }
@@ -53,9 +61,7 @@ const Layout = ({ children }: any) => {
   const walletConnect = useSelector(
     (state: any) => state.GenrealStyle.walletConnect
   );
-  const wallet = useSelector(
-    (state: any) => state.GenrealStyle.wallet
-  );
+  const wallet = useSelector((state: any) => state.GenrealStyle.wallet);
 
   const playList = useSelector((state: any) => state.GenrealStyle.playList);
   const elementOverLayt = useSelector(
@@ -243,15 +249,15 @@ const Layout = ({ children }: any) => {
           canonical="https://www.canonical.ie/"
           openGraph={{
             url: "https://www.url.ie/a",
-            title: "Open Graph Title",
+            title: "Nimbatube",
             description: "Open Graph Description",
             images: [
               {
-                url: "https://www.example.ie/og-image-01.jpg",
+                url: "faviconv.png",
                 width: 800,
                 height: 600,
                 alt: "Og Image Alt",
-                type: "image/jpeg",
+                type: "image/png",
               },
               {
                 url: "https://www.example.ie/og-image-02.jpg",
@@ -279,7 +285,7 @@ const Layout = ({ children }: any) => {
           {cropping && <CropperCom />}
           {support && <Support />}
           {walletConnect && <CryptoWalletConnect />}
-         {wallet &&<Wallet /> }
+          {wallet && <Wallet />}
           <SideHeader />
           {/* <div
           ref={childrenRef}

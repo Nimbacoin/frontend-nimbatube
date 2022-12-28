@@ -62,8 +62,9 @@
     "redux-thunk": "^2.4.1",
     "simple-line-icons": "^2.5.5",
     "socket.io-client": "^4.5.1",
-    "wagmi": "^0.8.6",
+    "wagmi": "^0.8.10",
     "web3": "^1.8.1",
+    "web3-react": "^5.0.5",
     "web3modal": "^1.9.9",
     "yarn": "^1.22.19"
   },
