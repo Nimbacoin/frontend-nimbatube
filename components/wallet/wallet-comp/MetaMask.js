@@ -63,7 +63,6 @@ function MetaMask() {
     provider,
   });
 
-  // Web3Modal Ethereum Client
   const ethereumClient = new EthereumClient(wagmiClient, chains);
 
   return (

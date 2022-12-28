@@ -25,13 +25,13 @@ import {
   modalConnectors,
   walletConnectProvider,
 } from "@web3modal/ethereum";
-
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { Web3NetworkSwitch } from "@web3modal/react";
 import { arbitrum, mainnet, polygon } from "wagmi/chains";
 import { useWeb3Modal } from "@web3modal/react";
 function CryptoWalletConnect() {
   const Router = useRouter();
+  const dispatch = useDispatch();
   const CoinbaseWallet = new WalletLinkConnector({
     url: `https://mainnet.infura.io/v3/8ea65bb07c494d30bce16b7fd3fe4f3f`,
     appName: "Web3-react Demo",
@@ -88,7 +88,6 @@ function CryptoWalletConnect() {
     },
   };
   const [Error, setError] = useState("");
-  const dispatch = useDispatch();
   const handleNetworkSwitch = async (networkName) => {
     await changeNetwork({ networkName, setError });
   };
@@ -149,7 +148,10 @@ function CryptoWalletConnect() {
     {
       name: "WalletConnect",
       image: "/images/wallet-connect.png",
-      handelClick: () => {},
+      handelClick: () => {
+        dispatch(walletConnectReducer({ value: false }));
+        open();
+      },
     },
   ];
   const handelClose = () => {
@@ -171,7 +173,8 @@ function CryptoWalletConnect() {
         }
       }
     } else if (walletName === "WalletConnect") {
-      open;
+      alert("s");
+      // dispatch(walletConnectReducer({ value: false }));
     }
   };
 
@@ -219,8 +222,6 @@ function CryptoWalletConnect() {
     provider,
   });
 
-  // Web3Modal Ethereum Client
-  const ethereumClient = new EthereumClient(wagmiClient, chains);
   return (
     <OverAll>
       <div className={Style.container}>
@@ -239,7 +240,7 @@ function CryptoWalletConnect() {
             }
           />
           <div className={Style.second_container_connect}>
-            {connectorsArray.map(({ image, name, handelClick }) => (
+            {connectorsArray.slice(0, 2).map(({ image, name, handelClick }) => (
               <div
                 onClick={() => {
                   activate(handelClick);
@@ -258,7 +259,7 @@ function CryptoWalletConnect() {
             ))}
             {connectorsArray.slice(2, 3).map(({ image, name, handelClick }) => (
               <div
-                onClick={open}
+                onClick={handelClick}
                 className={Style.connect_wallet_main_container}
               >
                 <div
