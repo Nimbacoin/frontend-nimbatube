@@ -54,7 +54,7 @@ const WalletPage = () => {
         <a href="https://instagram.com">Open Web app</a>
       )}
       <button onClick={redirecttoNativeApp}>Click to go to doordash</button>
-      <MetaMask />
+      {/* <MetaMask /> */}
     </div>
   );
 };
