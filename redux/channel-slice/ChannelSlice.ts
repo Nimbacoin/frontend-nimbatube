@@ -34,6 +34,8 @@ export const ChannelSlice = createSlice({
         state.general["name"] = Action.input_name;
       } else if (Action.id === "text_desc") {
         state.general["description"] = Action.text_desc;
+      } else if (Action.id === "wallet_id") {
+        state.general["walletId"] = Action.wallet_id;
       }
       if (!state.general["name"]?.length) {
         state.ChannelCreated = false;

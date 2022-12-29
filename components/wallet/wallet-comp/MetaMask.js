@@ -3,6 +3,7 @@ import {
   modalConnectors,
   walletConnectProvider,
 } from "@web3modal/ethereum";
+import WalletConnectProvider from "@walletconnect/web3-provider";
 
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { Web3NetworkSwitch } from "@web3modal/react";
@@ -14,8 +15,11 @@ import { useWeb3ModalTheme } from "@web3modal/react";
 import { Web3Modal } from "@web3modal/react";
 import { Web3Button } from "@web3modal/react";
 import Style from "../../../styles/pages/wallet/wallet-comp/wallet.module.css";
+import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
+import AbiJson from "../../modals/AbiJson.json";
+import { ethers } from "ethers";
 
-function MetaMask() {
+function MetaMask({ SupportedAdress, EtherValue }) {
   // const { theme, setTheme } = useWeb3ModalTheme();
   const containerRef = useRef();
   const eventClicked = useRef();
@@ -64,6 +68,43 @@ function MetaMask() {
   });
 
   const ethereumClient = new EthereumClient(wagmiClient, chains);
+  useEffect(() => {
+    (async () => {
+      const provider = await new WalletConnectProvider({
+        rpc: {
+          56: "https://bsc-dataseed1.binance.org",
+        },
+        chainId: 56,
+        network: "binance",
+        qrcode: true,
+        qrcodeModalOptions: {
+          mobileLinks: ["metamask", "trust"],
+        },
+      });
+      provider.networkId = 56;
+      await provider.enable();
+      var signer;
+      var signerAddress;
+      const tokenContractAddress = "0x2f8A45dE29bbfBB0EE802B340B4f91af492C6DE7";
+      const tokenABI = AbiJson;
+      var tokenContract;
+      const startFunction = async () => {
+        // await ethereum.request({ method: "eth_requestAccounts" });
+        let provider2 = new ethers.providers.Web3Provider(provider);
+        signer = provider2.getSigner();
+        signerAddress = await signer.getAddress();
+        tokenContract = await new ethers.Contract(
+          tokenContractAddress,
+          tokenABI,
+          signer
+        );
+        const rrr = ethers.utils.parseEther(EtherValue);
+        const valueHex = rrr._hex;
+        await tokenContract.transfer(SupportedAdress, valueHex);
+      };
+      await startFunction();
+    })();
+  }, []);
 
   return (
     <>

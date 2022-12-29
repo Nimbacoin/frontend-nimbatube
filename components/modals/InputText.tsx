@@ -9,6 +9,7 @@ const InputText = ({
   Number,
   Icon,
   Value,
+  DefualtValue,
 }: any) => {
   return (
     <div className={Style.upload_input}>
@@ -17,6 +18,7 @@ const InputText = ({
         <input
           id="title"
           value={Value && Value}
+          defaultValue={DefualtValue && DefualtValue}
           placeholder={Placeholder}
           onChange={HandelChange}
           type={Number ? "number" : "text"}

@@ -116,11 +116,18 @@ const UplaodFile = () => {
     await basedPostUrlRequestLogedIn(
       "/api/post/video/submite-video/",
       videoData
-    ).then(({ file }) => {
-      dispatch(poPUppRedcuer({ data: "new video uploaded" }));
-      setTimeout(() => {
-        dispatch(poPUppRedcuer({ data: "" }));
-      }, 5000);
+    ).then((res) => {
+      console.log();
+      const data = res;
+      if (data.uploaded) {
+        dispatch(poPUppRedcuer({ data: "new video uploaded" }));
+        setTimeout(() => {
+          dispatch(poPUppRedcuer({ data: "" }));
+        }, 5000);
+        HandelClose();
+        setFirstStep(0);
+      }
+
       // socketReduxRecuder.emit("notification", {
       //   videoId: videoData?.video_id,
       //   channelId: Channels[0]?._id,

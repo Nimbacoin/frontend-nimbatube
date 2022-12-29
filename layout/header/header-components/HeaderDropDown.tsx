@@ -198,23 +198,33 @@ const HeaderDropDown = () => {
     (state: any) => state.GenrealStyle.walletAdress
   );
   const [addess, setAddress] = useState("");
-  useEffect(() => {
-    var walletConnected = JSON.parse(
-      window.localStorage.getItem("walletConnected") as string
-    );
 
-    if (window.ethereum) {
+  useEffect(() => {
+    var walletconnect = JSON.parse(
+      localStorage.getItem("walletconnect") || "false"
+    );
+    const iswalletConnect = walletconnect?.connected;
+    console.log(iswalletConnect);
+
+    if (iswalletConnect) {
+      dispatch(
+        walletReducer({
+          value: false,
+          walletAdress: walletconnect?.accounts[0],
+        })
+      );
+    }
+    if (!iswalletConnect && window.ethereum) {
       window.ethereum
         .request({ method: "eth_accounts" })
         .then((handleAccountsChanged: any) => {
           if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
-            if (walletConnected) {
-              dispatch(
-                walletReducer({
-                  walletAdress: handleAccountsChanged[0],
-                })
-              );
-            }
+            dispatch(
+              walletReducer({
+                value: false,
+                walletAdress: handleAccountsChanged[0],
+              })
+            );
           }
         })
         .catch(console.error);
@@ -239,7 +249,7 @@ const HeaderDropDown = () => {
                 />
               </Link>
             </div>
-            
+
             <div className={Style.drop_down_option} ref={InputSearch}>
               {Bg !== "/images/default-profile.png" ? (
                 <div

@@ -36,6 +36,8 @@ function CryptoWalletConnect() {
     url: `https://mainnet.infura.io/v3/8ea65bb07c494d30bce16b7fd3fe4f3f`,
     appName: "Web3-react Demo",
     supportedChainIds: [56],
+    chainId: 56,
+    network: "binance",
   });
 
   const WalletConnect = new WalletConnectConnector({
@@ -108,9 +110,6 @@ function CryptoWalletConnect() {
   };
 
   const checkConnection = async () => {
-    const isUnlocked = await window?.ethereum?._metamask?.isUnlocked();
-    const isUnlockedtt = await window?.ethereum?._coinbase?.isUnlocked();
-
     if (window.ethereum) {
       window.ethereum
         .request({ method: "eth_accounts" })
@@ -179,9 +178,6 @@ function CryptoWalletConnect() {
   // const { selectedChain, setSelectedChain } = useWeb3ModalNetwork();
   console.log("isOpen", isOpen);
   const chains = [
-    arbitrum,
-    mainnet,
-
     {
       id: 0x38,
       name: "Binance Smart Chain Mainnet",

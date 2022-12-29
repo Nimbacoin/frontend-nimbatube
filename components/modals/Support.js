@@ -19,6 +19,7 @@ import { ContainerEffectedClick } from "../watch/watch-page/left-side/VideoInfo"
 import { ethers } from "ethers";
 import AbiJson from "./AbiJson.json";
 import SkinyGrayText from "./SkinyGrayText";
+import MetaMask from "../wallet/wallet-comp/MetaMask";
 
 const Support = () => {
   const { asPath, pathname } = useRouter();
@@ -36,7 +37,7 @@ const Support = () => {
   const [supportAccount, setSupportAccount] = useState(ResDD);
 
   const [connButtonText, setConnButtonText] = useState("Connect Wallet");
-  const [etherValue, setEtherValue] = useState("0");
+  const [etherValue, setEtherValue] = useState("1");
   const [isBNB, setIsBNB] = useState(false);
   const [provider, setProvider] = useState(null);
   const [userBalance, setUserBalance] = useState(0);
@@ -50,18 +51,16 @@ const Support = () => {
     dispatch(supportReducer({ value: false }));
   };
   const connectWalletHandler = () => {
-    if (window.ethereum && window.ethereum.isMetaMask) {
+    if (window.ethereum) {
       window.ethereum
         .request({ method: "eth_requestAccounts" })
         .then((result) => {
           console.log("result", result);
           setConnButtonText("Wallet Connected");
-
           setDefaultAccount(result[0]);
           Cookies.set("metamask", JSON.stringify({ metamask: true }));
         })
         .catch((error) => {});
-    } else {
     }
   };
 
@@ -90,6 +89,7 @@ const Support = () => {
 
   const handelSendToken = async () => {
     if (supportAccount && supportAccount.length) {
+      
       console.log(supportAccount, etherValue);
       try {
         const rrr = ethers.utils.parseEther(etherValue);
@@ -188,8 +188,39 @@ const Support = () => {
       setError(err.message);
     }
   };
+  useEffect(() => {
+    var walletNameStrg = JSON.parse(localStorage.getItem("walletName"));
+    var walletConnected = JSON.parse(localStorage.getItem("walletConnected"));
+    var walletconnect = JSON.parse(localStorage.getItem("walletconnect"));
+    const iswalletConnect = walletconnect?.connected;
+    console.log(iswalletConnect);
+    if (iswalletConnect) {
+      setDefaultAccount(walletconnect?.accounts[0]);
+      if (walletconnect.chainId == 56) {
+        setIsBNB(true);
+      }
+    }
+    if (!iswalletConnect && window.ethereum) {
+      window.ethereum
+        .request({ method: "eth_accounts" })
+        .then((handleAccountsChanged) => {
+          if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
+            setDefaultAccount(handleAccountsChanged[0]);
+            dispatch(
+              walletReducer({
+                value: true,
+                walletAdress: handleAccountsChanged[0],
+              })
+            );
+          }
+        })
+        .catch(console.error);
+    }
+  });
+
   return (
     <div className={Style.container}>
+      <MetaMask  SupportedAdress={supportAccount} EtherValue={etherValue}/>
       <div className={Style.main_first_container}>
         <div className={Style.main_container}>
           <div className={Style.share_container}>

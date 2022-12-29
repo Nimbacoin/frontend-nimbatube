@@ -106,7 +106,8 @@ const ProfileDate = ({ ChannelData }: any) => {
               <div className={Style.data_channel_container}>
                 <span className={Style.name}> {Name} </span>
                 <span className={Style.title}> @{Title} </span>
-                <ButtonBlack />
+                {/* <ButtonBlack Text={"like"} /> */}
+                <ButtonBlack Text={"follow"} />
               </div>
             </div>
             <OtherChannelData />
