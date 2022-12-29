@@ -20,6 +20,7 @@ import { ethers } from "ethers";
 import AbiJson from "./AbiJson.json";
 import SkinyGrayText from "./SkinyGrayText";
 import MetaMask from "../wallet/wallet-comp/MetaMask";
+import IconHeader from "./IconHeader";
 
 const Support = () => {
   const { asPath, pathname } = useRouter();
@@ -35,7 +36,9 @@ const Support = () => {
   console.log(Bg);
   const [defaultAccount, setDefaultAccount] = useState("");
   const [supportAccount, setSupportAccount] = useState(ResDD);
-
+  const [walletConncetPay, setWalletConncetPay] = useState(false);
+  const [walletConncetPayWindowEther, setWalletConncetPayWindowEther] =
+    useState(false);
   const [connButtonText, setConnButtonText] = useState("Connect Wallet");
   const [etherValue, setEtherValue] = useState("1");
   const [isBNB, setIsBNB] = useState(false);
@@ -55,7 +58,6 @@ const Support = () => {
       window.ethereum
         .request({ method: "eth_requestAccounts" })
         .then((result) => {
-          console.log("result", result);
           setConnButtonText("Wallet Connected");
           setDefaultAccount(result[0]);
           Cookies.set("metamask", JSON.stringify({ metamask: true }));
@@ -76,26 +78,21 @@ const Support = () => {
       }
       setProvider(new ethers.providers.Web3Provider(window.ethereum));
     }
-    window.ethereum.on("chainChanged", chainChangedHandler);
-    const isMetaMask = Cookies.get("metamask");
-
-    if (typeof isMetaMask !== "undefined" && isMetaMask?.length >= 1) {
-      const userMetaMask = JSON.parse(isMetaMask);
-      if (userMetaMask.metamask) {
-        connectWalletHandler();
-      }
-    }
   }, []);
 
   const handelSendToken = async () => {
+    var walletconnect = JSON.parse(localStorage.getItem("walletconnect"));
+    const iswalletConnect = walletconnect?.connected;
     if (supportAccount && supportAccount.length) {
-      
-      console.log(supportAccount, etherValue);
-      try {
-        const rrr = ethers.utils.parseEther(etherValue);
-        const valueHex = rrr._hex;
-        await contractOjb.current.transfer(supportAccount, valueHex);
-      } catch (errro) {}
+      if (iswalletConnect) {
+        setWalletConncetPay(true);
+      } else if (!iswalletConnect && window.ethereum) {
+        try {
+          const rrr = ethers.utils.parseEther(etherValue);
+          const valueHex = rrr._hex;
+          await contractOjb.current.transfer(supportAccount, valueHex);
+        } catch (errro) {}
+      }
     }
   };
   var provider2;
@@ -106,21 +103,25 @@ const Support = () => {
   var tokenContract;
 
   const startFunction = async () => {
-    await ethereum.request({ method: "eth_requestAccounts" });
-    provider2 = new ethers.providers.Web3Provider(window.ethereum);
-    signer = provider2.getSigner();
-    signerAddress = await signer.getAddress();
-    tokenContract = await new ethers.Contract(
-      tokenContractAddress,
-      tokenABI,
-      signer
-    );
-    contractOjb.current = tokenContract;
+    var walletconnect = JSON.parse(localStorage.getItem("walletconnect"));
+    const iswalletConnect = walletconnect?.connected;
+    if (!iswalletConnect && window.ethereum) {
+      await ethereum.request({ method: "eth_requestAccounts" });
+      provider2 = new ethers.providers.Web3Provider(window.ethereum);
+      signer = provider2.getSigner();
+      signerAddress = await signer.getAddress();
+      tokenContract = await new ethers.Contract(
+        tokenContractAddress,
+        tokenABI,
+        signer
+      );
+      contractOjb.current = tokenContract;
 
-    if (tokenContract && signerAddress && netWorkId === "56") {
-      setNetWorkTextName("BNB Network");
-      const userTokenBalance = await tokenContract.balanceOf(signerAddress);
-      setUserBalance(ethers.utils.formatEther(userTokenBalance._hex));
+      if (tokenContract && signerAddress && netWorkId === "56") {
+        setNetWorkTextName("BNB Network");
+        const userTokenBalance = await tokenContract.balanceOf(signerAddress);
+        setUserBalance(ethers.utils.formatEther(userTokenBalance._hex));
+      }
     }
   };
 
@@ -175,26 +176,29 @@ const Support = () => {
   };
   const changeNetwork = async ({ networkName, setError }) => {
     try {
-      if (!window.ethereum) throw new Error("No crypto wallet found");
-      await window.ethereum.request({
-        method: "wallet_addEthereumChain",
-        params: [
-          {
-            ...networks[networkName],
-          },
-        ],
-      });
+      if (!window.ethereum) {
+        throw new Error("No crypto wallet found");
+      } else {
+        await window.ethereum.request({
+          method: "wallet_addEthereumChain",
+          params: [
+            {
+              ...networks[networkName],
+            },
+          ],
+        });
+      }
     } catch (err) {
       setError(err.message);
     }
   };
   useEffect(() => {
-    var walletNameStrg = JSON.parse(localStorage.getItem("walletName"));
-    var walletConnected = JSON.parse(localStorage.getItem("walletConnected"));
     var walletconnect = JSON.parse(localStorage.getItem("walletconnect"));
     const iswalletConnect = walletconnect?.connected;
     console.log(iswalletConnect);
     if (iswalletConnect) {
+      setWalletConncetPay(true);
+      setWalletConncetPayWindowEther(false);
       setDefaultAccount(walletconnect?.accounts[0]);
       if (walletconnect.chainId == 56) {
         setIsBNB(true);
@@ -205,6 +209,8 @@ const Support = () => {
         .request({ method: "eth_accounts" })
         .then((handleAccountsChanged) => {
           if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
+            setWalletConncetPayWindowEther(true);
+            setWalletConncetPay(false);
             setDefaultAccount(handleAccountsChanged[0]);
             dispatch(
               walletReducer({
@@ -220,38 +226,40 @@ const Support = () => {
 
   return (
     <div className={Style.container}>
-      <MetaMask  SupportedAdress={supportAccount} EtherValue={etherValue}/>
       <div className={Style.main_first_container}>
         <div className={Style.main_container}>
           <div className={Style.share_container}>
             <div className={Style.text_container}>
               <TextTilteInputMudum Text={"Support"} />
-              <button onClick={handelClickClose} className={Style.svg}>
-                <IoCloseOutline />
-              </button>
+              <IconHeader
+                FuncOutSide={true}
+                MainFuncOutSide={handelClickClose}
+                Icon={<IoCloseOutline />}
+              />
             </div>
-            {(() => {
-              if (defaultAccount.length <= 0) {
-                return (
-                  <CancelButton
-                    HandelClick={connectWalletHandler}
-                    Text={connButtonText}
-                  />
-                );
-              } else if (defaultAccount.length >= 1 && !isBNB) {
-                return (
-                  <CancelButton
-                    HandelClick={() => handleNetworkSwitch("bsc")}
-                    Text={netWorkTextName}
-                  />
-                );
-              }
-            })()}
-            {isBNB && defaultAccount.length > 10 && (
-              <>
-                <div className={Style.link_container}>
-                  <div className="walletCard">
-                    {/* <div className="accountDisplay">
+            <div className={Style.main_second_container}>
+              {(() => {
+                if (defaultAccount.length <= 0) {
+                  return (
+                    <CancelButton
+                      HandelClick={connectWalletHandler}
+                      Text={connButtonText}
+                    />
+                  );
+                } else if (defaultAccount.length >= 1 && !isBNB) {
+                  return (
+                    <CancelButton
+                      HandelClick={() => handleNetworkSwitch("bsc")}
+                      Text={netWorkTextName}
+                    />
+                  );
+                }
+              })()}
+              {isBNB && defaultAccount.length > 10 && (
+                <>
+                  <div className={Style.link_container}>
+                    <div className="walletCard">
+                      {/* <div className="accountDisplay">
                       <SmallTextBlack
                         Text={"Your address: " + defaultAccount}
                       />
@@ -259,58 +267,67 @@ const Support = () => {
                         Text={"Your balance: " + userBalance + " NimbaCoin"}
                       />
                     </div> */}
-                  </div>
-                  <div className={Style.container_input_support_address}>
-                    <div className={Style.channe}>
-                      <div
-                        style={{ backgroundImage: `url(${Bg})` }}
-                        className={Style.img}
-                      ></div>
-                      <TextTilteInputMudum
-                        Text={channelData?.channelData?.name}
-                      />
                     </div>
-                    <div className={Style.container_input_coin}>
-                      <SmallTextBlack
-                        Text={channelData?.channelData?.name + "address:"}
-                      />
-                      <input
-                        // placeholder="0"
-                        defaultValue={supportAccount}
-                        onChange={(e) => {
-                          setSupportAccount(e.target.value);
-                        }}
-                        className={Style.container_input_support_id}
-                      />
+                    <div className={Style.container_input_support_address}>
+                      <div className={Style.channe}>
+                        <div
+                          style={{ backgroundImage: `url(${Bg})` }}
+                          className={Style.img}
+                        ></div>
+                        <TextTilteInputMudum
+                          Text={channelData?.channelData?.name}
+                        />
+                      </div>
+                      <div className={Style.container_input_coin}>
+                        <SmallTextBlack
+                          Text={channelData?.channelData?.name + "address:"}
+                        />
+                        <input
+                          // placeholder="0"
+                          defaultValue={supportAccount}
+                          onChange={(e) => {
+                            setSupportAccount(e.target.value);
+                          }}
+                          className={Style.container_input_support_id}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className={Style.container_input_vlaue}>
-                    <div className={Style.container_input_coin}>
-                      <SmallTextBlack Text={"NimbaCoin:"} />
-                      <input
-                        defaultValue={"1"}
-                        placeholder="0"
-                        onChange={(e) => {
-                          setEtherValue(e.target.value);
-                        }}
-                        className={Style.container_input}
-                      />
-                      <SkinyGrayText
-                        Text={
-                          "by clicking send button you will spend the value apove"
-                        }
-                      />
+                    <div className={Style.container_input_vlaue}>
+                      <div className={Style.container_input_coin}>
+                        <SmallTextBlack Text={"NimbaCoin:"} />
+                        <input
+                          defaultValue={"1"}
+                          placeholder="0"
+                          onChange={(e) => {
+                            setEtherValue(e.target.value);
+                          }}
+                          className={Style.container_input}
+                        />
+                        <SkinyGrayText
+                          Text={
+                            "by clicking send button you will spend the value apove"
+                          }
+                        />
+                      </div>
                     </div>
+                    {walletConncetPay && (
+                      <MetaMask
+                        SupportedAdress={supportAccount}
+                        EtherValue={etherValue}
+                      />
+                    )}
+                    {walletConncetPayWindowEther && (
+                      <div className={Style.container_main_buttones}>
+                        <BlueButton
+                          HandelClick={handelSendToken}
+                          Text={"Send Tip window"}
+                        />
+                      </div>
+                    )}
                   </div>
-                  <div className={Style.container_main_buttones}>
-                    <BlueButton
-                      HandelClick={handelSendToken}
-                      Text={"Send Tip"}
-                    />
-                  </div>
-                </div>
-              </>
-            )}
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

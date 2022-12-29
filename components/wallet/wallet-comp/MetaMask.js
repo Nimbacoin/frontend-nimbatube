@@ -14,22 +14,15 @@ import { useWeb3ModalNetwork } from "@web3modal/react";
 import { useWeb3ModalTheme } from "@web3modal/react";
 import { Web3Modal } from "@web3modal/react";
 import { Web3Button } from "@web3modal/react";
-import Style from "../../../styles/pages/wallet/wallet-comp/wallet.module.css";
+import Style from "../../../styles/modals/support.module.css";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import AbiJson from "../../modals/AbiJson.json";
 import { ethers } from "ethers";
+import BlueButton from "../../modals/BlueButton";
 
 function MetaMask({ SupportedAdress, EtherValue }) {
-  // const { theme, setTheme } = useWeb3ModalTheme();
-  const containerRef = useRef();
-  const eventClicked = useRef();
   const { isOpen, open, close } = useWeb3Modal();
-  // const { selectedChain, setSelectedChain } = useWeb3ModalNetwork();
-  console.log("isOpen", isOpen);
   const chains = [
-    arbitrum,
-    mainnet,
-
     {
       id: 0x38,
       name: "Binance Smart Chain Mainnet",
@@ -57,7 +50,6 @@ function MetaMask({ SupportedAdress, EtherValue }) {
     },
   ];
   console.log(chains);
-  // Wagmi client
   const { provider } = configureChains(chains, [
     walletConnectProvider({ projectId: "<YOUR_PROJECT_ID>" }),
   ]);
@@ -67,9 +59,8 @@ function MetaMask({ SupportedAdress, EtherValue }) {
     provider,
   });
 
-  const ethereumClient = new EthereumClient(wagmiClient, chains);
   useEffect(() => {
-    (async () => {
+    const main = async () => {
       const provider = await new WalletConnectProvider({
         rpc: {
           56: "https://bsc-dataseed1.binance.org",
@@ -89,7 +80,6 @@ function MetaMask({ SupportedAdress, EtherValue }) {
       const tokenABI = AbiJson;
       var tokenContract;
       const startFunction = async () => {
-        // await ethereum.request({ method: "eth_requestAccounts" });
         let provider2 = new ethers.providers.Web3Provider(provider);
         signer = provider2.getSigner();
         signerAddress = await signer.getAddress();
@@ -103,24 +93,48 @@ function MetaMask({ SupportedAdress, EtherValue }) {
         await tokenContract.transfer(SupportedAdress, valueHex);
       };
       await startFunction();
-    })();
+    };
   }, []);
-
+  const handelSendToken = async () => {
+    const provider = await new WalletConnectProvider({
+      rpc: {
+        56: "https://bsc-dataseed1.binance.org",
+      },
+      chainId: 56,
+      network: "binance",
+      qrcode: true,
+      qrcodeModalOptions: {
+        mobileLinks: ["metamask", "trust"],
+      },
+    });
+    provider.networkId = 56;
+    await provider.enable();
+    var signer;
+    var signerAddress;
+    const tokenContractAddress = "0x2f8A45dE29bbfBB0EE802B340B4f91af492C6DE7";
+    const tokenABI = AbiJson;
+    var tokenContract;
+    const startFunction = async () => {
+      let provider2 = new ethers.providers.Web3Provider(provider);
+      signer = provider2.getSigner();
+      signerAddress = await signer.getAddress();
+      tokenContract = await new ethers.Contract(
+        tokenContractAddress,
+        tokenABI,
+        signer
+      );
+      const rrr = ethers.utils.parseEther(EtherValue);
+      const valueHex = rrr._hex;
+      await tokenContract.transfer(SupportedAdress, valueHex).then((data) => {
+        console.log("dataaaa", data);
+      });
+    };
+    await startFunction();
+  };
   return (
-    <>
-      <WagmiConfig client={wagmiClient}>
-        <div ref={containerRef} className={Style.main_container}>
-          <Web3Modal
-            projectId="<YOUR_PROJECT_ID>"
-            ethereumClient={ethereumClient}
-          />
-        </div>
-        <button onClick={open} ref={eventClicked}>
-          add event
-        </button>
-        <Web3NetworkSwitch />
-      </WagmiConfig>
-    </>
+    <div className={Style.container_main_buttones}>
+      <BlueButton HandelClick={handelSendToken} Text={"Send Tip wc"} />
+    </div>
   );
 }
 
