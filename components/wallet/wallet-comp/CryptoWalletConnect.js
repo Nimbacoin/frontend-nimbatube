@@ -33,8 +33,8 @@ function CryptoWalletConnect() {
   const Router = useRouter();
   const dispatch = useDispatch();
   const CoinbaseWallet = new WalletLinkConnector({
-    url: `https://mainnet.infura.io/v3/8ea65bb07c494d30bce16b7fd3fe4f3f`,
-    appName: "Web3-react Demo",
+    // url: `https://mainnet.infura.io/v3/8ea65bb07c494d30bce16b7fd3fe4f3f`,
+    appName: "Nimbatube",
     supportedChainIds: [56],
     chainId: 56,
     network: "binance",
