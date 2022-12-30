@@ -163,12 +163,11 @@ const HeaderDropDown = () => {
             walletAdress: walletconnect?.accounts[0],
           })
         );
-      } else if (!iswalletConnect && window.ethereum) {
+      } else if (!iswalletConnect && window && window.ethereum) {
         window.ethereum
           .request({ method: "eth_accounts" })
           .then((handleAccountsChanged: any) => {
             if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
-              
               dispatch(walletConnectReducer({ value: false }));
               dispatch(
                 walletReducer({
