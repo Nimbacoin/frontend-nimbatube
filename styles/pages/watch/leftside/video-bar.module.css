@@ -16,7 +16,7 @@
   width: 100%;
   height: auto;
   height: 3px;
-  background-color: rgba(100, 100, 100, 0.5);
+  background-color: #343334;
 }
 .bar_container {
   width: 100%;
@@ -43,7 +43,7 @@
   height: 13px;
 }
 .container:hover .main_second_container {
-  height: 5px;
+  height: 4px;
 }
 
 @media screen and (max-width: 900px) {

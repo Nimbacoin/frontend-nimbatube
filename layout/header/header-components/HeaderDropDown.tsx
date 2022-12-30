@@ -152,8 +152,10 @@ const HeaderDropDown = () => {
       var walletconnect = JSON.parse(
         localStorage.getItem("walletconnect") || "false"
       );
+      alert("njno");
       const iswalletConnect = walletconnect?.connected;
       if (iswalletConnect) {
+        alert("njno");
         dispatch(walletConnectReducer({ value: false }));
         dispatch(
           walletReducer({
@@ -162,6 +164,7 @@ const HeaderDropDown = () => {
           })
         );
       } else if (!iswalletConnect && window.ethereum) {
+        alert("SD");
         window.ethereum
           .request({ method: "eth_accounts" })
           .then((handleAccountsChanged: any) => {
@@ -175,6 +178,13 @@ const HeaderDropDown = () => {
                 })
               );
               // setAdreess(handleAccountsChanged[0]);
+            } else {
+              dispatch(walletConnectReducer({ value: true }));
+              dispatch(
+                walletReducer({
+                  value: false,
+                })
+              );
             }
           })
           .catch(console.error);

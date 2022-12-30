@@ -17,7 +17,10 @@ import TextTilteInputMudum from "../../modals/text/TextTilteInputMudum";
 import IconHeader from "../../modals/IconHeader";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useDispatch } from "react-redux";
-import { walletConnectReducer, walletReducer } from "../../../redux/style-slice/general-style/GenrealStyle";
+import {
+  walletConnectReducer,
+  walletReducer,
+} from "../../../redux/style-slice/general-style/GenrealStyle";
 import CopyInput from "../../modals/CopyInput";
 import AbiJson from "../../modals/AbiJson.json";
 import CancelButton from "../../modals/CancelButton";
@@ -138,12 +141,15 @@ function Wallet() {
   useEffect(() => {
     startFunction();
   });
-  const handelDesconnect = () => {
-    deactivate();
-    localStorage.removeItem("walletName");
-    localStorage.removeItem("walletConnected");
-    dispatch(walletConnectReducer({ value: false }));
-    dispatch(walletReducer({ value: false }));
+  const handelDesconnect = async () => {
+    //deactivate();
+    //window.ethereum.clearCachedProvider();
+    window.localStorage.clear();
+    const Web3Modal = window.ethereum;
+    // Web3Modal.clearCachedProvider();
+    console.log("dinwod", Web3Modal);
+    // dispatch(walletConnectReducer({ value: false }));
+    // dispatch(walletReducer({ value: false }));
   };
   return (
     <OverAll>
