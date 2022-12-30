@@ -121,7 +121,6 @@ function CryptoWalletConnect() {
   };
   useEffect(() => {
     checkConnection();
-    let unlocked;
     async function checkConnectionrt() {
       const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = await web3Provider.getSigner();
@@ -204,8 +203,7 @@ function CryptoWalletConnect() {
       blockExplorerUrls: ["https://bscscan.com"],
     },
   ];
-  console.log(chains);
-  // Wagmi client
+
   const { provider } = configureChains(chains, [
     walletConnectProvider({ projectId: "<YOUR_PROJECT_ID>" }),
   ]);
@@ -214,11 +212,24 @@ function CryptoWalletConnect() {
     connectors: modalConnectors({ appName: "web3Modal", chains }),
     provider,
   });
-
+  useEffect(() => {
+    if (window.ethereum) {
+      window.ethereum
+        .request({ method: "eth_accounts" })
+        .then((handleAccountsChanged) => {
+          if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
+            setAdreess(handleAccountsChanged[0]);
+          }
+        })
+        .catch(console.error);
+    }
+  });
+  const [Adreess, setAdreess] = useState("");
   return (
     <OverAll>
       <div className={Style.container}>
         <div className={Style.main_top}>
+          {"address" + Adreess}
           <BoldText text={"Connect wallet"} />
           <IconHeader
             FuncOutSide={true}
