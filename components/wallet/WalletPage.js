@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import TopTitle from "../modals/TopTitle";
 import Style from "../../styles/pages/wallet/wallet.module.css";
 import { IoWalletOutline } from "@react-icons/all-files/io5/IoWalletOutline";
-import WalletsConntent from "./wallet-comp/WalletsConntent";
 import { isAndroid, isIOS } from "react-device-detect";
 import { useWeb3Modal } from "@web3modal/react";
 import MetaMask from "./wallet-comp/MetaMask";
@@ -31,6 +30,13 @@ const WalletPage = () => {
       // window.location.replace("https://instagram.com");
     }
   }, []);
+  useEffect(() => {
+    if (window.ethereum && window.ethereum?.providerMap) {
+      window.ethereum?.providerMap.forEach((pa) => {
+        console.log("providerMap", pa.isCoinbaseWallet);
+      });
+    }
+  });
   return (
     <div className={Style.container}>
       <TopTitle
@@ -39,9 +45,7 @@ const WalletPage = () => {
         Icon={<IoWalletOutline />}
         Text={"wallet"}
       />
-      <div className={Style.container_wallets_option}>
-        <WalletsConntent />
-      </div>
+
       {isAndroid ? (
         <a href="https://metamask.app.link/dapp/nimbatube.com/        ">
           Open Android app

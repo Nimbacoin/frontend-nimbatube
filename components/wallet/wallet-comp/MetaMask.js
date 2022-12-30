@@ -8,7 +8,6 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { Web3NetworkSwitch } from "@web3modal/react";
 import { useEffect, useRef } from "react";
-import { arbitrum, mainnet, polygon } from "wagmi/chains";
 import { useWeb3Modal } from "@web3modal/react";
 import { useWeb3ModalNetwork } from "@web3modal/react";
 import { useWeb3ModalTheme } from "@web3modal/react";
@@ -131,6 +130,7 @@ function MetaMask({ SupportedAdress, EtherValue }) {
     };
     await startFunction();
   };
+  
   return (
     <div className={Style.container_main_buttones}>
       <BlueButton HandelClick={handelSendToken} Text={"Send Tip wc"} />
