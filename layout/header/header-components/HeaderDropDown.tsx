@@ -164,11 +164,12 @@ const HeaderDropDown = () => {
           .request({ method: "eth_accounts" })
           .then((handleAccountsChanged: any) => {
             if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
+              alert("is on");
               dispatch(walletConnectReducer({ value: false }));
               dispatch(
                 walletReducer({
                   value: true,
-                  walletAdress: walletconnect?.accounts[0],
+                  walletAdress: handleAccountsChanged[0],
                 })
               );
               // setAdreess(handleAccountsChanged[0]);
@@ -176,6 +177,7 @@ const HeaderDropDown = () => {
           })
           .catch(console.error);
       } else {
+        alert("no")
       }
     } else {
       Router.push(link);
