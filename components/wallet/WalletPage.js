@@ -33,10 +33,11 @@ const WalletPage = () => {
   useEffect(() => {
     if (window.ethereum && window.ethereum?.providerMap) {
       window.ethereum?.providerMap.forEach((pa) => {
-        console.log("providerMap", pa.isCoinbaseWallet);
+        console.log("providerMap", pa, pa.isCoinbaseWallet);
       });
     }
   });
+
   return (
     <div className={Style.container}>
       <TopTitle

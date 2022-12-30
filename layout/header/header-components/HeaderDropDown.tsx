@@ -147,7 +147,28 @@ const HeaderDropDown = () => {
         HandelSubmiteInitChannel();
       }
     } else if (id === "wallet") {
-      dispatch(walletConnectReducer({ value: true }));
+      var walletconnect = JSON.parse(
+        localStorage.getItem("walletconnect") || "false"
+      );
+      const iswalletConnect = walletconnect?.connected;
+      if (iswalletConnect) {
+        dispatch(walletConnectReducer({ value: false }));
+        dispatch(
+          walletReducer({
+            value: true,
+            walletAdress: walletconnect?.accounts[0],
+          })
+        );
+      } else if (!iswalletConnect && window.ethereum) {
+        dispatch(walletConnectReducer({ value: false }));
+        dispatch(
+          walletReducer({
+            value: true,
+            // walletAdress: walletconnect?.accounts[0],
+          })
+        );
+      } else {
+      }
     } else {
       Router.push(link);
     }
@@ -168,12 +189,10 @@ const HeaderDropDown = () => {
       localStorage.getItem("walletconnect") || "false"
     );
     const iswalletConnect = walletconnect?.connected;
-    console.log(iswalletConnect);
-
     if (iswalletConnect) {
       dispatch(
         walletReducer({
-          value: false,
+          // value: false,
           walletAdress: walletconnect?.accounts[0],
         })
       );
