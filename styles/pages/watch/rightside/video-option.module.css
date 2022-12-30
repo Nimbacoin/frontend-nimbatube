@@ -42,8 +42,8 @@
   justify-content: space-evenly;
   text-align: center;
   column-gap: 5px;
-  right: 10px;
-  bottom: 10px;
+  right: 5px;
+  bottom: 5px;
   color: #fff;
   font-size: 12px;
   font-weight: 400;
@@ -181,4 +181,3 @@
 .icon_phone:hover {
   background-color: #ececec;
 }
-

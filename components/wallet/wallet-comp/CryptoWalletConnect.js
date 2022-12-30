@@ -156,18 +156,11 @@ function CryptoWalletConnect() {
     dispatch(walletConnectReducer({ value: false }));
   };
   const connectFunc = (walletName) => {
-    var walletNameStrg = JSON.parse(localStorage.getItem("walletName"));
-    var walletConnected = JSON.parse(localStorage.getItem("walletConnected"));
-    localStorage.setItem("walletName", JSON.stringify(walletName));
-    localStorage.setItem("walletConnected", JSON.stringify(true));
     dispatch(walletConnectReducer({ value: false }));
-    var isMobileMetaMask = JSON.parse(localStorage.getItem("isMobileMetaMask"));
     if (walletName === "Metamask") {
       if (isAndroid) {
         if (!window.ethereum) {
-          Router.push(
-            "https://metamask.app.link/dapp/www.nimbatube.com/?metamask=true&metamask=true"
-          );
+          Router.push("https://metamask.app.link/dapp/www.nimbatube.com");
         }
       }
     }
@@ -175,7 +168,6 @@ function CryptoWalletConnect() {
 
   const { isOpen, open, close } = useWeb3Modal();
   // const { selectedChain, setSelectedChain } = useWeb3ModalNetwork();
-  console.log("isOpen", isOpen);
   const chains = [
     {
       id: 0x38,

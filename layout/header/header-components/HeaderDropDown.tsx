@@ -160,13 +160,21 @@ const HeaderDropDown = () => {
           })
         );
       } else if (!iswalletConnect && window.ethereum) {
-        dispatch(walletConnectReducer({ value: false }));
-        dispatch(
-          walletReducer({
-            value: true,
-            // walletAdress: walletconnect?.accounts[0],
+        window.ethereum
+          .request({ method: "eth_accounts" })
+          .then((handleAccountsChanged: any) => {
+            if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
+              dispatch(walletConnectReducer({ value: false }));
+              dispatch(
+                walletReducer({
+                  value: true,
+                  walletAdress: walletconnect?.accounts[0],
+                })
+              );
+              // setAdreess(handleAccountsChanged[0]);
+            }
           })
-        );
+          .catch(console.error);
       } else {
       }
     } else {
