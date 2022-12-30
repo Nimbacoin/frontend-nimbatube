@@ -178,21 +178,6 @@ const HeaderDropDown = () => {
         })
       );
     }
-    if (!iswalletConnect && window.ethereum) {
-      window.ethereum
-        .request({ method: "eth_accounts" })
-        .then((handleAccountsChanged: any) => {
-          if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
-            dispatch(
-              walletReducer({
-                value: false,
-                walletAdress: handleAccountsChanged[0],
-              })
-            );
-          }
-        })
-        .catch(console.error);
-    }
   });
 
   return (
