@@ -164,12 +164,11 @@ const HeaderDropDown = () => {
           })
         );
       } else if (!iswalletConnect && window.ethereum) {
-        alert("SD");
         window.ethereum
           .request({ method: "eth_accounts" })
           .then((handleAccountsChanged: any) => {
             if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
-              alert("is on");
+              
               dispatch(walletConnectReducer({ value: false }));
               dispatch(
                 walletReducer({

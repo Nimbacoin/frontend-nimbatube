@@ -113,9 +113,7 @@ function CryptoWalletConnect() {
     if (window.ethereum) {
       window.ethereum
         .request({ method: "eth_accounts" })
-        .then((handleAccountsChanged) => {
-          console.log("handleAccountsChanged", handleAccountsChanged);
-        })
+        .then((handleAccountsChanged) => {})
         .catch(console.error);
     }
   };
