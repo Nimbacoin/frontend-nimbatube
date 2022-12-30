@@ -35,7 +35,6 @@ const WalletPage = () => {
   const { status, connect, account, chainId, ethereum } = useMetaMask();
 
   useEffect(() => {
-    connect();
     if (window.ethereum && window.ethereum?.providerMap) {
       console.log(window.ethereum);
       window.ethereum?.providerMap.forEach((pa) => {
@@ -46,6 +45,7 @@ const WalletPage = () => {
 
   return (
     <MetaMaskProvider>
+      <button onClick={connect}>sdf</button>
       <div className={Style.container}>
         <TopTitle
           ButtonRight={true}
