@@ -147,43 +147,7 @@ const HeaderDropDown = () => {
         HandelSubmiteInitChannel();
       }
     } else if (id === "wallet") {
-      var walletName = JSON.parse(
-        window.localStorage.getItem("walletName") as string
-      );
-      var walletConnected = JSON.parse(
-        window.localStorage.getItem("walletConnected") as string
-      );
-      if (window.ethereum) {
-        window.ethereum
-          .request({ method: "eth_accounts" })
-          .then((handleAccountsChanged: any) => {
-            if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
-              if (walletConnected) {
-                dispatch(
-                  walletReducer({
-                    value: true,
-                    walletAdress: handleAccountsChanged[0],
-                  })
-                );
-                dispatch(walletConnectReducer({ value: false }));
-              } else {
-                dispatch(walletConnectReducer({ value: true }));
-                dispatch(walletReducer({ value: false }));
-              }
-            } else {
-              if (walletConnected) {
-                dispatch(walletReducer({ value: false }));
-                dispatch(walletConnectReducer({ value: true }));
-              } else {
-                dispatch(walletConnectReducer({ value: true }));
-                dispatch(walletReducer({ value: false }));
-              }
-            }
-          })
-          .catch(console.error);
-      } else {
-        dispatch(walletConnectReducer({ value: true }));
-      }
+      dispatch(walletConnectReducer({ value: true }));
     } else {
       Router.push(link);
     }
