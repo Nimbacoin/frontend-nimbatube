@@ -23,7 +23,9 @@ import {
   walletConnectReducer,
   walletReducer,
 } from "../../../redux/style-slice/general-style/GenrealStyle";
-
+interface Window {
+  ethereum: any;
+}
 const HeaderDropDown = () => {
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
   const UserData = useSelector((state: any) => state.UserSignIn.userdata);
@@ -177,7 +179,7 @@ const HeaderDropDown = () => {
           })
           .catch(console.error);
       } else {
-        alert("no")
+        alert("no");
       }
     } else {
       Router.push(link);
