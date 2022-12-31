@@ -93,7 +93,7 @@ const AddToPalayList = () => {
         <div className={Style.main_container}>
           <div className={Style.share_container}>
             <div className={Style.text_container}>
-              {"message :  " + message}
+              
               <p className={Style.text}> Save to </p>
               <button onClick={handelClickClose} className={Style.svg}>
                 <IoCloseOutline />

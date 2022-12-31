@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Style from "../../styles/layout/header/header-compnents/header-left.module.css";
-import { IoMenuOutline } from "@react-icons/all-files/oi/IoMenuOutline";
+import { HiOutlineMenu } from "@react-icons/all-files/hi/HiOutlineMenu";
 import { useDispatch } from "react-redux";
 import { ToggleMenu } from "../../redux/style-slice/menu/SideMenu";
 import { FaPlayCircle } from "@react-icons/all-files/fa/FaPlayCircle";
@@ -17,7 +17,7 @@ export const MainHeaderLeft = () => {
   return (
     <div className={Style.container_main}>
       <div className={Style.container_menu} onClick={HandelToggleMenu}>
-        <IoMenuOutline />
+        <HiOutlineMenu />
       </div>
       <Link href="/">
         <p className={Style.logo}>
