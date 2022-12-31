@@ -43,18 +43,14 @@ const SocketHandler = () => {
           socket.emit("send-id", unicId);
         } else {
           socket.emit("send-id", sessionStorageUnicId);
-          // alert(
-          //   "sessionStorageUnicId " + sessionStorageUnicId + " unicId " + unicId
-          // );
         }
       });
     };
     localFetch();
   }, [socketInstance]);
   return (
-    
-      <NofyNewVideo />
-   
+    <div></div>
+    // <NofyNewVideo />
   );
 };
 export default SocketHandler;
