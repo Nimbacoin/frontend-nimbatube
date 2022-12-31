@@ -8,6 +8,7 @@ import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import Link from "next/link";
 import { phoneBarOpenRedcuerHide } from "../../redux/style-slice/general-style/GenrealStyle";
 import { useDispatch } from "react-redux";
+import IconHeader from "./IconHeader";
 
 const PhoneBarOpen = ({ children }: any) => {
   const dispatch = useDispatch();
@@ -23,12 +24,11 @@ const PhoneBarOpen = ({ children }: any) => {
         <div className={Style.close_rect}></div>
         <div className={Style.phone_desc_container}>
           <span className={Style.descreption}>Create</span>
-          <button
-            onClick={HandelDescreptionToggle}
-            className={Style.close_button}
-          >
-            <IoCloseOutline />
-          </button>
+          <IconHeader
+            FuncOutSide={true}
+            MainFuncOutSide={HandelDescreptionToggle}
+            Icon={<IoCloseOutline />}
+          />
         </div>
       </div>
       {children && children}
