@@ -28,7 +28,6 @@
     background-size: cover;
     row-gap: 10px;
     padding: 10px 20px;
-    border-radius: 10px;
   }
   .container_icon,
   .container_icon_2 {
@@ -43,6 +42,8 @@
     column-gap: 20px;
     background-color: #e9ecfa;
     min-height: 50px;
+    border-radius: 10px;
+
   }
 
   .icon {
