@@ -24,7 +24,11 @@ import {
 import CopyInput from "../../modals/CopyInput";
 import AbiJson from "../../modals/AbiJson.json";
 import CancelButton from "../../modals/CancelButton";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+
 function Wallet() {
+  const { disconnect } = useDisconnect();
+
   const { active, activate, deactivate, chainId, account, library } =
     useWeb3React();
   const [walletAddress, setWalletAddress] = useState("");
@@ -142,14 +146,8 @@ function Wallet() {
     startFunction();
   });
   const handelDesconnect = async () => {
-    //deactivate();
-    //window.ethereum.clearCachedProvider();
+    deactivate();
     window.localStorage.clear();
-    const Web3Modal = window.ethereum;
-    // Web3Modal.clearCachedProvider();
-    console.log("dinwod", Web3Modal);
-    // dispatch(walletConnectReducer({ value: false }));
-    // dispatch(walletReducer({ value: false }));
   };
   return (
     <OverAll>
@@ -207,7 +205,7 @@ function Wallet() {
             {" "}
             <CancelButton
               Text={"Desconnect"}
-              HandelClick={handelDesconnect}
+              HandelClick={() => disconnect()}
             />{" "}
           </div>
         </div>

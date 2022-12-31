@@ -14,6 +14,7 @@ import { UserSignOut } from "../../../redux/user-slice/UserSignIn";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
 import { useWeb3Context } from "web3-react";
+import { useAccount, useConnect, useDisconnect, useEnsName } from "wagmi";
 
 import Cookies from "js-cookie";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
@@ -149,45 +150,15 @@ const HeaderDropDown = () => {
         HandelSubmiteInitChannel();
       }
     } else if (id === "wallet") {
-      var walletconnect = JSON.parse(
-        localStorage.getItem("walletconnect") || "false"
-      );
-      alert("njno");
-      const iswalletConnect = walletconnect?.connected;
-      if (iswalletConnect) {
-        alert("njno");
-        dispatch(walletConnectReducer({ value: false }));
+      if (isConnected) {
         dispatch(
           walletReducer({
             value: true,
-            walletAdress: walletconnect?.accounts[0],
+            walletAdress: "df",
           })
         );
-      } else if (!iswalletConnect && window && window.ethereum) {
-        window.ethereum
-          .request({ method: "eth_accounts" })
-          .then((handleAccountsChanged: any) => {
-            if (handleAccountsChanged && handleAccountsChanged.length >= 1) {
-              dispatch(walletConnectReducer({ value: false }));
-              dispatch(
-                walletReducer({
-                  value: true,
-                  walletAdress: handleAccountsChanged[0],
-                })
-              );
-              // setAdreess(handleAccountsChanged[0]);
-            } else {
-              dispatch(walletConnectReducer({ value: true }));
-              dispatch(
-                walletReducer({
-                  value: false,
-                })
-              );
-            }
-          })
-          .catch(console.error);
       } else {
-        alert("no");
+        dispatch(walletConnectReducer({ value: true }));
       }
     } else {
       Router.push(link);
@@ -196,29 +167,17 @@ const HeaderDropDown = () => {
       setShowDiv(false);
     }, 500);
   };
+  const { connector, isConnected } = useAccount();
+
   const connectWalletHandler = () => {
     Router.push("/wallet");
   };
   const walletAdress = useSelector(
     (state: any) => state.GenrealStyle.walletAdress
   );
-  const [addess, setAddress] = useState("");
 
-  useEffect(() => {
-    var walletconnect = JSON.parse(
-      localStorage.getItem("walletconnect") || "false"
-    );
-    const iswalletConnect = walletconnect?.connected;
-    if (iswalletConnect) {
-      dispatch(
-        walletReducer({
-          // value: false,
-          walletAdress: walletconnect?.accounts[0],
-        })
-      );
-    }
-  });
-
+  const { address } = useAccount();
+  const { data: ensName } = useEnsName({ address });
   return (
     <>
       {(() => {
@@ -226,15 +185,13 @@ const HeaderDropDown = () => {
           <div className={Style.container}>
             <div className={Style.drop_down_option_sold}>
               <Link href="/wallet">
-                <CancelButton
-                  HandelClick={connectWalletHandler}
-                  IconFirst={<FcCircuit />}
-                  Text={
-                    walletAdress.length > 5
-                      ? walletAdress.slice(0, 8) + "..."
-                      : "connect wallet"
-                  }
-                />
+                <>
+                  <CancelButton
+                    HandelClick={connectWalletHandler}
+                    IconFirst={<FcCircuit />}
+                    Text={ensName ?? address}
+                  />
+                </>
               </Link>
             </div>
 
