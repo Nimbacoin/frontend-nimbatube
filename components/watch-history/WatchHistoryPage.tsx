@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import basedGetUrlRequestLogedIn from "../../utils/basedGetUrlRequestLogedIn";
 import AllVideosBeforLoad from "../modals/pages-boforload/AllVideosBeforLoad";
 import Vedio from "../video/Video";
+import { useSelector } from "react-redux";
 const WatchHistoryPage = ({}: any) => {
   const [videosData, setVideosData] = useState([]);
   useEffect(() => {
@@ -19,17 +20,22 @@ const WatchHistoryPage = ({}: any) => {
     };
     locaFetch();
   }, []);
+  const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
 
   return (
     <div className={Style.container}>
       <div className={Style.container_desktop}>
         {videosData.length
-          ? videosData.map((item: any) => <VideoWatchLater VideoData={item} />)
+          ? videosData.map((item: any, index) => (
+              <VideoWatchLater key={index} VideoData={item} />
+            ))
           : null}
       </div>
       <div className={Style.vedio_container}>
         {videosData.length ? (
-          videosData.map((vid: any) => <Vedio VideoData={vid} />)
+          videosData.map((vid: any, index) => (
+            <Vedio key={index} VideoData={vid} />
+          ))
         ) : (
           <AllVideosBeforLoad />
         )}

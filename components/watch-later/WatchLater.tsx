@@ -23,12 +23,16 @@ const WatchLater = () => {
     <div className={Style.container}>
       <div className={Style.container_desktop}>
         {videosData.length
-          ? videosData.map((item: any) => <VideoWatchLater VideoData={item} />)
+          ? videosData.map((item: any, index) => (
+              <VideoWatchLater key={index} VideoData={item} />
+            ))
           : null}
       </div>
       <div className={Style.vedio_container}>
         {videosData.length ? (
-          videosData.map((vid: any) => <Vedio VideoData={vid} />)
+          videosData.map((vid: any, index) => (
+            <Vedio key={index} VideoData={vid} />
+          ))
         ) : (
           <AllVideosBeforLoad />
         )}

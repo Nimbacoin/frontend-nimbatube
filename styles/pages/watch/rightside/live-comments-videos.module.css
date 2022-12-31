@@ -9,7 +9,7 @@
   justify-content: space-between;
   height: 500px;
   border-radius: 10px;
-  border: 1px solid #dbdbdb;
+  border: 1px solid #cccccc6c;
   background-color: #fff;
 }
 .close_button > svg {
@@ -19,7 +19,7 @@
 .div_comment_top {
   height: 10%;
   width: 100%;
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 1px solid #cccccc6c;
 }
 .comments_container {
   height: 75%;
@@ -38,7 +38,7 @@
 .div_cooment_top {
   height: 10%;
   width: 100%;
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 1px solid #cccccc6c;
   display: flex;
   flex-direction: row;
 
