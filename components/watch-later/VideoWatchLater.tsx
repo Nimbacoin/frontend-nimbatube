@@ -3,6 +3,7 @@ import Style from "../../styles/pages/watch-later/video-watch-later.module.css";
 import { IoEllipsisVertical } from "@react-icons/all-files/io5/IoEllipsisVertical";
 import moment from "moment";
 import { useRouter } from "next/router";
+import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 
 const VideoWatchLater = ({ VideoData }: any) => {
   const [IsOverVideo, setIsOverVideo] = useState(false);
@@ -56,10 +57,13 @@ const VideoWatchLater = ({ VideoData }: any) => {
     <div onClick={handelClick} className={Style.container}>
       <div ref={mediaContainer} className={Style.video_container}>
         {!IsOverVideo ? (
-          <div
-            style={thumbnailStyle}
-            className={Style.thumbnail_container}
-          ></div>
+          <div style={thumbnailStyle} className={Style.thumbnail_container}>
+            <p className={Style.time}>
+              {VideoData?.videoData?.duration}
+              {/* <GoogleIcon IconName={"videocam"} /> */}
+              <IoVideocamOutline />{" "}
+            </p>
+          </div>
         ) : (
           <video
             ref={videoTag}

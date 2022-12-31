@@ -136,6 +136,18 @@ const HeaderDropDown = () => {
       }
     });
   };
+  const handelConnect = () => {
+    if (isConnected) {
+      dispatch(
+        walletReducer({
+          value: true,
+          // walletAdress: "df",
+        })
+      );
+    } else {
+      dispatch(walletConnectReducer({ value: true }));
+    }
+  };
   const handelClick = (e: any, link: string, id: any) => {
     if (id === "sign-out") {
       e.preventDefault();
@@ -150,16 +162,7 @@ const HeaderDropDown = () => {
         HandelSubmiteInitChannel();
       }
     } else if (id === "wallet") {
-      if (isConnected) {
-        dispatch(
-          walletReducer({
-            value: true,
-            walletAdress: "df",
-          })
-        );
-      } else {
-        dispatch(walletConnectReducer({ value: true }));
-      }
+      handelConnect();
     } else {
       Router.push(link);
     }
@@ -170,7 +173,7 @@ const HeaderDropDown = () => {
   const { connector, isConnected } = useAccount();
 
   const connectWalletHandler = () => {
-    Router.push("/wallet");
+    handelConnect();
   };
   const walletAdress = useSelector(
     (state: any) => state.GenrealStyle.walletAdress
@@ -186,11 +189,19 @@ const HeaderDropDown = () => {
             <div className={Style.drop_down_option_sold}>
               <Link href="/wallet">
                 <>
-                  <CancelButton
-                    HandelClick={connectWalletHandler}
-                    IconFirst={<FcCircuit />}
-                    Text={ensName ?? address}
-                  />
+                  {isConnected ? (
+                    <CancelButton
+                      HandelClick={connectWalletHandler}
+                      IconFirst={<FcCircuit />}
+                      Text={address ? address.slice(0, 10) : "Connecting"}
+                    />
+                  ) : (
+                    <CancelButton
+                      HandelClick={connectWalletHandler}
+                      IconFirst={<FcCircuit />}
+                      Text={"Connect wallet"}
+                    />
+                  )}
                 </>
               </Link>
             </div>
