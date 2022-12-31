@@ -9,6 +9,8 @@ import Style from "../../styles/modals/add-to-play-list.module.css";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import basedPostUrlRequestLogedIn from "../../utils/basedPostUrlRequestLogedIn";
 import SmallTextBlack from "./SmallTextBlack";
+import IconHeader from "./IconHeader";
+import OverAll from "./OverAll";
 const AddToPalayList = () => {
   const { asPath, pathname } = useRouter();
   const dispatch = useDispatch();
@@ -83,21 +85,23 @@ const AddToPalayList = () => {
   //
   useEffect(() => {
     var appName = navigator.appName;
-     console.log(appName);
-     setMessage(appName);
+    console.log(appName);
+    setMessage(appName);
   });
 
   return (
-    <div className={Style.container}>
+    <OverAll>
+      {/* <div className={Style.container}> */}
       <div className={Style.main_first_container}>
         <div className={Style.main_container}>
           <div className={Style.share_container}>
             <div className={Style.text_container}>
-              
               <p className={Style.text}> Save to </p>
-              <button onClick={handelClickClose} className={Style.svg}>
-                <IoCloseOutline />
-              </button>
+              <IconHeader
+                FuncOutSide={true}
+                MainFuncOutSide={handelClickClose}
+                Icon={<IoCloseOutline />}
+              />
             </div>
             <div className={Style.link_container}>
               <div
@@ -142,7 +146,8 @@ const AddToPalayList = () => {
           </div>
         </div>
       </div>
-    </div>
+      {/* </div> */}
+    </OverAll>
   );
 };
 
