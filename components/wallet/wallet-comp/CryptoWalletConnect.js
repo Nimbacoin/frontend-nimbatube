@@ -147,8 +147,6 @@ function CryptoWalletConnect() {
     },
   ];
 
-  
-
   const { connector, isConnected } = useAccount();
   const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect();
