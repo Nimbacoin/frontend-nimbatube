@@ -17,7 +17,7 @@ const initialState = {
   elementOverLayt: false,
   support: false,
   elementOverContent: [],
-  walletConnect: true,
+  walletConnect: false,
   wallet: false,
   walletAdress: "",
 };
