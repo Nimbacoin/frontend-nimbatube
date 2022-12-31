@@ -85,7 +85,8 @@ const Home = () => {
           </>
         )}
       </div>
-      <TopTitle />
+      
+      <div className={Style.main_container_line}><TopTitle /></div>
       <div className={Style.vedio_container}>
         {restVideos.length ? (
           restVideos.map((vid: any, index) => (

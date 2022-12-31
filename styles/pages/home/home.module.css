@@ -22,6 +22,11 @@
   overflow: hidden;
   background-color: red;
 }
+.main_container_line {
+  width: 100%;
+  padding: 20px;
+  height: auto;
+}
 .vedio_container {
   overflow: hidden;
   padding: 0px 20px;

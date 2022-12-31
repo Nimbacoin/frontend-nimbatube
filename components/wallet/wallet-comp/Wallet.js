@@ -17,6 +17,8 @@ import TextTilteInputMudum from "../../modals/text/TextTilteInputMudum";
 import IconHeader from "../../modals/IconHeader";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import { useDispatch } from "react-redux";
+import { useAccount, useConnect, useDisconnect, useEnsName } from "wagmi";
+
 import {
   walletConnectReducer,
   walletReducer,
@@ -24,10 +26,8 @@ import {
 import CopyInput from "../../modals/CopyInput";
 import AbiJson from "../../modals/AbiJson.json";
 import CancelButton from "../../modals/CancelButton";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
 
 function Wallet() {
-  const { disconnect } = useDisconnect();
 
   const { active, activate, deactivate, chainId, account, library } =
     useWeb3React();
@@ -145,10 +145,11 @@ function Wallet() {
   useEffect(() => {
     startFunction();
   });
-  const handelDesconnect = async () => {
-    deactivate();
-    window.localStorage.clear();
-  };
+
+  const { address } = useAccount();
+  const { data: ensName } = useEnsName({ address });
+  const { disconnect } = useDisconnect();
+
   return (
     <OverAll>
       <div className={Style.container}>
@@ -165,7 +166,7 @@ function Wallet() {
             <CopyInput
               CopiedText={"Your wallet address copied"}
               Text={"Your Address"}
-              Value={walletAddress}
+              Value={address}
             />
           </div>
           <div className={Style.second_container}>
@@ -179,7 +180,7 @@ function Wallet() {
             </div>
             <a
               target="_blank"
-              href={`https://bscscan.com/address/${walletAddress}`}
+              href={`https://bscscan.com/address/${address}`}
               className={Style.second_container_connect_top_right}
             >
               <BoldText text={"BscScan"} />
@@ -203,10 +204,7 @@ function Wallet() {
           </div>
           <div className={Style.div_button_container}>
             {" "}
-            <CancelButton
-              Text={"Desconnect"}
-              HandelClick={() => disconnect()}
-            />{" "}
+            <CancelButton Text={"Desconnect"} HandelClick={disconnect} />{" "}
           </div>
         </div>
       </div>
