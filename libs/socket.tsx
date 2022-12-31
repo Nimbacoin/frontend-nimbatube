@@ -52,9 +52,9 @@ const SocketHandler = () => {
     localFetch();
   }, [socketInstance]);
   return (
-    <>
+    
       <NofyNewVideo />
-    </>
+   
   );
 };
 export default SocketHandler;

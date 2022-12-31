@@ -90,6 +90,7 @@ const RightSideTaggs = () => {
       <div ref={divContainer} className={Style.main_container}>
         {Tags.map(({ name }, index) => (
           <span
+            key={index + name}
             onClick={() => {
               setActivVideos(index);
             }}

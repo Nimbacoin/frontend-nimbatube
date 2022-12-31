@@ -77,7 +77,7 @@ const Home = () => {
       {/* <AllVideosBeforLoad /> */}
       <div className={Style.vedio_container}>
         {firstVideos.length ? (
-          firstVideos.map((vid) => <Vedio VideoData={vid} />)
+          firstVideos.map((vid, index) => <Vedio VideoData={vid} key={index} />)
         ) : (
           <>
             <AllVideosBeforLoad />
@@ -88,7 +88,9 @@ const Home = () => {
       <TopTitle />
       <div className={Style.vedio_container}>
         {restVideos.length ? (
-          restVideos.map((vid: any) => <Vedio VideoData={vid} />)
+          restVideos.map((vid: any, index) => (
+            <Vedio VideoData={vid} key={index} />
+          ))
         ) : (
           <AllVideosBeforLoad />
         )}

@@ -26,6 +26,6 @@ const NofyNewVideo = () => {
     localFetch();
   }, [socketInstance]);
 
-  return <></>;
+  return <div></div>;
 };
 export default NofyNewVideo;
