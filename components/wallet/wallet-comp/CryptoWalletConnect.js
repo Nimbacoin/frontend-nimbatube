@@ -175,7 +175,7 @@ function CryptoWalletConnect() {
         <div className={Style.second_container}>
           <SmallTextBlack
             Text={
-              "By connecting a wallet, you agree to Uniswap Labs’ Terms of Service and consent to its Privacy Policy."
+              "By connecting a wallet, you agree to NimbaTube Labs’ Terms of Service and consent to its Privacy Policy."
             }
           />
           <div className={Style.second_container_connect}>
