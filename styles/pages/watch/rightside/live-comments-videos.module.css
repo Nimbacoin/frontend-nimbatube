@@ -30,7 +30,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   background-color: red;
-
+  width: 100%;
 }
 .container_hidden {
   height: 15%;
@@ -68,7 +68,7 @@
     margin: 0;
     white-space: pre-wrap;
     position: fixed;
-    top: 350px;
+    top: 30%;
     bottom: 0;
     height: 70%;
     z-index: 3;
