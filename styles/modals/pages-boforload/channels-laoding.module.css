@@ -36,6 +36,7 @@
 .chanel_img {
   width: 90px;
   height: 90px;
+  aspect-ratio: 1.5 / 1;
   background-size: cover;
   background-position: center;
   cursor: pointer;

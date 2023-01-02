@@ -202,7 +202,7 @@
   justify-content: flex-start;
 }
 .links_container {
-  border-bottom: 1px solid #dbdbdd;
+  border-bottom: 1px solid #cccccc6c;
 }
 @media screen and (max-width: 900px) {
   .bottom_second_container {

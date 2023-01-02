@@ -139,7 +139,7 @@
   height: 100%;
   width: 100%;
   border-radius: 20px;
-  border: 1px solid #dbdbdd;
+  border: 1px solid #cccccc6c;
   font-weight: 400;
   font-size: 14px;
   /* color: red; */
@@ -172,7 +172,7 @@
   height: 100%;
   width: 100%;
   border-radius: 20px;
-  border: 1px solid #dbdbdd;
+  border: 1px solid #cccccc6c;
 }
 .container_input::-webkit-outer-spin-button,
 .container_input::-webkit-inner-spin-button {
