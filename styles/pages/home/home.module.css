@@ -48,6 +48,9 @@
     align-items: flex-start;
     justify-content: flex-start;
   }
+  .main_container_line {
+    padding: 0;
+  }
 }
 @media screen and (max-width: 500px) {
   .vedio_container {
