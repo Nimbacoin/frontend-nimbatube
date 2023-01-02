@@ -51,7 +51,7 @@
   padding: 10px;
   border-radius: 2px;
   column-gap: 10px;
-  border-bottom: 1px solid#DBDBDB;
+  border-bottom: 1px solid#cccccc6c;
   cursor: pointer;
 }
 .channel_container:hover,
@@ -68,7 +68,7 @@
   background-position: center;
   border-radius: 50%;
   background-color: #f9f9f9;
-  border: 1px solid #dbdbdb;
+  border: 1px solid #cccccc6c;
 }
 .img_img:hover {
   box-shadow: #00000017 0px 3px 12px;
@@ -114,7 +114,7 @@
   cursor: pointer;
 }
 .sing_out_container {
-  border-top: 1px solid#DBDBDB;
+  border-top: 1px solid#cccccc6c;
   cursor: pointer;
 
   width: 100%;

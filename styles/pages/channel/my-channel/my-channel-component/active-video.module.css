@@ -8,7 +8,7 @@
 }
 .container_video {
   width: 40%;
-  background-color: #dbdbdb;
+  background-color: #cccccc6c;
 }
 .container_video > video {
   border-radius: 2px;
@@ -23,7 +23,7 @@
   }
   .container_video {
     width: 50%;
-    background-color: #dbdbdb;
+    background-color: #cccccc6c;
     border-radius: 10px;
   }
   .container_video > video {

@@ -19,7 +19,7 @@
 .upload_inputs_container {
   height: 250px;
   width: 100%;
-  background: linear-gradient(110deg, #dbdbdbdb 60%, #f0f0f0 60%);
+  background: linear-gradient(110deg, #cccccc6cdb 60%, #f0f0f0 60%);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -224,8 +224,8 @@
   }
 }
 @media screen and (max-width: 600px) {
-  .upload_inputs_container{
-    height : 150px;
+  .upload_inputs_container {
+    height: 150px;
   }
   .bottom_second_container {
     width: 90%;
@@ -244,7 +244,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-   
   }
   .channel_links {
     width: 100%;

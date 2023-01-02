@@ -177,7 +177,7 @@
     align-items: center;
     justify-content: center;
     row-gap: 0px;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid #cccccc6c;
     margin-bottom: 10px;
   }
   .div_laoding_comments {
@@ -261,7 +261,7 @@
     row-gap: 20px;
   }
   .reply_input {
-    border: 1px solid #dbdbdb;
+    border: 1px solid #cccccc6c;
     border-radius: 2px;
     width: 100%;
     min-height: 50px;

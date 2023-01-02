@@ -13,7 +13,7 @@
   font-size: 60px;
   font-weight: bold;
   color: #071c55;
-  text-decoration: underline #dbdbdb;
+  text-decoration: underline #cccccc6c;
 }
 .newslatter_container {
   width: 100%;
@@ -50,7 +50,7 @@
   width: 60px;
   font-size: 30px;
   color: #071c55;
-  border-right: solid 1px #dbdbdb;
+  border-right: solid 1px #cccccc6c;
 }
 .form > input {
   min-width: 340px;

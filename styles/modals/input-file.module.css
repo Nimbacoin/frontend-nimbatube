@@ -15,7 +15,7 @@
   width: 100%;
   height: auto;
   min-height: 35px;
-  border: 1px solid#DBDBDB;
+  border: 1px solid#cccccc6c;
   border-radius: 20px;
   position: relative;
   font-size: 14px;
@@ -89,8 +89,7 @@
   white-space: nowrap;
   overflow: hidden;
 }
-.main_container_text{
-  
+.main_container_text {
 }
 @media screen and (max-width: 700px) {
   .share_container {

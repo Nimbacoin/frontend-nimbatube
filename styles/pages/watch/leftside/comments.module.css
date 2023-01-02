@@ -161,7 +161,7 @@
     align-items: center;
     justify-content: center;
     row-gap: 0px;
-    /* border-bottom: 1px solid #dbdbdb; */
+    /* border-bottom: 1px solid #cccccc6c; */
   }
   .div_laoding_comments {
     display: none;
@@ -229,12 +229,12 @@
     justify-content: center;
     width: 100%;
     min-height: 50px;
-    /* border-bottom: 1px solid #dbdbdb; */
+    /* border-bottom: 1px solid #cccccc6c; */
   }
   .close_rect {
     width: 50px;
     height: 5px;
-    background-color: #dbdbdb;
+    background-color: #cccccc6c;
     border-radius: 10px;
   }
   .phone_desc_container {

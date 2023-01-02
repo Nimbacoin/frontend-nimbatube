@@ -221,7 +221,7 @@
     align-items: center;
     justify-content: center;
     row-gap: 0px;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid #cccccc6c;
     margin-bottom: 10px;
   }
   .container_phone {
@@ -278,12 +278,12 @@
     justify-content: center;
     width: 100%;
     min-height: 50px;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid #cccccc6c;
   }
   .close_rect {
     width: 50px;
     height: 5px;
-    background-color: #dbdbdb;
+    background-color: #cccccc6c;
     border-radius: 10px;
   }
   .phone_desc_container {
@@ -316,7 +316,7 @@
     align-items: flex-start;
     row-gap: 10px;
     justify-content: flex-start;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid #cccccc6c;
     padding: 10px 0;
   }
   .video_container {
@@ -364,7 +364,7 @@
     justify-content: center;
   }
   .chanel {
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid #cccccc6c;
   }
   .right_container {
     margin-right: 10px;
@@ -395,7 +395,7 @@
     column-gap: 20px;
     padding: 0px 10px;
     margin: 0px 0;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid #cccccc6c;
   }
   .img_container {
     display: flex;
@@ -421,7 +421,7 @@
     row-gap: 20px;
   }
   .reply_input {
-    border: 1px solid #dbdbdb;
+    border: 1px solid #cccccc6c;
     border-radius: 50px;
     width: 100%;
     min-height: 50px;
@@ -438,7 +438,7 @@
     width: 100%;
   }
   .chanel {
-    border-top: 1px solid #dbdbdb;
+    border-top: 1px solid #cccccc6c;
     border-bottom: none;
   }
 }

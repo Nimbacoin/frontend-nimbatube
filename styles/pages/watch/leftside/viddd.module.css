@@ -40,7 +40,7 @@
   column-gap: 15px;
   border-radius: 2px;
   position: relative;
-  border-top: 1px solid #dbdbdb;
+  border-top: 1px solid #cccccc6c;
 }
 
 .img {
@@ -164,7 +164,7 @@
   }
 
   .chanel {
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid #cccccc6c;
   }
   .img {
     margin-right: 10px;

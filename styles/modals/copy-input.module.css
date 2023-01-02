@@ -13,7 +13,7 @@
   justify-content: space-between;
   width: 100%;
   height: 38px;
-  border: 1px solid#DBDBDB;
+  border: 1px solid#cccccc6c;
   border-radius: 20px;
   position: relative;
   font-size: 14px;
@@ -68,7 +68,7 @@
   justify-content: space-between;
   width: 100%;
   min-height: 102px;
-  border: 1px solid#DBDBDB;
+  border: 1px solid#cccccc6c;
 
   position: relative;
   font-size: 14px;

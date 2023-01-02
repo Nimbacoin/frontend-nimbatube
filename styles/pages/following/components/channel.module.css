@@ -121,7 +121,7 @@
   column-gap: 10px;
 }
 .link_container:last-child {
-  border-top: 1px solid #dbdbdb;
+  border-top: 1px solid #cccccc6c;
   border-radius: 0 0 10px 10px;
 }
 .link_container:first-child {

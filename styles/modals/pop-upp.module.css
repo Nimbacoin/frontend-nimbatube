@@ -20,7 +20,7 @@
   height: 100%;
   min-height: 50px;
   min-width: 300px;
-  border: solid 1px #dbdbdb;
+  border: solid 1px #cccccc6c;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
@@ -29,7 +29,7 @@
   color: #071c55;
   cursor: pointer;
   border: none;
-  border-left: solid 1px #dbdbdb;
+  border-left: solid 1px #cccccc6c;
   height: 90%;
   width: 30%;
   font-size: 20px;

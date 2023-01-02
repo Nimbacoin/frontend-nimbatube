@@ -19,7 +19,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  border-bottom: 1px solid #dbdbdb; 
+  border-bottom: 1px solid #cccccc6c;
   padding-bottom: 20px;
 }
 .container_channel {
@@ -74,7 +74,7 @@
   color: #030303;
   border: none;
   outline: none;
-  border: 1px solid #dbdbdb;
+  border: 1px solid #cccccc6c;
   font-size: 14px;
   padding: 0 5px;
   height: 30px;
@@ -85,7 +85,7 @@
   color: #030303;
   border: none;
   outline: none;
-  border: 1px solid #dbdbdb;
+  border: 1px solid #cccccc6c;
   font-size: 14px;
   padding: 0 5px;
   height: 100px;
@@ -96,5 +96,5 @@
 
 .input::placeholder,
 .textarea::placeholder {
-  color: #dbdbdb;
+  color: #cccccc6c;
 }
