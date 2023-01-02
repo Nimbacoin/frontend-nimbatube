@@ -51,7 +51,7 @@
   align-items: center;
   justify-content: center;
   row-gap: 5px;
-  background-color: red;
+  /* background-color: red; */
 }
 .channel {
   width: auto;
