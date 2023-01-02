@@ -104,8 +104,8 @@ const MainVideo = () => {
     <div className={Style.container}>
       {!ActiveVideo && <LiveVideo />}
       {ActiveVideo && <VideoTag />}
-      <VideoName />
       <VideoBeforLoad />
+      <VideoName />
       <div className={Style.container_video_data}>
         <div className={Style.chanel}>
           <div className={Style.main_img_container}>

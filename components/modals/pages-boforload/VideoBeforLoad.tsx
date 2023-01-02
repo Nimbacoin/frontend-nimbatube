@@ -1,7 +1,22 @@
 import React from "react";
+import Style from "../../../styles/modals/pages-boforload/video-befor-load.module.css";
 
 const VideoBeforLoad = () => {
-  return <div>VideoBeforLoad</div>;
+  return (
+    <div className={Style.container}>
+      <div className={Style.container_name}>
+        <div className={Style.container_name_first}></div>
+        <div className={Style.container_name_second}></div>
+        <div className={Style.container_name_date}></div>
+      </div>
+      <div className={Style.main_container_channel}>
+        <div className={Style.channel_container}>
+          <div className={Style.channel_image}></div>
+          <div className={Style.channel_image}></div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default VideoBeforLoad;
