@@ -12,7 +12,11 @@ const VideoBeforLoad = () => {
       <div className={Style.main_container_channel}>
         <div className={Style.channel_container}>
           <div className={Style.channel_image}></div>
-          <div className={Style.channel_image}></div>
+          <div className={Style.channel_name_container}>
+            <div className={Style.channel_name_first}></div>
+            <div className={Style.channel_name_second}></div>
+          </div>
+          <div className={Style.channel_follow_button}></div>
         </div>
       </div>
     </div>

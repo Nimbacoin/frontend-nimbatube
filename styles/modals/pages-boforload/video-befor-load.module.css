@@ -1,7 +1,12 @@
 .container {
   width: 100%;
   height: auto;
-  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  row-gap: 10px;
+  padding: 10px 0;
 }
 .container_name {
   width: 100%;
@@ -39,16 +44,41 @@
   justify-content: flex-start;
   row-gap: 10px;
 }
-
-.main_container_channel {
+.channel_name_container {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 5px;
+  background-color: red;
 }
 .channel {
   width: auto;
 }
 
 .channel_container {
-  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: row;
+  column-gap: 5px;
+}
+
+.channel_image {
   width: 40px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
+  background-color: #f2f2f2;
+}
+.channel_name_first,
+.channel_name_second {
+  width: 100px;
+  height: 10px;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+}
+.channel_follow_button {
+  width: 50px;
+  height: 20px;
+  background-color: #f2f2f2;
+  border-radius: 20px;
 }
