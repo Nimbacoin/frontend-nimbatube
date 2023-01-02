@@ -11,6 +11,8 @@
   height: auto;
   margin: auto 0;
   padding: 0 5px;
+  border-top: 1px solid #cccccc6c;
+  padding-top : 10px;
 }
 .reply_input {
   width: 100%;
@@ -50,11 +52,10 @@
 
 .comment_btn {
   font-size: 13px;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 20px;
   color: #030303;
   cursor: pointer;
-  color: #fff;
   border-radius: 0 20px 20px 0;
   padding: 7px 7px;
   height: 100%;
