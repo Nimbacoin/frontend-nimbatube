@@ -48,6 +48,15 @@
   position: relative;
 }
 
+.desc_container_time {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 8px;
+  height: 20px;
+  width: 80px;
+  background-color: #c8c8c8;
+}
 .desc_container {
   width: 95%;
   height: auto;

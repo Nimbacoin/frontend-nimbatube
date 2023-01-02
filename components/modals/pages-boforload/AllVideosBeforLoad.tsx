@@ -6,7 +6,9 @@ const AllVideosBeforLoad = () => {
     .fill(0)
     .map((_, i) => (
       <div key={i} className={Style.main_container}>
-        <div className={Style.vedio_container}></div>
+        <div className={Style.vedio_container}>
+          <div className={Style.desc_container_time}> </div>
+        </div>
         <div className={Style.big_bar}></div>
         <div className={Style.desc_container}>
           <div className={Style.chanel_data}>
