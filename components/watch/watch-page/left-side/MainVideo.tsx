@@ -18,6 +18,7 @@ import CancelButton from "../../../modals/CancelButton";
 import ButtonBlack from "../../../modals/ButtonBlack";
 import VideoName from "./VideoName";
 import { seoReducer } from "../../../../redux/seo-slice/seoSlice";
+import VideoBeforLoad from "../../../modals/pages-boforload/VideoBeforLoad";
 
 const MainVideo = () => {
   const dipatch = useDispatch();
@@ -104,6 +105,7 @@ const MainVideo = () => {
       {!ActiveVideo && <LiveVideo />}
       {ActiveVideo && <VideoTag />}
       <VideoName />
+      <VideoBeforLoad />
       <div className={Style.container_video_data}>
         <div className={Style.chanel}>
           <div className={Style.main_img_container}>
