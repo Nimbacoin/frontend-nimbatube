@@ -50,8 +50,7 @@ export const VideoInfoIconsAll = ({ ActiveVideoStream }: any) => {
             style={{ borderRadius: "20px" }}
           >
             <p className={Style.icon_comments}>
-              {/* <GoCommentDiscussion /> */}
-              <GoogleIcon IconName={"forum"} />
+              <GoCommentDiscussion />
               <span className={Style.nubmer_of_likes}>Live Chat</span>
             </p>
           </ContainerEffectedClick>
@@ -59,7 +58,6 @@ export const VideoInfoIconsAll = ({ ActiveVideoStream }: any) => {
         <ContainerEffectedClick Stylied={true} style={{ borderRadius: "20px" }}>
           <p onClick={handelSupport} className={Style.icon_2}>
             <FcCircuit />
-
             <span className={Style.nubmer_of_likes}>Support</span>
           </p>
         </ContainerEffectedClick>
@@ -83,8 +81,7 @@ export const VideoInfoIconsAll = ({ ActiveVideoStream }: any) => {
             style={{ borderRadius: "20px" }}
           >
             <p className={Style.icon_comments}>
-              {/* <GoCommentDiscussion /> */}
-              <GoogleIcon IconName={"forum"} />
+              <GoCommentDiscussion />
               <span className={Style.nubmer_of_likes}>Live Chat</span>
             </p>
           </ContainerEffectedClick>
