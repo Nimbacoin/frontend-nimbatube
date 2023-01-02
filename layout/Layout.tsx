@@ -31,7 +31,7 @@ import AddToPalayList from "../components/modals/AddToPlayList";
 import CropperCom from "../components/modals/Cropper";
 import ButtonLive from "../components/modals/ButtonLive";
 import ElementOver from "../components/modals/ElementOver";
-import UplaodFile from "../components/modals/UplaodFile";
+import UplaodFile from "../components/modals/uplaod/UplaodFile";
 import Support from "../components/modals/Support";
 import Web3 from "web3";
 import CryptoWalletConnect from "../components/wallet/wallet-comp/CryptoWalletConnect";
@@ -225,8 +225,6 @@ const Layout = ({ children }: any) => {
           {/* <Web3NetworkSwitch /> */}
 
           <Head>
-            
-
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{

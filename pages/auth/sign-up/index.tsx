@@ -95,6 +95,7 @@ const SignUp = () => {
   };
   return (
     <div style={{ minHeight: `${WindowHeight}px` }} className={Style.container}>
+      dlsdlñvsdlñvs
       {!UserIsSignedIn && (
         <div className={Style.container_form}>
           <form className={Style.form} onSubmit={HandelSignUp}>

@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import AxiosPostLogedInFormData from "../../utils/AxiosPostLogedInFormData";
 import { ActionVideoDataChanging } from "../../redux/video-slice/VideoSlice";
 import UplaodingAnimation from "../upload/upload-components/UplaodingAnimation";
-import UplaodFirstStep2 from "./UplaodFirstStep2";
+import UplaodFirstStep2 from "./uplaod/UplaodFirstStep2";
 import { VscArrowLeft } from "react-icons/vsc";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
 import IconHeader from "./IconHeader";

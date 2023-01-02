@@ -1,8 +1,8 @@
 import React from "react";
-import Style from "../../styles/modals/thump.module.css";
-import BoldText from "./BoldText";
+import Style from "../../../styles/modals/thump.module.css";
+import BoldText from "../BoldText";
 import { IoImagesOutline } from "@react-icons/all-files/io5/IoImagesOutline";
-import SkinyGrayText from "./SkinyGrayText";
+import SkinyGrayText from "../SkinyGrayText";
 
 const Thump = ({ handelChangeInputImage }: any) => {
   const text =

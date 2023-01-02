@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ActionVideoDataChanging } from "../../redux/video-slice/VideoSlice";
-import Style from "../../styles/modals/uplaod-first-step2.module.css";
-import ButtonAndInputAction from "./ButtonAndInputCopy";
-import SmallTextBlack from "./SmallTextBlack";
-import TextTilteInputMudum from "./text/TextTilteInputMudum";
-import ThumChange from "./ThumChange";
+import { ActionVideoDataChanging } from "../../../redux/video-slice/VideoSlice";
+import Style from "../../../styles/modals/uplaod-first-step2.module.css";
+import ButtonAndInputAction from "../ButtonAndInputCopy";
+import SmallTextBlack from "../SmallTextBlack";
+import TextTilteInputMudum from "../text/TextTilteInputMudum";
+import ThumChange from "../ThumChange";
 import Thump from "./Thump";
 
 const UplaodFirstStep2 = ({

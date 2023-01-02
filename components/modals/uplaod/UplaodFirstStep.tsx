@@ -1,9 +1,9 @@
 import React from "react";
-import Style from "../../styles/modals/uplaod-file.module.css";
-import BoldText from "./BoldText";
+import Style from "../../../styles/modals/uplaod-file.module.css";
 import { IoCloudUploadOutline } from "@react-icons/all-files/io5/IoCloudUploadOutline";
-import SkinyGrayText from "./SkinyGrayText";
-import { ContainerEffectedClick } from "../watch/watch-page/left-side/VideoInfo";
+import BoldText from "../BoldText";
+import { ContainerEffectedClick } from "../../watch/watch-page/left-side/VideoInfo";
+import SkinyGrayText from "../SkinyGrayText";
 
 const UplaodFirstStep = ({ handelChangeInput }: any) => {
   const text =

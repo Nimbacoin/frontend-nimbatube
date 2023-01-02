@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Style from "../../../../styles/pages/watch/leftside/video-info.module.css";
 import { IoEllipsisHorizontalSharp } from "@react-icons/all-files/io5/IoEllipsisHorizontalSharp";
+// import { MdOutlinePlaylistAdd } from "@react-icons/all-files/md/MdOutlinePlaylistAdd";
 import { AiOutlineLike } from "@react-icons/all-files/ai/AiOutlineLike";
 import { AiFillLike } from "@react-icons/all-files/ai/AiFillLike";
 import moment from "moment";
@@ -12,7 +13,7 @@ import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
 import { FcCircuit } from "@react-icons/all-files/fc/FcCircuit";
 import { GoCommentDiscussion } from "@react-icons/all-files/go/GoCommentDiscussion";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-
+import { MdOutlinePlaylistAdd } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleDescreption } from "../../../../redux/style-slice/video/MainVideo";
 import { useRouter } from "next/router";
@@ -64,7 +65,7 @@ export const VideoInfoIconsAll = ({ ActiveVideoStream }: any) => {
         </ContainerEffectedClick>
         <ContainerEffectedClick Stylied={true} style={{ borderRadius: "20px" }}>
           <p onClick={handelPlayList} className={Style.icon_2}>
-            <GoogleIcon IconName={"playlist_add"} />
+            <MdOutlinePlaylistAdd />
             <span className={Style.nubmer_of_likes}>Save</span>
           </p>
         </ContainerEffectedClick>
