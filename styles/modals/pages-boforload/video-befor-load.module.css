@@ -41,8 +41,9 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-between;
   row-gap: 10px;
+  flex-wrap: wrap;
 }
 .channel_name_container {
   height: auto;
@@ -60,7 +61,10 @@
 .channel_container {
   display: flex;
   flex-direction: row;
-  column-gap: 5px;
+  column-gap: 20px;
+  justify-content: center;
+  align-items: space-between;
+  /* background-color: red; */
 }
 
 .channel_image {
@@ -77,8 +81,27 @@
   border-radius: 20px;
 }
 .channel_follow_button {
-  width: 50px;
-  height: 20px;
+  width: 90px;
+  height: 30px;
   background-color: #f2f2f2;
   border-radius: 20px;
+  margin: auto;
+}
+.video_button_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  column-gap: 10px;
+  /* background-color: red; */
+  margin: auto 0;
+}
+
+.video_button {
+  width: 60px;
+  height: 30px;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  margin: auto;
 }

@@ -18,6 +18,14 @@ const VideoBeforLoad = () => {
           </div>
           <div className={Style.channel_follow_button}></div>
         </div>
+        <div className={Style.video_button_container}>
+          <div className={Style.video_button}></div>
+          <div className={Style.video_button}></div>
+          <div className={Style.video_button}></div>
+          <div className={Style.video_button}></div>
+          <div className={Style.video_button}></div>
+          <div className={Style.video_button}></div>
+        </div>
       </div>
     </div>
   );
