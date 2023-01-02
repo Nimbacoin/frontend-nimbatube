@@ -159,7 +159,7 @@ function CryptoWalletConnect() {
         return items;
       }
     });
-  }, []);
+  }, [connectors , connectorsArray]);
 
   return (
     <OverAll>
@@ -199,7 +199,7 @@ function CryptoWalletConnect() {
                 >
                   <div
                     style={{
-                      backgroundImage: `url(${x.image ? x.image : ""})`,
+                      backgroundImage: `url(${x.image})`,
                     }}
                     className={Style.connect_wallet_main_container_image}
                   ></div>
