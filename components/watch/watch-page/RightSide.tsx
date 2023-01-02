@@ -60,6 +60,7 @@ const RightSide = () => {
         ) : (
           <VideosRight />
         )}
+        <VideosRight />
       </div>
       <div className={Style.vedio_container}>
         {videos.length ? (
@@ -69,6 +70,7 @@ const RightSide = () => {
         ) : (
           <AllVideosBeforLoad />
         )}
+        <AllVideosBeforLoad />
       </div>
       <LoaodingAll />
     </div>
