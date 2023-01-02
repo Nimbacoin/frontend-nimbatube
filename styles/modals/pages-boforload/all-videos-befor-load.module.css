@@ -17,8 +17,8 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-bottom: 20px;
-  row-gap: 10px;
+  margin-bottom: 5px;
+  row-gap: 5px;
 }
 
 .vedio_container {
@@ -65,7 +65,7 @@
   align-items: center;
   justify-content: flex-start;
   cursor: pointer;
-  column-gap: 0px;
+  column-gap: 5px;
   margin: 0 auto;
 }
 
@@ -74,7 +74,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  column-gap: 10px;
+  column-gap: 5px;
 }
 .chanel_img {
   height: 40px;
@@ -88,8 +88,8 @@
   width: 80%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   row-gap: 6px;
 }
 .big_bar {
