@@ -49,7 +49,7 @@
   font-size: 20px;
   margin: 0;
   border-radius: 0 20px 20px 0;
-  border-left: 1px solid#cccccc;
+  border-left: 1px solid#cccccc6c;
 }
 
 .buttons_container {
@@ -124,7 +124,7 @@
     justify-content: space-between;
     width: 80%;
     height: 38px;
-    border: 1px solid#DBDBDB;
+    border: 1px solid#cccccc6c;
     border-radius: 20px;
     position: relative;
   }
