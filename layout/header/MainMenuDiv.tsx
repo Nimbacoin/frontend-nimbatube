@@ -47,11 +47,9 @@ export const MainMenuDiv2 = ({ arrayMap }: any) => {
           }
         >
           <Link href={link}>
-            <div className={MenuBoolean ? Style.link_flex : Style.link}>
+            <div className={Style.link}>
               <span className={Style.icon}>{icon}</span>
-              <span className={MenuBoolean ? Style.text_all : Style.text}>
-                {name}
-              </span>
+              <span className={Style.text}>{name}</span>
             </div>
           </Link>
         </div>

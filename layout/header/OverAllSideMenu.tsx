@@ -9,7 +9,7 @@ import Link from "next/link";
 import NavLinks from "./NavLinks";
 import { MainHeaderLeft } from "./HeaderLeft";
 import OverAll from "../../components/modals/OverAll";
-import MainMenuDiv2 from "./MainMenuDiv";
+import { MainMenuDiv2 } from "./MainMenuDiv";
 const OverAllSideMenu = () => {
   const { asPath } = useRouter();
   const dispatch = useDispatch();
@@ -86,7 +86,7 @@ const OverAllSideMenu = () => {
                       <MainHeaderLeft />
                     </div>
                     <div className={Style.all_links}>
-                        <MainMenuDiv2 arrayMap={NavLinks} />
+                      <MainMenuDiv2 arrayMap={NavLinks} />
                     </div>
                   </div>
                   <div className={Style.hover} onClick={HandelToggleMenu}></div>
