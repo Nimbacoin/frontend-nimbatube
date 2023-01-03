@@ -8,7 +8,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import NavLinks from "./NavLinks";
 import { MainHeaderLeft } from "./HeaderLeft";
-
+import OverAll from "../../components/modals/OverAll";
+import MainMenuDiv2 from "./MainMenuDiv";
 const OverAllSideMenu = () => {
   const { asPath } = useRouter();
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const OverAllSideMenu = () => {
   };
   useEffect(() => {
     HandelMenu();
-  } );
+  });
   const HandelMenu = () => {
     if (
       asPath.includes("/sign-in") ||
@@ -77,40 +78,21 @@ const OverAllSideMenu = () => {
       return (
         <>
           {MenuBoolean && (
-            <div className={Style.container} ref={Container}>
-              <div className={Style.container_fixed}>
-                <div className={Style.all_links_container}>
-                  <div className={Style.top_container}>
-                    <MainHeaderLeft />
+            <OverAll>
+              <div className={Style.container} ref={Container}>
+                <div className={Style.container_fixed}>
+                  <div className={Style.all_links_container}>
+                    <div className={Style.top_container}>
+                      <MainHeaderLeft />
+                    </div>
+                    <div className={Style.all_links}>
+                        <MainMenuDiv2 arrayMap={NavLinks} />
+                    </div>
                   </div>
-                  <div className={Style.all_links}>
-                    {NavLinks.map(({ name, link, icon }) => (
-                      <div
-                        key={link}
-                        className={
-                          asPath === link
-                            ? Style.link_container_active
-                            : Style.link_container
-                        }
-                      >
-                        <div
-                          onClick={() => {
-                            handelClick(link);
-                          }}
-                          // href={link}
-                        >
-                          <div className={Style.link}>
-                            <span className={Style.icon}>{icon}</span>
-                            <span className={Style.text}>{name}</span>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <div className={Style.hover} onClick={HandelToggleMenu}></div>
                 </div>
-                <div className={Style.hover} onClick={HandelToggleMenu}></div>
               </div>
-            </div>
+            </OverAll>
           )}
         </>
       );

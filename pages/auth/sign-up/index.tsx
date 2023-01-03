@@ -103,8 +103,8 @@ const SignUp = () => {
               HandelChange={(e: any) => {
                 setusername(e.target.value);
               }}
-              Text={"full name"}
-              Placeholder="enter your full name"
+              Text={"Full name"}
+              Placeholder="Enter your full name"
             />
             <div className={Style.error_container}>
               {}
@@ -120,8 +120,8 @@ const SignUp = () => {
               HandelChange={(e: any) => {
                 setemail(e.target.value);
               }}
-              Text={"email address"}
-              Placeholder="enter your username"
+              Text={"Email address"}
+              Placeholder="Enter your username"
             />
 
             <div className={Style.error_container}>
@@ -137,7 +137,7 @@ const SignUp = () => {
               HandelChange={(e: any) => {
                 setpassword(e.target.value);
               }}
-              Text={"password"}
+              Text={"Password"}
               Placeholder="enter your password"
             />
             <div className={Style.error_container}>
@@ -152,7 +152,7 @@ const SignUp = () => {
               HandelChange={(e: any) => {
                 setconifirmpassword(e.target.value);
               }}
-              Text={"confirm password"}
+              Text={"Confirm password"}
               Placeholder="enter your password again"
             />
             <div className={Style.error_container}>

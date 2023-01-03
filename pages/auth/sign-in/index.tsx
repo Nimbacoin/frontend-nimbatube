@@ -68,7 +68,7 @@ const LogIn = () => {
               HandelChange={(e: any) => {
                 setemail(e.target.value);
               }}
-              Text={"email address"}
+              Text={"Email address"}
               Placeholder="enter your email address"
             />
             <div className={Style.error_container}>

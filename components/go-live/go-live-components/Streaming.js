@@ -9,6 +9,9 @@ import StreamComment from "./StreamComment";
 import InputStreamComment from "./InputStreamComment";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 import { liveVideoLive } from "../../../redux/video-slice/VideoSlice";
+import TextTilteInputMudum from "../../modals/text/TextTilteInputMudum";
+import SmallTextBlack from "../../modals/SmallTextBlack";
+import BlueButton from "../../modals/BlueButton";
 const pc_config = {
   iceServers: [
     // {
@@ -169,10 +172,11 @@ const Streaming = () => {
         {started && (
           <div className={Style.startLive}>
             <div className={Style.div_start_now_container}>
-              are you ready to start live
-              <button className={Style.button} onClick={handleNewBroadcaster}>
+              <SmallTextBlack Text={"are you ready to start live"} />
+              {/* <button className={Style.button} onClick={handleNewBroadcaster}>
                 Start
-              </button>
+              </button> */}
+              <BlueButton HandelClick={handleNewBroadcaster} Text={"Start"} />
             </div>
           </div>
         )}
