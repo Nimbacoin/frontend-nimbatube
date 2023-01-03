@@ -52,7 +52,6 @@
   align-items: center;
   justify-content: center;
   row-gap: 5px;
-  /* background-color: red; */
 }
 .channel {
   width: auto;
@@ -93,7 +92,7 @@
   justify-content: flex-start;
   width: auto;
   column-gap: 10px;
-  /* background-color: red; */
+
   margin: auto 0;
 }
 
@@ -112,6 +111,5 @@
 
   .channel_container {
     width: 100%;
-    background-color: red;
   }
 }
