@@ -104,19 +104,20 @@
   row-gap: 5px;
 }
 .link_container {
-  width: 100%;
+  width: 98%;
+  border-radius: 8px;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
   padding: 10px 0;
-  border-radius: 2px;
+  
   cursor: pointer;
 }
 .sing_out_container {
   border-top: 1px solid#cccccc6c;
   cursor: pointer;
-
   width: 100%;
   display: flex;
   flex-direction: row;
