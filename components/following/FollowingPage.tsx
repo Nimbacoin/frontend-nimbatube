@@ -47,27 +47,7 @@ const FollowingPage = ({}: any) => {
         )}
       </div>
     </div>
-
-    // <div className={Style.container}>
-    //   <TopTitle Icon={<IoHeartOutline />} Text={"following"} />
-    //   {ChannelsData.length
-    //     ? ChannelsData.map(({ _id, channelData, followers, uploads }: any) => (
-    //         <Chanel
-    //           key={_id}
-    //           Id={_id}
-    //           LinkChannel={"/channel/@/" + _id}
-    //           Title={channelData?.title}
-    //           Username={channelData && channelData?.name}
-    //           ProfileImg={channelData && channelData?.profileImg}
-    //           Uploads={uploads?.length}
-    //           Followers={followers?.length}
-    //           AllFollowers={followers}
-    //           channelData={channelData}
-    //           IsChannelPage={true}
-    //         />
-    //       ))
-    //     : null}
-    // </div>
+    
   );
 };
 
