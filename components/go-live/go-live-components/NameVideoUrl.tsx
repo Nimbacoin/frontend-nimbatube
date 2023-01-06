@@ -12,6 +12,7 @@ import TextArea from "../../modals/TextArea";
 import InputText from "../../modals/InputText";
 import ButtonAndInputAction from "../../modals/ButtonAndInputCopy";
 import TopTitle from "../../modals/TopTitle";
+import CopyInput from "../../modals/CopyInput";
 const NameVideoUrl = ({ VideoLink }: any) => {
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
 
@@ -74,8 +75,14 @@ const NameVideoUrl = ({ VideoLink }: any) => {
               <ButtonAndInputAction
                 HandelClick={copyToClipboard}
                 CopyValue={VideoLink}
+                CopiedText={"video link copied"}
               />
             )}
+            <CopyInput
+              HandelClick={copyToClipboard}
+              CopiedText={"video link copied"}
+              Value={VideoLink}
+            />
           </div>
         </div>
 

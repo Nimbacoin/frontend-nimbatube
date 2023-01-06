@@ -65,7 +65,7 @@ const GoLivePage = () => {
             <div className={Style.go_live}>
               <div className={Style.conainter_live_desc}>
                 <div className={Style.go_live_icon}>
-                  <GoogleIcon IconName={"video_call"} />
+                  <IoVideocamOutline />
                 </div>
                 <p className={Style.file_text_title_bold}>Start a Live Video</p>
                 <p className={Style.file_text_paragef}>

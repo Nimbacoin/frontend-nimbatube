@@ -6,12 +6,13 @@ const Settings = () => {
   const Items = [{ name: "Account", value: "account" }];
   return (
     <div className={Style.container}>
-      <div className={Style.side_bar}>
+      {/* <div className={Style.side_bar}>
         <BoldText text={"Settings"} />
         {Items.map((item) => (
           <DivItem Item={item} />
         ))}
-      </div>
+      </div> */}
+      <div className={Style.side_bar_setting}></div>
     </div>
   );
 };

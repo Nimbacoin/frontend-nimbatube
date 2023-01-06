@@ -10,3 +10,7 @@
   align-items: flex-start;
   justify-content: flex-start;
 }
+.side_bar_setting {
+  width: 100%;
+  height: auto;
+}
