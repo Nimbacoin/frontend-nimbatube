@@ -59,30 +59,25 @@ const NameVideoUrl = ({ VideoLink }: any) => {
   };
   return (
     <div className={Style.container}>
-      <TopTitle />
+      <div className={Style.head_container}>
+        <TopTitle Icon={<IoVideocamOutline />} Text={"Video live"} />
+      </div>
       <div className={Style.upload_inputs_container}>
         <div className={Style.video_container_data}>
           <div className={Style.video_container}>
             <div className={Style.video_container_uploaded}>
               <IoVideocamOutline />
             </div>
-            <p className={Style.upload_file}>
-              {title.slice(0, 60)} {title.length >= 60 && "..."}
-            </p>
           </div>
           <div className={Style.video_data}>
-            {VideoLink.length && (
-              <ButtonAndInputAction
-                HandelClick={copyToClipboard}
-                CopyValue={VideoLink}
-                CopiedText={"video link copied"}
-              />
-            )}
             <CopyInput
               HandelClick={copyToClipboard}
               CopiedText={"video link copied"}
               Value={VideoLink}
             />
+            <p className={Style.upload_file}>
+              {title.slice(0, 60)} {title.length >= 60 && "..."}
+            </p>
           </div>
         </div>
 

@@ -70,29 +70,36 @@ const Thumbnail = ({ VideoLink, VideoId }: any) => {
   return (
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
-        <p className={Style.upload_file}>Thumbnail</p>
-        <div ref={Thumbnail} className={Style.upload_img_icon}>
-          {!Uploaded && <IoImageOutline />}{" "}
+        <div className={Style.container_top}>
+          <p className={Style.upload_file}>Thumbnail</p>
         </div>
-        <div className={Style.input_upload_thumbnail}>
-          <label htmlFor="input_upload_thumbnail" className={Style.input_label}>
-            <span className={Style.upload_file_text}>
-              Choose an enticing thumbnail{" "}
-            </span>
-            <span className={Style.upload_file_text_dots}>...</span>
-            <input
-              id="input_upload_thumbnail"
-              type="file"
-              accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
-              onChange={readImageThumbnail}
-              className={Style.input_upload}
-            />
-            <span className={Style.upload_file_button}>Browse</span>
-          </label>
-          <p className={Style.text}>
-            Upload your thumbnail to nimbatube.com. Recommended ratio is 16:9,
-            5MB max.
-          </p>
+        <div className={Style.container_image_main_second}>
+          <div ref={Thumbnail} className={Style.upload_img_icon}>
+            {!Uploaded && <IoImageOutline />}
+          </div>
+          <div className={Style.input_upload_thumbnail}>
+            <label
+              htmlFor="input_upload_thumbnail"
+              className={Style.input_label}
+            >
+              <span className={Style.upload_file_text}>
+                Choose an enticing thumbnail{" "}
+              </span>
+              <span className={Style.upload_file_text_dots}>...</span>
+              <input
+                id="input_upload_thumbnail"
+                type="file"
+                accept="image/png, image/gif, image/jpeg , image/jpg image/jfif image/svg"
+                onChange={readImageThumbnail}
+                className={Style.input_upload}
+              />
+              <span className={Style.upload_file_button}>Browse</span>
+            </label>
+            <p className={Style.text}>
+              Upload your thumbnail to nimbatube.com. Recommended ratio is 16:9,
+              5MB max.
+            </p>
+          </div>
         </div>
       </div>
       <div className={Style.div_button_action}>
