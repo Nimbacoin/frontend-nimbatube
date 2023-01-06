@@ -9,6 +9,7 @@ import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedI
 import { useRouter } from "next/router";
 import BlueButton from "../../modals/BlueButton";
 import CancelButton from "../../modals/CancelButton";
+import TextTilteInputMudum from "../../modals/text/TextTilteInputMudum";
 
 const Thumbnail = ({ VideoLink, VideoId }: any) => {
   const Path = useRef(null);
@@ -71,7 +72,7 @@ const Thumbnail = ({ VideoLink, VideoId }: any) => {
     <div className={Style.container}>
       <div className={Style.upload_inputs_container}>
         <div className={Style.container_top}>
-          <p className={Style.upload_file}>Thumbnail</p>
+          <TextTilteInputMudum Text={"Thumbnail"} />
         </div>
         <div className={Style.container_image_main_second}>
           <div ref={Thumbnail} className={Style.upload_img_icon}>
