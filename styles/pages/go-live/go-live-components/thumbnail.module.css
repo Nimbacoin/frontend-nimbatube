@@ -4,6 +4,8 @@
   align-items: center;
   justify-content: inherit;
   row-gap: 20px;
+  background-color: #fff;
+  border-radius: 10px;
 }
 .upload_img_icon {
   width: 25%;
@@ -100,6 +102,7 @@
   justify-content: flex-start;
   align-items: center;
   column-gap: 20px;
+  padding: 20px;
 }
 .button_action {
   background-color: #fbbd18;
