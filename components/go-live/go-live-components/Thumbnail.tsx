@@ -102,10 +102,10 @@ const Thumbnail = ({ VideoLink, VideoId }: any) => {
             </p>
           </div>
         </div>
-      </div>
-      <div className={Style.div_button_action}>
-        <BlueButton HandelClick={handelSubmiteVideos} Text={"Submit"} />
-        <CancelButton Text={"Cancel"} />
+        <div className={Style.div_button_action}>
+          <BlueButton HandelClick={handelSubmiteVideos} Text={"Submit"} />
+          <CancelButton Text={"Cancel"} />
+        </div>
       </div>
     </div>
   );

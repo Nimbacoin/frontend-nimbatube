@@ -9,7 +9,8 @@ import { useSelector } from "react-redux";
 import Streaming from "./go-live-components/Streaming";
 import GoogleIcon from "../modals/GoogleIcon";
 import BlueButton from "../modals/BlueButton";
-const GoLivePage = () => {
+import OverAll from "../modals/OverAll";
+const GoLive = () => {
   const Router = useRouter();
   const { asPath } = useRouter();
   const [goLive, setGoLive] = useState(false);
@@ -19,7 +20,9 @@ const GoLivePage = () => {
   const [videoId, setVideoId] = useState("");
   const channels = useSelector((state: any) => state.ChannelSlice.allChannels);
   const videoData = useSelector((state: any) => state.VideoSlice.videoData);
-
+  const liveVideoCreate = useSelector(
+    (state: any) => state.VideoSlice.liveVideoCreate
+  );
   useEffect(() => {
     let Params = new URL(window.location.href).searchParams;
     const video: string | null = Params.get("video");
@@ -51,39 +54,46 @@ const GoLivePage = () => {
     });
   };
   return (
-    <div className={Style.container}>
-      {liveReady ? (
-        <Streaming />
-      ) : (
-        <>
-          {goLive ? (
-            <>
-              <NameVideoUrl VideoLink={videoLink} />
-              <Thumbnail VideoLink={videoLink} VideoId={videoId} />
-            </>
-          ) : (
-            <div className={Style.go_live}>
-              <div className={Style.conainter_live_desc}>
-                <div className={Style.go_live_icon}>
-                  <IoVideocamOutline />
+    <OverAll>
+      <div className={Style.container}>
+        {liveReady ? (
+          <Streaming />
+        ) : (
+          <>
+            {goLive ? (
+              <>
+                {liveVideoCreate ? (
+                  <Thumbnail VideoLink={videoLink} VideoId={videoId} />
+                ) : (
+                  <NameVideoUrl VideoLink={videoLink} />
+                )}
+              </>
+            ) : (
+              <div className={Style.go_live}>
+                <div className={Style.conainter_live_desc}>
+                  <div className={Style.go_live_icon}>
+                    <IoVideocamOutline />
+                  </div>
+                  <p className={Style.file_text_title_bold}>
+                    Start a Live Video
+                  </p>
+                  <p className={Style.file_text_paragef}>
+                    Setup Stream and Start a new Live Stream Video now{" "}
+                  </p>
                 </div>
-                <p className={Style.file_text_title_bold}>Start a Live Video</p>
-                <p className={Style.file_text_paragef}>
-                  Setup Stream and Start a new Live Stream Video now{" "}
-                </p>
+                <div className={Style.div_button_action}>
+                  <BlueButton
+                    HandelClick={handelSubmiteLiveVideo}
+                    Text={"Go Live"}
+                  />
+                </div>
               </div>
-              <div className={Style.div_button_action}>
-                <BlueButton
-                  HandelClick={handelSubmiteLiveVideo}
-                  Text={"Go Live"}
-                />
-              </div>
-            </div>
-          )}
-        </>
-      )}
-    </div>
+            )}
+          </>
+        )}
+      </div>
+    </OverAll>
   );
 };
 
-export default GoLivePage;
+export default GoLive;

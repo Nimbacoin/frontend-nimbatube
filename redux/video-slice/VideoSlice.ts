@@ -5,6 +5,7 @@ const initialState = {
   mainVideoDataWatch: {},
   liveCommentsVideo: [],
   liveVideoComments: false,
+  liveVideoCreate: false,
   nextVideo: "",
 };
 
@@ -47,6 +48,9 @@ export const VideoSlice = createSlice({
     nextVideoReducer: (state: any, action) => {
       state.nextVideo = action.payload;
     },
+    liveVideoCreate: (state: any, action) => {
+      state.liveVideoCreate = action.payload;
+    },
   },
 });
 
@@ -56,6 +60,7 @@ export const {
   liveVideoLive,
   liveVideoCommentsReducer,
   nextVideoReducer,
+  liveVideoCreate,
 } = VideoSlice.actions;
 const AllReducers = VideoSlice.reducer;
 export default AllReducers;

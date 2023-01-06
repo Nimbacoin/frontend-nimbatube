@@ -1,9 +1,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: inherit;
-  background-color: #fff;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 .video_container_data {
   height: 100%;
@@ -15,7 +14,7 @@
   column-gap: 20px;
 }
 .head_container {
-  width: 100%;
+  width: 90%;
   height: auto;
 }
 .video_container {
@@ -94,6 +93,7 @@
   justify-content: flex-start;
   border: 1px solid#cccccc6c;
   padding: 20px;
+  margin: 0 auto;
 }
 .upload_input {
   width: 100%;

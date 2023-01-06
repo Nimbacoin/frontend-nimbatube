@@ -1,11 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
-import Style from "../../../styles/pages/go-live/go-live-components/name-video-url.module.css";
+import Style from "../../../styles/pages/go-live/go-live-components/name-video-url1.module.css";
 import Cookies from "js-cookie";
 import FormData from "form-data";
 import AxiosPostLogedInFormData from "../../../utils/AxiosPostLogedInFormData";
 import { useDispatch, useSelector } from "react-redux";
-import { ActionVideoDataChanging } from "../../../redux/video-slice/VideoSlice";
+import {
+  ActionVideoDataChanging,
+  liveVideoCreate,
+} from "../../../redux/video-slice/VideoSlice";
 import { useRouter } from "next/router";
 import { poPUppRedcuer } from "../../../redux/style-slice/general-style/GenrealStyle";
 import TextArea from "../../modals/TextArea";
@@ -13,6 +16,7 @@ import InputText from "../../modals/InputText";
 import ButtonAndInputAction from "../../modals/ButtonAndInputCopy";
 import TopTitle from "../../modals/TopTitle";
 import CopyInput from "../../modals/CopyInput";
+import BigGrayButton from "../../modals/BigGrayButton";
 const NameVideoUrl = ({ VideoLink }: any) => {
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
 
@@ -57,11 +61,11 @@ const NameVideoUrl = ({ VideoLink }: any) => {
       })
     );
   };
+  const handelCreateVideo = () => {
+    dispatch(liveVideoCreate(true));
+  };
   return (
     <div className={Style.container}>
-      <div className={Style.head_container}>
-        <TopTitle Icon={<IoVideocamOutline />} Text={"Video live"} />
-      </div>
       <div className={Style.upload_inputs_container}>
         <div className={Style.video_container_data}>
           <div className={Style.video_container}>
@@ -75,9 +79,6 @@ const NameVideoUrl = ({ VideoLink }: any) => {
               CopiedText={"video link copied"}
               Value={VideoLink}
             />
-            <p className={Style.upload_file}>
-              {title.slice(0, 60)} {title.length >= 60 && "..."}
-            </p>
           </div>
         </div>
 
@@ -91,6 +92,7 @@ const NameVideoUrl = ({ VideoLink }: any) => {
           Text={"Description"}
           Placeholder="Description"
         />
+        <BigGrayButton HandelCopy={handelCreateVideo} Value={"Create video"} />
       </div>
     </div>
   );

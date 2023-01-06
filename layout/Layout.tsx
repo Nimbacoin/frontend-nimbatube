@@ -45,6 +45,7 @@ import {
   walletConnectProvider,
 } from "@web3modal/ethereum";
 import { client } from "./wegmi";
+import GoLive from "../components/go-live/GoLive";
 
 const { InjectedConnector, NetworkOnlyConnector } = Connectors;
 const MetaMask = new InjectedConnector({ supportedNetworks: [1, 4] });
@@ -355,6 +356,7 @@ const Layout = ({ children }: any) => {
             })()}
             {isOver && <HoverText />}
             {elementOverLayt && <UplaodFile />}
+            <GoLive />
             <ButtonLive />
           </div>
         </WagmiConfig>
