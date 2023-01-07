@@ -100,7 +100,10 @@ const Thumbnail = ({ VideoLink, VideoId }: any) => {
         </div>
       </div>
       <div className={Style.div_button_action}>
-        <BigGrayButton HandelCopy={handelSubmiteVideos} Value={"Submit"} />
+        <BigGrayButton
+          HandelCopy={handelSubmiteVideos}
+          Value={"continue to live"}
+        />
       </div>
     </div>
   );

@@ -356,7 +356,7 @@ const Layout = ({ children }: any) => {
             })()}
             {isOver && <HoverText />}
             {elementOverLayt && <UplaodFile />}
-            <GoLive />
+            {asPath.includes("/go-live/go-live") && <GoLive />}
             <ButtonLive />
           </div>
         </WagmiConfig>
