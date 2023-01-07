@@ -46,6 +46,7 @@ import {
 } from "@web3modal/ethereum";
 import { client } from "./wegmi";
 import GoLive from "../components/go-live/GoLive";
+import SocketHandler from "../libs/socket";
 
 const { InjectedConnector, NetworkOnlyConnector } = Connectors;
 const MetaMask = new InjectedConnector({ supportedNetworks: [1, 4] });
@@ -217,6 +218,7 @@ const Layout = ({ children }: any) => {
   return (
     <>
       <Web3ReactProvider getLibrary={getLibrary}>
+                <SocketHandler />
         <WagmiConfig client={client}>
           {/* <Web3Modal
             projectId="<YOUR_PROJECT_ID>"
