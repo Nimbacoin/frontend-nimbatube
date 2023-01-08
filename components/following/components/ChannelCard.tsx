@@ -122,7 +122,11 @@ const Channel = ({
     }, 5000);
     setShowDiv(false);
   }
-  const HandelFunc = () => {};
+  const HandelFunc = () => {
+    // alert(Id);
+    Router.push("/edite/" + Id);
+    //
+  };
   const AllLink = [
     {
       name: "Support",
