@@ -159,7 +159,7 @@ function CryptoWalletConnect() {
         return items;
       }
     });
-  }, [connectors , connectorsArray]);
+  }, [connectors, connectorsArray]);
 
   return (
     <OverAll>
@@ -189,8 +189,9 @@ function CryptoWalletConnect() {
 
             {connectors
               .filter((x) => x.ready && x.id !== connector?.id)
-              .map((x) => (
+              .map((x, index) => (
                 <div
+                  key={index}
                   onClick={() => {
                     connect({ connector: x });
                     handelClose();
