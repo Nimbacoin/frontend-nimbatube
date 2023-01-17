@@ -5,7 +5,12 @@ import Home from "../components/home/Home";
 import basedGetUrlRequest from "../utils/basedGetUrlRequest";
 
 const HomePage: NextPage = () => {
-  return <Home />;
+  return (
+    <>
+    sdslñ
+      <Home />
+    </>
+  );
 };
 
 export default HomePage;
