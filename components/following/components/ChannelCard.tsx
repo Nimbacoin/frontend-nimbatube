@@ -124,7 +124,7 @@ const Channel = ({
   }
   const HandelFunc = () => {
     // alert(Id);
-    Router.push("/edite/" + Id);
+    Router.push("/edit-channel/" + Id);
     //
   };
   const AllLink = [

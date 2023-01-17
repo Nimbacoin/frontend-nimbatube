@@ -218,7 +218,7 @@ const Layout = ({ children }: any) => {
   return (
     <>
       <Web3ReactProvider getLibrary={getLibrary}>
-                <SocketHandler />
+        {/* <SocketHandler /> */}
         <WagmiConfig client={client}>
           {/* <Web3Modal
             projectId="<YOUR_PROJECT_ID>"
@@ -321,7 +321,8 @@ const Layout = ({ children }: any) => {
                 asPath.includes("/chanel/new") ||
                 asPath.includes("/sign-up") ||
                 asPath.includes("/watch/") ||
-                asPath.includes("/channel/create-new-channel/")
+                asPath.includes("/channel/create-new-channel/") ||
+                asPath.includes("edit-channel")
               ) {
                 return (
                   <div

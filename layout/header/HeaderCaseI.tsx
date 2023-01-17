@@ -30,7 +30,8 @@ const HeaderCaseI = () => {
       asPath.includes("/chanel/new") ||
       asPath.includes("/sign-up") ||
       asPath.includes("/watch/") ||
-      asPath.includes("/channel/create-new-channel/")
+      asPath.includes("/channel/create-new-channel/") ||
+      asPath.includes("edit-channel")
     ) {
       setUseMenu(true);
       dispatch(ToggleMenuOverAll("true"));

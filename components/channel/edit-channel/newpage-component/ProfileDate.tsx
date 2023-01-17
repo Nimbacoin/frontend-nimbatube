@@ -47,7 +47,7 @@ const ProfileDate = () => {
     { name: "Tags", key: "tags" },
     { name: "Other", key: "other" },
   ];
-  dispatch(seoReducer({ title: "Create new channel " + linkName }));
+  dispatch(seoReducer({ title: "Edit channel " + linkName }));
 
   const Bg = "/images/default-profile.png";
 
@@ -56,13 +56,13 @@ const ProfileDate = () => {
   };
   const HandelLinkContent = () => {
     if (LinkKey === "general") {
-      return <NewGeneral />;
+      return <NewGeneral MainChnnelEdit={mainChnnelEdit} />;
     } else if (LinkKey === "credit-details") {
-      return <CreditDetails />;
+      return <CreditDetails MainChnnelEdit={mainChnnelEdit} />;
     } else if (LinkKey === "tags") {
-      return <Tags />;
+      return <Tags MainChnnelEdit={mainChnnelEdit} />;
     } else if (LinkKey === "other") {
-      return <Other />;
+      return <Other MainChnnelEdit={mainChnnelEdit} />;
     }
   };
   useEffect(() => {
@@ -131,7 +131,7 @@ const ProfileDate = () => {
     }
   };
   const handelSubmiteProfileRef = async () => {
-    const channelId = asPath.replace("/edit-channel/", "");
+    const channelId = asPath.replace("/channel/create-new-channel/", "");
     const isValid = channelId.toString();
     let formData = new FormData();
     if (Path.current) {
@@ -181,7 +181,7 @@ const ProfileDate = () => {
   };
 
   const HandelSubmiteNewGeneral = async (e: any) => {
-    const channelId = asPath.replace("/edit-channel/", "");
+    const channelId = asPath.replace("/channel/create-new-channel/", "");
     const isValid = channelId.toString();
     const ReqData: any = { general, images, other, channelId: isValid };
     await basedPostUrlRequestLogedIn(
@@ -200,7 +200,21 @@ const ProfileDate = () => {
       }
     });
   };
-
+  const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
+  const [mainChnnelEdit, setMainChnnelEdit] = useState<any>({});
+  useEffect(() => {
+    if (asPath.length >= 10) {
+      const replcedPath = asPath.replace("/edit-channel/", "");
+      const mainChannel = Channels.filter(
+        (chale: any) => chale._id === replcedPath
+      );
+      if (mainChannel.length >= 1) {
+        setMainChnnelEdit(mainChannel[0]);
+      }
+      console.log(mainChnnelEdit);
+    }
+  }, [Channels, asPath]);
+  const mainImageProfile = mainChnnelEdit?.channelData?.profileImg?.url;
   return (
     <div className={Style.container}>
       <div className={Style.container_main}>
@@ -234,7 +248,11 @@ const ProfileDate = () => {
               <div
                 className={Style.profile_image}
                 style={{
-                  backgroundImage: `url(${"/images/default-profile.png"})`,
+                  backgroundImage: `url(${
+                    mainImageProfile
+                      ? mainImageProfile
+                      : "/images/default-profile.png"
+                  })`,
                 }}
                 ref={previewSourceProfile}
               >

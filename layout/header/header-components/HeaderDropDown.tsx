@@ -250,10 +250,8 @@ const HeaderDropDown = () => {
                       id={link === "/" ? id : link}
                     >
                       {icon && <span className={Style.icon}> {icon}</span>}
-
                       <div className={Style.link_data}>
                         {name && <span className={Style.name}> {name}</span>}
-
                         <span className={Style.channelname}>{channelname}</span>
                       </div>
                     </div>

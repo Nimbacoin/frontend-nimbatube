@@ -15,15 +15,25 @@ const InputText = ({
     <div className={Style.upload_input}>
       <TextTilteInputMudum Icon={Icon && Icon} Text={Text} />
       <label htmlFor="title" className={Style.input_label}>
-        <input
-          id="title"
-          value={Value && Value}
-          defaultValue={DefualtValue && DefualtValue}
-          placeholder={Placeholder}
-          onChange={HandelChange}
-          type={Number ? "number" : "text"}
-          className={Style.input_title}
-        />
+        {DefualtValue?.length >= 1 ? (
+          <input
+            id="title"
+            defaultValue={DefualtValue}
+            placeholder={Placeholder}
+            onChange={HandelChange}
+            type={Number ? "number" : "text"}
+            className={Style.input_title}
+          />
+        ) : (
+          <input
+            id="title"
+            defaultValue={DefualtValue}
+            placeholder={Placeholder}
+            onChange={HandelChange}
+            type={Number ? "number" : "text"}
+            className={Style.input_title}
+          />
+        )}
       </label>
     </div>
   );
