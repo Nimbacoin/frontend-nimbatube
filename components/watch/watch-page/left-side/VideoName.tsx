@@ -106,12 +106,12 @@ const VideoName = ({ ActiveVideoStream }: any) => {
           <IoIosArrowDown />
         </button>
       </div>
-      <span className={Style.date_phone}>
+      {/* <span className={Style.date_phone}>
         {videoData?.views?.length} views - {SendDate}
       </span>
       <span className={Style.date}>
         {videoData?.views?.length} views - {SendDate}
-      </span>
+      </span> */}
     </div>
   );
 };
