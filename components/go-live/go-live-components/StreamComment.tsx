@@ -26,11 +26,11 @@ const StreamComment = ({ CommentData, Key }: any) => {
           <span className={Style.chanel_name}>
             {CommentData?.creatoreData?.name}
           </span>{" "}
-          <span className={Style.date}>
+          {/* <span className={Style.date}>
             {moment(CommentData?.commentData?.createdAt)
               .startOf("hour")
               .fromNow()}{" "}
-          </span>
+          </span> */}
         </div>
         <div className={Style.all_comments}>
           <span className={Style.comment}>
