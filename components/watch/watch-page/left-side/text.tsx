@@ -27,6 +27,7 @@ const MainVideo = () => {
   );
   const { asPath, pathname } = useRouter();
   const Router = useRouter();
+  dipatch(seoReducer({ title: ResDD?.responseData?.title }));
   const [ActiveVideo, setActiveVideo] = useState(true);
   const [videoData, setVideoData] = useState<{ [key: string]: any }>(
     ResDD?.responseData
@@ -48,8 +49,6 @@ const MainVideo = () => {
   const videoSrc = React.useRef<HTMLSourceElement | null>(null);
   const videoTag = React.useRef<HTMLVideoElement | null>(null);
   const dispatch = useDispatch();
-  //dipatch(seoReducer({ title: ResDD?.responseData?.title }));
-
   const [IsFollowed, setIsFollowed] = useState(
     channelData?.followers?.followed
   );

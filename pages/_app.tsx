@@ -15,14 +15,9 @@ function MyApp({ Component, pageProps }: any) {
   return (
     <Provider store={store}>
       <SessionProvider session={pageProps.session}>
-        
-        <MetaMaskProvider>
           <Layout>
-            <Web3ReactProvider getLibrary={getLibrary}>
               <Component {...pageProps} />
-            </Web3ReactProvider>
           </Layout>
-        </MetaMaskProvider>
       </SessionProvider>
     </Provider>
   );

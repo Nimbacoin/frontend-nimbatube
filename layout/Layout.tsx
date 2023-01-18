@@ -192,146 +192,147 @@ const Layout = ({ children }: any) => {
 
   return (
     <>
-      <Web3ReactProvider getLibrary={getLibrary}>
-        {/* <SocketHandler /> */}
-        <WagmiConfig client={client}>
-          <Head>
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                  "@context": "https://schema.org/",
-                  "@type": "Product",
-                  name: "1 hours sahara quad biking Merzouga ATV Quad rental",
-                  image:
-                    "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
-                  description:
-                    "1 hours Sahara ATV Quad biking Adventures in Merzouga desert, it is amazing to experience your driving around the sand dunes also",
-                  brand: "Marrakech Tour Company",
-                  sku: "2387267",
-                  offers: {
-                    "@type": "AggregateOffer",
-                    url: "https://marrakechtourcompany.com/1-hours-sahara-atv-quad-biking-adventures-in-merzouga-desert/",
-                    priceCurrency: "EUR",
-                    lowPrice: "50",
-                    highPrice: "",
-                    offerCount: "23",
-                  },
-                  aggregateRating: {
-                    "@type": "AggregateRating",
-                    ratingValue: "5",
-                    bestRating: "5",
-                    worstRating: "1",
-                    ratingCount: "235",
-                  },
-                }),
-              }}
-            />
-          </Head>
-          <NextSeo
-            title={seoPage?.title}
-            description="This example uses more of the available config options."
-            canonical="https://www.canonical.ie/"
-            openGraph={{
-              url: "https://www.url.ie/a",
-              title: "Nimbatube",
-              description: "Open Graph Description",
-              images: [
-                {
-                  url: "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
-                  width: 800,
-                  height: 600,
-                  alt: "Og Image Alt",
-                  type: "image/jpeg",
+      {/* <Web3ReactProvider getLibrary={getLibrary}> */}
+      {/* <SocketHandler /> */}
+      
+        <Head>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org/",
+                "@type": "Product",
+                name: "1 hours sahara quad biking Merzouga ATV Quad rental",
+                image:
+                  "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
+                description:
+                  "1 hours Sahara ATV Quad biking Adventures in Merzouga desert, it is amazing to experience your driving around the sand dunes also",
+                brand: "Marrakech Tour Company",
+                sku: "2387267",
+                offers: {
+                  "@type": "AggregateOffer",
+                  url: "https://marrakechtourcompany.com/1-hours-sahara-atv-quad-biking-adventures-in-merzouga-desert/",
+                  priceCurrency: "EUR",
+                  lowPrice: "50",
+                  highPrice: "",
+                  offerCount: "23",
                 },
-                {
-                  url: "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
-                  width: 900,
-                  height: 800,
-                  alt: "Og Image Alt Second",
-                  type: "image/jpeg",
+                aggregateRating: {
+                  "@type": "AggregateRating",
+                  ratingValue: "5",
+                  bestRating: "5",
+                  worstRating: "1",
+                  ratingCount: "235",
                 },
-                {
-                  url: "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
-                },
-                {
-                  url: "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
-                },
-              ],
-              site_name: "Nimbatube",
-            }}
-            twitter={{
-              handle: "@handle",
-              site: "@site",
-              cardType: "summary_large_image",
+              }),
             }}
           />
-          <div style={{ minHeight: `${Height}px` }} className={Style.container}>
-            <Header />
-            {playList && <AddToPalayList />}
-            {PopUppBoolean && <PopUpp />}
-            {copyVideo && <ShareVideo />}
-            {cropping && <CropperCom />}
-            {support && <Support />}
-            {walletConnect && <CryptoWalletConnect />}
-            {wallet && <Wallet />}
-            <SideHeader />
-            {/* <div
+        </Head>
+        <NextSeo
+          title={seoPage?.title}
+          description="This example uses more of the available config options."
+          canonical="https://www.canonical.ie/"
+          openGraph={{
+            url: "https://www.url.ie/a",
+            title: "Nimbatube",
+            description: "Open Graph Description",
+            images: [
+              {
+                url: "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
+                width: 800,
+                height: 600,
+                alt: "Og Image Alt",
+                type: "image/jpeg",
+              },
+              {
+                url: "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
+                width: 900,
+                height: 800,
+                alt: "Og Image Alt Second",
+                type: "image/jpeg",
+              },
+              {
+                url: "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
+              },
+              {
+                url: "https://marrakechtourcompany.com/wp-content/uploads/2021/01/0wHUTO8OXB.jpg",
+              },
+            ],
+            site_name: "Nimbatube",
+          }}
+          twitter={{
+            handle: "@handle",
+            site: "@site",
+            cardType: "summary_large_image",
+          }}
+        />
+        <WagmiConfig client={client}>
+        <div style={{ minHeight: `${Height}px` }} className={Style.container}>
+          <Header />
+          {playList && <AddToPalayList />}
+          {PopUppBoolean && <PopUpp />}
+          {copyVideo && <ShareVideo />}
+          {cropping && <CropperCom />}
+          {support && <Support />}
+          {walletConnect && <CryptoWalletConnect />}
+          {wallet && <Wallet />}
+          <SideHeader />
+          {/* <div
           ref={childrenRef}
           style={{ minHeight: `${Height}px` }}
           className={MenuBoolean ? Style.childen : Style.childen_MenuBoolean}
         >
           {children}
         </div> */}
-            {(() => {
-              if (
-                asPath.includes("/sign-in") ||
-                asPath.includes("/chanel/new") ||
-                asPath.includes("/sign-up") ||
-                asPath.includes("/watch/") ||
-                asPath.includes("/channel/create-new-channel/") ||
-                asPath.includes("edit-channel")
-              ) {
+          {(() => {
+            if (
+              asPath.includes("/sign-in") ||
+              asPath.includes("/chanel/new") ||
+              asPath.includes("/sign-up") ||
+              asPath.includes("/watch/") ||
+              asPath.includes("/channel/create-new-channel/") ||
+              asPath.includes("edit-channel")
+            ) {
+              return (
+                <div
+                  ref={childrenRef}
+                  style={{ minHeight: `${Height}px` }}
+                  className={Style.childen_100}
+                >
+                  {children}
+                </div>
+              );
+            } else {
+              if (MenuBoolean) {
                 return (
                   <div
                     ref={childrenRef}
                     style={{ minHeight: `${Height}px` }}
-                    className={Style.childen_100}
+                    className={Style.childen}
                   >
                     {children}
                   </div>
                 );
               } else {
-                if (MenuBoolean) {
-                  return (
-                    <div
-                      ref={childrenRef}
-                      style={{ minHeight: `${Height}px` }}
-                      className={Style.childen}
-                    >
-                      {children}
-                    </div>
-                  );
-                } else {
-                  return (
-                    <div
-                      ref={childrenRef}
-                      style={{ minHeight: `${Height}px` }}
-                      className={Style.childen_MenuBoolean}
-                    >
-                      {children}
-                    </div>
-                  );
-                }
+                return (
+                  <div
+                    ref={childrenRef}
+                    style={{ minHeight: `${Height}px` }}
+                    className={Style.childen_MenuBoolean}
+                  >
+                    {children}
+                  </div>
+                );
               }
-            })()}
-            {isOver && <HoverText />}
-            {elementOverLayt && <UplaodFile />}
-            {asPath.includes("/go-live/go-live") && <GoLive />}
-            <ButtonLive />
-          </div>
-        </WagmiConfig>
-      </Web3ReactProvider>
+            }
+          })()}
+          {isOver && <HoverText />}
+          {elementOverLayt && <UplaodFile />}
+          {asPath.includes("/go-live/go-live") && <GoLive />}
+          <ButtonLive />
+        </div>
+      </WagmiConfig>
+      {/* </Web3ReactProvider> */}
     </>
   );
 };
