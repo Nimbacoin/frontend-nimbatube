@@ -44,31 +44,7 @@ const WalletPage = () => {
   });
 
   return (
-    <MetaMaskProvider>
-      <button onClick={connect}>sdf</button>
-      <div className={Style.container}>
-        <TopTitle
-          ButtonRight={true}
-          TextBlueButton={"connect wallet"}
-          Icon={<IoWalletOutline />}
-          Text={"wallet"}
-        />
-
-        {isAndroid ? (
-          <a href="https://metamask.app.link/dapp/nimbatube.com/        ">
-            Open Android app
-          </a>
-        ) : isIOS ? (
-          <a href="https://apps.apple.com/us/app/metamask-blockchain-wallet/id1438144202">
-            Open iOS app
-          </a>
-        ) : (
-          <a href="https://instagram.com">Open Web app</a>
-        )}
-        <button onClick={redirecttoNativeApp}>Click to go to doordash</button>
-        {/* <MetaMask /> */}
-      </div>
-    </MetaMaskProvider>
+    <div>sv</div>
   );
 };
 
