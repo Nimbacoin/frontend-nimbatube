@@ -69,7 +69,9 @@ const App = () => {
     });
   }, [socket]);
   useEffect(() => {
-    
+    socket.on("connect_error", (err: any) => {
+      console.log(`connect_error due to the ${err.message}`);
+    });
     socket.on("new-broadcaster", (id) => {
       setBroadcasterId(id);
     });
