@@ -82,6 +82,7 @@ const App = () => {
     }
     if (document.readyState == "complete") {
       // alert(document.readyState);
+      //
     }
   }, [videoId]);
 
