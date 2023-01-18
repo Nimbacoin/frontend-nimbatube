@@ -81,7 +81,7 @@ const App = () => {
       socket.emit("watcher", { broadcasterId, videoId });
     }
     if (document.readyState == "complete") {
-      alert(document.readyState);
+      // alert(document.readyState);
     }
   }, [videoId]);
 
