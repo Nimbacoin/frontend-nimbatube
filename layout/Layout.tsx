@@ -6,9 +6,6 @@ import Style from "../styles/layout/layout.module.css";
 import SideHeader from "./header/SideHeader";
 import { useDispatch, useSelector } from "react-redux";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { arbitrum, mainnet, polygon } from "wagmi/chains";
-import { useWeb3Modal } from "@web3modal/react";
-import { Web3Modal } from "@web3modal/react";
 import { useRouter } from "next/router";
 import {
   elementOverLaytRedcuer,
@@ -113,21 +110,8 @@ const Layout = ({ children }: any) => {
   const seoPage = useSelector((state: any) => state.seoReducer.seoPage);
   const dispatch = useDispatch();
   const [Height, setHeight] = useState(800);
-  useEffect(() => {
-    setHeight(window.innerHeight);
-    dispatch(WindowHeightRedcuer(window.innerHeight - 60));
-  }, []);
-  const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    window.addEventListener("load", function () {
-      setIsLoaded(true);
-    });
-  }, []);
-
-  const userSignIn = useSelector((state: any) => state.UserSignIn.mainUserData);
 
   useEffect(() => {
-    // userSignedInReucerData;
     let userData = Cookies.get("user");
     if (typeof userData !== "undefined") {
       var obj: any = JSON.parse(userData);
@@ -172,8 +156,6 @@ const Layout = ({ children }: any) => {
     );
   }, [asPath]);
 
-  const menuWidth = useSelector((state: any) => state.SideMenu.menuWidth);
-
   const childrenRef = React.useRef<HTMLDivElement>(null);
   const handelChangeMenu = () => {
     // if (childrenRef.current) {
@@ -188,12 +170,6 @@ const Layout = ({ children }: any) => {
     // }
   };
 
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      handelChangeMenu();
-    });
-    handelChangeMenu();
-  });
   function getLibrary(provider: any) {
     return new Web3(provider);
   }
@@ -213,20 +189,12 @@ const Layout = ({ children }: any) => {
     connectors: modalConnectors({ appName: "web3Modal", chains }),
     provider,
   });
-  const ethereumClient = new EthereumClient(wagmiClient, chains);
 
   return (
     <>
       <Web3ReactProvider getLibrary={getLibrary}>
         {/* <SocketHandler /> */}
         <WagmiConfig client={client}>
-          {/* <Web3Modal
-            projectId="<YOUR_PROJECT_ID>"
-            ethereumClient={ethereumClient}
-          /> */}
-
-          {/* <Web3NetworkSwitch /> */}
-
           <Head>
             <script
               type="application/ld+json"

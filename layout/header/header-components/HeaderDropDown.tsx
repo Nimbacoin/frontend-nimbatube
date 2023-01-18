@@ -189,7 +189,7 @@ const HeaderDropDown = () => {
             <div className={Style.drop_down_option_sold}>
               <Link href="/wallet">
                 <>
-                  {isConnected ? (
+                  {/* {isConnected ? (
                     <CancelButton
                       HandelClick={connectWalletHandler}
                       IconFirst={<FcCircuit />}
@@ -201,7 +201,7 @@ const HeaderDropDown = () => {
                       IconFirst={<FcCircuit />}
                       Text={"Connect wallet"}
                     />
-                  )}
+                  )} */}
                 </>
               </Link>
             </div>

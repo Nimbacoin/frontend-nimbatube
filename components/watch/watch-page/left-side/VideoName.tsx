@@ -28,7 +28,13 @@ const VideoName = ({ ActiveVideoStream }: any) => {
     (state: any) => state.VideoSlice.mainVideoDataWatch?.responseData
   );
   const Router = useRouter();
-
+  const [SendDate, setSendDate] = useState("00:00");
+  useEffect(() => {
+    setSendDate(moment(videoData?.createdAt).format("LT"));
+    setInterval(function () {
+      setSendDate(moment(videoData?.createdAt).format("LT"));
+    }, 5000);
+  }, []);
   const userSignIn = useSelector((state: any) => state.UserSignIn.userdata);
   const [videoId, setVideoId] = useState<string>(videoData?._id);
   const dispatch = useDispatch();
@@ -101,12 +107,10 @@ const VideoName = ({ ActiveVideoStream }: any) => {
         </button>
       </div>
       <span className={Style.date_phone}>
-        {videoData?.views?.length} views -{" "}
-        {videoData?.createdAt ? moment(videoData?.createdAt).fromNow():"00:00"}{" "}
+        {videoData?.views?.length} views - {SendDate}
       </span>
       <span className={Style.date}>
-        {videoData?.views?.length} views -{" "}
-        {videoData?.createdAt ? moment(videoData?.createdAt).fromNow():"00:00"}{" "}
+        {videoData?.views?.length} views - {SendDate}
       </span>
     </div>
   );

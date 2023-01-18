@@ -39,6 +39,7 @@ const App = () => {
   let peerConnection;
 
   useEffect(() => {
+    
     socket.on("offer", (id, description) => {
       peerConnection = new RTCPeerConnection(pc_config);
       peerConnection
@@ -60,6 +61,7 @@ const App = () => {
   }, [socket]);
 
   useEffect(() => {
+    
     socket.on("candidate", (id, candidate) => {
       peerConnection
         .addIceCandidate(new RTCIceCandidate(candidate))
@@ -67,14 +69,19 @@ const App = () => {
     });
   }, [socket]);
   useEffect(() => {
+    
     socket.on("new-broadcaster", (id) => {
       setBroadcasterId(id);
     });
   });
 
   useEffect(() => {
+    
     if (videoId.length > 10) {
       socket.emit("watcher", { broadcasterId, videoId });
+    }
+    if (document.readyState == "complete") {
+      alert(document.readyState);
     }
   }, [videoId]);
 
@@ -90,7 +97,7 @@ const App = () => {
           <div className={Style.viewers}>
             <IoEyeOutline />
             <span className={Style.file_text_title_bold_viewers}>
-              12 viewers
+              0 viewers
             </span>
           </div>
         </div>
@@ -100,7 +107,6 @@ const App = () => {
             id="remotevideo"
             ref={videoRef}
             autoPlay
-            
           ></video>
         </div>
       </div>
