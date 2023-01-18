@@ -32,27 +32,27 @@ const LiveCommentsVideos = () => {
 
   const [Comments, setComments] = useState([]);
 
-  // useEffect(() => {
-  //   let Params = new URL(window.location.href).searchParams;
-  //   const video = Params.get("video");
-  //   const localFetch = async () => {
-  //     await basedGetUrlRequest(
-  //       "/api/get/video/" + video + "/null" + "/null",
-  //       true
-  //     ).then((res: any) => {
-  //       if (res.responseData) {
-  //         const allResComments = res.responseData.comments;
-  //         dispatch(
-  //           liveVideoLive({
-  //             comments: allResComments,
-  //           })
-  //         );
-  //         setComments(allResComments);
-  //       }
-  //     });
-  //   };
-  //   localFetch();
-  // }, [asPath]);
+  useEffect(() => {
+    let Params = new URL(window.location.href).searchParams;
+    const video = Params.get("video");
+    const localFetch = async () => {
+      await basedGetUrlRequest(
+        "/api/get/video/" + video + "/null" + "/null",
+        true
+      ).then((res: any) => {
+        if (res.responseData) {
+          const allResComments = res.responseData.comments;
+          dispatch(
+            liveVideoLive({
+              comments: allResComments,
+            })
+          );
+          setComments(allResComments);
+        }
+      });
+    };
+    localFetch();
+  }, [asPath]);
   const socketInstance = useSelector(
     (state: any) => state.socketSlice.socketRedux
   );
@@ -62,18 +62,18 @@ const LiveCommentsVideos = () => {
   );
   const [socketIdd, setSocketIdd] = useState("");
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   const localFetch = () => {
-  //     socket.on("new-comment", (data: any) => {
-  //       dispatch(
-  //         liveVideoLive({
-  //           comments: data,
-  //         })
-  //       );
-  //     });
-  //   };
-  //   localFetch();
-  // }, [socket]);
+  useEffect(() => {
+    const localFetch = () => {
+      socket.on("new-comment", (data: any) => {
+        dispatch(
+          liveVideoLive({
+            comments: data,
+          })
+        );
+      });
+    };
+    localFetch();
+  }, [socket]);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {

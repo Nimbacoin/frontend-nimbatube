@@ -4,6 +4,8 @@ import io from "socket.io-client";
 import { IoEyeOutline } from "@react-icons/all-files/io5/IoEyeOutline";
 import Style from "../../../../styles/pages/watch/leftside/video.module.css";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
+import { useDispatch } from "react-redux";
+import { videoLiveIsConnectedReducer } from "../../../../redux/video-slice/VideoSlice";
 
 const pc_config = {
   iceServers: [
@@ -23,7 +25,7 @@ const App = () => {
   const { asPath } = useRouter();
   const socket = io(SOCKEtT_SERVER_URL);
   const videoRef = useRef(null);
-
+  const dispatch = useDispatch();
   const [broadcasterId, setBroadcasterId] = useState("");
   const [videoId, setVideoId] = useState("");
 
@@ -50,6 +52,7 @@ const App = () => {
         });
       peerConnection.ontrack = (event) => {
         videoRef.current.srcObject = event.streams[0];
+        dispatch(videoLiveIsConnectedReducer());
       };
       peerConnection.onicecandidate = (event) => {
         if (event.candidate) {
