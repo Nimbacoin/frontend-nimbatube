@@ -39,7 +39,6 @@ const App = () => {
   let peerConnection;
 
   useEffect(() => {
-    
     socket.on("offer", (id, description) => {
       peerConnection = new RTCPeerConnection(pc_config);
       peerConnection
@@ -61,7 +60,6 @@ const App = () => {
   }, [socket]);
 
   useEffect(() => {
-    
     socket.on("candidate", (id, candidate) => {
       peerConnection
         .addIceCandidate(new RTCIceCandidate(candidate))
@@ -69,7 +67,7 @@ const App = () => {
     });
   }, [socket]);
   useEffect(() => {
-    socket.on("connect_error", (err: any) => {
+    socket.on("connect_error", (err) => {
       console.log(`connect_error due to the ${err.message}`);
     });
     socket.on("new-broadcaster", (id) => {
@@ -78,7 +76,6 @@ const App = () => {
   });
 
   useEffect(() => {
-    
     if (videoId.length > 10) {
       socket.emit("watcher", { broadcasterId, videoId });
     }
