@@ -137,16 +137,16 @@ const HeaderDropDown = () => {
     });
   };
   const handelConnect = () => {
-    if (isConnected) {
-      dispatch(
-        walletReducer({
-          value: true,
-          // walletAdress: "df",
-        })
-      );
-    } else {
-      dispatch(walletConnectReducer({ value: true }));
-    }
+    // if (isConnected) {
+    //   dispatch(
+    //     walletReducer({
+    //       value: true,
+    //       // walletAdress: "df",
+    //     })
+    //   );
+    // } else {
+    //   dispatch(walletConnectReducer({ value: true }));
+    // }
   };
   const handelClick = (e: any, link: string, id: any) => {
     if (id === "sign-out") {
