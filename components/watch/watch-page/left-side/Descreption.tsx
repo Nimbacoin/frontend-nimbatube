@@ -25,8 +25,7 @@ const Descreption = ({ VideoData }: any) => {
   // const videoRef = useRef<HTMLVideoElement>(null);
   const Bg = "/images/default-profile.png";
   var check = moment(VideoData?.createdAt, "YYYY/MM/DD");
-  var month = check.format("M");
-  var year = check.format("YYYY");
+  // var year = check.format("YYYY");
   const handelShowAllDesc = () => {
     setMainTexDesc(!mainTexDesc);
   };
@@ -66,9 +65,9 @@ const Descreption = ({ VideoData }: any) => {
           </p>
           <p className={Style.video_data_items}>
             <strong className={Style.strong_data}>
-              {moment(videoData?.createdAt).startOf("hour").fromNow()}
+              {/* {moment(videoData?.createdAt).startOf("hour").fromNow()} */}
             </strong>
-            <small className={Style.small_data}>{year}</small>
+            {/* <small className={Style.small_data}>{year}</small> */}
           </p>
         </div>
       </div>
@@ -81,9 +80,11 @@ const Descreption = ({ VideoData }: any) => {
         <NormalText
           // Links={true}
           Text={
-            videoData?.descreption?.length > 1 ? mainTexDesc
-              ? videoData?.descreption
-              : videoData?.descreption?.slice(0, 351) : ""
+            videoData?.descreption?.length > 1
+              ? mainTexDesc
+                ? videoData?.descreption
+                : videoData?.descreption?.slice(0, 351)
+              : ""
           }
         />
         {videoData?.descreption?.length >= 351 && (

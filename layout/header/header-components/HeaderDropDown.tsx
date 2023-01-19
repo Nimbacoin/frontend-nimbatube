@@ -179,8 +179,8 @@ const HeaderDropDown = () => {
     (state: any) => state.GenrealStyle.walletAdress
   );
 
-  const { address } = useAccount();
-  const { data: ensName } = useEnsName({ address });
+  // const { address } = useAccount();
+  // const { data: ensName } = useEnsName({ address });
   return (
     <>
       {(() => {

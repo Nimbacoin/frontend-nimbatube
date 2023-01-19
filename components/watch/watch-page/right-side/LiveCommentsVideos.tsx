@@ -17,42 +17,42 @@ const SOCKEtT_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL;
 
 const LiveCommentsVideos = () => {
   const { asPath } = useRouter();
-  // const socket = io(SOCKEtT_SERVER_URL!);
+  const socket = io(SOCKEtT_SERVER_URL!);
   const [videoId, setVideoId] = useState("");
   const liveCommentsVideo = useSelector(
     (state: any) => state.VideoSlice.liveCommentsVideo
   );
-  // useEffect(() => {
-  //   let Params = new URL(window.location.href).searchParams;
-  //   const video = Params.get("video");
-  //   if (video?.length && video?.length > 10) {
-  //     setVideoId(video);
-  //   }
-  // }, [asPath]);
+  useEffect(() => {
+    let Params = new URL(window.location.href).searchParams;
+    const video = Params.get("video");
+    if (video?.length && video?.length > 10) {
+      setVideoId(video);
+    }
+  }, [asPath]);
 
   const [Comments, setComments] = useState([]);
 
-  // useEffect(() => {
-  //   let Params = new URL(window.location.href).searchParams;
-  //   const video = Params.get("video");
-  //   const localFetch = async () => {
-  //     await basedGetUrlRequest(
-  //       "/api/get/video/" + video + "/null" + "/null",
-  //       true
-  //     ).then((res: any) => {
-  //       if (res.responseData) {
-  //         const allResComments = res.responseData.comments;
-  //         dispatch(
-  //           liveVideoLive({
-  //             comments: allResComments,
-  //           })
-  //         );
-  //         setComments(allResComments);
-  //       }
-  //     });
-  //   };
-  //   localFetch();
-  // }, [asPath]);
+  useEffect(() => {
+    let Params = new URL(window.location.href).searchParams;
+    const video = Params.get("video");
+    const localFetch = async () => {
+      await basedGetUrlRequest(
+        "/api/get/video/" + video + "/null" + "/null",
+        true
+      ).then((res: any) => {
+        if (res.responseData) {
+          const allResComments = res.responseData.comments;
+          dispatch(
+            liveVideoLive({
+              comments: allResComments,
+            })
+          );
+          setComments(allResComments);
+        }
+      });
+    };
+    localFetch();
+  }, [asPath]);
   const socketInstance = useSelector(
     (state: any) => state.socketSlice.socketRedux
   );
@@ -62,31 +62,31 @@ const LiveCommentsVideos = () => {
   );
   const [socketIdd, setSocketIdd] = useState("");
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   const localFetch = () => {
-  //     socket.on("new-comment", (data: any) => {
-  //       dispatch(
-  //         liveVideoLive({
-  //           comments: data,
-  //         })
-  //       );
-  //     });
-  //   };
-  //   localFetch();
-  // }, [socket]);
+  useEffect(() => {
+    const localFetch = () => {
+      socket.on("new-comment", (data: any) => {
+        dispatch(
+          liveVideoLive({
+            comments: data,
+          })
+        );
+      });
+    };
+    localFetch();
+  }, [socket]);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-  // useEffect(() => {
-  //   const scrollToBottomWithSmoothScroll = () => {
-  //     if (messagesEndRef.current) {
-  //       messagesEndRef.current.scrollTo({
-  //         top: messagesEndRef.current.scrollHeight,
-  //         behavior: "smooth",
-  //       });
-  //     }
-  //   };
-  //   scrollToBottomWithSmoothScroll();
-  // }, [liveCommentsVideo]);
+  useEffect(() => {
+    const scrollToBottomWithSmoothScroll = () => {
+      if (messagesEndRef.current) {
+        messagesEndRef.current.scrollTo({
+          top: messagesEndRef.current.scrollHeight,
+          behavior: "smooth",
+        });
+      }
+    };
+    scrollToBottomWithSmoothScroll();
+  }, [liveCommentsVideo]);
   const [isPhone, setIsPhone] = useState(false);
   const handelCloseCommets = () => {
     // setIsPhone(!isPhone);
@@ -103,13 +103,13 @@ const LiveCommentsVideos = () => {
         </button>
       </div>
 
-      {/* <div ref={messagesEndRef} className={Style.comments_container}>
+      <div ref={messagesEndRef} className={Style.comments_container}>
         {liveCommentsVideo?.length
           ? liveCommentsVideo.map((comment: any, index: number) => (
               <StreamComment Key={index} key={index} CommentData={comment} />
             ))
           : ""}
-      </div> */}
+      </div>
       <div className={Style.container_hidden}>
         <InputStreamComment VideoId={videoId} />
       </div>
