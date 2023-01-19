@@ -49,7 +49,7 @@ const RightSide = () => {
   }, [asPath]);
   return (
     <div className={Style.container}>
-      {streamingVideo && <LiveCommentsVideos />}
+      {/* {streamingVideo && <LiveCommentsVideos />} */}
       <RightSideTaggs />
       {/* <VideosRight /> */}
       <div className={Style.container_desktop}>
