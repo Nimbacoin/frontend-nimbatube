@@ -13,13 +13,17 @@ import VideoOption from "./right-side/VideoOption";
 
 import AllVideosBeforLoad from "../../modals/pages-boforload/AllVideosBeforLoad";
 import { nextVideoReducer } from "../../../redux/video-slice/VideoSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector } from "react-redux";
 
 const RightSide = () => {
   const dipatch = useDispatch();
   const { asPath } = useRouter();
   const [videos, setVideos] = useState([]);
   const [streamingVideo, setStreamingVideo] = useState(false);
+  const videoLiveIsConnected = useSelector(
+    (state: any) => state.VideoSlice.videoLiveIsConnected
+  );
+  
   useEffect(() => {
     const locaFetch = async () => {
       let Params = new URL(window.location.href).searchParams;
@@ -49,7 +53,7 @@ const RightSide = () => {
   }, [asPath]);
   return (
     <div className={Style.container}>
-      {streamingVideo && <LiveCommentsVideos />}
+       {videoLiveIsConnected && streamingVideo && <LiveCommentsVideos />}
       <RightSideTaggs />
       {/* <VideosRight /> */}
       <div className={Style.container_desktop}>
