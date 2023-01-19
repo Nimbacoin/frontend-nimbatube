@@ -14,7 +14,7 @@ import { UserSignOut } from "../../../redux/user-slice/UserSignIn";
 import { IoVideocamOutline } from "@react-icons/all-files/io5/IoVideocamOutline";
 import { IoNotificationsOutline } from "@react-icons/all-files/io5/IoNotificationsOutline";
 import { useWeb3Context } from "web3-react";
-import { useAccount, useConnect, useDisconnect, useEnsName } from "wagmi";
+// import { useAccount, useConnect, useDisconnect, useEnsName } from "wagmi";
 
 import Cookies from "js-cookie";
 import basedPostUrlRequestLogedIn from "../../../utils/basedPostUrlRequestLogedIn";
@@ -170,7 +170,7 @@ const HeaderDropDown = () => {
       setShowDiv(false);
     }, 500);
   };
-  const { connector, isConnected } = useAccount();
+  // const { connector, isConnected } = useAccount();
 
   const connectWalletHandler = () => {
     handelConnect();

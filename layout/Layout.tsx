@@ -5,7 +5,7 @@ import { NextSeo } from "next-seo";
 import Style from "../styles/layout/layout.module.css";
 import SideHeader from "./header/SideHeader";
 import { useDispatch, useSelector } from "react-redux";
-import { configureChains, createClient, WagmiConfig } from "wagmi";
+// import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { useRouter } from "next/router";
 import {
   elementOverLaytRedcuer,
@@ -30,28 +30,28 @@ import ButtonLive from "../components/modals/ButtonLive";
 import ElementOver from "../components/modals/ElementOver";
 import UplaodFile from "../components/modals/uplaod/UplaodFile";
 import Support from "../components/modals/Support";
-import Web3 from "web3";
+// import Web3 from "web3";
 import CryptoWalletConnect from "../components/wallet/wallet-comp/CryptoWalletConnect";
-import Wallet from "../components/wallet/wallet-comp/Wallet";
-import Web3Provider from "web3-react";
-import { Web3ReactProvider } from "@web3-react/core";
+// import Wallet from "../components/wallet/wallet-comp/Wallet";
+// import Web3Provider from "web3-react";
+// import { Web3ReactProvider } from "@web3-react/core";
 import { Connectors } from "web3-react";
-import {
-  EthereumClient,
-  modalConnectors,
-  walletConnectProvider,
-} from "@web3modal/ethereum";
+// import {
+//   EthereumClient,
+//   modalConnectors,
+//   walletConnectProvider,
+// } from "@web3modal/ethereum";
 import { client } from "./wegmi";
 import GoLive from "../components/go-live/GoLive";
-import SocketHandler from "../libs/socket";
+// import SocketHandler from "../libs/socket";
 
-const { InjectedConnector, NetworkOnlyConnector } = Connectors;
-const MetaMask = new InjectedConnector({ supportedNetworks: [1, 4] });
-const Infura = new NetworkOnlyConnector({
-  providerURL: "https://mainnet.infura.io/v3/...",
-});
+// const { InjectedConnector, NetworkOnlyConnector } = Connectors;
+// const MetaMask = new InjectedConnector({ supportedNetworks: [1, 4] });
+// const Infura = new NetworkOnlyConnector({
+//   providerURL: "https://mainnet.infura.io/v3/...",
+// });
 
-const connectors = { MetaMask, Infura };
+// const connectors = { MetaMask, Infura };
 interface main {
   children: any;
 }
@@ -170,9 +170,9 @@ const Layout = ({ children }: any) => {
     // }
   };
 
-  function getLibrary(provider: any) {
-    return new Web3(provider);
-  }
+  // function getLibrary(provider: any) {
+  //   return new Web3(provider);
+  // }
   useEffect(() => {
     if (walletConnect) {
       document.body.style.overflow = "auto";
@@ -181,14 +181,14 @@ const Layout = ({ children }: any) => {
       document.body.style.overflow = "hidden";
     }
   });
-  const { provider } = configureChains(chains, [
-    walletConnectProvider({ projectId: "<YOUR_PROJECT_ID>" }),
-  ]);
-  const wagmiClient = createClient({
-    autoConnect: true,
-    connectors: modalConnectors({ appName: "web3Modal", chains }),
-    provider,
-  });
+  // const { provider } = configureChains(chains, [
+  //   walletConnectProvider({ projectId: "<YOUR_PROJECT_ID>" }),
+  // ]);
+  // const wagmiClient = createClient({
+  //   autoConnect: true,
+  //   connectors: modalConnectors({ appName: "web3Modal", chains }),
+  //   provider,
+  // });
 
   return (
     <>

@@ -30,6 +30,7 @@ const Home = () => {
   const [restVideos, setRestVideos] = useState(videos.slice(8, videos.length));
 
   useEffect(() => {
+    dispatch(seoReducer({ title: "Home" }));
     window.onscroll = function (ev) {
       if (
         window.innerHeight + window.scrollY >=
@@ -66,8 +67,6 @@ const Home = () => {
   //   }
   // }, [MenuBoolean]);
   const divRef = React.useRef<HTMLDivElement>(null);
-
-  dispatch(seoReducer({ title: "Home" }));
 
   return (
     <div ref={divRef} className={Style.container}>
