@@ -100,13 +100,12 @@ const MainVideo = () => {
   const handelChannelName = () => {
     Router.push("/channel/@/" + channelData?._id);
   };
-  console.log("ResDD", ResDD);
   return (
     <div className={Style.container}>
       {!ActiveVideo && <LiveVideo />}
-      {ActiveVideo && <VideoTag />}
+      {/* {ActiveVideo && <VideoTag />} */}
 
-      {!ResDD.errorMessage ? (
+      {/* {!ResDD.errorMessage ? (
         <>
           <VideoName />
           <div className={Style.container_video_data}>
@@ -147,7 +146,7 @@ const MainVideo = () => {
         </>
       ) : (
         <VideoBeforLoad />
-      )}
+      )} */}
     </div>
   );
 };

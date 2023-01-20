@@ -10,10 +10,9 @@ const WatchPage = ({ VideoData }: any) => {
   return (
     <div className={Style.container}>
       <LeftSide />
-      <RightSide />
+      {/* <RightSide /> */}
     </div>
   );
 };
-
 
 export default WatchPage;
