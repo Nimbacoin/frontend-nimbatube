@@ -60,22 +60,23 @@ const App = () => {
         }
       };
     });
-  }, [socket]);
 
-  useEffect(() => {
     socket.on("candidate", (id, candidate) => {
       peerConnection
         .addIceCandidate(new RTCIceCandidate(candidate))
         .catch((e) => console.error(e));
     });
   }, [socket]);
+
   useEffect(() => {
     socket.on("connect_error", (err) => {
       console.log(`connect_error due to the ${err.message}`);
     });
-    socket.on("new-broadcaster", (id) => {
-      setBroadcasterId(id);
-    });
+    setInterval(() => {
+      socket.on("new-broadcaster", (id) => {
+        setBroadcasterId(id);
+      });
+    }, 2000);
   });
 
   useEffect(() => {

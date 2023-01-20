@@ -13,9 +13,10 @@ function MyApp({ Component, pageProps }: any) {
   return (
     <Provider store={store}>
       <SessionProvider session={pageProps.session}>
-          <Layout>
-              <Component {...pageProps} />
-          </Layout>
+        <Layout>
+          {/* <SocketHandler /> */}
+          <Component {...pageProps} />
+        </Layout>
       </SessionProvider>
     </Provider>
   );

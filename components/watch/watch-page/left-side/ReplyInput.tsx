@@ -30,9 +30,9 @@ const ReplyInput = ({ VideoData }: any) => {
   );
   const Channels = useSelector((state: any) => state.ChannelSlice.allChannels);
   const channelsData = Channels?.length ? Channels[0] : {};
-  const socketRedux = useSelector(
-    (state: any) => state.socketSlice.socketRedux
-  );
+  // const socketRedux = useSelector(
+  //   (state: any) => state.socketSlice.socketRedux
+  // );
   const Bg = channelsData?.channelData?.profileImg?.url
     ? channelsData?.channelData?.profileImg?.url
     : "/images/default-profile.png";
@@ -58,10 +58,10 @@ const ReplyInput = ({ VideoData }: any) => {
               comments: res.responseData,
             })
           );
-          socketRedux.emit("new-comment", {
-            comments: res.responseData,
-            videoId: VideoData._id,
-          });
+          // socketRedux.emit("new-comment", {
+          //   comments: res.responseData,
+          //   videoId: VideoData._id,
+          // });
           setComment("");
           if (inputRef.current) {
             inputRef.current.value = "";
