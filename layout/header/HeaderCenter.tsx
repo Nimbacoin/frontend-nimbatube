@@ -23,7 +23,7 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
   const [showDivNotfy, setShowDivNotfy] = useState(false);
   const [showDivNotfyPhone, setShowDivNotfyPhone] = useState(false);
   const [IsPhone, setIsPhone] = useState(false);
-
+  const [searchResult, setSearchResult] = useState<string>("");
   const Ref = React.useRef<HTMLDivElement>(null);
   const InputSearch = React.useRef<HTMLInputElement>(null);
   const notifyIcon = React.useRef<HTMLDivElement>(null);
@@ -97,27 +97,37 @@ const HeaderCenter = ({ UserIsSignedIn }: any) => {
 
   const numberNotfy = notificationNoSeen.length;
   const [showDivPhone, setShowDivPhone] = useState(false);
+  const Router = useRouter();
+  const handelSubmit = (e: any) => {
+    e.preventDefault();
+    Router.push("/search/results?search_query=" + searchResult);
+  };
+  const handelChangeSearch = async (e: any) => {
+    setSearchResult(e.target.value);
+    if (e.target.value.length >= 1) {
+      await SearchFunc(e.target.value);
+    }
+  };
   return (
     <div className={IsPhone ? Style.container_phone : Style.container}>
-      <div
+      <form
         className={
           IsPhone ? Style.container_search_phone : Style.container_search
         }
+        onSubmit={handelSubmit}
       >
         <input
           ref={InputSearch}
           className={Style.search_input}
           placeholder="search"
-          onChange={async (e: any) => {
-            await SearchFunc(e.target.value);
-          }}
+          onChange={handelChangeSearch}
         />
         <button className={Style.search_button}>
           <IoSearchOutline />
         </button>
-
         {ShowDiv && <SearchDropDown />}
-      </div>
+      </form>
+
       {showDivPhone && <div className={Style.div_searching}></div>}
 
       <div className={Style.buttons_container}>
