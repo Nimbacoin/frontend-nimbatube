@@ -75,7 +75,7 @@
   cursor: pointer;
   row-gap: 5px;
   margin: 0 auto;
-  overflow: hidden;
+  /* overflow: hidden; */
   min-height: 90px;
 }
 .title_data {

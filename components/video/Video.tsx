@@ -11,11 +11,13 @@ import { useSelector } from "react-redux";
 import LoaodingAll from "../modals/LoaodingAll";
 import GoogleIcon from "../modals/GoogleIcon";
 import { ContainerEffectedClick } from "../watch/watch-page/left-side/VideoInfo";
+import VideoAddList from "./VideoAddList";
 const Video = ({ VideoData }: any) => {
   const [OverElement, setOverElement] = useState(false);
   const [isLaoded, setIsLaoded] = useState(false);
   const streaming = VideoData?.streaming;
   const [videoLink, setVideoLink] = useState("");
+  const [isVideoAddOption, setIsVideoAddOption] = useState(false);
   const MenuBoolean = useSelector((state: any) => state.SideMenu.MenuBoolean);
   const HandelOver = () => {
     setOverElement(true);
@@ -28,7 +30,9 @@ const Video = ({ VideoData }: any) => {
   const channelNameRef = React.useRef<HTMLDivElement | null>(null);
   const [ScreenWithByHalf, setScreenWithByHalf] = useState(500);
   const [IsPhone, setIsPhone] = useState(false);
-
+  const handelClickAddOption = () => {
+    setIsVideoAddOption(!isVideoAddOption);
+  };
   useEffect(() => {
     const isLive = streaming?.isLive;
     const created = streaming?.created;
@@ -142,11 +146,13 @@ const Video = ({ VideoData }: any) => {
                 <p className={Style.title}>{Title?.slice(0, 70)}</p>
               </Link>
               <span
+                onClick={handelClickAddOption}
                 ref={Spanlem}
                 className={OverElement ? Style.menu_desktop : Style.menu}
               >
                 <IoEllipsisVertical />
               </span>
+              {isVideoAddOption ? <VideoAddList VideoData={VideoData} /> : null}
             </div>
             <div className={Style.chanel_data}>
               <div

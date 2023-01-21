@@ -25,11 +25,9 @@ const MychannelPage = () => {
         try {
           if (res.responsData) {
             setChannelData(res.responsData);
-
             dispatch(avtiveChannelReducer(res.responsData));
           }
-        } catch (error) {
-        }
+        } catch (error) {}
       });
     }
   }, [asPath]);
