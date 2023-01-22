@@ -17,7 +17,7 @@ const SOCKEtT_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL;
 
 const LiveCommentsVideos = () => {
   const { asPath } = useRouter();
-  const socket = io(SOCKEtT_SERVER_URL!);
+  // const socket = io(SOCKEtT_SERVER_URL!);
   const [videoId, setVideoId] = useState("");
   const liveCommentsVideo = useSelector(
     (state: any) => state.VideoSlice.liveCommentsVideo
@@ -62,18 +62,18 @@ const LiveCommentsVideos = () => {
   );
   const [socketIdd, setSocketIdd] = useState("");
   const dispatch = useDispatch();
-  useEffect(() => {
-    const localFetch = () => {
-      socket.on("new-comment", (data: any) => {
-        dispatch(
-          liveVideoLive({
-            comments: data,
-          })
-        );
-      });
-    };
-    localFetch();
-  }, [socket]);
+  // useEffect(() => {
+  //   const localFetch = () => {
+  //     socket.on("new-comment", (data: any) => {
+  //       dispatch(
+  //         liveVideoLive({
+  //           comments: data,
+  //         })
+  //       );
+  //     });
+  //   };
+  //   localFetch();
+  // }, [socket]);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -110,9 +110,9 @@ const LiveCommentsVideos = () => {
             ))
           : ""}
       </div>
-      <div className={Style.container_hidden}>
+      {/* <div className={Style.container_hidden}>
         <InputStreamComment VideoId={videoId} />
-      </div>
+      </div> */}
     </div>
   );
 };

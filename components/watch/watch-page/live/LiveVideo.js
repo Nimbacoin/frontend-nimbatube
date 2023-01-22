@@ -28,6 +28,7 @@ const App = () => {
   const dispatch = useDispatch();
   const [broadcasterId, setBroadcasterId] = useState("");
   const [videoId, setVideoId] = useState("");
+  const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
     let Params = new URL(window.location.href).searchParams;
@@ -52,6 +53,13 @@ const App = () => {
         });
       peerConnection.ontrack = (event) => {
         videoRef.current.srcObject = event.streams[0];
+        if (event.streams[0]) {
+         
+          console.log("data",event.streams[0])
+          setIsConnected(true);
+        }else {
+          setIsConnected(false)
+        }
         dispatch(videoLiveIsConnectedReducer());
       };
       peerConnection.onicecandidate = (event) => {
@@ -72,17 +80,13 @@ const App = () => {
     socket.on("connect_error", (err) => {
       console.log(`connect_error due to the ${err.message}`);
     });
-    setInterval(() => {
-      socket.on("new-broadcaster", (id) => {
-        setBroadcasterId(id);
-      });
-    }, 2000);
+    socket.on("new-broadcaster", (id) => {
+      setBroadcasterId(id);
+    });
   });
 
   useEffect(() => {
-    if (videoId.length > 10) {
-      socket.emit("watcher", { broadcasterId, videoId });
-    }
+    socket.emit("watcher", { broadcasterId, videoId });
   }, [videoId]);
 
   return (

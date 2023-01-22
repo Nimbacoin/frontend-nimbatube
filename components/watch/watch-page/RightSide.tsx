@@ -28,7 +28,6 @@ const RightSide = () => {
     const locaFetch = async () => {
       let Params = new URL(window.location.href).searchParams;
       const video: string | null = Params.get("video");
-
       const dataRes: any = await allVideosFetch(0);
       setVideos(dataRes.responseData);
       if (dataRes?.responseData?.length >= 1) {
@@ -43,7 +42,6 @@ const RightSide = () => {
 
   useEffect(() => {
     let Params = new URL(window.location.href).searchParams;
-    const watching: string | null = Params.get("watching");
     const streaming: string | null = Params.get("streaming");
     if (streaming && streaming.length) {
       if (streaming === "true") {
@@ -53,7 +51,7 @@ const RightSide = () => {
   }, [asPath]);
   return (
     <div className={Style.container}>
-      {streamingVideo && <LiveCommentsVideos />}
+      {streamingVideo ? <LiveCommentsVideos /> : ""}
       <RightSideTaggs />
       {/* <VideosRight /> */}
       <div className={Style.container_desktop}>
