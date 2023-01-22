@@ -16,7 +16,7 @@ const StreamComment = ({ CommentData, Key }: any) => {
     setIsDisLiked(!IsDisLiked);
   };
   return (
-    <div key={Key && Key} className={Style.chanel}>
+    <div key={Key} className={Style.chanel}>
       <div
         style={{ backgroundImage: `url(${Bg})` }}
         className={Style.img}

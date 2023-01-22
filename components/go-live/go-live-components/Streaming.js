@@ -32,6 +32,7 @@ const Streaming = () => {
   const pcRef = useRef(null);
   const [peerConnections, setPeerConnections] = useState({});
   const VideoRef = useRef(null);
+  const second = useRef(null);
   const [videoId, setVideoId] = useState("");
   const [broadcaster, setBroadcaster] = useState("");
   const [viewers, setViewers] = useState([]);
@@ -48,54 +49,83 @@ const Streaming = () => {
     }
   }, [asPath]);
   useEffect(() => {
+    const parts = [];
     const localFetch = async () => {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: true,
-          audio: true,
-        });
-        if (VideoRef.current) {
-          VideoRef.current.srcObject = stream;
-        }
-      } catch (err) {}
+      // try {
+      //   const stream = await navigator.mediaDevices.getUserMedia({
+      //     video: true,
+      //     audio: true,
+      //   });
+      //   // if (VideoRef.current) {
+      //   // VideoRef.current.srcObject = stream;
+      //   //}
+      // } catch (err) {}
     };
     localFetch();
   }, []);
-
+  let mediaRecorder;
+  let parts = [];
+  const startRecord = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true,
+      });
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.start(1000);
+      mediaRecorder.ondataavailable = (e) => {
+        parts.push(e.data);
+        socket.emit("live-socket-recored", parts);
+      };
+    } catch (err) {}
+  };
+  function stopRecording() {
+    mediaRecorder.stop();
+    const blob = new Blob(parts, { type: "video/mp4" });
+    // second.current.src = blob;
+    const url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.textContent = a.download;
+    document.body.appendChild(a);
+    a.style.display = "none";
+    a.href = url;
+    a.download = "test.mp4";
+    a.click();
+  }
   useEffect(() => {
     socket.on("broadcaster", (id) => {
       setBroadcaster(id);
     });
   }, [socket]);
 
-  useEffect(() => {
-    socket.on("watcher-leave", ({ viewers }) => {
-      setViewers(viewers);
-    });
-    socket.on("watcher", ({ id, viewers }) => {
-      setViewers(viewers);
-      const peerConnection = new RTCPeerConnection(pc_config);
-      peerConnections[id] = peerConnection;
-      setPeerConnections((peerConnections[id] = peerConnection));
-      let stream = VideoRef.current.srcObject;
-      stream
-        .getTracks()
-        .forEach((track) => peerConnection.addTrack(track, stream));
+  //useEffect(() => {
+  //   socket.on("watcher-leave", ({ viewers }) => {
+  //     setViewers(viewers);
+  //   });
+  //   socket.on("watcher", ({ id, viewers }) => {
+  //     setViewers(viewers);
+  //     const peerConnection = new RTCPeerConnection(pc_config);
+  //     peerConnections[id] = peerConnection;
+  //     setPeerConnections((peerConnections[id] = peerConnection));
+  //     let stream = VideoRef.current.srcObject;
+  //     stream
+  //       .getTracks()
+  //       .forEach((track) => peerConnection.addTrack(track, stream));
 
-      peerConnection.onicecandidate = (event) => {
-        if (event.candidate) {
-          socket.emit("candidate", id, event.candidate);
-        }
-      };
+  //     peerConnection.onicecandidate = (event) => {
+  //       if (event.candidate) {
+  //         socket.emit("candidate", id, event.candidate);
+  //       }
+  //     };
 
-      peerConnection
-        .createOffer()
-        .then((sdp) => peerConnection.setLocalDescription(sdp))
-        .then(() => {
-          socket.emit("offer", id, peerConnection.localDescription);
-        });
-    });
-  }, [socket]);
+  //     peerConnection
+  //       .createOffer()
+  //       .then((sdp) => peerConnection.setLocalDescription(sdp))
+  //       .then(() => {
+  //         socket.emit("offer", id, peerConnection.localDescription);
+  //       });
+  //   });
+  // }, [socket]);
 
   useEffect(() => {
     socket.on("answer", (id, description) => {
@@ -180,8 +210,9 @@ const Streaming = () => {
             </div>
           </div>
         )}
+        {/* <video className={Style.video} muted ref={VideoRef} autoPlay /> */}
+        <video className={Style.video} muted ref={second} autoPlay />
 
-        <video className={Style.video} muted ref={VideoRef} autoPlay />
         <p className={Style.viewers}>
           <IoEyeOutline />
           <span className={Style.file_text_title_bold_viewers}>
@@ -197,6 +228,8 @@ const Streaming = () => {
 
       <div className={Style.video_container_comments}>
         <div className={Style.div_cooment_top}>
+          <button onClick={startRecord}>start button</button>
+          <button onClick={stopRecording}>end button</button>
           <span className={Style.file_text_title_bold}>
             Comments : {liveCommentsVideo?.length}
           </span>
@@ -204,7 +237,7 @@ const Streaming = () => {
         <div ref={messagesEndRef} className={Style.comments_main_container}>
           {liveCommentsVideo?.length
             ? liveCommentsVideo.map((comment, index) => (
-                <StreamComment Key={index} CommentData={comment} />
+                <StreamComment Key={index} key={index} CommentData={comment} />
               ))
             : null}
         </div>

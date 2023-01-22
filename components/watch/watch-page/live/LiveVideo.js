@@ -77,10 +77,22 @@ const App = () => {
       setBroadcasterId(id);
     });
   });
+  useEffect(() => {
+    socket.on("new-live-record", (data) => {
+      const blob = new Blob(data, { type: "video/mp4" });
+      // second.current.src = blob;
+      const url = URL.createObjectURL(blob);
+      videoRef.current.src = url;
+    });
+  }, [socket]);
 
   useEffect(() => {
     if (videoId.length > 10) {
       socket.emit("watcher", { broadcasterId, videoId });
+    }
+    if (document.readyState == "complete") {
+      // alert(document.readyState);
+      //
     }
   }, [videoId]);
 
