@@ -103,7 +103,7 @@ const MainVideo = () => {
   return (
     <div className={Style.container}>
       {!ActiveVideo && <LiveVideo />}
-      {/* {ActiveVideo && <VideoTag />} */}
+      {ActiveVideo && <VideoTag />}
 
       {/* {!ResDD.errorMessage ? (
         <>
