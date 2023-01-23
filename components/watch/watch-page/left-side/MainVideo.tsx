@@ -105,7 +105,7 @@ const MainVideo = () => {
       {!ActiveVideo && <LiveVideo />}
       {ActiveVideo && <VideoTag />}
 
-      {/* {!ResDD.errorMessage ? (
+      {!ResDD.errorMessage ? (
         <>
           <VideoName />
           <div className={Style.container_video_data}>
@@ -146,7 +146,7 @@ const MainVideo = () => {
         </>
       ) : (
         <VideoBeforLoad />
-      )} */}
+      )}
     </div>
   );
 };
