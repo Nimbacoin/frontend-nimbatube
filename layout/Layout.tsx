@@ -5,7 +5,7 @@ import { NextSeo } from "next-seo";
 import Style from "../styles/layout/layout.module.css";
 import SideHeader from "./header/SideHeader";
 import { useDispatch, useSelector } from "react-redux";
-// import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { useRouter } from "next/router";
 import {
   elementOverLaytRedcuer,
@@ -32,15 +32,15 @@ import UplaodFile from "../components/modals/uplaod/UplaodFile";
 import Support from "../components/modals/Support";
 // import Web3 from "web3";
 import CryptoWalletConnect from "../components/wallet/wallet-comp/CryptoWalletConnect";
-// import Wallet from "../components/wallet/wallet-comp/Wallet";
-// import Web3Provider from "web3-react";
-// import { Web3ReactProvider } from "@web3-react/core";
+import Wallet from "../components/wallet/wallet-comp/Wallet";
+import Web3Provider from "web3-react";
+import { Web3ReactProvider } from "@web3-react/core";
 import { Connectors } from "web3-react";
-// import {
-//   EthereumClient,
-//   modalConnectors,
-//   walletConnectProvider,
-// } from "@web3modal/ethereum";
+import {
+  EthereumClient,
+  modalConnectors,
+  walletConnectProvider,
+} from "@web3modal/ethereum";
 import { client } from "./wegmi";
 import GoLive from "../components/go-live/GoLive";
 // import SocketHandler from "../libs/socket";
@@ -181,14 +181,14 @@ const Layout = ({ children }: any) => {
       document.body.style.overflow = "hidden";
     }
   });
-  // const { provider } = configureChains(chains, [
-  //   walletConnectProvider({ projectId: "<YOUR_PROJECT_ID>" }),
-  // ]);
-  // const wagmiClient = createClient({
-  //   autoConnect: true,
-  //   connectors: modalConnectors({ appName: "web3Modal", chains }),
-  //   provider,
-  // });
+  const { provider } = configureChains(chains, [
+    walletConnectProvider({ projectId: "<YOUR_PROJECT_ID>" }),
+  ]);
+  const wagmiClient = createClient({
+    autoConnect: true,
+    connectors: modalConnectors({ appName: "web3Modal", chains }),
+    provider,
+  });
 
   return (
     <>
@@ -266,72 +266,72 @@ const Layout = ({ children }: any) => {
           cardType: "summary_large_image",
         }}
       />
-      {/* <WagmiConfig client={client}> */}
-      <div style={{ minHeight: `${Height}px` }} className={Style.container}>
-        {/* <Header /> */}
-        {playList && <AddToPalayList />}
-        {PopUppBoolean && <PopUpp />}
-        {copyVideo && <ShareVideo />}
-        {cropping && <CropperCom />}
-        {/* {support && <Support />} */}
-        {/* {walletConnect && <CryptoWalletConnect />} */}
-        {/* {wallet && <Wallet />} */}
-        <SideHeader />
-        {/* <div
+      <WagmiConfig client={client}>
+        <div style={{ minHeight: `${Height}px` }} className={Style.container}>
+          <Header />
+          {playList && <AddToPalayList />}
+          {PopUppBoolean && <PopUpp />}
+          {copyVideo && <ShareVideo />}
+          {cropping && <CropperCom />}
+          {support && <Support />}
+          {walletConnect && <CryptoWalletConnect />}
+          {wallet && <Wallet />}
+          <SideHeader />
+          {/* <div
           ref={childrenRef}
           style={{ minHeight: `${Height}px` }}
           className={MenuBoolean ? Style.childen : Style.childen_MenuBoolean}
         >
           {children}
         </div> */}
-        {(() => {
-          if (
-            asPath.includes("/sign-in") ||
-            asPath.includes("/chanel/new") ||
-            asPath.includes("/sign-up") ||
-            asPath.includes("/watch/") ||
-            asPath.includes("/channel/create-new-channel/") ||
-            asPath.includes("edit-channel")
-          ) {
-            return (
-              <div
-                ref={childrenRef}
-                style={{ minHeight: `${Height}px` }}
-                className={Style.childen_100}
-              >
-                {children}
-              </div>
-            );
-          } else {
-            if (MenuBoolean) {
+          {(() => {
+            if (
+              asPath.includes("/sign-in") ||
+              asPath.includes("/chanel/new") ||
+              asPath.includes("/sign-up") ||
+              asPath.includes("/watch/") ||
+              asPath.includes("/channel/create-new-channel/") ||
+              asPath.includes("edit-channel")
+            ) {
               return (
                 <div
                   ref={childrenRef}
                   style={{ minHeight: `${Height}px` }}
-                  className={Style.childen}
+                  className={Style.childen_100}
                 >
                   {children}
                 </div>
               );
             } else {
-              return (
-                <div
-                  ref={childrenRef}
-                  style={{ minHeight: `${Height}px` }}
-                  className={Style.childen_MenuBoolean}
-                >
-                  {children}
-                </div>
-              );
+              if (MenuBoolean) {
+                return (
+                  <div
+                    ref={childrenRef}
+                    style={{ minHeight: `${Height}px` }}
+                    className={Style.childen}
+                  >
+                    {children}
+                  </div>
+                );
+              } else {
+                return (
+                  <div
+                    ref={childrenRef}
+                    style={{ minHeight: `${Height}px` }}
+                    className={Style.childen_MenuBoolean}
+                  >
+                    {children}
+                  </div>
+                );
+              }
             }
-          }
-        })()}
-        {isOver && <HoverText />}
-        {elementOverLayt && <UplaodFile />}
-        {asPath.includes("/go-live/go-live") && <GoLive />}
-        <ButtonLive />
-      </div>
-      {/* </WagmiConfig> */}
+          })()}
+          {isOver && <HoverText />}
+          {elementOverLayt && <UplaodFile />}
+          {asPath.includes("/go-live/go-live") && <GoLive />}
+          <ButtonLive />
+        </div>
+      </WagmiConfig>
       {/* </Web3ReactProvider> */}
     </>
   );

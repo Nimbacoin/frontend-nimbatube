@@ -22,6 +22,8 @@ const pc_config = {
 const SOCKEtT_SERVER_URL = process.env.NEXT_PUBLIC_BACK_END_URL;
 
 const App = () => {
+  let main0 = 0;
+  let main1 = 0;
   const { asPath } = useRouter();
   const socket = io(SOCKEtT_SERVER_URL);
   const videoRef = useRef(null);
@@ -52,14 +54,19 @@ const App = () => {
           socket.emit("answer", id, peerConnection.localDescription);
         });
       peerConnection.ontrack = (event) => {
-        videoRef.current.srcObject = event.streams[0];
-        if (event.streams[0]) {
-         
-          console.log("data",event.streams[0])
-          setIsConnected(true);
-        }else {
-          setIsConnected(false)
+        if (videoRef.current) {
+          if (event.streams[0]) {
+            videoRef.current.srcObject = event.streams[0];
+            main0 = main0 + 1;
+            console.log("data", event.streams[0], main0);
+            setIsConnected(true);
+            alert("yes");
+          } else {
+            alert("no");
+            setIsConnected(false);
+          }
         }
+
         dispatch(videoLiveIsConnectedReducer());
       };
       peerConnection.onicecandidate = (event) => {
@@ -83,6 +90,8 @@ const App = () => {
     socket.on("new-broadcaster", (id) => {
       setBroadcasterId(id);
     });
+    main1 = main1 + 1;
+    console.log("is changing", main1);
   });
 
   useEffect(() => {

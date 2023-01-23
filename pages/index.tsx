@@ -6,10 +6,10 @@ import basedGetUrlRequest from "../utils/basedGetUrlRequest";
 
 const HomePage: NextPage = () => {
   return (
-    <>
-    sdslñ
-      <Home />
-    </>
+    // <>
+
+    <Home />
+    // </>
   );
 };
 
