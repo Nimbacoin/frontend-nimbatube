@@ -204,7 +204,12 @@ function Wallet() {
           </div>
           <div className={Style.div_button_container}>
             {" "}
-            <CancelButton Text={"Desconnect"} HandelClick={disconnect} />{" "}
+            <CancelButton
+              Text={"Desconnect"}
+              HandelClick={() => {
+                disconnect();
+              }}
+            />
           </div>
         </div>
       </div>
