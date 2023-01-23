@@ -150,7 +150,7 @@ function CryptoWalletConnect() {
   const { connector, isConnected } = useAccount();
   const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect();
-
+//fg
   useEffect(() => {
     connectors.map((items) => {
       const main = connectorsArray.filter((x) => x.name === items.name);
