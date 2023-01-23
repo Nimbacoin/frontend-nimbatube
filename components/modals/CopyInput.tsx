@@ -13,13 +13,12 @@ const CopyInput = ({
   Number,
   Icon,
   Value,
-  CopiedText
-
+  CopiedText,
 }: any) => {
   const dispatch = useDispatch();
   const handelCopy = () => {
     navigator.clipboard.writeText(Value);
-    dispatch(poPUppRedcuer({ data:CopiedText }));
+    dispatch(poPUppRedcuer({ data: CopiedText }));
     setTimeout(() => {
       dispatch(poPUppRedcuer({ data: "" }));
     }, 5000);
@@ -30,7 +29,7 @@ const CopyInput = ({
       <label onClick={handelCopy} htmlFor="title" className={Style.input_label}>
         <input
           id="title"
-          value={Value ? Value:""}
+          value={Value ? Value : ""}
           placeholder={Placeholder}
           onChange={HandelChange}
           type={Number ? "number" : "text"}

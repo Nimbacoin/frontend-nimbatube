@@ -28,7 +28,6 @@ import AbiJson from "../../modals/AbiJson.json";
 import CancelButton from "../../modals/CancelButton";
 
 function Wallet() {
-
   const { active, activate, deactivate, chainId, account, library } =
     useWeb3React();
   const [walletAddress, setWalletAddress] = useState("");
@@ -149,7 +148,7 @@ function Wallet() {
   const { address } = useAccount();
   const { data: ensName } = useEnsName({ address });
   const { disconnect } = useDisconnect();
-
+  const HandelChange = () => {};
   return (
     <OverAll>
       <div className={Style.container}>
@@ -167,6 +166,7 @@ function Wallet() {
               CopiedText={"Your wallet address copied"}
               Text={"Your Address"}
               Value={address}
+              HandelChange={HandelChange}
             />
           </div>
           <div className={Style.second_container}>

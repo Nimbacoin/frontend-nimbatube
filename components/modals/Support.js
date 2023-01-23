@@ -5,6 +5,7 @@ import {
   playListRedcuer,
   poPUppRedcuer,
   supportReducer,
+  walletReducer,
 } from "../../redux/style-slice/general-style/GenrealStyle";
 import Style from "../../styles/modals/support.module.css";
 import { IoCloseOutline } from "@react-icons/all-files/io5/IoCloseOutline";
