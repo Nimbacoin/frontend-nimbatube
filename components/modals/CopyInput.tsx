@@ -30,7 +30,7 @@ const CopyInput = ({
       <label onClick={handelCopy} htmlFor="title" className={Style.input_label}>
         <input
           id="title"
-          value={Value && Value}
+          value={Value ? Value:""}
           placeholder={Placeholder}
           onChange={HandelChange}
           type={Number ? "number" : "text"}

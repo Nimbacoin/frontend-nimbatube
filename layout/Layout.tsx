@@ -45,13 +45,13 @@ import { client } from "./wegmi";
 import GoLive from "../components/go-live/GoLive";
 // import SocketHandler from "../libs/socket";
 
-// const { InjectedConnector, NetworkOnlyConnector } = Connectors;
-// const MetaMask = new InjectedConnector({ supportedNetworks: [1, 4] });
-// const Infura = new NetworkOnlyConnector({
-//   providerURL: "https://mainnet.infura.io/v3/...",
-// });
+const { InjectedConnector, NetworkOnlyConnector } = Connectors;
+const MetaMask = new InjectedConnector({ supportedNetworks: [1, 4] });
+const Infura = new NetworkOnlyConnector({
+  providerURL: "https://mainnet.infura.io/v3/...",
+});
 
-// const connectors = { MetaMask, Infura };
+const connectors = { MetaMask, Infura };
 interface main {
   children: any;
 }
