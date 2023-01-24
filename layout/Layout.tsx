@@ -275,7 +275,7 @@ const Layout = ({ children }: any) => {
           {cropping && <CropperCom />}
           {support && <Support />}
           {walletConnect && <CryptoWalletConnect />}
-          {/* {wallet && <Wallet />} */}
+          {wallet && <Wallet />}
           <SideHeader />
           {/* <div
           ref={childrenRef}
