@@ -43,17 +43,6 @@ function CryptoWalletConnect() {
   const { active, activate, deactivate, chainId, account, library } =
     useWeb3React();
   const networks = {
-    polygon: {
-      chainId: `0x${Number(137).toString(16)}`,
-      chainName: "Polygon Mainnet",
-      nativeCurrency: {
-        name: "MATIC",
-        symbol: "MATIC",
-        decimals: 18,
-      },
-      rpcUrls: ["https://polygon-rpc.com/"],
-      blockExplorerUrls: ["https://polygonscan.com/"],
-    },
     bsc: {
       chainId: `0x${Number(56).toString(16)}`,
       chainName: "Binance Smart Chain Mainnet",
@@ -79,25 +68,6 @@ function CryptoWalletConnect() {
       ],
       blockExplorerUrls: ["https://bscscan.com"],
     },
-  };
-  const [Error, setError] = useState("");
-  const handleNetworkSwitch = async (networkName) => {
-    await changeNetwork({ networkName, setError });
-  };
-  const changeNetwork = async ({ networkName, setError }) => {
-    try {
-      if (!window.ethereum) throw new Error("No crypto wallet found");
-      await library.provider.request({
-        method: "wallet_addEthereumChain",
-        params: [
-          {
-            ...networks[networkName],
-          },
-        ],
-      });
-    } catch (err) {
-      setError(err.message);
-    }
   };
 
   const connectorsArray = [
@@ -150,16 +120,16 @@ function CryptoWalletConnect() {
   const { connector, isConnected } = useAccount();
   const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect();
-//fg
-  useEffect(() => {
-    connectors.map((items) => {
-      const main = connectorsArray.filter((x) => x.name === items.name);
-      if (main.length >= 1) {
-        items.image = main[0].image;
-        return items;
-      }
-    });
-  }, [connectors, connectorsArray]);
+
+  // useEffect(() => {
+  //   connectors.map((items) => {
+  //     const main = connectorsArray.filter((x) => x.name === items.name);
+  //     if (main.length >= 1) {
+  //       items.image = main[0].image;
+  //       return items;
+  //     }
+  //   });
+  // }, [connectors, connectorsArray]);
 
   return (
     <OverAll>
