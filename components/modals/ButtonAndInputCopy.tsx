@@ -14,7 +14,7 @@ const ButtonAndInputAction = ({
 }: any) => {
   const { asPath } = useRouter();
   const dispatch = useDispatch();
-
+const handelChange =()=>{}
   return (
     <div className={Style.container}>
       <TextTilteInputMudum Icon={Icon && Icon} Text={Text && Text} />
@@ -22,6 +22,7 @@ const ButtonAndInputAction = ({
         <input
           value={CopyValue}
           className={Style.main_link_container}
+          onChange={handelChange}
         />
         <button onClick={HandelClick} className={Style.button_copy}>
           {ButtonTextValue ? ButtonTextValue : "Copy"}

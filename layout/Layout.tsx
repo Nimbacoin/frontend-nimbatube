@@ -317,7 +317,7 @@ const Layout = ({ children }: any) => {
           }
         })()}
         {isOver && <HoverText />}
-        {elementOverLayt && <UplaodFile />}
+        {/* {elementOverLayt && <UplaodFile />} */}
         {asPath.includes("/go-live/go-live") && <GoLive />}
         <ButtonLive />
       </div>

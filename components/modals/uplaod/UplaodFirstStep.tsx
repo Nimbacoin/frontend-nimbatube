@@ -27,7 +27,7 @@ const UplaodFirstStep = ({ handelChangeInput }: any) => {
             accept="video/mp4,video/x-m4v,video/*"
             style={{ display: "none" }}
           />
-          <BoldText text={"uplaod yuur videos from here"} />
+          <BoldText text={"uplaod your videos from here"} />
           <ContainerEffectedClick
             Stylied={true}
             style={{ borderRadius: "20px" }}
