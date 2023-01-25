@@ -258,7 +258,7 @@ const Layout = ({ children }: any) => {
       />
       {/* <WagmiConfig client={client}> */}
       <div style={{ minHeight: `${Height}px` }} className={Style.container}>
-        {/* <Header /> */}
+        <Header />
         {playList && <AddToPalayList />}
         {PopUppBoolean && <PopUpp />}
         {copyVideo && <ShareVideo />}
