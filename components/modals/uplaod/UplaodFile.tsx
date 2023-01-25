@@ -199,5 +199,5 @@ const UplaodFile = () => {
     </div>
   );
 };
-//main
+//maind
 export default UplaodFile;
