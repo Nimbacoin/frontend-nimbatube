@@ -20,7 +20,7 @@ const ButtonAndInputAction = ({
       <TextTilteInputMudum Icon={Icon && Icon} Text={Text && Text} />
       <div className={Style.link_container}>
         <input
-          value={CopyValue.length ? CopyValue : null}
+          value={CopyValue}
           className={Style.main_link_container}
         />
         <button onClick={HandelClick} className={Style.button_copy}>
