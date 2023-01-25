@@ -68,45 +68,45 @@ const VideoTag = () => {
     }
   }, [asPath, ResDD]);
 
-  useEffect(() => {
-    const CurrentVideo = videoTag.current;
-    if (CurrentVideo) {
-      CurrentVideo.onloadedmetadata = (event) => {
-        if (CurrentVideo && CurrentVideo.src) {
-          CurrentVideo.play();
-          const TimeVideo = CurrentVideo.duration;
-          setDuration(VideoTimeReader(TimeVideo));
-        }
-        if (CurrentVideo) {
-          setLoadeded(true);
-          CurrentVideo.play();
-        }
-      };
-      CurrentVideo.addEventListener("timeupdate", () => {
-        if (videoTag.current) {
-          const num =
-            (videoTag.current.currentTime / videoTag.current.duration) * 100;
-          setTimeValue(`${num}%`);
-          setTimeUpdate(VideoTimeReaderChanging(videoTag.current.currentTime));
-        }
-      });
-    }
-  }, [videoTag.current, videoSrc.current]);
+  // useEffect(() => {
+  //   const CurrentVideo = videoTag.current;
+  //   if (CurrentVideo) {
+  //     CurrentVideo.onloadedmetadata = (event) => {
+  //       if (CurrentVideo && CurrentVideo.src) {
+  //         CurrentVideo.play();
+  //         const TimeVideo = CurrentVideo.duration;
+  //         setDuration(VideoTimeReader(TimeVideo));
+  //       }
+  //       if (CurrentVideo) {
+  //         setLoadeded(true);
+  //         CurrentVideo.play();
+  //       }
+  //     };
+  //     CurrentVideo.addEventListener("timeupdate", () => {
+  //       if (videoTag.current) {
+  //         const num =
+  //           (videoTag.current.currentTime / videoTag.current.duration) * 100;
+  //         setTimeValue(`${num}%`);
+  //         setTimeUpdate(VideoTimeReaderChanging(videoTag.current.currentTime));
+  //       }
+  //     });
+  //   }
+  // }, [videoTag.current, videoSrc.current]);
 
-  useEffect(() => {
-    if (redBar.current) {
-    }
-    window.onresize = () => {
-      if (videoTag.current && hiddenDiv.current) {
-        const dataDiv = videoTag.current.getBoundingClientRect();
-        hiddenDiv.current.style.height = `${dataDiv.height + 10}px`;
-      }
-    };
-    if (videoTag.current && hiddenDiv.current) {
-      const dataDiv = videoTag.current.getBoundingClientRect();
-      hiddenDiv.current.style.height = `${dataDiv.height}px`;
-    }
-  });
+  // useEffect(() => {
+  //   if (redBar.current) {
+  //   }
+  //   window.onresize = () => {
+  //     if (videoTag.current && hiddenDiv.current) {
+  //       const dataDiv = videoTag.current.getBoundingClientRect();
+  //       hiddenDiv.current.style.height = `${dataDiv.height + 10}px`;
+  //     }
+  //   };
+  //   if (videoTag.current && hiddenDiv.current) {
+  //     const dataDiv = videoTag.current.getBoundingClientRect();
+  //     hiddenDiv.current.style.height = `${dataDiv.height}px`;
+  //   }
+  // });
   const [play, setPlay] = useState(false);
   const handelPuase = () => {
     setPlay(true);
@@ -144,11 +144,11 @@ const VideoTag = () => {
     }
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowDivControls(false);
-    }, 2000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setShowDivControls(false);
+  //   }, 2000);
+  // }, []);
   const [showDivControls, setShowDivControls] = useState(true);
   const [showDivControlsBar, setShowDivControlsBar] = useState(true);
 

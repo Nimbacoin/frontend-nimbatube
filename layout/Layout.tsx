@@ -33,7 +33,7 @@ import Support from "../components/modals/Support";
 // import Web3 from "web3";
 import CryptoWalletConnect from "../components/wallet/wallet-comp/CryptoWalletConnect";
 import Wallet from "../components/wallet/wallet-comp/Wallet";
-import Web3Provider from "web3-react";
+// import Web3Provider from "web3-react";
 import { Web3ReactProvider } from "@web3-react/core";
 import { Connectors } from "web3-react";
 import {
@@ -45,16 +45,6 @@ import { client } from "./wegmi";
 import GoLive from "../components/go-live/GoLive";
 // import SocketHandler from "../libs/socket";
 
-const { InjectedConnector, NetworkOnlyConnector } = Connectors;
-const MetaMask = new InjectedConnector({ supportedNetworks: [1, 4] });
-const Infura = new NetworkOnlyConnector({
-  providerURL: "https://mainnet.infura.io/v3/...",
-});
-
-const connectors = { MetaMask, Infura };
-interface main {
-  children: any;
-}
 const Layout = ({ children }: any) => {
   const chains: any = [
     {
@@ -181,14 +171,14 @@ const Layout = ({ children }: any) => {
       document.body.style.overflow = "hidden";
     }
   });
-  const { provider } = configureChains(chains, [
-    walletConnectProvider({ projectId: "<YOUR_PROJECT_ID>" }),
-  ]);
-  const wagmiClient = createClient({
-    autoConnect: true,
-    connectors: modalConnectors({ appName: "web3Modal", chains }),
-    provider,
-  });
+  // const { provider } = configureChains(chains, [
+  //   walletConnectProvider({ projectId: "9dbf9fb9ce4fdf632ab71fab19f1bac5" }),
+  // ]);
+  // const wagmiClient = createClient({
+  //   autoConnect: true,
+  //   connectors: modalConnectors({ appName: "web3Modal", chains }),
+  //   provider,
+  // });
 
   return (
     <>
@@ -266,72 +256,72 @@ const Layout = ({ children }: any) => {
           cardType: "summary_large_image",
         }}
       />
-      <WagmiConfig client={client}>
-        <div style={{ minHeight: `${Height}px` }} className={Style.container}>
-          <Header />
-          {playList && <AddToPalayList />}
-          {PopUppBoolean && <PopUpp />}
-          {copyVideo && <ShareVideo />}
-          {cropping && <CropperCom />}
-          {support && <Support />}
-          {walletConnect && <CryptoWalletConnect />}
-          {wallet && <Wallet />}
-          <SideHeader />
-          {/* <div
+      {/* <WagmiConfig client={client}> */}
+      <div style={{ minHeight: `${Height}px` }} className={Style.container}>
+        {/* <Header /> */}
+        {playList && <AddToPalayList />}
+        {PopUppBoolean && <PopUpp />}
+        {copyVideo && <ShareVideo />}
+        {cropping && <CropperCom />}
+        {support && <Support />}
+        {/* {walletConnect && <CryptoWalletConnect />}
+          {wallet && <Wallet />} */}
+        <SideHeader />
+        {/* <div
           ref={childrenRef}
           style={{ minHeight: `${Height}px` }}
           className={MenuBoolean ? Style.childen : Style.childen_MenuBoolean}
         >
           {children}
         </div> */}
-          {(() => {
-            if (
-              asPath.includes("/sign-in") ||
-              asPath.includes("/chanel/new") ||
-              asPath.includes("/sign-up") ||
-              asPath.includes("/watch/") ||
-              asPath.includes("/channel/create-new-channel/") ||
-              asPath.includes("edit-channel")
-            ) {
+        {(() => {
+          if (
+            asPath.includes("/sign-in") ||
+            asPath.includes("/chanel/new") ||
+            asPath.includes("/sign-up") ||
+            asPath.includes("/watch/") ||
+            asPath.includes("/channel/create-new-channel/") ||
+            asPath.includes("edit-channel")
+          ) {
+            return (
+              <div
+                ref={childrenRef}
+                style={{ minHeight: `${Height}px` }}
+                className={Style.childen_100}
+              >
+                {children}
+              </div>
+            );
+          } else {
+            if (MenuBoolean) {
               return (
                 <div
                   ref={childrenRef}
                   style={{ minHeight: `${Height}px` }}
-                  className={Style.childen_100}
+                  className={Style.childen}
                 >
                   {children}
                 </div>
               );
             } else {
-              if (MenuBoolean) {
-                return (
-                  <div
-                    ref={childrenRef}
-                    style={{ minHeight: `${Height}px` }}
-                    className={Style.childen}
-                  >
-                    {children}
-                  </div>
-                );
-              } else {
-                return (
-                  <div
-                    ref={childrenRef}
-                    style={{ minHeight: `${Height}px` }}
-                    className={Style.childen_MenuBoolean}
-                  >
-                    {children}
-                  </div>
-                );
-              }
+              return (
+                <div
+                  ref={childrenRef}
+                  style={{ minHeight: `${Height}px` }}
+                  className={Style.childen_MenuBoolean}
+                >
+                  {children}
+                </div>
+              );
             }
-          })()}
-          {isOver && <HoverText />}
-          {elementOverLayt && <UplaodFile />}
-          {asPath.includes("/go-live/go-live") && <GoLive />}
-          <ButtonLive />
-        </div>
-      </WagmiConfig>
+          }
+        })()}
+        {isOver && <HoverText />}
+        {elementOverLayt && <UplaodFile />}
+        {asPath.includes("/go-live/go-live") && <GoLive />}
+        <ButtonLive />
+      </div>
+      {/* </WagmiConfig> */}
       {/* </Web3ReactProvider> */}
     </>
   );

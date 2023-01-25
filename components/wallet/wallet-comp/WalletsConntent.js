@@ -99,19 +99,19 @@ function App() {
           console.error(error);
         });
     }
-    async function checkConnectionrt3() {
-      const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = await web3Provider.getSigner();
-      signer
-        .getAddress()
-        .then((address) => {
-          console.log("address-address", address);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-    checkConnectionrt3();
+    // async function checkConnectionrt3() {
+    //   const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
+    //   const signer = await web3Provider.getSigner();
+    //   signer
+    //     .getAddress()
+    //     .then((address) => {
+    //       console.log("address-address", address);
+    //     })
+    //     .catch((error) => {
+    //       console.error(error);
+    //     });
+    // }
+    // checkConnectionrt3();
 
     checkConnectionrt();
   });
