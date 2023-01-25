@@ -31,8 +31,11 @@ const MainVideo = () => {
   const [videoData, setVideoData] = useState<{ [key: string]: any }>(
     ResDD?.responseData
   );
-  const [channelData, setChannelData] = useState<{ [key: string]: any }>(
-    ResDD?.channelData
+  // const [channelData, setChannelData] = useState<{ [key: string]: any }>(
+  //   ResDD?.channelData
+  // );
+  const channelData = useSelector(
+    (state: any) => state.VideoSlice?.mainVideoDataWatch?.channelData
   );
   const userSignIn = useSelector((state: any) => state.UserSignIn.userdata);
   const [videoId, setVideoId] = useState<string>("");
